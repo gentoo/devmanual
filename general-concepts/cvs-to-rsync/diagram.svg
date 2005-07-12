@@ -1,0 +1,142 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg viewBox="0 0 700 250" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <desc>CVS to RSYNC Propagation</desc>
+
+    <rect x="-10" y="-10" width="1000" height="1000" fill="#eeeeee" id="background" />
+
+    <rect x="10" y="110" width="80" height="30"
+        fill="#ffcccc" stroke="black" stroke-width="2" />
+    <text style="text-anchor: middle;" x="50" y="130">Developers</text>
+
+    <line x1="90"  y1="125" x2="130" y2="125" stroke-width="2" stroke="black" />
+    <line x1="130" y1="125" x2="122" y2="120" stroke-width="2" stroke="black" />
+    <line x1="130" y1="125" x2="122" y2="130" stroke-width="2" stroke="black" />
+
+
+    <rect x="10" y="60" width="80" height="30"
+        fill="#ffcccc" stroke="black" stroke-width="2" />
+    <text style="text-anchor: middle;" x="50" y="80">Developers</text>
+
+    <path d="M 90 75 Q 110 75 110 100 Q 110 130 130 125"
+        stroke-width="2" stroke="black" fill="none" />
+
+    <rect x="10" y="160" width="80" height="30"
+        fill="#ffcccc" stroke="black" stroke-width="2" />
+    <text style="text-anchor: middle;" x="50" y="180">Developers</text>
+
+    <path d="M 90 175 Q 110 175 110 150 Q 110 120 130 125"
+        stroke-width="2" stroke="black" fill="none" />
+
+    <rect x="130" y="110" width="80" height="30"
+        fill="#ffffff" stroke="black" stroke-width="2" />
+    <text style="text-anchor: middle;" x="170" y="130">CVS</text>
+
+    <line x1="210" y1="125" x2="250" y2="125" stroke-width="2" stroke="black" />
+    <line x1="250" y1="125" x2="242" y2="120" stroke-width="2" stroke="black" />
+    <line x1="250" y1="125" x2="242" y2="130" stroke-width="2" stroke="black" />
+
+
+
+    <rect x="250" y="110" width="80" height="30"
+        fill="#ffffff" stroke="black" stroke-width="2" />
+    <text style="text-anchor: middle;" x="290" y="123">Staging</text>
+    <text style="text-anchor: middle;" x="290" y="135">Box</text>
+
+    <line x1="330" y1="125" x2="370" y2="125" stroke-width="2" stroke="black" />
+    <line x1="370" y1="125" x2="362" y2="120" stroke-width="2" stroke="black" />
+    <line x1="370" y1="125" x2="362" y2="130" stroke-width="2" stroke="black" />
+
+
+
+    <rect x="370" y="110" width="80" height="30"
+        fill="#ffffff" stroke="black" stroke-width="2" />
+    <text style="text-anchor: middle;" x="410" y="130">rsync1</text>
+
+
+
+    <line x1="490" y1="75"  x2="482" y2="70" stroke-width="2" stroke="black" />
+    <line x1="490" y1="75"  x2="482" y2="80" stroke-width="2" stroke="black" />
+    <path d="M 450 125 Q 470 125 470 100 Q 470 70 490 75"
+        stroke-width="2" stroke="black" fill="none" />
+
+    <rect x="490" y="60" width="80" height="30"
+        fill="#ccffcc" stroke="black" stroke-width="2" />
+    <text style="text-anchor: middle;" x="530" y="80">Public rsync</text>
+
+
+
+    <line x1="450" y1="125" x2="490" y2="125" stroke-width="2" stroke="black" />
+    <line x1="490" y1="125" x2="482" y2="120" stroke-width="2" stroke="black" />
+    <line x1="490" y1="125" x2="482" y2="130" stroke-width="2" stroke="black" />
+
+    <rect x="490" y="110" width="80" height="30"
+        fill="#ccffcc" stroke="black" stroke-width="2" />
+    <text style="text-anchor: middle;" x="530" y="130">Public rsync</text>
+
+
+
+    <line x1="490" y1="175" x2="482" y2="170" stroke-width="2" stroke="black" />
+    <line x1="490" y1="175" x2="482" y2="180" stroke-width="2" stroke="black" />
+    <path d="M 450 125 Q 470 125 470 150 Q 470 180 490 175"
+        stroke-width="2" stroke="black" fill="none" />
+
+    <rect x="490" y="160" width="80" height="30"
+        fill="#ccffcc" stroke="black" stroke-width="2" />
+    <text style="text-anchor: middle;" x="530" y="180">Public rsync</text>
+
+
+
+    <line x1="610" y1="25"  x2="602" y2="20" stroke-width="2" stroke="black" />
+    <line x1="610" y1="25"  x2="602" y2="30" stroke-width="2" stroke="black" />
+    <path d="M 570 75 Q 590 75 590 50 Q 590 20 610 25"
+        stroke-width="2" stroke="black" fill="none" />
+
+    <rect x="610" y="10" width="80" height="30"
+        fill="#ccccff" stroke="black" stroke-width="2" />
+    <text style="text-anchor: middle;" x="650" y="30">Users</text>
+
+
+
+    <line x1="570" y1="75" x2="610" y2="75" stroke-width="2" stroke="black" />
+    <line x1="610" y1="75" x2="602" y2="70" stroke-width="2" stroke="black" />
+    <line x1="610" y1="75" x2="602" y2="80" stroke-width="2" stroke="black" />
+
+    <rect x="610" y="60" width="80" height="30"
+        fill="#ccccff" stroke="black" stroke-width="2" />
+    <text style="text-anchor: middle;" x="650" y="80">Users</text>
+
+
+
+    <line x1="570" y1="125" x2="610" y2="125" stroke-width="2" stroke="black" />
+    <line x1="610" y1="125" x2="602" y2="120" stroke-width="2" stroke="black" />
+    <line x1="610" y1="125" x2="602" y2="130" stroke-width="2" stroke="black" />
+
+    <rect x="610" y="110" width="80" height="30"
+        fill="#ccccff" stroke="black" stroke-width="2" />
+    <text style="text-anchor: middle;" x="650" y="130">Users</text>
+
+
+    <line x1="570" y1="175" x2="610" y2="175" stroke-width="2" stroke="black" />
+    <line x1="610" y1="175" x2="602" y2="170" stroke-width="2" stroke="black" />
+    <line x1="610" y1="175" x2="602" y2="180" stroke-width="2" stroke="black" />
+
+    <rect x="610" y="160" width="80" height="30"
+        fill="#ccccff" stroke="black" stroke-width="2" />
+    <text style="text-anchor: middle;" x="650" y="180">Users</text>
+
+
+
+    <line x1="610" y1="225" x2="602" y2="220" stroke-width="2" stroke="black" />
+    <line x1="610" y1="225" x2="602" y2="230" stroke-width="2" stroke="black" />
+    <path d="M 570 175 Q 590 175 590 200 Q 590 230 610 225"
+        stroke-width="2" stroke="black" fill="none" />
+
+    <rect x="610" y="210" width="80" height="30"
+        fill="#ccccff" stroke="black" stroke-width="2" />
+    <text style="text-anchor: middle;" x="650" y="230">Users</text>
+
+</svg>
+
+<!-- vim: set ft=xml sw=4 sts=4 et : -->

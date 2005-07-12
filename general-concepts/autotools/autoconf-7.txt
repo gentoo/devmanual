@@ -1,0 +1,4 @@
+# vim: set ft=config :
+
+AM_CONFIG_HEADER(config.h)
+AC_OUTPUT(Makefile src/Makefile nls/Makefile man/Makefile tests/Makefile)

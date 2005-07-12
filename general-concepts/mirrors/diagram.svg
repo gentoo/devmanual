@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docbase="/home/plasmaroo"
+   sodipodi:docname="diagram.svg"
+   inkscape:version="0.41"
+   sodipodi:version="0.32"
+   version="1.0"
+   x="0.0000000"
+   y="0.0000000"
+   width="700.00000px"
+   height="250.00000px"
+   viewBox="0 0 700 250"
+   id="svg1546">
+  <metadata
+     id="metadata71">
+    <rdf:RDF
+       id="RDF73">
+      <cc:Work
+         id="Work75"
+         rdf:about="">
+        <dc:format
+           id="format77">image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+           id="type79" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:current-layer="svg1546"
+     inkscape:window-y="264"
+     inkscape:window-x="164"
+     inkscape:cy="81.156529"
+     inkscape:cx="343.48587"
+     inkscape:zoom="0.97294509"
+     inkscape:window-height="541"
+     inkscape:window-width="968"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="1.0000000"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#eeeeee"
+     id="base" />
+  <defs
+     id="defs1680" />
+  <desc
+     id="desc1548">CVS to RSYNC Propagation</desc>
+  <rect
+     y="0.24284256"
+     x="-2.0556145"
+     height="260.03522"
+     width="710.21484"
+     id="rect1360"
+     style="fill:#eeeeee;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+  <rect
+     width="80.000000"
+     height="30.000000"
+     x="10.000000"
+     y="110.00000"
+     style="fill:#ffcccc;stroke:#000000;stroke-width:2.0000000"
+     id="rect1551" />
+  <text
+     x="50"
+     y="130"
+     style="text-anchor:middle"
+     id="text1553">Developers</text>
+  <line
+     id="line1555"
+     stroke="black"
+     stroke-width="2"
+     y2="125.00000"
+     x2="130.00000"
+     y1="125.00000"
+     x1="90.000000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1557"
+     stroke="black"
+     stroke-width="2"
+     y2="120.00000"
+     x2="122.00000"
+     y1="125.00000"
+     x1="130.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1559"
+     stroke="black"
+     stroke-width="2"
+     y2="130.00000"
+     x2="122.00000"
+     y1="125.00000"
+     x1="130.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <rect
+     width="80.000000"
+     height="30.000000"
+     x="10.000000"
+     y="60.000000"
+     style="fill:#ffcccc;stroke:#000000;stroke-width:2.0000000"
+     id="rect1561" />
+  <text
+     x="50"
+     y="80"
+     style="text-anchor:middle"
+     id="text1563">Developers</text>
+  <path
+     d="M 90.000000,75.000000 C 103.33333,75.000000 110.00000,83.333333 110.00000,100.00000 C 110.00000,120.00000 116.66667,128.33333 130.00000,125.00000"
+     style="fill:none;stroke:#000000;stroke-width:2.0000000"
+     id="path1565" />
+  <rect
+     width="80.000000"
+     height="30.000000"
+     x="10.000000"
+     y="160.00000"
+     style="fill:#ffcccc;stroke:#000000;stroke-width:2.0000000"
+     id="rect1567" />
+  <text
+     x="50"
+     y="180"
+     style="text-anchor:middle"
+     id="text1569">Developers</text>
+  <path
+     d="M 90.000000,175.00000 C 103.33333,175.00000 110.00000,166.66667 110.00000,150.00000 C 110.00000,130.00000 116.66667,121.66667 130.00000,125.00000"
+     style="fill:none;stroke:#000000;stroke-width:2.0000000"
+     id="path1571" />
+  <rect
+     width="80.000000"
+     height="30.000000"
+     x="130.00000"
+     y="110.00000"
+     style="fill:#ffffff;stroke:#000000;stroke-width:2.0000000"
+     id="rect1573" />
+  <text
+     x="170"
+     y="130"
+     style="text-anchor:middle"
+     id="text1575">dev.gentoo</text>
+  <line
+     id="line1577"
+     stroke="black"
+     stroke-width="2"
+     y2="125.00000"
+     x2="250.00000"
+     y1="125.00000"
+     x1="210.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1579"
+     stroke="black"
+     stroke-width="2"
+     y2="120.00000"
+     x2="242.00000"
+     y1="125.00000"
+     x1="250.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1581"
+     stroke="black"
+     stroke-width="2"
+     y2="130.00000"
+     x2="242.00000"
+     y1="125.00000"
+     x1="250.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <rect
+     width="80.000000"
+     height="30.000000"
+     x="250.00000"
+     y="110.00000"
+     style="fill:#ffffff;stroke:#000000;stroke-width:2.0000000"
+     id="rect1583" />
+  <text
+     x="290"
+     y="123"
+     style="text-anchor:middle"
+     id="text1585">Staging</text>
+  <text
+     x="290"
+     y="135"
+     style="text-anchor:middle"
+     id="text1587">Box</text>
+  <line
+     id="line1589"
+     stroke="black"
+     stroke-width="2"
+     y2="125.00000"
+     x2="370.00000"
+     y1="125.00000"
+     x1="330.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1591"
+     stroke="black"
+     stroke-width="2"
+     y2="120.00000"
+     x2="362.00000"
+     y1="125.00000"
+     x1="370.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1593"
+     stroke="black"
+     stroke-width="2"
+     y2="130.00000"
+     x2="362.00000"
+     y1="125.00000"
+     x1="370.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <rect
+     width="80.000000"
+     height="30.000000"
+     x="370.00000"
+     y="110.00000"
+     style="fill:#ffffff;stroke:#000000;stroke-width:2.0000000"
+     id="rect1595" />
+  <text
+     x="410"
+     y="130"
+     style="text-anchor:middle"
+     id="text1597">OSU Mirrors</text>
+  <line
+     id="line1599"
+     stroke="black"
+     stroke-width="2"
+     y2="70.000000"
+     x2="482.00000"
+     y1="75.000000"
+     x1="490.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1601"
+     stroke="black"
+     stroke-width="2"
+     y2="80.000000"
+     x2="482.00000"
+     y1="75.000000"
+     x1="490.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <path
+     d="M 450.00000,125.00000 C 463.33333,125.00000 470.00000,116.66667 470.00000,100.00000 C 470.00000,80.000000 476.66667,71.666667 490.00000,75.000000"
+     style="fill:none;stroke:#000000;stroke-width:2.0000000"
+     id="path1603" />
+  <rect
+     width="80.000000"
+     height="30.000000"
+     x="490.00000"
+     y="60.000000"
+     style="fill:#ccffcc;stroke:#000000;stroke-width:2.0000000"
+     id="rect1605" />
+  <text
+     x="530"
+     y="80"
+     style="text-anchor:middle"
+     id="text1607">Public mirror</text>
+  <line
+     id="line1609"
+     stroke="black"
+     stroke-width="2"
+     y2="125.00000"
+     x2="490.00000"
+     y1="125.00000"
+     x1="450.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1611"
+     stroke="black"
+     stroke-width="2"
+     y2="120.00000"
+     x2="482.00000"
+     y1="125.00000"
+     x1="490.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1613"
+     stroke="black"
+     stroke-width="2"
+     y2="130.00000"
+     x2="482.00000"
+     y1="125.00000"
+     x1="490.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <rect
+     width="80.000000"
+     height="30.000000"
+     x="490.00000"
+     y="110.00000"
+     style="fill:#ccffcc;stroke:#000000;stroke-width:2.0000000"
+     id="rect1615" />
+  <text
+     x="530"
+     y="130"
+     style="text-anchor:middle"
+     id="text1617">Public mirror</text>
+  <line
+     id="line1619"
+     stroke="black"
+     stroke-width="2"
+     y2="170.00000"
+     x2="482.00000"
+     y1="175.00000"
+     x1="490.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1621"
+     stroke="black"
+     stroke-width="2"
+     y2="180.00000"
+     x2="482.00000"
+     y1="175.00000"
+     x1="490.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <path
+     d="M 450.00000,125.00000 C 463.33333,125.00000 470.00000,133.33333 470.00000,150.00000 C 470.00000,170.00000 476.66667,178.33333 490.00000,175.00000"
+     style="fill:none;stroke:#000000;stroke-width:2.0000000"
+     id="path1623" />
+  <rect
+     width="80.000000"
+     height="30.000000"
+     x="490.00000"
+     y="160.00000"
+     style="fill:#ccffcc;stroke:#000000;stroke-width:2.0000000"
+     id="rect1625" />
+  <text
+     x="530"
+     y="180"
+     style="text-anchor:middle"
+     id="text1627">Public mirror</text>
+  <line
+     id="line1629"
+     stroke="black"
+     stroke-width="2"
+     y2="20.000000"
+     x2="602.00000"
+     y1="25.000000"
+     x1="610.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1631"
+     stroke="black"
+     stroke-width="2"
+     y2="30.000000"
+     x2="602.00000"
+     y1="25.000000"
+     x1="610.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <path
+     d="M 570.00000,75.000000 C 583.33333,75.000000 590.00000,66.666667 590.00000,50.000000 C 590.00000,30.000000 596.66667,21.666667 610.00000,25.000000"
+     style="fill:none;stroke:#000000;stroke-width:2.0000000"
+     id="path1633" />
+  <rect
+     width="80.000000"
+     height="30.000000"
+     x="610.00000"
+     y="10.000000"
+     style="fill:#ccccff;stroke:#000000;stroke-width:2.0000000"
+     id="rect1635" />
+  <text
+     x="650"
+     y="30"
+     style="text-anchor:middle"
+     id="text1637">Users</text>
+  <line
+     id="line1639"
+     stroke="black"
+     stroke-width="2"
+     y2="75.000000"
+     x2="610.00000"
+     y1="75.000000"
+     x1="570.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1641"
+     stroke="black"
+     stroke-width="2"
+     y2="70.000000"
+     x2="602.00000"
+     y1="75.000000"
+     x1="610.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1643"
+     stroke="black"
+     stroke-width="2"
+     y2="80.000000"
+     x2="602.00000"
+     y1="75.000000"
+     x1="610.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <rect
+     width="80.000000"
+     height="30.000000"
+     x="610.00000"
+     y="60.000000"
+     style="fill:#ccccff;stroke:#000000;stroke-width:2.0000000"
+     id="rect1645" />
+  <text
+     x="650"
+     y="80"
+     style="text-anchor:middle"
+     id="text1647">Users</text>
+  <line
+     id="line1649"
+     stroke="black"
+     stroke-width="2"
+     y2="125.00000"
+     x2="610.00000"
+     y1="125.00000"
+     x1="570.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1651"
+     stroke="black"
+     stroke-width="2"
+     y2="120.00000"
+     x2="602.00000"
+     y1="125.00000"
+     x1="610.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1653"
+     stroke="black"
+     stroke-width="2"
+     y2="130.00000"
+     x2="602.00000"
+     y1="125.00000"
+     x1="610.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <rect
+     width="80.000000"
+     height="30.000000"
+     x="610.00000"
+     y="110.00000"
+     style="fill:#ccccff;stroke:#000000;stroke-width:2.0000000"
+     id="rect1655" />
+  <text
+     x="650"
+     y="130"
+     style="text-anchor:middle"
+     id="text1657">Users</text>
+  <line
+     id="line1659"
+     stroke="black"
+     stroke-width="2"
+     y2="175.00000"
+     x2="610.00000"
+     y1="175.00000"
+     x1="570.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1661"
+     stroke="black"
+     stroke-width="2"
+     y2="170.00000"
+     x2="602.00000"
+     y1="175.00000"
+     x1="610.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1663"
+     stroke="black"
+     stroke-width="2"
+     y2="180.00000"
+     x2="602.00000"
+     y1="175.00000"
+     x1="610.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <rect
+     width="80.000000"
+     height="30.000000"
+     x="610.00000"
+     y="160.00000"
+     style="fill:#ccccff;stroke:#000000;stroke-width:2.0000000"
+     id="rect1665" />
+  <text
+     x="650"
+     y="180"
+     style="text-anchor:middle"
+     id="text1667">Users</text>
+  <line
+     id="line1669"
+     stroke="black"
+     stroke-width="2"
+     y2="220.00000"
+     x2="602.00000"
+     y1="225.00000"
+     x1="610.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <line
+     id="line1671"
+     stroke="black"
+     stroke-width="2"
+     y2="230.00000"
+     x2="602.00000"
+     y1="225.00000"
+     x1="610.00000"
+     style="stroke:#000000;stroke-width:2.0000000" />
+  <path
+     d="M 570.00000,175.00000 C 583.33333,175.00000 590.00000,183.33333 590.00000,200.00000 C 590.00000,220.00000 596.66667,228.33333 610.00000,225.00000"
+     style="fill:none;stroke:#000000;stroke-width:2.0000000"
+     id="path1673" />
+  <rect
+     width="80.000000"
+     height="30.000000"
+     x="610.00000"
+     y="210.00000"
+     style="fill:#ccccff;stroke:#000000;stroke-width:2.0000000"
+     id="rect1675" />
+  <text
+     x="650"
+     y="230"
+     style="text-anchor:middle"
+     id="text1677">Users</text>
+</svg>

@@ -1,0 +1,7 @@
+# vim: set ft=config :
+
+dnl Check for sed
+AC_CHECK_PROGS(regex_cmd, sed)
+if test x$regex_cmd = "x" ; then
+    AC_MSG_ERROR([sed is required to build the data files.])
+fi

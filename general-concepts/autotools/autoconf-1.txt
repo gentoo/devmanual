@@ -1,0 +1,9 @@
+# vim: set ft=config :
+
+dnl Process this file with autoconf
+AC_INIT(appname, 0.1)
+AC_PREREQ(2.5)
+AC_CONFIG_SRCDIR(src/main.c)
+AC_CONFIG_AUX_DIR(config)
+AM_INIT_AUTOMAKE(1.8)
+

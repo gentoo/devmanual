@@ -1,0 +1,7 @@
+# vim: set ft=config :
+
+AC_MSG_RESULT(the first)
+AC_MSG_RESULT([the second])
+AC_MSG_RESULT("the third")
+AC_MSG_RESULT(@<:@the fourth@:>@)
+AC_MSG_RESULT([@<:@the fifth@:>@])

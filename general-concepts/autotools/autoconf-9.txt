@@ -1,0 +1,8 @@
+# vim: set ft=config :
+
+AC_MSG_CHECKING([whether to enable foo])
+AC_ARG_WITH(foo,
+    [  --with-foo           enable foo support],
+    with_foo=$withval,
+    with_foo=yes)
+AC_MSG_RESULT($with_foo)

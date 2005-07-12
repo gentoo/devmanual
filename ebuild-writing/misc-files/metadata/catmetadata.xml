@@ -1,0 +1,15 @@
+# Header
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+    <catmetadata>
+            <longdescription lang="en">
+                The app-vim category contains plugins and syntax file
+                packages for the Vim text editor.
+            </longdescription>
+            <longdescription lang="de">
+                Die Kategorie app-vim enthält Plugins und Syntax-Pakete
+                für den Vim Texteditor.
+            </longdescription>
+    </catmetadata>
+

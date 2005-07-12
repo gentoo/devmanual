@@ -1,0 +1,4 @@
+# vim: set ft=config :
+
+dnl Check for functions:
+AC_CHECK_FUNCS([setlocale strtol])

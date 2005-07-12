@@ -1,0 +1,5 @@
+# vim: set ft=config :
+
+dnl Check that our compiler can do const and inline
+AC_C_CONST
+AC_C_INLINE

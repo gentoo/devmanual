@@ -1,0 +1,23 @@
+include make.common
+
+cache.man : cache.own-url
+	grep 'man$$' cache.own-url || ( \
+	TERM=xterm \
+	MANPAGER="tr '\267' '.' | col -b | \
+		 vim -f -u /etc/vim/vimrc -U NONE -i NONE \
+		 +':so ${TOPDIR}/tools/manpage.vim' +':w! /tmp/$@' \
+		 +':qa!' - " \
+		 man $$(sed -e 's,.*/\([^/]\+\)-\([^-]\+\)$$,\2,' < cache.own-url ) \
+		 $$(sed -e 's,.*/\([^/]\+\)-\([^-]\+\)$$,\1,' < cache.own-url ) && \
+	sed -i -n -e '/^<pre>$$/,/^<\/pre>$$/p' /tmp/$@ && \
+	sed -i -e 's/^/\t/' /tmp/$@ && \
+	mv /tmp/$@ $@)
+
+cache.text : | $(TOPDIR)/skel/man.rst \
+		$(wildcard text.rst) cache.own-url
+	[[ -f text.rst ]] && cp text.rst $@ || \
+		sed -e 's,@TOPIC@,$(shell \
+			sed -e 's,.*/\([^/]\+\)-\([^-]\+\)$$,\1,' < cache.own-url),' \
+		-e 's,@SECTION@,$(shell \
+			sed -e 's,.*/\([^/]\+\)-\([^-]\+\)$$,\2,' < cache.own-url),' \
+		< $(TOPDIR)/skel/man.rst > $@

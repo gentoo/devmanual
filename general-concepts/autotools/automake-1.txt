@@ -1,0 +1,4 @@
+# vim: set ft=automake :
+
+bin_PROGRAMS = myapp
+myapp_SOURCES = myapp_commandline.c myapp.c
