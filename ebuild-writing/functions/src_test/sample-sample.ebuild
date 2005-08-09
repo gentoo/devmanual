@@ -1,6 +1,6 @@
 #
 
-src_compile() {
+src_test() {
 	cd ${S}/src/testdir
 
 	# Test 49 won't work inside a portage environment
