@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/autotools/">
+<chapter>
+<title>The Basics of Autotools</title>
+
+<body>
+<todo>
+This is too long for `General Concepts`_. It needs to be split up and
+moved somewhere, either to a top-level of its own or into `Appendices`_.
+</todo>
+
+<p>
+An understanding of GNU autotools (<c>automake</c>, <c>autoconf</c> etc.) can be useful
+when working with ebuilds:
+</p>
+
+<ul>
+  <li>
+  Finding and correcting build issues is often easier if the build system is
+  not seen simply as a scary black box.
+  </li>
+  <li>
+  The autotools input files can help when determining a package's build-time
+  dependencies.
+  </li>
+  <li>
+  The risk of accidentally breaking something by patching the wrong file at the
+  wrong time is greatly reduced if the relationship between the build system
+  files is understood.
+  </li>
+</ul>
+</body>
+
+<section>
+<title>Major Autotools Components</title>
+
+<body>
+<p>
+Autotools is a collection of related packages which, when used together, remove
+much of the difficulty involved in creating portable software. These tools,
+together with a few relatively simple upstream-supplied input files, are used to
+create the build system for a package.
+</p>
+
+<figure short="How autotools fits together" link="diagram.png">
+A basic overview of how the main autotools components fit together.
+</figure>
+
+</body>
+</section>
+
+</chapter>
+</guide>

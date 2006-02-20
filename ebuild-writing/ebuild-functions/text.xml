@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/ebuild-functions/">
+<chapter>
+<title>Ebuild Functions</title>
+
+<body>
+<p>
+This section covers some general concepts with which you should be familiar when
+writing ebuilds or working with the portage tree.
+</p>
+</body>
+</chapter>
+<include href="src_unpack/text.xml"/>
+</guide>

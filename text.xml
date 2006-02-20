@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<guide root="true">
+<chapter>
+<title>Master Index</title>
+
+<body>
+<p>
+This document is an ongoing work in progress. It contains gaps, inaccuracies, omissions, typos and the occasional outright lie. The intent is to make an handbook giving developers and users correct, detailed, up to date technical content.
+</p>
+<p>
+Contributions are encouraged. See the Contributing to This Document section for how to get started. Thanks for Ciaran for permitting me to continue this and sending me the RST source and needed scripts.
+</p>
+</body>
+
+<section>
+<title>Contents</title>
+<body>
+<contentsTree maxdepth="1"/>
+</body>
+</section>
+
+<section>
+<title>Full Contents</title>
+<body>
+<contentsTree/>
+</body>
+</section>
+</chapter>
+
+<include href="quickstart/text.xml"/>
+<include href="general-concepts/text.xml"/>
+<include href="ebuild-writing/text.xml"/>
+</guide>

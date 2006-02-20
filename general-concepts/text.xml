@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/">
+<chapter>
+<title>General Concepts</title>
+
+<body>
+<p>
+This section covers some general concepts with which you should be familiar when
+writing ebuilds or working with the portage tree.
+</p>
+</body>
+</chapter>
+
+<include href="autotools/text.xml"/>
+<include href="config-protect/text.xml"/>
+</guide>
