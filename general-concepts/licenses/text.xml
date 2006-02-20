@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/licenses/">
+<chapter>
+<title>Licenses</title>
+
+<body>
+<p>
+All ebuilds must specify a <c>LICENSE</c> (note the American English
+spelling) variable. The value of this variable must be the name of a
+file in the portage tree's <c>licenses/</c> directory.
+</p>
+
+<subsection>
+<title>Adding New Licenses</title>
+<body>
+
+<p>
+If your package's license is not already in the tree, you must add the
+license before committing the package. When adding the license, use a
+plain text file if at all possible. Some licenses are PDF files rather
+than plain text ? this should only be done if we are legally required
+to do so.
+</p>
+
+<p>
+It is not normally necessary to mail the <c>gentoo-dev</c> list before
+adding a new license. You should only do so if the license could be
+considered 'questionable' or if you are unsure as to the meaning of
+any part of it.
+</p>
+
+</body>
+</subsection>
+</body>
+
+</chapter>
+</guide>

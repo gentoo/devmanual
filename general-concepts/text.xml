@@ -11,6 +11,7 @@ writing ebuilds or working with the portage tree.
 </body>
 </chapter>
 
-<include href="autotools/text.xml"/>
-<include href="config-protect/text.xml"/>
+<include href="autotools/"/>
+<include href="config-protect/"/>
+<include href="licenses/"/>
 </guide>

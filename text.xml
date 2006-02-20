@@ -27,7 +27,7 @@ Contributions are encouraged. See the Contributing to This Document section for 
 </section>
 </chapter>
 
-<include href="quickstart/text.xml"/>
-<include href="general-concepts/text.xml"/>
-<include href="ebuild-writing/text.xml"/>
+<include href="quickstart/"/>
+<include href="general-concepts/"/>
+<include href="ebuild-writing/"/>
 </guide>

@@ -10,5 +10,5 @@ writing ebuilds or working with the portage tree.
 </p>
 </body>
 </chapter>
-<include href="epatch/text.xml"/>
+<include href="epatch/"/>
 </guide>
