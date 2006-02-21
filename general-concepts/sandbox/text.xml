@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/sandbox/">
+<chapter>
+<title>Sandbox</title>
+
+<body>
+<p>
+During the <c>src_unpack</c>, <c>src_compile</c>, <c>src_test</c> and <c>src_install</c>
+phases, <c>ebuild.sh</c> operates inside a <e>sandbox</e>. This is a special environment
+which attempts to help prevent badly written ebuilds (or ebuilds working with
+badly written build systems) accidentally writing outside of permitted locations.
+</p>
+
+<p>
+<b>All packages must build correctly when sandbox is active.</b> Packages must not
+achieve this by using sneaky tricks to make sandbox warnings not show up -- the
+sandbox is there to ensure that binary packages will work correctly, and that
+a badly written <c>Makefile</c> won't cause problems. Using <c>addwrite</c> is
+generally <b>not</b> the correct solution.
+</p>
+
+<p>
+See `Sandbox Functions Reference`_ for details on sandbox-related functions. See
+`Handling Access Violations`_ for suggestions on fixing sandbox-related build
+problems.
+</p>
+</body>
+
+</chapter>
+</guide>

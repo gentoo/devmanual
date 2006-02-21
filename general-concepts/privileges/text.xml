@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/privileges/">
+<chapter>
+<title>Privileges</title>
+
+<body>
+<todo>
+general privs stuff, include stuff on setuid/setgid and sticky since
+a lot of people seem to be confused about those... Also notes on the portage
+user and group issues, and what we use for root:root to make *bsd work.
+</todo>
+</body>
+
+</chapter>
+</guide>

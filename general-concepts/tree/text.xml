@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/tree/">
+<chapter>
+<title>The Portage Tree</title>
+
+<body>
+<p>
+The basic layout of the portage tree is as follows:
+</p>
+
+<ul>
+  <li>
+  Categories, for example <c>app-editors</c>, <c>sys-apps</c>
+  <ul>
+    <li>Category metadata, for example <c>app-admin/metadata.xml</c></li>
+    <li>
+    Package directories for example <c>app-editors/vim</c>
+    <ul>
+      <li>Package metadata, for example <c>app-editors/vim/metadata.xml</c></li>
+      <li>Package changelog, for example <c>app-editors/vim/ChangeLog</c></li>
+      <li>Package Manifest, for example <c>app-editors/vim/Manifest</c></li>
+      <li>
+      Ebuilds, for example <c>app-editors/vim/vim-6.3.068.ebuild</c>,
+      <c>app-editors/vim/vim-7.0_alpha20050326.ebuild</c>
+      </li>
+      <li>
+      Package files directory, for example <c>app-editors/vim/files</c>
+      <ul>
+        <li>
+        Digest files, for example <c>app-editors/vim/files/digest-vim-6.3.068</c>,
+        <c>app-editors/vim/files/digest-vim-7.0_alpha20050326</c>
+        </li>
+        <li>
+        Small patches and other miscellaneous files, for example
+        <c>app-editors/vim/files/vim-completion</c>
+        </li>
+      </ul>
+      </li>
+    </ul>
+    </li>
+  </ul>
+  </li>
+  <li>Eclasses directory, <c>eclass/</c></li>
+  <li>Licenses directory, <c>licenses/</c></li>
+  <li>
+  Profiles directory, <c>profiles/</c>
+  <ul>
+    <li>
+    Various control and documentation files, for example <c>categories</c>,
+    <c>info_pkgs</c>, <c>info_vars</c>, <c>package.mask</c>, <c>use.desc</c>
+    </li>
+    <li>
+    Updates directory, <c>profiles/updates/</c>
+    <ul>
+      <li>Updates files, for example <c>profiles/updates/1Q-2005</c></li>
+    </ul>
+    </li>
+    <li>
+    Main profile cascade
+    </li>
+  </ul>
+  </li>
+  <li>Scripts directory, <c>scripts/</c></li>
+  <li>
+  Distfiles directory, <c>distfiles/</c>. This is not included in the main
+  CVS tree, but it will be found on most user systems.
+  </li>
+  <li>
+  Packages directory, <c>packages</c>. Again, this is found on user systems but not
+  in the main CVS tree.
+  </li>
+</ul>
+</body>
+
+<section>
+<title>What Belongs in the Tree?</title>
+<body>
+
+<p>
+Things that do <b>not</b> belong in the tree:
+</p>
+
+<ul>
+  <li>Large patches</li>
+  <li>Non-text files</li>
+  <li>Photos of teletubbies</li>
+  <li>Files whose name starts with a dot</li>
+</ul>
+
+<p>
+Software-wise, in general all of the following should be met in order for a package to be included in the tree:
+</p>
+
+<dl>
+<dt>Active, Cooperative Upstream</dt>
+<dd>
+  <p>
+  If a package is undeveloped or unmaintained upstream, it can be extremely
+  difficult to get problems fixed. If a package does not have an active
+  upstream, the developers who add the package to the tree must ensure that
+  they are able to fix any issues which may arise.
+  </p>
+  <p>
+  Sometimes upstream may have a reason for not wanting their package included
+  in the tree. This should be respected.
+  </p>
+</dd>
+
+<dt>Reasonably Stable</dt>
+<dd>
+  <p>
+  Keep super-experimental things out of the tree. If you must commit them,
+  consider using ``package.mask`` until things calm down, or better yet make
+  them available as overlay ebuilds.
+  </p>
+</dd>
+
+<dt>Reasonably Useful</dt>
+<dd>
+  <p>
+  Don't feel obliged to include "Joe's '1337 XMMS Skinz Collection" or "Hans'
+  Super Cool Fast File System" in the tree just because a few users ask for
+  it. Stick to things that might actually be of use.
+  </p>
+</dd>
+
+<dt>Properly Packaged</dt>
+<dd>
+  <p>
+  If something is only available in live CVS or dodgy autopackage format,
+  don't include it until upstream can come up with a decent source package.
+  Similarly, avoid things that don't have a proper build system (where
+  relevant) -- these are very tricky to maintain.
+  </p>
+</dd>
+
+<dt>Patching and Distribution Permitted</dt>
+<dd>
+  <p>
+  If we can't patch packages as necessary ourselves, we end up relying
+  entirely upon upstream for support. This can be problematic, especially if
+  upstream are slow at fixing things. We don't want to be in the situation
+  where we can't stable a critical package because we're still waiting for a
+  closed-source vendor to get their act together.
+  </p>
+
+  <p>
+  Similarly, not being able to mirror and distribute tarballs ourselves makes
+  us rely entirely upon upstream mirrors. Experience has shown that these are
+  often extremely unreliable, with files changing, moving or vanishing at
+  random.
+  </p>
+</dd>
+
+<dt>Working Ebuilds</dt>
+<dd>
+  <p>
+  If you don't have a <e>working</e> ebuild, don't include it.
+  </p>
+</dd>
+
+<dt>Portable</dt>
+<dd>
+  <p>
+  If software is unportable, it's generally because it's badly written.
+  Remember that although x86 has a market majority <e>now</e>, it probably won't in
+  the not too distant future once x86-64 catches on.
+  </p>
+</dd>
+
+<dt>Reasonable Security Record</dt>
+<dd>
+  <p>
+  Don't include software that has a terrible security record. Each
+  vulnerability is a <e>lot</e> of work for a lot of people (security teams, arch
+  teams and package maintainers).
+  </p>
+</dd>
+</dl>
+
+</body>
+</section>
+
+</chapter>
+</guide>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/pic/">
+<chapter>
+<title>Linguas</title>
+
+<body>
+<todo>
+policy. http://www.gentoo.org/proj/en/hardened/pic-internals.xml has some technical details.
+</todo>
+</body>
+
+</chapter>
+</guide>

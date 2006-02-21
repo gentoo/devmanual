@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/portage-cache/">
+<chapter>
+<title>The Portage Cache</title>
+
+<body>
+<p>
+Portage uses a cache for most top-level variables (<c>DEPEND</c>, <c>DESCRIPTION</c>,
+<c>SRC_URI</c> and so on). This cache may be generated on a different machine, so
+these variables must be either static or generated using only unchanging
+'version / name' variables (<c>P</c>, <c>PN</c>, <c>PV</c>, <c>PR</c>, <c>PVR</c> and <c>PF</c>).
+</p>
+
+<p>
+So, the following will not work:
+</p>
+
+<codesample lang="ebuild">
+# DO NOT DO THIS!
+if ! has_version "x11-libs/gtk+" ; then
+    DEPEND="${DEPEND}
+            gtk2?  ( >=x11-libs/gtk+-2 )
+            !gtk2? ( =x11-libs/gtk+-1.2* )"
+fi
+</codesample>
+
+<p>
+However, this is legal, since <c>versionator.eclass</c> works upon <c>PV</c>, and
+<c>PV</c> and <c>PN</c> are both static:
+</p>
+
+<codesample lang="ebuild">
+inherit versionator
+
+if [[ $(get_major_version) -ge 7 ]] ; then
+    IUSE="${IUSE} tcltk mzscheme"
+    DEPEND="$DEPEND
+        tcltk?    ( dev-lang/tcl )
+        mzscheme? ( dev-lisp/mzscheme )"
+    RDEPEND="$RDEPEND
+        tcltk?    ( dev-lang/tcl )
+        mzscheme? ( dev-lisp/mzscheme )"
+
+    if [[ "${MY_PN}" != "vim-core" ]] ; then
+        RDEPEND="${RDEPEND} !&lt;app-vim/align-30-r1"
+    fi
+fi
+</codesample>
+</body>
+
+<section>
+<title>Conditional Inherits</title>
+<body>
+<p>
+Because eclasses modify various cached variables, conditional inheritance is not
+allowed except where the same results will always be obtained on every system.
+For example, inherits based upon <c>USE</c> flags are illegal, but inherits based
+solely upon <c>PN</c> are allowed.
+</p>
+
+<p>
+As an example of a legal and possibly useful conditional inherit, some eclasses
+do:
+</p>
+
+<codesample lang="ebuild">
+if [[ "${PN##*-}" == "cvs" ]] ; then
+    inherit cvs
+fi
+</codesample>
+
+<p>
+This allows the same eclass to be used for both regular and <c>-cvs</c> packages.
+</p>
+</body>
+</section>
+
+</chapter>
+</guide>

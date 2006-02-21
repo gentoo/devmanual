@@ -14,4 +14,14 @@ writing ebuilds or working with the portage tree.
 <include href="autotools/"/>
 <include href="config-protect/"/>
 <include href="licenses/"/>
+<include href="linguas/"/>
+<include href="mirrors/"/>
+<include href="overlay/"/>
+<include href="portage-cache/"/>
+<include href="privileges/"/>
+<include href="sandbox/"/>
+<include href="slotting/"/>
+<include href="tree/"/>
+<include href="use-flags/"/>
+<include href="user-environment/"/>
 </guide>

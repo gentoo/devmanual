@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/user-environment/">
+<chapter>
+<title>User Environment</title>
+
+<body>
+<p>
+User environment variables and <c>make.conf</c> settings get passed on to ebuilds.
+This can be useful -- it's how <c>CFLAGS</c> and friends work, for example -- but
+it can also result in nasty build-breaking variables like <c>LANG</c> and
+<c>LC_ALL</c> getting through. Currently no sanitisation is performed upon the
+environment.
+</p>
+</body>
+
+<section>
+<title>Filtering Variables</title>
+<body>
+<p>
+Certain variables will really really upset certain build systems. A good example
+is the locale variables (<c>LC_ALL</c> et al), which if set to certain values will
+cause <c>sed</c> or <c>grep</c> expressions involving the likes of <c>[A-Z]</c> to fail.
+The easiest thing to do here is to <c>unset</c> or sanitise the offending variables
+inside <c>pkg_setup</c>.
+</p>
+
+<p>
+The simplest way to unset all locale-related variables is:
+</p>
+
+<codesample lang="ebuild">
+pkg_setup() {
+    # Unset all locale related variables, they can make the
+    # build fail.
+
+    eval unset ${!LC_*} LANG
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Not Filtering Variables</title>
+<body>
+<p>
+On the other hand, it is extremely important that certain user preferences are
+honoured as far as possible. A good example is <c>CFLAGS</c>, which <e>must</e> be
+respected (selective filtering is fine, but outright ignoring is not). Ignoring
+<c>CFLAGS</c> when compiling can cause serious problems:
+</p>
+
+<ul>
+<li>
+  Ignoring <c>march/mcpu</c> may force kernel or software emulation for certain
+  opcodes on some architectures. This can be *very* slow -- for example,
+  <c>openssl</c> built for SPARC v7 but run on v9 is around five times slower for
+  RSA operations.
+</li>
+
+<li>
+  Stripping certain ABI-related flags will break linkage.
+</li>
+
+<li>
+  Stripping certain ABI-related flags will result in invalid code being produced
+  for certain setups. In extreme cases, we could end up with daft things like
+  big endian code being produced for little endian CPUs.
+</li>
+
+<li>
+  If a user's <c>march/mcpu/mtune</c> is ignored, and an auto-detected setting is
+  used instead, GRP and stages will break. For example, <c>i686</c> stages could no
+  longer be produced on a <c>pentium-4</c>, and <c>v8</c> stages could no longer be
+  produced on an <c>UltraSparc</c>.
+</li>
+</ul>
+
+<p>
+Some packages do this by accident. For example, one might see
+<c>CFLAGS=-Wall</c> in <c>Makefile.am</c>. To fix this, either <c>sed</c> in the user's
+<c>CFLAGS</c>, or (the better solution) change the variable to <c>AM_CFLAGS</c>, which
+will automatically be merged with the user's settings.
+</p>
+</body>
+</section>
+
+</chapter>
+</guide>

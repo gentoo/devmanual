@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/mirrors/">
+<chapter>
+<title>Mirrors</title>
+
+<section>
+<title>Automatic Mirroring</title>
+
+<body>
+<p>
+Packages will automatically have their <c>SRC_URI</c> components mirrored onto
+Gentoo mirrors.  When fetching, portage checks Gentoo mirrors first before
+trying the original upstream location.
+</p>
+
+<p>
+This is generally desired behaviour -- upstream mirrors are prone to being
+rearranged, tidied out or having files modified.
+</p>
+</body>
+
+<subsection>
+<title>Restricting Automatic Mirroring</title>
+<body>
+<p>
+Three <c>RESTRICT</c> keywords can be used to control the mirroring process.
+</p>
+
+<p>
+The <c>RESTRICT=&quot;nomirror&quot;</c> setting should be used if we cannot legally mirror
+certain files.
+</p>
+
+<p>
+The <c>RESTRICT="primaryuri"</c> setting causes portage to try
+original locations <e>first</e>, and then fall back to mirrors if necessary -- this
+is sometimes useful if approximate download counts are needed, or if upstream
+have a reliable mirror setup.
+</p>
+
+<p>
+There is also <c>RESTRICT="fetch"</c>, which prevents portage from trying to
+fetch anything manually. The `pkg_nofetch`_ function will be called if any
+<c>SRC_URI</c> components cannot be found. This should only be used if a license
+requires it.
+</p>
+</body>
+</subsection>
+
+<subsection>
+<title>Suitable Download Hosts</title>
+<body>
+<p>
+Hosting files off <c>dev.gentoo.org</c> is <b>not</b> acceptable for main-tree items.
+Instead, these files must be moved onto <c>mirror://gentoo</c> before release.
+</p>
+</body>
+</subsection>
+</section>
+
+<section>
+<title>Gentoo Mirrors</title>
+
+<body>
+<p>
+To manually upload a file to <c>mirror://gentoo</c>, <c>scp</c> it to
+<c>dev.gentoo.org:/space/distfiles-local</c>. You must ensure that the permissions
+are set to <c>ug+rw</c> manually. The file should appear on the mirrors within four
+hours (note that this is *less frequent* than `CVS to rsync`_).
+
+If the upstream download location for a package uses a non-standard TCP port
+(anything other than 21, 80 or 443), you <e>must</e> manually mirror the files. Not
+doing so can cause all kinds of problems with strict firewalls.
+</p>
+</body>
+</section>
+
+<section>
+<title>Mirroring Process</title>
+
+<body>
+<figure short="Mirroring Process" link="diagram.png">
+Diagram showing the mirroring process.
+</figure>
+</body>
+</section>
+
+</chapter>
+</guide>

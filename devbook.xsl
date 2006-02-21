@@ -13,6 +13,7 @@
 </xsl:text>
 </xsl:variable>
 
+<xsl:variable name="qvariable-start">$</xsl:variable>
 <xsl:variable name="variable-start">${</xsl:variable>
 <xsl:variable name="variable-end">}</xsl:variable>
 
@@ -48,7 +49,10 @@
       </xsl:when>
 
       <xsl:when test="substring($data, string-length($data)) = ')'">
-	<xsl:value-of select="substring($data, 1, string-length($data)-1)"/><span class="PreProc">)</span>
+        <xsl:call-template name="highlight-subtokenate">
+          <xsl:with-param name="data" select="substring($data, 1, string-length($data)-1)"/>
+        </xsl:call-template>
+        <span class="PreProc">)</span>
       </xsl:when>
 
       <!-- This must go before the other quote matchers -->
@@ -66,15 +70,29 @@
 
       <xsl:when test="substring($data, 1, 1) = '&quot;'">
 	<span class="Statement">&quot;</span>
-	<xsl:value-of select="substring($data, 2)"/>
+        <xsl:call-template name="highlight-subtokenate">
+          <xsl:with-param name="data" select="substring($data, 2)"/>
+        </xsl:call-template>
       </xsl:when>
 
       <xsl:when test="substring($data, string-length($data)) = '&quot;'">
-	<xsl:value-of select="substring($data, 0, string-length($data))"/>
+        <xsl:call-template name="highlight-subtokenate">
+          <xsl:with-param name="data" select="substring($data, 0, string-length($data))"/>
+        </xsl:call-template>
 	<span class="Statement">&quot;</span>
       </xsl:when>
 
+      <xsl:when test="substring($data, 1, 1) = $qvariable-start">
+	<span class="Identifier">$<xsl:value-of select="substring($data, 2)"/></span>
+      </xsl:when>
       <!-- Functioney highlighing -->
+
+      <!-- sh grammar -->
+      <xsl:when test="$data = ';' or $data = 'if' or $data = 'then' or $data = 'fi' or $data = '-ge' or $data = '-lt' or $data = '-le' or
+                      $data = '-gt' or $data = 'elif' or $data = 'else' or $data = 'eval' or $data = 'unset'">
+	<span class="Statement"><xsl:value-of select="$data"/></span>
+      </xsl:when>
+
       <!-- Default keywords -->
       <xsl:when test="$data = 'use' or $data = 'has_version' or $data = 'best_version' or $data = 'use_with' or $data = 'use_enable' or
 		      $data = 'check_KV' or $data = 'keepdir' or $data = 'econf' or $data = 'die' or $data = 'einstall' or $data = 'einfo' or
@@ -304,7 +322,7 @@
 
       <!-- No match return -->
       <xsl:otherwise>
-        <highlight-nomatch-sub><xsl:value-of select="$data"/></highlight-nomatch-sub>
+        <xsl:value-of select="$data"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -326,7 +344,8 @@
       <!-- See if we should be processing comments by now; we need to test for
 	   two possible cases:	* commentSeeker != 0 (so we have a comment), or,
 				* the first token is a "#" -->
-      <xsl:when test="($commentSeeker != 0 and position() > $commentSeeker) or substring(../*[position()=1], 1, 1) = $commentChar">
+      <xsl:when test="($commentSeeker != 0 and position() > $commentSeeker) or substring(../*[position()=1], 1, 1) = $commentChar
+                      or . = $commentChar">
         <span class="Comment"><xsl:value-of select="."/></span>
       </xsl:when>
 
@@ -347,7 +366,7 @@
         </xsl:call-template>
       </xsl:when>
 
-      <xsl:when test=". = '{' or . = '}' or . = '\' or . = '(' or . = '#'">
+      <xsl:when test=". = '{' or . = '}' or . = '\' or . = '('">
 	<span class="PreProc"><xsl:value-of select="."/></span>
       </xsl:when>
 
@@ -367,20 +386,20 @@
   </xsl:template>
 
   <xsl:template match="chapter">
-    <h1><xsl:value-of select="title"/></h1>
+    <h1><xsl:apply-templates select="title"/></h1>
     <xsl:apply-templates select="(body|section)"/>
   </xsl:template>
 
   <xsl:template match="section">
     <div class="section">
-      <h2><xsl:value-of select="title"/></h2>
+      <h2><xsl:apply-templates select="title"/></h2>
       <xsl:apply-templates select="(body|subsection)"/>
     </div>
   </xsl:template>
 
   <xsl:template match="subsection">
     <div class="section">
-      <h3><xsl:value-of select="title"/></h3>
+      <h3><xsl:apply-templates select="title"/></h3>
       <xsl:apply-templates select="(body|subsection)"/>
     </div>
   </xsl:template>
@@ -393,6 +412,10 @@
     <p>
     <xsl:apply-templates/>
     </p>
+  </xsl:template>
+
+  <xsl:template match="pre">
+  <pre><xsl:apply-templates/></pre>
   </xsl:template>
 
   <!-- FIXME: Handle lang=... -->
@@ -421,6 +444,7 @@
     </div>
   </xsl:template>
 
+  <!-- Lists -->
   <xsl:template match="li">
     <li><xsl:apply-templates/></li>
   </xsl:template>
@@ -431,6 +455,28 @@
 
   <xsl:template match="ul">
     <ul><xsl:apply-templates/></ul>
+  </xsl:template>
+
+  <!-- Definition Lists -->
+  <xsl:template match="dl">
+    <dl><xsl:apply-templates/></dl>
+  </xsl:template>
+
+  <xsl:template match="dt">
+    <dt><xsl:apply-templates/></dt>
+  </xsl:template>
+
+  <xsl:template match="dd">
+    <dd>
+      <xsl:for-each select="p">
+        <xsl:choose>
+        <xsl:when test="count(../p) = 1"><xsl:apply-templates/></xsl:when>
+        <xsl:when test="position() = 1"><p class="first"><xsl:apply-templates/></p></xsl:when>
+        <xsl:when test="position() = last()"><p class="last"><xsl:apply-templates/></p></xsl:when>
+        <xsl:otherwise><p><xsl:apply-templates/></p></xsl:otherwise>
+        </xsl:choose>
+      </xsl:for-each>
+    </dd>
   </xsl:template>
 
   <xsl:template match="important">
@@ -476,7 +522,7 @@
   <xsl:template match="/">
     <html lang="en-GB" xml:lang="en-GB" xmlns="http://www.w3.org/1999/xhtml">
     <head>
-	<title>Gentoo Development Guide</title>
+	<title>Gentoo Development Guide: <xsl:value-of select="/guide/chapter[1]/title"/></title>
 	<link rel="stylesheet" href="http://dev.gentoo.org/~plasmaroo/devmanual/styles/devmanual.css" type="text/css" />
     </head>
     <body>
@@ -501,7 +547,7 @@
 	  <xsl:apply-templates/>
 	</div>
 
-	<div class="navtop" style="text-align: center;">
+	<div class="navbottom" style="text-align: center;">
 	  <table style="border-top: 1px dashed #330066; margin-left: auto; margin-right: auto;
 			width: 100%;">
 

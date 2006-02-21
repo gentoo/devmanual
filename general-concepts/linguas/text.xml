@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/linguas/">
+<chapter>
+<title>Linguas</title>
+
+<body>
+<todo>
+Write this. From vapier: "used to specify languages users wish to have support for. USE=nls covers generally natural language support, but LINGUAS covers specific languages (see the games-rpg/nwn for example). the variable is expanded for USE access in ebuilds. LINGUAS=de would automatically add 'linguas_de' to USE." We also need strip-linguas examples.
+</todo>
+</body>
+
+</chapter>
+</guide>

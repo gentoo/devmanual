@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/use-flags/">
+<chapter>
+<title>USE Flags</title>
+
+<body>
+<p>
+USE flags are to control optional dependencies and settings which the user may
+reasonably want to select. For example, vim can optionally build with support for
+the ruby interpreter, and it needs ruby installed to do this -- we use the ruby USE
+flag to provide this option. On the other hand, glark requires ruby no matter what,
+so no USE flag is used here.
+</p>
+
+<p>
+No combination of USE flags should cause a package to fail to build.
+</p>
+
+<p>
+Packages should not configure and link based upon what is available at compile time
+-- any autodetection must be overridden.
+</p>
+</body>
+
+<section>
+<title><c>noblah</c> USE Flags</title>
+<body>
+<p>
+If at all possible, avoid <c>noblah</c> style USE flags. These break <c>use.mask</c>
+and cause all sorts of complications for arch developers. Here's why:
+</p>
+
+<p>
+Consider a hypothetical package named 'vplayer', which plays videos. This
+package has optional support, via USE flags, for various sound and video output
+methods, various video codecs and so on.
+</p>
+
+<p>
+One of vplayer's optional features is support for the 'fakemedia' codec, which
+is unfortunately only available as a dodgy x86 binary. We <e>could</e> handle this by
+doing something like:
+</p>
+
+<codesample lang="ebuild">
+RDEPEND="x86? ( fakemedia? ( >=media-libs/fakemedia-1.1 ) )"
+</codesample>
+
+<p>
+Except this is pretty nasty -- what happens when an AMD64 binary is made as
+well? Also, users on other archs will see fakemedia listed in <c>emerge -pv</c>
+output, even though it is not actually available.
+</p>
+
+<p>
+Similarly, say vplayer supports output via the ALSA codec as one option.
+However, ALSA isn't (or wasn't when this example was written) available on SPARC
+or Alpha. So we could do:
+</p>
+
+<codesample lang="ebuild">
+DEPEND="!sparc? ( !alpha? ( alsa? ( media-libs/alsa-lib ) ) )"
+</codesample>
+
+<p>
+Again, it's messy, and ALSA still shows up in the <c>emerge -p</c> output. Also,
+once ALSA starts working on SPARC, every ebuild that does this would have to be
+manually edited.
+</p>
+
+<p>
+The solution is <c>use.mask</c>, which is documented in `Profiles use.mask File`_.
+Each profile can have a <c>use.mask</c> file which can be used to forcibly disable
+certain USE flags on a given arch (or subarch, or subprofile). So, if the
+<c>fakemedia</c> USE flag was use.masked on every non-x86 profile, the following
+would be totally legal and wouldn't break anything:
+</p>
+
+<codesample lang="ebuild">
+RDEPEND="fakemedia? ( >=media-libs/fakemedia-1-1 )"
+</codesample>
+
+<p>
+Users of non-x86 would see the following when doing <c>emerge -pv vplayer</c>:
+</p>
+
+<pre>
+[ebuild   R   ] media-video/vplayer-1.2 alsa -blah (-fakemedia) xyz
+</pre>
+
+<p>
+To get a flag added to <c>use.mask</c>, ask the relevant arch team.
+</p>
+
+<p>
+So what's the problem with <c>noblah</c> flags?
+</p>
+
+<p>
+There's no way to forcibly <e>enable</e> a given USE flag on a particular profile.
+So, something like:
+</p>
+
+<codesample lang="ebuild">
+RDEPEND="!noalsa? ( media-libs/alsa )"
+</codesample>
+
+<p>
+will make your package unusable by archs without ALSA support, and there is no
+way to fix it that doesn't involve adding in nasty <c>arch?</c> flags.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Local and Global USE Flags</title>
+<body>
+
+<p>
+USE flags are categorised as either local or global. A global USE flag must satisfy several criteria:
+</p>
+
+<ul>
+  <li>It is used by many different packages.</li>
+  <li>It has a general non-specific purpose.</li>
+</ul>
+
+<p>
+The second point is important. If the effect of the <c>thing</c> USE flag upon
+<c>pkg-one</c> is substantially different from the effect it has upon <c>pkg-two</c>,
+then <c>thing</c> is not a suitable candidate for being made a global flag. In
+particular, note that if <c>client</c> and <c>server</c> USE flags are ever
+introduced, they can not be global USE flags for this reason.
+</p>
+
+<p>
+Before introducing a new global USE flag, it must be discussed on the gentoo-dev
+mailing list.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>USE Flag Descriptions</title>
+<body>
+<p>
+All USE flags (excluding <c>USE_EXPAND</c> flags) must be described in either
+<c>use.desc</c> or <c>use.local.desc</c> in the <c>profiles/</c> directory. See
+`portage-5`_ or the comments in these files for an explanation of the format.
+Remember to keep these files sorted.
+</p>
+</body>
+</section>
+
+<section>
+<title>Conflicting USE Flags</title>
+<body>
+<p>
+Occasionally, ebuilds will have conflicting USE flags for functionality.
+Checking for them and returning an error is <e>not</e> a viable solution. Instead,
+you must pick one of the USE flags in conflict to favour.
+</p>
+
+<p>
+One example comes from the <c>msmtp</c> ebuilds. The package can use either SSL
+with GnuTLS, SSL with OpenSSL, or no SSL at all. Because GnuTLS is more
+featureful than OpenSSL, it is favoured:
+</p>
+
+<codesample lang="ebuild">
+src_compile() {
+    local myconf
+
+    if use ssl &amp;&amp; use gnutls ; then
+        myconf="${myconf} --enable-ssl --with-ssl=gnutls"
+    elif use ssl &amp;&amp; ! use gnutls ; then
+        myconf="${myconf} --enable-ssl --with-ssl=openssl"
+    else
+        myconf="${myconf} --disable-ssl"
+    fi
+
+    econf \
+        # Other stuff
+        ${myconf} \
+        || die "configure failed"
+
+    emake || die "make failed"
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>USE_EXPAND and ARCH USE Flags</title>
+<body>
+
+<p>
+The <c>VIDEO_CARDS</c>, <c>INPUT_DEVICES</c> and <c>LINGUAS</c> variables are
+automatically expanded into USE flags. These are known as <c>USE_EXPAND</c>
+variables. If the user has <c>LINGUAS="en fr"</c> in <c>make.conf</c>, for example,
+then <c>USE="linguas_en linguas_fr"</c> will automatically be set by portage.
+</p>
+
+<p>
+The <c>USE_EXPAND</c> list is set in <c>profiles/base/make.default</c> as of Portage
+2.0.51.20. This must not be modified without discussion on the gentoo-dev list,
+and it must not be modified in any subprofile.
+</p>
+
+<p>
+The current architecture (e.g. <c>x86</c>, <c>sparc</c>, <c>ppc-macos</c>) will
+automatically be set as a USE flag as well. See <c>profiles/arch.list</c> for a
+full list of valid architecture keywords, and `GLEP 22`_ for an explanation of
+the format.
+</p>
+
+<warning>
+It is a common misconception that the architecture variable is somehow
+related to <c>ACCEPT_KEYWORDS</c>. It isn't. Accepting <c>x86</c> keywords on
+<c>sparc</c>, for example, won't set <c>USE="x86"</c>. Similarly, there are no
+<c>~arch</c> USE flags, so don't try <c>if use ~x86</c>.
+</warning>
+
+</body>
+</section>
+
+</chapter>
+</guide>

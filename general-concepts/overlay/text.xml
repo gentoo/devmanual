@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/mirrors/">
+<chapter>
+<title>Overlay</title>
+
+<body>
+<p>
+Portage can look in multiple places for packages by using an overlay. The
+locations of overlays are controlled by the <c>PORTDIR_OVERLAY</c> variable, which
+should contain a space-separated list of paths.
+</p>
+
+<p>
+The overlay should contain the same directory structure as <c>PORTDIR</c> (although
+only the necessary directories need be included). For example, a simple overlay
+might have a directory structure like:
+</p>
+
+<pre>
+overlay
+|-- dev-util
+    `-- gengetopt
+        |-- Manifest
+        |-- files
+        |   `-- digest-gengetopt-2.13
+        `-- gengetopt-2.13.ebuild
+</pre>
+
+<p>
+An overlay can be used to 'add' items to the tree (although you must ensure that
+<c>/etc/portage/categories</c> is used if any new categories are added) or to
+override existing entries.
+</p>
+</body>
+
+<section>
+<title>Overlay and Eclasses</title>
+
+<body>
+<p>
+Be very careful when using eclasses in an overlay. Portage will not do cache
+updates when an overlay eclass is changed, nor will it do cache updates when a
+main portage tree eclass which is used by an overlay ebuild changes. You may
+also encounter bogus 'illegal inherit' notices when working with eclasses in
+overlay (see `QA Notice -- ECLASS foo inherited illegally`_). To be safe,
+manually <c>touch</c> all relevant overlay files after updating overlay eclasses.
+</p>
+</body>
+</section>
+
+</chapter>
+</guide>
