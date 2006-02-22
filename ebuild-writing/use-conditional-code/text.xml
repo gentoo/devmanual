@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/use-conditional-code/">
+<chapter>
+<title>USE Flag Conditional Code</title>
+
+<body>
+<p>
+Often a particular block of code must only be executed if a given USE flag is
+set (or unset). For large blocks, <c>if use foo</c> is best, or for inverse tests
+either <c>if ! use foo</c> or <c>if use !foo</c> can be used (the former is more
+common and is recommended for readability). For single-statement conditions, the
+<c>use foo &amp;&amp; blah</c> (or <c>use foo || blah</c> for negatives) form is often more
+readable.
+</p>
+
+<p>
+The <c>if [ "`use foo`" ]</c> and <c>if [ -n "`use foo`" ]</c> forms which are
+occasionally seen in older code must <b>not</b> be used.
+</p>
+
+<note>
+<c>die</c> will not work as expected within a subshell, so code in the
+form <c>use foo &amp;&amp; ( blah ; blah )</c> should be avoided in favour of a proper if
+statement. See `die and Subshells`_.
+</note>
+
+<codesample lang="ebuild">
+    # USE conditional blocks...
+    if use livecd ; then
+        # remove some extra files for a small livecd install
+        rm -fr ${vimfiles}/{compiler,doc,ftplugin,indent}
+    fi
+
+    # Inverse USE conditional blocks...
+    if ! use cscope ; then
+        # the --disable-cscope configure arg doesn't quite work properly,
+        # so sed it out of feature.h if we're not USEing cscope.
+        sed -i -e '/# define FEAT_CSCOPE/d' src/feature.h || die "couldn't disable cscope"
+    fi
+
+    # USE conditional statements...
+    use ssl &amp;&amp; epatch ${FILESDIR}/${P}-ssl.patch
+    use sparc &amp;&amp; filter-flags -fomit-frame-pointer
+
+    # Inverse USE conditional statements...
+    use ncurses || epatch ${FILESDIR}/${P}-no-ncurses.patch
+</codesample>
+
+<p>
+For echoing content based upon a USE flag, there is often a better helper
+function available.
+</p>
+
+<p>
+You must not rely upon <c>use</c> producing an output -- this no longer happens.
+If you really need output displayed, use the <c>usev</c> function. The
+<c>useq</c> function is available for explicitly requesting no output.
+</p>
+</body>
+
+</chapter>
+</guide>

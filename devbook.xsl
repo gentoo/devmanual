@@ -23,18 +23,22 @@
 <xsl:variable name="commentChar">#</xsl:variable>
   <xsl:template name="highlight-subtokenate">
     <xsl:param name="data"/>
+    <xsl:param name="nokeywords"/>
+
     <xsl:choose>
       <!-- Tokenate variables in the form ${...} -->
       <xsl:when test="contains($data, '${')">
         <!-- Tokenate anything before it... -->
         <xsl:call-template name="highlight-subtokenate">
           <xsl:with-param name="data" select="substring-before($data, $variable-start)"/>
+          <xsl:with-param name="nokeywords" select="$nokeywords"/>
         </xsl:call-template>
         <xsl:variable name="data-slack" select="substring-after($data, $variable-start)"/>
         <xsl:variable name="variable-name" select="substring-before($data-slack, $variable-end)"/>
         <span class="Identifier">${<xsl:value-of select="$variable-name"/>}</span>
         <xsl:call-template name="highlight-subtokenate">
           <xsl:with-param name="data" select="substring-after($data, $variable-end)"/>
+          <xsl:with-param name="nokeywords" select="$nokeywords"/>
         </xsl:call-template>
       </xsl:when>
 
@@ -48,48 +52,27 @@
 	</xsl:call-template>
       </xsl:when>
 
-      <xsl:when test="substring($data, string-length($data)) = ')'">
+      <xsl:when test="substring($data, string-length($data)) = ')' and not(contains($data, '('))">
         <xsl:call-template name="highlight-subtokenate">
           <xsl:with-param name="data" select="substring($data, 1, string-length($data)-1)"/>
         </xsl:call-template>
         <span class="PreProc">)</span>
       </xsl:when>
 
-      <!-- This must go before the other quote matchers -->
-      <xsl:when test="$data = '&quot;'">
-	<span class="Statement">&quot;</span>
-      </xsl:when>
-
-      <xsl:when test="substring($data, 1, 1) = '&quot;' and substring($data, string-length($data)) = '&quot;'">
-	<span class="Statement">&quot;</span>
-	<xsl:call-template name="highlight-subtokenate">
-          <xsl:with-param name="data" select="substring($data, 2, string-length($data)-2)"/>
-        </xsl:call-template>
-	<span class="Statement">&quot;</span>
-      </xsl:when>
-
-      <xsl:when test="substring($data, 1, 1) = '&quot;'">
-	<span class="Statement">&quot;</span>
-        <xsl:call-template name="highlight-subtokenate">
-          <xsl:with-param name="data" select="substring($data, 2)"/>
-        </xsl:call-template>
-      </xsl:when>
-
-      <xsl:when test="substring($data, string-length($data)) = '&quot;'">
-        <xsl:call-template name="highlight-subtokenate">
-          <xsl:with-param name="data" select="substring($data, 0, string-length($data))"/>
-        </xsl:call-template>
-	<span class="Statement">&quot;</span>
-      </xsl:when>
-
       <xsl:when test="substring($data, 1, 1) = $qvariable-start">
 	<span class="Identifier">$<xsl:value-of select="substring($data, 2)"/></span>
       </xsl:when>
-      <!-- Functioney highlighing -->
 
+      <xsl:when test="$nokeywords">
+        <xsl:value-of select="$data"/>
+      </xsl:when>
+
+      <!-- Functioney highlighing -->
       <!-- sh grammar -->
       <xsl:when test="$data = ';' or $data = 'if' or $data = 'then' or $data = 'fi' or $data = '-ge' or $data = '-lt' or $data = '-le' or
-                      $data = '-gt' or $data = 'elif' or $data = 'else' or $data = 'eval' or $data = 'unset'">
+                      $data = '-gt' or $data = 'elif' or $data = 'else' or $data = 'eval' or $data = 'unset' or $data = 'sed' or
+                      $data = 'rm' or $data = 'cat' or $data = '[[' or $data = ']]' or $data = 'while' or $data = 'do' or $data = 'read' or
+                      $data = 'done' or $data = 'make' or $data = 'echo' or $data = 'cd'">
 	<span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 
@@ -105,7 +88,7 @@
 		      $data = 'prepallstrip' or $data = 'has' or $data = 'unpack' or $data = 'dopython' or $data = 'dosed' or $data = 'into' or
 		      $data = 'doinitd' or $data = 'doconfd' or $data = 'doenvd' or $data = 'dojar' or $data = 'domo' or $data = 'dodir' or
 		      $data = 'ebegin' or $data = 'eend' or $data = 'newconfd' or $data = 'newdoc' or $data = 'newenvd' or $data = 'newinitd' or
-		      $data = 'newlib$dataa' or $data = 'newlib$dataso' or $data = 'hasq' or $data = 'hasv' or $data = 'useq' or $data = 'usev'">
+		      $data = 'newlib.a' or $data = 'newlib.so' or $data = 'hasq' or $data = 'hasv' or $data = 'useq' or $data = 'usev'">
 	<span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 
@@ -331,22 +314,38 @@
     <xsl:param name="data"/>
 
     <!-- Only tokenize spaces, this way we preserve tabs. -->
-    <xsl:variable name="tokenizedData" select="str:tokenize_plasmaroo($data, ' ')"/>
+    <xsl:variable name="tokenizedData" select="str:tokenize_plasmaroo($data, '&quot; ')"/>
 
     <!-- Scan for comments. If a comment is found then this is a positional
          index that is non-zero that refers to the last node that is not
          a comment. -->
-    <xsl:variable name="commentSeeker" select="count(str:tokenize_plasmaroo(substring-before($data, $commentChar)))"/>
+    <xsl:variable name="commentSeeker" select="count(str:tokenize_plasmaroo(substring-before($data, concat(' ', $commentChar))))"/>
 
+    <!-- Scan for quotes... -->
     <xsl:for-each select="exslt:node-set($tokenizedData)">
     <xsl:variable name="myPos" select="position()"/>
+    <xsl:variable name="quotePos" select="count(../*[@delimiter='&quot;' and position() &lt; $myPos])"/>
+    
     <xsl:choose>
       <!-- See if we should be processing comments by now; we need to test for
 	   two possible cases:	* commentSeeker != 0 (so we have a comment), or,
 				* the first token is a "#" -->
-      <xsl:when test="($commentSeeker != 0 and position() > $commentSeeker) or substring(../*[position()=1], 1, 1) = $commentChar
-                      or . = $commentChar">
+      <xsl:when test="($commentSeeker != 0 and position() > $commentSeeker) or substring(../*[position()=1], 1, 1) = $commentChar or
+                      . = $commentChar">
         <span class="Comment"><xsl:value-of select="."/></span>
+      </xsl:when>
+
+      <!-- Highlight a quote -->
+      <xsl:when test=". = '&quot;'">
+	<span class="Statement">&quot;</span>
+      </xsl:when>
+
+      <!-- If we're inside quotes stop here -->
+      <xsl:when test="$quotePos mod 2 != 0">
+        <xsl:call-template name="highlight-subtokenate">
+          <xsl:with-param name="data"><xsl:value-of select="."/></xsl:with-param>
+          <xsl:with-param name="nokeywords">True</xsl:with-param>
+        </xsl:call-template>
       </xsl:when>
 
       <!-- Highlight functions;
@@ -370,7 +369,7 @@
 	<span class="PreProc"><xsl:value-of select="."/></span>
       </xsl:when>
 
-      <xsl:when test=". = '||' or . = '&amp;&amp;'">
+      <xsl:when test=". = '||' or . = '&amp;&amp;' or . = '|'">
 	<span class="Statement"><xsl:value-of select="."/></span>
       </xsl:when>
 
@@ -417,6 +416,55 @@
   <xsl:template match="pre">
   <pre><xsl:apply-templates/></pre>
   </xsl:template>
+
+  <!-- Tables -->
+  <!-- From the Gentoo GuideXML Stylesheet -->
+  <xsl:template match="table">
+  <table><xsl:apply-templates/></table>
+  </xsl:template>
+
+  <xsl:template match="tr">
+  <tr><xsl:apply-templates/></tr>
+  </xsl:template>
+
+  <xsl:template match="tcolumn">
+  <col width="{@width}"/>
+  </xsl:template>
+
+  <!-- Table Item -->
+  <xsl:template match="ti">
+    <td class="tableinfo">
+      <xsl:if test="@colspan">
+	<xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
+      </xsl:if>
+      <xsl:if test="@rowspan">
+	<xsl:attribute name="rowspan"><xsl:value-of select="@rowspan"/></xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </td>
+  </xsl:template>
+
+  <!-- Table Heading -->
+  <xsl:template match="th">
+    <td class="infohead">
+      <xsl:if test="@colspan">
+	<xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
+	<!-- Center only when item spans several columns as
+             centering all <th> might disrupt some pages.
+             We might want to use a plain html <th> tag later.
+             Tip: to center a single-cell title, use <th colspan="1">
+	  -->
+	<xsl:attribute name="style">text-align:center</xsl:attribute>
+      </xsl:if>
+      <xsl:if test="@rowspan">
+	<xsl:attribute name="rowspan"><xsl:value-of select="@rowspan"/></xsl:attribute>
+      </xsl:if>
+      <b>
+	<xsl:apply-templates/>
+      </b>
+    </td>
+  </xsl:template>
+  <!-- End Table Jojo -->
 
   <!-- FIXME: Handle lang=... -->
   <xsl:template match="codesample">
@@ -517,6 +565,36 @@
 
   <xsl:template match="c">
     <code class="docutils literal"><span class="pre"><xsl:apply-templates/></span></code>
+  </xsl:template>
+
+  <!-- TOC Tree -->
+  <xsl:template match="contentsTree" name="contentsTree">
+    <xsl:param name="depth" select="0"/>
+    <xsl:param name="maxdepth">
+      <xsl:choose>
+	<xsl:when test="@maxdepth"><xsl:value-of select="@maxdepth"/></xsl:when>
+	<xsl:otherwise>0</xsl:otherwise>
+      </xsl:choose>
+    </xsl:param>
+    <xsl:param name="path" select="/guide/@self"/>
+    <xsl:param name="path_rel"/>
+
+    <xsl:variable name="doc_self" select="concat($path, 'text.xml')"/>
+    <xsl:if test="count(document($doc_self)/guide/include) &gt; 0 and ($depth &lt; $maxdepth or $maxdepth = '0')">
+    <ul>
+    <xsl:for-each select="document($doc_self)/guide/include">
+      <li>
+	<a class="reference" href="{concat($path_rel, @href, 'index.html')}"><xsl:value-of select="document(concat($path, @href, 'text.xml'))/guide/chapter[1]/title"/></a>
+	<xsl:call-template name="contentsTree">
+	  <xsl:with-param name="depth" select="$depth + 1"/>
+	  <xsl:with-param name="maxdepth" select="$maxdepth"/>
+	  <xsl:with-param name="path" select="concat($path, @href)"/>
+	  <xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
+	</xsl:call-template>
+      </li>
+    </xsl:for-each>
+    </ul>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="/">
@@ -665,35 +743,6 @@
 	</xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
-  </xsl:template>
-
-  <xsl:template match="contentsTree" name="contentsTree">
-    <xsl:param name="depth" select="0"/>
-    <xsl:param name="maxdepth">
-      <xsl:choose>
-	<xsl:when test="@maxdepth"><xsl:value-of select="@maxdepth"/></xsl:when>
-	<xsl:otherwise>0</xsl:otherwise>
-      </xsl:choose>
-    </xsl:param>
-    <xsl:param name="path" select="/guide/@self"/>
-    <xsl:param name="path_rel"/>
-
-    <xsl:variable name="doc_self" select="concat($path, 'text.xml')"/>
-    <xsl:if test="count(document($doc_self)/guide/include) &gt; 0 and ($depth &lt; $maxdepth or $maxdepth = '0')">
-    <ul>
-    <xsl:for-each select="document($doc_self)/guide/include">
-      <li>
-	<a class="reference" href="{concat($path_rel, @href, 'index.html')}"><xsl:value-of select="document(concat($path, @href, 'text.xml'))/guide/chapter[1]/title"/></a>
-	<xsl:call-template name="contentsTree">
-	  <xsl:with-param name="depth" select="$depth + 1"/>
-	  <xsl:with-param name="maxdepth" select="$maxdepth"/>
-	  <xsl:with-param name="path" select="concat($path, @href)"/>
-	  <xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
-	</xsl:call-template>
-      </li>
-    </xsl:for-each>
-    </ul>
-    </xsl:if>
   </xsl:template>
 
   <xsl:template name="getLastNode">

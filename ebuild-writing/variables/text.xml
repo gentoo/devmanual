@@ -1,0 +1,424 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/variables/">
+<chapter>
+<title>Variables</title>
+
+<body>
+<p>
+There are a number of special variables which must be set in ebuilds, and many
+more which can optionally be specified. There are also some predefined variables
+which are of use throughout the ebuild.
+</p>
+</body>
+
+<section>
+<title>Predefined Read-Only Variables</title>
+<body>
+
+<p>
+The following variables are defined for you. You must not attempt to set
+them.
+</p>
+
+<table>
+  <tr>
+    <th>Variable</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <ti><c>P</c></ti>
+    <ti>Package name and version (excluding revision, if any), for example <c>vim-6.3</c>.</ti>
+  </tr>
+  <tr>
+    <ti><c>PN</c></ti>
+    <ti>Package name, for example <c>vim</c>.</ti>
+  </tr>
+  <tr>
+    <ti><c>PV</c></ti>
+    <ti>Package version (excluding revision, if any), for example <c>6.3</c>.</ti>
+  </tr>
+  <tr>
+    <ti><c>PR</c></ti>
+    <ti>Package revision, or <c>r0</c> if no revision exists.</ti>
+  </tr>
+  <tr>
+    <ti><c>PVR</c></ti>
+    <ti>Package version and revision, for example <c>6.3-r0</c>, <c>6.3-r1</c>.</ti>
+  </tr>
+  <tr>
+    <ti><c>PF</c></ti>
+    <ti>Package name, version and revision, for example <c>vim-6.3-r1</c>.</ti>
+  </tr>
+  <tr>
+    <ti><c>A</c></ti>
+    <ti>
+      All the source files for the package (excluding those
+      which are not available because of <c>USE</c> flags).
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>CATEGORY</c></ti>
+    <ti>Package's category, for example <c>app-editors</c>.</ti>
+  </tr>
+  <tr>
+    <ti><c>FILESDIR</c></ti>
+    <ti>
+      Path to the ebuild's <c>files/</c> directory, commonly used
+      for small patches and files. Value:
+      <c>"${PORTDIR}/${CATEGORY}/${PN}/files"</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>WORKDIR</c></ti>
+    <ti>
+      Path to the ebuild's root build directory. Value:
+      <c>"${PORTAGE_TMPDIR}/portage/${PF}/work"</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>T</c></ti>
+    <ti>
+       Path to a temporary directory which may be used by the
+       ebuild. Value: <c>"${PORTAGE_TMPDIR}/portage/${PF}/temp"</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>D</c></ti>
+    <ti>
+      Path to the temporary install directory. Value:
+      <c>"${PORTAGE_TMPDIR}/portage/${PF}/image"</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>ROOT</c></ti>
+    <ti>
+      Path to the root directory. When not using <c>${D}</c>,
+      always prepend <c>${ROOT}</c> to the path.
+    </ti>
+  </tr>
+</table>
+
+</body>
+</section>
+
+<section>
+<title>Required Variables</title>
+<body>
+
+<p>
+The following variables must be defined by every ebuild.
+</p>
+
+<table>
+  <tr>
+    <th>Variable</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <ti><c>DESCRIPTION</c></ti>
+    <ti>
+    A short (less than 80 characters) description of the
+    package's purpose.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>SRC_URI</c></ti>
+    <ti>
+    A list of source URIs for the package. Can contain
+    <c>USE</c>-conditional parts, see `SRC_URI`_.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>HOMEPAGE</c></ti>
+    <ti>Package's homepage</ti>
+  </tr>
+  <tr>
+    <ti><c>KEYWORDS</c></ti>
+    <ti>See `KEYWORDS`_ and `Keywording`_.</ti>
+  </tr>
+  <tr>
+    <ti><c>SLOT</c></ti>
+    <ti>The package's <c>SLOT</c>. See `SLOT`_.</ti>
+  </tr>
+  <tr>
+    <ti><c>LICENSE</c></ti>
+    <ti>
+    The package's license, corresponding exactly (including
+    case) to a file in <c>licenses/</c>. See `LICENSE`_.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>IUSE</c></ti>
+    <ti>
+    A list of all <c>USE</c> flags (excluding arch and auto
+    expand flags) used within the ebuild. See `IUSE`_.
+    </ti>
+  </tr>
+</table>
+
+</body>
+</section>
+
+<section>
+<title>Optional Variables</title>
+<body>
+
+<p>
+Specifying the following variables is optional:
+</p>
+
+<table>
+  <tr>
+    <th>Variable</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <ti><c>S</c></ti>
+    <ti>
+    Path to the temporary build directory, used by
+    <c>src_compile</c> and <c>src_install</c>. Default:
+    <c>"${WORKDIR}/${P}"</c>. Ebuilds should <b>not</b> provide a
+    value for this ebuild if it is the default.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>DEPEND</c></ti>
+    <ti>
+    A list of the package's build dependencies.  See
+    `Dependencies`_.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>RDEPEND</c></ti>
+    <ti>
+    A list of the package's runtime dependencies. See
+    `Dependencies`_.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>PDEPEND</c></ti>
+    <ti>
+    A list of packages to be installed after the package
+    is merged. Should only be used where <c>RDEPEND</c> is not
+    possible. See `Dependencies`_.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>RESTRICT</c></ti>
+    <ti>
+    A space-delimited list of portage features to restrict.
+    Valid values are <c>nostrip</c>, <c>nomirror</c>, <c>nouserpriv</c>
+    and <c>fetch</c>. See `ebuild-5`_ for details.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>PROVIDE</c></ti>
+    <ti>
+    Any virtuals provided by this package, for example
+    <c>"virtual/editor virtual/emacs"</c>.
+    </ti>
+  </tr>
+</table>
+
+</body>
+</section>
+
+<section>
+<title>SLOT</title>
+<body>
+
+<p>
+When slots are not needed, use <c>SLOT="0"</c>. Do <b>not</b> use <c>SLOT=""</c>, as
+this will disable slotting for this package.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>KEYWORDS</title>
+<body>
+
+<p>
+The only valid construct involving a <c>*</c> inside <c>KEYWORDS</c> is a <c>-*</c>. Do
+<b>not</b> use <c>KEYWORDS="*"</c> or <c>KEYWORDS="~*"</c>.
+</p>
+
+<p>
+See `Keywording`_ for how to handle this variable.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>SRC_URI</title>
+
+<subsection>
+<title>Conditional Sources</title>
+<body>
+
+<p>
+Conditional source files based upon USE flags are allowed using the usual
+<c>flag? ( )</c> syntax. This is often useful for arch-specific code or for binary
+packages -- downloading sparc binaries on ppc would be a waste of bandwidth.
+</p>
+
+<codesample lang="ebuild">
+SRC_URI="http://example.com/files/${P}-core.tar.bz2
+    x86?   ( http://example.com/files/${P}/${P}-sse-asm.tar.bz2 )
+    ppc?   ( http://example.com/files/${P}/${P}-vmx-asm.tar.bz2 )
+    sparc? ( http://example.com/files/${P}/${P}-vis-asm.tar.bz2 )
+    doc?   ( http://example.com/files/${P}/${P}-docs.tar.bz2 )"
+</codesample>
+
+<p>
+When creating digests it may be necessary to have <e>all</e> SRC_URI components
+downloaded. If you have <c>FEATURES="cvs"</c> set, portage should get this right,
+although you may end up downloading more than necessary.
+</p>
+
+<p>
+If a <c>USE_EXPAND</c> variable is used to control whether certain optional
+components are installed, the correct thing to do if the variable is unset is
+generally to install <e>all</e> available components.
+</p>
+
+<codesample lang="ebuild">
+SRC_URI="http://example.com/files/${P}-core.tar.bz2
+        examplecards_foo?  ( http://example.com/files/${P}-foo.tar.bz2 )
+        examplecards_bar?  ( http://example.com/files/${P}-bar.tar.bz2 )
+        examplecards_baz?  ( http://example.com/files/${P}-baz.tar.bz2 )
+        !examplecards_foo? ( !examplecards_bar? ( !examplecards_baz? (
+            http://example.com/files/${P}-foo.tar.bz2
+            http://example.com/files/${P}-bar.tar.bz2
+            http://example.com/files/${P}-baz.tar.bz2 ) ) )"
+</codesample>
+
+</body>
+</subsection>
+</section>
+
+<section>
+<title>IUSE</title>
+<body>
+
+<p>
+Note that the <c>IUSE</c> variable is cumulative, so there is no need to specify
+USE flags used only within inherited eclasses within the ebuild's IUSE. Also
+note that it's really really broken in portage versions before 2.0.51.
+</p>
+
+<p>
+Arch USE flags (<c>sparc</c>, <c>mips</c>, <c>x86-fbsd</c> and so on) should not be
+listed. Neither should auto-expand flags (<c>linguas_en</c> and so on).
+</p>
+
+</body>
+</section>
+
+<section>
+<title>LICENSE</title>
+<body>
+
+<p>
+It is possible to specify multiple <c>LICENSE</c> entries, and entries which only
+apply if a particular <c>USE</c> flag is set. The format is the same as for
+<c>DEPEND</c>. See `GLEP 23`_ for details.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Version Formatting Issues</title>
+<body>
+
+<p>
+Often upstream's tarball versioning format doesn't quite follow Gentoo
+conventions. Differences in how underscores and hyphens are used are
+particularly common. For example, what Gentoo calls <c>foo-1.2.3b</c> may be
+expecting a tarball named <c>foo-1.2-3b.tar.bz2</c>. Rather than hard coding version
+numbers, it is preferable to make a <c>MY_PV</c> variable and use that. The easy
+way to do this, which should be used unless you are sure you know what you are
+doing, is to use the <c>versionator</c> eclass:
+</p>
+
+<codesample lang="ebuild">
+inherit versionator
+MY_PV=$(replace_version_separator 2 '-')
+</codesample>
+
+<p>
+This code has the advantage that it will carry on working even if upstream
+switches to a format like <c>foo-1.3-4.5.tar.bz2</c> (yes, this really happens).
+</p>
+
+<p>
+It is also possible to use bash substitution to achieve the same effect (this is
+how versionator works internally), but this is complicated, error prone and hard
+to read.
+</p>
+
+<p>
+Some ebuilds use calls to <c>sed</c>, <c>awk</c> and / or <c>cut</c> to do this. This
+must <e>not</e> be done for any new code, and should be fixed to use either
+versionator or bash substitution where possible. Global scope non-bash code is
+highly discouraged.
+</p>
+
+<p>
+The <c>versionator</c> eclass can also be used to extract particular components
+from a version string. See `versionator.eclass-5`_ and the eclass source code
+for further documentation and examples. A brief summary of the functions
+follows.
+</p>
+
+<table>
+  <tr>
+    <th>Function</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <ti><c>get_all_version_components</c></ti>
+    <ti>Split up a version string into its component parts.</ti>
+  </tr>
+  <tr>
+    <ti><c>get_version_components</c></ti>
+    <ti>Get important version components, excluding '.', '-' and '_'.</ti>
+  </tr>
+  <tr>
+    <ti><c>get_major_version</c></ti>
+    <ti>Get the major version.</ti>
+  </tr>
+  <tr>
+    <ti><c>get_version_component_range</c></ti>
+    <ti>Extract a range of subparts from a version string.</ti>
+  </tr>
+  <tr>
+    <ti><c>get_after_major_version</c></ti>
+    <ti>Get everything after the major version.</ti>
+  </tr>
+  <tr>
+    <ti><c>replace_version_separator</c></ti>
+    <ti>Replace a particular version separator.</ti>
+  </tr>
+  <tr>
+    <ti><c>replace_all_version_separators</c></ti>
+    <ti>Replace all version separators.</ti>
+  </tr>
+  <tr>
+    <ti><c>delete_version_separator</c></ti>
+    <ti>Delete a version separator.</ti>
+  </tr>
+  <tr>
+    <ti><c>delete_all_version_separators</c></ti>
+    <ti>Delete all version separators.</ti>
+  </tr>
+</table>
+
+</body>
+</section>
+
+</chapter>
+</guide>

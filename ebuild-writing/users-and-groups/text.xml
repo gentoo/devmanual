@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/users-and-groups/">
+<chapter>
+<title>Users and Groups</title>
+
+<body>
+<p>
+If your ebuild requires a user or group to be added for a daemon, for example,
+this should be performed via the functions available in <c>eutils.eclass</c>.
+Regardless of whether you are adding a group or a user, this should be performed
+in the <c>pkg_setup</c> function and <b>not</b> somewhere else: pkg_setup is sandbox-safe,
+is called before the compile process so a build that requires the user to exist will
+have it, and is also called for both binary and source packages.
+</p>
+</body>
+
+<section>
+<title>Adding Groups</title>
+<body>
+
+<p>
+To add a group, use the <c>enewgroup</c> function:
+</p>
+
+<pre>
+enewgroup &lt;name&gt; [uid]
+</pre>
+
+<p>
+By default the next available group ID is selected. To set a specfic group ID,
+pass it an extra argument to <c>enewgroup</c>.
+</p>
+
+<note>
+Group IDs should rarely be hardcoded. If this is the case, you should
+probably check first on gentoo-dev.
+</note>
+
+</body>
+</section>
+
+<section>
+<title>Adding Users</title>
+<body>
+
+<p>
+To add a user, use the <c>enewuser</c> function:
+</p>
+
+<pre>
+enewuser &lt;user&gt; [uid] [shell] [homedir] [groups] [params]
+</pre>
+
+<p>
+By default, both <c>enewuser</c> and <c>enewgroup</c> allocate the next available user
+ID or group ID to the new user or group - if not, you explicitly have to specify
+one.
+</p>
+
+<p>
+Arguments for <c>enewuser</c> must be passed in the order as shown above: if you do
+not want to specify a fixed user ID however but do want to set a specific shell,
+for example, use <c>-1</c> for the <c>uid</c> parameter. The same applies for any other
+parameter where you want to keep the default setting.
+</p>
+
+<p>
+Groups for the <c>groups</c> argument should be separated by a comma (<c>,</c>) and
+wrapped correctly, for example:
+</p>
+
+<pre>
+enewuser frozd -1 -1 -1 "backup,frozd"
+</pre>
+
+<p>
+Finally, any data left over for the <c>params</c> argument is passed directly to
+useradd.
+</p>
+
+<note>
+User IDs should rarely be hardcoded. If this is the case, you should
+probably check first on gentoo-dev.
+</note>
+
+</body>
+</section>
+
+</chapter>
+</guide>

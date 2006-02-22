@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/error-handling/">
+<chapter>
+<title>Error Handling</title>
+
+<section>
+<title>Importance of Error Handling</title>
+<body>
+
+<p>
+Decent error handling is important because:
+</p>
+
+<ul>
+  <li>
+  Errors must be detected <e>before</e> portage tries to install a broken or
+  incomplete package onto the live filesystem. If build failures aren't caught,
+  a working package could be unmerged and replaced with nothing.
+  </li>
+  <li>
+  When receiving bug reports, it is a lot easier to figure out what went wrong
+  if you know exactly which call caused the error, rather than just knowing
+  that, say, something somewhere in <c>src_compile</c> broke.
+  </li>
+  <li>
+  Good error handling and notification can help cut down on the number of bug
+  reports received for a package.
+  </li>
+</ul>
+
+</body>
+</section>
+
+<section>
+<title>The <c>die</c> Function</title>
+<body>
+
+<p>
+The <c>die</c> function should be used to indicate a fatal error and abort the
+build. Its parameters should be the message to display.
+</p>
+
+<p>
+Although <c>die</c> will work with no parameters, a short message should always be
+provided to ease error identification. This is especially important when a
+function can die in multiple places.
+</p>
+
+<p>
+Some portage-provided functions will automatically die upon failure. Others will
+not. It is safe to omit the <c>|| die</c> after a call to <c>epatch</c>, but not
+<c>econf</c> or <c>emake</c>.
+</p>
+
+<p>
+Sometimes displaying additional error information beforehand can be useful. Use
+<c>eerror</c> to do this. See `Messages`_.
+</p>
+
+</body>
+</section>
+
+<section>
+<title><c>die</c> and Subshells</title>
+<body>
+
+<warning>
+<c>die</c> <b>will not work in a subshell</b>.
+</warning>
+
+<p>
+The following code will not work as expected, since the <c>die</c> is inside a
+subshell:
+</p>
+
+<codesample lang="ebuild">
+[[ -f foorc ]] &amp;&amp; ( update_foorc || die "Couldn't update foorc!" )
+</codesample>
+
+<p>
+The correct way to rewrite this is to use an <c>if</c> block:
+</p>
+
+<codesample lang="ebuild">
+if [[ -f foorc ]] ; then
+    update_foorc || die "Couldn't update foorc!"
+fi
+</codesample>
+
+<p>
+When using pipes, a subshell is introduced, so the following is unsafe:
+</p>
+
+<codesample lang="ebuild">
+cat list | while read file ; do epatch ${file} ; done
+</codesample>
+
+<p>
+Using input redirection (see `Abuse of cat`_) avoids this problem:
+</p>
+
+<codesample lang="ebuild">
+while read file ; do epatch ${file} ; done &lt; list
+</codesample>
+
+</body>
+</section>
+
+<section>
+<title>The <c>assert</c> Function and <c>$PIPESTATUS</c></title>
+<body>
+
+<p>
+When using pipes, simple conditionals and tests upon <c>$?</c> will not correctly
+detect errors occurring in anything except the final command in the chain. To get
+around this, <c>bash</c> provides the <c>$PIPESTATUS</c> variable, and portage
+provides the <c>assert</c> function to check this variable.
+</p>
+
+<codesample lang="ebuild">
+bunzip2 ${DISTDIR}/${VIM_RUNTIME_SNAP} | tar xf
+assert
+</codesample>
+
+<p>
+If you need the gory details of <c>$PIPESTATUS</c>, see the bash manpage. Most of the
+time, <c>assert</c> is enough.
+</p>
+
+</body>
+</section>
+
+</chapter>
+</guide>

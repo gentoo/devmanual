@@ -33,7 +33,6 @@
             <xsl:call-template name="str:_tokenize-delimiters">
               <xsl:with-param name="string" select="$string" />
               <xsl:with-param name="delimiters" select="$delimiters" />
-              <xsl:with-param name="scope" select="0" />
             </xsl:call-template>
           </xsl:otherwise>
         </xsl:choose>
@@ -56,7 +55,6 @@
 <xsl:template name="str:_tokenize-delimiters">
   <xsl:param name="string"/>
   <xsl:param name="delimiters"/>
-  <xsl:param name="scope" select="1"/>
   <xsl:variable name="delimiter" select="substring($delimiters, 1, 1)" />
   <xsl:choose>
     <xsl:when test="not($delimiter)">
@@ -70,13 +68,10 @@
         </xsl:call-template>
         <xsl:value-of select="$delimiter"/>
       </xsl:if>
-      <xsl:if test="$scope = 0">
-        <delimiter><xsl:value-of select="$delimiter"/></delimiter>
-      </xsl:if>
+      <delimiter><xsl:attribute name="delimiter"><xsl:value-of select="$delimiter"/></xsl:attribute><xsl:value-of select="$delimiter"/></delimiter>
       <xsl:call-template name="str:_tokenize-delimiters">
         <xsl:with-param name="string" select="substring-after($string, $delimiter)"/>
         <xsl:with-param name="delimiters" select="$delimiters"/>
-        <xsl:with-param name="scope" select="$scope"/>
       </xsl:call-template>
     </xsl:when>
     <xsl:otherwise>
