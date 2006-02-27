@@ -6,14 +6,14 @@
 <body>
 <p>
 Packages can support having multiple versions installed simultaneously. This is
-useful for libraries which may have changed interfaces between versions -- for
+useful for libraries which may have changed interfaces between versions <d/> for
 example, the <c>gtk+</c> package can install both versions <c>1.2</c> and <c>2.6</c> in
 parallel. This feature is called slotting.
 </p>
 
 <p>
 Most packages have no need for slotting. These packages specify <c>SLOT="0"</c> in
-the ebuilds. This is <b>not</b> the same as specifying an empty slot -- an empty
+the ebuilds. This is <b>not</b> the same as specifying an empty slot <d/> an empty
 slot means &quot;disable slotting entirely&quot;, and should not be used.
 </p>
 
@@ -43,7 +43,7 @@ It is not possible to <c>DEPEND</c> upon a package in a specific slot.
 Currently portage will accept an arbitrary string for the value of <c>SLOT</c>. For
 future compatibility, it is recommended that slots contain only characters which
 are allowed in an ebuild name or version (alphanumerics, hypens, full stops,
-underscores, the plus character) -- other characters may cause problems with
+underscores, the plus character) <d/> other characters may cause problems with
 future portage enhancements.
 </p>
 </body>

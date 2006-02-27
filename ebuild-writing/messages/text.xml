@@ -33,7 +33,7 @@ with their fancy leading markers.
 
 <p>
 There are a number of functions available to assist here. The `echo` bash
-internal is the simplest -- it simply displays its parameters as a message.
+internal is the simplest <d/> it simply displays its parameters as a message.
 </p>
 
 <p>
@@ -86,14 +86,14 @@ is mainly used for displaying additional error details before bailing out.
 For <e>really</e> important messages, <c>eutils.eclass</c> provides <c>ebeep</c> and
 <c>epause</c>. The former will beep a number of times, and the latter will pause
 for several seconds to allow the user to read any messages. Both can be disabled
-by the user -- you must <b>not</b> attempt to override the user's preference in
+by the user <d/> you must <b>not</b> attempt to override the user's preference in
 this. <c>ebeep</c> takes an optional parameter specifying how many times to beep.
 <c>epause</c> takes an optional parameter (which <b>must</b> be an exact whole number)
 specifying for how long it should sleep.
 </p>
 
 <p>
-Do not abuse these functions -- better to save them for when things really are
+Do not abuse these functions <d/> better to save them for when things really are
 important.
 </p>
 

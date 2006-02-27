@@ -13,7 +13,7 @@ badly written build systems) accidentally writing outside of permitted locations
 
 <p>
 <b>All packages must build correctly when sandbox is active.</b> Packages must not
-achieve this by using sneaky tricks to make sandbox warnings not show up -- the
+achieve this by using sneaky tricks to make sandbox warnings not show up <d/> the
 sandbox is there to ensure that binary packages will work correctly, and that
 a badly written <c>Makefile</c> won't cause problems. Using <c>addwrite</c> is
 generally <b>not</b> the correct solution.

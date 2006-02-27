@@ -98,7 +98,7 @@ Overall, this gives us a filename like <c>libfoo-1.2.5b_pre5-r2.ebuild</c>.
 All ebuilds committed to the tree should have a three line header immediately at
 the start indicating copyright. This must be an exact copy of the contents of
 <c>$(portageq portdir)/header.txt</c>. Ensure that the <c>$Header: $</c> line is not
-modified manually -- CVS will handle this line specially.
+modified manually <d/> CVS will handle this line specially.
 </p>
 
 <codesample lang="ebuild">
@@ -128,7 +128,7 @@ tabs for indentation) when you commit.
 
 <p>
 Where possible, try to keep lines no wider than 80 positions. A
-'position' is generally the same as a character -- tabs are four
+'position' is generally the same as a character <d/> tabs are four
 positions wide, and multibyte characters are just one position wide.
 </p>
 

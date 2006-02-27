@@ -261,7 +261,7 @@ See `Keywording`_ for how to handle this variable.
 <p>
 Conditional source files based upon USE flags are allowed using the usual
 <c>flag? ( )</c> syntax. This is often useful for arch-specific code or for binary
-packages -- downloading sparc binaries on ppc would be a waste of bandwidth.
+packages <d/> downloading sparc binaries on ppc would be a waste of bandwidth.
 </p>
 
 <codesample lang="ebuild">

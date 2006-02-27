@@ -99,7 +99,7 @@ DEPEND="dev-lang/ruby
 
 <p>
 Each atom is the full category and name of a package. Atoms are separated by
-arbitrary whitespace -- convention is to specify one atom per line for
+arbitrary whitespace <d/> convention is to specify one atom per line for
 readability purposes. When specifying names, the category part should be treated
 as mandatory.
 </p>

@@ -31,7 +31,7 @@ will do this automatically if <c>cvs</c> is included in <c>FEATURES</c>.
 <p>
 To generate digests and <c>Manifest</c>, use <c>ebuild foo.ebuild digest</c>. When
 committing, the <c>Manifest</c> file must be regenerated to handle any CVS keyword
-expansion changes -- <c>repoman</c> will do this automatically.
+expansion changes <d/> <c>repoman</c> will do this automatically.
 </p>
 
 </body>

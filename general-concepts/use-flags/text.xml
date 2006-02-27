@@ -7,7 +7,7 @@
 <p>
 USE flags are to control optional dependencies and settings which the user may
 reasonably want to select. For example, vim can optionally build with support for
-the ruby interpreter, and it needs ruby installed to do this -- we use the ruby USE
+the ruby interpreter, and it needs ruby installed to do this <d/> we use the ruby USE
 flag to provide this option. On the other hand, glark requires ruby no matter what,
 so no USE flag is used here.
 </p>
@@ -47,7 +47,7 @@ RDEPEND="x86? ( fakemedia? ( >=media-libs/fakemedia-1.1 ) )"
 </codesample>
 
 <p>
-Except this is pretty nasty -- what happens when an AMD64 binary is made as
+Except this is pretty nasty <d/> what happens when an AMD64 binary is made as
 well? Also, users on other archs will see fakemedia listed in <c>emerge -pv</c>
 output, even though it is not actually available.
 </p>

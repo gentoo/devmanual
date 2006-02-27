@@ -6,14 +6,14 @@
 <body>
 <p>
 Ebuilds may have a Gentoo revision number associated with them. This is a
-<c>-rX</c> suffix, where <c>X</c> is an integer -- see `File Naming Rules`_. This
+<c>-rX</c> suffix, where <c>X</c> is an integer <d/> see `File Naming Rules`_. This
 component must only be used for Gentoo changes, not upstream releases. By
 default, <c>-r0</c> is implied and should not be specified manually.
 </p>
 
 <p>
 Ebuilds should have their <c>-rX</c> incremented whenever a change is made which
-will make a substantial difference to what gets installed by the package -- by
+will make a substantial difference to what gets installed by the package <d/> by
 substantial, we generally mean "something for which many users would want to
 upgrade". This is usually for bugfixes.
 </p>

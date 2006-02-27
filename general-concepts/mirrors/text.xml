@@ -14,7 +14,7 @@ trying the original upstream location.
 </p>
 
 <p>
-This is generally desired behaviour -- upstream mirrors are prone to being
+This is generally desired behaviour <d/> upstream mirrors are prone to being
 rearranged, tidied out or having files modified.
 </p>
 </body>
@@ -33,7 +33,7 @@ certain files.
 
 <p>
 The <c>RESTRICT="primaryuri"</c> setting causes portage to try
-original locations <e>first</e>, and then fall back to mirrors if necessary -- this
+original locations <e>first</e>, and then fall back to mirrors if necessary <d/> this
 is sometimes useful if approximate download counts are needed, or if upstream
 have a reliable mirror setup.
 </p>

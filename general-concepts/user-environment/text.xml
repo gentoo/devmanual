@@ -6,7 +6,7 @@
 <body>
 <p>
 User environment variables and <c>make.conf</c> settings get passed on to ebuilds.
-This can be useful -- it's how <c>CFLAGS</c> and friends work, for example -- but
+This can be useful <d/> it's how <c>CFLAGS</c> and friends work, for example <d/> but
 it can also result in nasty build-breaking variables like <c>LANG</c> and
 <c>LC_ALL</c> getting through. Currently no sanitisation is performed upon the
 environment.
@@ -52,7 +52,7 @@ respected (selective filtering is fine, but outright ignoring is not). Ignoring
 <ul>
 <li>
   Ignoring <c>march/mcpu</c> may force kernel or software emulation for certain
-  opcodes on some architectures. This can be <e>very</e> slow -- for example,
+  opcodes on some architectures. This can be <e>very</e> slow <d/> for example,
   <c>openssl</c> built for SPARC v7 but run on v9 is around five times slower for
   RSA operations.
 </li>

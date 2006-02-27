@@ -7,7 +7,7 @@
 <p>
 This page provides a <e>very</e> brief introduction to ebuild
 writing. It does not attempt to cover many of the details or problems
-that will be encountered by developers -- rather, it gives some
+that will be encountered by developers <d/> rather, it gives some
 trivial examples which may be of use when trying to grasp the basic
 idea of how ebuilds work.
 </p>
@@ -109,7 +109,7 @@ The <c>SRC_URI</c> tells Portage the address to use for downloading
 the source tarball. Here, <c>mirror://sourceforge/</c> is a special
 notation meaning &quot;any of the Sourceforge mirrors&quot;. The
 <c>${P}</c> is a read-only variable set by Portage which is the package's
-name and version -- in this case, it would be <c>ctags-5.5.4</c>.
+name and version <d/> in this case, it would be <c>ctags-5.5.4</c>.
 </p>
 
 <p>
@@ -119,7 +119,7 @@ you've not seen slots before, either just use <c>&quot;0&quot;</c> or read `Slot
 
 <p>
 The <c>KEYWORDS</c> variable is set to archs upon which this ebuild has been
-tested. We use <c>~</c> keywords for newly written ebuilds -- packages are not
+tested. We use <c>~</c> keywords for newly written ebuilds <d/> packages are not
 committed straight to stable, even if they seem to work. See `Keywording`_ for
 details.
 </p>
@@ -135,17 +135,17 @@ Next, a function named <c>src_compile</c>. Portage will call this
 function when it wants to <e>compile</e> the package. The <c>econf</c>
 function is a wrapper for calling <c>./configure</c>, and <c>emake</c>
 is a wrapper for <c>make</c>. In both cases, the common <c>|| die
-&quot;something went wrong&quot;</c> idiom is used -- this is to
+&quot;something went wrong&quot;</c> idiom is used <d/> this is to
 ensure that if for some reason an error occurs, portage will stop
 rather than trying to continue with the install.
 </p>
 
 <p>
 The <c>src_install</c> function is called by portage when it wants
-to <e>install</e> the package. A slight subtlety here -- rather than
+to <e>install</e> the package. A slight subtlety here <d/> rather than
 installing straight to the live filesystem, we must install to a
 special location which is given by the <c>${D}</c> variable (portage sets
-this -- see `Install Destinations`_ and `Sandbox`_).  Again, we check
+this <d/> see `Install Destinations`_ and `Sandbox`_).  Again, we check
 for errors.
 </p>
 
@@ -166,7 +166,7 @@ files into the relevant part of <c>/usr/share/doc</c>.
 Ebuilds can define other functions (see `Ebuild Functions`_). In all cases,
 portage provides a reasonable default implementation which quite often does the
 'right thing'. There was no need to define a <c>src_unpack</c> function here, for
-example -- this function is used to do any unpacking of tarballs or patching of
+example <d/> this function is used to do any unpacking of tarballs or patching of
 source files, but the default implementation does everything we need.
 </p>
 </body>
@@ -223,7 +223,7 @@ src_install() {
 Again, you can see the ebuild header and the various informational variables. In
 <c>SRC_URI</c>, <c>${PN}</c> is used to get the package's
 name <e>without</e> the version suffix (there are more of these
-variables -- see `Predefined Read-Only Variables`_).
+variables <d/> see `Predefined Read-Only Variables`_).
 </p>
 
 <p>
@@ -293,10 +293,10 @@ src_install() {
 </codesample>
 
 <p>
-Note the <c>${FILESDIR}/${P}-destdir.patch</c> -- this refers to
+Note the <c>${FILESDIR}/${P}-destdir.patch</c> <d/> this refers to
 <c>detox-1.1.0-destdir.patch</c>, which lives in the <c>files/</c>
 subdirectory in the portage tree. Larger patch files must go on the
-mirrors rather than in <c>files/</c> -- see `Basic epatch Usage`_.
+mirrors rather than in <c>files/</c> <d/> see `Basic epatch Usage`_.
 </p>
 
 </body>
@@ -427,7 +427,7 @@ src_install() {
 
 <p>
 Note the optional dependencies. Some of the <c>use_enable</c> lines use the
-two-argument version -- this is helpful when the USE flag name does not exactly
+two-argument version <d/> this is helpful when the USE flag name does not exactly
 match the <c>./configure</c> argument.
 </p>
 </body>

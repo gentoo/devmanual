@@ -58,7 +58,7 @@ which is not modified at runtime.
 </p>
 
 <p>
-Try to avoid installing unnecessary things into <c>/etc</c> -- every file in there
+Try to avoid installing unnecessary things into <c>/etc</c> <d/> every file in there
 is additional work for the system administrator. In particular, non-text files
 and files that are not intended for system administrator usage should be moved
 to <c>/usr/share</c>.
