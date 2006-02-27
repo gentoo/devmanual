@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/ebuild-revisions/">
+<chapter>
+<title>Ebuild Revisions</title>
+
+<body>
+<p>
+Ebuilds may have a Gentoo revision number associated with them. This is a
+<c>-rX</c> suffix, where <c>X</c> is an integer -- see `File Naming Rules`_. This
+component must only be used for Gentoo changes, not upstream releases. By
+default, <c>-r0</c> is implied and should not be specified manually.
+</p>
+
+<p>
+Ebuilds should have their <c>-rX</c> incremented whenever a change is made which
+will make a substantial difference to what gets installed by the package -- by
+substantial, we generally mean "something for which many users would want to
+upgrade". This is usually for bugfixes.
+</p>
+
+<p>
+Simple compile fixes do <b>not</b> warrant a revision bump; this is because they do
+not affect the installed package for users who already managed to compile it.
+Small documentation fixes are also usually not grounds for a new revision.
+</p>
+
+<p>
+When doing a revision bump, the usual rules about dropping to <c>~arch</c> apply.
+See `Keywording on Upgrades`_.
+</p>
+
+</body>
+</chapter>
+</guide>
+

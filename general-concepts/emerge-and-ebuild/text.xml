@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/emerge-and-ebuild/">
+<chapter>
+<title>Emerge and Ebuild Relationships</title>
+
+<body>
+
+<figure short="How emerge, ebuild and foo.ebuild interact" link="diagram.png">
+</figure>
+
+<p>
+The <c>emerge</c> program is a high level wrapper for <c>ebuild.sh</c> that handles
+dependency tracking, safe installs and uninstalls and so on. <c>emerge</c> calls
+<c>ebuild.sh</c> during the build process, which in turn handles the ebuild file
+and any eclasses. The <c>${D}</c> to <c>${ROOT}</c> install is handled by <c>emerge</c>.
+</p>
+
+<todo>http://dev.gentoo.org/~g2boojum/portage.html</todo>
+
+</body>
+</chapter>
+</guide>
+

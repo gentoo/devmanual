@@ -25,6 +25,12 @@ writing ebuilds or working with the portage tree.
 <include href="dependencies/"/>
 <include href="digest-and-manifest/"/>
 <include href="distributed-building/"/>
+<include href="ebuild-revisions/"/>
+<include href="emerge-and-ebuild/"/>
+<include href="features/"/>
+<include href="filesystem/"/>
+<include href="herds-and-projects/"/>
+<include href="install-destinations/"/>
 <include href="licenses/"/>
 <include href="linguas/"/>
 <include href="mirrors/"/>

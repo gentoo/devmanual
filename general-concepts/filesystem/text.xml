@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/filesystem/">
+<chapter>
+<title>Filesystem</title>
+
+<body>
+<p>
+The basic filesystem layout and purpose is as follows:
+</p>
+
+<ul>
+  <li><c>/bin</c>: Boot-critical applications</li>
+  <li><c>/etc</c>: System administrator controlled configuration files</li>
+  <li><c>/lib</c>: Boot-critical libraries</li>
+  <li><c>/opt</c>: Binary-only applications.</li>
+  <li><c>/sbin</c>: System administrator boot-critical applications</li>
+  <li><c>/tmp</c>: Temporary data</li>
+  <li><c>/usr</c>: General applications</li>
+  <ul>
+    <li><c>/usr/bin</c>: Applications</li>
+    <li><c>/usr/lib</c>: Libraries</li>
+    <li><c>/usr/local</c>: Non-portage applications. <b>Ebuilds must not install here</b>.</li>
+    <li><c>/usr/sbin</c>: Non-system-critical system administrator applications</li>
+    <li><c>/usr/share</c>: Architecture independent application data and documentation</li>
+  </ul>
+  <li><c>/var</c>: Program generated data</li>
+  <ul>
+    <li><c>/var/cache</c>: Long term data which can be regenerated</li>
+    <li><c>/var/lib</c>: General application generated data</li>
+    <li><c>/var/log</c>: Log files</li>
+  </ul>
+</ul>
+
+<p>
+Where possible, we prefer to put non-boot-critical applications in <c>/usr</c>
+rather than <c>/</c>. If a program is not needed in the boot process until after
+filesystems are mounted then it generally does not belong on <c>/</c>.
+</p>
+
+<p>
+Any binary which links against a library under <c>/usr</c> must itself go into
+<c>/usr</c> (or possibly <c>/opt</c>).
+</p>
+
+<p>
+The <c>/opt</c> top-level should only be used for binary-only applications.
+Binary-only applications must not be installed outside of <c>/opt</c>.
+</p>
+
+<p>
+The <c>/usr/local</c> heirarchy is for non-portage software. Ebuilds must not
+attempt to put anything in here.
+</p>
+
+<p>
+The <c>/usr/share</c> directory is for *architecture independent* application data
+which is not modified at runtime.
+</p>
+
+<p>
+Try to avoid installing unnecessary things into <c>/etc</c> -- every file in there
+is additional work for the system administrator. In particular, non-text files
+and files that are not intended for system administrator usage should be moved
+to <c>/usr/share</c>.
+</p>
+
+<section>
+<title>FHS</title>
+<body>
+
+<p>
+Gentoo does not consider the `Filesystem Hierarchy Standard
+http://www.pathname.com/fhs/`__ to be an authoritative standard, although much
+of our policy coincides with it.
+</p>
+
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>

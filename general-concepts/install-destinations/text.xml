@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/install-destinations/">
+<chapter>
+<title>Install Destinations</title>
+
+<body>
+
+<p>
+When an ebuild runs the <c>src_install</c> phase, it installs an image of the
+package in question from <c>${S}</c> into <c>${D}</c>. Ebuilds must <i>not</i> attempt to
+perform any operation upon the live filesystem at this stage -- this will break
+binaries, and will (often) cause a sandbox violation notice.
+</p>
+
+<p>
+When installing, portage will install the image in <c>${D}</c> into <c>${ROOT}</c>. By
+default, <c>${ROOT}</c> points to <c>/</c>, although the user can alter this -- for
+example, the user may be building a minimal image for another system in a
+different location. If your package must operate on the live filesystem (for
+example, to create some cache files during <c>pkg_postinst</c>), you must ensure
+that you prefix any paths with <c>${ROOT}</c>.
+</p>
+
+<p>
+When inside <c>pkg_preinst</c>, the image to be installed can be accessed under
+<c>"${IMAGE}"</c>.
+</p>
+
+</body>
+</chapter>
+</guide>
+
