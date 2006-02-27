@@ -559,6 +559,10 @@
     <b><xsl:apply-templates/></b>
   </xsl:template>
 
+  <xsl:template match="d">
+    &#8212;
+  </xsl:template>
+
   <xsl:template match="e">
     <i><xsl:apply-templates/></i>
   </xsl:template>

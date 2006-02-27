@@ -130,7 +130,7 @@ Software-wise, in general all of the following should be met in order for a pack
   If something is only available in live CVS or dodgy autopackage format,
   don't include it until upstream can come up with a decent source package.
   Similarly, avoid things that don't have a proper build system (where
-  relevant) -- these are very tricky to maintain.
+  relevant) <d/> these are very tricky to maintain.
   </p>
 </dd>
 
