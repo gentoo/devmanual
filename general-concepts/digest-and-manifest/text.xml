@@ -23,8 +23,8 @@ to catch any changed source files.
 </p>
 
 <p>
-When generating digests, it is necessary to include <i>all</i> of the files which
-<i>could</i> be downloaded (<c>SRC_URI</c> can contain conditional entries). Portage
+When generating digests, it is necessary to include <e>all</e> of the files which
+<e>could</e> be downloaded (<c>SRC_URI</c> can contain conditional entries). Portage
 will do this automatically if <c>cvs</c> is included in <c>FEATURES</c>.
 </p>
 

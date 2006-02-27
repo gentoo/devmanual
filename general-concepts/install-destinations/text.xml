@@ -7,7 +7,7 @@
 
 <p>
 When an ebuild runs the <c>src_install</c> phase, it installs an image of the
-package in question from <c>${S}</c> into <c>${D}</c>. Ebuilds must <i>not</i> attempt to
+package in question from <c>${S}</c> into <c>${D}</c>. Ebuilds must <e>not</e> attempt to
 perform any operation upon the live filesystem at this stage -- this will break
 binaries, and will (often) cause a sandbox violation notice.
 </p>

@@ -6,7 +6,7 @@
 <body>
 
 <p>
-A <i>herd</i> is a collection of developers who maintain a collection of related
+A <e>herd</e> is a collection of developers who maintain a collection of related
 packages. A herd has an associated email address which can be used for bugzilla
 assignments. This email address is <b>not</b> always <c>herdname@gentoo.org</c> -- for
 example, because of the way Gentoo's email aliases are set up, the <c>cron</c> herd
@@ -14,14 +14,14 @@ use <c>cron-bugs@gentoo.org</c> (aliases cannot match system usernames).
 </p>
 
 <p>
-A <i>project</i> is a group formed for handling a particular general area. A project
+A <e>project</e> is a group formed for handling a particular general area. A project
 may have herds associated with it.
 </p>
 
 <p>
 Sometimes herd and project names overlap -- for example, the <c>sparc</c> project
 has an associated <c>sparc</c> herd which maintains sparc-specific packages (such
-as the <c>silo</c> bootloader). This is <i>not</i> always the case.
+as the <c>silo</c> bootloader). This is <e>not</e> always the case.
 </p>
 
 <p>
