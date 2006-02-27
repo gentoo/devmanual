@@ -88,7 +88,7 @@ possible when installing from a stage 1 or stage 2 tarball.
 <body>
 
 <p>
-A basic <c>*DEPEND</c> specification might look like the following:
+A basic <c>DEPEND</c> specification might look like the following:
 </p>
 
 <codesample lang="ebuild">

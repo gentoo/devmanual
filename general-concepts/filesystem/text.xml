@@ -53,7 +53,7 @@ attempt to put anything in here.
 </p>
 
 <p>
-The <c>/usr/share</c> directory is for *architecture independent* application data
+The <c>/usr/share</c> directory is for <e>architecture independent</e> application data
 which is not modified at runtime.
 </p>
 

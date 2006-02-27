@@ -6,7 +6,7 @@
 <body>
 <p>
 The <c>FEATURES</c> variable specifies options which affect how portage operates
-and how packages are compiled. It is **not** used for settings which have a
+and how packages are compiled. It is <b>not</b> used for settings which have a
 substantial effect upon the resulting generated package.
 </p>
 
