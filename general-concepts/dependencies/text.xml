@@ -1,0 +1,396 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/dependencies/">
+<chapter>
+<title>Dependencies</title>
+
+<body>
+
+<p>
+  Automatic dependency resolution is one of the most useful features provided by
+  <c>emerge</c>.
+</p>
+
+<section>
+<title>Build Dependencies</title>
+<body>
+
+<p>
+The <c>DEPEND</c> ebuild variable should specify any dependencies which are
+required to unpack, patch, compile or install the package (but see
+`Implicit System Dependency`_ for exemptions).
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Runtime Dependencies</title>
+<body>
+
+<p>
+The <c>RDEPEND</c> ebuild variable should specify any dependencies which are
+required at runtime. This includes libraries (when dynamically linked), any data
+packages and (for interpreted languages) the relevant interpreter. If this
+variable is not specified, it defaults to the value of <c>DEPEND</c>.
+</p>
+
+<p>
+Note that when installing from a binary package, only <c>RDEPEND</c> will be
+checked. It is therefore necessary to include items even if they are also listed
+in <c>DEPEND</c>.
+</p>
+
+<p>
+Items which are in <c>RDEPEND</c> but not <c>DEPEND</c> could <i>in theory</i> be merged
+<i>after</i> the target package. Portage does not currently do this.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Post-Merge Dependencies</title>
+<body>
+
+<p>
+The <c>PDEPEND</c> variable specifies dependencies which must be merged <i>after</i> the
+package. This is sometimes used for plugins which have a dependency upon the
+package being merged. Generally <c>PDEPEND</c> should be avoided in favour of
+<c>RDEPEND</c> except where this will create circular dependency chains.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Implicit System Dependency</title>
+<body>
+
+<p>
+All packages have an implicit compile-time and runtime dependency upon the
+entire <c>system</c> target. It is therefore not necessary, nor advisable, to
+specify dependencies upon <c>gcc</c>, <c>libc</c> and so on, except where specific
+versions or packages (for example, <c>glibc</c> over <c>uclibc</c>) are required.
+</p>
+
+<p>
+However, packages which are included in the <c>system</c> target, or are
+dependencies of <c>system</c> target packages, should generally include a complete
+dependency list (excluding bootstrap packages). This makes <c>emerge -e system</c>
+possible when installing from a stage 1 or stage 2 tarball.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Basic Dependency Syntax</title>
+<body>
+
+<p>
+A basic <c>*DEPEND</c> specification might look like the following:
+</p>
+
+<codesample lang="ebuild">
+DEPEND="dev-lang/ruby
+    dev-ruby/ruby-gtk2
+    dev-ruby/mysql-ruby"
+</codesample>
+
+<p>
+Each atom is the full category and name of a package. Atoms are separated by
+arbitrary whitespace -- convention is to specify one atom per line for
+readability purposes. When specifying names, the category part should be treated
+as mandatory.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Version Dependencies</title>
+<body>
+
+<p>
+Sometimes a particular version of a package is needed. Where this is known, it
+should be specified. A simple example:
+</p>
+
+<codesample lang="ebuild">
+DEPEND=">=dev-libs/openssl-0.9.7d"
+</codesample>
+
+<p>
+This states that at least version 0.9.7d of <c>openssl</c> is required.
+</p>
+
+<subsection>
+<title>Version Specifiers</title>
+<body>
+
+<p>
+Available version specifiers are:
+</p>
+
+<p>
+<table>
+  <tr>
+    <th>Specifier</th>
+    <th>Meaning</th>
+  </tr>
+  <tr>
+    <ti><c>>=app-misc/foo-1.23</c></ti>
+    <ti>Version 1.23 or later is required.</ti>
+  </tr>
+  <tr>
+    <ti><c>>app-misc/foo-1.23</c></ti>
+    <ti>A version strictly later than 1.23 is required.</ti>
+  </tr>
+  <tr>
+    <ti><c>~app-misc/foo-1.23</c></ti>
+    <ti>Version 1.23 (or any <c>1.23-r*</c>) is required.</ti>
+  </tr>
+  <tr>
+    <ti><c>=app-misc/foo-1.23</c></ti>
+    <ti>
+      Exactly version 1.23 is required. If at all possible,
+      use the <c>~</c> form to simplify revision bumps.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>&lt;=app-misc/foo-1.23</c></ti>
+    <ti>Version 1.23 or older is required.</ti>
+  </tr>
+  <tr>
+    <ti><c>&lt;app-misc/foo-1.23</c></ti>
+    <ti>A version strictly before 1.23 is required.</ti>
+  </tr>
+</table>
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Ranged Dependencies</title>
+<body>
+
+<p>
+To specify "version 2.x (not 1.x or 3.x)" of a package, it is necessary to use
+the asterix postfix. This is most commonly seen in situations like:
+</p>
+
+<codesample lang="ebuild">
+DEPEND="gtk2? ( >=x11-libs/gtk+-2.4 )
+    !gtk2? ( =x11-libs/gtk+-1.2* )"
+</codesample>
+
+<p>
+Note that the equals sign is mandatory, and that there is no dot before the
+asterisk.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Blockers</title>
+<body>
+
+<p>
+Sometimes two packages cannot be installed in parallel. This is handled by
+blockers. A blocker is specified as follows:
+</p>
+
+<codesample lang="ebuild">
+RDEPEND="!app-misc/foo"
+</codesample>
+
+<p>
+Note that blockers are usually <i>runtime</i> rather than buildtime.
+</p>
+
+<p>
+Specific versions can also be blocked:
+</p>
+
+<codesample lang="ebuild">
+RDEPEND="!&lt;app-misc/foo-1.3"
+</codesample>
+
+<p>
+Blockers can be optional based upon USE flags as per normal dependencies.
+</p>
+
+</body>
+</subsection>
+
+</body>
+</section>
+
+<section>
+<title>SLOT Dependencies</title>
+<body>
+
+<p>
+It is not currently possible to depend upon a package in a particular <c>SLOT</c>.
+This is a shame.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>USE-Conditional Dependencies</title>
+<body>
+
+<p>
+To depend upon a certain package if and only if a given <c>USE</c> flag is set:
+</p>
+
+<codesample language="ebuild">
+DEPEND="perl? ( dev-lang/perl )
+    ruby? ( &gt;=dev-lang/ruby-1.8 )
+    python? ( dev-lang/python )"
+</codesample>
+
+<p>
+It is also possible to depend upon a certain package if a given <c>USE</c> flag is
+<i>not</i> set:
+</p>
+
+<codesample language="ebuild">
+RDEPEND="!crypt? ( net-misc/netkit-rsh )"
+</codesample>
+
+<p>
+This should <b>not</b> be used for disabling a certain <c>USE</c> flag on a given
+architecture. In order to do this, the architecture should add the <c>USE</c>
+flag to their <c>use.mask</c> file in the <c>profiles/default-linux/arch</c>
+directory of the Portage tree.
+</p>
+
+<p>
+This can be nested:
+</p>
+
+<codesample language="ebuild">
+DEPEND="gtk? (
+      gtk2? ( &gt;=x11-libs/gtk+-2.4 )
+      !gtk2? ( =x11-libs/gtk+-1.2* ) )
+    !gtk? ( sys-libs/ncurses )"
+</codesample>
+
+</body>
+</section>
+
+<section>
+<title>Virtual Dependencies</title>
+<body>
+
+<p>
+To depend upon a virtual package, use <c>virtual/whatever</c> as the atom.
+</p>
+
+<p>
+Currently, you must not use any kind of version specification with virtuals --
+see `GLEP 37`_ for details and a proposed solution.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>
+Any of Many Dependencies
+</title>
+<body>
+
+<p>
+To depend on either <c>foo</c> or <c>bar</c>:
+</p>
+
+<codesample lang="ebuild">
+DEPEND="|| ( app-misc/foo app-misc/bar )"
+</codesample>
+
+<p>
+To depend on either <c>foo</c> or <c>bar</c> if the <c>baz</c> <c>USE</c> flag is set:
+</p>
+
+<codesample lang="ebuild">
+DEPEND="baz? ( || ( app-misc/foo app-misc/bar ) )"
+</codesample>
+
+<subsection>
+<title>Any of Many Versus USE</title>
+<body>
+
+<p>
+Say <c>fnord</c> can be built against either <c>foo</c> or <c>bar</c>. Then a USE flag is
+not necessary if and only if all of the following hold:
+</p>
+
+<ul>
+  <li>
+    <c>fnord</c> is merged on a system which has <c>foo</c> and not <c>bar</c> installed.
+    <c>foo</c> is then unmerged, and <c>bar</c> is installed. <c>fnord</c> must continue to
+    work correctly.
+  </li>
+  <li>
+    A binary package of <c>fnord</c> made on a system with <c>foo</c> and not <c>bar</c>
+    can be taken and installed on a system with <c>bar</c> and not <c>foo</c>.
+  </li>
+</ul>
+
+</body>
+</subsection>
+
+</body>
+</section>
+
+<section>
+<title>Built with USE Dependencies</title>
+<body>
+
+<p>
+Currently it is impossible to depend upon "<c>foo</c> built with the <c>bar</c>
+<c>USE</c> flag enabled". This is a nuisance.</p>
+
+</body>
+</section>
+
+<section>
+<title>Legacy Inverse USE-Conditional Dependency Syntax</title>
+<body>
+
+<p>
+When looking through old ebuild versions or the occasional user-submitted
+ebuild, you may see a <c>*DEPEND</c> atom in the form:
+</p>
+
+<codesample lang="ebuild">
+DEPEND="use-flag? ( app-misc/foo ) : ( app-misc/bar )"
+</codesample>
+
+<p>
+<b>This syntax is no longer permitted</b>. It is exactly equivalent to the
+following, which should be used instead:
+</p>
+
+<codesample lang="ebuild">
+DEPEND="use-flag?  ( app-misc/foo )
+    !use-flag? ( app-misc/bar )"
+</codesample>
+
+<p>
+It is useful to recognise the legacy syntax and to know that it is no longer
+valid.
+</p>
+
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>

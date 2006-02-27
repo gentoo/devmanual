@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/digest-and-manifest/">
+<chapter>
+<title>Digest and Manifest</title>
+
+<body>
+<p>
+In the tree, every package has a <c>Manifest</c> file. This file lives in the same
+directory as the ebuilds for the package. The <c>Manifest</c> file contains digests
+(currently MD5) and file size data for every file in the directory and any
+subdirectories. This is used to verify integrity.
+</p>
+
+<p>
+The <c>Manifest</c> may be digitally signed.
+</p>
+
+<p>
+Inside the <c>files/</c> subdirectory, there is exactly one <c>digest</c> file per
+ebuild. Each file contains a digest (currently MD5) and a file size for every
+file listed in <c>SRC_URI</c> for the ebuild. This is used to verify downloads and
+to catch any changed source files.
+</p>
+
+<p>
+When generating digests, it is necessary to include <i>all</i> of the files which
+<i>could</i> be downloaded (<c>SRC_URI</c> can contain conditional entries). Portage
+will do this automatically if <c>cvs</c> is included in <c>FEATURES</c>.
+</p>
+
+<p>
+To generate digests and <c>Manifest</c>, use <c>ebuild foo.ebuild digest</c>. When
+committing, the <c>Manifest</c> file must be regenerated to handle any CVS keyword
+expansion changes -- <c>repoman</c> will do this automatically.
+</p>
+
+</body>
+
+</chapter>
+</guide>

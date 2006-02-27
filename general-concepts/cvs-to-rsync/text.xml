@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/cvs-to-rsync/">
+<chapter>
+<title>CVS to RSYNC</title>
+
+<body>
+
+<p>
+  Changes made to the tree are propagated to the users in stages:
+</p>
+
+<ul>
+  <li>
+    Developer commits to CVS.
+  </li>
+  <li>
+    Staging box syncs from CVS and generates the metadata cache.
+  </li>
+  <li>
+    <c>rsync1</c> syncs from the staging box.
+  </li>
+  <li>
+    Public rsync servers sync from <c>rsync1</c>.
+  </li>
+  <li>
+    Users sync from the public rsync servers.
+  </li>
+</ul>
+
+<figure short="CVS to RSYNC Propagation" link="diagram.png">
+  Diagram showing CVS to RSYNC Propagation
+</figure>
+
+<p>
+  The <c>emerge-websync</c> snapshot is made daily from the staging box.
+</p>
+
+</body>
+</chapter>
+</guide>
