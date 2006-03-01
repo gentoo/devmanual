@@ -391,15 +391,29 @@
 
   <xsl:template match="section">
     <div class="section">
-      <h2><xsl:apply-templates select="title"/></h2>
+      <xsl:variable name="anchor">
+        <xsl:call-template name="convert-to-anchor">
+          <xsl:with-param name="data" select="title"/>
+        </xsl:call-template>
+      </xsl:variable>
+
+      <h2><a name="{$anchor}"><xsl:apply-templates select="title"/></a></h2>
       <xsl:apply-templates select="(body|subsection)"/>
     </div>
   </xsl:template>
 
   <xsl:template match="subsection">
     <div class="section">
-      <h3><xsl:apply-templates select="title"/></h3>
-      <xsl:apply-templates select="(body|subsection)"/>
+      <xsl:variable name="anchor">
+        <xsl:call-template name="convert-to-anchor">
+          <xsl:with-param name="data" select="title"/>
+        </xsl:call-template>
+      </xsl:variable>
+
+      <h3><a name="${anchor}"><xsl:apply-templates select="title"/></a></h3>
+      <xsl:apply-templates select="(body)"/>
+
+      <!-- If you need, change here to add more nesting -->
     </div>
   </xsl:template>
 
@@ -569,6 +583,62 @@
 
   <xsl:template match="c">
     <code class="docutils literal"><span class="pre"><xsl:apply-templates/></span></code>
+  </xsl:template>
+
+  <xsl:template name="convert-to-anchor">
+    <xsl:param name="data"/>
+    <xsl:variable name="lcletters">abcdefghijklmnopqrstuvwxyz-</xsl:variable>
+    <xsl:variable name="ucletters">ABCDEFGHIJKLMNOPQRSTUVWXYZ<xsl:text> </xsl:text></xsl:variable>
+    <xsl:value-of select="translate($data,$ucletters,$lcletters)"/>
+  </xsl:template>
+
+  <xsl:template match="uri">
+    <xsl:choose>
+      <xsl:when test="starts-with(@link, '::')">
+      <!-- Ideally we would work out how many levels to nest down to save a few bytes but
+           going down to root level works just as well (and is faster). -->
+        <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
+        <xsl:variable name="relative_path_depth_recursion">
+          <xsl:call-template name="str:repeatString">
+            <xsl:with-param name="count" select="$relative_path_depth"/>
+            <xsl:with-param name="append">../</xsl:with-param>
+	  </xsl:call-template>
+	</xsl:variable>
+        <xsl:choose>
+          <xsl:when test="contains(@link, '##')">
+            <a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'), '/index.html#', substring-after(@link, '##'))}"><xsl:value-of select="."/></a>
+          </xsl:when>
+          <xsl:when test="contains(@link, '#')">
+            <xsl:variable name="anchor">
+              <xsl:call-template name="convert-to-anchor">
+                <xsl:with-param name="data" select="substring-after(@link, '#')"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test=". != ''">
+                <a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '#'), '::'), '/index.html#', $anchor)}"><xsl:value-of select="."/></a>
+              </xsl:when>
+              <xsl:otherwise>
+                <a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '#'), '::'), '/index.html#', $anchor)}"><xsl:value-of select="substring-after(@link, '#')"/></a>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:choose>
+              <xsl:when test=". != ''">
+                <a href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), '/index.html')}"><xsl:value-of select="."/></a>
+              </xsl:when>
+              <xsl:otherwise>
+                <a href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), '/index.html')}"><xsl:value-of select="document(concat(/guide/@self, $relative_path_depth_recursion, substring-after(@link, '::'), '/text.xml'))/guide/chapter[1]/title"/></a>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:when>
+      <xsl:otherwise>
+        <a href="{@link}"><xsl:value-of select="."/></a>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- TOC Tree -->
