@@ -20,9 +20,9 @@ how to use an eclass which has already been written.
 <p>
 To use an eclass, it must be 'inherited'. This is done via the <c>inherit</c>
 function, which is provided by <c>ebuild.sh</c>. The <c>inherit</c> statement must
-come at the top of the ebuild, *before* any functions. Conditional inherits are
-illegal (except where the inheritance criteria are cache-constant <d/> see `The
-Portage Cache`_).
+come at the top of the ebuild, <e>before</e> any functions. Conditional inherits are
+illegal (except where the inheritance criteria are cache-constant <d/> see <uri
+link="::general-concepts/portage-cache"/>).
 </p>
 
 <p>

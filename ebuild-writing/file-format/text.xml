@@ -25,15 +25,16 @@ discouraged, but technically valid.
 </p>
 
 <note>
-This is the same as `IEEE1003.1-2004-3.276`_, with the addition of the plus
-character to keep GTK+ and friends happy.
+This is the same as <uri link="http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap03.html#tag_03_276">
+IEEE1003.1-2004-3.276</uri>, with the addition of the plus character to keep GTK+
+and friends happy.
 </note>
 
 <p>
 The version section is more complicated. It consists of one or more numbers
 separated by full stop (or period, or dot, or decimal point) characters (eg
 <c>1.2.3</c>, <c>20050108</c>). The final number may have a single letter following it
-(e.g. <c>1.2b</c>). This letter should not be used to indicate 'beta' status --
+(e.g. <c>1.2b</c>). This letter should not be used to indicate 'beta' status <d/>
 portage treats <c>1.2b</c> as being a later version than <c>1.2</c> or <c>1.2a</c>.
 </p>
 
@@ -80,7 +81,7 @@ Any of these suffixes may be followed by a non-zero positive integer.
 <p>
 Finally, version may have a Gentoo revision number in the form <c>-r1</c>. The initial
 Gentoo version should have no revision suffix, the first revision should be
-<c>-r1</c>, the second <c>-r2</c> and so on. See `Ebuild Revisions`_.
+<c>-r1</c>, the second <c>-r2</c> and so on. See <uri link="::general-concepts/ebuild-revisions"/>.
 </p>
 
 <p>

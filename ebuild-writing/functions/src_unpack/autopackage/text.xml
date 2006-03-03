@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_unpack/autopackage/">
+<chapter>
+<title>Autopackage</title>
+
+<body>
+<p>
+If a package is only supplied in autopackage format, you must not add
+it to the tree. If a package is supplied in autopackage format and
+some other sane standard format (for example a source tarball), use
+the other format only.
+</p>
+
+<p>
+Autopackage packages are totally unsuitable for Gentoo systems for a
+large number of reasons:
+</p>
+
+<ul>
+  <li>
+  To even unpack the package, you must run arbitrary code supplied by an untrusted source.
+  </li>
+  <li>They install directly to the live filesystem.</li>
+  <li>Their intrinsic dependency resolver is broken.</li>
+  <li>They do not support the filesystem layout used by Gentoo.</li>
+  <li>They do not support configuration protection.</li>
+  <li>They can clobber arbitrary files on uninstall.</li>
+  <li>The linking mechanism used is insufficiently flexible.</li>
+  <li>
+  The entire format is completely unportable and highly tied to x86
+  Linux systems.
+  </li>
+</ul>
+
+<p>
+Upstream are aware of these issues and have no desire to fix them <d/>
+indeed, they pass off some of their most broken behaviour as
+'features'.
+</p>
+</body>
+</chapter>
+</guide>

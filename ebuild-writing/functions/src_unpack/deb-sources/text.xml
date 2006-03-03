@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_unpack/deb-sources/">
+<chapter>
+<title>Debian Sources</title>
+
+<body>
+<todo>
+from vapier: we dont have to 'handle' these because all debian packages have a source tarball ... the .deb format is pretty simple though, it's managed by the 'ar' utility from binutils. you can unpack a .deb by simply doing ar x blah.deb ... this will give you three files: debian-binary: plain text file which just contains version number of the .deb format control.tar.gz: a few files which control installing/verifying of package data.tar.gz: all the compiled files ... you could just extract it to /
+</todo>
+</body>
+</chapter>
+</guide>

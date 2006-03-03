@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_unpack/epatch/">
+<chapter>
+<title>Patching with epatch</title>
+
+<body>
+<p>
+The canonical way of applying patches in ebuilds is to
+use <c>epatch</c> (from <c>eutils.eclass</c>, which you must make sure
+to import!) inside <c>src_unpack</c>. This function automatically
+handles <c>-p</c> levels, <c>gunzip</c> and so on as necessary.
+</p>
+
+<p>
+Note that distributing modified tarballs rather than a vanilla tarball
+and patches is <e>highly</e> discouraged.
+</p>
+</body>
+
+<section>
+<title>Basic <c>epatch</c></title>
+<body>
+
+<p>
+In its simplest form, <c>epatch</c> takes a single filename and
+applies that patch. It will automatically <c>die</c> if the apply
+fails. The following is taken from <c>app-misc/detox</c>:
+</p>
+
+<codesample lang="ebuild">
+src_unpack() {
+    unpack ${A}
+    cd ${S}
+    epatch ${FILESDIR}/${P}-destdir.patch
+    epatch ${FILESDIR}/${P}-parallel_build.patch
+}
+</codesample>
+
+<p>
+For larger patches, using <c>mirror://gentoo/</c> rather
+than <c>files/</c> is more appropriate. In these situations, it is
+usually best to <c>bzip2</c> the patch in question (as opposed to
+<c>files/</c> patches, which must not be compressed). For example,
+from <c>app-admin/showconsole</c>:
+</p>
+
+<codesample lang="ebuild">
+src_unpack() {
+    unpack ${P}.tar.bz2
+    cd ${S}
+    epatch ${DISTDIR}/${P}-suse-update.patch.bz2
+    epatch ${FILESDIR}/${PV}-no-TIOCGDEV.patch
+}
+</codesample>
+
+<p>
+Remember to add the patch to <c>SRC_URI</c>.
+</p>
+</body>
+
+<subsection>
+<title>CVS Keyword Lines and Patches</title>
+<body>
+<p>
+If your patch includes any changes to CVS <c>$Id: $</c>
+(or <c>$Header: $</c>, or <c>$Date: $</c>) lines, it cannot be
+distributed under <c>files/</c>, since CVS will clobber the patch when
+you commit. In these situations, either remove this hunk of the patch
+manually, or mirror the file.
+</p>
+</body>
+</subsection>
+
+</section>
+
+<section>
+<title>Multiple Patches with <c>epatch</c></title>
+<body>
+
+<p>
+epatch can also apply multiple patches (which can be selectively based
+upon arch) from a single directory. This can be useful if upstream
+have releases that need more patches.
+</p>
+
+<p>
+A simple example:
+</p>
+
+<codesample lang="ebuild">
+src_unpack() {
+    unpack ${A}
+    cd ${S}
+    EPATCH_SOURCE="${WORKDIR}/patches" EPATCH_SUFFIX="patch" \
+        EPATCH_FORCE="yes" epatch
+}
+</codesample>
+
+<p>
+Here, one of the <c>SRC_URI</c> components is a tarball containing
+many patches with file extension <c>.patch</c>.
+</p>
+
+<p>
+Variables which may be defined include:
+</p>
+
+<table>
+  <tr>
+    <th>Variable</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <ti><c>EPATCH_SOURCE</c></ti>
+    <ti>Specifies the directory in which epatch looks for patches.</ti>
+  </tr>
+  <tr>
+    <ti><c>EPATCH_SUFFIX</c></ti>
+    <ti>File extension for patches.</ti>
+  </tr>
+  <tr>
+    <ti><c>EPATCH_OPTS</c></ti>
+    <ti>Default options to <c>patch</c>.</ti>
+  </tr>
+  <tr>
+    <ti><c>EPATCH_EXCLUDE</c></ti>
+    <ti>List of patches to exclude.</ti>
+  </tr>
+  <tr>
+    <ti><c>EPATCH_FORCE</c></ti>
+    <ti>
+    Force epatch to apply patches even if they do not follow the
+    canonical naming form (set to <c>yes</c>).
+    </ti>
+  </tr>
+</table>
+
+<p>
+Bulk patches should be named in the form
+<c>??_${ARCH}_foo.${EPATCH_SUFFIX}</c>. If they are
+not, <c>EPATCH_FORCE="yes"</c> must be set. To apply a patch on <c>all</c>
+archs, use all for the <c>${ARCH}</c> part.
+</p>
+
+</body>
+</section>
+</chapter>
+</guide>

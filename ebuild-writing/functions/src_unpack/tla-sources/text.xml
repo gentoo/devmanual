@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_unpack/tla-sources/">
+<chapter>
+<title>Arch Sources</title>
+
+<body>
+<todo>
+Anyone want to write this? You can probably mostly copy the CVS Sources and Subversion Sources chapters.
+</todo>
+</body>
+</chapter>
+</guide>

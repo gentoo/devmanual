@@ -5,8 +5,9 @@
 
 <body>
 <p>
-This section covers some general concepts with which you should be familiar when
-writing ebuilds or working with the portage tree.
+This section describes how to write an ebuild. It covers the basic format
+of an ebuild and the variables and functions available, and finishes off
+with some general notes and extended examples.
 </p>
 </body>
 
@@ -16,8 +17,8 @@ writing ebuilds or working with the portage tree.
 <contentsTree/>
 </body>
 </section>
-
 </chapter>
+
 <include href="file-format/"/>
 <include href="use-conditional-code/"/>
 <include href="error-handling/"/>
@@ -25,5 +26,5 @@ writing ebuilds or working with the portage tree.
 <include href="messages/"/>
 <include href="variables/"/>
 <include href="using-eclasses/"/>
-<include href="ebuild-functions/"/>
+<include href="functions/"/>
 </guide>

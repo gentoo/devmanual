@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_unpack/other-formats/">
+<chapter>
+<title>Other Archive Formats</title>
+
+<body>
+<p>
+There are a variety of other archive formats which you may encounter.
+Instructions for some of them are detailed below:
+</p>
+</body>
+
+<section>
+<title>Zip Files</title>
+<body>
+
+<p>
+If a package is supplied as a .zip file, you should:
+</p>
+
+<ul>
+   <li><c>DEPEND</c> upon <c>app-arch/unzip</c></li>
+   <li>Use <c>unpack</c> as normal</li>
+</ul>
+
+</body>
+</section>
+
+<section>
+<title>Shar Files</title>
+<body>
+<p>
+If a package is supplied as a <c>.shar</c> file, you should repackage it locally
+into a <c>.tar.bz2</c>. It may also be useful to ask upstream to use a friendlier
+package format <d/> however, if they ship <c>.shar</c>, chances are they haven't
+done a release in at least ten years.
+</p>
+</body>
+</section>
+
+<section>
+<title>RAR Files</title>
+<body>
+
+<p>
+<c>.rar</c> files must be repackaged locally into a <c>.tar.bz2</c> file.
+</p>
+
+</body>
+</section>
+
+</chapter>
+</guide>

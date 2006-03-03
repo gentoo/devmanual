@@ -5,12 +5,18 @@
 
 <body>
 <p>
-This document is an ongoing work in progress. It contains gaps, inaccuracies, omissions, typos and the occasional outright lie. The intent is to make an handbook giving developers and users correct, detailed, up to date technical content.
+This document is an ongoing work in progress. It contains gaps,
+inaccuracies, omissions, typos and the occasional outright lie. The
+intent is to make an handbook giving developers and users correct,
+detailed, up to date technical content.
 </p>
 <p>
-Contributions are encouraged. See the Contributing to This Document section for how to get started. Thanks for Ciaran for permitting me to continue this and sending me the RST source and needed scripts.
+Contributions are encouraged. See the Contributing to This Document
+section for how to get started.
 </p>
 </body>
+
+<!-- FIXME: Add Authors -->
 
 <section>
 <title>Contents</title>

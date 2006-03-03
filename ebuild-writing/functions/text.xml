@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/">
+<chapter>
+<title>Ebuild Functions</title>
+
+<body>
+<p>
+When installing packages from source, the function call order is <c>pkg_setup</c>,
+<c>src_unpack</c>, <c>src_compile</c>, <c>src_test</c> (optional, <c>FEATURES="test"</c>),
+<c>src_install</c>, <c>pkg_preinst</c>, <c>pkg_postinst</c>. When installing packages
+from a binary, the function call order is <c>pkg_setup</c>, <c>pkg_preinst</c>,
+<c>pkg_postinst</c>.
+</p>
+
+<figure short="How the ebuild functions are processed" link="diagram.png"/>
+
+<p>
+The <c>pkg_prerm</c> and <c>pkg_postrm</c> functions are called when uninstalling a
+package. The <c>pkg_config</c> function is used for any special package
+configuration <d/> it is only run when explicitly requested by the user. The
+<c>pkg_nofetch</c> function is used when a <c>RESTRICT="fetch"</c> package needs to
+obtain some <c>SRC_URI</c> components.
+</p>
+</body>
+
+<section>
+<title>Contents</title>
+<body>
+<contentsTree/>
+</body>
+</section>
+</chapter>
+
+<include href="src_unpack/"/>
+</guide>

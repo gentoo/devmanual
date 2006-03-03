@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_unpack/">
+<chapter>
+<title>src_unpack</title>
+
+<body>
+<table>
+  <tr>
+    <th>Function</th>
+    <ti><c>src_unpack</c></ti>
+  </tr>
+  <tr>
+    <th>Purpose</th>
+    <ti>Extract source packages and do any necessary patching or fixes.</ti>
+  </tr>
+  <tr>
+    <th>Sandbox</th>
+    <ti>Enabled</ti>
+  </tr>
+  <tr>
+    <th>Privilege</th>
+    <ti>user</ti>
+  </tr>
+  <tr>
+    <th>Called for</th>
+    <ti>ebuild</ti>
+  </tr>
+</table>
+</body>
+
+<section>
+<title>Default <c>src_unpack</c></title>
+<body>
+<codesample lang="ebuild">
+src_unpack() {
+    if [ "${A}" != "" ]; then
+        unpack ${A}
+    fi
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Sample <c>src_unpack</c></title>
+<body>
+<codesample lang="ebuild">
+src_unpack() {
+    unpack ${A}
+    cd ${S}
+
+    epatch ${FILESDIR}/${PV}/${P}-fix-bogosity.patch
+    use pam &amp;&amp; epatch ${FILESDIR}/${PV}/${P}-pam.patch
+
+    sed -i -e 's/"ispell"/"aspell"/' src/defaults.h || die "Sed failed!"
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Unpacking Tarballs</title>
+<body>
+<p>
+The <c>unpack</c> function should be used to unpack tarballs, compressed
+files and so on. Do not use <c>tar</c>, <c>gunzip</c> etc. manually.
+</p>
+
+<p>
+The <c>${A}</c> variable contains all of the <c>SRC_URI</c> components, except
+for any which are excluded by USE-based conditionals inside <c>SRC_URI</c>
+itself. If multiple archives require unpacking in a particular order it is
+usually simpler to avoid working with <c>${A}</c>.
+</p>
+</body>
+</section>
+
+<section>
+<title><c>src_unpack</c> Actions</title>
+<body>
+<p>
+The following subsections cover different topics which often occur when writing
+<c>src_unpack</c> functions.
+</p>
+
+<contentsTree/>
+</body>
+</section>
+
+</chapter>
+
+<include href="epatch/"/>
+<include href="cvs-sources/"/>
+<include href="svn-sources/"/>
+<include href="tla-sources/"/>
+<include href="rpm-sources/"/>
+<include href="deb-sources/"/>
+<include href="autopackage/"/>
+<include href="other-formats/"/>
+</guide>

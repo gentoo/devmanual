@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_unpack/rpm-sources/">
+<chapter>
+<title>RPM Sources</title>
+
+<body>
+<p>
+If a package is supplied as an .rpm file, you should:
+</p>
+
+<codesample lang="ebuild">
+inherit rpm
+</codesample>
+
+<p>
+If you don't need to do anything in the unpack phase, then you are
+finished as the <c>rpm.eclass</c> exports a default <c>src_unpack</c>
+that will unpack the RPM files.
+</p>
+
+<p>
+If you do need to apply patches then override <c>src_unpack</c> in a
+manner such as:
+</p>
+
+<codesample lang="ebuild">
+src_unpack () {
+    rpm_src_unpack ${A}
+    cd ${S}
+
+    use ssl &amp;&amp; epatch ${FILESDIR}/${PV}/${P}-ssl.patch
+}
+</codesample>
+
+<note>
+<c>${A}</c> can contain non-rpm files since the rpm eclass will call
+the normal <c>unpack</c> function for files that are not in the RPM
+format.
+</note>
+</body>
+
+<section>
+<title>Notes on Using <c>rpm.eclass</c></title>
+<body>
+
+<p>
+There are two ways to unpack a rpm file <d/> using
+the <c>rpmoffset</c> program from <c>rpm2targz</c> and <c>cpio</c>, or
+by using <c>rpm2cpio</c> from <c>app-arch/rpm</c>. Normally, for
+unpacking an RPM file, installing the entire RPM application is
+overkill. Because of this, the eclass will only use <c>rpm2cpio</c>
+if <c>rpm</c> is already installed on the system. If you want to force
+the eclass to only use the RPM offset method, set
+<c>USE_RPMOFFSET_ONLY=1</c>.
+</p>
+
+<p>
+Another issue that might arise is that <c>rpmoffset</c> and cpio are not able
+to unpack the RPM file correctly. If this occurs, then you need to add
+<c>app-arch/rpm</c> to the <c>DEPEND</c> variable so
+that <c>rpm2cpio</c> will be used instead.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Example RPM Handling</title>
+<body>
+
+<p>
+Here is an ebuild snippet that is based upon the fetchmail source RPM
+from SuSE 9.2. The ebuild snippet is complete enough to work with the
+<c>ebuild unpack</c> command. The ebuild will download the source file from
+the OSU SuSE mirror, unpack the file and apply the included
+patches. The filename should be <c>suse-fetchmail-6.2.5.54.1.ebuild</c>.
+</p>
+
+<codesample lang="ebuild">
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+inherit eutils versionator rpm
+
+MY_PV=$(replace_version_separator 3 '-')
+MY_P=fetchmail-${MY_PV}
+
+SRC_URI="http://suse.osuosl.org/suse/i386/9.2/suse/src/${MY_P}.src.rpm"
+DESCRIPTION="SuSE 9.2 Fetchmail Source Package"
+HOMEPAGE="http://www.suse.com"
+LICENSE="GPL-2 public-domain"
+SLOT="0"
+KEYWORDS="-*"
+IUSE=""
+
+RESTRICT="nomirror"
+
+# Need to test if the file can be unpacked with rpmoffset and cpio
+# If it can't then set:
+
+#DEPEND="app-arch/rpm"
+
+# To force the use of rpmoffset and cpio instead of rpm2cpio from
+# app-arch/rpm, then set the following:
+
+#USE_RPMOFFSET_ONLY=1
+
+S=${WORKDIR}/fetchmail-$(get_version_component_range 1-3)
+
+src_unpack () {
+    rpm_src_unpack ${A}
+    cd ${S}
+    EPATCH_SOURCE="${WORKDIR}" EPATCH_SUFFIX="patch" \
+        EPATCH_FORCE="yes" epatch
+}
+</codesample>
+
+</body>
+</section>
+
+</chapter>
+</guide>
