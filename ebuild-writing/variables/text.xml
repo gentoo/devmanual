@@ -125,7 +125,8 @@ The following variables must be defined by every ebuild.
     <ti><c>SRC_URI</c></ti>
     <ti>
     A list of source URIs for the package. Can contain
-    <c>USE</c>-conditional parts, see `SRC_URI`_.
+    <c>USE</c>-conditional parts, see
+    <uri link="::ebuild-writing/variables#SRC_URI"/>.
     </ti>
   </tr>
   <tr>
@@ -134,24 +135,32 @@ The following variables must be defined by every ebuild.
   </tr>
   <tr>
     <ti><c>KEYWORDS</c></ti>
-    <ti>See `KEYWORDS`_ and `Keywording`_.</ti>
+    <ti>
+    See <uri link="::ebuild-writing/variables#KEYWORDS"/> and
+    `Keywording`_.
+    </ti>
   </tr>
   <tr>
     <ti><c>SLOT</c></ti>
-    <ti>The package's <c>SLOT</c>. See `SLOT`_.</ti>
+    <ti>
+    The package's <c>SLOT</c>. See
+    <uri link="::ebuild-writing/variables#SLOT"/>.
+    </ti>
   </tr>
   <tr>
     <ti><c>LICENSE</c></ti>
     <ti>
     The package's license, corresponding exactly (including
-    case) to a file in <c>licenses/</c>. See `LICENSE`_.
+    case) to a file in <c>licenses/</c>. See
+    <uri link="::ebuild-writing/variables#LICENSE"/>.
     </ti>
   </tr>
   <tr>
     <ti><c>IUSE</c></ti>
     <ti>
     A list of all <c>USE</c> flags (excluding arch and auto
-    expand flags) used within the ebuild. See `IUSE`_.
+    expand flags) used within the ebuild. See
+    <uri link="::ebuild-writing/variables#IUSE"/>.
     </ti>
   </tr>
 </table>
@@ -185,14 +194,14 @@ Specifying the following variables is optional:
     <ti><c>DEPEND</c></ti>
     <ti>
     A list of the package's build dependencies.  See
-    `Dependencies`_.
+    <uri link="::general-concepts/dependencies"/>.
     </ti>
   </tr>
   <tr>
     <ti><c>RDEPEND</c></ti>
     <ti>
     A list of the package's runtime dependencies. See
-    `Dependencies`_.
+    <uri link="::general-concepts/dependencies"/>.
     </ti>
   </tr>
   <tr>
@@ -200,7 +209,7 @@ Specifying the following variables is optional:
     <ti>
     A list of packages to be installed after the package
     is merged. Should only be used where <c>RDEPEND</c> is not
-    possible. See `Dependencies`_.
+    possible. See <uri link="::general-concepts/dependencies"/>.
     </ti>
   </tr>
   <tr>
@@ -324,7 +333,8 @@ listed. Neither should auto-expand flags (<c>linguas_en</c> and so on).
 <p>
 It is possible to specify multiple <c>LICENSE</c> entries, and entries which only
 apply if a particular <c>USE</c> flag is set. The format is the same as for
-<c>DEPEND</c>. See `GLEP 23`_ for details.
+<c>DEPEND</c>. See <uri link="http://www.gentoo.org/proj/en/glep/glep-0023.html">
+GLEP 23</uri> for details.
 </p>
 
 </body>

@@ -13,8 +13,8 @@ idea of how ebuilds work.
 </p>
 
 <p>
-For proper coverage of all the ins and outs, see `Ebuild
-Writing`_. The <uri link="::general-concepts"/> chapter will also be of use.
+For proper coverage of all the ins and outs, see <uri link="::ebuild-writing"/>.
+The <uri link="::general-concepts"/> chapter will also be of use.
 </p>
 
 <p>
@@ -76,7 +76,7 @@ At the top of the ebuild is a header block. This is present in all ebuilds.
 
 <p>
 Ebuilds are indented using tabs, with each tab representing four places. See
-`Ebuild File Format`_.
+<uri link="::ebuild-writing/file-format"/>.
 </p>
 </body>
 </subsection>
@@ -114,7 +114,8 @@ name and version <d/> in this case, it would be <c>ctags-5.5.4</c>.
 
 <p>
 The <c>SLOT</c> variable tells portage which slot this package installs to. If
-you've not seen slots before, either just use <c>&quot;0&quot;</c> or read `Slotting`_.
+you've not seen slots before, either just use <c>&quot;0&quot;</c> or read
+<uri link="::general-concepts/slotting"/>.
 </p>
 
 <p>
@@ -145,7 +146,8 @@ The <c>src_install</c> function is called by portage when it wants
 to <e>install</e> the package. A slight subtlety here <d/> rather than
 installing straight to the live filesystem, we must install to a
 special location which is given by the <c>${D}</c> variable (portage sets
-this <d/> see `Install Destinations`_ and `Sandbox`_).  Again, we check
+this <d/> see <uri link="::general-concepts/install-destinations"/> and
+<uri link="::general-concepts/sandbox"/>).  Again, we check
 for errors.
 </p>
 
@@ -163,11 +165,12 @@ files into the relevant part of <c>/usr/share/doc</c>.
 </p>
 
 <p>
-Ebuilds can define other functions (see `Ebuild Functions`_). In all cases,
-portage provides a reasonable default implementation which quite often does the
-'right thing'. There was no need to define a <c>src_unpack</c> function here, for
-example <d/> this function is used to do any unpacking of tarballs or patching of
-source files, but the default implementation does everything we need.
+Ebuilds can define other functions (see <uri link="::ebuild-writing/functions"/>).
+In all cases, portage provides a reasonable default implementation which quite
+often does the 'right thing'. There was no need to define a <c>src_unpack</c>
+function here, for example <d/> this function is used to do any unpacking of
+tarballs or patching of source files, but the default implementation does
+everything we need.
 </p>
 </body>
 </subsection>
@@ -181,8 +184,9 @@ source files, but the default implementation does everything we need.
 <p>
 In the ctags example, we didn't tell portage about any dependencies. As it
 happens, that's ok, because ctags only needs a basic toolchain to compile and
-run (see `Implicit System Dependency`_ for why we don't need to depend upon
-those explicitly). However, life is rarely that simple.
+run (see <uri link="::general-concepts/dependencies#Implicit System Dependency"/>
+for why we don't need to depend upon those explicitly). However, life is rarely
+that simple.
 </p>
 
 <p>
@@ -223,7 +227,8 @@ src_install() {
 Again, you can see the ebuild header and the various informational variables. In
 <c>SRC_URI</c>, <c>${PN}</c> is used to get the package's
 name <e>without</e> the version suffix (there are more of these
-variables <d/> see `Predefined Read-Only Variables`_).
+variables <d/> see
+<uri link="::ebuild-writing/variables#Predefined Read-Only Variables"/>).
 </p>
 
 <p>
@@ -234,7 +239,7 @@ Again, we define <c>src_compile</c> and <c>src_install</c> functions.
 The <c>DEPEND</c> and <c>RDEPEND</c> variables are how portage determines which
 packages are needed to build and run the package. The <c>DEPEND</c> variable lists
 compile-time dependencies, and the <c>RDEPEND</c> lists runtime dependencies. See
-`Dependencies`_ for some more complex examples.
+<uri link="::general-concepts/dependencies"/> for some more complex examples.
 </p>
 
 </body>

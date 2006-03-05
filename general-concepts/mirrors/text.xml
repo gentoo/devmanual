@@ -66,7 +66,8 @@ Instead, these files must be moved onto <c>mirror://gentoo</c> before release.
 To manually upload a file to <c>mirror://gentoo</c>, <c>scp</c> it to
 <c>dev.gentoo.org:/space/distfiles-local</c>. You must ensure that the permissions
 are set to <c>ug+rw</c> manually. The file should appear on the mirrors within four
-hours (note that this is <e>less frequent</e> than `CVS to rsync`_).
+hours (note that this is <e>less frequent</e> than
+<uri link="::general-concepts/cvs-to-rsync"/>).
 
 If the upstream download location for a package uses a non-standard TCP port
 (anything other than 21, 80 or 443), you <e>must</e> manually mirror the files. Not

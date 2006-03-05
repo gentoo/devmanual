@@ -69,9 +69,9 @@ to <c>/usr/share</c>.
 <body>
 
 <p>
-Gentoo does not consider the `Filesystem Hierarchy Standard
-http://www.pathname.com/fhs/`__ to be an authoritative standard, although much
-of our policy coincides with it.
+Gentoo does not consider the <uri link="http://www.pathname.com/fhs/">
+Filesystem Hierarchy Standard</uri> to be an authoritative standard, although
+much of our policy coincides with it.
 </p>
 
 </body>

@@ -5,7 +5,7 @@
 
 <body>
 <todo>
-This is too long for `General Concepts`_. It needs to be split up and
+This is too long for <uri link="::general-concepts"/>. It needs to be split up and
 moved somewhere, either to a top-level of its own or into `Appendices`_.
 </todo>
 
@@ -134,7 +134,8 @@ src_compile() {
 <p>
 The <c>einfo</c> message before running autotools is not mandatory. However, these
 steps can sometimes take a while and may produce no output, so it may make sense
-to let the user know that something is still happening. See `Messages`_.
+to let the user know that something is still happening. See
+<uri link="::ebuild-writing/messages"/>.
 </p>
 
 </body>
@@ -490,7 +491,8 @@ This is handled via the macro <c>AC_SUBST(VARNAME)</c> in <c>configure.ac</c>.
 
 <p>
 Sometimes, badly behaved <c>Makefile.am</c> files will override user variables such
-as <c>CFLAGS</c>. This must not be allowed <d/> see `Not Filtering Variables`_. There
+as <c>CFLAGS</c>. This must not be allowed <d/> see
+<uri link="::general-concepts/user-environment#Not Filtering Variables"/>. There
 are separate special variables which should be used in these situations <d/> for
 setting <c>CFLAGS</c>. for example, a <c>Makefile.am</c> should use <c>AM_CFLAGS</c> so
 that user preferences are not ignored.
@@ -638,7 +640,7 @@ For more details on autotools:
     The book "GNU Autoconf, Automake and Libtool" by Gary V. Vaughan, Ben
     Elliston, Tom Tromey  and Ian Lance Taylor   (often called "The Autobook")
     provides a good but somewhat outdated description of autotools. It is
-    `freely available online &lt;http://sources.redhat.com/autobook/&gt;`_.
+    <uri link="http://sources.redhat.com/autobook/">freely available online</uri>.
   </li>
   <li>
     The GNU documentation for the various autotools components is of varying
@@ -646,23 +648,24 @@ For more details on autotools:
   </li>
   <ul>
     <li>
-      `GNU automake Manual
-      &lt;http://www.gnu.org/software/automake/manual/automake.html&gt;`_
+      <uri link="http://www.gnu.org/software/automake/manual/automake.html">
+        GNU automake Manual
+      </uri>
     </li>
     <li>
-      `GNU autoconf Manual &lt;http://www.gnu.org/software/autoconf/manual/&gt;`_
+      <uri link="http://www.gnu.org/software/autoconf/manual/">GNU autoconf Manual</uri>
     </li>
     <li>
-      `GNU libtool Manual &lt;http://www.gnu.org/software/libtool/manual.html&gt;`_
+      <uri link="http://www.gnu.org/software/libtool/manual.html">GNU libtool Manual</uri>
     </li>
     <li>
-      `GNU m4 Manual &lt;http://www.gnu.org/software/m4/manual/m4.html&gt;`_
+      <uri link="http://www.gnu.org/software/m4/manual/m4.html">GNU m4 Manual</uri>
     </li>
   </ul>
   <li>
-    There are some good overview lectures available online. `These slides
-    &lt;http://vipe.technion.ac.il/~shlomif/lecture/Autotools/slides/&gt;`_ are one
-    example.
+    There are some good overview lectures available online. <uri
+    link="http://vipe.technion.ac.il/~shlomif/lecture/Autotools/slides/">These
+    slides</uri> are one example.
   </li>
 </ul>
 

@@ -17,7 +17,8 @@
 <p>
 The <c>DEPEND</c> ebuild variable should specify any dependencies which are
 required to unpack, patch, compile or install the package (but see
-`Implicit System Dependency`_ for exemptions).
+<uri link="::general-concepts/dependencies#Implicit System Dependency"/> for
+exemptions).
 </p>
 
 </body>
@@ -293,8 +294,9 @@ To depend upon a virtual package, use <c>virtual/whatever</c> as the atom.
 </p>
 
 <p>
-Currently, you must not use any kind of version specification with virtuals --
-see `GLEP 37`_ for details and a proposed solution.
+Currently, you must not use any kind of version specification with virtuals <d/>
+see <uri link="http://www.gentoo.org/proj/en/glep/glep-0037.html">GLEP 37</uri>
+for details and a proposed solution.
 </p>
 
 </body>

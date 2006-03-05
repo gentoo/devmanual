@@ -54,7 +54,7 @@ not. It is safe to omit the <c>|| die</c> after a call to <c>epatch</c>, but not
 
 <p>
 Sometimes displaying additional error information beforehand can be useful. Use
-<c>eerror</c> to do this. See `Messages`_.
+<c>eerror</c> to do this. See <uri link="::ebuild-writing/messages"/>.
 </p>
 
 </body>
