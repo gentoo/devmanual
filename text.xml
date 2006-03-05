@@ -36,4 +36,5 @@ section for how to get started.
 <include href="quickstart/"/>
 <include href="general-concepts/"/>
 <include href="ebuild-writing/"/>
+<include href="eclass-writing/"/>
 </guide>
