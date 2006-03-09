@@ -275,8 +275,7 @@ case "${prev}" in
     -f|--file)
         COMPREPLY=( $(compgen -f ? ${cur}) )
         ;;
-esac
-      </codesample>
+esac</codesample>
     </ti>
   </tr>
   <tr>

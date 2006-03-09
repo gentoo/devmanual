@@ -52,6 +52,16 @@
 	</xsl:call-template>
       </xsl:when>
 
+      <xsl:when test="contains($data, '($(')">
+	<xsl:call-template name="highlight-subtokenate">
+	  <xsl:with-param name="data" select="substring-before($data, '($(')"/>
+	</xsl:call-template>
+	<span class="PreProc">($(</span>
+	<xsl:call-template name="highlight-subtokenate">
+	  <xsl:with-param name="data" select="substring-after($data, '($(')"/>
+	</xsl:call-template>
+      </xsl:when>
+
       <xsl:when test="substring($data, string-length($data)) = ')' and not(contains($data, '('))">
         <xsl:call-template name="highlight-subtokenate">
           <xsl:with-param name="data" select="substring($data, 1, string-length($data)-1)"/>
@@ -67,12 +77,39 @@
         <xsl:value-of select="$data"/>
       </xsl:when>
 
+      <!-- Args -->
+      <xsl:when test="contains($data, '--')">
+	<xsl:call-template name="highlight-subtokenate">
+	  <xsl:with-param name="data" select="substring-before($data, '--')"/>
+	</xsl:call-template>
+        <span class="PreProc">--</span>
+        <xsl:variable name="cdata" select="substring-after($data, '--')"/>
+        <xsl:choose>
+          <xsl:when test="contains($data, ')')">
+            <span class="Comment">
+              <xsl:call-template name="highlight-subtokenate">
+                <xsl:with-param name="data" select="substring-before(substring-after($data, '--'), ')')"/>
+              </xsl:call-template>
+            </span>
+            )<xsl:value-of select="substring-after(substring-after($data, '--'), ')')"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <span class="Comment">
+              <xsl:call-template name="highlight-subtokenate">
+                <xsl:with-param name="data" select="substring-after($data, '--')"/>
+              </xsl:call-template>
+            </span>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:when>
+
       <!-- Functioney highlighing -->
       <!-- sh grammar -->
       <xsl:when test="$data = ';' or $data = 'if' or $data = 'then' or $data = 'fi' or $data = '-ge' or $data = '-lt' or $data = '-le' or
                       $data = '-gt' or $data = 'elif' or $data = 'else' or $data = 'eval' or $data = 'unset' or $data = 'sed' or
                       $data = 'rm' or $data = 'cat' or $data = '[[' or $data = ']]' or $data = 'while' or $data = 'do' or $data = 'read' or
-                      $data = 'done' or $data = 'make' or $data = 'echo' or $data = 'cd'">
+                      $data = 'done' or $data = 'make' or $data = 'echo' or $data = 'cd' or $data = 'local' or $data = 'return' or
+                      $data = 'for' or $data = 'case' or $data = 'esac' or $data = 'in'">
 	<span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 
@@ -178,7 +215,7 @@
       </xsl:when>
 
       <!--  bash-completion -->
-      <xsl:when test="$data = 'dobashcompletion' or $data = 'bash-completion_pkg_postinst'">
+      <xsl:when test="$data = 'dobashcompletion' or $data = 'bash-completion_pkg_postinst' or $data = 'complete'">
 	<span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 
@@ -314,7 +351,7 @@
     <xsl:param name="data"/>
 
     <!-- Only tokenize spaces, this way we preserve tabs. -->
-    <xsl:variable name="tokenizedData" select="str:tokenize_plasmaroo($data, '&quot; ')"/>
+    <xsl:variable name="tokenizedData" select="str:tokenize_plasmaroo($data, '&quot; &#9;')"/>
 
     <!-- Scan for comments. If a comment is found then this is a positional
          index that is non-zero that refers to the last node that is not
