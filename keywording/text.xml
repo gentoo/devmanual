@@ -36,52 +36,48 @@ KEYWORDS="x86 sparc mips ~ppc ~ppc-macos -ia64"
 The different levels of keyword are:
 </p>
 
-<table>
-  <tr>
-    <th>Keyword</th>
-    <th>Meaning</th>
-  </tr>
-  <tr>
-    <ti>
-      <c>arch</c> (<c>x86</c>, <c>ppc-macos</c>)
-    </ti>
-    <ti>
-      Both the package version <e>and</e> the ebuild are widely tested, known to work
-      and not have any serious issues on the indicated platform.
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>~arch</c> (<c>~x86</c>, <c>~ppc-macos</c>)
-    </ti>
-    <ti>
-      The package version and the ebuild are believed to work and do not have any
-      known serious bugs, but more testing is required before the package version
-      is considered suitable for <c>arch</c>.
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      No keyword
-    </ti>
-    <ti>
-      If a package has no keyword for a given arch, it means it is not known
-      whether the package will work, or that insufficient testing has occurred for
-      <c>~arch</c>.
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-arch</c> (<c>-x86</c>, <c>-ppc-macos</c>)
-    </ti>
-    <ti>
-      The package version will not work on the arch. This could be caused by badly
-      written code (for example, non-64-bit or endian clean code), relying upon
-      particular hardware (for example, a BIOS querying tool would not work on
-      non-BIOS architectures) or binary only packages.
-    </ti>
-  </tr>
-</table>
+<dl>
+  <dt>
+    <c>arch</c> (<c>x86</c>, <c>ppc-macos</c>)
+  </dt>
+  <dd>
+    <p>
+    Both the package version <e>and</e> the ebuild are widely tested, known to work
+    and not have any serious issues on the indicated platform.
+    </p>
+  </dd>
+  <dt>
+    <c>~arch</c> (<c>~x86</c>, <c>~ppc-macos</c>)
+  </dt>
+  <dd>
+    <p>
+    The package version and the ebuild are believed to work and do not have any
+    known serious bugs, but more testing is required before the package version
+    is considered suitable for <c>arch</c>.
+    </p>
+  </dd>
+  <dt>
+    No keyword
+  </dt>
+  <dd>
+    <p>
+    If a package has no keyword for a given arch, it means it is not known
+    whether the package will work, or that insufficient testing has occurred for
+    <c>~arch</c>.
+    </p>
+  </dd>
+  <dt>
+    <c>-arch</c> (<c>-x86</c>, <c>-ppc-macos</c>)
+  </dt>
+  <dd>
+    <p>
+    The package version will not work on the arch. This could be caused by badly
+    written code (for example, non-64-bit or endian clean code), relying upon
+    particular hardware (for example, a BIOS querying tool would not work on
+    non-BIOS architectures) or binary only packages.
+    </p>
+  </dd>
+</dl>
 
 <p>
 The <c>-*</c> keyword is special. It is used to indicate package versions which are
