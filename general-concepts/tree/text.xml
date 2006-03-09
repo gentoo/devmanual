@@ -110,7 +110,7 @@ Software-wise, in general all of the following should be met in order for a pack
 <dd>
   <p>
   Keep super-experimental things out of the tree. If you must commit them,
-  consider using ``package.mask`` until things calm down, or better yet make
+  consider using <c>package.mask</c> until things calm down, or better yet make
   them available as overlay ebuilds.
   </p>
 </dd>

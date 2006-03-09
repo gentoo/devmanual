@@ -6,7 +6,7 @@
 <body>
 <p>
 An eclass is a collection (library) of functions or functionality that is shared
-between packages. See `Eclass Writing Guide`_ for the full story on what
+between packages. See <uri link="::eclass-writing/" /> for the full story on what
 eclasses can do, how they work and how to write them, and `Eclass Reference`_
 for documentation on various commonly used eclasses. This section only explains
 how to use an eclass which has already been written.

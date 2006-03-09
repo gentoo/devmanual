@@ -27,7 +27,7 @@ Small documentation fixes are also usually not grounds for a new revision.
 
 <p>
 When doing a revision bump, the usual rules about dropping to <c>~arch</c> apply.
-See `Keywording on Upgrades`_.
+See <uri link="::keywording#Keywording on Upgrades"/>.
 </p>
 
 </body>
