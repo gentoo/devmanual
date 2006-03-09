@@ -38,4 +38,5 @@ section for how to get started.
 <include href="ebuild-writing/"/>
 <include href="eclass-writing/"/>
 <include href="profiles/"/>
+<include href="keywording/"/>
 </guide>
