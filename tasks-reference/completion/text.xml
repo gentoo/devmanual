@@ -160,7 +160,7 @@ Nearly all completion functions will start out the same way. For these cases,
 the following can be used as a template for creating new completion functions:
 </p>
 
-<codesample lang="ebuild">
+<codesample lang="ebuild" numbering="lines">
 _foo() {
     local cur prev opts
     COMPREPLY=()
@@ -302,7 +302,7 @@ real completion function for <c>revdep-rebuild</c> (might even be available in
 <c>gentoo-bashcomp</c> by the time you read this :]).
 </p>
 
-<codesample lang="ebuild">
+<codesample lang="ebuild" numbering="lines">
 _revdep_rebuild() {
 	local cur prev opts
 	COMPREPLY=()

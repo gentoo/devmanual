@@ -90,8 +90,7 @@
               <xsl:call-template name="highlight-subtokenate">
                 <xsl:with-param name="data" select="substring-before(substring-after($data, '--'), ')')"/>
               </xsl:call-template>
-            </span>
-            )<xsl:value-of select="substring-after(substring-after($data, '--'), ')')"/>
+            </span>)<xsl:value-of select="substring-after(substring-after($data, '--'), ')')"/>
           </xsl:when>
           <xsl:otherwise>
             <span class="Comment">
@@ -520,10 +519,15 @@
   <!-- FIXME: Handle lang=... -->
   <xsl:template match="codesample">
       <pre><span class="Constant">
+      <xsl:variable name="numbering" select="@numbering"/>
       <xsl:for-each select="str:tokenize_plasmaroo(., $newline)">
         <xsl:choose>
-          <xsl:when test=". = $newline and position() = 1"/>
-          <xsl:when test=". = $newline"><xsl:value-of select='$newline'/></xsl:when>
+          <xsl:when test=". = $newline">
+            <xsl:if test="position() != 1"><xsl:value-of select='$newline'/></xsl:if>
+            <xsl:if test="$numbering = 'lines' and position() != last()-1">
+              <span style="float: left;"><xsl:number format="01"/>:<xsl:text> </xsl:text></span>
+            </xsl:if>
+          </xsl:when>
           <xsl:otherwise>
             <!-- <xsl:if test="position() != 1"><xsl:value-of select='$newline'/></xsl:if> -->
             <xsl:call-template name="highlight-tokenate">
