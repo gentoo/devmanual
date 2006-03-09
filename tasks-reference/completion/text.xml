@@ -170,7 +170,7 @@ _foo() {
 
     if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
         COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
-    return 0
+        return 0
     fi
 
     case "${prev}" in
