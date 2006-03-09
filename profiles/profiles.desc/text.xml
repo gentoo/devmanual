@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<guide self="profiles/profiles.desc/">
+<chapter>
+<title>Profiles <c>profiles.desc</c> File</title>
+<body>
+
+<todo>
+Find someone who knows exactly what this file's really used for with
+current portage versions and what is and isn't allowed.
+</todo>
+
+</body>
+</chapter>
+</guide>

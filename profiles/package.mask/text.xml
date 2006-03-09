@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<guide self="profiles/package.mask/">
+<chapter>
+<title>Profiles <c>package.mask</c> File</title>
+<body>
+
+<p>
+The <c>package.mask</c> file can be used to hard mask packages or certain versions
+of packages. This is often used when adding certain experimental (either in
+ebuild or upstream terms) packages to the tree. The format is described in
+`portage-5`_.
+</p>
+
+<p>
+This file can be used in subprofiles to mask packages only for certain setups.
+</p>
+
+</body>
+</chapter>
+</guide>

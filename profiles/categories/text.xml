@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<guide self="profiles/categories/">
+<chapter>
+<title>Profiles <c>categories</c> File</title>
+
+<body>
+<p>
+The <c>profiles/categories</c> file contains an asciibetically sorted list of all
+the valid categories in the portage tree. When adding a new category, remember
+to update and commit this file <e>before</e> making any related commits.
+</p>
+
+<p>
+The <c>categories</c> file is a straight list. For descriptions, see `Category
+Metadata`_.
+</p>
+</body>
+
+</chapter>
+</guide>

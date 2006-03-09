@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<guide self="profiles/use.desc/">
+<chapter>
+<title>Profiles <c>use.desc</c> and <c>use.local.desc</c> Files</title>
+<body>
+
+<p>
+The <c>use.desc</c> file contains a list of all global non-expanded <c>USE</c> flags,
+together with a short description. This file should not be modified without
+discussion on the <c>gentoo-dev</c> list.
+</p>
+
+<p>
+The <c>use.local.desc</c> file contains a list of all local <c>USE</c> flags, together
+with the relevant packages, and a short description. This file can be added to
+without general discussion.
+</p>
+
+<p>
+Having a small number of packages using identically named local <c>USE</c> flags is
+allowed. If the number starts to grow substantially, it may be worth proposing
+that the flag becomes a global <d /> see
+<uri link="::general-concepts/use-flags#Local and Global USE Flags"/>.
+</p>
+
+<p>
+All non-expand flags must be listed in exactly one of these files.
+</p>
+
+</body>
+</chapter>
+</guide>

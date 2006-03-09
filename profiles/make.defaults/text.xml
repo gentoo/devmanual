@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<guide self="profiles/make.defaults/">
+<chapter>
+<title>Profiles <c>make.defaults</c> File</title>
+<body>
+
+<p>
+The <c>make.defaults</c> file in <c>profiles/</c> provides a minimal set of defaults
+for the kinds of values which may be set in <c>make.conf</c> (<c>CFLAGS</c>, <c>USE</c>,
+<c>FEATURES</c> etc) along with certain control variables (eg <c>USE_EXPAND</c>).
+These values can further be refined by additional <c>make.defaults</c> files in
+subprofiles.
+</p>
+
+<p>
+In general, <c>make.defaults</c> should not be modified without consulting the
+relevant arch team, or <c>gentoo-dev</c> for high-up <c>make.defaults</c> files.
+</p>
+
+</body>
+</chapter>
+</guide>

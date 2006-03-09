@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<guide self="profiles/info_files/">
+<chapter>
+<title>Profiles <c>info_</c> Files</title>
+<body>
+
+<p>
+The <c>profiles/info_pkgs</c> file controls the packages whose versions are listed
+when <c>emerge info</c> is run. The <c>profiles/info_vars</c> file controls the
+displayed environment variables. Do not add to these files without discussion on
+the <c>gentoo-dev</c> mailing list.
+</p>
+
+</body>
+</chapter>
+</guide>
+

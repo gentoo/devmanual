@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<guide self="profiles/updates/">
+<chapter>
+<title>Profiles <c>updates/</c> Directory</title>
+<body>
+
+<todo>
+move and slotmove
+</todo>
+
+</body>
+</chapter>
+</guide>
+

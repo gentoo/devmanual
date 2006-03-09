@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<guide self="profiles/">
+<chapter>
+<title>Profiles</title>
+
+<body>
+<p>
+This section provides details on the <c>profiles/</c> directory. All of these files
+are also documented in `portage-5`_.
+</p>
+</body>
+
+<section>
+<title>Contents</title>
+<body>
+<contentsTree/>
+</body>
+</section>
+</chapter>
+
+<include href="categories/"/>
+<include href="info_files/"/>
+<include href="package.mask/"/>
+<include href="packages/"/>
+<include href="profiles.desc/"/>
+<include href="updates/"/>
+<include href="use.desc/"/>
+<include href="use.mask/"/>
+<include href="virtuals/"/>
+
+</guide>

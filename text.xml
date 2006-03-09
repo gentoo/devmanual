@@ -37,4 +37,5 @@ section for how to get started.
 <include href="general-concepts/"/>
 <include href="ebuild-writing/"/>
 <include href="eclass-writing/"/>
+<include href="profiles/"/>
 </guide>
