@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<guide self="tasks-reference/">
+<chapter>
+<title>Tasks Reference</title>
+
+<body>
+<p>
+This section covers various common tasks which may are used by many different
+ebuilds.
+</p>
+</body>
+
+<section>
+<title>Contents</title>
+<body>
+<contentsTree/>
+</body>
+</section>
+</chapter>
+
+<include href="completion/"/>
+<!--
+<include href="environment/"/>
+<include href="init-scripts/"/>
+<include href="pam/"/>
+<include href="perl-modules/"/>
+-->
+</guide>
