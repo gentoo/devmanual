@@ -19,10 +19,8 @@ ebuilds.
 </chapter>
 
 <include href="completion/"/>
-<!--
 <include href="environment/"/>
 <include href="init-scripts/"/>
 <include href="pam/"/>
 <include href="perl-modules/"/>
--->
 </guide>

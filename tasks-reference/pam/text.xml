@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<guide self="tasks-reference/pam/">
+<chapter>
+<title>Working with PAM</title>
+<body>
+
+<p>
+PAM (Pluggable Authentication Modules) is a mechanism which allows different
+applications to authenticate using various specified parameters, using for
+example a passwd/shadow file, a Kerberos server, an LDAP server or an a NT
+Domain server (using Samba).
+</p>
+
+<p>
+With PAM, a program just needs to require authentication for a given login class
+(defined in a <c>pam.d</c> file), and PAM framework will take care of calling the
+modules which will provide authentication.
+</p>
+
+<p>
+There are different PAM implementations. Gentoo Linux, by default, uses the
+Linux-PAM implementation which is installed via <c>sys-libs/pam</c>; FreeBSD and
+NetBSD (and hence Gentoo/FreeBSD) use OpenPAM, which is a minimal version.  The
+different implementations can provide different authentication modules, and can
+differ in some details of the configuration.
+</p>
+
+<section>
+<title>Structure of a <c>pamd</c> File</title>
+<body>
+
+<p>
+But let's see the structure of a <c>pamd</c> file. First of all, the <c>pamd </c>files
+are placed in <c>/etc/pam.d</c>, and they are structured as one statement per line.
+The statement is composed of 3 or 4 tokens:
+</p>
+
+<ul>
+  <li>
+    The first token specifies the type of service for which the statement is done.
+    There are four types:
+  </li>
+  <ul>
+    <li>
+      <e>account</e>, which checks for validity of the user account.
+    </li>
+    <li>
+      <e>auth</e>, which verifies that the user is who is claim to be, using passwords
+      or other ways such as biometric and smart-card devices.
+    </li>
+    <li>
+      <e>password</e>, which takes care of changing users' password.
+    </li>
+    <li>
+      <e>session</e>, which covers tasks such as checks for the user validity or
+      mount/umount of home directories, executed both before starting and after
+      closing the user session.
+    </li>
+  </ul>
+  <li>
+    The second token is the control that tells PAM how to behave with failures and
+    success of the authentication for the module specified:
+  </li>
+  <ul>
+    <li>
+      <e>requisite</e>, a failure results in the termination of the process.
+    </li>
+    <li>
+      <e>required</e>, a failure will lead in a failure for the service, but before
+      this, all the other modules are being executed.
+    </li>
+    <li>
+      <e>sufficient</e>, a success in this module leads to a success in authentication
+      if no <e>required</e> module failed before of it.
+    </li>
+    <li>
+      <e>optional</e>, in which case the failure or the success are ignored if this is
+      not the only module present, in which case a success or a failure of it
+      makes the authentication succeed or fail.
+    </li>
+  </ul>
+  <li>
+    The third token is the module to execute for that type of service; PAM modules
+    are extensible and, as the name says, pluggable. The result is that there are
+    a small number of default modules and some external optional modules which can
+    be built against PAM implementation to define additional authentication
+    methods.  Some documentation states that we need to specify the full path of
+    the module, but this creates problems because not all the systems install the
+    modules in the same place: Linux-PAM on Gentoo is generally set up to load
+    them from <c>/lib/security</c>, but for example on AMD64 this become
+    <c>/lib64/security</c>, and on OpenPAM they are just in <c>/usr/lib(64)</c>. The
+    result is that providing the full path will lead to non-working <c>pamd</c>
+    files, and the right way to handle this is just states the module name <d /> the
+    PAM implementation will take care of finding the module.
+  </li>
+  <li>
+    The last token, which can consist of multiple items, describe the parameters
+    passed to the module. These are module-dependent.
+  </li>
+</ul>
+
+<p>
+As the number and the type of modules shipped with the implementation depends on
+the implementations themselves (Linux-PAM provides a full working set of
+modules, OpenPAM doesn't provide modules at all, and it's the operating system
+which provides them, as FreeBSD or NetBSD do), there are just a few modules
+which can be used directly in <c>pamd</c> files without the risk of providing a
+non-working configuration file:
+</p>
+
+<ul>
+  <li>
+    <c>pam_deny.so</c>, <c>pam_permit.so</c> <d /> they just report a failure or a success
+  </li>
+  <li>
+    <c>pam_rootok.so</c> reports success if the user is root, else a failure
+  </li>
+  <li>
+    <c>pam_nologin.so</c> checks for presence of /etc/nologin file with a reason for
+    blocking user logins <d /> it's used for example when it's better to avoid users
+    logging in on a compromised system
+  </li>
+  <li>
+    <c>pam_securetty.so</c> checks that the login is done in a tty which is
+    considered secure by a configuration file (depends on the implementation)
+  </li>
+  <li>
+    <c>pam_unix.so</c> is the base module for Unix systems, it just checks the
+    user/password pair with <c>/etc/passwd</c> and <c>/etc/shadow</c>.
+  </li>
+</ul>
+
+<p>
+There are also other modules which can be used for more complex authentication
+against a database (mysql or postgresql), against an LDAP directory or against
+an NT domain (using samba). This is useful on thin or fat clients where the
+users have an unique login for all the machines.  Another place where this is
+useful is a cluster of servers which needs to authenticate against a single
+source for some services, such as mail and ftp servers.
+</p>
+
+<p>
+But for desktop systems, all the different services, such as mail servers, ftp
+servers, ssh and so on, just need to authenticate in the same way the users logs
+in to the system.
+</p>
+
+<p>
+To achieve this, RedHat developed for Linux-PAM (which hadn't had a way to rely
+on another authentication scheme) a <c>pam_stack.so</c> module which accepted as
+parameter <c>"login=&lt;login service to use&gt;"</c>, telling PAM to execute the auth
+stack for the service stated.
+</p>
+
+<p>
+Unfortunately that module relied upon internal data structures of Linux-PAM and
+assumptions which aren't valid for other PAM implementations, so it is
+completely non-portable. It is not used in all the implementations of Linux-PAM
+(see for example MacOS X, which uses Linux-PAM but doesn't provide
+<c>pam_stack.so</c>), and so it's not present on all Linux distributions.
+</p>
+
+<p>
+A solution came when AltLinux developers added a new instruction for the control
+token: <e>include</e>. That control token can be used on Linux-PAM 0.78 and on
+OpenPAM to do the same as a <c>required pam_stack.so</c>, replacing the module name
+with the name of the login class to mimic.
+</p>
+
+<p>
+In this way, instead of loading a module which in turn reloads pam, the option
+is parsed directly by the PAM implementation which loads the other login class
+and takes care of executing it, and the same syntax is valid on both Linux-PAM
+and OpenPAM systems.
+</p>
+
+<p>
+New packages (and new versions of old packages) should then use the <c>include</c>
+directive instead of <c>pam_stack.so</c> module, but to do that they need to depend
+on a later version of <c>sys-libs/pam</c> or on <c>sys-libs/openpam</c> (note: openpam
+is for now just on G/FreeBSD's project overlay) <d /> to resolve this,
+<c>virtual/pam</c> is set up to add the right dependency for the use of the include
+directive.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Installing <c>pamd</c> Files</title>
+<body>
+
+<p>
+The right place for <c>pamd</c> files is <c>/etc/pam.d</c>, but installing them by
+hand checking for <c>pam</c> USE flag is tricky and doesn't follow the same path as
+initd and confd files, so the solution is to use the <c>pam</c> eclass.
+</p>
+
+<p>
+In the <c>pam</c> eclass there are functions which provide installation facilities
+for <c>pamd</c> files (<c>dopamd</c> and <c>newpamd</c>, whose usage is the same as
+similar <c>do*</c> and <c>new*</c> functions) and the <c>/etc/security</c> files
+(<c>dopamsecurity</c> and <c>newpamsecurity</c>, which need the first argument to be
+the subdirectory of <c>/etc/security</c> in which the files are to be installed).
+Those groups of functions already takes care of verifying whether the <c>pam</c>
+USE flag is made optional for the package <d /> if this is the case, and the flag
+is disabled, the <c>pamd</c> files are just skipped.
+</p>
+
+<p>
+Many <c>pamd</c> files just uses one or more auth types from <c>system-auth</c> login class,
+which is the base one which provides login facilities for most services on
+common desktop systems.  Instead of adding a <c>pamd</c> file in <c>${FILESDIR}</c>
+for this, one can use the <c>pamd_mimic_system</c> function. This function takes a series
+of parameters <d /> the first one is the name of the login class (the name of the
+<c>pamd</c> file in /etc/pam.d); the others are the auth types for which system-auth
+needs to be used.
+</p>
+
+<p>
+For example, a call like:
+</p>
+
+<pre>
+pamd_mimic_system foo auth password
+</pre>
+
+<p>
+installs an <c>/etc/pam.d/foo</c> file which contains:
+</p>
+
+<pre>
+auth        include     system-auth
+password    include     system-auth
+</pre>
+
+<p>
+which just uses <c>system-auth</c> login class.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Installing PAM Modules</title>
+<body>
+
+<p>
+As PAM modules are looked for in different directories on different
+implementations, which also depends on the libdir's name for ARCHs with more
+than one ABI, usually is not possible to trust the default directory stated by
+the module (always if the module state a default directory). The solution for
+this is also in <c>pam</c> eclass. The function <c>getpam_mod_dir</c> returns the
+correct directory to use for the current implementation/arch.
+</p>
+
+<p>
+When the PAM mdoule doesn't provide a way to install the package by itself, such
+as a <c>Makefile</c> or an installation script, there are also the <c>dopammod</c> and
+<c>newpammod</c> functions which takes care of install the module in the right
+directory.
+</p>
+
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>

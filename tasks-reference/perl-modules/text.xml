@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<guide self="tasks-reference/perl-modules/">
+<chapter>
+<title>Perl Modules</title>
+<body>
+
+<p>
+This section covers where and how Perl modules should be installed. This is for
+Perl applications which use their own <c>.pm</c> files, <b>not</b> for CPAN things.
+</p>
+
+<todo>
+write me. see thread on -dev.
+</todo>
+
+</body>
+</chapter>
+</guide>
+
