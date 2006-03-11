@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_compile/">
+<chapter>
+<title>src_compile</title>
+
+<body>
+<table>
+  <tr>
+    <th>Function</th>
+    <ti><c>src_compile</c></ti>
+  </tr>
+  <tr>
+    <th>Purpose</th>
+    <ti>Configure and build the package.</ti>
+  </tr>
+  <tr>
+    <th>Sandbox</th>
+    <ti>Enabled</ti>
+  </tr>
+  <tr>
+    <th>Privilege</th>
+    <ti>user</ti>
+  </tr>
+  <tr>
+    <th>Called for</th>
+    <ti>ebuild</ti>
+  </tr>
+</table>
+</body>
+
+<section>
+<title>Default <c>src_compile</c></title>
+<body>
+<codesample lang="ebuild">
+src_compile() {
+    if [ -x ./configure ]; then
+        econf
+    fi
+    if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ]; then
+        emake || die "emake failed"
+    fi
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Sample <c>src_compile</c></title>
+<body>
+<codesample lang="ebuild">
+src_compile() {
+    use sparc &amp;&amp; filter-flags -fomit-frame-pointer
+    append-ldflags -Wl,-z,now
+
+    econf \
+        $(use_enable ssl ) \
+        $(use_enable perl perlinterp ) \
+        || die "Configure failed!"
+
+    emake || die "Make failed!"
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title><c>src_compile</c> Processes</title>
+<body>
+<p>
+The following subsections cover different topics which often occur when writing
+<c>src_compile</c> functions.
+</p>
+
+<contentsTree/>
+</body>
+</section>
+
+</chapter>
+
+<include href="build-environment/"/>
+<include href="configuring/"/>
+<include href="building/"/>
+<include href="distutils/"/>
+<include href="no-build-system/"/>
+</guide>

@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_compile/building/">
+<chapter>
+<title>Building a Package</title>
+
+<body>
+<p>
+The <c>emake</c> function should be used to call <c>make</c>. This will ensure that
+the user's <c>MAKEOPTS</c> are used correctly. The <c>emake</c> function passes on
+any arguments provided, so it can be used to make non-default targets (<c>emake
+extras</c>), for example. Occasionally you might encounter a screwy non-autotools
+<c>Makefile</c> that explodes with <c>emake</c>, but this is rare.
+</p>
+
+<p>
+Builds should be tested with various <c>-j</c> settings in <c>MAKEOPTS</c> to ensure
+that the build parallelises properly. If a package does <e>not</e> parallelise
+cleanly, it should be patched.
+</p>
+
+<p>
+If patching <e>really</e> isn't an option, <c>emake -j1</c> should be
+used. However, when doing this please remember that you are seriously
+hurting build times for many non-x86 users in particular. Forcing
+a <c>-j1</c> can increase build times from a few minutes to an hour on
+some MIPS and SPARC systems.
+</p>
+</body>
+
+<section>
+<title>Fixing Compiler Usage</title>
+<body>
+
+<p>
+Sometimes a package will try to use a bizarre compiler, or will need to be told
+which compiler to use. In these situations, the <c>tc-getCC()</c> function from
+<c>toolchain-funcs.eclass</c> should be used. Other similar functions are available
+<d/> these are documented in `toolchain-funcs.eclass-5`_.
+</p>
+
+<note>
+It is <e>not</e> correct to use the <c>${CC}</c> variable for this purpose.
+</note>
+
+<p>
+Sometimes a package will not use the user's <c>${CFLAGS}</c>. This must be worked
+around, as sometimes this variable is used for specifying critical ABI options.
+In these cases, the build scripts should be modified (for example, with <c>sed</c>)
+to use <c>${CFLAGS}</c> correctly.
+</p>
+
+<codesample lang="ebuild">
+inherit flag-o-matic toolchain-funcs
+
+src_compile() {
+    # -Os not happy
+    replace-flags -Os -O2
+
+    # We have a weird build.sh to work with which ignores our
+    # compiler preferences. yay!
+    sed -i -e "s:cc -O2:$(tc-getCC) ${CFLAGS}:" build.sh \
+        || die "sed fix failed. Uh-oh..."
+    ./build.sh || die "Build failed!"
+}
+</codesample>
+
+<note>
+When using <c>sed</c> with <c>CFLAGS</c>, it is not safe to use a comma or a
+slash as a delimiter. The vapier-recommended character is a colon.
+</note>
+
+</body>
+</section>
+</chapter>
+</guide>

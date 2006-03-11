@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_compile/no-build-system/">
+<chapter>
+<title>No Build System</title>
+
+<body>
+<p>
+Occasionally some really small packages are shipped simply as a single
+<c>.c</c> file. In these circumstances, you can either write your own
+<c>Makefile</c> and ship it with the source tarball, or just manually
+compile the thing from within the ebuild. Here's an example, from
+<c>app-misc/hilite</c>:
+</p>
+
+<codesample lang="ebuild">
+src_compile() {
+    $(tc-getCC ) ${CFLAGS} -o ${PN} ${P}.c \
+        || die "Compile failed!"
+}
+</codesample>
+
+<p>
+Here's an example from <c>x11-plugins/gkrelltop</c>, which ships with a
+<c>Makefile</c> that doesn't actually work:
+</p>
+
+<codesample lang="ebuild">
+src_compile() {
+    CONFIG="-DLINUX -DGKRELLM2 -fPIC `pkg-config gtk+-2.0 --cflags`"
+    LIBS="`pkg-config gtk+-2.0 --libs` -shared"
+    OBJS="top_three2.o gkrelltop2.o"
+
+    gcc -c $CONFIG $CFLAGS top_three.c -o top_three2.o || die
+    gcc -c $CONFIG $CFLAGS gkrelltop.c -o gkrelltop2.o || die
+    gcc $LIBS $CONFIG $CFLAGS -o gkrelltop2.so $OBJS || die
+}
+</codesample>
+
+<p>
+A possibly better alternative would be to patch the <c>Makefile</c>
+and send it upstream.
+</p>
+
+</body>
+</chapter>
+</guide>

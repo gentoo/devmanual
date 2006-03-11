@@ -483,7 +483,7 @@
 
   <!-- Table Item -->
   <xsl:template match="ti">
-    <td class="tableinfo">
+    <td class="devbook">
       <xsl:if test="@colspan">
 	<xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
       </xsl:if>
@@ -496,7 +496,7 @@
 
   <!-- Table Heading -->
   <xsl:template match="th">
-    <td class="infohead">
+    <td class="devbook">
       <xsl:if test="@colspan">
 	<xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
 	<!-- Center only when item spans several columns as

@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_compile/distutils/">
+<chapter>
+<title>Distutils</title>
+
+<section>
+<title>General overview</title>
+
+<body>
+<p>
+The Python packaging system is known as "distutils", and the hallmark
+of a Python package using distutils is the presence of a <c>setup.py</c>
+file. (One can think of the <c>setup.py</c> file as the Python equivalent of
+a Makefile.) Although distutils is straightforward to use by directly
+running the <c>setup.py</c> with the appropriate arguments, the distutils
+eclass makes the process much simpler (and dramatically lowers the
+chance of sandbox violations). For example, for the <c>dev-python/id3-py</c>
+package the body of the ebuild (other than the header and URIs) could
+have been written as just:
+</p>
+
+<codesample lang="ebuild">
+inherit distutils
+
+DOCS="CHANGES"
+</codesample>
+
+<p>
+Any files listed in <c>${DOCS}</c> will be put in the docs directory when
+installed. Note that older versions of the distutils eclass used
+<c>${mydoc}</c> instead, but the preferred variable is <c>DOCS</c>.
+</p>
+
+<p>
+In practice, some tweaking is often required in
+the <c>src_compile()</c> or, more commonly, in
+the <c>src_install()</c> steps, and the distutils eclass provides
+the <c>distutils_src_compile()</c> and
+the <c>distutils_src_install()</c> convenience functions:
+</p>
+
+<codesample lang="ebuild">
+src_compile() {
+    distutils_src_compile
+    # ...
+}
+
+src_install() {
+    # From the docutils ebuild
+    distutils_src_install
+    cd ${S}/tools
+    for tool in *.py; do
+        newbin ${tool} docutils-${tool}
+    done
+
+    # ...
+}
+</codesample>
+
+</body>
+</section>
+
+<section>
+<title>Tkinter (Tk) support</title>
+<body>
+
+<p>
+Until Portage gains the long-requested ability to depend on <c>USE</c>
+flags, ebuild authors who package graphical Python programs will
+probably need to check at emerge-time whether or not Python was
+compiled with support for Tkinter. Since Tkinter requires Tk, which
+requires X, default Python builds do not include Tkinter. It's easy
+enough to check:
+</p>
+
+<codesample lang="ebuild">
+pkg_setup() {
+    distutils_python_tkinter
+}
+</codesample>
+
+</body>
+</section>
+</chapter>
+</guide>

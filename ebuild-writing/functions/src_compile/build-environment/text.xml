@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_compile/build-environment/">
+<chapter>
+<title>Configuring Build Environment</title>
+
+<body>
+<p>
+Sometimes it is necessary to manipulate certain aspects of the user's
+build environment before running <c>./configure</c>. The <c>flag-o-matic</c>
+eclass is the best choice for manipulating <c>CFLAGS</c>, <c>LDFLAGS</c>
+and suchlike.
+</p>
+
+<note>
+Except where otherwise specified, any function which operates on
+<c>CFLAGS</c> also operates on <c>CXXFLAGS</c>.
+</note>
+
+<p>
+Ebuilds must not simply ignore use CFLAGS <d/> see <uri link="::general-concepts/user-environment#Not Filtering Variables"/>.
+</p>
+</body>
+
+<section>
+<title>Guidelines for Flag Filtering</title>
+<body>
+
+<p>
+If a package breaks with any reasonable <c>CFLAGS</c>, it is best to filter the
+problematic flag if a bug report is received. Reasonable <c>CFLAGS</c> are
+<c>-march=</c>, <c>-mcpu=</c>, <c>-mtune=</c> (depending upon
+arch), <c>-O2</c>, <c>-Os</c> and <c>-fomit-frame-pointer</c>. Note that
+<c>-Os</c> should usually be replaced with <c>-O2</c> rather than being
+stripped entirely. The <c>-fstack-protector</c> flag should probably be
+in this group too, although our hardened team claim that this flag
+never ever breaks anything...
+</p>
+
+<p>
+The <c>-pipe</c> flag doesn't affect the generated code, so it's not really
+relevant here, but it's a sensible flag to have set globally.
+</p>
+
+<p>
+If a package breaks with other (insane) <c>CFLAGS</c>, it is perfectly
+OK to close the bug with a <b>WONTFIX</b> suggesting that the user
+picks more sensible global <c>CFLAGS</c>. Similarly, if you suspect
+that a bug is caused by insane <c>CFLAGS</c>, an <b>INVALID</b> resolution is
+suitable.
+</p>
+
+<p>
+All of the following assumes that the ebuild has an <c>inherit flag-o-matic</c>
+line in the correct place.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Simple Flag Stripping</title>
+<body>
+
+<p>
+The <c>filter-flags</c> function can be used to remove a particular flag from
+<c>CFLAGS</c>. Multiple arguments can be supplied; each is the name of a flag to
+remove.
+</p>
+
+<codesample lang="ebuild">
+    # -fomit-frame-pointer leads to nasty broken code on sparc thanks to a
+    # rather icky asm function
+    use sparc &amp;&amp; filter-flags -fomit-frame-pointer
+</codesample>
+
+<p>
+There is a <c>filter-ldflags</c> function available which does the equivalent
+for <c>LDFLAGS</c>.
+</p>
+
+<p>
+If a package is known to be very <c>CFLAGS</c> sensitive, the
+<c>strip-flags</c> function will remove most flags, leaving only a minimal
+conservative set of flags.
+</p>
+
+<codesample lang="ebuild">
+    # Our app hates screwy flags
+    strip-flags
+</codesample>
+
+</body>
+</section>
+
+<section>
+<title>Flag Replacement</title>
+<body>
+
+<p>
+To replace a flag with a different one, use <c>replace-flags</c>. This
+is most commonly used to replace <c>-Os</c> with <c>-O2</c>
+(or <c>-O3</c> with <c>-O2</c> if you are feeling kind).
+</p>
+
+<codesample lang="ebuild">
+    # Seems to have issues with -Os, switch to -O2
+    replace-flags -Os -O2
+</codesample>
+
+<p>
+There is also a special function named <c>replace-cpu-flags</c> for
+replacing CPU (<c>-mtune</c>, <c>-mcpu</c>, <c>-march</c>) designation
+flags. The last argument is the flag to use; previous arguments are
+the flags to be replaced.
+</p>
+
+<codesample lang="ebuild">
+    # Can't use ultrasparc or ultrasparc3 code, drop to v9
+    replace-cpu-flags ultrasparc ultrasparc3 v9
+</codesample>
+
+</body>
+</section>
+
+<section>
+<title>Adding Additional Flags</title>
+<body>
+<p>
+Sometimes it is necessary to add in additional <c>CFLAGS</c>
+or <c>LDFLAGS</c>. The <c>append-flags</c> and <c>append-ldflags</c>
+functions can be used here.
+</p>
+
+<codesample lang="ebuild">
+    # If we're using selinux, we need to add a -D
+    use selinux &amp;&amp; append-flags "-DWITH_SELINUX"
+
+    # Secure linking needed, since we're setuid root
+    append-ldflags -Wl,-z,now
+</codesample>
+
+<p>
+See `flag-o-matic.eclass Reference`_ for a full reference.
+</p>
+</body>
+</section>
+
+</chapter>
+</guide>

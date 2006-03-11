@@ -32,4 +32,5 @@ obtain some <c>SRC_URI</c> components.
 </chapter>
 
 <include href="src_unpack/"/>
+<include href="src_compile/"/>
 </guide>
