@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<guide self="function-reference/message-functions/">
+<chapter>
+<title>Message Functions Reference</title>
+<body>
+
+<p>
+The following functions, which are provided by <c>functions.sh</c>, can be used for
+displaying informational messages.
+</p>
+
+<table>
+  <tr>
+    <th>
+      Function
+    </th>
+    <th>
+      Details
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>einfo</c>
+    </ti>
+    <ti>
+      Display an informational message.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>einfon</c>
+    </ti>
+    <ti>
+      Display an informational message with no trailing newline.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>ewarn</c>
+    </ti>
+    <ti>
+      Display a warning message.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>eerror</c>
+    </ti>
+    <ti>
+      Display an error message.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>ebegin</c>
+    </ti>
+    <ti>
+      Display the message for the start of an action block.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>eend</c>
+    </ti>
+    <ti>
+      Display the end of an action block.
+    </ti>
+  </tr>
+</table>
+
+<p>
+The following are available from <c>eutils.eclass</c>:
+</p>
+
+<table>
+  <tr>
+    <th>
+      Function
+    </th>
+    <th>
+      Details
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>epause</c>
+    </ti>
+    <ti>
+      Pause for the specified number (must be a positive integer) of seconds.
+      Defaults to a sane value.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>ebeep</c>
+    </ti>
+    <ti>
+      Beep the specified number (must be a positive integer) of times. Defaults to a sane value.
+    </ti>
+  </tr>
+</table>
+
+<p>
+See <uri link="::ebuild-writing/messages"/> for a detailed discussion.
+</p>
+
+</body>
+</chapter>
+</guide>

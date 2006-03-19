@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<guide self="function-reference/sandbox-functions/">
+<chapter>
+<title>Sandbox Functions Reference</title>
+<body>
+
+<p>
+The following functions, which are all provided by <c>ebuild.sh</c>, handle working
+with the sandbox.
+</p>
+
+<table>
+  <tr>
+    <th>
+      Function
+    </th>
+    <th>
+      Details
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>addread</c>
+    </ti>
+    <ti>
+      Add one single additional item to the sandbox allowed read list.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>addwrite</c>
+    </ti>
+    <ti>
+      Add one single additional item to the sandbox allowed write list. <b>Note</b>:
+      If at all possible, use <c>addpredict</c> instead. Using <c>addwrite</c> is <b>not</b> an
+      appropriate alternative to making your package build sandbox-friendly.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>adddeny</c>
+    </ti>
+    <ti>
+      Add one single additional item to the sandbox deny write list.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>addpredict</c>
+    </ti>
+    <ti>
+      Add one single additional item to the sandbox predict (pretend to allow write) list.
+    </ti>
+  </tr>
+</table>
+
+<p>
+None of these functions accept multiple arguments in one call. The sandbox is
+recursive, so to allow predicted writes to <c>/foo/bar</c> and <c>/foo/baz</c>,
+<c>addpredict /foo</c> would be sufficient.
+</p>
+
+<p>
+See <uri link="::general-concepts/sandbox"/> for details on how the sandbox works.
+See `Handling Access Violations`_ for how to handle sandbox-related build problems.
+</p>
+
+</body>
+</chapter>
+</guide>

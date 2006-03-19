@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<guide self="eclass-reference/bash-completion.eclass/">
+<chapter>
+<title><c>bash-completion.eclass</c> Reference</title>
+<body>
+
+<p>
+The <c>bash-completion</c> eclass provides functions for installing contributed
+bash-completion scripts. See <uri link="::tasks-reference/completion"/> for how
+to write completion scripts.
+</p>
+
+<table>
+  <tr>
+    <th>
+      Function
+    </th>
+    <th>
+      Details
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>dobashcompletion</c>
+    </ti>
+    <ti>
+      Install a bash completion file if and only if the user has
+      <c>USE="bash-completion"</c>. If <c>BASH_COMPLETION_NAME</c> is set,
+      this will be used for deciding the application name. Otherwise, the second
+      argument will be used (if present), or failing that, <c>${PN}</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>bash-completion_pkg_postinst</c>
+    </ti>
+    <ti>
+      If the user has <c>USE="bash-completion"</c>,
+      displays a message explaining how to activate
+      the completion for this package.
+    </ti>
+  </tr>
+</table>
+
+</body>
+</chapter>
+</guide>

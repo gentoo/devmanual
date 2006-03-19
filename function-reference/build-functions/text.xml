@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<guide self="function-reference/build-functions/">
+<chapter>
+<title>Build Functions Reference</title>
+
+<body>
+
+<p>
+The following functions, which are all provided by <c>ebuild.sh</c>, are useful
+during the unpack and compile stages.
+</p>
+
+<table>
+  <tr>
+    <th>
+      Function
+    </th>
+    <th>
+      Details
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>unpack archives</c>
+    </ti>
+    <ti>
+      Unpack the specified archives.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>econf args</c>
+    </ti>
+    <ti>
+      Wrapper for <c>./configure</c>. Passes on all <c>args</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>emake args</c>
+    </ti>
+    <ti>
+      Wrapper for <c>make</c>. Passes on all <c>args</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>einstall args</c>
+    </ti>
+    <ti>
+      Wrapper for <c>make install</c>, only to be used if <c>make DESTDIR="${D}"</c> is unsuitable.
+    </ti>
+  </tr>
+</table>
+
+</body>
+</chapter>
+</guide>

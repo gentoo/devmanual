@@ -1,0 +1,360 @@
+<?xml version="1.0"?>
+<guide self="function-reference/install-functions/">
+<chapter>
+<title>Install Functions Reference</title>
+<body>
+
+<p>
+The following functions, which are all provided <c>ebuild.sh</c> and the standard
+library, handle various install-related tasks. <c>${D}</c> is automatically handled
+for all of these functions.
+</p>
+
+<table>
+  <tr>
+    <th>
+      Function
+    </th>
+    <th>
+      Details
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>insinto</c>
+    </ti>
+    <ti>
+      Change install location for <c>doins</c>, <c>newins</c> etc
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>exeinto</c>
+    </ti>
+    <ti>
+      Change install location for <c>doexe</c>, <c>newexe</c> etc
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>docinto</c>
+    </ti>
+    <ti>
+      Change install location for <c>dodoc</c>, <c>newdoc</c> etc
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>insopts</c>
+    </ti>
+    <ti>
+      Specify arguments passed to <c>install</c> (eg <c>-s</c>, <c>-m644</c>).
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>diropts</c>
+    </ti>
+    <ti>
+      Specify arguments passed to <c>install</c> for directories
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>exeopts</c>
+    </ti>
+    <ti>
+      Specify arguments passed to <c>install</c> for executables
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>libopts</c>
+    </ti>
+    <ti>
+      Specify arguments passed to <c>install</c> for libraries
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>dobin</c>
+    </ti>
+    <ti>
+      Install a binary
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>doconfd</c>
+    </ti>
+    <ti>
+      Install an <c>/etc/conf.d</c> file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>dodir</c>
+    </ti>
+    <ti>
+      Install a directory
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>dodoc</c>
+    </ti>
+    <ti>
+      Install a documentation file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>doenvd</c>
+    </ti>
+    <ti>
+      Install an <c>/etc/env.d</c> file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>doexe</c>
+    </ti>
+    <ti>
+      Install an executable
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>dohard</c>
+    </ti>
+    <ti>
+      Create a hardlink to the first argument from the second argument
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>dohtml</c>
+    </ti>
+    <ti>
+      Install an HTML documentation file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>doinfo</c>
+    </ti>
+    <ti>
+      Install a GNU Info document
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>doinitd</c>
+    </ti>
+    <ti>
+      Install an <c>/etc/init.d</c> file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>doins</c>
+    </ti>
+    <ti>
+      Install a miscellaneous file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>dojar</c>
+    </ti>
+    <ti>
+      Install a <c>.jar</c> file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>dolib</c>
+    </ti>
+    <ti>
+      Install a library file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>dolib.a</c>
+    </ti>
+    <ti>
+      Install a library (<c>.a</c>) file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>dolib.so</c>
+    </ti>
+    <ti>
+      Install a library (shared object) file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>doman</c>
+    </ti>
+    <ti>
+      Install a man page
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>domo</c>
+    </ti>
+    <ti>
+      Install a Gettext <c>.mo</c> file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>dopython</c>
+    </ti>
+    <ti>
+      Install a Python file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>dosbin</c>
+    </ti>
+    <ti>
+      Install an <c>sbin/</c> file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>dosym</c>
+    </ti>
+    <ti>
+      Create a symlink from the second parameter to the first parameter
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>fowners</c>
+    </ti>
+    <ti>
+      Call <c>chown</c> with the first argument as the mode on all additional arguments.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>fperms</c>
+    </ti>
+    <ti>
+      Call <c>chown</c> with the first argument as the user on all additional arguments.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>keepdir</c>
+    </ti>
+    <ti>
+      Create a directory with an empty <c>.keep</c> file in it.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>newbin</c>
+    </ti>
+    <ti>
+      Install a binary using the second argument as the name.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>newconfd</c>
+    </ti>
+    <ti>
+      Install an <c>/etc/conf.d</c> entry using the second argument as the name.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>newdoc</c>
+    </ti>
+    <ti>
+      Install a documentation file using the second argument as the name.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>newenvd</c>
+    </ti>
+    <ti>
+      Install an <c>/etc/env.d</c> file using the second argument as the name.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>newexe</c>
+    </ti>
+    <ti>
+      Install an executable file using the second argument as the name.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>newinitd</c>
+    </ti>
+    <ti>
+      Install an <c>/etc/init.d</c> file using the second argument as the name.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>newins</c>
+    </ti>
+    <ti>
+      Install a miscellaneous file using the second argument as the name.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>newlib.a</c>
+    </ti>
+    <ti>
+      Install a <c>.a</c> library file using the second argument as the name.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>newlib.so</c>
+    </ti>
+    <ti>
+      Install a <c>.so</c> library file using the second argument as the name.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>newman</c>
+    </ti>
+    <ti>
+      Install a manual page using the second argument as the name.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>newsbin</c>
+    </ti>
+    <ti>
+      Install an <c>sbin</c> file using the second argument as the name.
+    </ti>
+  </tr>
+</table>
+
+<p>
+The <c>do*</c> functions, when given multiple arguments, will work upon multiple
+targets. The <c>new*</c> functions take exactly two arguments (except as noted) <d />
+the first is the source name, the second the name to use when installing.
+</p>
+
+</body>
+</chapter>
+</guide>

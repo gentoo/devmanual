@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<guide self="eclass-reference/fdo-mime.eclass/">
+<chapter>
+<title><c>fdo-mime.eclass</c> Reference</title>
+<body>
+
+<p>
+The <c>fdo-mime</c> eclass provides functions for working with the FreeDesktop MIME
+database.
+</p>
+
+<table>
+  <tr>
+    <th>
+      Function
+    </th>
+    <th>
+      Details
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>fdo-mime_desktop_database_update</c>
+    </ti>
+    <ti>
+      Updates the desktop database. Should be called after modifying desktop entries.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>fdo-mime_mime_database_update</c>
+    </ti>
+    <ti>
+      Updates the MIME database. Should be called after modifying MIME entries.
+    </ti>
+  </tr>
+</table>
+
+</body>
+</chapter>
+</guide>

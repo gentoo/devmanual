@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<guide self="function-reference/query-functions/">
+<chapter>
+<title>Query Functions Reference</title>
+<body>
+
+<p>
+The following functions, which are provided by <c>ebuild.sh</c>, can be used to
+query variables and similar state.
+</p>
+
+<table>
+  <tr>
+    <th>
+      Function
+    </th>
+    <th>
+      Details
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>use flagname</c>
+    </ti>
+    <ti>
+      Returns a true value if and only if <c>flagname</c> is included in <c>USE</c>
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>useq flagname</c>
+    </ti>
+    <ti>
+      As <c>use</c>, guaranteed to produce no output.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>usev flagname</c>
+    </ti>
+    <ti>
+      As <c>use</c>, echoes <c>flagname</c> upon success.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>use_enable flag str</c> 
+    </ti>
+    <ti>
+      Echoes either <c>--enable-str</c> or <c>--disable-str</c> depending upon <c>useq flag</c>.
+      If <c>str</c> is not specified, uses <c>flag</c> instead.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>use_with flag str</c>
+    </ti>
+    <ti>
+      As <c>use_enable</c>, but <c>--with-</c> or <c>without-</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>has flag string</c>
+    </ti>
+    <ti>
+      Returns true if <c>flag</c> is included in the flag list <c>string</c> (example:
+      <c>if has ccache $FEATURES ; then</c>).
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>hasq flag string</c>
+    </ti>
+    <ti>
+      As <c>has</c>, guaranteed quiet.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>hasv flag string</c>
+    </ti>
+    <ti>
+      As <c>has</c>, echoes <c>flag</c> on success.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>portageq</c>
+    </ti>
+    <ti>
+      Wrapper for <c>portageq</c>
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>best_version pkg</c>
+    </ti>
+    <ti>
+      Echoes the 'best' version of <c>pkg</c> which is currently installed.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>has_version pkg</c>
+    </ti>
+    <ti>
+      True if <c>pkg</c> (can include version specifiers) is installed.
+    </ti>
+  </tr>
+</table>
+
+</body>
+</chapter>
+</guide>
