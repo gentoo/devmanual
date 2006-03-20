@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<guide self="eclass-reference/gnome2.eclass/">
+<chapter>
+<title><c>gnome2.eclass</c> Reference</title>
+<body>
+
+<p>
+The <c>gnome2.eclass</c> provides functions for working with Gnome applications.
+</p>
+
+<subsection>
+<title><c>gnome2.eclass</c> Variables</title>
+<body>
+
+<table>
+  <tr>
+    <th>
+      Variable
+    </th>
+    <th>
+      Details
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>G2CONF</c>
+    </ti>
+    <ti>
+      You can set this variable to add configure options that are passed to <c>econf</c>.
+      Always put this variable inside <c>pkg_setup</c>.  Putting it outside <c>pkg_setup</c>
+      is a QA violation.
+      <p>
+      For Example:
+<codesample lang="ebuild">
+pkg_setup() {
+    G2CONF="--disable-scrollkeeper \
+        $(use_enable eds)"
+}
+</codesample>
+      </p>
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>ELTCONF</c>
+    </ti>
+    <ti>
+      You can specify extra options to be passed to <c>elibtoolize</c>.  <c>elibtoolize</c> is run for every
+      package unless you override <c>src_unpack</c> / <c>src_compile</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>USE_EINSTALL</c>
+    </ti>
+    <ti>
+      You can specify to use <c>einstall</c> instead of the default, <c>make DESTDIR=${D} install</c>.
+      This usually means the package is broken and needs to be fixed.  The fixes need to be sent upstream.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>SCROLLKEEPER_UPDATE</c>
+    </ti>
+    <ti>
+      You can specify to not run scrollkeeper updates for a package.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>DOCS</c>
+    </ti>
+    <ti>
+      You can specify a space seperated list of docs that will be install with the package.
+      ( <c>AUTHORS</c> <c>NEWS</c> )
+    </ti>
+  </tr>
+</table>
+
+</body>
+</subsection>
+
+<subsection>
+<title><c>gnome2.eclass</c> Functions</title>
+<body>
+
+<table>
+  <tr>
+    <th>
+      Function
+    </th>
+    <th>
+      Details
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>gnome2_omf_fix</c>
+    </ti>
+    <ti>
+      This method prevents <c>scrollkeeper-update</c> from running.  Almost all GNOME
+      packages try to run <c>scrollkeeper-update</c> when trying to install/compile.
+      When <c>scrollkeeper-update</c> runs, it creates the directory below, which
+      writes outside the sandbox (see <uri link="::general-concepts/sandbox"/>).
+      In addition, if it were to continue, it would overwrite your
+      <c>scrollkeeper_docs</c> file with only the docs in the current build.
+      <p>
+      The method fixes all <c>Makefile.in</c>'s, <c>Makefile.am</c>'s,
+      <c>${S}/omf-install/Makefile.in</c>, and <c>${S}/omf.make</c>. If any of the files
+      are not one of the default, you can pass addition files as arguments.
+      </p>
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>gnome2_icon_cache_update</c>
+    </ti>
+    <ti>
+      This method updates the gtk icon cache.  GTK does less work if the icons are cached.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>src_unpack</c>
+    </ti>
+    <ti>
+      <c>gnome2_omf_fix</c> is called here so we don't have to put it in every ebuild.
+      ( <e>So</e> many packages need it ) You must remember if you override src_unpack,
+      you need to call gnome2_src_unpack, add gnome2_omf_fix in after the patches, or
+      test to make sure gnome2_omf_fix not needed for that package.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>src_configure</c>
+    </ti>
+    <ti>
+      Runs <c>elibtoolize</c> on the package, sets <c>GST_REGISTRY</c> variable to work
+      around some access violations caused by gstreamer packages.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>src_install</c>
+    </ti>
+    <ti>
+      Delays gconf schemas from being installed until postinst
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>gconf_install</c>
+    </ti>
+    <ti>
+      Installs GConf schema files using gconftool.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>scrollkeeper_update</c>
+    </ti>
+    <ti>
+      Runs scrollkeeper update if <c>SCROLLKEEPER_UPDATE</c> is not 0.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>pkg_postinst</c>
+    </ti>
+    <ti>
+      Calls <c>gconf_install</c>, <c>scrollkeeper_update</c>, <c>fdo-mime_desktop_database_update</c>,
+      <c>fdo-mime_mime_database_update</c>, <c>gnome2_icon_cache_update</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>pkg_postrm</c>
+    </ti>
+    <ti>
+      Calls <c>scrollkeeper_update</c>, <c>fdo-mime_desktop_database_update</c>,
+      <c>fdo-mime_mime_database_update</c>, <c>gnome2_icon_cache_update</c>.
+    </ti>
+  </tr>
+</table>
+
+</body>
+</subsection>
+
+</body>
+</chapter>
+</guide>
