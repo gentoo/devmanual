@@ -30,7 +30,7 @@ The <c>gnome2.eclass</c> provides functions for working with Gnome applications.
       Always put this variable inside <c>pkg_setup</c>.  Putting it outside <c>pkg_setup</c>
       is a QA violation.
       <p>
-      For Example:
+      For example:
 <codesample lang="ebuild">
 pkg_setup() {
     G2CONF="--disable-scrollkeeper \
