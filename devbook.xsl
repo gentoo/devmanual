@@ -108,7 +108,8 @@
                       $data = '-gt' or $data = 'elif' or $data = 'else' or $data = 'eval' or $data = 'unset' or $data = 'sed' or
                       $data = 'rm' or $data = 'cat' or $data = '[[' or $data = ']]' or $data = 'while' or $data = 'do' or $data = 'read' or
                       $data = 'done' or $data = 'make' or $data = 'echo' or $data = 'cd' or $data = 'local' or $data = 'return' or
-                      $data = 'for' or $data = 'case' or $data = 'esac' or $data = 'in'">
+                      $data = 'for' or $data = 'case' or $data = 'esac' or $data = 'in' or $data = '-n' or $data = '[' or $data = ']' or
+                      $data = '-z' or $data = '-f'">
 	<span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 

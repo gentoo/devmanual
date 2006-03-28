@@ -1,0 +1,1044 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/bash/">
+<chapter>
+<title><c>bash</c> -- Standard Shell</title>
+<body>
+
+<p>
+A thorough understanding of <c>bash</c> programming is vital when working with
+ebuilds.
+</p>
+
+<section>
+<title>Bash Conditionals</title>
+<body>
+
+<subsection>
+<title>Basic Selection</title>
+<body>
+
+<p>
+The basic conditional operator is the <c>if</c> statement:
+</p>
+
+<codesample lang="ebuild">
+if something ; then
+    do_stuff
+fi
+</codesample>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Multiple Selection</title>
+<body>
+
+<p>
+Multiple pronged selection can be done using <c>else</c> and <c>elif</c>:
+</p>
+
+<codesample lang="ebuild">
+if something ; then
+    do_stuff
+elif something_else ; then
+    do_other_stuff
+elif full_moon ; then
+    howl
+else
+    turn_into_a_newt
+fi
+</codesample>
+
+<warning>
+You <b>must</b> specify at least one statement inside each block. The
+following will <b>not</b> work:
+</warning>
+
+<codesample lang="ebuild">
+if some_stuff ; then
+    # A statement is required here. a blank or a comment
+    # isn't enough!
+else
+    einfo "Not some stuff"
+fi
+</codesample>
+
+<p>
+If you really don't want to restructure the block, you can use a single colon
+(<c>:</c>) on its own as a null statement.
+</p>
+
+<codesample lang="ebuild">
+if some_stuff ; then
+    # Do nothing
+    :
+else
+    einfo "Not some stuff"
+fi
+</codesample>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Selection Tests</title>
+<body>
+
+<p>
+To do comparisons or file attribute tests, <c>[ ]</c> or <c>[[ ]]</c> blocks are
+needed.
+</p>
+
+<codesample lang="ebuild">
+# is $foo zero length?
+if [[ -z "${foo}" ]] ; then
+    die "Please set foo"
+fi
+
+# is $foo equal to "moo"?
+if [[ "${foo}" == "moo" ]] ; then
+    einfo "Hello Larry"
+fi
+
+# does "${ROOT}/etc/deleteme" exist?
+if [[ -f "${ROOT}/etc/deleteme" ]] ; then
+    einfo "Please delete ${ROOT}/etc/readme manually!"
+fi
+</codesample>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Single versus Double Brackets in <c>bash</c></title>
+<body>
+
+<important>
+The <c>[[ ]]</c> form is generally safer than <c>[ ]</c> and should be used in
+all new code.
+</important>
+
+<p>
+This is because <c>[[ ]]</c> is a bash syntax construct, whereas <c>[ ]</c> is a
+program which happens to be implemented as an internal -- as such, cleaner
+syntax is possible with the former. For a simple illustration, consider:
+</p>
+
+<codesample lang="ebuild">
+bash$ [ -n $foo ] &amp;&amp; [ -z $foo ] &amp;&amp; echo "huh?"
+huh?
+bash$ [[ -n $foo ]] &amp;&amp; [[ -z $foo ]] &amp;&amp; echo "huh?"
+bash$
+</codesample>
+
+</body>
+</subsection>
+
+<subsection>
+<title>String Comparison in <c>bash</c></title>
+<body>
+
+<p>
+The general form of a string comparison is <c>string1 operator string2</c>. The
+following are available:
+</p>
+
+<table>
+  <tr>
+    <th>
+      Operator
+    </th>
+    <th>
+      Purpose
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>==</c> (also <c>=</c>)
+    </ti>
+    <ti>
+      String equality
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>!=</c>
+    </ti>
+    <ti>
+      String inequality
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>&lt;</c>
+    </ti>
+    <ti>
+      String lexiographic comparison (before)
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>&gt;</c>
+    </ti>
+    <ti>
+      String lexiographic comparison (after)
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>=~</c>
+    </ti>
+    <ti>
+      String regular expression match (<b>bash 3 only</b>, not currently allowed in ebuilds)
+    </ti>
+  </tr>
+</table>
+
+</body>
+</subsection>
+
+<subsection>
+<title>String Tests in <c>bash</c></title>
+<body>
+
+<p>
+The general form of string tests is <c>-operator "string"</c>. The following are
+available:
+</p>
+
+<table>
+  <tr>
+    <th>
+      Operator
+    </th>
+    <th>
+      Purpose
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>-z "string"</c>
+    </ti>
+    <ti>
+      String has zero length
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-n "string"</c>
+    </ti>
+    <ti>
+      String has non-zero length
+    </ti>
+  </tr>
+</table>
+
+<note>
+To check whether a variable is set and not blank, use <c>-n "${BLAH}"</c>
+rather than <c>-n $BLAH</c>. The latter will cause problems in some situations if
+the variable is unset.
+</note>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Integer Comparison in <c>bash</c></title>
+<body>
+
+<p>
+The general form of integer comparisons is <c>int1 -operator int2</c>. The
+following are available:
+</p>
+
+<table>
+  <tr>
+    <th>
+      Operator
+    </th>
+    <th>
+      Purpose
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>-eq</c>
+    </ti>
+    <ti>
+      Integer equality
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-ne</c>
+    </ti>
+    <ti>
+      Integer inequality
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-lt</c>
+    </ti>
+    <ti>
+      Integer less than
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-le</c>
+    </ti>
+    <ti>
+      Integer less than or equal to
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-gt</c>
+    </ti>
+    <ti>
+      Integer greater than
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-ge</c>
+    </ti>
+    <ti>
+      Integer greater than or equal to
+    </ti>
+  </tr>
+</table>
+
+</body>
+</subsection>
+
+<subsection>
+<title>File Tests in <c>bash</c></title>
+<body>
+
+<p>
+The general form of a file test is <c>-operator "filename"</c>. The following are
+available (lifted from `bash-1`_):
+</p>
+
+<table>
+  <tr>
+    <th>
+      Operator
+    </th>
+    <th>
+      Purpose
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>-a file</c>
+    </ti>
+    <ti>
+      Exists (use <c>-e</c> instead)
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-b file</c>
+    </ti>
+    <ti>
+      Exists and is a block special file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-c file</c>
+    </ti>
+    <ti>
+      Exists and is a character special file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-d file</c>
+    </ti>
+    <ti>
+      Exists and is a directory
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-e file</c>
+    </ti>
+    <ti>
+      Exists
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-f file</c>
+    </ti>
+    <ti>
+      Exists and is a regular file
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-g file</c>
+    </ti>
+    <ti>
+      Exists and is set-group-id
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-h file</c>
+    </ti>
+    <ti>
+      Exists and is a symbolic link
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-k file</c>
+    </ti>
+    <ti>
+      Exists and its sticky bit is set
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-p file</c>
+    </ti>
+    <ti>
+      Exists and is a named pipe (FIFO)
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-r file</c>
+    </ti>
+    <ti>
+      Exists and is readable
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-s file</c>
+    </ti>
+    <ti>
+      Exists and has a size greater than zero
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-t fd</c>
+    </ti>
+    <ti>
+      Descriptor fd is open and refers to a terminal
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-u file</c>
+    </ti>
+    <ti>
+      Exists and its set-user-id bit is set
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-w file</c>
+    </ti>
+    <ti>
+      Exists and is writable
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-x file</c>
+    </ti>
+    <ti>
+      Exists and is executable
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-O file</c>
+    </ti>
+    <ti>
+      Exists and is owned by the effective user id
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-G file</c>
+    </ti>
+    <ti>
+      Exists and is owned by the effective group id
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-L file</c>
+    </ti>
+    <ti>
+      Exists and is a symbolic link
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-S file</c>
+    </ti>
+    <ti>
+      Exists and is a socket
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-N file</c>
+    </ti>
+    <ti>
+      Exists and has been modified since it was last read
+    </ti>
+  </tr>
+</table>
+
+</body>
+</subsection>
+
+<subsection>
+<title>File Comparison in <c>bash</c></title>
+<body>
+
+<p>
+The general form of a file comparison is <c>"file1" -operator "file2"</c>. The
+following are available (lifted from `bash-1`_):
+</p>
+
+<table>
+  <tr>
+    <th>
+      Operator
+    </th>
+    <th>
+      Purpose
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>file1 -nt file2</c>
+    </ti>
+    <ti>
+      file1 is newer (according to modification date) than
+      file2, or if file1 exists and file2 does not.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>file1 -ot file2</c>
+    </ti>
+    <ti>
+      file1 is older than file2, or if file2 exists and
+      file1 does not.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>file1 -ef file2</c>
+    </ti>
+    <ti>
+      file1 and file2 refer to the same device and inode
+      numbers.
+    </ti>
+  </tr>
+</table>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Boolean Algebra in <c>bash</c></title>
+<body>
+
+<p>
+There are constructs available for boolean algebra ('and', 'or' and 'not').
+These are used <e>outside</e> of the <c>[[ ]]</c> blocks. For operator precedence, use
+<c>( )</c>.
+</p>
+
+<table>
+  <tr>
+    <th>
+      Construct
+    </th>
+    <th>
+      Effect
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>first || second</c>
+    </ti>
+    <ti>
+      first <e>or</e> second (short circuit)
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>
+        first &amp;&amp; second</c>
+    </ti>
+    <ti>
+      first <e>and</e> second (short circuit)
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>! condition</c>
+    </ti>
+    <ti>
+      <e>not</e> condition
+    </ti>
+  </tr>
+</table>
+
+
+<note>
+These will also sometimes work <e>inside</e> <c>[[ ]]</c> constructs, and using
+<c>!</c> before a test is fairly common. <c>[[ ! -foo ]] &amp;&amp; bar</c> is fine. However,
+there are catches -- <c>[[ -f foo &amp;&amp; bar ]]</c> will <b>not</b> work properly, since
+commands cannot be run inside <c>[[ ]]</c> blocks.
+</note>
+
+<p>
+Inside <c>[ ]</c> blocks, several <c>-test</c> style boolean operators are available.
+These should be avoided in favour of <c>[[ ]]</c> and the above operators.
+</p>
+
+</body>
+</subsection>
+
+</body>
+</section>
+
+<section>
+<title>Bash Iterative Structures</title>
+<body>
+
+<p>
+There are a few simple iterative structures available from within <c>bash</c>. The
+most useful of these is a <c>for</c> loop. This can be used to perform the same
+task upon multiple items.
+</p>
+
+<codesample lang="ebuild">
+for myvar in "the first" "the second" "and the third" ; do
+    einfo "This is ${myvar}"
+done
+</codesample>
+
+<p>
+There is a second form of the <c>for</c> loop which can be used for repeating an
+event a given number of times.
+</p>
+
+<codesample lang="ebuild">
+for (( i = 1 ; i &lt;= 10 ; i++ )) ; do
+    einfo "i is ${i}"
+done
+</codesample>
+
+<p>
+There is also a <c>while</c> loop, although this is usually not useful within
+ebuilds.
+</p>
+
+<codesample lang="ebuild">
+while hungry ; do
+    eat_cookies
+done
+</codesample>
+
+<p>
+This is most commonly used to iterate over lines in a file:
+</p>
+
+<codesample lang="ebuild">
+while read myline ; do
+    einfo "It says ${myline}"
+done &lt; some_file
+</codesample>
+
+<p>
+See `die and Subshells`_ for an explanation of why <c>while read &lt; file</c> should
+be used over <c>cat file | while read</c>.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Bash Variable Manipulation</title>
+<body>
+
+<p>
+There are a number of special <c>${}</c> constructs in <c>bash</c> which either
+manipulate or return information based upon variables. These can be used instead
+of expensive (or illegal, if we're in global scope) external calls to <c>sed</c>
+and friends.
+</p>
+
+<subsection>
+<title><c>bash</c> String Length</title>
+<body>
+
+<p>
+The <c>${#somevar}</c> construct can be used to obtain the length of a string
+variable.
+</p>
+
+<codesample lang="ebuild">
+somevar="Hello World"
+echo "${somevar} is ${#somevar} characters long"
+</codesample>
+
+</body>
+</subsection>
+
+<subsection>
+<title><c>bash</c> Variable Default Values</title>
+<body>
+
+<p>
+There are a number of ways of using a default value if a variable is unset or
+zero length. The <c>${var:-value}</c> construct expands to the value of <c>${var}</c>
+if it is set and not null, or <c>value</c> otherwise. The <c>${var:value}</c>
+construct is similar, but checks only that the variable is set.
+</p>
+
+<p>
+The <c>${var:=value}</c> and <c>${var=value}</c> forms will also assign <c>value</c> to
+<c>var</c> if <c>var</c> is unset (and not null for the <c>:=</c> form).
+</p>
+
+<p>
+The <c>${var:?message}</c> form will display <c>message</c> to stderr and then exit if
+<c>var</c> is unset or null. This should generally not be used within ebuilds as it
+does not use the <c>die</c> mechanism. There is a <c>${var?message}</c> form too.
+</p>
+
+<p>
+The <c>${var:+value}</c> form expands to <c>value</c> if <c>var</c> is set and not null,
+or a blank string otherwise. There is a <c>${var+value}</c> form.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title><c>bash</c> Substring Extraction</title>
+<body>
+
+<p>
+The <c>${var:offset}</c> and <c>${var:offset:length}</c> constructs can be used to
+obtain a substring. Strings are zero-indexed. Both <c>offset</c> and <c>length</c> are
+arithmetic expressions.
+</p>
+
+<p>
+The first form with a positive offset returns a substring starting with the
+character at <c>offset</c> and continuing to the end of a string. If the offset is
+negative, the offset is taken relative to the <e>end</e> of the string.
+</p>
+
+<note>
+For reasons which will not be discussed here, any negative value must be
+an <e>expression</e> which results in a negative value, rather than simply a negative
+value. The best way to handle this is to use <c>${var:0-1}</c>. <c>${var:-1}</c> will
+<b>not</b> work.
+</note>
+
+<p>
+The second form returns the first <c>length</c> characters of the value of
+<c>${var}</c> starting at <c>offset</c>. If <c>offset</c> is negative, the offset is
+taken from the <e>end</e> of the string. The <c>length</c> parameter <e>must not</e> be less
+than zero. Again, negative <c>offset</c> values must be given as an expression.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title><c>bash</c> Command Substitution</title>
+<body>
+
+<p>
+The <c>$(command )</c> construct can be used to run a command and capture the
+output (<c>stdout</c>) as a string.
+</p>
+
+<note>
+The <c>`command`</c> construct also does this, but should be avoided in
+favour of <c>$(command )</c> for clarity, ease of reading and nesting purposes.
+</note>
+
+<codesample lang="ebuild">
+myconf="$(use_enable acl ) $(use_enable nls ) --with-tlib=ncurses"
+</codesample>
+
+</body>
+</subsection>
+
+<subsection>
+<title><c>bash</c> String Replacements</title>
+<body>
+
+<p>
+There are three basic string replacement forms available: <c>${var#pattern}</c>,
+<c>${var%pattern}</c> and <c>${var/pattern/replacement}</c>. The first two are used
+for deleting content from the start and end of a string respectively. The third
+is used to replace a match with different content.
+</p>
+
+<p>
+The <c>${var#pattern}</c> form will return <c>var</c> with the shortest match of
+<c>pattern</c> at the start of the value of <c>var</c> deleted. If no match can be
+made, the value of <c>var</c> is given. To delete the <e>longest</e> match at the start,
+use <c>${var##pattern}</c> instead.
+</p>
+
+<p>
+The <c>${var%pattern}</c> and <c>${var%%pattern}</c> forms are similar, but delete the
+shortest and longest matches at the <e>end</e> of <c>var</c> respectively.
+</p>
+
+<note>
+The terms <e>greedy</e> and <e>non-greedy</e> are sometimes used here (<c>%</c> and
+<c>#</c> being the non-greedy forms). This is arguably incorrect, but the terms
+are fairly close.
+</note>
+
+<p>
+The <c>${var/pattern/replacement}</c> construct expands to the value of <c>var</c>
+with the first match of <c>pattern</c> replaced with <c>replacement</c>. To replace
+<e>all</e> matches, <c>${var//pattern/replacement}</c> can be used.
+</p>
+
+<note>
+`bash-1`_ incorrectly describes what will be matched. Of all the possible
+leftmost matches, the longest will be taken. Yes, really, the longest, even if
+it involves favouring later groups or later branches. This is <b>not</b> like
+<c>perl</c> or <c>sed</c>. See `IEEE1003.1-2004-9.1`_ for details.
+</note>
+
+<p>
+To match only if <c>pattern</c> occurs at the start of the value of <c>var</c>, the
+pattern should begin with a <c>#</c> character. To match only at the end, the
+pattern should begin with a <c>%</c>.
+</p>
+
+<p>
+If <c>replacement</c> is null, matches are deleted and the <c>/</c> following
+<c>pattern</c> may be omitted.
+</p>
+
+<p>
+The <c>pattern</c> may contain a number of special metacharacters for pattern
+matching.
+</p>
+
+<todo>
+tables of bash metachars
+</todo>
+
+<p>
+If the <c>extglob</c> shell option is enabled, a number of additional constructs
+are available. These can be <e>extremely</e> useful sometimes.
+</p>
+
+<todo>
+table of extra bash goodies
+</todo>
+
+</body>
+</subsection>
+
+<subsection>
+<title><c>bash</c> Arithmetic Expansion</title>
+<body>
+
+<p>
+The <c>$(( expression ))</c> construct can be used for integer arithmetic
+evaluation. <c>expression</c> is a C-like arithmetic expression. The following
+operators are supported (the table is in order of precedence, highest first):
+</p>
+
+<table>
+  <tr>
+    <th>
+      Operators
+    </th>
+    <th>
+      Effect
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>var++</c>, <c>var--</c>
+    </ti>
+    <ti>
+      Variable post-increment, post-decrement
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>++var</c>, <c>--var</c>
+    </ti>
+    <ti>
+      Variable pre-increment, pre-decrement
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>-</c>, <c>+</c>
+    </ti>
+    <ti>
+      Unary minus and plus
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>!</c>, <c>~</c>
+    </ti>
+    <ti>
+      Logical negation, bitwise negation
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>**</c>
+    </ti>
+    <ti>
+      Exponentiation
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>*</c>, <c>/</c>, <c>%</c>
+    </ti>
+    <ti>
+      Multiplication, division, remainder
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>+</c>, <c>-</c>
+    </ti>
+    <ti>
+      Addition, subtraction
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>&lt;&lt;</c>, <c>&gt;&gt;</c>
+    </ti>
+    <ti>
+      Left, right bitwise shifts
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>&lt;=</c>, <c>&gt;=</c>, <c>&lt;</c>, <c>&gt;</c>
+    </ti>
+    <ti>
+      Comparison: less than or equal to, greater than or
+      equal to, strictly less than, strictly greater than
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>==</c>, <c>!=</c>
+    </ti>
+    <ti>
+      Equality, inequality
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>&amp;</c>
+    </ti>
+    <ti>
+      Bitwise AND
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>^</c>
+    </ti>
+    <ti>
+      Bitwise exclusive OR
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>|</c>
+    </ti>
+    <ti>
+      Bitwise OR
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>&amp;&amp;</c>
+    </ti>
+    <ti>
+      Logical AND
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>||</c>
+    </ti>
+    <ti>
+      Logical OR
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>expr ? expr : expr</c>
+    </ti>
+    <ti>
+      Conditional operator
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>=</c>, <c>*=</c>, <c>/=</c>, <c>%=</c>, <c>+=</c>, <c>-=</c>, <c>&lt;&lt;=</c>,
+      <c>&gt;&gt;=</c>, <c>&amp;=</c>, <c>^=</c>, <c>|=</c>
+    </ti>
+    <ti>
+      Assignment
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>expr1 , expr2</c>
+    </ti>
+    <ti>
+      Multiple statements
+    </ti>
+  </tr>
+</table>
+
+<note>
+There is no <c>**=</c> assignment operator.
+</note>
+
+</body>
+</subsection>
+
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>

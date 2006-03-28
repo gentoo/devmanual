@@ -23,8 +23,8 @@ Note that most eclasses have an accompanying manual page -- see `Manual Pages`_.
 <include href="eutils.eclass/"/>
 <include href="fdo-mime.eclass/"/>
 <include href="flag-o-matic.eclass/"/>
+<include href="gnome2.eclass/"/>
 <include href="rpm.eclass/"/>
 <include href="subversion.eclass/"/>
-<include href="gnome2.eclass/"/>
 
 </guide>

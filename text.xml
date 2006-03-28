@@ -42,4 +42,5 @@ section for how to get started.
 <include href="tasks-reference/"/>
 <include href="function-reference/"/>
 <include href="eclass-reference/"/>
+<include href="tools-reference/"/>
 </guide>
