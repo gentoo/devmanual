@@ -73,6 +73,13 @@
 	<span class="Identifier">$<xsl:value-of select="substring($data, 2)"/></span>
       </xsl:when>
 
+      <xsl:when test="substring($data, 1, 1) = '(' and not(contains($data, ')'))">
+        <span class="PreProc">(</span>
+        <xsl:call-template name="highlight-subtokenate">
+          <xsl:with-param name="data" select="substring($data, 2, string-length($data))"/>
+        </xsl:call-template>
+      </xsl:when>
+
       <xsl:when test="$nokeywords">
         <xsl:value-of select="$data"/>
       </xsl:when>
