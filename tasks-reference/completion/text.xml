@@ -360,9 +360,11 @@ Lines 1-12 are pretty much the same as in the previous section.
       15
     </ti>
     <ti>
-      If <c>${prev}</c> is equal to -X|--package-names, call _pkgname (a function
-      defined by <c>gentoo-bashcomp</c> that completes on package names - it sets
-      <c>${COMPREPLY}</c>, so we don't worry about that here).
+      If <c>${prev}</c> is equal to <c>-X</c>
+      or <c>--package-names</c>, call <c>_pkgname</c> (a function
+      defined by <c>gentoo-bashcomp</c> that completes on package
+      names - it sets <c>${COMPREPLY}</c>, so we don't worry about
+      that here).
     </ti>
   </tr>
   <tr>
@@ -370,9 +372,10 @@ Lines 1-12 are pretty much the same as in the previous section.
       18
     </ti>
     <ti>
-      If <c>${prev}</c> is equal to --soname, generate a list of all shared libs
-      in /lib and /usr/lib*.  Pass that list to <c>compgen</c> to generate a list
-      of possible completions that match <c>${cur}</c>.
+      If <c>${prev}</c> is equal to <c>--soname</c>, generate a list
+      of all shared libs in <c>/lib</c> and <c>/usr/lib*</c>. Pass
+      that list to <c>compgen</c> to generate a list of possible
+      completions that match <c>${cur}</c>.
     </ti>
   </tr>
   <tr>
@@ -381,7 +384,7 @@ Lines 1-12 are pretty much the same as in the previous section.
     </ti>
     <ti>
       Obviously we cannot complete on any regexp's so if <c>${prev}</c> is equal
-      to --soname-regexp, do nothing.
+      to <c>--soname-regexp</c>, do nothing.
     </ti>
   </tr>
   <tr>
@@ -391,7 +394,7 @@ Lines 1-12 are pretty much the same as in the previous section.
     <ti>
       For anything else (any options not specified in the case statement above
       OR any argument to one of the options specified in the case statement)
-      perform the tests.  Since --package-names can take multiple package
+      perform the tests. Since <c>--package-names</c> can take multiple package
       names, we want to continue to complete on package names until another
       recognized option is encountered (ie. is <c>${prev}</c>).
     </ti>
@@ -401,8 +404,8 @@ Lines 1-12 are pretty much the same as in the previous section.
       30
     </ti>
     <ti>
-      Since _pkgname sets <c>${COMPREPLY}</c> and we want to add to that list,
-      we have to use the COMPREPLY=(${COMPREPLY[@] ... ) construct.
+      Since <c>_pkgname</c> sets <c>${COMPREPLY}</c> and we want to add to that list,
+      we have to use the <c>COMPREPLY=(${COMPREPLY[@] ... )</c> construct.
     </ti>
   </tr>
   <tr>
@@ -410,7 +413,7 @@ Lines 1-12 are pretty much the same as in the previous section.
       37
     </ti>
     <ti>
-      Tell bash to use _revdep_rebuild to generate all possible completions
+      Tell bash to use <c>_revdep_rebuild</c> to generate all possible completions
       for revdep-rebuild.
     </ti>
   </tr>

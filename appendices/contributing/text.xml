@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<guide self="appendices/contributing/">
+<chapter>
+<title>Contributing to This Document</title>
+
+<body>
+<p>
+Contributions for this document are highly welcomed. Whether you've found a typo
+or have written an entire new section, the best way to get in touch is to `send
+an email to plasmaroo.
+</p>
+
+<p>
+The editor reserves the right to modify submissions as he sees fit. Any
+substantial changes will of course be discussed with the submitter first --
+unless explicitly requested, minor typo corrections and formatting fixes will
+not be discussed.
+</p>
+
+<p>
+This document is licensed under the <uri link="http://creativecommons.org/licenses/by-sa/2.0/">
+Creative Commons Attribution-ShareAlike 2.0 License </uri>. If this is a problem,
+don't submit anything.
+</p>
+
+<p>
+This document is produced using the DevBook XML build system. You can download
+a snapshot of the system as well as the relevant XML files here: :FIXME:. You
+can also view the XML of any page by adding <c>./text.xml</c> to the URL. If
+you'd rather just work with plain text, that's fine too -- the formatting can
+be easily done by someone else.
+</p>
+</body>
+
+<section>
+<title>Quick Introduction to DevBook XML</title>
+<body>
+
+<p>
+DevBook XML is heavily based on <uri link="http://www.gentoo.org/doc/en/xml-guide.xml">
+GuideXML</uri> and many tags are similar, if not the same. The main differences
+occur in layout which are designed to make a large-scale publication easier
+to produce and manage using a hierachical tree system. Before starting off you
+really should first examine the GuideXML guide in a reasonable amount of depth.
+</p>
+
+<subsection>
+<title>Differences to GuideXML</title>
+<body>
+
+<dl>
+  <dt>
+    Indentation
+  </dt>
+  <dd>
+    <p>
+      Indent when needed -- you should not indent any section flow elements such as
+      <c>&lt;subsection&gt;</c> but do indent tables, lists and definition lists.
+      Do <e>not</e> indent text in ordinary paragraph blocks.
+    </p>
+  </dd>
+  <dt>
+    Code Samples
+  </dt>
+  <dd>
+    <p>
+      You can use the normal GuideXML tag <c>&lt;pre&gt;</c> when you need no syntax
+      highlighting. When you need syntax highlighting use the <c>&lt;codesample&gt;</c>
+      tag along with a <c>lang</c> attribute -- usually you want this to be set to
+      <c>ebuild</c> to syntax highlight ebuild code snippets.
+    </p>
+  </dd>
+  <dt>
+    Hierachy
+  </dt>
+  <dd>
+    <p>
+      The whole document is organized as a tree. Each directory can contain one
+      document. Each document can inherit multiple sub-documents using the
+      <c>&lt;include&gt;</c> flag. You <b>must</b> ensure that the <c>self</c> tag
+      in each document correctly points to the relative path of the document from
+      the root node so that the tree-walking algorithms work correctly.
+    </p>
+  </dd>
+</dl>
+
+</body>
+</subsection>
+</body>
+</section>
+
+<section>
+<title>Style Guidelines</title>
+<body>
+
+<ul>
+  <li>
+  This document is in British English. Submissions in other kinds of English are
+  welcome, but they may have their spelling corrected.
+  </li>
+  <li>
+  Third person form should be used rather than first.
+  </li>
+  <li>
+  This is not a formal document. The writing style is intended to be
+  professional but readable.
+  </li>
+  <li>
+  When using in-sentence hyphens as punctuation <d/> like this <d/> use a space,
+  followed by the <c>&lt;d/&gt;</c> tag. The build system will automatically turn
+  this into a proper Unicode long dash.
+  </li>
+</ul>
+
+</body>
+</section>
+</chapter>
+
+</guide>
+

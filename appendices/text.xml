@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<guide self="appendices/">
+<chapter>
+<title>Appendices</title>
+
+<body>
+<p>
+This section incorporates various auxiliary documents which may be useful as a reference.
+</p>
+</body>
+
+<section>
+<title>Contents</title>
+<body>
+<contentsTree/>
+</body>
+</section>
+</chapter>
+
+<include href="contributing/"/>
+
+</guide>
