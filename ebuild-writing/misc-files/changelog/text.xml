@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/misc-files/changelog/">
+<chapter>
+<title>ChangeLog</title>
+
+<body>
+<p>
+The <c>ChangeLog</c> should be used to record all non-trivial changes
+to ebuilds, including <e>keywording changes</e>. The echangelog tool
+should be used to create <c>ChangeLog</c> entries — the format of a
+<c>ChangeLog</c> is now defined as "whatever <c>echangelog</c>
+creates".
+</p>
+
+<p>
+You should include references to any relevant bugs. The standard
+format for doing this is via the phrase <c>bug #20600</c> — this
+format (with the hash sign included) is recognised via
+<uri link="http://packages.gentoo.org">packages.gentoo.org</uri> and
+similar tools. When including user-submitted ebuilds or patches, you
+should credit the user with their full name and email address (or
+whatever they use to identify themselves on bugzilla <d/> some users
+prefer to be known only by a nickname).
+</p>
+
+<p>
+If you are changing keywords, make sure you clearly state what
+keywords you add or remove. "Marked stable" is a nuisance for
+architecture teams, even if there was only one keyword in the ebuild
+at the time. "Stable on all archs" isn't generally any better (and
+should you really be stabling on all archs?) — do you mean "all", or
+"all the ones that are currently keyworded"? A list like "x86 sparc
+mips" is much more useful.
+</p>
+
+<p>
+A typical <c>ChangeLog</c> snippet might look like the following:
+</p>
+
+<pre>
+    *vim-6.3.068 (25 Mar 2005)
+
+      25 Mar 2005; Ciaran McCreesh &lt;ciaranm@gentoo.org&gt; +vim-6.3.068.ebuild:
+      New release. Fixes bug #79981, bug #81289, bug #83383, bug #83416, bug
+      #83565, bug #85758, upstream patches up to 6.3.068.
+
+      22 Mar 2005; Aron Griffis &lt;agriffis@gentoo.org&gt; vim-6.3-r4.ebuild:
+      Stable on alpha
+</pre>
+
+<section>
+<title>Writing correct ChangeLog messages</title>
+<body>
+<note>
+It is <b>very</b> important that your <c>cvs commit</c> messages are
+also informative to aid the QA team or architecture teams as well as
+other developers if they are trying to troubleshoot issues which are
+known to not have occured in previous versions of ebuilds, for
+example. If your ChangeLog message is concise there is usually nothing
+wrong with using it as the <c>cvs commit</c> message.
+</note>
+
+<p>
+Your message should explain what specifically you changed and, if
+relevant, why. You don't need to write an essay or even a complete
+sentence (<c>ChangeLog</c> messages, however, are required to be in
+'proper' English so no <c>fixed that bug kthx Bob</c> messages —
+please do use punctuation), so long as it is easily understandable and
+(preferably) greppable. Bad and good examples, all of which are based
+upon real messages:
+</p>
+
+<ul>
+  <li><b>BAD:</b> Changed keywords</li>
+  <li><e>GOOD:</e> Added ~x86 keyword</li>
+</ul>
+
+<ul>
+  <li><b>BAD:</b> Stable</li>
+  <li><e>GOOD:</e> Stable on x86, sparc, mips</li>
+</ul>
+
+<ul>
+  <li><b>BAD:</b> Fix stuff</li>
+  <li><e>GOOD:</e> Fix USE=foo logic error</li>
+</ul>
+
+<ul>
+  <li><b>BAD:</b> .</li>
+  <li><e>GOOD:</e> Purge old ebuilds</li>
+</ul>
+
+<ul>
+  <li>
+    <b>BAD:</b> Who the fuck reads this anyway? (<b>Editor's note</b>:
+    No, seriously, this is a genuine example. Do <e>not</e> do
+    this...)
+  </li>
+  <li><e>GOOD:</e> Version bump to 0.5.1.</li>
+</ul>
+
+</body>
+</section>
+</body>
+</chapter>
+</guide>

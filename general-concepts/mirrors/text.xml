@@ -40,9 +40,9 @@ have a reliable mirror setup.
 
 <p>
 There is also <c>RESTRICT="fetch"</c>, which prevents portage from trying to
-fetch anything manually. The `pkg_nofetch`_ function will be called if any
-<c>SRC_URI</c> components cannot be found. This should only be used if a license
-requires it.
+fetch anything manually. The <uri link="::ebuild-writing/functions/pkg_nofetch">
+pkg_nofetch</uri> function will be called if any <c>SRC_URI</c> components cannot be
+found. This should only be used if a license requires it.
 </p>
 </body>
 </subsection>

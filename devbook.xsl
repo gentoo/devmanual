@@ -454,10 +454,10 @@
         </xsl:call-template>
       </xsl:variable>
 
-      <h3><a name="${anchor}"><xsl:apply-templates select="title"/></a></h3>
+      <h3><a name="{$anchor}"><xsl:apply-templates select="title"/></a></h3>
       <xsl:apply-templates select="(body)"/>
 
-      <!-- If you need, change here to add more nesting -->
+      <!-- If you need, change here to add more nesting levels -->
     </div>
   </xsl:template>
 

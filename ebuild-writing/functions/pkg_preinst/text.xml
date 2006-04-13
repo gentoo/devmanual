@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/pkg_preinst/">
+<chapter>
+<title>pkg_preinst</title>
+
+<body>
+<table>
+  <tr>
+    <th>Function</th>
+    <ti><c>pkg_preinst</c></ti>
+  </tr>
+  <tr>
+    <th>Purpose</th>
+    <ti>Called before image is installed to <c>${ROOT}</c></ti>
+  </tr>
+  <tr>
+    <th>Sandbox</th>
+    <ti>Disabled</ti>
+  </tr>
+  <tr>
+    <th>Privilege</th>
+    <ti>root</ti>
+  </tr>
+  <tr>
+    <th>Called for</th>
+    <ti>ebuild, binary</ti>
+  </tr>
+</table>
+</body>
+
+<section>
+<title>Default <c>pkg_preinst</c></title>
+<body>
+<codesample lang="ebuild">
+pkg_preinst()
+{
+    return
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Sample <c>pkg_preinst</c></title>
+<body>
+<codesample lang="ebuild">
+pkg_preinst() {
+    enewgroup foo
+    enewuser foo -1 /bin/false /dev/null foo
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Common <c>pkg_preinst</c> Tasks</title>
+<body>
+<p>
+There are a few things that are often done in <c>pkg_preinst</c>:
+</p>
+
+<ul>
+  <li>
+  Adding users and groups <d/> see <uri link="::ebuild-writing/users-and-groups"/>.
+  </li>
+  <li>
+  Modifying the install image for a particular system. This function
+  allows system-specific customisation to be done even when installing
+  from a binary. The most useful example is probably smart
+  configuration file updating <d/> a <c>pkg_preinst</c> could check a
+  configuration file in <c>${ROOT}/etc/</c> and create a smart updated
+  version in <c>${IMAGE}/etc/</c> (see
+  <uri link="::general-concepts/install-destinations"/>) rather than
+  always trying to install the default configuration file (remember
+  <uri link="::general-concepts/config-protect"/>).
+  </li>
+</ul>
+</body>
+</section>
+
+</chapter>
+</guide>

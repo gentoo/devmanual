@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/pkg_prerm/">
+<chapter>
+<title>pkg_prerm</title>
+
+<body>
+<table>
+  <tr>
+    <th>Function</th>
+    <ti><c>pkg_prerm</c></ti>
+  </tr>
+  <tr>
+    <th>Purpose</th>
+    <ti>Called before a package is unmerged</ti>
+  </tr>
+  <tr>
+    <th>Sandbox</th>
+    <ti>Disabled</ti>
+  </tr>
+  <tr>
+    <th>Privilege</th>
+    <ti>root</ti>
+  </tr>
+  <tr>
+    <th>Called for</th>
+    <ti>ebuild, binary</ti>
+  </tr>
+</table>
+</body>
+
+<section>
+<title>Default <c>pkg_prerm</c></title>
+<body>
+<codesample lang="ebuild">
+pkg_prerm()
+{
+    return
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Sample <c>pkg_prerm</c></title>
+<body>
+<codesample lang="ebuild">
+pkg_prerm() {
+    # clean up temp files
+    [[ -d "${ROOT}/var/tmp/foo" ]] &amp;&amp; rm -rf "${ROOT}/var/tmp/foo"
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Common <c>pkg_prerm</c> Tasks</title>
+<body>
+<p>
+<c>pkg_prerm</c> is used to clean up any files that would otherwise prevent
+a clean unmerge.
+</p>
+</body>
+</section>
+
+</chapter>
+</guide>

@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_test/">
+<chapter>
+<title>src_test</title>
+
+<body>
+<table>
+  <tr>
+    <th>Function</th>
+    <ti><c>src_test</c></ti>
+  </tr>
+  <tr>
+    <th>Purpose</th>
+    <ti>Run pre-install test scripts</ti>
+  </tr>
+  <tr>
+    <th>Sandbox</th>
+    <ti>Enabled</ti>
+  </tr>
+  <tr>
+    <th>Privilege</th>
+    <ti>user</ti>
+  </tr>
+  <tr>
+    <th>Called for</th>
+    <ti>ebuild</ti>
+  </tr>
+</table>
+</body>
+
+<section>
+<title>Default <c>src_test</c></title>
+<body>
+<codesample lang="ebuild">
+src_test()
+{
+    addpredict /
+    if make check -n &amp;&gt; /dev/null; then
+            echo "&gt;&gt;&gt; Test phase [check]: ${CATEGORY}/${PF}"
+            if ! make check; then
+                    hasq maketest $FEATURES &amp;&amp; die "Make check failed. See above for details."
+                    hasq maketest $FEATURES || eerror "Make check failed. See above for details."
+            fi
+    elif make test -n &amp;&gt; /dev/null; then
+            echo "&gt;&gt;&gt; Test phase [test]: ${CATEGORY}/${PF}"
+            if ! make test; then
+                    hasq maketest $FEATURES &amp;&amp; die "Make test failed. See above for details."
+                    hasq maketest $FEATURES || eerror "Make test failed. See above for details."
+            fi
+    else
+            echo "&gt;&gt;&gt; Test phase [none]: ${CATEGORY}/${PF}"
+    fi
+    SANDBOX_PREDICT="${SANDBOX_PREDICT%:/}"
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Sample <c>src_test</c></title>
+<body>
+<codesample lang="ebuild">
+src_test() {
+    cd ${S}/src/testdir
+
+    # Test 49 won't work inside a portage environment
+    sed -i -e 's~test49.out~~g' Makefile
+
+    # Try to run the non-gui tests only
+    make test-nongui \
+            || die "At least one test failed"
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Common <c>src_test</c> Tasks</title>
+<body>
+<p>
+Often the default <c>src_test</c> is fine. Sometimes it is necessary
+to remove certain tests from the list if they cannot be used with a
+portage environment. Reasons for such a failure could include:
+</p>
+
+<ul>
+  <li>Needing to use X.</li>
+  <li>
+    Needing to work with files which are disallowed by the sandbox.
+  </li>
+  <li>Requiring user input (src_test must not be interactive).</li>
+  <li>Requiring root privileges.</li>
+</ul>
+
+<p>
+Usually, removing the relevant test from the <c>Makefile</c>
+using <c>sed</c> or skipping a particular <c>make</c> target is
+sufficient.
+</p>
+
+<note>
+<c>emake</c> should not be used for <c>src_test</c> <d/> trying to
+parallelise tests unless the <c>Makefile</c> was specifically designed
+for this can cause all sorts of strange problems.
+</note>
+
+<p>
+Try to ensure that tests work properly for your ebuild. A good test
+suite is extremely helpful for arch maintainers.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Skipping Tests</title>
+<body>
+<p>
+Sometimes it is necessary to skip tests entirely. This can be done
+using a dummy <c>src_test</c> function:
+</p>
+
+<codesample lang="ebuild">
+src_test() {
+    # Tests don't even remotely work inside portage
+    true
+}
+</codesample>
+
+<p>
+Another option would be to set <c>RESTRICT="test"</c> in the ebuild.
+</p>
+
+<note>
+If upstream provide a test suite which doesn't work, consider talking
+to them about getting it fixed. A broken test suite is worse than no
+test suite at all, since we are unable to tell whether a test failure
+indicates a genuine fault.
+</note>
+</body>
+</section>
+
+</chapter>
+</guide>

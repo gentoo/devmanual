@@ -31,6 +31,15 @@ obtain some <c>SRC_URI</c> components.
 </section>
 </chapter>
 
+<include href="pkg_nofetch/"/>
+<include href="pkg_setup/"/>
 <include href="src_unpack/"/>
 <include href="src_compile/"/>
+<include href="src_test/"/>
+<include href="src_install/"/>
+<include href="pkg_preinst/"/>
+<include href="pkg_postinst/"/>
+<include href="pkg_prerm/"/>
+<include href="pkg_postrm/"/>
+<include href="pkg_config/"/>
 </guide>

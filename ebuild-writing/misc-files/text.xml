@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/misc-files/">
+<chapter>
+<title>Miscellaneous Files</title>
+
+<body>
+<p>
+This section contains some notes on various miscellaneous files.
+</p>
+</body>
+
+<section>
+<title>Contents</title>
+<body>
+<contentsTree/>
+</body>
+</section>
+</chapter>
+
+<include href="metadata/"/>
+<include href="changelog/"/>
+<include href="patches/"/>
+</guide>

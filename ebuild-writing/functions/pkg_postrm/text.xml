@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/pkg_postrm/">
+<chapter>
+<title>pkg_postrm</title>
+
+<body>
+<table>
+  <tr>
+    <th>Function</th>
+    <ti><c>pkg_postrm</c></ti>
+  </tr>
+  <tr>
+    <th>Purpose</th>
+    <ti>Called after a package is unmerged</ti>
+  </tr>
+  <tr>
+    <th>Sandbox</th>
+    <ti>Disabled</ti>
+  </tr>
+  <tr>
+    <th>Privilege</th>
+    <ti>root</ti>
+  </tr>
+  <tr>
+    <th>Called for</th>
+    <ti>ebuild, binary</ti>
+  </tr>
+</table>
+</body>
+
+<section>
+<title>Default <c>pkg_postrm</c></title>
+<body>
+<codesample lang="ebuild">
+pkg_postrm()
+{
+    return
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Sample <c>pkg_postrm</c></title>
+<body>
+<codesample lang="ebuild">
+pkg_postrm() {
+    fdo-mime_mime_database_update
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Common <c>pkg_postrm</c> Tasks</title>
+<body>
+<p>
+<c>pkg_postrm</c> is is used to update symlinks, cache files and other
+generated content after a package has been uninstalled.
+</p>
+</body>
+</section>
+
+</chapter>
+</guide>

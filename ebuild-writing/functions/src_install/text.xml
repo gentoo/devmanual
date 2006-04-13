@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_install/">
+<chapter>
+<title>src_install</title>
+
+<body>
+<table>
+  <tr>
+    <th>Function</th>
+    <ti><c>src_install</c></ti>
+  </tr>
+  <tr>
+    <th>Purpose</th>
+    <ti>Install a package to <c>${D}</c></ti>
+  </tr>
+  <tr>
+    <th>Sandbox</th>
+    <ti>Enabled</ti>
+  </tr>
+  <tr>
+    <th>Privilege</th>
+    <ti>root</ti>
+  </tr>
+  <tr>
+    <th>Called for</th>
+    <ti>ebuild</ti>
+  </tr>
+</table>
+</body>
+
+<section>
+<title>Default <c>src_install</c></title>
+<body>
+<codesample lang="ebuild">
+src_install()
+{
+    return
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Sample <c>src_install</c></title>
+<body>
+<codesample lang="ebuild">
+src_install() {
+    make DESTDIR="${D}" install || die "Install failed!"
+    dodoc README CHANGES
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Easy Installs</title>
+<body>
+<p>
+Often, especially with autotools-powered packages, there is a <c>Makefile</c>
+<c>install</c> target which will honour the <c>DESTDIR</c> variable to tell it to
+install to a non-root location. If possible, this should be used:
+</p>
+
+<codesample lang="ebuild">
+    make DESTDIR="${D}" install || die "Install failed"
+</codesample>
+
+<note>
+<c>make</c> should be used over <c>emake</c> here. Most installs are
+not designed to be parallelised.
+</note>
+
+<p>
+Sometimes this will end up installing a few things into strange
+places. If and only if this is the case, the <c>einstall</c> function
+can be used:
+</p>
+
+<codesample lang="ebuild">
+    einstall || die "Install failed!"
+</codesample>
+
+<p>
+It is usually necessary to include additional <c>dodoc</c> statements for the
+<c>README</c>, <c>ChangeLog</c>, etc in these cases.
+</p>
+</body>
+</section>
+
+<section>
+<title>Trivial Installs</title>
+<body>
+<p>
+For some packages with no <c>Makefile</c> that only install a small
+number of files, writing a manual install using <c>cp</c> is the
+easiest option. For example, to do a simple install of some (no
+compilation required) themes:
+</p>
+
+<codesample lang="ebuild">
+    dodir /usr/share/foo-styles/
+    cp -R ${S}/ ${D}/ || die "Install failed!"
+</codesample>
+
+<p>
+Or sometimes a combination of <c>insinto</c> and <c>doins</c> (plus related
+functions -- see Install Functions Reference) <d/> the following is based
+upon the <c>sys-fs/udev</c> install:
+</p>
+
+<codesample lang="ebuild">
+src_install() {
+    dobin udevinfo
+    dobin udevtest
+    into /
+    dosbin udev
+    dosbin udevd
+    dosbin udevsend
+    dosbin udevstart
+    dosbin extras/scsi_id/scsi_id
+    dosbin extras/volume_id/udev_volume_id
+
+    exeinto /etc/udev/scripts
+    doexe extras/ide-devfs.sh
+    doexe extras/scsi-devfs.sh
+    doexe extras/cdsymlinks.sh
+    doexe extras/dvb.sh
+
+    insinto /etc/udev
+    newins ${FILESDIR}/udev.conf.post_050 udev.conf
+    doins extras/cdsymlinks.conf
+
+    # For devfs style layout
+    insinto /etc/udev/rules.d/
+    newins etc/udev/gentoo/udev.rules 50-udev.rules
+
+    # scsi_id configuration
+    insinto /etc
+    doins extras/scsi_id/scsi_id.config
+
+    # set up symlinks in /etc/hotplug.d/default
+    dodir /etc/hotplug.d/default
+    dosym ../../../sbin/udevsend /etc/hotplug.d/default/10-udev.hotplug
+
+    # set up the /etc/dev.d directory tree
+    dodir /etc/dev.d/default
+    dodir /etc/dev.d/net
+    exeinto /etc/dev.d/net
+    doexe etc/dev.d/net/hotplug.dev
+
+    doman *.8
+    doman extras/scsi_id/scsi_id.8
+
+    dodoc COPYING ChangeLog FAQ HOWTO-udev_for_dev README TODO
+    dodoc docs/{overview,udev-OLS2003.pdf,udev_vs_devfs,RFC-dev.d,libsysfs.txt}
+    dodoc docs/persistent_naming/* docs/writing_udev_rules/*
+
+    newdoc extras/volume_id/README README_volume_id
+}
+</codesample>
+
+<p>
+This is, of course, considerably harder to handle than a
+simple <c>Makefile</c> driven install.
+</p>
+</body>
+</section>
+
+<section>
+<title>Other Installs</title>
+<body>
+<p>
+Sometimes, there will be a <c>Makefile</c> that does not
+honour <c>DESTDIR</c> and a non-trivial number of files to install. In
+these situations, it is best to patch the <c>Makefile</c> and contact
+upstream explaining the situation to them.
+</p>
+</body>
+</section>
+
+</chapter>
+</guide>

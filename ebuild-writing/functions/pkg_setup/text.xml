@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/pkg_setup/">
+<chapter>
+<title>pkg_setup</title>
+
+<body>
+<table>
+  <tr>
+    <th>Function</th>
+    <ti><c>pkg_setup</c></ti>
+  </tr>
+  <tr>
+    <th>Purpose</th>
+    <ti>Pre-build environment configuration and checks</ti>
+  </tr>
+  <tr>
+    <th>Sandbox</th>
+    <ti>Disabled</ti>
+  </tr>
+  <tr>
+    <th>Privilege</th>
+    <ti>root</ti>
+  </tr>
+  <tr>
+    <th>Called for</th>
+    <ti>ebuild, binary</ti>
+  </tr>
+</table>
+</body>
+
+<section>
+<title>Default <c>pkg_setup</c></title>
+<body>
+<codesample lang="ebuild">
+pkg_setup()
+{
+    return
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Sample <c>pkg_setup</c></title>
+<body>
+<codesample lang="ebuild">
+pkg_setup() {
+    # We need to know which GUI we're building in several
+    # different places, so work it out here.
+    if use gtk ; then
+        if use gtk2 ; then
+            export mypkg_gui="gtk2"
+        else
+            export mypkg_gui="gtk1"
+        fi
+    elif use motif then
+        export mypkg_gui="motif"
+    else
+        export mypkg_gui="athena"
+    fi
+}
+</codesample>
+</body>
+</section>
+
+</chapter>
+</guide>

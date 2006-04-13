@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/misc-files/metadata/">
+<chapter>
+<title>Package and Category <c>metadata.xml</c></title>
+
+<body>
+<p>
+The <c>metadata.xml</c> file is used to specify additional data about a
+package or category.
+</p>
+
+<section>
+<title>Category Metadata</title>
+<body>
+<p>
+For categories, <c>metadata.xml</c> specifies a long description (in
+English and optionally in other languages). The format is specified
+formally in <uri link="http://www.gentoo.org/proj/en/glep/glep-0034.html">
+GLEP 34</uri>, and the character set <b>must</b> be UTF-8 as specified
+by <uri link="http://www.gentoo.org/proj/en/glep/glep-0031.html">GLEP
+31</uri>. A typical example:
+</p>
+
+<codesample lang="sgml">
+    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+    &lt;!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+    &lt;catmetadata&gt;
+            &lt;longdescription lang="en"&gt;
+                The app-vim category contains plugins and syntax file
+                packages for the Vim text editor.
+            &lt;/longdescription&gt;
+            &lt;longdescription lang="de"&gt;
+                Die Kategorie app-vim enthält Plugins und Syntax-Pakete
+                für den Vim Texteditor.
+            &lt;/longdescription&gt;
+    &lt;/catmetadata&gt;
+</codesample>
+
+<p>
+When creating a new category, creating a <c>metadata.xml</c> file
+along with a <c>&lt;longdescription&gt;</c> in English is
+<b>mandatory</b>. Translations are handled by any interested developer
+who speaks a language sufficiently well.
+</p>
+
+<p>
+The correct way to commit a <e>category</e> <c>metadata.xml</c> file
+is currently:
+</p>
+
+<pre>
+xmllint --noout --valid metadata.xml
+glep31check metadata.xml
+cvs commit -m "Adding category metadata.xml for my-category" metadata.xml
+</pre>
+
+</body>
+</section>
+
+<section>
+<title>Package Metadata</title>
+<body>
+<p>
+For packages, <c>metadata.xml</c> can specify a long description and
+maintainer information. If a long description in any language is
+provided, an English long description must be present. A typical
+example might look like:
+</p>
+
+<codesample lang="sgml">
+    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+    &lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+    &lt;pkgmetadata&gt;
+        &lt;herd&gt;vim&lt;/herd&gt;
+        &lt;maintainer&gt;
+            &lt;email&gt;ciaranm@gentoo.org&lt;/email&gt;
+            &lt;name&gt;Ciaran McCreesh&lt;/name&gt;
+        &lt;/maintainer&gt;
+        &lt;longdescription lang="en"&gt;
+            This package provides Vim syntax highlighting for Cfengine configuration
+            files, and automatic filetype detection for these files based upon
+            filename.
+        &lt;/longdescription&gt;
+    &lt;/pkgmetadata&gt;
+</codesample>
+
+<p>
+All new packages <b>must</b> include a <c>metadata.xml</c> file which
+specifies at <e>least</e> a herd. If no herd is suitable, <c>no-herd</c>
+should be used, and at least one maintainer must be listed <d/> however,
+if at all possible, find a herd willing to be listed.
+</p>
+
+<p>
+Commits of package metadata files are handled by <c>repoman</c>. You
+should ensure that you have <c>dev-libs/libxml2</c> installed so that
+the XML can be validated.
+</p>
+
+</body>
+</section>
+</body>
+</chapter>
+</guide>

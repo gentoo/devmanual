@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/pkg_nofetch/">
+<chapter>
+<title>pkg_nofetch</title>
+
+<body>
+<table>
+  <tr>
+    <th>Function</th>
+    <ti><c>pkg_nofetch</c></ti>
+  </tr>
+  <tr>
+    <th>Purpose</th>
+    <ti>Tell the user how to deal with fetch-restricted packages</ti>
+  </tr>
+  <tr>
+    <th>Sandbox</th>
+    <ti>Enabled</ti>
+  </tr>
+  <tr>
+    <th>Privilege</th>
+    <ti>root</ti>
+  </tr>
+  <tr>
+    <th>Called for</th>
+    <ti>ebuild</ti>
+  </tr>
+</table>
+</body>
+
+<section>
+<title>Default <c>pkg_nofetch</c></title>
+<body>
+<codesample lang="ebuild">
+pkg_nofetch()
+{
+    [ -z "${SRC_URI}" ] &amp;&amp; return
+
+    echo "!!! The following are listed in SRC_URI for ${PN}:"
+    for MYFILE in `echo ${SRC_URI}`; do
+        echo "!!!   $MYFILE"
+    done
+    return
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Sample <c>pkg_nofetch</c></title>
+<body>
+<codesample lang="ebuild">
+pkg_nofetch() {
+    einfo "Please download"
+    einfo "  - ${P}-main.tar.bz2"
+    einfo "  - ${P}-extras.tar.bz2"
+    einfo "from ${HOMEPAGE} and place them in ${DISTDIR}"
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Notes on <c>pkg_nofetch</c></title>
+<body>
+<p>
+This function is only triggered for packages which
+have <c>RESTRICT="fetch"</c> (see <uri link="::general-concepts/mirrors#Restricting Automatic Mirroring"/>)
+set, and only if one or more components listed in <c>SRC_URI</c> are not
+already available in the <c>distfiles</c> directory.
+</p>
+</body>
+</section>
+
+</chapter>
+</guide>
