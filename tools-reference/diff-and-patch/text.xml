@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/diff-and-patch/">
+<chapter>
+<title><c>diff and patch</c> -- File Differences</title>
+<body>
+
+<p>
+The <c>diff</c> tool is used to create patches (sometimes called
+diffs). A patch is a program (computer science definition) which
+modifies text across one or more files. Typically these are used for
+making changes to source code before it is compiled.
+</p>
+
+<p>
+The simplest invocation is <c>diff -u oldfile newfile</c>, which will
+create a list of differences in unified format between <c>oldfile</c>
+and <c>newfile</c>. To operate over directories instead, use <c>diff
+-urN olddir newdir</c>.
+</p>
+
+<note>
+<c>cvs</c> and <c>svn</c> provide <c>cvs diff</c> and <c>svn diff</c>
+respectively which may be more helpful.
+</note>
+
+<p>
+For patches which go in the main tree, use unified (<c>-u</c>)
+format. This is generally the best format to use when sending patches
+upstream too <d/> however, occasionally you may be asked to provide
+context diffs, which are more portable than unifieds (but don't handle
+conflicts as cleanly). In this case, use <c>-c</c> rather
+than <c>-u</c>.
+</p>
+
+<p>
+To apply a patch, use <c>patch -pX &lt; whatever.patch</c>,
+where <c>X</c> is a number representing the number of path components
+which must be removed (typically this is <c>0</c> or <c>1</c>). Within
+ebuilds, use the <c>epatch</c> function instead — see
+<uri link="::ebuild-writing/functions/src_unpack/epatch"/>.
+</p>
+
+<p>
+The diff-1 and patch-1 manual pages provide more information.
+</p>
+
+</body>
+</chapter>
+</guide>

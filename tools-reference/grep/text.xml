@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/grep/">
+<chapter>
+<title><c>grep</c> -- Text Filtering</title>
+<body>
+
+<p>
+The <c>grep</c> tool can be used to extract lines matching a given
+regular expression from a file, or to check whether a given regular
+expression matches any line in a file.
+</p>
+
+<p>
+The usage is <c>grep "pattern" files</c>. If no files are specified,
+text is read from the standard input. The <c>pattern</c> is a standard
+basic regular expression, as described in
+<uri link="http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap09.html#tag_09_03">
+IEEE1003.1-2004-9.3</uri>.
+</p>
+
+<p>
+If the <c>-E</c> argument is supplied, <c>pattern</c> is treated as
+being an extended regular expression as described in
+<uri link="http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap09.html#tag_09_04">
+IEEE1003.1-2004-9.4</uri>.
+</p>
+
+<p>
+If the <c>-F</c> argument is supplied, <c>pattern</c> is treated as
+being a fixed string rather than a regular expression.
+</p>
+
+<p>
+By default, <c>grep</c> prints out matching lines from the input. If
+<c>-q</c> is specified, no output is displayed. If <c>-l</c> (lowercase
+letter ell) is specified, only the filenames of files which contain
+matching lines are displayed.
+</p>
+
+<p>
+The <c>-v</c> option can be used to select lines which do not match the
+pattern instead.
+</p>
+
+<p>
+The <c>-s</c> option can be used to suppress messages about nonexistent or
+unreadable files.
+</p>
+
+<p>
+The return code can be used to test whether or not a match occurred. A
+return code of <c>0</c> indicates that one or more matches occurred; a code
+of <c>1</c> indicates no matches.
+</p>
+
+<p>
+See <uri link="http://www.opengroup.org/onlinepubs/000095399/utilities/grep.html">
+IEEE1003.1-2004-grep</uri> for details. The grep-1 manual page on GNU
+systems documents many non-portable additional features.
+</p>
+
+</body>
+</chapter>
+</guide>

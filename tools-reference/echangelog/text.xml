@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/echangelog/">
+<chapter>
+<title><c>echangelog</c> -- ChangeLog Generation</title>
+<body>
+
+<p>
+The <c>echangelog</c> tool should be used to generate <c>ChangeLog</c>
+entries. This tool uses the <c>ECHANGELOG_USER</c> environment
+variable, which should be set in the format "Your Name
+&lt;user@gentoo.org&gt;". The changelog message should be passed to
+<c>echangelog</c> on the commandline, or otherwise <c>echangelog</c>
+will open an editor for you to type your message.
+</p>
+
+<p>
+<c>echangelog</c> should be called <e>after</e> any adds, removes or
+updates have been made.
+</p>
+
+<p>
+See echangelog-1 for details.
+</p>
+
+</body>
+</chapter>
+</guide>

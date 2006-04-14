@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/cat/">
+<chapter>
+<title><c>cat</c> -- File Concatenation</title>
+<body>
+
+<p>
+The <c>cat</c> command can be used to concatenate the contents of two or more
+files. The usage is <c>cat firstfile secondfile ...</c>.
+</p>
+
+<section>
+<title>Abuse of <c>cat</c></title>
+<body>
+<p>
+If you find yourself about to use <c>cat</c> in an ebuild, stop and
+reconsider. It is almost always unnecessary.
+</p>
+
+<p>
+All usages in the form <c>cat somefile | somecommand</c> are silly and
+should be eschewed. The form <c>somecommand &lt; somefile</c> does the
+same thing, and doesn't involve an extra fork and a pipe. With many
+standard utilities the <c>somecommand somefile</c> form will work as well.
+</p>
+
+<p>
+Using <c>foo=$(cat somefile)</c> to place the contents of a file into
+the variable <c>foo</c> is also unnecessary. The
+command <c>foo=$(&lt;somefile)</c> works just as well and doesn't require
+a fork. Similarly, <c>cat file | xargs cmd</c> and <c>xargs cmd &lt;
+file</c> can be replaced by <c>cmd $(&lt;file)</c>.
+</p>
+
+<p>
+Finally, <c>cat foo &gt; bar</c>, where foo is a single file, can usually
+be replaced by <c>cp -f foo bar</c>.
+</p>
+</body>
+</section>
+
+<section>
+<title>Here Documents</title>
+<body>
+<p>
+On the other hand, <c>cat</c> is exceptionally useful for so-called
+"here" documents, such as the following example from the
+<c>sendmail-8.13.3</c> ebuild:
+</p>
+
+<codesample lang="ebuild">
+src_install() {
+    # ...
+    cat &lt;&lt;- EOF &gt; ${D}/etc/mail/trusted-users
+        # trusted-users - users that can send mail as others without a warning
+        # apache, mailman, majordomo, uucp are good candidates
+    EOF
+    # ...
+}
+</codesample>
+
+<p>
+In this example <c>cat</c> is used inside <c>src_install</c> to create
+the <c>${D}/etc/mail/trusted-users</c> file. Specifically, the new
+file will comprise the lines between the <c>cat</c> line and the line with
+<c>EOF</c> in the ebuild.
+</p>
+
+<p>
+The funny hyphen in <c>&lt;&lt;-</c> is a &gt;=bash-2.05 syntax that
+tells <c>cat</c> to strip leading tabs (please note that when you want
+to copy the example, you have to replace the leading spaces with
+tabs), so that, as Azarah puts it, "we won't have the ebuilds looking
+from space effect". For such small files as the example above, a set
+of here documents is more elegant, and easier to maintain, than the
+equivalent bunch of files floating about in <c>${FILESDIR}</c> would
+be. If for some reason you need to preserve leading whitespace, then
+simply use <c>&lt;&lt;</c> instead of <c>&lt;&lt;-</c> to get the
+desired effect.
+</p>
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>

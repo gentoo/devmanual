@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/gentoo-syntax/">
+<chapter>
+<title><c>gentoo-syntax</c> -- Enhanced Vim Behaviour</title>
+<body>
+
+<p>
+The <c>app-vim/gentoo-syntax</c> package provides syntax highlighting,
+indent rules, filetype settings and so on for all kinds of Gentoo
+things within Vim.
+</p>
+
+<p>
+Full documentation is provided with the package, and can be viewed
+by using <c>vim</c>'s internal help browser (<c>:help gentoo-syntax</c>).
+</p>
+
+</body>
+</chapter>
+</guide>

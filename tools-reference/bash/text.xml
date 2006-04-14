@@ -772,7 +772,7 @@ than zero. Again, negative <c>offset</c> values must be given as an expression.
 <body>
 
 <p>
-The <c>$(command )</c> construct can be used to run a command and capture the
+The <c>$(command)</c> construct can be used to run a command and capture the
 output (<c>stdout</c>) as a string.
 </p>
 
@@ -782,7 +782,7 @@ favour of <c>$(command )</c> for clarity, ease of reading and nesting purposes.
 </note>
 
 <codesample lang="ebuild">
-myconf="$(use_enable acl ) $(use_enable nls ) --with-tlib=ncurses"
+myconf="$(use_enable acl) $(use_enable nls) --with-tlib=ncurses"
 </codesample>
 
 </body>

@@ -116,7 +116,7 @@
                       $data = 'rm' or $data = 'cat' or $data = '[[' or $data = ']]' or $data = 'while' or $data = 'do' or $data = 'read' or
                       $data = 'done' or $data = 'make' or $data = 'echo' or $data = 'cd' or $data = 'local' or $data = 'return' or
                       $data = 'for' or $data = 'case' or $data = 'esac' or $data = 'in' or $data = '-n' or $data = '[' or $data = ']' or
-                      $data = '-z' or $data = '-f'">
+                      $data = '-z' or $data = '-f' or $data = '&lt;&lt;-' or $data = '&gt;' or $data = 'EOF'">
 	<span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 

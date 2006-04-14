@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/ekeyword/">
+<chapter>
+<title><c>ekeyword</c> -- Keywording</title>
+<body>
+
+<p>
+The <c>ekeyword</c> tool should be used to manipulate
+the <c>KEYWORDS</c> variable. Using this tool will guarantee that you
+get the correct keyword ordering <d/> manual editing may screw this
+up. The usage is <e>ekeyword changes ebuilds</e>. Valid changes are in
+the form <c>sparc</c> (to mark stable), <c>~sparc</c> (to mark
+unstable), <c>-sparc</c> (to mark unavailable) and <c>^sparc</c> (to
+remove the sparc keyword). The special <c>all</c> keyword is useful
+when doing version bumps <d/> <c>ekeyword ~all foo-1.23.ebuild</c>
+will drop all currently present keywords to unstable. See ekeyword-1
+for details.
+</p>
+
+</body>
+</chapter>
+</guide>

@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/find/">
+<chapter>
+<title><c>find</c> -- Finding Files</title>
+<body>
+
+<p>
+The <c>find</c> utility can be used to search for and perform commands upon
+groups of files matching a given set of criteria. The basic usage is
+<c>find path rules</c>.
+</p>
+
+<p>
+For portability purposes, <b>always</b> specify a path. Do not rely
+upon <c>find</c> defaulting to the current working directory if no
+path is provided.
+</p>
+
+<p>
+Useful rules include:
+</p>
+
+<table>
+  <tr>
+    <th>Rule</th>
+    <th>Effect</th>
+  </tr>
+  <tr>
+    <ti><c>-name "blah"</c></ti>
+    <ti>
+      Only find files named <c>blah</c>. The <c>*</c> and <c>?</c>
+      wildcards may be used but will probably need escaping by the
+      shell.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>-type f</c></ti>
+    <ti>Find only regular files, not directories.</ti>
+  </tr>
+  <tr>
+    <ti><c>-type d</c></ti>
+    <ti>Find only directories.</ti>
+  </tr>
+  <tr>
+    <ti><c>-type l</c></ti>
+    <ti>Find only symbolic links.</ti>
+  </tr>
+  <tr>
+    <ti><c>-user foo</c></ti>
+    <ti>
+      Find only files belonging to user <c>foo</c>. It is best to use
+      named users rather than numeric UIDs. In particular, <c>root</c>
+      may not be UID 0 on some systems.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>-group foo</c></ti>
+    <ti>
+      Find only files belonging to group <c>foo</c>. It is best to use
+      named groups rather than numeric GIDs.
+    </ti>
+  </tr>
+</table>
+
+<p>
+The <c>-mindepth</c> and <c>-maxdepth</c> options are GNU extensions
+that should be avoided if possible.
+</p>
+
+<p>
+By default, <c>find</c> will echo a list of matching files to the
+standard output. This can be used in a <c>while</c> loop:
+</p>
+
+<codesample lang="ebuild">
+find ${S} -type f | while read f ; do
+    einfo "Doing unholy things to ${f}"
+done
+</codesample>
+
+<warning>
+The <c>die</c> construct will <b>not work</b> during the above loop.
+See <uri link="::ebuild-writing/error-handling/#die and Subshells"/>.
+</warning>
+
+<p>
+Or a <c>for</c> loop (for small numbers of files):
+</p>
+
+<codesample lang="ebuild">
+for f in $(find ${S} -type f) ; do
+    einfo "Calling down holy vengance upon ${f}"
+done
+</codesample>
+
+<warning>
+In both cases, files with weird characters or spaces in their names
+may cause serious problems.
+</warning>
+
+<p>
+As an alternative, <c>find</c> supports a <c>-exec</c> argument. It
+accepts a command to run, terminated by a semicolon. Inside the
+command, the string <c>{}</c> is replaced by the name of the current
+matched file. Be careful with escaping to ensure that <c>bash</c>
+doesn't gobble up the special characters:
+</p>
+
+<codesample lang="ebuild">
+find ${S} -name '*.backup' -exec rm '{}' \;
+</codesample>
+
+<p>
+See find-1 and
+<uri link="http://www.opengroup.org/onlinepubs/000095399/utilities/find.html">
+IEEE1003.1-2004-find</uri> for further details and examples.
+</p>
+
+</body>
+</chapter>
+</guide>

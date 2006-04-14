@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/echo/">
+<chapter>
+<title><c>echo</c> -- Print Strings</title>
+<body>
+
+<p>
+The <c>echo</c> command can be used to print strings. The standard
+usage is <c>echo firstString secondString ...</c>. Also, it provides
+additional parameters for formatting of the output.
+</p>
+
+<section>
+<title>Abuse of <c>echo</c></title>
+<body>
+<p>
+If you find yourself about to use <c>echo</c> in an ebuild, stop and
+reconsider. It is almost always unnecessary.
+</p>
+
+<p>
+First of all, for printing messages in standard portage scripts, you
+can use the <c>einfo</c>, and <c>eerror</c> functions along with their
+corresponding functions, <c>einfon</c>, <c>eerrorn</c>, etc, which are
+the same as the former, but they won't print the trailing newline
+(<c>\n</c>).
+</p>
+
+<p>
+All usage of the form <c>echo ${somevar} | grep substring</c> just to
+check if the contents of the <c>${somevar}</c> variable
+contains <c>substring</c>, or more often, <c>echo ${somevar} |
+command</c>, are deprecated and should be (and in most cases, can be)
+used as less as possible: doing so involves for no reason an
+additional shell session and a pipe. The "here strings" section
+describes the preferred way of dealing with such cases.
+</p>
+</body>
+</section>
+
+<section>
+<title>Here Strings</title>
+<body>
+<p>
+As of &gt;=bash-2.05b, the so-called "here strings" have been
+introduced. Using "here strings", you can pass contents of an
+environment variable to the standard input of an application, using
+<c>&lt;&lt;&lt;word</c> redirection: what actually happens is
+that <c>bash</c> expands word and passes the result to the standard
+input.
+</p>
+
+<p>
+A common example would be verifying if a variable <c>${foo}</c>
+contains the bar substring with the following construct: <c>grep bar
+&lt;&lt;&lt; ${foo}</c>. This replaces the deprecated and more
+wasteful behaviour of using <c>echo ${foo} | grep bar</c>.
+</p>
+</body>
+</section>
+
+<section>
+<title>Standard usage of <c>echo</c></title>
+<body>
+<p>
+In standard calls, the <c>echo</c> command with no additional options,
+outputs the arguments passed to the standard output, separated by
+whitespace and with a trailing newline character (<c>\n</c>).
+</p>
+
+<p>
+If one wants to exclude the trailing newline character, the <c>-n</c>
+option can be passed, as in: <c>echo -n "no trailing newline"</c>.
+</p>
+
+<p>
+Special characters, like tabs (<c>\t</c>), newline characters
+(<c>\n</c>), carriage return characters (<c>\r</c>) (i.e. for
+translating newlines from DOS format to Unix format), and any other
+ASCII character given by its code value) can be passed to the echo
+command with the <c>-e</c> option. For example, to output three
+strings, each on different lines, in a single <c>echo</c> command,
+use: <c>echo -e "first line\nsecond line\nthird line"</c>.
+</p>
+
+<p>
+Other escape sequences and additional parameters for the <c>echo</c>
+command are available in the bash man page.
+</p>
+
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>

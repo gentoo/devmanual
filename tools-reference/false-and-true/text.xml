@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/false-and-true/">
+<chapter>
+<title><c>false and true</c> -- Generating Return Codes</title>
+<body>
+
+<p>
+The <c>false</c> utility can be used to obtain a non-zero exit
+code. The <c>true</c> utility always produces a zero exit code.
+</p>
+
+</body>
+</chapter>
+</guide>

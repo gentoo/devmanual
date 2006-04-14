@@ -20,19 +20,18 @@ ebuilds.
 </chapter>
 
 <include href="bash/"/>
-<!--<include href="cat/"/>
+<include href="cat/"/>
 <include href="cut/"/>
 <include href="diff-and-patch/"/>
 <include href="echangelog/"/>
 <include href="echo/"/>
 <include href="ekeyword/"/>
-<include href="epkgmove/"/>
 <include href="false-and-true/"/>
 <include href="find/"/>
 <include href="gentoo-syntax/"/>
-<include href="glep31check/"/>
 <include href="grep/"/>
 <include href="head-and-tail/"/>
+<!--
 <include href="repoman/"/>
 <include href="sed/"/>
 <include href="sort/"/>

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/cut/">
+<chapter>
+<title><c>cut</c> -- Column Concatenation</title>
+<body>
+
+<p>
+The <c>cut</c> tool can be used to extract specific columns from files
+which are delimited by a particular character or by column numbers. It
+can be passed filenames on the commandline; if none are specified, it
+reads from stdin.
+</p>
+
+<p>
+The <c>cut</c> tool considers the first character in a line to have
+index <c>1</c>. The <c>-c</c>, <c>-f</c> and <c>-b</c> switches take a
+parameter listing the desired columns. This can be a single value, or
+a more complex list of values separated by commas. Each value can be a
+single number, or two numbers separated by hyphens representing
+<c>low-high</c>. If <c>low</c> is unspecified, it is treated as the
+first column. If <c>high</c> is unspecified, it is treated as being
+"up to the last character (inclusive)".
+</p>
+
+<p>
+To select particular characters from each line, use the <c>-c</c>
+switch. For particular bytes (not the same as characters when using
+multibyte text), use <c>-b</c>. To specify particular fields,
+use <c>-f</c>.
+</p>
+
+<p>
+When using <c>-f</c>, the field delimiter can be specified using the
+<c>-d</c> switch. The default value is the tab character. The
+<c>-s</c> switch instructs <c>cut</c> to suppress lines which do not
+contain any instances of the delimiter <d/> by default they are echoed
+intact.
+</p>
+
+<p>
+For example, to extract the second, fourth and fifth columns in a
+comma-delimited file, ignoring lines which contain no commas, one
+could use:
+</p>
+
+<codesample lang="ebuild">
+cut -s -d',' -f2,4-5 input.txt > output.txt
+</codesample>
+
+<p>
+To chop the first character off stdin, one could use:
+</p>
+
+<codesample lang="ebuild">
+do_stuff | cut -c2-
+</codesample>
+
+<p>
+See the cut manpage and
+<uri link="http://www.opengroup.org/onlinepubs/000095399/utilities/cut.html">
+IEEE1003.1-2004-cut</uri> for full documentation.
+</p>
+
+</body>
+</chapter>
+</guide>
