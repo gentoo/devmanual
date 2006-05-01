@@ -455,6 +455,21 @@
       </xsl:variable>
 
       <h3><a name="{$anchor}"><xsl:apply-templates select="title"/></a></h3>
+      <xsl:apply-templates select="(body|subsubsection)"/>
+
+      <!-- If you need, change here to add more nesting levels -->
+    </div>
+  </xsl:template>
+
+  <xsl:template match="subsubsection">
+    <div class="section">
+      <xsl:variable name="anchor">
+        <xsl:call-template name="convert-to-anchor">
+          <xsl:with-param name="data" select="title"/>
+        </xsl:call-template>
+      </xsl:variable>
+
+      <h4><a name="{$anchor}"><xsl:apply-templates select="title"/></a></h4>
       <xsl:apply-templates select="(body)"/>
 
       <!-- If you need, change here to add more nesting levels -->
