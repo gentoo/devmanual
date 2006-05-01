@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<guide self="archs/sparc/">
+<chapter>
+<title>Arch Specific Notes -- SPARC</title>
+<body>
+
+<p>
+The SPARC port uses the <c>sparc</c> keyword. It focusses mainly upon <c>sun4u</c>
+hardware (Sun UltraSparc systems with <c>v9</c> CPUs), although <c>sun4m</c> (Sun 32
+bit hardware with <c>v8</c> and clones) is also sort-of supported.
+</p>
+
+<section>
+<title>SPARC Kernel and Userland ABIs</title>
+<body>
+
+<p>
+<c>v9</c> systems use a pure 64 bit kernel and a pure 32 bit userland. This can
+cause portability problems when working with low level software if the kernel
+does not provide working 32 bit compatibility interfaces.
+</p>
+
+<p>
+<c>v8</c> systems use a pure 32 bit kernel and a pure 32 bit userland.
+</p>
+
+<p>
+All supported SPARC systems are big endian.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Additional SPARC Keywording Requirements</title>
+<body>
+
+<note>
+This section is in addition to the guidelines in
+<uri link="::keywording#Keywording on Upgrades"/>. It discusses <e>additional</e>
+requirements for the SPARC architecture.
+</note>
+
+<p>
+For a package to have the <c>~sparc</c> keyword added, the following additional
+items must generally hold:
+</p>
+
+<ul>
+  <li>
+    The package must have been tested by an arch team member (or someone with
+    permission from the arch team) <e>at least</e> on a <c>v9</c> system. Testing on
+    <c>v8</c> is encouraged but not required.
+  </li>
+</ul>
+
+<p>
+It is generally expected that anyone who does keywording for SPARC should be on
+the <c>sparc@</c> alias.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>SPARC Instruction Set and Performance Notes</title>
+<body>
+
+<p>
+There are three basic SPARC instruction set standards.
+</p>
+
+<ul>
+  <li>
+    <c>v7</c> is the original instruction set used in very old hardware. Gentoo does
+    not ship <c>v7</c> capable stages, however a sufficiently crazy person could in
+    theory run Gentoo on a <c>v7</c> machine.
+  </li>
+  <li>
+    <c>v8</c> is an extension of <c>v7</c> with added support for hardware integer
+    multiplication and division. Gentoo sparc32 (<c>sun4m</c>) stages are <c>v8</c>.
+  </li>
+  <li>
+    <c>v9</c> adds in 64 bit support and a large number of performance-enhancing
+    features. Gentoo sparc64 (<c>sun4u</c>) stages are <c>v9</c>.
+  </li>
+</ul>
+
+<p>
+In addition, individual CPU implementations have slight differences -- for
+example, HyperSparc CPUs have relaxed requirements when it comes to scheduling
+certain instructions. These are relatively minor differences.
+</p>
+
+<p>
+If <c>gcc</c> is invoked without any <c>-mcpu</c> parameter, it will generate <c>v7</c>
+code. Depending upon the application, this can be anywhere up to five times
+slower than <c>v9</c> code when running on an UltraSparc -- cryptographic and
+graphics applications which make heavy use of integer multiplication and
+division are especially badly hit. For this reason, the comments in
+<uri link="::general-concepts/user-environment#Not Filtering Variables"/>
+are especially important on SPARC.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Contacting the SPARC Team</title>
+<body>
+
+<p>
+The SPARC team can be contacted:
+</p>
+
+<ul>
+  <li>
+    Via Bugzilla bugs assigned to <c>sparc@</c>
+  </li>
+  <li>
+    Via email to the <c>sparc@</c> email alias
+  </li>
+  <li>
+    Via email to the <c>gentoo-sparc</c> mailing list
+  </li>
+  <li>
+    Via the <c>#gentoo-sparc</c> IRC channel on Freenode
+  </li>
+</ul>
+
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>
+
+

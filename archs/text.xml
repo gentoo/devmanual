@@ -29,8 +29,8 @@ happens to work best in any situation.
 
 <include href="alpha/"/>
 <include href="amd64/"/>
-<!--<include href="mips/"/>
+<include href="mips/"/>
 <include href="sparc/"/>
-<include href="x86/"/>-->
+<include href="x86/"/>
 
 </guide>

@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<guide self="archs/mips/">
+<chapter>
+<title>Arch Specific Notes -- MIPS</title>
+<body>
+
+<p>
+The MIPS port uses the <c>mips</c> keyword. It focuses upon commonly available
+hardware <d/> mainly SGI and Cobalt systems <d/> although various embedded and
+special purpose boards are also supported.
+</p>
+
+<p>
+The <c>mips</c> keyword covers a huge range of architectures, CPUs and hardware,
+from tiny embedded devices up to server class kit with many tens of CPUs.
+</p>
+
+<note>
+Terminology:
+ABI stands for "Application Binary Interface". It refers to issues like
+calling conventions (which registers are used for passing parameters when
+calling functions) and the size of data types. ISA stands for "Instruction
+Set Architecture", and refers to the instructions available and the number
+and types of registers for a given CPU.
+</note>
+
+<section>
+<title>MIPS ABIs</title>
+<body>
+
+<p>
+The <c>o32</c> ABI was a wonderful invention by SGI that was good at the time, but
+later turned out to be a little bit short-sighted and inefficient. The <c>n32</c>
+ABI corrects that problem by pretending to be 32 bit, whilst in reality being 64
+bit. <c>n64</c> is another 64 bit ABI, this time not pretending to be 32 bit, which
+is therefore large, fat and yet very powerful.
+</p>
+
+<p>
+All of these ABIs can be both big and little endian, since MIPS CPUs come in
+both flavours, although most hardware does not support both options.
+</p>
+
+<p>
+All of these ABIs are popular amongst various applications domains. None of them
+actually work correctly.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>MIPS ISAs</title>
+<body>
+
+<p>
+The most commonly seen MIPS ISAs are mips2, mips3, mips4, mips32 and mips64. If
+you encounter a situation in which you need to know about the differences
+between these, talk to the MIPS team.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Not Dropping <c>CFLAGS</c> on MIPS</title>
+<body>
+
+<p>
+Because <c>CFLAGS</c> are sometimes used to specify ISA and ABI information, it is
+vital that packages honour this setting. See
+<uri link="::general-concepts/user-environment/#Not Filtering Variables"/>.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Additional MIPS Keywording Requirements</title>
+<body>
+
+<note>
+This section is in addition to the guidelines in <uri link="::keywording/" /> It
+discusses <e>additional</e> requirements for the MIPS architectures.
+</note>
+
+<p>
+For a package to have the <c>~mips</c> keyword added, the following additional
+items must generally hold:
+</p>
+
+<ul>
+  <li>
+    The package should work on both big and little endian systems, on both pure
+    32 bit and pure 64 bit systems and on systems with differing kernel and
+    userland ABIs.
+  </li>
+</ul>
+
+<p>
+It is generally expected that anyone who does keywording for MIPS should be on
+the <c>mips@</c> alias.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Contacting the MIPS Team</title>
+<body>
+
+<p>
+The MIPS team can be contacted:
+</p>
+
+<ul>
+  <li>
+    Via Bugzilla bugs assigned to <c>mips@</c>
+  </li>
+  <li>
+    Via email to the <c>mips@</c> email alias
+  </li>
+  <li>
+    Via email to the <c>gentoo-mips</c> mailing list
+  </li>
+  <li>
+    Via the <c>#gentoo-mips</c> IRC channel on Freenode
+  </li>
+</ul>
+
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>
