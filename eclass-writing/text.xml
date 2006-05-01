@@ -192,10 +192,9 @@ simple function definition (which is not multiple eclass friendly) or using
 as normal, but have their name prefixed with <c>${ECLASS}_</c>.
 </p>
 
-<p>
-Important: Only 'standard' functions should be specified in
-<c>EXPORT_FUNCTIONS</c>.
-</p>
+<important>
+Only 'standard' functions should be specified in <c>EXPORT_FUNCTIONS</c>.
+</important>
 
 <note><c>EXPORT_FUNCTIONS</c> is a function, <e>not</e> a variable.</note>
 
