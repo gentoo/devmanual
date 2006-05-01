@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<guide self="archs/alpha/">
+<chapter>
+<title>Arch Specific Notes -- ALPHA</title>
+<body>
+
+<p>
+The ALPHA port uses the <c>alpha</c> keyword. It focuses upon HP (formerly Compaq
+(formerly DEC)) hardware. This covers from <c>ev4</c> (known as 21064) through
+<c>ev7z</c> (known as 21364a).
+</p>
+
+<section>
+<title>ALPHA Kernel and Userland ABIs</title>
+<body>
+
+<p>
+All ALPHA systems use a pure 64 bit kernel and a pure 64 bit userland.
+</p>
+
+<p>
+All ALPHA systems support both little and big endian <d/> however, Linux only uses
+little endian.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Additional ALPHA Keywording Requirements</title>
+<body>
+
+<p>
+It is generally expected that anyone who does keywording for ALPHA should be on
+the <c>alpha@</c> alias. However the ALPHA Team is happy if maintainers keyword
+their packages when they have access to ALPHA hardware, although the Team would
+like to know about it.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>ALPHA Instruction Set and Performance Notes</title>
+<body>
+
+<p>
+There are six basic ALPHA instructions set standards:
+</p>
+
+<ul>
+  <li>
+    <c>ev4</c> or <c>ev45</c>. The <c>ev4</c> was the first ALPHA processor of the Alpha
+    family. It featured one integer pipeline and one floating-point pipeline.
+    The <c>ev45</c> is a modified <c>ev4</c> with double both Data and Instruction cache
+    (D-Cache and I-Cache respectively); it also featured a division optimization.
+  </li>
+  <li>
+    <c>ev5</c> is an evolution of the <c>ev45</c>. The number of pipelines was doubled
+    and the floating-point pipelines run in 9 stages rather than in 10. The
+    <c>ev5</c> supports 3 cache levels.
+  </li>
+  <li>
+    <c>ev56</c> added the BWX extension to load/store data in 8 or 16 bit quanta.
+  </li>
+  <li>
+    <c>pca56</c> added a new set, MVI (Motion Video Instructions), aimed to
+    accelerate video and audio calculations.
+  </li>
+  <li>
+    <c>ev6</c> supports all extensions supported by the <c>pca56</c> and a new set, FIX,
+    meant to move data between integer and floating-point registers and for square
+    root.
+  </li>
+  <li>
+    <c>ev67</c> is an evolution of the <c>ev6</c>, in addition it supports a new set.
+    CIX adds instructions for counting and finding bits.
+  </li>
+</ul>
+
+<p>
+When no <c>-mcpu</c> option is passed to <c>gcc</c> it defaults to the processor on
+which the compiler was built.
+</p>
+
+<p>
+The <c>-mieee</c> flag <b>should</b> always be used unless you have a deep knowledge
+of the ALPHA architecture, so the comments on
+<uri link="::general-concepts/user-environment#Not Filtering Variables"/> are
+really important on ALPHA.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Notes on ALPHA and PIC</title>
+<body>
+
+<p>
+General <uri link="::general-concepts/pic/"/> policy also applies to ALPHA. In fact,
+ALPHA systems complain loudly if you try to link PIC and non-PIC code. Usually
+this results in errors during the compilation aborting emerge.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Contacting the ALPHA Team</title>
+<body>
+
+<p>
+The ALPHA team can be contacted:
+</p>
+
+<ul>
+  <li>
+    Via Bugzilla bugs assigned to <c>alpha@</c>
+  </li>
+  <li>
+    Via email to the <c>alpha@</c> email alias
+  </li>
+  <li>
+    Via email to the <c>gentoo-alpha</c> mailing list
+  </li>
+  <li>
+    Via the <c>#gentoo-alpha</c> IRC channel on Freenode
+  </li>
+</ul>
+
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>

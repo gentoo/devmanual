@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<guide self="hosted-projects/">
+<chapter>
+<title>Hosted Projects</title>
+
+<body>
+<p>
+The following guidelines have been proposed for hosted projects in an attempt to
+prevent a repeat of the <c>genkernel</c> disaster.
+</p>
+
+<section>
+<title>Documentation Requirement</title>
+<body>
+
+<p>
+All hosted projects should have decent, up to date user and developer
+documentation. This documentation must be available <e>before the first release</e>,
+and not left as "something we'll do later (honest)".
+</p>
+
+<p>
+Our documentation team are happy to help out with GuideXMLification, translation
+etc. for the user documentation, but they <e>need</e> various things to do this:
+</p>
+
+<ul>
+  <li>
+    Basic documentation to start with.
+  </li>
+  <li>
+    Basic information on the project or tool, such as:
+    <ul>
+      <li>
+        The goals
+      </li>
+      <li>
+        The design specification
+      </li>
+      <li>
+        An FAQ
+      </li>
+    </ul>
+  </li>
+  <li>
+    To be informed of any updates, in advance if at all possible <d/> this is to
+    avoid having out of date recommendations in the documentation.
+  </li>
+</ul>
+
+<p>
+Developer documentation is generally best left in the hands of the project
+maintainers.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Portability</title>
+<body>
+
+<p>
+Gentoo runs on a large number of architectures. This is one of our big
+advantages over some other distributions. It is therefore important that any
+tools are made with portability in mind, <e>even if you originally think that your
+tool is only relevant for one arch</e>. It was this kind of assumption that meant
+that <c>genkernel</c> had to be completely rewritten when it suddenly became
+mandatory.
+</p>
+
+<p>
+In practice, this means the following:
+</p>
+
+<ul>
+  <li>
+    Using a portable programming language <d/> no Java or C# for any Gentoo tools.
+    Bash, C and Python are good, especially since everyone already has those
+    installed.
+  </li>
+  <li>
+    Not making assumptions about the hardware or architecture. This covers various
+    things, depending upon the tool <d/> simple examples include:
+    <ul>
+      <li>
+        Not assuming that you are running on a 32bit little endian system.
+      </li>
+      <li>
+        Not assuming that all computers have a VGA text console, or indeed any
+        kind of graphics capability.
+      </li>
+      <li>
+        Not assuming that all computers use DOS disclabels.
+      </li>
+    </ul>
+  </li>
+  <li>
+    Not relying too strongly upon particular implementations of various tools,
+    except where it has been agreed that we will always use a particular
+    implementation of said tool (it is safe to use <c>GNU sed</c> extensions, for
+    example, but <e>not</e> <c>GNU find</c> extensions).
+  </li>
+</ul>
+
+</body>
+</section>
+
+<section>
+<title>Open / Free</title>
+<body>
+
+<p>
+All hosted projects should use an appropriate open / free / libre license.
+Typically this will be the GPL v2 for software, and the Creative Commons license
+for documentation. However, reasonable exceptions can be made <d/> sometimes it
+makes more sense to use the LGPL or a *BSD license, and for application-specific
+projects going with the application's license may make more sense (the
+<c>gentoo-syntax</c> package for <c>vim</c> uses the <c>vim</c> license, for example).
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Accessible</title>
+<body>
+
+<p>
+Projects should be accessible to users with disabilities. Simple examples of how
+to go about this include:
+</p>
+
+<ul>
+  <li>
+    Not relying solely upon colour to convey information.
+  </li>
+  <li>
+    Providing textual descriptions for any images.
+  </li>
+  <li>
+    Providing clear captions for dialogs, buttons, form fields and so on.
+  </li>
+</ul>
+
+<p>
+Good places to look for further hints include:
+</p>
+
+<ul>
+  <li>
+    <uri link="http://developer.gnome.org/projects/gap">GNOME Accessibility
+      Project</uri>
+  </li>
+  <li>
+    <uri link="http://www.w3.org/WAI/Resources/#gl">W3C Web Accessibility
+      Initiative Guidelines</uri>
+  </li>
+</ul>
+
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>

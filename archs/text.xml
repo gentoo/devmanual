@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<guide self="archs/">
+<chapter>
+<title>Arch Specific Notes</title>
+<body>
+
+<p>
+This section provides a brief overview of various arch-specific issues. It is not
+complete, and it is not a substitute for discussing any problems with the
+relevant arch team.
+</p>
+
+<note>
+People who have worked with some other distributions may find Gentoo's
+views on architecture support slightly unfamiliar. We do not follow Debian's
+attempts to provide a standard set of packages at specific versions and install
+it onto every platform <d/> rather, we simply attempt to provide whatever
+happens to work best in any situation.
+</note>
+</body>
+
+<section>
+<title>Contents</title>
+<body>
+<contentsTree/>
+</body>
+</section>
+</chapter>
+
+<include href="alpha/"/>
+<include href="amd64/"/>
+<!--<include href="mips/"/>
+<include href="sparc/"/>
+<include href="x86/"/>-->
+
+</guide>
