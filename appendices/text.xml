@@ -17,6 +17,9 @@ This section incorporates various auxiliary documents which may be useful as a r
 </section>
 </chapter>
 
+<include href="editor-configuration/"/>
+<include href="common-problems/"/>
+<include href="further-reading/"/>
 <include href="contributing/"/>
 
 </guide>

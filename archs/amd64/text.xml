@@ -10,7 +10,7 @@
 
 <p>
 Gentoo Policy demands all shared objects to be compiled with <c>-fPIC</c>
-in <c>CFLAGS</c>. Since this is only a rule, you *can* break it on some arches.
+in <c>CFLAGS</c>. Since this is only a rule, you <e>can</e> break it on some arches.
 You might never notice it. On AMD64, this is a necessity, if shared objects aren't
 built with support for position independent code, the build process bails out
 with an error message like this:
@@ -37,7 +37,7 @@ pros and cons.
 <p>
 Sometimes, a simple <c>sed</c> command is enough to fix it, however, the statements
 normally aren't very readable and may fail when upstream changes the file.
-Please verify that you only change the <c>CFLAGS</c> for *shared* objects, not for
+Please verify that you only change the <c>CFLAGS</c> for <e>shared</e> objects, not for
 the whole package.
 </p>
 
@@ -220,7 +220,7 @@ so-called <c>emul-linux-x86</c> packages, which are located in the
   </dt>
   <dd>
     <p>
-      The name says it -- GTK and its engines belong herein.
+      The name says it <d/> GTK and its engines belong herein.
     </p>
   </dd>
   <dt>

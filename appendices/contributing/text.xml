@@ -12,7 +12,7 @@ an email to plasmaroo.
 
 <p>
 The editor reserves the right to modify submissions as he sees fit. Any
-substantial changes will of course be discussed with the submitter first --
+substantial changes will of course be discussed with the submitter first <d/>
 unless explicitly requested, minor typo corrections and formatting fixes will
 not be discussed.
 </p>
@@ -27,7 +27,7 @@ don't submit anything.
 This document is produced using the DevBook XML build system. You can download
 a snapshot of the system as well as the relevant XML files here: :FIXME:. You
 can also view the XML of any page by adding <c>./text.xml</c> to the URL. If
-you'd rather just work with plain text, that's fine too -- the formatting can
+you'd rather just work with plain text, that's fine too <d/> the formatting can
 be easily done by someone else.
 </p>
 </body>
@@ -54,7 +54,7 @@ really should first examine the GuideXML guide in a reasonable amount of depth.
   </dt>
   <dd>
     <p>
-      Indent when needed -- you should not indent any section flow elements such as
+      Indent when needed <d/> you should not indent any section flow elements such as
       <c>&lt;subsection&gt;</c> but do indent tables, lists and definition lists.
       Do <e>not</e> indent text in ordinary paragraph blocks.
     </p>
@@ -66,7 +66,7 @@ really should first examine the GuideXML guide in a reasonable amount of depth.
     <p>
       You can use the normal GuideXML tag <c>&lt;pre&gt;</c> when you need no syntax
       highlighting. When you need syntax highlighting use the <c>&lt;codesample&gt;</c>
-      tag along with a <c>lang</c> attribute -- usually you want this to be set to
+      tag along with a <c>lang</c> attribute <d/> usually you want this to be set to
       <c>ebuild</c> to syntax highlight ebuild code snippets.
     </p>
   </dd>

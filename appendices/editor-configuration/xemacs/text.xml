@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<guide self="appendices/editor-configuration/xemacs/">
+<chapter>
+<title>Configuring <c>xemacs</c> for UTF-8</title>
+<body>
+
+<p>
+First, you need to have built <c>xemacs</c> itself with <c>USE=mule</c>.  Then, the
+<c>app-xemacs/mule-ucs</c> package is needed.  To autoload Unicode support,
+you can add the following to your <c>~/.xemacs/init.el</c>:
+</p>
+
+<pre>
+    (require 'un-define)
+</pre>
+
+<p>
+If automatic character set detection on files is not working properly,
+here are three commands that can help.
+</p>
+
+<ul>
+  <li>
+    <c>set-buffer-file-coding-system (C-x RET f)</c> changes the coding
+    system for the current file.
+  </li>
+  <li>
+    <c>set-default-buffer-file-coding-system (C-x RET F)</c> sets the default for
+    unsaved buffers and ASCII-looking files that have no obvious character
+    set markers for autodetection.
+  </li>
+  <li>
+    <c>universal-coding-system-argument (C-x RET c)</c>
+    lets you set the coding system for the next command, so issuing
+    this from a dired window immediately before opening a problematic file
+    is a tactic that can be of use when autodetection gets things
+    pathologically wrong.
+  </li>
+</ul>
+
+<p>
+The current coding system will be displayed near the left edge of the
+status line.
+</p>
+
+</body>
+</chapter>
+</guide>

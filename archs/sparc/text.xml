@@ -87,7 +87,7 @@ There are three basic SPARC instruction set standards.
 </ul>
 
 <p>
-In addition, individual CPU implementations have slight differences -- for
+In addition, individual CPU implementations have slight differences <d/> for
 example, HyperSparc CPUs have relaxed requirements when it comes to scheduling
 certain instructions. These are relatively minor differences.
 </p>
@@ -95,7 +95,7 @@ certain instructions. These are relatively minor differences.
 <p>
 If <c>gcc</c> is invoked without any <c>-mcpu</c> parameter, it will generate <c>v7</c>
 code. Depending upon the application, this can be anywhere up to five times
-slower than <c>v9</c> code when running on an UltraSparc -- cryptographic and
+slower than <c>v9</c> code when running on an UltraSparc <d/> cryptographic and
 graphics applications which make heavy use of integer multiplication and
 division are especially badly hit. For this reason, the comments in
 <uri link="::general-concepts/user-environment#Not Filtering Variables"/>

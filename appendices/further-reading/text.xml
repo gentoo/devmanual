@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<guide self="appendices/further-reading/">
+<chapter>
+<title>Further Reading</title>
+<body>
+
+<p>
+This section lists some recommended further reading. These are real
+recommendations, not padding designed to make this document look important.
+</p>
+
+<section>
+<title>Books</title>
+<body>
+
+<dl>
+  <dt>
+    Mastering Regular Expressions
+  </dt>
+  <dd>
+    <p>
+    "Mastering Regular Expressions" by Jeffrey E. F. Friedl (O'Reilly,
+    ISBN 0-596-00289-0) is <b>the</b> book on regular expressions. Very readable and
+    devoid of the usual mathematical jargon that tends to fill up these kinds of
+    books. <uri link="http://www.oreilly.com/catalog/regex2/">Publisher's page</uri>
+    </p>
+  </dd>
+</dl>
+
+</body>
+</section>
+
+<section>
+<title>Articles</title>
+<body>
+
+<dl>
+  <dt>
+    Making Packager-Friendly Software
+  </dt>
+  <dd>
+    <p>
+    <uri link="http://www.onlamp.com/pub/a/onlamp/2005/03/31/packaging.html">Making
+    Packager-Friendly Software</uri> by Julio M. Merino Vidal describes various things
+    that can be done by upstream software providers to make life easy for the
+    distribution people (that means you).
+    </p>
+  </dd>
+  <dt>
+    How to Report Bugs Effectively
+  </dt>
+  <dd>
+    <p>
+    <uri link="http://freshmeat.net/articles/view/149">How to Report Bugs
+    Effectively</uri> by Simon Tatham is a good overview of effective bug reporting.
+    </p>
+  </dd>
+</dl>
+
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>
+

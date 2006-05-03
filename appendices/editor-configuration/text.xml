@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<guide self="appendices/editor-configuration/">
+<chapter>
+<title>Editor Configuration</title>
+<body>
+
+<p>
+This section provides hints as to how to configue your text editor for working with ebuilds.
+</p>
+
+<todo>
+from vapier:  add a section for nano ... users just have to copy
+/etc/nanorc to ~/.nanorc and uncomment the sections for ebuilds
+</todo>
+
+</body>
+
+<section>
+<title>Contents</title>
+<body>
+<contentsTree/>
+</body>
+</section>
+</chapter>
+
+<include href="vim/"/>
+<include href="emacs/"/>
+<include href="xemacs/"/>
+
+</guide>
