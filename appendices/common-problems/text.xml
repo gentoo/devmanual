@@ -26,20 +26,21 @@ covered here.
 </note>
 
 <subsection>
-<title>QA Notice <d/> USE Flag foo not in IUSE</title>
+<title>QA Notice -- USE Flag foo not in IUSE</title>
 <body>
 
 <p>
 With the exception of 'special' flags (the arch flags and <c>USE_EXPAND</c>
 variables), all <c>USE</c> flags used by a package must be included in <c>IUSE</c>.
-See `IUSE`_ and `USE Flags`_.
+See <uri link="::ebuild-writing/variables/#IUSE"/> and
+<uri link="::general-concepts/use-flags/"/>.
 </p>
 
 </body>
 </subsection>
 
 <subsection>
-<title>QA Notice <d/> foo in global scope</title>
+<title>QA Notice -- foo in global scope</title>
 <body>
 
 <p>
@@ -57,8 +58,9 @@ in use, there are various alternatives:
     Usually when any of the above are used in global scope, it is to manipulate
     a version or program name string. These should be avoided in favour of
     pure <c>bash</c> constructs. The <c>versionator</c> eclass is often of use here.
-    See `Version Formatting Issues`_, `versionator.eclass-5`_ and `Bash Variable
-    Manipulation`_.
+    See <uri link="::ebuild-writing/variables/#Version Formatting Issues"/>,
+    <c>man versionator.eclass</c> and <uri
+    link="::tools-reference/bash/#Bash Variable Manipulation"/>.
     </p>
   </dd>
   <dt>
@@ -67,9 +69,9 @@ in use, there are various alternatives:
   <dd>
     <p>
     Calls to any of these globally indicates a serious problem. You must <b>not</b>
-    have metadata varying based upon system-dependent information <d/> see `The
-    Portage Cache`_. You should rewrite your ebuilds to correctly use
-    dependencies.
+    have metadata varying based upon system-dependent information <d/> see
+    <uri link="::general-concepts/portage-cache/"/>. You should rewrite your ebuilds
+    to correctly use dependencies.
     </p>
   </dd>
   <dt>
@@ -89,7 +91,7 @@ in use, there are various alternatives:
 </subsection>
 
 <subsection>
-<title>QA Notice <d/> foo is setXid, dynamically linked and using lazy bindings</title>
+<title>QA Notice -- foo is setXid, dynamically linked and using lazy bindings</title>
 <body>
 
 <p>
@@ -103,8 +105,9 @@ for security reasons. If this message is shown, you have a couple of options:
     linking. This solution is preferred.
   </li>
   <li>
-    Use <c>append-ldflags</c> (see `Adding Additional Flags`_) to add <c>-Wl,-z,now</c>.
-    This will affect <e>all</e> binaries installed, not just the setXid ones.
+    Use <c>append-ldflags</c> (see <uri
+    link="ebuild-writing/functions/src_compile/build-environment/#Adding Additional Flags"/>)
+    to add <c>-Wl,-z,now</c>. This will affect <e>all</e> binaries installed, not just the setXid ones.
   </li>
 </ul>
 
@@ -112,13 +115,13 @@ for security reasons. If this message is shown, you have a couple of options:
 </subsection>
 
 <subsection>
-<title>QA Notice <d/> ECLASS foo inherited illegally</title>
+<title>QA Notice -- ECLASS foo inherited illegally</title>
 <body>
 
 <p>
 All eclass inherits must be unconditional, or based purely upon static
-machine-independent criteria (<c>PN</c> and <c>PV</c> are most common here). See `The
-Portage Cache`_.
+machine-independent criteria (<c>PN</c> and <c>PV</c> are most common here). See
+<uri link="::general-concepts/portage-cache/"/>.
 </p>
 
 <p>
@@ -132,8 +135,8 @@ inheritance occurring. Most commonly:
     did not record inheritance.
   </li>
   <li>
-    When working with eclasses in an overlay with a stale cache. See `Overlay and
-    Eclasses`_.
+    When working with eclasses in an overlay with a stale cache. See <uri
+    link="::general-concepts/overlay/#Overlay and Eclasses"/>.
   </li>
   <li>
     When working with a stale portage cache.
@@ -141,7 +144,8 @@ inheritance occurring. Most commonly:
 </ul>
 
 <p>
-You should manually check against the rules described in `The Portage Cache`_ if
+You should manually check against the rules described in
+<uri link="::general-concepts/portage-cache/"/> if
 you see this notice locally. If you see this notice when working with a pure
 <c>emerge sync</c> over <c>rsync</c> setup, it is probably a genuine issue.
 </p>
@@ -180,8 +184,8 @@ write me
 
 <p>
 Portage uses a sandbox for certain phases of the build process. This prevents a
-package from accidentally writing outside 'safe' locations. See `Sandbox`_ for
-details.
+package from accidentally writing outside 'safe' locations. See
+<uri link="::general-concepts/sandbox/"/> for details.
 </p>
 
 <p>
@@ -211,7 +215,8 @@ ebuilds.
 
 <p>
 Access violations most commonly occur during the install phase. See
-<c>src_install</c> and `Install Destinations`_ for discussion.
+<c>src_install</c> and <uri link="::general-concepts/install-destinations/"/>
+for discussion.
 </p>
 
 <p>

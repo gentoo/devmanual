@@ -6,8 +6,8 @@
 <body>
 <p>
 As with CVS, an eclass exists for working directly with upstream
-Subversion repositories. See `subversion.eclass Reference`_ for a full
-list of functions and variables. Also see
+Subversion repositories. See <uri link="eclass-reference/subversion.eclass/"/>
+for a full list of functions and variables. Also see
 the <uri link="::ebuild-writing/functions/src_unpack/cvs-sources"/> 
 ection.
 </p>
@@ -21,8 +21,8 @@ ection.
 Note that Subversion ebuilds should <b>not</b> generally be added to
 the tree (except under <c>package.mask</c>) for much the same reasons
 that live CVS ebuilds should not (see
-<uri link="::ebuild-writing/functions/src_unpack/cvs-sources#Disadvantages of CVS Sources"/>). Indeed, there should be even less
-impetus to add a live Subversion ebuild than a live CVS ebuild, as
+<uri link="::ebuild-writing/functions/src_unpack/cvs-sources#Disadvantages of CVS Sources"/>).
+Indeed, there should be even less impetus to add a live Subversion ebuild than a live CVS ebuild, as
 Subversion checkouts are roughly a factor of five larger than an
 equivalent CVS checkout.
 </p>
@@ -82,8 +82,8 @@ following variables are also noteworthy:
 </table>
 
 <p>
-See the eclass itself and `subversion.eclass Reference`_ for the full
-range of options. To perform the actual checkout, use
+See the eclass itself and <uri link="eclass-reference/subversion.eclass/"/>
+for the full range of options. To perform the actual checkout, use
 the <c>subversion_src_unpack</c> function, which calls
 both <c>subversion_svn_fetch</c> and <c>subversion_bootstrap</c>
 itself.

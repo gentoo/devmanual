@@ -17,7 +17,8 @@ Except where otherwise specified, any function which operates on
 </note>
 
 <p>
-Ebuilds must not simply ignore use CFLAGS <d/> see <uri link="::general-concepts/user-environment#Not Filtering Variables"/>.
+Ebuilds must not simply ignore use CFLAGS <d/> see
+<uri link="::general-concepts/user-environment#Not Filtering Variables"/>.
 </p>
 </body>
 
@@ -140,7 +141,7 @@ functions can be used here.
 </codesample>
 
 <p>
-See `flag-o-matic.eclass Reference`_ for a full reference.
+See <uri link="::eclass-reference/flag-o-matic.eclass/"/> for a full reference.
 </p>
 </body>
 </section>

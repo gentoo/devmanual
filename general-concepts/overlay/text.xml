@@ -42,8 +42,10 @@ Be very careful when using eclasses in an overlay. Portage will not do cache
 updates when an overlay eclass is changed, nor will it do cache updates when a
 main portage tree eclass which is used by an overlay ebuild changes. You may
 also encounter bogus 'illegal inherit' notices when working with eclasses in
-overlay (see `QA Notice <d/> ECLASS foo inherited illegally`_). To be safe,
-manually <c>touch</c> all relevant overlay files after updating overlay eclasses.
+overlay (see <uri
+link="::appendices/common-problems/#QA Notice -- ECLASS foo inherited illegally"/>).
+To be safe, manually <c>touch</c> all relevant overlay files after updating overlay
+eclasses.
 </p>
 </body>
 </section>

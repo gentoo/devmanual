@@ -20,9 +20,10 @@ generally <b>not</b> the correct solution.
 </p>
 
 <p>
-See `Sandbox Functions Reference`_ for details on sandbox-related functions. See
-`Handling Access Violations`_ for suggestions on fixing sandbox-related build
-problems.
+See <uri link="::function-reference/sandbox-functions/"/> for details on
+sandbox-related functions. See <uri
+link="::appendices/common-problems/#Handling Access Violations"/> for suggestions
+on fixing sandbox-related build problems.
 </p>
 </body>
 

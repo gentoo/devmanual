@@ -62,7 +62,8 @@ recursive, so to allow predicted writes to <c>/foo/bar</c> and <c>/foo/baz</c>,
 
 <p>
 See <uri link="::general-concepts/sandbox"/> for details on how the sandbox works.
-See `Handling Access Violations`_ for how to handle sandbox-related build problems.
+See <uri link="::appendices/common-problems/#Handling Access Violations"/> for how
+to handle sandbox-related build problems.
 </p>
 
 </body>

@@ -21,7 +21,7 @@ occasionally seen in older code must <b>not</b> be used.
 <note>
 <c>die</c> will not work as expected within a subshell, so code in the
 form <c>use foo &amp;&amp; ( blah ; blah )</c> should be avoided in favour of a proper if
-statement. See `die and Subshells`_.
+statement. See <uri link="::ebuild-writing/error-handling/#die and Subshells"/>.
 </note>
 
 <codesample lang="ebuild">

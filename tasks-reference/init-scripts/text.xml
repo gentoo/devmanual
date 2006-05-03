@@ -7,10 +7,10 @@
 
 <p>
 Init scripts should be installed into <c>/etc/init.d</c> using the <c>doinitd</c> or
-<c>newinitd</c> functions (see `Install Functions Reference`_). Any configuration
-(commandline parameters or environment variables) for these scripts should be
-handled via entries in <c>/etc/conf.d</c> with the same filename <d /> <c>doconfd</c> or
-<c>newconfd</c> can be used to install these.
+<c>newinitd</c> functions (see <uri link="::function-reference/install-functions/"/>).
+Any configuration (commandline parameters or environment variables) for these scripts
+should be handled via entries in <c>/etc/conf.d</c> with the same filename <d />
+<c>doconfd</c> or <c>newconfd</c> can be used to install these.
 </p>
 
 <p>

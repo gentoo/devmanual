@@ -6,7 +6,7 @@
 
 <p>
 The <c>eutils</c> eclass provides various useful functions. For full documentation,
-see `eutils.eclass-5`_.
+see <c>man eutils.eclass</c>.
 </p>
 
 <table>
@@ -59,7 +59,7 @@ see `eutils.eclass-5`_.
       <c>epatch</c>
     </ti>
     <ti>
-      Apply a patch (see `eutils.eclass-5`_ and
+      Apply a patch (see <c>man eutils.eclass</c> and
       <uri link="::ebuild-writing/functions/src_unpack/epatch"/>).
     </ti>
   </tr>
@@ -168,7 +168,7 @@ see `eutils.eclass-5`_.
       <c>cdrom_get_cds</c>
     </ti>
     <ti>
-      See `eutils.eclass-5`_.
+      See <c>man eutils.eclass</c>.
     </ti>
   </tr>
   <tr>
@@ -176,7 +176,7 @@ see `eutils.eclass-5`_.
       <c>cdrom_load_next_cd</c>
     </ti>
     <ti>
-      See `eutils.eclass-5`_.
+      See <c>man eutils.eclass</c>.
     </ti>
   </tr>
   <tr>

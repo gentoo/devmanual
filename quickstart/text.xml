@@ -155,8 +155,9 @@ for errors.
 The canonical install method is <c>make DESTDIR=&quot;${D}&quot;
 install</c>. This will work with any properly written standard
 <c>Makefile</c>. If this gives sandbox errors, try <c>einstall</c>
-instead. If this still fails, see `src_install`_ for how to do
-manual installs.
+instead. If this still fails, see <uri
+link="::ebuild-writing/functions/src_install/"/> for how to do manual
+installs.
 </note>
 
 <p>
@@ -301,7 +302,8 @@ src_install() {
 Note the <c>${FILESDIR}/${P}-destdir.patch</c> <d/> this refers to
 <c>detox-1.1.0-destdir.patch</c>, which lives in the <c>files/</c>
 subdirectory in the portage tree. Larger patch files must go on the
-mirrors rather than in <c>files/</c> <d/> see `Basic epatch Usage`_.
+mirrors rather than in <c>files/</c> <d/> see <uri
+link="::ebuild-writing/functions/src_unpack/epatch/"/>.
 </p>
 
 </body>
@@ -351,7 +353,7 @@ by the ebuild. This is used for the <c>emerge -pv</c> output, amongst other thin
 <p>
 The package's <c>./configure</c> script takes the usual <c>--enable-nls</c> or
 <c>--disable-nls</c> argument. We use the <c>use_enable</c> utility function to
-generate this automatically (see `Query Functions Reference`_).
+generate this automatically (see <uri link="::function-reference/query-functions/"/>).
 </p>
 
 <p>

@@ -96,7 +96,8 @@ cat list | while read file ; do epatch ${file} ; done
 </codesample>
 
 <p>
-Using input redirection (see `Abuse of cat`_) avoids this problem:
+Using input redirection (see <uri link="::tools-reference/cat/#Abuse of cat"/>)
+avoids this problem:
 </p>
 
 <codesample lang="ebuild">

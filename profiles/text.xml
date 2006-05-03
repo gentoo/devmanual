@@ -6,7 +6,7 @@
 <body>
 <p>
 This section provides details on the <c>profiles/</c> directory. All of these files
-are also documented in `portage-5`_.
+are also documented in <c>man portage</c>.
 </p>
 </body>
 

@@ -217,7 +217,7 @@ Specifying the following variables is optional:
     <ti>
     A space-delimited list of portage features to restrict.
     Valid values are <c>nostrip</c>, <c>nomirror</c>, <c>nouserpriv</c>
-    and <c>fetch</c>. See `ebuild-5`_ for details.
+    and <c>fetch</c>. See <c>man ebuild</c> for details.
     </ti>
   </tr>
   <tr>
@@ -379,7 +379,7 @@ highly discouraged.
 
 <p>
 The <c>versionator</c> eclass can also be used to extract particular components
-from a version string. See `versionator.eclass-5`_ and the eclass source code
+from a version string. See <c>man versionator.eclass</c> and the eclass source code
 for further documentation and examples. A brief summary of the functions
 follows.
 </p>

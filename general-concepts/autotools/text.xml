@@ -6,7 +6,7 @@
 <body>
 <todo>
 This is too long for <uri link="::general-concepts"/>. It needs to be split up and
-moved somewhere, either to a top-level of its own or into `Appendices`_.
+moved somewhere, either to a top-level of its own or into <uri link="::appendices/"/>.
 </todo>
 
 <p>

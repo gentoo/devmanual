@@ -148,7 +148,7 @@ mailing list.
 <p>
 All USE flags (excluding <c>USE_EXPAND</c> flags) must be described in either
 <c>use.desc</c> or <c>use.local.desc</c> in the <c>profiles/</c> directory. See
-`portage-5`_ or the comments in these files for an explanation of the format.
+<c>man portage</c> or the comments in these files for an explanation of the format.
 Remember to keep these files sorted.
 </p>
 </body>

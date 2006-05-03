@@ -7,8 +7,8 @@
 <p>
 Since v2.05a, <c>bash</c> has offered intelligent programmable completion.  Writing
 such completions for your own programs/things you maintain is relatively easy
-provided you know bash already. See `bash-completion.eclass Reference`_ for how
-to install completion files.
+provided you know bash already. See <uri link="::eclass-reference/bash-completion.eclass/"/>
+for how to install completion files.
 </p>
 
 <section>
@@ -94,7 +94,7 @@ are subsequently reset.
 <body>
 
 <p>
-See `bash-1`_ for a full description of these builtins and their options.
+See <c>man bash</c> for a full description of these builtins and their options.
 </p>
 
 <table>

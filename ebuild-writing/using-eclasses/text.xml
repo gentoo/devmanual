@@ -7,7 +7,7 @@
 <p>
 An eclass is a collection (library) of functions or functionality that is shared
 between packages. See <uri link="::eclass-writing/" /> for the full story on what
-eclasses can do, how they work and how to write them, and `Eclass Reference`_
+eclasses can do, how they work and how to write them, and <uri link="::eclass-reference/"/>
 for documentation on various commonly used eclasses. This section only explains
 how to use an eclass which has already been written.
 </p>
@@ -84,11 +84,11 @@ Note the <c>inherit</c> immediately after the header.
 </p>
 
 <p>
-The <c>eutils</c> eclass (see `eutils.eclass Reference`_) is needed to get the
-<c>epatch</c> function.  The <c>flag-o-matic</c> eclass (see `flag-o-matic.eclass
-Reference`_) is needed for <c>replace-flags</c>, and the <c>bash-completion</c> eclass
-(`bash-completion.eclass Reference`_) is used to handle the bash completion file
-via <c>dobashcompletion</c> and <c>bash-completion_pkg_postinst</c>.
+The <c>eutils</c> eclass (see <uri link="::eclass-reference/eutils.eclass/"/>) is needed to get the
+<c>epatch</c> function.  The <c>flag-o-matic</c> eclass (see <uri
+link="::eclass-reference/flag-o-matic.eclass/"/>) is needed for <c>replace-flags</c>, and
+the <c>bash-completion</c> eclass (<uri link="::eclass-reference/bash-completion.eclass/"/>) is used
+to handle the bash completion file via <c>dobashcompletion</c> and <c>bash-completion_pkg_postinst</c>.
 </p>
 
 </body>

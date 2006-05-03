@@ -320,7 +320,7 @@ following are available:
 
 <p>
 The general form of a file test is <c>-operator "filename"</c>. The following are
-available (lifted from `bash-1`_):
+available (lifted from <c>man bash</c>):
 </p>
 
 <table>
@@ -511,7 +511,7 @@ available (lifted from `bash-1`_):
 
 <p>
 The general form of a file comparison is <c>"file1" -operator "file2"</c>. The
-following are available (lifted from `bash-1`_):
+following are available (lifted from <c>man bash</c>):
 </p>
 
 <table>
@@ -669,7 +669,8 @@ done &lt; some_file
 </codesample>
 
 <p>
-See `die and Subshells`_ for an explanation of why <c>while read &lt; file</c> should
+See <uri link="::ebuild-writing/error-handling/#die and Subshells"/>
+for an explanation of why <c>while read &lt; file</c> should
 be used over <c>cat file | while read</c>.
 </p>
 
@@ -824,10 +825,12 @@ with the first match of <c>pattern</c> replaced with <c>replacement</c>. To repl
 </p>
 
 <note>
-`bash-1`_ incorrectly describes what will be matched. Of all the possible
+<c>man bash</c> incorrectly describes what will be matched. Of all the possible
 leftmost matches, the longest will be taken. Yes, really, the longest, even if
 it involves favouring later groups or later branches. This is <b>not</b> like
-<c>perl</c> or <c>sed</c>. See `IEEE1003.1-2004-9.1`_ for details.
+<c>perl</c> or <c>sed</c>. See <uri
+link="http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap09.html#tag_09_01">
+IEEE1003.1-2004-9.1</uri> for details.
 </note>
 
 <p>
