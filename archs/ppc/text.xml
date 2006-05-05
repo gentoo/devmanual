@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<guide self="archs/ppc/">
+<chapter>
+<title>Arch Specific Notes -- PPC</title>
+<body>
+
+<p>
+The Gentoo PowerPC port uses the <c>ppc</c> keyword and maintains compatibility with
+all 32 bit PowerPC processors.  It is also used for 32 bit userland installs
+on 64 bit PowerPC systems.
+</p>
+
+<section>
+<title>Common issues</title>
+<body>
+
+<p>
+Although PowerPC processors can be run in little endian mode, the Linux kernel
+runs on PowerPC processors in big endian mode.  Due to this fact, a common
+PowerPC issue is dealing with code that is written with only little endian
+processors in mind (<c>x86</c>/<c>amd64</c>).  These bugs can be difficult to find, but are
+usually found when loading data from disk (such as a structure written directly
+to disk) or during bit operations.
+</p>
+
+<p>
+The PowerPC port of gcc uses unsigned characters by default, which is
+different than on <c>x86</c>.  If the code you are working with assumes that the <c>char</c>
+type is signed, you can pass <c>-fsigned-char</c> to <c>GCC</c> to work around the issue.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Altivec</title>
+<body>
+
+<p>
+Altivec (Apple's name for VMX SIMD instructions) is supported on the <c>G4</c> and <c>G5</c>
+processors.  You can enable support for the instruction set by passing
+<c>-mabi=altivec -maltivec</c> to <c>GCC</c>.  Note that passing <c>-mcpu=</c> options may enable
+altivec without passing the flags above.
+</p>
+
+<p>
+Occasionally, an altivec issue that crops up is that Apple uses a different
+notation for indicating vectors, (x) instead of {x}.  Using something like the
+code below to define vectors is the preferred way of fixing this:
+</p>
+
+<codesample lang="c">
+#ifdef CONFIG_APPLE
+#define AVV(x...) (x)
+#else
+#define AVV(x...) {x}
+#endif
+</codesample>
+
+</body>
+</section>
+
+<section>
+<title>Contacting the PowerPC Team</title>
+<body>
+
+<p>
+The PowerPC team can be reached by:
+</p>
+
+<ul>
+  <li>
+    Via the <c>#gentoo-ppc</c> IRC channel on freenode
+  </li>
+  <li>
+    Via email to <c>ppc@gentoo.org</c>
+  </li>
+  <li>
+    Via email to <c>gentoo-ppc-dev@gentoo.org</c> the mailing list
+  </li>
+  <li>
+    Via Bugzilla bugs assigned to <c>ppc@gentoo.org</c>
+  </li>
+</ul>
+
+</body>
+</section>
+
+<section>
+<title>Other Resources</title>
+<body>
+
+<ul>
+  <li>
+    <uri link="http://www.gentoo.org/doc/en/gentoo-ppc-faq.xml">Gentoo PPC FAQ</uri>
+  </li>
+  <li>
+    <uri link="http://forums.gentoo.org/viewforum-f-24.html">Gentoo PPC Forums</uri>
+  </li>
+</ul>
+
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>
