@@ -439,8 +439,8 @@ rather than leaving things unquoted.
 <body>
 
 <p>
-The <c>Makefile.am</c> file is processed by <c>automake</c> to create <c>Makefile.in</c>.
-which is in turn processed by <c>configure</c> to create <c>Makefile</c>. which is in
+The <c>Makefile.am</c> file is processed by <c>automake</c> to create <c>Makefile.in</c>,
+which is in turn processed by <c>configure</c> to create <c>Makefile</c>, which is in
 turn used by <c>make</c> to build the software.
 </p>
 
