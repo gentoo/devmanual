@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<guide self="appendices/authors/">
+<chapter>
+<title>Authors</title>
+<body>
+
+<p>
+This page lists contributors to the Gentoo Development Guide:
+</p>
+
+<authors>
+<author name="Ciaran McCreesh" email="ciaran.mccreesh@blueyonder.co.uk">
+  Main Content
+</author>
+<author name="Grant Goodyear" email="g2boojum@gentoo.org">
+  <uri link="::tools-reference/cat/#Here Documents"/>,
+  <uri link="::ebuild-writing/functions/src_compile/distutils"/>
+</author>
+<author name="Aaron Walker" email="ka0ttic@gentoo.org">
+  <uri link="::tasks-reference/completion"/>,
+  <uri link="::eclass-reference/subversion.eclass"/>
+</author>
+<author name="Robert Coie" email="rac@gentoo.org">
+  <uri link="::appendices/editor-configuration/xemacs"/>
+</author>
+<author name="Tom Martin" email="slarti@gentoo.org">
+  <uri link="::appendices/editor-configuration/emacs"/>,
+  <uri link="::ebuild-writing/functions/src_unpack/svn-sources"/>,
+  <uri link="::general-concepts/use-flags/#Conflicting USE Flags"/>
+</author>
+<author name="Paul Varner" email="fuzzyray@gentoo.org">
+  <uri link="::ebuild-writing/functions/src_unpack/rpm-sources"/>
+</author>
+<author name="Ilya Volynets-Evenbakh" email="iluxa@gentoo.org">
+  <uri link="::archs/mips/#MIPS ABIs"/>
+</author>
+<author name="Diego" email="flameeyes@gentoo.org">
+  <uri link="::tasks-reference/pam"/>,
+  <uri link="::general-concepts/autotools/#aclocal and m4 Files"/>
+</author>
+<author name="Fernando J. Pereda" email="ferdy@gentoo.org">
+  <uri link="::archs/alpha"/>
+</author>
+<author name="Simon Stelling" email="blubb@gentoo.org">
+  <uri link="::archs/amd64"/>
+</author>
+<author name="Alin Dobre" email="alin@gentoo.org">
+  <uri link="::tools-reference/echo"/>
+</author>
+</authors>
+
+</body>
+</chapter>
+</guide>
