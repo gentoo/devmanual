@@ -33,10 +33,12 @@ ebuilds.
 <include href="head-and-tail/"/>
 <!--
 <include href="repoman/"/>
+-->
 <include href="sed/"/>
 <include href="sort/"/>
 <include href="tr/"/>
 <include href="uniq/"/>
+<!--
 <include href="xargs/"/>-->
 
 </guide>

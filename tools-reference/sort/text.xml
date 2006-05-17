@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/sort/">
+<chapter>
+<title>sort -- Sorting Text</title>
+<body>
+
+<p>
+The <c>sort</c> tool can be used to sort text. It sorts the contents of the files
+named on the commandline, or the text provided on standard input if no files are
+given. Output is to standard output by default, unless a <c>-o filename</c> option
+is provided.
+</p>
+
+<p>
+To ignore case, the <c>-f</c> switch may be used.
+</p>
+
+<p>
+Many other options are available. See <c>man sort</c> and <uri
+link="http://www.opengroup.org/onlinepubs/000095399/utilities/sort.html">
+IEEE1003.1-2004-sort</uri> for details.
+</p>
+
+</body>
+</chapter>
+</guide>
+

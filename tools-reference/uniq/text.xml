@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/uniq/">
+<chapter>
+<title>uniq -- Filtering Duplicates</title>
+<body>
+
+<p>
+The <c>uniq</c> utility can be used to filter <b>adjacent</b> duplicate lines in files
+or in the text provided through standard input.
+</p>
+
+<note>
+Instead of using <c>sort | uniq</c>, one should use <c>sort -u</c>.
+</note>
+
+<p>
+See <c>man uniq</c> and <uri
+link="http://www.opengroup.org/onlinepubs/000095399/utilities/uniq">
+IEEE1003.1-2004-uniq</uri> for details.
+</p>
+
+</body>
+</chapter>
+</guide>

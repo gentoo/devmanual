@@ -1,0 +1,904 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/sed/">
+<chapter>
+<title>sed -- Stream Editor</title>
+<body>
+
+<p>
+Sometimes it is better to use regular expressions to manipulate content rather
+than patching sources. This can be used for small changes, especially those
+which are likely to create patch conflicts across versions. The canonical way of
+doing this is via <c>sed</c>:
+</p>
+
+<codesample lang="ebuild">
+# This plugin is mapped to the 'h' key by default, which conflicts with some
+# other mappings. Change it to use 'H' instead.
+sed -i 's/\(noremap &lt;buffer&gt; \)h/\1H/' info.vim \
+    || die 'sed failed'
+</codesample>
+
+<p>
+Another common example is appending a <c>-gentoo-blah</c> version string (some
+upstreams like us to do this so that they can tell exactly which package they're
+dealing with). Again, we can use <c>sed</c>. Note that the <c>${PR}</c> variable will
+be set to <c>r0</c> if we don't have a <c>-r</c> component in our version.
+</p>
+
+<codesample lang="ebuild">
+# Add in the Gentoo -r number to fluxbox -version output. We need to look
+# for the line in version.h.in which contains "__fluxbox_version" and append
+# our content to it.
+if [[ "${PR}" == "r0" ]] ; then
+    suffix="gentoo"
+else
+    suffix="gentoo-${PR}"
+fi
+sed -i \
+    -e "s~\(__fluxbox_version .@VERSION@\)~\1-${suffix}~" \
+    version.h.in || die "version sed failed"
+</codesample>
+
+<p>
+It is also possible to extract content from existing files to create new files
+this way. Many <c>app-vim</c> ebuilds use this technique to extract documentation
+from the plugin files and convert it to Vim help format.
+</p>
+
+<codesample lang="ebuild">
+# This plugin uses an 'automatic HelpExtractor' variant. This causes
+# problems for us during the unmerge. Fortunately, sed can fix this
+# for us. First, we extract the documentation:
+sed -e '1,/^" HelpExtractorDoc:$/d' \
+    ${S}/plugin/ZoomWin.vim > ${S}/doc/ZoomWin.txt \
+    || die "help extraction failed"
+# Then we remove the help extraction code from the plugin file:
+sed -i -e '/^" HelpExtractor:$/,$d' ${S}/plugin/ZoomWin.vim \
+    || die "help extract remove failed"
+</codesample>
+
+<p>
+A summary of the more common ways of using <c>sed</c> and a description of
+commonly used address and token patterns follows. Note that some of these
+constructs are specific to <c>GNU sed 4</c> <d/> on non-GNU userland archs, the
+<c>sed</c> command must be aliased to GNU sed. Also note that <c>GNU sed 4</c> is
+guaranteed to be installed as part of <c>system</c>. This was not always the case,
+which is why some packages, particularly those which use <c>sed -i</c>, have
+<c>DEPEND</c> s upon <c>>=sys-apps/sed-4</c>.
+</p>
+
+<section>
+<title>Basic <c>sed</c> Invocation</title>
+<body>
+
+<p>
+The basic form of a call is:
+</p>
+
+<codesample lang="ebuild">
+sed [ option flags ] \
+    -e 'first command' \
+    -e 'second command' \
+    -e 'and so on' \
+    input-file > output-file \
+    || die "Oops, sed didn't work!"
+</codesample>
+
+<p>
+For cases where the input and output files are the same, the inplace option
+should be used. This is done by passing <c>-i</c> as one of the option flags.
+</p>
+
+<p>
+Usually <c>sed</c> prints out every line of the created content. To obtain only
+explicitly printed lines, the <c>-n</c> flag should be used.
+</p>
+
+<note>
+The term <e>pattern</e> refers to the description of text being matched.
+</note>
+
+</body>
+</section>
+
+<section>
+<title>Simple Text Substitution using <c>sed</c></title>
+<body>
+
+<p>
+The most common form of <c>sed</c> is to replace all instances of <c>"some text"</c>
+with <c>"different content"</c>. This is done as follows:
+</p>
+
+<codesample lang="ebuild">
+# replace all instances of "some text" with "different content" in
+# somefile.txt
+sed -i -e 's/some text/different content/g' somefile.txt || \
+    die "Sed broke!"
+</codesample>
+
+<note>
+The <c>/g</c> flag is required to replace <e>all</e> occurrences. Without this
+flag, only the first match on each line is replaced.
+</note>
+
+<warning>
+The above will replace <c>"irksome texting"</c> with
+<c>"irkdifferent contenting"</c>, which may not be desired.
+</warning>
+
+<p>
+If the pattern or the replacement string contains the forward slash character,
+it is usually easiest to use a different delimiter. Most punctuation characters
+are allowed, although backslash and any form of brackets should be avoided.
+</p>
+
+<codesample lang="ebuild">
+# replace all instances of "/usr/local" with "/usr"
+sed -i -e 's~/usr/local~/usr~g' somefile.txt || \
+    die "sed broke"
+</codesample>
+
+<p>
+Patterns can be made to match only at the start or end of a line by using the
+<c>^</c> and <c>$</c> metacharacters. A <c>^</c> means "match at the start of a line
+only", and <c>$</c> means "match at the end of a line only". By using both in a
+single statement, it is possible to match exact lines.
+</p>
+
+<codesample lang="ebuild">
+# Replace any "hello"s which occur at the start of a line with "howdy".
+sed -i -e 's!^hello!howdy!' data.in || die "sed failed"
+</codesample>
+
+<note>
+There is no need for a <c>!g</c> suffix here.
+</note>
+
+<codesample lang="ebuild">
+# Replace any "bye"s which occur at the end of a line with "cheerio!".
+sed -i -e 's,bye$,cheerio!,' data.in || die "sed failed"
+</codesample>
+
+<codesample lang="ebuild">
+# Replace any lines which are exactly "change this line" with "have a
+# cookie".
+sed -i -e 's-^change this line$-have a cookie-' data.in || die "Oops"
+</codesample>
+
+<p>
+To ignore case in the pattern, add the <c>/i</c> flag.
+</p>
+
+<codesample lang="ebuild">
+# Replace any "emacs" instances (ignoring case) with "Vim"
+sed -i -e 's/emacs/Vim/gi' editors.txt || die "Ouch"
+</codesample>
+
+<warning>
+Case insensitive matching doesn't work correctly when backreferences
+are used.
+</warning>
+
+</body>
+</section>
+
+<section>
+<title>Regular Expression Substitution using <c>sed</c></title>
+<body>
+
+<p>
+It is also possible to do more complex matches with <c>sed</c>. Some examples could
+be:
+</p>
+
+<ul>
+  <li>
+    Match any three digits
+  </li>
+  <li>
+    Match either "foo" or "bar"
+  </li>
+  <li>
+    Match any of the letters "a", "e", "i", "o" or "u"
+  </li>
+</ul>
+
+<p>
+These types of pattern can be chained together, leading to things like "match
+any vowel followed by two digits followed by either foo or bar".
+</p>
+
+<p>
+To match any of a set of characters, a <e>character class</e> can be used. These come
+in three forms.
+</p>
+
+<ul>
+  <li>
+    A backslash followed by a letter. <c>\d</c>, for example, matches a single digit
+    (any of 0, 1, 2, ... 9). <c>\s</c> matches a single whitespace character. A table
+    of the more useful classes is provided later in this document.
+  </li>
+  <li>
+    A group of characters inside square brackets. <c>[aeiou]</c>, for example,
+    matches any one of 'a', 'e', 'i', 'o' or 'u'. Ranges are allowed, such as
+    <c>[0-9A-Fa-fxX]</c>, which could be used to match any hexadecimal digit or the
+    characters 'x' and 'X'. Inverted character classes, such as <c>[^aeiou]</c>,
+    match any single character <e>except</e> those listed.
+  </li>
+  <li>
+    A POSIX character class is a special named group of characters that are
+    locale-aware. For example, <c>[[:alpha:]]</c> matches any 'alphabet' character in
+    the current locale. A table of the more useful classes is provided later in
+    this document.
+  </li>
+</ul>
+
+<note>
+The regex <c>a[^b]</c> does <b>not</b> mean "match a, so long as it does not
+have a 'b' after it". It means "match a followed by exactly one character which
+is not a 'b'". This is important when one considers a line ending in the
+character 'a'.
+</note>
+
+<note>
+At the time of writing, the <c>sed</c> documentation (<c>man sed</c> and
+<c>sed.info</c>) does not mention that POSIX character classes are supported.
+Consult <uri
+link="http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap09.html#tag_09_03">
+IEEE1003.1-2004-9.3</uri> for full details of how these <e>should</e> work, and
+the <c>sed</c> source code for full details of how these <e>actually</e> work.
+</note>
+
+<p>
+To match any one of multiple options, <e>alternation</e> can be used. The basic form
+is <c>first\|second\|third</c>.
+</p>
+
+<p>
+To group items to avoid ambiguity, the <c>\(parentheses\)</c> construct may be
+used. To match "iniquity" or "infinity", one could use <c>in\(iqui\|fini\)ty</c>.
+</p>
+
+<p>
+To optionally match an item, add a <c>\?</c> after it. For example, <c>colou\?r</c>
+matches both "colour" and "color". This can also be applied to character classes
+and groups in parentheses, for example <c>\(in\)\?finite\(ly\)\?</c>. Further atoms
+are available for matching "one or more", "zero or more", "at least n", "between
+n and m" and so on <d/> these are summarised later in this document.
+</p>
+
+<p>
+There are also some special constructs which can be used in the replacement part
+of a substitution command. To insert the contents of the pattern's first matched
+bracket group, use <c>\1</c>, for the second use <c>\2</c> and so on up to <c>\9</c>. An
+unescaped ampersand <c>&amp;</c> character can be used to insert the entire contents of
+the match. These and other replace atoms are summarised later in this document.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Addresses in <c>sed</c></title>
+<body>
+
+<p>
+Many <c>sed</c> commands can be applied only to a certain line or range of lines.
+This could be useful if one wishes to operate only on the first ten lines of a
+document, for example.
+</p>
+
+<p>
+The simplest form of address is a single positive integer. This will cause the
+following command to be applied only to the line in question. Line numbering
+starts from 1, but the address 0 can be useful when one wishes to insert text
+<e>before</e> the first line. If the address 100 is used on a 50 line document, the
+associated command will never be executed.
+</p>
+
+<p>
+To match the last line in a document, the <c>$</c> address may be used.
+</p>
+
+<p>
+To match any lines that match a given regular expression, the form
+<c>/pattern/</c> is allowed. This can be useful for finding a particular line and
+then making certain changes to it <d/> sometimes it is simpler to handle this in
+two stages rather than using one big scary <c>s///</c> command. When used in
+ranges, it can be useful for finding all text between two given markers or
+between a given marker and the end of the document.
+</p>
+
+<p>
+To match a range of addresses, <c>addr1,addr2</c> can be used. Most address
+constructs are allowed for both the start and the end addresses.
+</p>
+
+<p>
+Addresses may be inverted with an exclamation mark. To match all lines <e>except</e>
+the last, <c>$!</c> may be used.
+</p>
+
+<p>
+Finally, if no address is given for a command, the command is applied to every
+line in the input.
+</p>
+
+<note>
+GNU <c>sed</c> does <b>not</b> support the <c>%</c> address forms found in some
+other implementations. It also doesn't support <c>/addr/+offset</c>, that's an
+<c>ex</c> thing...
+</note>
+
+<p>
+Other more complex options involving chaining addresses are available. These are
+not discussed in this document.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Content Deletion using <c>sed</c></title>
+<body>
+
+<p>
+Lines may be deleted from a file using <c>address d</c> command. To delete the
+third line of a file, one could use <c>3d</c>, and to filter out all lines
+containing "fred", <c>/fred/d</c>.
+</p>
+
+<note>
+sed -e <c>/fred/d</c> is <e>not</e> the same as <c>s/.<e>fred.</e>//</c> <d/> the former
+will delete the lines including the newline, whereas the latter will delete the
+lines' contents but not the newline.
+</note>
+
+</body>
+</section>
+
+<section>
+<title>Content Extraction using <c>sed</c></title>
+<body>
+
+<p>
+When the <c>-n</c> option is passed to <c>sed</c>, no output is printed by default.
+The <c>p</c> command can be used to display content. For example, to print lines
+containing "infra monkey", the command <c>sed -n -e '/infra monkey/p'</c> could be
+used. Ranges may also be printed <d/> <c>sed -n -e '/^START$/,/^END$/p'</c> is
+sometimes useful.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Inserting Content using <c>sed</c></title>
+<body>
+
+<p>
+To insert text with sed use a <c>address a</c> or <c>i</c> command. The
+<c>a</c> command inserts on the line following the match while the <c>i</c>
+command inserts on the line before the match.
+</p>
+
+<p>
+As usual, an address can be either a line number or a regular
+expression: a line number command will only be executed once and a
+regular expression insert/append will be executed for each match.
+</p>
+
+<codesample lang="ebuild">
+# Add 'Bob' after the 'To:' line:
+sed -i -e '/^To: $/a    Bob' data.in || die "Oops"
+
+# Add 'From: Alice' before the 'To:' line:
+sed -i -e '/^To: $/i    From: Alice'
+
+# Note that the spacing between the 'i' or 'a' and 'Bob' or 'From: Alice' is simply ignored'
+
+# Add 'From: Alice' indented by two spaces: (You only need to escape the first space)
+sed -i -e '/^To: $/i\  From: Alice'
+</codesample>
+
+<p>
+Note that you should use a match instead of a line number wherever
+possible. This reduces problems if a line is added at the beginning of
+the file, for example, causing your sed script to break.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Regular Expression Atoms in <c>sed</c></title>
+<body>
+
+<subsection>
+<title>Basic Atoms</title>
+<body>
+
+<table>
+  <tr>
+    <th>
+      Atom
+    </th>
+    <th>
+      Purpose
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>text</c>
+    </ti>
+    <ti>
+      Literal text
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\( \)</c>
+    </ti>
+    <ti>
+      Grouping
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\|</c>
+    </ti>
+    <ti>
+      Alternation, a <e>or</e> b
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>*</c> <c>\?</c> <c>\+</c> <c>\{\}</c>
+    </ti>
+    <ti>
+      Repeats, see below
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>.</c>
+    </ti>
+    <ti>
+      Any single character
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>^</c>
+    </ti>
+    <ti>
+      Start of line
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>$</c>
+    </ti>
+    <ti>
+      End of line
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>[abc0-9]</c>
+    </ti>
+    <ti>
+      Any one of
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>[^abc0-9]</c>
+    </ti>
+    <ti>
+      Any one character except
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>[[:alpha:]]</c>
+    </ti>
+    <ti>
+      POSIX character class, see below
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\1</c> .. <c>\9</c>
+    </ti>
+    <ti>
+      Backreference
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\x</c> (any special character)
+    </ti>
+    <ti>
+      Match character literally
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\x</c> (normal characters)
+    </ti>
+    <ti>
+      Shortcut, see below
+    </ti>
+  </tr>
+</table>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Character Class Shortcuts</title>
+<body>
+
+<table>
+  <tr>
+    <th>
+      Atom
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>\a</c>
+    </ti>
+    <ti>
+      "BEL" character
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\f</c>
+    </ti>
+    <ti>
+      "Form Feed" character
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\t</c>
+    </ti>
+    <ti>
+      "Tab" character
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\w</c>
+    </ti>
+    <ti>
+      "Word" (a letter, digit or underscore) character
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\W</c>
+    </ti>
+    <ti>
+      "Non-word" character
+    </ti>
+  </tr>
+</table>
+
+</body>
+</subsection>
+
+<subsection>
+<title>POSIX Character Classes</title>
+<body>
+
+<p>
+Read the source, it's the only place these're documented properly...
+</p>
+
+<table>
+  <tr>
+    <th>
+      Class
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>[[:alpha:]]</c>
+    </ti>
+    <ti>
+      Alphabetic characters
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>[[:upper:]]</c>
+    </ti>
+    <ti>
+      Uppercase alphabetics
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>[[:lower:]]</c>
+    </ti>
+    <ti>
+      Lowercase alphabetics
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>[[:digit:]]</c>
+    </ti>
+    <ti>
+      Digits
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>[[:alnum:]]</c>
+    </ti>
+    <ti>
+      Alphabetic and numeric characters
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>[[:xdigit:]]</c>
+    </ti>
+    <ti>
+      Digits allowed in a hexadecimal number
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>[[:space:]]</c>
+    </ti>
+    <ti>
+      Whitespace characters
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>[[:print:]]</c>
+    </ti>
+    <ti>
+      Printable characters
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>[[:punct:]]</c>
+    </ti>
+    <ti>
+      Punctuation characters
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>[[:graph:]]</c>
+    </ti>
+    <ti>
+      Non-blank characters
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>[[:cntrl:]]</c>
+    </ti>
+    <ti>
+      Control characters
+    </ti>
+  </tr>
+</table>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Count Specifiers</title>
+<body>
+
+<table>
+  <tr>
+    <th>
+      Atom
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>*</c>
+    </ti>
+    <ti>
+      Zero or more (greedy)
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\+</c>
+    </ti>
+    <ti>
+      One or more (greedy)
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\?</c>
+    </ti>
+    <ti>
+      Zero or one (greedy)
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\{N\}</c>
+    </ti>
+    <ti>
+      Exactly N
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\{N,M\}</c>
+    </ti>
+    <ti>
+      At least N and no more than M (greedy)
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\{N,\}</c>
+    </ti>
+    <ti>
+      At least N (greedy)
+    </ti>
+  </tr>
+</table>
+
+</body>
+</subsection>
+
+</body>
+</section>
+
+<section>
+<title>Replacement Atoms in <c>sed</c></title>
+<body>
+
+<table>
+  <tr>
+    <th>
+      Atom
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>\1</c> .. <c>\9</c>
+    </ti>
+    <ti>
+      Captured <c>\( \)</c> contents
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>&amp;</c>
+    </ti>
+    <ti>
+      The entire matched text
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\L</c>
+    </ti>
+    <ti>
+      All subsequent characters are converted to lowercase
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\l</c>
+    </ti>
+    <ti>
+      The following character is converted to lowercase
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\U</c>
+    </ti>
+    <ti>
+      All subsequent characters are converted to uppercase
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\u</c>
+    </ti>
+    <ti>
+      The following character is converted to uppercase
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>\E</c>
+    </ti>
+    <ti>
+      Cancel the most recent <c>\L</c> or <c>\U</c>
+    </ti>
+  </tr>
+</table>
+
+</body>
+</section>
+
+<section>
+<title>Details of <c>sed</c> Match Mechanics</title>
+<body>
+
+<p>
+GNU <c>sed</c> uses a traditional (non-POSIX) nondeterministic finite automaton with
+extensions to support capturing to do its matching. This means that in all
+cases, the match with the leftmost starting position will be favoured. Of all
+the leftmost possible matches, favour will be given to leftmost alternation
+options. Finally, all other things being equal favour will be given to the
+longest of the leftmost counting options.
+</p>
+
+<p>
+Most of this is in violation of one of the sillier POSIX rules, so it's best not
+to rely upon it. It <e>is</e> safe to assume that <c>sed</c> will always pick the leftmost
+match, and that it will match greedily with priority given to items earlier in
+the pattern.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Notes on Performance with <c>sed</c></title>
+<body>
+
+<todo>
+write this
+</todo>
+
+</body>
+</section>
+
+<section>
+<title>Recommended Further Reading for Regular Expressions</title>
+<body>
+
+<p>
+The author recommends <e>Mastering Regular Expressions</e> by Jeffrey E. F. Friedl
+for those who wish to learn more about regexes. This text is remarkably devoid
+of phrases like "let <c>t</c> be a finite contiguous sequence such that <c>t[n] ∈ ∑
+∀ n</c>", and was <e>not</e> written by someone whose pay cheque depended upon them being
+able to express simple concepts with pages upon pages of mathematical and Greek
+symbols.
+</p>
+
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>

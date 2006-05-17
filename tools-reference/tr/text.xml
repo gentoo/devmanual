@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<guide self="tools-reference/tr/">
+<chapter>
+<title>tr -- Character Translation</title>
+<body>
+
+<p>
+The <c>tr</c> command can be used to translate, squeeze and delete character
+sequences. See <c>man tr</c> and <uri
+link="http://www.opengroup.org/onlinepubs/000095399/utilities/tr.html">
+IEEE1003.1-2004-tr</uri> for the full specification.
+</p>
+
+<note>
+<c>tr</c>, unlike most other utilities, only reads from standard input
+and only writes to standard output. Therefore, you will have to use
+<c>tr [options] &lt; input &gt; output</c>.
+</note>
+
+<p>
+<c>tr</c> operates in a number of modes, depending upon the invocation:
+</p>
+
+<dl>
+  <dt>
+    Deleting characters
+  </dt>
+  <dd>
+    <p>
+      To delete all occurrences of certain characters, use <c>tr -d asdf</c>.
+    </p>
+  </dd>
+  <dt>
+    Deleting repeated characters
+  </dt>
+  <dd>
+    <p>
+      To replace repeated characters with a single character ('squeeze'), use
+      <c>tr -s asdf</c>.
+    </p>
+  </dd>
+  <dt>
+    Transliterating characters
+  </dt>
+  <dd>
+    <p>
+      To replace all 'a' characters with '1', all 'b' with '2' and all 'c' with
+      '3', use <c>tr abc 123</c>.
+    </p>
+  </dd>
+</dl>
+
+<p>
+Certain special forms are allowed for the arguments. <c>a-z</c> expands to all
+characters from 'a' to 'z', <c>\t</c> represents a tab and so on. See the
+documentation for a full list.
+</p>
+
+</body>
+</chapter>
+</guide>
+
