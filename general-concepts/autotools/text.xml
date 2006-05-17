@@ -174,7 +174,7 @@ page. It gets far worse.
 A typical file might start with something like the following:
 </p>
 
-<codesample lang="autotools">
+<codesample lang="m4">
 dnl Process this file with autoconf
 AC_INIT(appname, 0.1)
 AC_PREREQ(2.5)
@@ -207,7 +207,7 @@ Mandrake. Other distributions may handle things differently.
 Usually, some standard checks will follow:
 </p>
 
-<codesample lang="autotools">
+<codesample lang="m4">
 dnl Check for toolchain and install components
 AC_PROG_CC
 AC_PROG_INSTALL
@@ -219,7 +219,7 @@ AC_PROG_RANLIB
 For non-standard applications, you may also see manual checks:
 </p>
 
-<codesample lang="autotools">
+<codesample lang="m4">
 dnl Check for sed
 AC_CHECK_PROGS(regex_cmd, sed)
 if test x$regex_cmd = "x" ; then
@@ -231,7 +231,7 @@ fi
 You may also see checks for compiler features:
 </p>
 
-<codesample lang="autotools">
+<codesample lang="m4">
 dnl Check that our compiler can do const and inline
 AC_C_CONST
 AC_C_INLINE
@@ -241,7 +241,7 @@ AC_C_INLINE
 Library and header checks:
 </p>
 
-<codesample lang="autotools">
+<codesample lang="m4">
 dnl Check for standard headers:
 AC_HEADER_STDC
 AC_HEADER_DIRENT
@@ -255,7 +255,7 @@ AC_CHECK_LIB(ssl, SSL_free)
 And function checks:
 </p>
 
-<codesample lang="autotools">
+<codesample lang="m4">
 dnl Check for functions:
 AC_CHECK_FUNCS([setlocale strtol])
 </codesample>
@@ -272,7 +272,7 @@ over-eager to add in checks.
 The file will finish with some output functions:
 </p>
 
-<codesample lang="autotools">
+<codesample lang="m4">
 AM_CONFIG_HEADER(config.h)
 AC_OUTPUT(Makefile src/Makefile nls/Makefile man/Makefile tests/Makefile)
 </codesample>
@@ -301,7 +301,7 @@ A simple <c>--enable</c> / <c>--disable</c> function might look something like t
 following:
 </p>
 
-<codesample lang="autotools">
+<codesample lang="m4">
 AC_MSG_CHECKING(--enable-cscope argument)
 AC_ARG_ENABLE(cscope,
     [  --enable-cscope         Include cscope interface.],
@@ -349,7 +349,7 @@ misunderstanding of the <c>AC_ARG_ENABLE</c> arguments is to blame.
 A simple <c>--with</c> / <c>--without</c> check might look like:
 </p>
 
-<codesample lang="autotools">
+<codesample lang="m4">
 AC_MSG_CHECKING([whether to enable foo])
 AC_ARG_WITH(foo,
     [  --with-foo           enable foo support],
@@ -405,7 +405,7 @@ special string <c>@&lt;:@</c>. For a right bracket, use <c>@:&gt;@</c>.
 For example:
 </p>
 
-<codesample lang="autotools">
+<codesample lang="m4">
 AC_MSG_RESULT(the first)
 AC_MSG_RESULT([the second])
 AC_MSG_RESULT("the third")
@@ -453,7 +453,7 @@ The basic format is like that of a <c>Makefile</c>. However, you will see variou
 A very simple example:
 </p>
 
-<codesample lang="autotools">
+<codesample lang="make">
 bin_PROGRAMS = myapp
 myapp_SOURCES = myapp_commandline.c myapp.c
 </codesample>
@@ -468,7 +468,7 @@ You may also see some standard <c>Makefile</c> constructs showing up whenever th
 isn't a standard <c>automake</c> way of handling a certain task. For example:
 </p>
 
-<codesample lang="autotools">
+<codesample lang="make">
 CLEANFILES = glep31check.1
 man_MANS = glep31check.1
 EXTRA_DIST = glep31check.in
@@ -502,17 +502,17 @@ that user preferences are not ignored.
 So, if a <c>Makefile.am</c> contains, say:
 </p>
 
-<pre>
+<codesample lang="ebuild">
 CFLAGS="-Wall"
-</pre>
+</codesample>
 
 <p>
 You should <c>sed</c> or <c>patch</c> it to use:
 </p>
 
-<pre>
+<codesample lang="ebuild">
 AM_CFLAGS="-Wall"
-</pre>
+</codesample>
 
 <p>
 Remember to manually run <c>autoconf</c> then <c>automake</c> if you do this.

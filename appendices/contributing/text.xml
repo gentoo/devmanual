@@ -7,11 +7,11 @@
 <p>
 Contributions for this document are highly welcomed. Whether you've found a typo
 or have written an entire new section, the best way to get in touch is to send
-an email to plasmaroo.
+an email to the editors.
 </p>
 
 <p>
-The editor reserves the right to modify submissions as he sees fit. Any
+The editors reserve the right to modify submissions as they see fit. Any
 substantial changes will of course be discussed with the submitter first <d/>
 unless explicitly requested, minor typo corrections and formatting fixes will
 not be discussed.
@@ -28,7 +28,7 @@ This document is produced using the DevBook XML build system. You can download
 a snapshot of the system as well as the relevant XML files here: :FIXME:. You
 can also view the XML of any page by adding <c>./text.xml</c> to the URL. If
 you'd rather just work with plain text, that's fine too <d/> the formatting can
-be easily done by someone else.
+be easily done by someone else (meaning, us).
 </p>
 </body>
 

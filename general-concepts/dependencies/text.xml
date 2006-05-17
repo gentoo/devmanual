@@ -249,7 +249,7 @@ This is a shame.
 To depend upon a certain package if and only if a given <c>USE</c> flag is set:
 </p>
 
-<codesample language="ebuild">
+<codesample lang="ebuild">
 DEPEND="perl? ( dev-lang/perl )
     ruby? ( &gt;=dev-lang/ruby-1.8 )
     python? ( dev-lang/python )"
@@ -260,7 +260,7 @@ It is also possible to depend upon a certain package if a given <c>USE</c> flag 
 <e>not</e> set:
 </p>
 
-<codesample language="ebuild">
+<codesample lang="ebuild">
 RDEPEND="!crypt? ( net-misc/netkit-rsh )"
 </codesample>
 
@@ -275,7 +275,7 @@ directory of the Portage tree.
 This can be nested:
 </p>
 
-<codesample language="ebuild">
+<codesample lang="ebuild">
 DEPEND="gtk? (
             gtk2? ( &gt;=x11-libs/gtk+-2.4 )
             !gtk2? ( =x11-libs/gtk+-1.2* ) )

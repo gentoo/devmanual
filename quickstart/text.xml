@@ -253,7 +253,7 @@ compile-time dependencies, and the <c>RDEPEND</c> lists runtime dependencies. Se
 <p>
 Often we need to apply patches. This is done in the <c>src_unpack</c> function
 using the <c>epatch</c> helper function. To use <c>epatch</c> one must first tell
-portage that the <c>eutils</c> eclass (an eclass is like a library) is required --
+portage that the <c>eutils</c> eclass (an eclass is like a library) is required <d/>
 this is done via <c>inherit eutils</c> at the top of the ebuild. Here's
 <c>app-misc/detox/detox-1.1.0.ebuild</c>:
 </p>
