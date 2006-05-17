@@ -5,9 +5,11 @@
   exclude-result-prefixes="str exslt xsl">
 
 <xsl:import href="xsl/str.tokenize.function.xsl"/>
+<xsl:import href="xsl/lang.highlight.c.xsl"/>
 <xsl:import href="xsl/lang.highlight.ebuild.xsl"/>
 <xsl:import href="xsl/lang.highlight.make.xsl"/>
 <xsl:import href="xsl/lang.highlight.m4.xsl"/>
+<xsl:import href="xsl/lang.highlight.sgml.xsl"/>
 
 <xsl:output method="html" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" 
 	    doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" indent="yes"/>
@@ -157,6 +159,16 @@
               </xsl:when>
               <xsl:when test="$lang = 'm4'">
                 <xsl:call-template name="lang.highlight.m4.tokenate">
+                  <xsl:with-param name="data" select="."/>
+                </xsl:call-template>               
+              </xsl:when>
+              <xsl:when test="$lang = 'sgml'">
+                <xsl:call-template name="lang.highlight.sgml.tokenate">
+                  <xsl:with-param name="data" select="."/>
+                </xsl:call-template>               
+              </xsl:when>
+              <xsl:when test="$lang = 'c'">
+                <xsl:call-template name="lang.highlight.c.tokenate">
                   <xsl:with-param name="data" select="."/>
                 </xsl:call-template>               
               </xsl:when>
@@ -392,7 +404,6 @@
 	  <a href="http://validator.w3.org/check/referer"><img src="http://dev.gentoo.org/~plasmaroo/.icon_mini-xhtml.png" alt="Valid XHTML 1.0" /></a>
 	  <a href="http://jigsaw.w3.org/css-validator/check/referer"><img src="http://dev.gentoo.org/~plasmaroo/.icon_mini-css.png" alt="Valid CSS" /></a>
 	  <a href="http://www.gentoo.org/"><img src="http://dev.gentoo.org/~plasmaroo/.icon_mini-gentoo.png" alt="Powered by Gentoo" /></a>
-	  <a href="http://www.gnu.org/software/emacs/emacs.html"><img src="http://dev.gentoo.org/~plasmaroo/.icon_mini-emacs.png" alt="Hacked together using Emacs" /></a>
 	  <a href="http://creativecommons.org/licenses/by-sa/2.0/"><img src="http://dev.gentoo.org/~plasmaroo/.icon_mini-creativecommons.png" alt="Creative Commons License" /></a>
 	  <img src="http://dev.gentoo.org/~plasmaroo/.icon_mini-xml.png" alt="XML Powered!"/>
 	  <br />

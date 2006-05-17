@@ -400,7 +400,6 @@ src_unpack() {
 }
 
 src_compile() {
-
     econf \
         $(use_enable nls) \
         $(use_enable ssl) \

@@ -413,7 +413,6 @@
 	</xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
-    <!-- <xsl:text> </xsl:text> -->
     </xsl:for-each>
   </xsl:template>
 

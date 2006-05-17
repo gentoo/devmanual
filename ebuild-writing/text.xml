@@ -27,4 +27,5 @@ with some general notes and extended examples.
 <include href="variables/"/>
 <include href="using-eclasses/"/>
 <include href="functions/"/>
+<include href="misc-files/"/>
 </guide>
