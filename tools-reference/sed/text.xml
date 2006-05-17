@@ -863,7 +863,7 @@ longest of the leftmost counting options.
 </p>
 
 <p>
-Most of this is in violation of one of the sillier POSIX rules, so it's best not
+Most of this is in violation of strict POSIX compliance, so it's best not
 to rely upon it. It <e>is</e> safe to assume that <c>sed</c> will always pick the leftmost
 match, and that it will match greedily with priority given to items earlier in
 the pattern.
