@@ -334,24 +334,66 @@
 	<xsl:otherwise>0</xsl:otherwise>
       </xsl:choose>
     </xsl:param>
-    <xsl:param name="path" select="/guide/@self"/>
+    <xsl:param name="path">
+      <xsl:choose>
+        <xsl:when test="@root"><xsl:value-of select="@root"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="/guide/@self"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:param>
     <xsl:param name="path_rel"/>
+    <xsl:param name="extraction" select="@extraction"/>
+    <xsl:param name="extraction_counting"/>
 
     <xsl:variable name="doc_self" select="concat($path, 'text.xml')"/>
     <xsl:if test="count(document($doc_self)/guide/include) &gt; 0 and ($depth &lt; $maxdepth or $maxdepth = '0')">
-    <ul>
-    <xsl:for-each select="document($doc_self)/guide/include">
-      <li>
-	<a class="reference" href="{concat($path_rel, @href, 'index.html')}"><xsl:value-of select="document(concat($path, @href, 'text.xml'))/guide/chapter[1]/title"/></a>
-	<xsl:call-template name="contentsTree">
-	  <xsl:with-param name="depth" select="$depth + 1"/>
-	  <xsl:with-param name="maxdepth" select="$maxdepth"/>
-	  <xsl:with-param name="path" select="concat($path, @href)"/>
-	  <xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
-	</xsl:call-template>
-      </li>
-    </xsl:for-each>
-    </ul>
+    <xsl:choose>
+      <xsl:when test="$extraction_counting = 1">
+	<xsl:for-each select="document($doc_self)/guide/include">
+	  <count value="{count(document(concat($path, @href, 'text.xml'))//*[name()=$extraction])}" path="{concat($path, @href)}">
+	    <xsl:call-template name="contentsTree">
+	      <xsl:with-param name="depth" select="$depth + 1"/>
+	      <xsl:with-param name="maxdepth" select="$maxdepth"/>
+	      <xsl:with-param name="path" select="concat($path, @href)"/>
+	      <xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
+	      <xsl:with-param name="extraction" select="$extraction"/>
+	      <xsl:with-param name="extraction_counting" select="1"/>
+	    </xsl:call-template>
+	  </count>
+	</xsl:for-each>
+      </xsl:when>
+      <xsl:otherwise>
+	<ul>
+	  <xsl:for-each select="document($doc_self)/guide/include">
+	    <xsl:variable name="extraction_counter_node">
+	      <xsl:call-template name="contentsTree">
+		<xsl:with-param name="depth" select="$depth + 1"/>
+		<xsl:with-param name="maxdepth" select="$maxdepth"/>
+		<xsl:with-param name="path" select="concat($path, @href)"/>
+		<xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
+		<xsl:with-param name="extraction" select="$extraction"/>
+		<xsl:with-param name="extraction_counting" select="1"/>
+	      </xsl:call-template>
+	    </xsl:variable>
+	    <xsl:variable name="extraction_counter" select="count(exslt:node-set($extraction_counter_node)//count[@value != 0]) + count(document(concat($path, @href, 'text.xml'))//*[name()=$extraction])"/>
+	    <xsl:if test="$extraction = '' or $extraction_counter > 0">
+	    <li>
+	      <a class="reference" href="{concat($path_rel, @href, 'index.html')}"><xsl:value-of select="document(concat($path, @href, 'text.xml'))/guide/chapter[1]/title"/></a>
+	      <xsl:if test="$extraction != ''">
+		<xsl:apply-templates select="document(concat($path, @href, 'text.xml'))//*[name()=$extraction]"/>
+              </xsl:if>
+	      <xsl:call-template name="contentsTree">
+		<xsl:with-param name="depth" select="$depth + 1"/>
+		<xsl:with-param name="maxdepth" select="$maxdepth"/>
+		<xsl:with-param name="path" select="concat($path, @href)"/>
+		<xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
+		<xsl:with-param name="extraction" select="$extraction"/>
+	      </xsl:call-template>
+	    </li>
+	    </xsl:if>
+	  </xsl:for-each>
+	</ul>
+      </xsl:otherwise>
+    </xsl:choose>
     </xsl:if>
   </xsl:template>
 

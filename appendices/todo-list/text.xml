@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<guide self="appendices/todo-list/">
+<chapter>
+<title>TODO List</title>
+<body>
+<p>
+This TODO list is automatically generated from the <c>&lt;todo&gt;</c> directives in other documents.
+</p>
+
+<contentsTree root="" extraction="todo"/>
+</body>
+</chapter>
+</guide>
