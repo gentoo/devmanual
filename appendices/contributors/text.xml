@@ -34,7 +34,7 @@ This page lists contributors to the Gentoo Development Guide:
 <author name="Ilya Volynets-Evenbakh" email="iluxa@gentoo.org">
   <uri link="::archs/mips/#MIPS ABIs"/>
 </author>
-<author name="Diego" email="flameeyes@gentoo.org">
+<author name="Diego Pettenò" email="flameeyes@gentoo.org">
   <uri link="::tasks-reference/pam"/>,
   <uri link="::general-concepts/autotools/#aclocal and m4 Files"/>
 </author>
@@ -46,6 +46,9 @@ This page lists contributors to the Gentoo Development Guide:
 </author>
 <author name="Alin Dobre" email="alin@gentoo.org">
   <uri link="::tools-reference/echo"/>
+</author>
+<author name="Joseph Jezak" email="josejx@gentoo.org">
+  <uri link="::archs/ppc"/>
 </author>
 </authors>
 
