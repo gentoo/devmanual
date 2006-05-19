@@ -2,7 +2,8 @@
   xmlns:str="http://exslt.org/strings"
   xmlns:exslt="http://exslt.org/common"
   extension-element-prefixes="str exslt xsl"
-  exclude-result-prefixes="str exslt xsl">
+  exclude-result-prefixes="str exslt xsl"
+  xmlns="http://www.w3.org/1999/xhtml">
 
 <xsl:import href="xsl/str.tokenize.function.xsl"/>
 <xsl:import href="xsl/lang.highlight.c.xsl"/>
@@ -11,7 +12,7 @@
 <xsl:import href="xsl/lang.highlight.m4.xsl"/>
 <xsl:import href="xsl/lang.highlight.sgml.xsl"/>
 
-<xsl:output method="html" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" 
+<xsl:output method="xml" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" 
 	    doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" indent="yes"/>
 
 <xsl:variable name="newline">
@@ -340,7 +341,14 @@
         <xsl:otherwise><xsl:value-of select="/guide/@self"/></xsl:otherwise>
       </xsl:choose>
     </xsl:param>
-    <xsl:param name="path_rel"/>
+    <xsl:param name="path_rel">
+      <xsl:if test="$depth = 0 and $path = '' and /guide/@self != ''">
+        <xsl:call-template name="str:repeatString">
+          <xsl:with-param name="count" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
+          <xsl:with-param name="append">../</xsl:with-param>
+	</xsl:call-template>
+      </xsl:if>
+    </xsl:param>
     <xsl:param name="extraction" select="@extraction"/>
     <xsl:param name="extraction_counting"/>
 
@@ -379,7 +387,12 @@
 	    <li>
 	      <a class="reference" href="{concat($path_rel, @href, 'index.html')}"><xsl:value-of select="document(concat($path, @href, 'text.xml'))/guide/chapter[1]/title"/></a>
 	      <xsl:if test="$extraction != ''">
-		<xsl:apply-templates select="document(concat($path, @href, 'text.xml'))//*[name()=$extraction]"/>
+                <ul>
+                <xsl:for-each select="document(concat($path, @href, 'text.xml'))//*[name()=$extraction]">
+                  <xsl:variable name="extraction_id" select="position()"/>
+                  <li><xsl:apply-templates select="(//*[name()=$extraction])[position()=$extraction_id]"/><br/></li>
+                </xsl:for-each>
+                </ul>
               </xsl:if>
 	      <xsl:call-template name="contentsTree">
 		<xsl:with-param name="depth" select="$depth + 1"/>
