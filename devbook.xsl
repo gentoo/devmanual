@@ -382,7 +382,7 @@
 		<xsl:with-param name="extraction_counting" select="1"/>
 	      </xsl:call-template>
 	    </xsl:variable>
-	    <xsl:variable name="extraction_counter" select="count(exslt:node-set($extraction_counter_node)//count[@value != 0]) + count(document(concat($path, @href, 'text.xml'))//*[name()=$extraction])"/>
+	    <xsl:variable name="extraction_counter" select="count(exslt:node-set($extraction_counter_node)//*[@value != 0]) + count(document(concat($path, @href, 'text.xml'))//*[name()=$extraction])"/>
 	    <xsl:if test="string($extraction) = '' or $extraction_counter > 0">
 	    <li>
 	      <a class="reference" href="{concat($path_rel, @href, 'index.html')}"><xsl:value-of select="document(concat($path, @href, 'text.xml'))/guide/chapter[1]/title"/></a>
