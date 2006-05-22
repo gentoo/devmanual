@@ -178,7 +178,7 @@ Available version specifiers are:
 
 <p>
 To specify "version 2.x (not 1.x or 3.x)" of a package, it is necessary to use
-the asterix postfix. This is most commonly seen in situations like:
+the asterisk postfix. This is most commonly seen in situations like:
 </p>
 
 <codesample lang="ebuild">
@@ -220,7 +220,8 @@ RDEPEND="!&lt;app-misc/foo-1.3"
 </codesample>
 
 <p>
-Blockers can be optional based upon USE flags as per normal dependencies.
+Blockers can be optional based upon <c>USE</c> flags as per normal
+dependencies.
 </p>
 
 </body>
@@ -235,7 +236,6 @@ Blockers can be optional based upon USE flags as per normal dependencies.
 
 <p>
 It is not currently possible to depend upon a package in a particular <c>SLOT</c>.
-This is a shame.
 </p>
 
 </body>
@@ -329,8 +329,8 @@ DEPEND="baz? ( || ( app-misc/foo app-misc/bar ) )"
 <body>
 
 <p>
-Say <c>fnord</c> can be built against either <c>foo</c> or <c>bar</c>. Then a USE flag is
-not necessary if and only if all of the following hold:
+Say <c>fnord</c> can be built against either <c>foo</c> or <c>bar</c>. Then a <c>USE</c>
+flag is not necessary if and only if all of the following hold:
 </p>
 
 <ul>
@@ -357,7 +357,8 @@ not necessary if and only if all of the following hold:
 
 <p>
 Currently it is impossible to depend upon "<c>foo</c> built with the <c>bar</c>
-<c>USE</c> flag enabled". This is a nuisance.</p>
+<c>USE</c> flag enabled".
+</p>
 
 </body>
 </section>

@@ -86,7 +86,7 @@ Ebuilds are indented using tabs, with each tab representing four places. See
 
 <body>
 <p>
-Next, there are a series of variables. These tell portage various things about
+Next, there are a series of variables. These tell Portage various things about
 the ebuild and package in question.
 </p>
 
@@ -107,13 +107,13 @@ The <c>LICENSE</c> is <c>GPL-2</c> (the GNU General Public License version 2).
 <p>
 The <c>SRC_URI</c> tells Portage the address to use for downloading
 the source tarball. Here, <c>mirror://sourceforge/</c> is a special
-notation meaning &quot;any of the Sourceforge mirrors&quot;. The
+notation meaning &quot;any of the Sourceforge mirrors&quot;.
 <c>${P}</c> is a read-only variable set by Portage which is the package's
 name and version <d/> in this case, it would be <c>ctags-5.5.4</c>.
 </p>
 
 <p>
-The <c>SLOT</c> variable tells portage which slot this package installs to. If
+The <c>SLOT</c> variable tells Portage which slot this package installs to. If
 you've not seen slots before, either just use <c>&quot;0&quot;</c> or read
 <uri link="::general-concepts/slotting"/>.
 </p>
@@ -137,18 +137,18 @@ function when it wants to <e>compile</e> the package. The <c>econf</c>
 function is a wrapper for calling <c>./configure</c>, and <c>emake</c>
 is a wrapper for <c>make</c>. In both cases, the common <c>|| die
 &quot;something went wrong&quot;</c> idiom is used <d/> this is to
-ensure that if for some reason an error occurs, portage will stop
+ensure that if for some reason an error occurs, Portage will stop
 rather than trying to continue with the install.
 </p>
 
 <p>
-The <c>src_install</c> function is called by portage when it wants
+The <c>src_install</c> function is called by Portage when it wants
 to <e>install</e> the package. A slight subtlety here <d/> rather than
 installing straight to the live filesystem, we must install to a
-special location which is given by the <c>${D}</c> variable (portage sets
+special location which is given by the <c>${D}</c> variable (Portage sets
 this <d/> see <uri link="::general-concepts/install-destinations"/> and
-<uri link="::general-concepts/sandbox"/>).  Again, we check
-for errors.
+<uri link="::general-concepts/sandbox"/>). Again, we check
+for errors using the <c>|| die</c> construct.
 </p>
 
 <note>
@@ -167,11 +167,11 @@ files into the relevant part of <c>/usr/share/doc</c>.
 
 <p>
 Ebuilds can define other functions (see <uri link="::ebuild-writing/functions"/>).
-In all cases, portage provides a reasonable default implementation which quite
+In all cases, Portage provides a reasonable default implementation which quite
 often does the 'right thing'. There was no need to define a <c>src_unpack</c>
 function here, for example <d/> this function is used to do any unpacking of
 tarballs or patching of source files, but the default implementation does
-everything we need.
+everything we need in this case.
 </p>
 </body>
 </subsection>
@@ -183,7 +183,7 @@ everything we need.
 
 <body>
 <p>
-In the ctags example, we didn't tell portage about any dependencies. As it
+In the ctags example, we didn't tell Portage about any dependencies. As it
 happens, that's ok, because ctags only needs a basic toolchain to compile and
 run (see <uri link="::general-concepts/dependencies#Implicit System Dependency"/>
 for why we don't need to depend upon those explicitly). However, life is rarely
@@ -237,7 +237,7 @@ Again, we define <c>src_compile</c> and <c>src_install</c> functions.
 </p>
 
 <p>
-The <c>DEPEND</c> and <c>RDEPEND</c> variables are how portage determines which
+The <c>DEPEND</c> and <c>RDEPEND</c> variables are how Portage determines which
 packages are needed to build and run the package. The <c>DEPEND</c> variable lists
 compile-time dependencies, and the <c>RDEPEND</c> lists runtime dependencies. See
 <uri link="::general-concepts/dependencies"/> for some more complex examples.
@@ -253,7 +253,7 @@ compile-time dependencies, and the <c>RDEPEND</c> lists runtime dependencies. Se
 <p>
 Often we need to apply patches. This is done in the <c>src_unpack</c> function
 using the <c>epatch</c> helper function. To use <c>epatch</c> one must first tell
-portage that the <c>eutils</c> eclass (an eclass is like a library) is required <d/>
+Portage that the <c>eutils</c> eclass (an eclass is like a library) is required <d/>
 this is done via <c>inherit eutils</c> at the top of the ebuild. Here's
 <c>app-misc/detox/detox-1.1.0.ebuild</c>:
 </p>
@@ -301,7 +301,7 @@ src_install() {
 <p>
 Note the <c>${FILESDIR}/${P}-destdir.patch</c> <d/> this refers to
 <c>detox-1.1.0-destdir.patch</c>, which lives in the <c>files/</c>
-subdirectory in the portage tree. Larger patch files must go on the
+subdirectory in the Portage tree. Larger patch files must go on the
 mirrors rather than in <c>files/</c> <d/> see <uri
 link="::ebuild-writing/functions/src_unpack/epatch/"/>.
 </p>
@@ -353,7 +353,8 @@ by the ebuild. This is used for the <c>emerge -pv</c> output, amongst other thin
 <p>
 The package's <c>./configure</c> script takes the usual <c>--enable-nls</c> or
 <c>--disable-nls</c> argument. We use the <c>use_enable</c> utility function to
-generate this automatically (see <uri link="::function-reference/query-functions/"/>).
+generate this automatically, depending on the user's <c>USE</c> flags (see
+<uri link="::function-reference/query-functions/"/>).
 </p>
 
 <p>

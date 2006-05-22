@@ -13,7 +13,7 @@ binaries, and will (often) cause a sandbox violation notice.
 </p>
 
 <p>
-When installing, portage will install the image in <c>${D}</c> into <c>${ROOT}</c>. By
+When installing, Portage will install the image in <c>${D}</c> into <c>${ROOT}</c>. By
 default, <c>${ROOT}</c> points to <c>/</c>, although the user can alter this <d/> for
 example, the user may be building a minimal image for another system in a
 different location. If your package must operate on the live filesystem (for

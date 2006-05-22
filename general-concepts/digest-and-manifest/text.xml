@@ -7,19 +7,16 @@
 <p>
 In the tree, every package has a <c>Manifest</c> file. This file lives in the same
 directory as the ebuilds for the package. The <c>Manifest</c> file contains digests
-(currently MD5) and file size data for every file in the directory and any
-subdirectories. This is used to verify integrity.
-</p>
-
-<p>
-The <c>Manifest</c> may be digitally signed.
+(currently MD5, RMD160 and SHA256) and file size data for every file in the directory
+and any subdirectories. This is used to verify integrity. The <c>Manifest</c> may also
+be digitally signed.
 </p>
 
 <p>
 Inside the <c>files/</c> subdirectory, there is exactly one <c>digest</c> file per
-ebuild. Each file contains a digest (currently MD5) and a file size for every
-file listed in <c>SRC_URI</c> for the ebuild. This is used to verify downloads and
-to catch any changed source files.
+ebuild. Each file contains a digest (also MD5, RMD160, SHA256) and a file size for
+every file listed in <c>SRC_URI</c> for the ebuild. This is used to verify downloads
+and to catch any changed source files.
 </p>
 
 <p>

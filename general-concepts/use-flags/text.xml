@@ -5,20 +5,20 @@
 
 <body>
 <p>
-USE flags are to control optional dependencies and settings which the user may
-reasonably want to select. For example, vim can optionally build with support for
-the ruby interpreter, and it needs ruby installed to do this <d/> we use the ruby USE
-flag to provide this option. On the other hand, glark requires ruby no matter what,
-so no USE flag is used here.
+<c>USE</c> flags are to control optional dependencies and settings which the user may
+reasonably want to select. For example, <c>vim</c> can optionally build with support for
+the <c>ruby</c> interpreter, and it needs <c>ruby</c> installed to do this <d/> we use
+the ruby <c>USE</c> flag to provide this option. On the other hand, <c>glark</c> requires
+<c>ruby</c> no matter what, so no <c>USE</c> flag is used there.
 </p>
 
 <p>
-No combination of USE flags should cause a package to fail to build.
+No combination of <c>USE</c> flags should cause a package to fail to build.
 </p>
 
 <p>
 Packages should not configure and link based upon what is available at compile time
--- any autodetection must be overridden.
+<d/> any autodetection must be overridden.
 </p>
 </body>
 
@@ -26,13 +26,13 @@ Packages should not configure and link based upon what is available at compile t
 <title><c>noblah</c> USE Flags</title>
 <body>
 <p>
-If at all possible, avoid <c>noblah</c> style USE flags. These break <c>use.mask</c>
+If at all possible, avoid <c>noblah</c> style <c>USE</c> flags. These break <c>use.mask</c>
 and cause all sorts of complications for arch developers. Here's why:
 </p>
 
 <p>
 Consider a hypothetical package named 'vplayer', which plays videos. This
-package has optional support, via USE flags, for various sound and video output
+package has optional support, via <c>USE</c> flags, for various sound and video output
 methods, various video codecs and so on.
 </p>
 
@@ -93,12 +93,8 @@ To get a flag added to <c>use.mask</c>, ask the relevant arch team.
 </p>
 
 <p>
-So what's the problem with <c>noblah</c> flags?
-</p>
-
-<p>
-There's no way to forcibly <e>enable</e> a given USE flag on a particular profile.
-So, something like:
+So what's the problem with <c>noblah</c> flags? There's no way to forcibly
+<e>enable</e> a given USE flag on a particular profile. So, something like:
 </p>
 
 <codesample lang="ebuild">
@@ -106,8 +102,8 @@ RDEPEND="!noalsa? ( media-libs/alsa )"
 </codesample>
 
 <p>
-will make your package unusable by archs without ALSA support, and there is no
-way to fix it that doesn't involve adding in nasty <c>arch?</c> flags.
+... will make your package unusable by archs without ALSA support, and there
+is no way to fix it that doesn't involve adding in nasty <c>arch?</c> flags.
 </p>
 
 </body>
@@ -200,7 +196,7 @@ src_compile() {
 The <c>VIDEO_CARDS</c>, <c>INPUT_DEVICES</c> and <c>LINGUAS</c> variables are
 automatically expanded into USE flags. These are known as <c>USE_EXPAND</c>
 variables. If the user has <c>LINGUAS="en fr"</c> in <c>make.conf</c>, for example,
-then <c>USE="linguas_en linguas_fr"</c> will automatically be set by portage.
+then <c>USE="linguas_en linguas_fr"</c> will automatically be set by Portage.
 </p>
 
 <p>

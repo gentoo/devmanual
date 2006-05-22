@@ -14,15 +14,15 @@
 <p>
   Any directory which is listed in <c>CONFIG_PROTECT</c> (and any subdirectories
   thereof), except for any which are listed in <c>CONFIG_PROTECT_MASK</c> (and
-  subdirectories) are automatically 'protected' by portage when copying an image
+  subdirectories) are automatically 'protected' by Portage when copying an image
   from <c>DESTDIR</c> to <c>ROOT</c>. Rather than installing protected files directly,
-  portage will install them as <c>._cfg0000_filename</c>. These can then be processed
+  Portage will install them as <c>._cfg0000_filename</c>. These can then be processed
   by the <c>etc-update</c> or <c>dispatch-conf</c> files at the user's discretion.
 </p>
 
 <p>
   Packages must <b>not</b> attempt to override this system via <c>pkg_postinst</c> or
-  similar. If you need a file renamed, remove or changed in a particular way, you
+  similar. If you need a file renamed, removed or changed in a particular way, you
   should display a message informing the user.
 </p>
 </body>

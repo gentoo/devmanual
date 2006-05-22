@@ -7,7 +7,7 @@
 <p>
 All ebuilds must specify a <c>LICENSE</c> (note the American English
 spelling) variable. The value of this variable must be the name of a
-file in the portage tree's <c>licenses/</c> directory.
+file in the Portage tree's <c>licenses/</c> directory.
 </p>
 
 <subsection>
@@ -18,7 +18,7 @@ file in the portage tree's <c>licenses/</c> directory.
 If your package's license is not already in the tree, you must add the
 license before committing the package. When adding the license, use a
 plain text file if at all possible. Some licenses are PDF files rather
-than plain text ? this should only be done if we are legally required
+than plain text <d/> this should only be done if we are legally required
 to do so.
 </p>
 
