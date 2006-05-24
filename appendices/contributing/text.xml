@@ -25,11 +25,22 @@ don't submit anything.
 
 <p>
 This document is produced using the DevBook XML build system. You can download
-a snapshot of the system as well as the relevant XML files here: :FIXME:. You
+a snapshot of the system as well as the relevant XML files from Subversion. You
 can also view the XML of any page by adding <c>./text.xml</c> to the URL. If
 you'd rather just work with plain text, that's fine too <d/> the formatting can
 be easily done by someone else (meaning, us).
 </p>
+
+<p>
+Currently, sources are hosted at:
+</p>
+
+<pre>
+$ svn co svn://svn.halcy0n.com/gentoo-devmanual-xml
+$ cd trunk
+$ make
+</pre>
+
 </body>
 
 <section>
