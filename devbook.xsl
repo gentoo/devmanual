@@ -299,22 +299,28 @@
                 <xsl:with-param name="data" select="substring-after(@link, '#')"/>
               </xsl:call-template>
             </xsl:variable>
+            <xsl:variable name="slash">
+              <xsl:if test="substring(substring-before(@link, '#'), string-length(substring-before(@link, '#'))) != '/'">/</xsl:if>
+            </xsl:variable>
             <xsl:choose>
               <xsl:when test=". != ''">
-                <a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '#'), '::'), '/index.html#', $anchor)}"><xsl:value-of select="."/></a>
+                <a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '#'), '::'), $slash, 'index.html#', $anchor)}"><xsl:value-of select="."/></a>
               </xsl:when>
               <xsl:otherwise>
-                <a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '#'), '::'), '/index.html#', $anchor)}"><xsl:value-of select="substring-after(@link, '#')"/></a>
+                <a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '#'), '::'), $slash, 'index.html#', $anchor)}"><xsl:value-of select="substring-after(@link, '#')"/></a>
               </xsl:otherwise>
             </xsl:choose>
           </xsl:when>
           <xsl:otherwise>
+            <xsl:variable name="slash">
+              <xsl:if test="substring(@link, string-length(@link)) != '/'">/</xsl:if>
+            </xsl:variable>
             <xsl:choose>
               <xsl:when test=". != ''">
-                <a href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), '/index.html')}"><xsl:value-of select="."/></a>
+                <a href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), $slash, 'index.html')}"><xsl:value-of select="."/></a>
               </xsl:when>
               <xsl:otherwise>
-                <a href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), '/index.html')}"><xsl:value-of select="document(concat(/guide/@self, $relative_path_depth_recursion, substring-after(@link, '::'), '/text.xml'))/guide/chapter[1]/title"/></a>
+                <a href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), $slash, 'index.html')}"><xsl:value-of select="document(concat(/guide/@self, $relative_path_depth_recursion, substring-after(@link, '::'), '/text.xml'))/guide/chapter[1]/title"/></a>
               </xsl:otherwise>
             </xsl:choose>
           </xsl:otherwise>
