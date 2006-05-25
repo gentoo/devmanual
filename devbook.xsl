@@ -419,8 +419,15 @@
   <xsl:template match="/">
     <html lang="en-GB" xml:lang="en-GB" xmlns="http://www.w3.org/1999/xhtml">
     <head>
-	<title>Gentoo Development Guide: <xsl:value-of select="/guide/chapter[1]/title"/></title>
-	<link rel="stylesheet" href="http://devmanual.gentoo.org/devmanual.css" type="text/css" />
+        <title>Gentoo Development Guide: <xsl:value-of select="/guide/chapter[1]/title"/></title>
+        <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
+        <xsl:variable name="relative_path_depth_recursion">
+          <xsl:call-template name="str:repeatString">
+            <xsl:with-param name="count" select="$relative_path_depth"/>
+            <xsl:with-param name="append">../</xsl:with-param>
+          </xsl:call-template>
+        </xsl:variable>	
+        <link rel="stylesheet" href="{$relative_path_depth_recursion}devmanual.css" type="text/css" />
     </head>
     <body>
       <div class="main">
