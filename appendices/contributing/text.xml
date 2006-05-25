@@ -41,6 +41,12 @@ $ cd trunk
 $ make
 </pre>
 
+<p>
+You need <c>xsltproc</c> for the XML to HTML conversion and optionally also
+<c>ImageMagick</c> for the SVG to PNG conversion used in some of the figures
+throughout the document.
+</p>
+
 </body>
 
 <section>

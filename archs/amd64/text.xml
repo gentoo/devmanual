@@ -710,6 +710,25 @@ segmentation faults or strange behaviour. GCC 4.0 refuses to compile such code.
 </body>
 </section>
 
+<section>
+<title>Other Resources</title>
+<body>
+
+<ul>
+  <li>
+    <uri link="http://amd64.gentoo.org/">Gentoo/AMD64 Project</uri>
+  </li>
+  <li>
+    <uri link="http://www.gentoo.org/doc/en/gentoo-amd64-faq.xml">Gentoo/Linux AMD64 FAQ</uri>
+  </li>
+  <li>
+    <uri link="http://forums.gentoo.org/viewforum-f-46.html">Gentoo on AMD64 Forum</uri>
+  </li>
+</ul>
+
+</body>
+</section>
+
 </body>
 </chapter>
 </guide>

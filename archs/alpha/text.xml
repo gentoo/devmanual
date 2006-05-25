@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <guide self="archs/alpha/">
 <chapter>
-<title>Arch Specific Notes -- ALPHA</title>
+<title>Arch Specific Notes -- Alpha</title>
 <body>
 
 <p>
-The ALPHA port uses the <c>alpha</c> keyword. It focuses upon HP (formerly Compaq
+The Alpha port uses the <c>alpha</c> keyword. It focuses upon HP (formerly Compaq
 (formerly DEC)) hardware. This covers from <c>ev4</c> (known as 21064) through
 <c>ev7z</c> (known as 21364a).
 </p>
 
 <section>
-<title>ALPHA Kernel and Userland ABIs</title>
+<title>Alpha Kernel and Userland ABIs</title>
 <body>
 
 <p>
-All ALPHA systems use a pure 64 bit kernel and a pure 64 bit userland.
+All Alpha systems use a pure 64 bit kernel and a pure 64 bit userland.
 </p>
 
 <p>
-All ALPHA systems support both little and big endian <d/> however, Linux only uses
+All Alpha systems support both little and big endian <d/> however, Linux only uses
 little endian.
 </p>
 
@@ -27,13 +27,13 @@ little endian.
 </section>
 
 <section>
-<title>Additional ALPHA Keywording Requirements</title>
+<title>Additional Alpha Keywording Requirements</title>
 <body>
 
 <p>
-It is generally expected that anyone who does keywording for ALPHA should be on
-the <c>alpha@</c> alias. However the ALPHA Team is happy if maintainers keyword
-their packages when they have access to ALPHA hardware, although the Team would
+It is generally expected that anyone who does keywording for Alpha should be on
+the <c>alpha@</c> alias. However the Alpha team is happy if maintainers keyword
+their packages when they have access to Alpha hardware, although the team would
 like to know about it.
 </p>
 
@@ -41,16 +41,16 @@ like to know about it.
 </section>
 
 <section>
-<title>ALPHA Instruction Set and Performance Notes</title>
+<title>Alpha Instruction Set and Performance Notes</title>
 <body>
 
 <p>
-There are six basic ALPHA instructions set standards:
+There are six basic Alpha instructions set standards:
 </p>
 
 <ul>
   <li>
-    <c>ev4</c> or <c>ev45</c>. The <c>ev4</c> was the first ALPHA processor of the Alpha
+    <c>ev4</c> or <c>ev45</c>. The <c>ev4</c> was the first Alpha processor of the Alpha
     family. It featured one integer pipeline and one floating-point pipeline.
     The <c>ev45</c> is a modified <c>ev4</c> with double both Data and Instruction cache
     (D-Cache and I-Cache respectively); it also featured a division optimization.
@@ -85,21 +85,21 @@ which the compiler was built.
 
 <p>
 The <c>-mieee</c> flag <b>should</b> always be used unless you have a deep knowledge
-of the ALPHA architecture, so the comments on
+of the Alpha architecture, so the comments on
 <uri link="::general-concepts/user-environment#Not Filtering Variables"/> are
-really important on ALPHA.
+really important on Alpha.
 </p>
 
 </body>
 </section>
 
 <section>
-<title>Notes on ALPHA and PIC</title>
+<title>Notes on Alpha and PIC</title>
 <body>
 
 <p>
-General <uri link="::general-concepts/pic/"/> policy also applies to ALPHA. In fact,
-ALPHA systems complain loudly if you try to link PIC and non-PIC code. Usually
+General <uri link="::general-concepts/pic/"/> policy also applies to Alpha. In fact,
+Alpha systems complain loudly if you try to link PIC and non-PIC code. Usually
 this results in errors during the compilation aborting emerge.
 </p>
 
@@ -107,11 +107,11 @@ this results in errors during the compilation aborting emerge.
 </section>
 
 <section>
-<title>Contacting the ALPHA Team</title>
+<title>Contacting the Alpha Team</title>
 <body>
 
 <p>
-The ALPHA team can be contacted:
+The Alpha team can be contacted:
 </p>
 
 <ul>
@@ -126,6 +126,28 @@ The ALPHA team can be contacted:
   </li>
   <li>
     Via the <c>#gentoo-alpha</c> IRC channel on Freenode
+  </li>
+</ul>
+
+</body>
+</section>
+
+<section>
+<title>Other Resources</title>
+<body>
+
+<ul>
+  <li>
+    <uri link="http://alpha.gentoo.org/">Gentoo Linux Alpha Development Project</uri>
+  </li>
+  <li>
+    <uri link="http://www.gentoo.org/doc/en/gentoo-alpha-faq.xml">Gentoo/Alpha FAQ</uri>
+  </li>
+  <li>
+    <uri link="http://www.gentoo.org/proj/en/base/alpha/doc/alpha-porting-guide.xml">Alpha Porting Guide</uri>
+  </li>
+  <li>
+    <uri link="http://forums.gentoo.org/viewforum-f-32.html">Gentoo on Alternative Architectures Forum</uri>
   </li>
 </ul>
 
