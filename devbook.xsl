@@ -420,7 +420,7 @@
     <html lang="en-GB" xml:lang="en-GB" xmlns="http://www.w3.org/1999/xhtml">
     <head>
 	<title>Gentoo Development Guide: <xsl:value-of select="/guide/chapter[1]/title"/></title>
-	<link rel="stylesheet" href="http://dev.gentoo.org/~plasmaroo/devmanual/styles/devmanual.css" type="text/css" />
+	<link rel="stylesheet" href="http://devmanual.gentoo.org/devmanual.css" type="text/css" />
     </head>
     <body>
       <div class="main">

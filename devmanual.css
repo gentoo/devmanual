@@ -1,0 +1,239 @@
+div.header {
+    border-bottom: 3px solid #333333;
+    background-color: #666666;
+    color: #eeeeee;
+    margin: 0em 0em 0em 0em;
+    padding: 0.2em;
+    font-size: 70%;
+}
+
+div.navtop {
+    border-bottom: 1px dashed #333333;
+    text-align: center;
+}
+
+div.navbottom {
+    border-top: 1px dashed #333333;
+    text-align: center;
+    margin-top: 1em;
+}
+
+@media print {
+    div.header {
+        display: none;
+    }
+}
+
+div.header a:link, div.header a:visited,
+div.footer a:link, div.footer a:visited {
+    color: #eeeeee;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+div.header a:hover, div.footer a:hover {
+    color: #eeeeee;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+div.footer {
+    text-align: center;
+    border-top: 3px solid #333333;
+    background-color: #666666;
+    color: #eeeeee;
+    margin: 0em 0em 0em 0em;
+    padding: 0em 0.2em;
+    font-size: 70%;
+}
+
+@media print {
+    div.footer {
+        display: none;
+    }
+}
+
+div.main {
+    padding: 1em 40px;
+    margin: 0em;
+    background-color: #eeeeee;
+    color: #333333;
+}
+
+body {
+    background-color: #666666;
+    color: #eeeeee;
+    padding: 0em;
+    margin: 0em;
+    font-family: "Verdana", "Arial" "Helvetica", sans-serif;
+}
+
+div.footer * img {
+    border-width: 0px;
+}
+
+th {
+    font-weight: bold;
+    text-align: left;
+    padding: 0.3em;
+}
+
+th, td {
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
+
+div.main a:link, div.main a:visited {
+    color: #000099;
+    text-decoration: none;
+}
+
+div.main a[href]:hover {
+    color: #000099;
+    text-decoration: underline;
+}
+
+div.main pre a:link, div.main pre a:visited {
+    color: #fff0e0;
+    text-decoration: none;
+}
+
+div.main pre a[href]:hover {
+    color: #fff0e0;
+    text-decoration: underline;
+}
+
+code, tt {
+    color: #993333;
+}
+
+div.main p, div.main dd {
+    text-align: justify;
+}
+
+pre {
+    background-color: #1e1e27;
+    color: #cfbfad;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+div.main h1 {
+    text-align: center;
+}
+
+div.main h2 {
+    text-align: left;
+    border-bottom: 1px dashed #333333;
+    margin-left: -30px;
+}
+
+div.main h3 {
+    text-align: left;
+    margin-left: -30px;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd p.first {
+    margin-top: 0.2em;
+}
+
+dd p.last {
+    margin-bottom: 0.2em;
+}
+
+div.figure, div.figure p {
+    text-align: center;
+    font-weight: bold;
+}
+
+code, pre, tt {
+    font-family: monospace;
+}
+
+div.warning    p.admonition-title,
+div.note       p.admonition-title,
+div.todo       p.admonition-title,
+div.admonition p.admonition-title,
+div.important  p.admonition-title {
+    font-weight: bold;
+    display: inline;
+}
+
+div.warning    p,
+div.note       p,
+div.todo       p,
+div.admonition p,
+div.important  p {
+    display: inline;
+}
+
+div.warning    p.admonition-title:after,
+div.note       p.admonition-title:after,
+div.todo       p.admonition-title:after,
+div.admonition p.admonition-title:after,
+div.important  p.admonition-title:after {
+    content: ":";
+}
+
+div.note, div.warning,
+div.important, div.todo,
+div.admonition {
+    padding: 4px;
+    text-align: justify;
+}
+
+div.note {
+    background-color: #c9c4ff;
+}
+
+div.warning {
+    background-color: #ee9999;
+}
+
+div.important {
+    background-color: #99ee99;
+}
+
+div.todo {
+    background-color: #cccccc;
+}
+
+div.admonition {
+    background-color: #ffffff;
+}
+
+blockquote.epigraph p {
+    font-size: 80%;
+    font-style: italic;
+}
+
+blockquote.epigraph p.attribution {
+    font-style: normal;
+}
+
+td.devbook {
+    vertical-align: top;
+}
+
+pre span.Normal { color: #cfbfad; background-color: #1e1e27; }
+pre span.Number { color: #506dbd; }
+pre span.Special { color: #c080d0; }
+pre span.Identifier { color: #ff8bff; }
+pre span.Type { color: #ff8bff; }
+pre span.PreProc { color: #409090; }
+pre span.String { color: #ffcd8b; background-color: #404040; }
+pre span.Constant { color: #ffcd8b; }
+pre span.lnr { color: #8b8bcd; background-color: #2e2e2e; }
+pre span.Comment { color: #cd8b00; }
+pre span.Statement { color: #808bed; }
+pre span.DiffAdd { color: #40c060; }
+pre span.Title { color: #40c060; font-weight: bold; }
+pre span.Underlined { font-weight: bold; color: #fff0c0; }
+
+/* vim: set ts=4 tw=80 et : */
