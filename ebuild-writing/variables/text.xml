@@ -187,7 +187,7 @@ Specifying the following variables is optional:
     Path to the temporary build directory, used by
     <c>src_compile</c> and <c>src_install</c>. Default:
     <c>"${WORKDIR}/${P}"</c>. Ebuilds should <b>not</b> provide a
-    value for this ebuild if it is the default.
+    value for this variable if it is the same as the default value.
     </ti>
   </tr>
   <tr>
