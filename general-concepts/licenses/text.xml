@@ -10,6 +10,15 @@ spelling) variable. The value of this variable must be the name of a
 file in the Portage tree's <c>licenses/</c> directory.
 </p>
 
+<p>
+If the application is multi-license (either of several licenses can
+be used) then use the following syntax:
+</p>
+
+<codesample lang="ebuild">
+LICENSE="|| ( foo bar )"
+</codesample>
+
 <subsection>
 <title>Adding New Licenses</title>
 <body>
