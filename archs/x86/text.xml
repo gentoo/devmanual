@@ -8,12 +8,42 @@
 Originally it was assumed that all developers had access to x86 hardware,
 so there was no arch team created for x86. This is no longer the case, and
 x86 is to be treated like any other arch with regards to moving a package to
-stable. If you want your application to be moved to stable on x86, please
+stable.
+</p>
+
+<p>
+If you want your application to be moved to stable on x86, please
 contact the x86 team. If your package requires specific hardware, or a specific
 non-trivial setup to test, then we will probably allow you to mark it stable,
-unless someone on the team can test it. If you want permission to stablize a lot
-of packages, we will probably ask you to join the team.
+unless someone on the team can test it.
 </p>
+
+<section>
+<title>x86 Team Guidelines</title>
+<body>
+
+<p>
+The following is a list of rules and expectations for members of the x86 team:
+</p>
+
+<ul>
+  <li>
+    Assist/resolve 4 bugs a month that are assigned to the team
+  </li>
+  <li>
+    Be present in our IRC channel, <c>#gentoo-x86/irc.freenode.net</c>
+  </li>
+  <li>
+    If you need one of your packages stable, file a bug to the team.  You are not
+    exempt from the same rules everyone else must follow.
+  </li>
+  <li>
+    Take part in discussions on bugs or the alias when team members ask for input
+  </li>
+</ul>
+
+</body>
+</section>
 
 <section>
 <title>Contacting the x86 Team</title>
