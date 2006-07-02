@@ -45,7 +45,7 @@ src_install()
 <body>
 <codesample lang="ebuild">
 src_install() {
-    make DESTDIR="${D}" install || die "Install failed!"
+    emake DESTDIR="${D}" install || die "Install failed"
     dodoc README CHANGES
 }
 </codesample>
@@ -62,12 +62,13 @@ install to a non-root location. If possible, this should be used:
 </p>
 
 <codesample lang="ebuild">
-    make DESTDIR="${D}" install || die "Install failed"
+    emake DESTDIR="${D}" install || die "Install failed"
 </codesample>
 
 <note>
-<c>make</c> should be used over <c>emake</c> here. Most installs are
-not designed to be parallelised.
+<c>emake</c> should be used to parallelise here. Some installs are
+not designed to be parallelised, use <c>emake -j1</c> or <c>make</c>
+if you hit an error.
 </note>
 
 <p>
@@ -77,13 +78,21 @@ can be used:
 </p>
 
 <codesample lang="ebuild">
-    einstall || die "Install failed!"
+    einstall || die "einstall failed"
 </codesample>
 
 <p>
 It is usually necessary to include additional <c>dodoc</c> statements for the
 <c>README</c>, <c>ChangeLog</c>, etc in these cases.
 </p>
+
+<note>
+There is no need to <c>dodoc</c> <c>COPYING</c>! The license belongs
+to <c>${PORTDIR}/licenses</c>. Sometimes though, you might want to
+install <c>COPYING</c> regardless, if it explains how different
+licenses are applied to different parts of the application, for
+example.
+</note>
 </body>
 </section>
 
