@@ -160,7 +160,7 @@ src_install() {
     doman *.8
     doman extras/scsi_id/scsi_id.8
 
-    dodoc COPYING ChangeLog FAQ HOWTO-udev_for_dev README TODO
+    dodoc ChangeLog FAQ HOWTO-udev_for_dev README TODO
     dodoc docs/{overview,udev-OLS2003.pdf,udev_vs_devfs,RFC-dev.d,libsysfs.txt}
     dodoc docs/persistent_naming/* docs/writing_udev_rules/*
 
