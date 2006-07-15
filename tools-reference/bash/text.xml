@@ -712,13 +712,13 @@ echo "${somevar} is ${#somevar} characters long"
 <p>
 There are a number of ways of using a default value if a variable is unset or
 zero length. The <c>${var:-value}</c> construct expands to the value of <c>${var}</c>
-if it is set and not null, or <c>value</c> otherwise. The <c>${var:value}</c>
+if it is set and not null, or <c>value</c> otherwise. The <c>${var-value}</c>
 construct is similar, but checks only that the variable is set.
 </p>
 
 <p>
 The <c>${var:=value}</c> and <c>${var=value}</c> forms will also assign <c>value</c> to
-<c>var</c> if <c>var</c> is unset (and not null for the <c>:=</c> form).
+<c>var</c> if <c>var</c> is unset (and also set, but null for the <c>:=</c> form).
 </p>
 
 <p>

@@ -35,6 +35,10 @@ Relevant <c>FEATURES</c> for developers include:
     <ti>Generate proper digests even when <c>SRC_URI</c> has conditional elements.</ti>
   </tr>
   <tr>
+    <ti><c>noauto</c></ti>
+    <ti>When utilizing <c>ebuild</c>, only run the function requested.</ti>
+  </tr>
+  <tr>
     <ti><c>sandbox</c></ti>
     <ti>Enable the sandbox.</ti>
   </tr>

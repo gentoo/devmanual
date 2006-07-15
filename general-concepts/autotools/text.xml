@@ -587,8 +587,8 @@ In the first case you usually want to do something like:
 
 <codesample lang="ebuild">
 einfo "Regenerating autotools files..."
-cp ${WORKDIR}/gentoo-m4 ${S}/m4 || die "m4 copy failed"
-WANT_AUTOCONF="2.5" aclocal -I ${S}/m4 || die "aclocal failed"
+cp "${WORKDIR}/gentoo-m4" "${S}/m4" || die "m4 copy failed"
+WANT_AUTOCONF="2.5" aclocal -I "${S}/m4" || die "aclocal failed"
 WANT_AUTOCONF="2.5" autoconf || die "autoconf failed"
 </codesample>
 
@@ -598,7 +598,7 @@ and so on. In the second case you can simplify it in this way:
 
 <codesample lang="ebuild">
 einfo "Regenerating autotools files..."
-WANT_AUTOCONF="2.5" aclocal -I ${WORKDIR}/gentoo-m4 || die "aclocal failed"
+WANT_AUTOCONF="2.5" aclocal -I "${WORKDIR}/gentoo-m4" || die "aclocal failed"
 WANT_AUTOCONF="2.5" autoconf || die "autoconf failed"
 </codesample>
 

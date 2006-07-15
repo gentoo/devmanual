@@ -30,9 +30,9 @@ fails. The following is taken from <c>app-misc/detox</c>:
 <codesample lang="ebuild">
 src_unpack() {
     unpack ${A}
-    cd ${S}
-    epatch ${FILESDIR}/${P}-destdir.patch
-    epatch ${FILESDIR}/${P}-parallel_build.patch
+    cd "${S}"
+    epatch "${FILESDIR}/${P}-destdir.patch"
+    epatch "${FILESDIR}/${P}-parallel_build.patch"
 }
 </codesample>
 
@@ -47,9 +47,9 @@ from <c>app-admin/showconsole</c>:
 <codesample lang="ebuild">
 src_unpack() {
     unpack ${P}.tar.bz2
-    cd ${S}
-    epatch ${DISTDIR}/${P}-suse-update.patch.bz2
-    epatch ${FILESDIR}/${PV}-no-TIOCGDEV.patch
+    cd "${S}"
+    epatch "${DISTDIR}/${P}-suse-update.patch.bz2"
+    epatch "${FILESDIR}/${PV}-no-TIOCGDEV.patch"
 }
 </codesample>
 
@@ -90,7 +90,7 @@ A simple example:
 <codesample lang="ebuild">
 src_unpack() {
     unpack ${A}
-    cd ${S}
+    cd "${S}"
     EPATCH_SOURCE="${WORKDIR}/patches" EPATCH_SUFFIX="patch" \
         EPATCH_FORCE="yes" epatch
 }

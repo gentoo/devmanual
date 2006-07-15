@@ -52,8 +52,8 @@ DEPEND="${RDEPEND}"
 
 src_unpack() {
     unpack ${A}
-    cd ${S}
-    epatch ${FILESDIR}/${P}-gentoo.diff
+    cd "${S}"
+    epatch "${FILESDIR}/${P}-gentoo.diff"
 }
 
 src_compile() {
@@ -65,10 +65,10 @@ src_compile() {
 }
 
 src_install() {
-    make DESTDIR=${D} install || die "make install failed"
+    make DESTDIR="${D}" install || die "make install failed"
     dodoc AUTHORS ChangeLog QuickStart README TODO doc/scripts.sh \
     doc/scripts.tcsh doc/todorc.example contrib/tdrec || die "dodoc failed"
-    dobashcompletion ${FILESDIR}/${PN}.bash-completion ${PN}
+    dobashcompletion "${FILESDIR}/${PN}.bash-completion" ${PN}
 }
 
 pkg_postinst() {

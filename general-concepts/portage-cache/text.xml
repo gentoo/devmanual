@@ -34,10 +34,10 @@ inherit versionator
 
 if [[ $(get_major_version) -ge 7 ]] ; then
     IUSE="${IUSE} tcltk mzscheme"
-    DEPEND="$DEPEND
+    DEPEND="${DEPEND}
         tcltk?    ( dev-lang/tcl )
         mzscheme? ( dev-lisp/mzscheme )"
-    RDEPEND="$RDEPEND
+    RDEPEND="${RDEPEND}
         tcltk?    ( dev-lang/tcl )
         mzscheme? ( dev-lisp/mzscheme )"
 

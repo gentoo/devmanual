@@ -28,7 +28,7 @@ statement. See <uri link="::ebuild-writing/error-handling/#die and Subshells"/>.
     # USE conditional blocks...
     if use livecd ; then
         # remove some extra files for a small livecd install
-        rm -fr ${vimfiles}/{compiler,doc,ftplugin,indent}
+        rm -fr "${vimfiles}"/{compiler,doc,ftplugin,indent}
     fi
 
     # Inverse USE conditional blocks...
@@ -39,11 +39,11 @@ statement. See <uri link="::ebuild-writing/error-handling/#die and Subshells"/>.
     fi
 
     # USE conditional statements...
-    use ssl &amp;&amp; epatch ${FILESDIR}/${P}-ssl.patch
+    use ssl &amp;&amp; epatch "${FILESDIR}/${P}-ssl.patch"
     use sparc &amp;&amp; filter-flags -fomit-frame-pointer
 
     # Inverse USE conditional statements...
-    use ncurses || epatch ${FILESDIR}/${P}-no-ncurses.patch
+    use ncurses || epatch "${FILESDIR}/${P}-no-ncurses.patch"
 </codesample>
 
 <p>

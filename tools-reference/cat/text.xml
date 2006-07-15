@@ -51,7 +51,7 @@ On the other hand, <c>cat</c> is exceptionally useful for so-called
 <codesample lang="ebuild">
 src_install() {
     # ...
-    cat &lt;&lt;- EOF &gt; ${D}/etc/mail/trusted-users
+    cat &lt;&lt;- EOF &gt; "${D}/etc/mail/trusted-users"
         # trusted-users - users that can send mail as others without a warning
         # apache, mailman, majordomo, uucp are good candidates
     EOF

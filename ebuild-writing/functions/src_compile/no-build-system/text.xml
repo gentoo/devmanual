@@ -26,8 +26,8 @@ Here's an example from <c>x11-plugins/gkrelltop</c>, which ships with a
 
 <codesample lang="ebuild">
 src_compile() {
-    CONFIG="-DLINUX -DGKRELLM2 -fPIC `pkg-config gtk+-2.0 --cflags`"
-    LIBS="`pkg-config gtk+-2.0 --libs` -shared"
+    CONFIG="-DLINUX -DGKRELLM2 -fPIC $(pkg-config gtk+-2.0 --cflags)"
+    LIBS="$(pkg-config gtk+-2.0 --libs) -shared"
     OBJS="top_three2.o gkrelltop2.o"
 
     gcc -c $CONFIG $CFLAGS top_three.c -o top_three2.o || die

@@ -108,7 +108,7 @@ compilation required) themes:
 
 <codesample lang="ebuild">
     dodir /usr/share/foo-styles/
-    cp -R ${S}/ ${D}/ || die "Install failed!"
+    cp -R "${S}/" "${D}/" || die "Install failed!"
 </codesample>
 
 <p>
@@ -136,7 +136,7 @@ src_install() {
     doexe extras/dvb.sh
 
     insinto /etc/udev
-    newins ${FILESDIR}/udev.conf.post_050 udev.conf
+    newins "${FILESDIR}/udev.conf.post_050" udev.conf
     doins extras/cdsymlinks.conf
 
     # For devfs style layout
