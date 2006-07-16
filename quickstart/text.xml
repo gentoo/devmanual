@@ -53,7 +53,7 @@ src_compile() {
 }
 
 src_install() {
-    make DESTDIR="${D}" install || die "install failed"
+    emake DESTDIR="${D}" install || die "install failed"
 
     dodoc FAQ NEWS README
     dohtml EXTENDING.html ctags.html
@@ -152,7 +152,7 @@ for errors using the <c>|| die</c> construct.
 </p>
 
 <note>
-The canonical install method is <c>make DESTDIR=&quot;${D}&quot;
+The canonical install method is <c>emake DESTDIR=&quot;${D}&quot;
 install</c>. This will work with any properly written standard
 <c>Makefile</c>. If this gives sandbox errors, try <c>einstall</c>
 instead. If this still fails, see <uri
@@ -219,7 +219,7 @@ src_compile() {
 }
 
 src_install() {
-    make DESTDIR="${D}" install || die "install failed"
+    emake DESTDIR="${D}" install || die "install failed"
     dodoc README CHANGES
 }
 </codesample>
@@ -293,7 +293,7 @@ src_compile() {
 }
 
 src_install() {
-    make DESTDIR="${D}" install || die "install failed"
+    emake DESTDIR="${D}" install || die "install failed"
     dodoc README CHANGES
 }
 </codesample>
@@ -341,7 +341,7 @@ src_compile() {
 }
 
 src_install() {
-    make DESTDIR="${D}" install || die "install failed"
+    emake DESTDIR="${D}" install || die "install failed"
 }
 </codesample>
 
