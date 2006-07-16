@@ -48,7 +48,7 @@ during the unpack and compile stages.
       <c>einstall args</c>
     </ti>
     <ti>
-      Wrapper for <c>make install</c>, only to be used if <c>make DESTDIR="${D}"</c> is unsuitable.
+      Wrapper for <c>emake install</c>, only to be used if <c>emake DESTDIR="${D}"</c> is unsuitable.
     </ti>
   </tr>
 </table>

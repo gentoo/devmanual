@@ -54,7 +54,7 @@ pkg_setup() {
       <c>USE_EINSTALL</c>
     </ti>
     <ti>
-      You can specify to use <c>einstall</c> instead of the default, <c>make DESTDIR=${D} install</c>.
+      You can specify to use <c>einstall</c> instead of the default, <c>emake DESTDIR=${D} install</c>.
       This usually means the package is broken and needs to be fixed.  The fixes need to be sent upstream.
     </ti>
   </tr>
