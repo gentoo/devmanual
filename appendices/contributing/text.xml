@@ -26,9 +26,9 @@ don't submit anything.
 <p>
 This document is produced using the DevBook XML build system. You can download
 a snapshot of the system as well as the relevant XML files from Subversion. You
-can also view the XML of any page by adding <c>./text.xml</c> to the URL. If
-you'd rather just work with plain text, that's fine too <d/> the formatting can
-be easily done by someone else (meaning, us).
+can also view the XML of any page by replacing <c>index.html</c> with
+<c>text.xml</c> in the URL. If you'd rather just work with plain text, that's
+fine too <d/> the formatting can be easily done by someone else (meaning, us).
 </p>
 
 <p>
@@ -42,9 +42,9 @@ $ make
 </pre>
 
 <p>
-You need <c>xsltproc</c> for the XML to HTML conversion and optionally also
-<c>ImageMagick</c> for the SVG to PNG conversion used in some of the figures
-throughout the document.
+You need <c>xsltproc</c> (from <c>dev-libs/libxslt</c>) for the XML to HTML
+conversion and optionally also <c>ImageMagick</c> for the SVG to PNG conversion
+used in some of the figures throughout the document.
 </p>
 
 </body>
