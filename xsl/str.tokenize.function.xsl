@@ -7,7 +7,9 @@
                 xmlns:func="http://exslt.org/functions"
                 xmlns:exsl="http://exslt.org/common"
                 xmlns:str="http://exslt.org/strings"
-                extension-element-prefixes="str func exsl">
+                extension-element-prefixes="str func exsl xsl"
+                exclude-result-prefixes="str func exsl xsl"
+                xmlns="http://www.w3.org/1999/xhtml">
 
 <func:function name="str:tokenize_plasmaroo">
 	<xsl:param name="string" select="''" />

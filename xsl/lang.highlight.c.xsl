@@ -1,9 +1,9 @@
-<xsl:stylesheet version="1.0"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:func="http://exslt.org/functions"
-                xmlns:exslt="http://exslt.org/common"
-                xmlns:str="http://exslt.org/strings"
-                extension-element-prefixes="str func exslt">
+<xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+  xmlns:str="http://exslt.org/strings"
+  xmlns:exslt="http://exslt.org/common"
+  extension-element-prefixes="str exslt xsl"
+  exclude-result-prefixes="str exslt xsl"
+  xmlns="http://www.w3.org/1999/xhtml">
 
   <xsl:template name="lang.highlight.c.subtokenate">
     <xsl:param name="data"/>
