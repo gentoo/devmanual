@@ -1,9 +1,9 @@
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:func="http://exslt.org/functions"
-                xmlns:exsl="http://exslt.org/common"
+                xmlns:exslt="http://exslt.org/common"
                 xmlns:str="http://exslt.org/strings"
-                extension-element-prefixes="str func exsl">
+                extension-element-prefixes="str func exslt">
 
   <xsl:template name="lang.highlight.make.subtokenate">
     <xsl:param name="data"/>

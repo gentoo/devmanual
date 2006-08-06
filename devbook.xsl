@@ -272,8 +272,8 @@
 
   <xsl:template name="convert-to-anchor">
     <xsl:param name="data"/>
-    <xsl:variable name="lcletters">abcdefghijklmnopqrstuvwxyz-</xsl:variable>
-    <xsl:variable name="ucletters">ABCDEFGHIJKLMNOPQRSTUVWXYZ<xsl:text> </xsl:text></xsl:variable>
+    <xsl:variable name="lcletters">abcdefghijklmnopqrstuvwxyz--</xsl:variable>
+    <xsl:variable name="ucletters">ABCDEFGHIJKLMNOPQRSTUVWXYZ<xsl:text> </xsl:text>,</xsl:variable>
     <xsl:value-of select="translate($data,$ucletters,$lcletters)"/>
   </xsl:template>
 

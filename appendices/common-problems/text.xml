@@ -191,7 +191,7 @@ package from accidentally writing outside 'safe' locations. See
 <p>
 If a package violates the sandbox, an error such as the following will be given
 (assuming that the sandbox is enabled and working on the test system, which
-should always be the case for developer boxes): ::
+should always be the case for developer boxes):
 </p>
 
 <pre>
