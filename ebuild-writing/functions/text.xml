@@ -21,6 +21,18 @@ configuration <d/> it is only run when explicitly requested by the user. The
 <c>pkg_nofetch</c> function is used when a <c>RESTRICT="fetch"</c> package needs to
 obtain some <c>SRC_URI</c> components.
 </p>
+
+<p>
+Between the transition from <c>pkg_preinst</c> to <c>pkg_postinst</c>, files are
+copied over to the live filesystem from the sandboxed temporary installation
+location, and Portage records digests of the files installed.
+</p>
+
+<p>
+When testing or debugging, you can instruct Portage to execute a specific function
+from an ebuild by using the <c>ebuild</c> command, see the <c>ebuild(1)</c> manual
+page for further information.
+</p>
 </body>
 
 <section>
