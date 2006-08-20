@@ -255,7 +255,7 @@ correct directory to use for the current implementation/arch.
 </p>
 
 <p>
-When the PAM mdoule doesn't provide a way to install the package by itself, such
+When the PAM module doesn't provide a way to install the package by itself, such
 as a <c>Makefile</c> or an installation script, there are also the <c>dopammod</c> and
 <c>newpammod</c> functions which takes care of install the module in the right
 directory.
