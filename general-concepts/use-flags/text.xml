@@ -142,10 +142,15 @@ mailing list.
 <title>USE Flag Descriptions</title>
 <body>
 <p>
-All USE flags (excluding <c>USE_EXPAND</c> flags) must be described in either
-<c>use.desc</c> or <c>use.local.desc</c> in the <c>profiles/</c> directory. See
-<c>man portage</c> or the comments in these files for an explanation of the format.
-Remember to keep these files sorted.
+All USE flags must be described in either <c>use.desc</c> or <c>use.local.desc</c>
+in the <c>profiles/</c> directory. See <c>man portage</c> or the comments in these
+files for an explanation of the format. Remember to keep these files sorted.
+</p>
+<p>
+The exceptions to this are <c>USE_EXPAND</c> flags, which must be documented in the 
+<c>profiles/desc/</c> directory. One file per <c>USE_EXPAND</c> variable is required,
+which must contain descriptions of the possible values this variable can take. See the
+comments in these files for the format, and remember to keep them sorted.
 </p>
 </body>
 </section>
