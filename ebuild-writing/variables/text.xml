@@ -158,8 +158,8 @@ The following variables must be defined by every ebuild.
   <tr>
     <ti><c>IUSE</c></ti>
     <ti>
-    A list of all <c>USE</c> flags (excluding arch and auto
-    expand flags) used within the ebuild. See
+    A list of all <c>USE</c> flags (excluding arch flags, but
+    including <c>USE_EXPAND</c> flags) used within the ebuild. See
     <uri link="::ebuild-writing/variables#IUSE"/>.
     </ti>
   </tr>
