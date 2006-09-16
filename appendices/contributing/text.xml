@@ -57,7 +57,7 @@ used in some of the figures throughout the document.
 DevBook XML is heavily based on <uri link="http://www.gentoo.org/doc/en/xml-guide.xml">
 GuideXML</uri> and many tags are similar, if not the same. The main differences
 occur in layout which are designed to make a large-scale publication easier
-to produce and manage using a hierachical tree system. Before starting off you
+to produce and manage using a hierarchical tree system. Before starting off you
 really should first examine the GuideXML guide in a reasonable amount of depth.
 </p>
 
@@ -88,7 +88,7 @@ really should first examine the GuideXML guide in a reasonable amount of depth.
     </p>
   </dd>
   <dt>
-    Hierachy
+    Hierarchy
   </dt>
   <dd>
     <p>
