@@ -320,7 +320,7 @@ note that it's really really broken in portage versions before 2.0.51.
 
 <p>
 Arch USE flags (<c>sparc</c>, <c>mips</c>, <c>x86-fbsd</c> and so on) should not be
-listed. Neither should auto-expand flags (<c>linguas_en</c> and so on).
+listed.
 </p>
 
 </body>
