@@ -12,24 +12,12 @@ detailed, up to date technical content.
 </p>
 <p>
 Contributions are encouraged. See the <uri link="::appendices/contributing"/>
-section for how to get started.
+section for how to get started. If you have any corrections, suggestions or
+improvements please file a bug at <uri>http://bugs.gentoo.org</uri> and assign
+it to <c>qa@gentoo.org</c>. The <uri link="::appendices/contributors"/>
+section lists contributors to this manual.
 </p>
 </body>
-
-<section>
-<title>Editors</title>
-<body>
-<authors>
-<author name="Tim Yamin" email="plasmaroo@gentoo.org">Editor</author>
-</authors>
-<p>
-If you have any corrections, suggestions or improvements please contact
-the editors. Large portions of the handbook were originally written by
-<uri link="mailto:ciaran.mccreesh@blueyonder.co.uk">Ciaran McCreesh</uri>
-along with <uri link="::appendices/contributors">our contributors</uri>.
-</p>
-</body>
-</section>
 
 <section>
 <title>Contents</title>
