@@ -26,8 +26,8 @@ discouraged, but technically valid.
 
 <note>
 This is the same as <uri link="http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap03.html#tag_03_276">
-IEEE1003.1-2004-3.276</uri>, with the addition of the plus character to keep GTK+
-and friends happy.
+IEEE1003.1-2004-3.276</uri>, with the exception of the period character and with the
+addition of the plus character to keep GTK+ and friends happy.
 </note>
 
 <p>

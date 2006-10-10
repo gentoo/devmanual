@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<guide self="profiles/package.use.mask/">
+<chapter>
+<title>Profiles <c>package.use.mask</c> File</title>
+<body>
+
+<p>
+The <c>package.use.mask</c> file can be used to mask or unmask certain useflags
+for a given depatom. This is used by the hardened team for example, which uses it
+to unmask the <c>hardened</c> useflag for <c>sys-devel/gcc</c>.
+The format is as follows
+</p>
+
+<codesample>
+# General format
+atom [-]useflag1 [[-]useflag2 [...]]
+# Real world example
+sys-devel/gcc -hardened
+app-text/crm114 mew mimencode test
+</codesample>
+
+<p>
+This file can be used in subprofiles to mask useflags only for certain setups.
+</p>
+
+</body>
+</chapter>
+</guide>
