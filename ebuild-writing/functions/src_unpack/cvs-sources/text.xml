@@ -114,7 +114,7 @@ useful:
     <ti><c>"anoncvs"</c></ti>
   </tr>
   <tr>
-    <ti><c>ECVS_PASSWORD</c></ti>
+    <ti><c>ECVS_PASS</c></ti>
     <ti>Password</ti>
     <ti><c>""</c></ti>
   </tr>
