@@ -36,6 +36,14 @@ displaying informational messages.
   </tr>
   <tr>
     <ti>
+      <c>elog</c>
+    </ti>
+    <ti>
+      Display an informational message, to be logged if logging is enabled.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
       <c>ewarn</c>
     </ti>
     <ti>

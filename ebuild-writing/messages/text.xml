@@ -21,8 +21,8 @@ out.
 
 <p>
 In all cases, assume that the user's terminal is no wider than 79 columns, and
-that the <c>einfo</c>, <c>ewarn</c> and <c>eerror</c> functions will occupy 4 columns
-with their fancy leading markers.
+that the <c>elog</c>,<c>einfo</c>, <c>ewarn</c> and <c>eerror</c> functions will 
+occupy 4 columns with their fancy leading markers.
 </p>
 
 </body>
@@ -37,16 +37,32 @@ internal is the simplest <d/> it simply displays its parameters as a message.
 </p>
 
 <p>
-The <c>einfo</c> function can be used to display an informational message which is
-meant to 'stand out'. On a colour terminal, the message provided will be
-prefixed with a green asterisk.
+The <c>elog</c> function can be used to display an informational message which is
+meant to 'stand out' and is logged by the elog functionality in Portage 2.1 and
+Paludis 0.6 or newer.  On a colour terminal, the message provided will be prefixed
+with a green asterisk.  On earlier versions, elog behaves just like einfo.
 </p>
 
 <codesample lang="ebuild">
 pkg_postinst() {
-    einfo "You will need to set up your /etc/foo/foo.conf file before"
-    einfo "running foo for the first time. For details, please see the"
-    einfo "foo.conf(5) manual page."
+    elog "You will need to set up your /etc/foo/foo.conf file before"
+    elog "running foo for the first time. For details, please see the"
+    elog "foo.conf(5) manual page."
+}
+</codesample>
+
+
+<p>
+The <c>einfo</c> function can be used to display an informational message which is
+meant to 'stand out'. On a colour terminal, the message provided will be
+prefixed with a green asterisk. einfo messages go to the INFO elog class which is not
+logged by default.
+</p>
+
+<codesample lang="ebuild">
+src_compile() {
+    einfo "Starting a silent compile that takes hours."
+    ./build
 }
 </codesample>
 
