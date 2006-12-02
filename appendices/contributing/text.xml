@@ -5,9 +5,9 @@
 
 <body>
 <p>
-Contributions for this document are highly welcomed. Whether you've found a typo
-or have written an entire new section, the best way to get in touch is to send
-an email to the editors.
+Contributions for this document are very welcome. Whether you've found a typo
+or have written an entire new section, the best way to get in touch is via Bugzilla
+at <uri link="http://bugs.gentoo.org">bugs.gentoo.org</uri>.
 </p>
 
 <p>
@@ -31,21 +31,24 @@ can also view the XML of any page by replacing <c>index.html</c> with
 fine too <d/> the formatting can be easily done by someone else (meaning, us).
 </p>
 
-<p>
-Currently, sources are hosted at:
-</p>
-
-<pre>
-$ svn co svn://svn.halcy0n.com/gentoo-devmanual-xml
-$ cd trunk
-$ make
-</pre>
+<subsection>
+  <title>Where to find the sources</title>
+  <body>
 
 <p>
-You need <c>xsltproc</c> (from <c>dev-libs/libxslt</c>) for the XML to HTML
-conversion and optionally also <c>ImageMagick</c> for the SVG to PNG conversion
-used in some of the figures throughout the document.
+  Currently, sources are hosted on svn.gentoo.org. For current Gentoo developers,
+  access is at <c>svn+ssh://svn.gentoo.org/var/svnroot/devmanual</c>. Non-developers
+  can find it via anonymous SVN at <c>http://anonsvn.gentoo.org/repositories/devmanual</c>.
 </p>
+
+<p>
+  To build the devmanual, simply run <c>make</c> in the <c>trunk</c> directory of the repository.
+  You need <c>xsltproc</c> (from <c>dev-libs/libxslt</c>) for the XML to HTML
+  conversion and optionally also <c>ImageMagick</c> for the SVG to PNG conversion
+  used in some of the figures throughout the document.
+</p>
+  </body>
+</subsection>
 
 </body>
 
@@ -62,7 +65,7 @@ really should first examine the GuideXML guide in a reasonable amount of depth.
 </p>
 
 <subsection>
-<title>Differences to GuideXML</title>
+<title>Differences from GuideXML</title>
 <body>
 
 <dl>
