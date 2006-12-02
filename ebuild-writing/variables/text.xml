@@ -216,8 +216,8 @@ Specifying the following variables is optional:
     <ti><c>RESTRICT</c></ti>
     <ti>
     A space-delimited list of portage features to restrict.
-    Valid values are <c>nostrip</c>, <c>nomirror</c>, <c>nouserpriv</c>
-    and <c>fetch</c>. See <c>man ebuild</c> for details.
+    Valid values are <c>fetch</c>, <c>mirror</c>, <c>strip</c>, <c>test</c> and
+    <c>userpriv</c>. See <c>man 5 ebuild</c> for details.
     </ti>
   </tr>
   <tr>

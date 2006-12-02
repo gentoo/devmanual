@@ -94,7 +94,7 @@ SLOT="0"
 KEYWORDS="-*"
 IUSE=""
 
-RESTRICT="nomirror"
+RESTRICT="mirror"
 
 # Need to test if the file can be unpacked with rpmoffset and cpio
 # If it can't then set:

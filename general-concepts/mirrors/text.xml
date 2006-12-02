@@ -27,8 +27,8 @@ Three <c>RESTRICT</c> keywords can be used to control the mirroring process.
 </p>
 
 <p>
-The <c>RESTRICT=&quot;nomirror&quot;</c> setting should be used if we cannot legally mirror
-certain files; but files will still get downloaded off the original locations.
+The <c>RESTRICT=&quot;mirror&quot;</c> setting should be used if we cannot legally mirror
+certain files; files will still be downloaded from the original locations.
 </p>
 
 <p>
