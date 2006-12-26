@@ -169,7 +169,7 @@ or omitting any bit-width option will default to producing 64bit code.
 If you've chosen a multilib profile, glibc will be built twice, once 64bit and
 once 32bit. This is because nearly every application links against glibc. 
 To understand how this is done in the ebuild, read
-<uri link="::arch/amd64/#The ABI Variable"/>.
+<uri link="::archs/amd64/#The ABI Variable"/>.
 </p>
 
 </body>
@@ -510,7 +510,7 @@ As you can see, this is just a wrapper that decides which file you need
 depending on the the parameter <c>-D</c> given to gcc. You'll probably run into
 some troubles if you try to compile something by hand and forget to append
 <c>-D__x86_64__</c> to your <c>CFLAGS</c>. Of course, this is <b>not necessary</b> when
-using portage. For an explanation, see the <uri link="::arch/amd64/#The ABI Variable"/>
+using portage. For an explanation, see the <uri link="::archs/amd64/#The ABI Variable"/>
 section.
 </p>
 
@@ -523,7 +523,7 @@ section.
 
 <p>
 Whenever portage builds something on amd64, it has to decide whether it should
-be 32bit or 64bit. As stated in <uri link="::arch/amd64/#Headers and Multilib"/>
+be 32bit or 64bit. As stated in <uri link="::archs/amd64/#Headers and Multilib"/>
 the <c>__i386__</c> or <c>__x86_64__</c> respectively, is needed in <c>CDEFINE</c>.
 Also, gcc has to know what code it should produce, therefore <c>-m32</c> or <c>-m64</c>
 must be appended to CFLAGS. This is done via <c>profile.bashrc</c>. All you need to do
