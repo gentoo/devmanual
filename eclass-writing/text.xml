@@ -114,13 +114,7 @@ documentation.
 <body>
 
 <p>
-All eclasses must define two top level variables, <c>ECLASS</c> and <c>INHERITED</c>.
-The <c>ECLASS</c> variable must be set to the name of the eclass (without the
-<c>.eclass</c> suffix), and <c>INHERITED</c> must be set to <c>"${INHERITED} ${ECLASS}"</c>.
-</p>
-
-<p>
-Other top level variables may be defined as for ebuilds. If any USE flags are
+Top level variables may be defined as for ebuilds. If any USE flags are
 used, <c>IUSE</c> must be set. The <c>KEYWORDS</c> variable must <b>not</b> be set in an
 eclass.
 </p>
@@ -161,9 +155,6 @@ a single function, <c>domacosapp</c>.
 #
 # Bugs to osx@gentoo.org
 #
-
-ECLASS="macos-app"
-INHERITED="${INHERITED} ${ECLASS}"
 
 # domacosapp: install a macos .app file. Usage is 'domacosapp file' or
 # 'domacosapp file newfile'.
@@ -206,8 +197,6 @@ eclass-defined defaults <d/> for example, say we had <c>fnord.eclass</c>:
 </p>
 
 <codesample lang="ebuild">
-ECLASS="fnord"
-INHERITED="$INHERITED $ECLASS"
 EXPORT_FUNCTIONS src_compile
 
 fnord_src_compile() {
@@ -251,8 +240,6 @@ something like the following:
 # Purpose: Demonstration of EXPORT_FUNCTIONS. Defines simple wrappers for the
 # (hypothetical) 'jmake' build system and a default src_compile.
 
-ECLASS="jmake"
-INHERITED="$INHERITED $ECLASS"
 EXPORT_FUNCTIONS src_compile
 
 DEPEND="&gt;=sys-devel/jmake-2"
