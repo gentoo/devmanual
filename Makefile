@@ -15,3 +15,4 @@ transform:
 		echo "Converting $${file} --> $${pngfile}" ; \
 		convert $$file $$pngfile ; \
 	done
+
