@@ -32,7 +32,7 @@ during the unpack and compile stages.
       <c>econf args</c>
     </ti>
     <ti>
-      Wrapper for <c>./configure</c>. Passes on all <c>args</c>.
+      Wrapper for <c>./configure</c>. Passes on all <c>args</c>. Will abort (via <c>die</c>) should <c>configure</c> fail.
     </ti>
   </tr>
   <tr>
