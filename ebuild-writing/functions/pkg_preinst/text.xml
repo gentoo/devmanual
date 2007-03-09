@@ -69,7 +69,7 @@ There are a few things that are often done in <c>pkg_preinst</c>:
   from a binary. The most useful example is probably smart
   configuration file updating <d/> a <c>pkg_preinst</c> could check a
   configuration file in <c>${ROOT}/etc/</c> and create a smart updated
-  version in <c>${IMAGE}/etc/</c> (see
+  version in <c>${D}/etc/</c> (see
   <uri link="::general-concepts/install-destinations"/>) rather than
   always trying to install the default configuration file (remember
   <uri link="::general-concepts/config-protect"/>).

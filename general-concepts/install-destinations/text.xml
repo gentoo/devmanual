@@ -23,7 +23,7 @@ that you prefix any paths with <c>${ROOT}</c>.
 
 <p>
 When inside <c>pkg_preinst</c>, the image to be installed can be accessed under
-<c>"${IMAGE}"</c>.
+<c>"${D}"</c>.
 </p>
 
 </body>
