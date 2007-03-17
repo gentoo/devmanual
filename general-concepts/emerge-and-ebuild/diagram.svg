@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
     "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg viewBox="0 100 500 220" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg viewBox="0 100 500 220" width="500" height="220" xmlns="http://www.w3.org/2000/svg" version="1.1">
     <desc>Emerge and Ebuild</desc>
     <rect x="-10" y="-10" width="1000" height="1000" fill="#eeeeee" id="background" />
 
@@ -20,12 +20,12 @@
     <line x1="220" y1="180" x2="220" y2="250" stroke-width="2" stroke="black" />
     <line x1="220" y1="250" x2="215" y2="243" stroke-width="2" stroke="black" />
     <line x1="220" y1="250" x2="225" y2="243" stroke-width="2" stroke="black" />
-    <text style="text-anchor: right;" x="210" y="220">$PN, phases</text>
+    <text style="text-anchor: end;" x="210" y="220">$PN, phases</text>
 
     <line x1="280" y1="180" x2="280" y2="250" stroke-width="2" stroke="black" />
     <line x1="280" y1="180" x2="275" y2="187" stroke-width="2" stroke="black" />
     <line x1="280" y1="180" x2="285" y2="187" stroke-width="2" stroke="black" />
-    <text style="text-anchor: left;" x="290" y="220">Image in $D</text>
+    <text style="text-anchor: start;" x="290" y="220">Image in $D</text>
 
     <rect x="200" y="250" width="100" height="30"
         fill="#ffffff" stroke="black" stroke-width="2" />
