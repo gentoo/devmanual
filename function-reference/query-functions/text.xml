@@ -44,19 +44,20 @@ query variables and similar state.
   </tr>
   <tr>
     <ti>
-      <c>use_enable flag str</c> 
+      <c>use_enable flag str val</c> 
     </ti>
     <ti>
-      Echoes either <c>--enable-str</c> or <c>--disable-str</c> depending upon <c>useq flag</c>.
-      If <c>str</c> is not specified, uses <c>flag</c> instead.
+      Echoes either <c>--enable-str=val</c> or <c>--disable-str</c> depending upon <c>useq flag</c>.
+      If <c>str</c> is not specified, uses <c>flag</c> instead. If <c>val</c> is not specified, omits
+      the assignment part.
     </ti>
   </tr>
   <tr>
     <ti>
-      <c>use_with flag str</c>
+      <c>use_with flag str val</c>
     </ti>
     <ti>
-      As <c>use_enable</c>, but <c>--with-</c> or <c>without-</c>.
+      As <c>use_enable</c>, but <c>--with-</c> or <c>--without-</c>.
     </ti>
   </tr>
   <tr>

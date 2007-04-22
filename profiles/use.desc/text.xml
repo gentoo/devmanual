@@ -27,6 +27,11 @@ that the flag becomes a global <d /> see
 All non-expand flags must be listed in exactly one of these files.
 </p>
 
+<p>Expanded flags are listed in <c>desc/${prefix}.desc</c>, where <c>${prefix}</c> is the
+name of the environment variable to be expanded in lowercase. Instead of listing the
+complete flag only the flag's suffix, i.e. the environment variable's possible values are
+listed.</p>
+
 </body>
 </chapter>
 </guide>
