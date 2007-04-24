@@ -333,7 +333,7 @@ configurations.
   </tr>
   <tr>
     <ti>
-      2005.0
+      >=2005.0
     </ti>
     <ti>
       d32
@@ -347,7 +347,7 @@ configurations.
   </tr>
   <tr>
     <ti>
-      2005.0/no-multilib
+      >=2005.0/no-multilib
     </ti>
     <ti>
       d32
@@ -361,7 +361,7 @@ configurations.
   </tr>
   <tr>
     <ti>
-      2005.0/no-symlink
+      >=2005.0/no-symlink
     </ti>
     <ti>
       d32
@@ -375,7 +375,7 @@ configurations.
   </tr>
   <tr>
     <ti>
-      2005.0/no-symlink/no-lib32
+      >=2005.0/no-symlink/no-lib32
     </ti>
     <ti>
       inexistant
