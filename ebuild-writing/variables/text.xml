@@ -131,7 +131,12 @@ The following variables must be defined by every ebuild.
   </tr>
   <tr>
     <ti><c>HOMEPAGE</c></ti>
-    <ti>Package's homepage</ti>
+    <ti>
+    Package's homepage. If you are unable to locate an official one, try
+    to provide a link to <uri link="http://freshmeat.net">freshmeat.net</uri>
+    or a similar package tracking site. Never refer to a variable name in 
+    the string; include only raw text.
+    </ti>
   </tr>
   <tr>
     <ti><c>KEYWORDS</c></ti>
