@@ -31,26 +31,24 @@
 <section>
 <title>Default <c>src_test</c></title>
 <body>
+<p> From sys-apps/portage-2.1.2.9 </p>
 <codesample lang="ebuild">
-src_test()
-{
-    addpredict /
-    if make check -n &amp;&gt; /dev/null; then
-            echo "&gt;&gt;&gt; Test phase [check]: ${CATEGORY}/${PF}"
-            if ! make check; then
-                    hasq maketest $FEATURES &amp;&amp; die "Make check failed. See above for details."
-                    hasq maketest $FEATURES || eerror "Make check failed. See above for details."
-            fi
-    elif make test -n &amp;&gt; /dev/null; then
-            echo "&gt;&gt;&gt; Test phase [test]: ${CATEGORY}/${PF}"
-            if ! make test; then
-                    hasq maketest $FEATURES &amp;&amp; die "Make test failed. See above for details."
-                    hasq maketest $FEATURES || eerror "Make test failed. See above for details."
-            fi
-    else
-            echo "&gt;&gt;&gt; Test phase [none]: ${CATEGORY}/${PF}"
-    fi
-    SANDBOX_PREDICT="${SANDBOX_PREDICT%:/}"
+src_test() {
+	if emake -j1 check -n &amp;> /dev/null; then
+		vecho ">>> Test phase [check]: ${CATEGORY}/${PF}"
+		if ! emake -j1 check; then
+			hasq test $FEATURES &amp;&amp; die "Make check failed. See above for details."
+			hasq test $FEATURES || eerror "Make check failed. See above for details."
+		fi
+	elif emake -j1 test -n &amp;> /dev/null; then
+		vecho ">>> Test phase [test]: ${CATEGORY}/${PF}"
+		if ! emake -j1 test; then
+			hasq test $FEATURES &amp;&amp; die "Make test failed. See above for details."
+			hasq test $FEATURES || eerror "Make test failed. See above for details."
+		fi
+	else
+		vecho ">>> Test phase [none]: ${CATEGORY}/${PF}"
+	fi
 }
 </codesample>
 </body>
