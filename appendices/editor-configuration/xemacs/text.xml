@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <guide self="appendices/editor-configuration/xemacs/">
 <chapter>
-<title>Configuring <c>xemacs</c> for UTF-8</title>
+<title>Configuring XEmacs for UTF-8</title>
 <body>
 
 <p>

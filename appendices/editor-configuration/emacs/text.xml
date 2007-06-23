@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <guide self="appendices/editor-configuration/emacs/">
 <chapter>
-<title>Configuring <c>emacs</c> for UTF-8</title>
+<title>Configuring GNU Emacs</title>
+
+<section>
+<title>UTF-8 support</title>
 <body>
 
 <p>
@@ -10,7 +13,8 @@ UTF-8 far better than UTF-16 and other variants. Some extensions to this
 functionality are available in the package <c>app-emacs/mule-ucs</c>, although
 this is not necessary (and I would not recommend it unless absolutely
 necessary, as the potential for unexpected bugs or quirky behaviour is
-increased).
+increased). The best solution is using Emacs 22 or higher as encoding
+support has been greatly improved.
 </p>
 
 <p>
@@ -41,6 +45,46 @@ the following can be used inside of the Emacs startup file:
 For specifying coding system to use on a per-file basis, the
 <c>modify-coding-system</c> function can be used.
 </p>
+</body>
+</section>
+
+<section>
+<title>Configuration tips and tricks</title>
+<body>
+
+<p>
+Files must end with a newline, in order to let tools like <e>diff</e>
+operate properly. To avoid accidental deletions, setting
+<e>(setq require-final-newline 'ask)</e> in your startup file will
+automatically check for the existence of it and ask you to add one.
+</p>
+
+<p>
+Other useful settings can be disabled backup files
+(by <e>(setq make-backup-files nil)</e> and
+<e>(setq vc-cvs-stay-local nil)</e>), so you don't clutter CVS
+directories and confuse repoman with it (by adding unnecessary entries
+into a Manifest file e.g.). Emacs can even contact the outside world
+by using the X servers clipboard abilities when yanking, which is
+activated by <e>(setq x-select-enable-clipboard t)</e>.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Gentoo specific additions</title>
+<body>
+
+<p>
+For easy editing of ebuilds an Emacs mode has been created, which is
+found in the package <e>app-emacs/gentoo-syntax</e>.
+It supports ebuilds, eclasses and eselect files, highlights keywords
+and also provides a hook for your own customisation. 
+</p>
+
+</body>
+</section>
 
 <section>
 <title>Further Reading</title>
@@ -68,6 +112,5 @@ For specifying coding system to use on a per-file basis, the
 </body>
 </section>
 
-</body>
 </chapter>
 </guide>
