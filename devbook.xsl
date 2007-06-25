@@ -469,11 +469,11 @@
 
       <div class="footer">
 	<p>
-	  <a href="http://validator.w3.org/check/referer"><img src="http://dev.gentoo.org/~plasmaroo/.icon_mini-xhtml.png" alt="Valid XHTML 1.0" /></a>
-	  <a href="http://jigsaw.w3.org/css-validator/check/referer"><img src="http://dev.gentoo.org/~plasmaroo/.icon_mini-css.png" alt="Valid CSS" /></a>
-	  <a href="http://www.gentoo.org/"><img src="http://dev.gentoo.org/~plasmaroo/.icon_mini-gentoo.png" alt="Powered by Gentoo" /></a>
-	  <a href="http://creativecommons.org/licenses/by-sa/2.0/"><img src="http://dev.gentoo.org/~plasmaroo/.icon_mini-creativecommons.png" alt="Creative Commons License" /></a>
-	  <img src="http://dev.gentoo.org/~plasmaroo/.icon_mini-xml.png" alt="XML Powered!"/>
+	    <a href="http://validator.w3.org/check/referer"><img src="/icons/icon_mini-xhtml.png" alt="Valid XHTML 1.0" /></a>
+	    <a href="http://jigsaw.w3.org/css-validator/check/referer"><img src="/icons/icon_mini-css.png" alt="Valid CSS" /></a>
+	    <a href="http://www.gentoo.org/"><img src="/icons/icon_mini-gentoo.png" alt="Powered by Gentoo" /></a>
+	    <a href="http://creativecommons.org/licenses/by-sa/2.0/"><img src="/icons/icon_mini-creativecommons.png" alt="Creative Commons License" /></a>
+	    <img src="/icons/icon_mini-xml.png" alt="XML Powered!"/>
 	  <br />
 	  <br />
 	  The text of this document is distributed under the <a href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons Attribution-ShareAlike 2.0 License</a>.
