@@ -2,7 +2,7 @@ all: transform
 
 clean:
 	@find -name "index.html" | xargs rm
-	@find -name "*.png" | xargs rm
+	@find -name "*.png" |grep -v icons | xargs rm
 
 transform:
 	@for file in $$(find -name text.xml) ; do \
