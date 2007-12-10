@@ -20,6 +20,12 @@ No combination of <c>USE</c> flags should cause a package to fail to build.
 Packages should not configure and link based upon what is available at compile time
 <d/> any autodetection must be overridden.
 </p>
+
+<note>
+The status of USE flags is saved in the VDB, and their value in
+<c>pkg_prerm</c> and <c>pkg_postrm</c> is taken from there. This means that setting or
+unsetting a USE flag between merge and unmerge has no effect.
+</note>
 </body>
 
 <section>
@@ -90,20 +96,6 @@ Users of non-x86 would see the following when doing <c>emerge -pv vplayer</c>:
 
 <p>
 To get a flag added to <c>use.mask</c>, ask the relevant arch team.
-</p>
-
-<p>
-So what's the problem with <c>noblah</c> flags? There's no way to forcibly
-<e>enable</e> a given USE flag on a particular profile. So, something like:
-</p>
-
-<codesample lang="ebuild">
-RDEPEND="!noalsa? ( media-libs/alsa )"
-</codesample>
-
-<p>
-... will make your package unusable by archs without ALSA support, and there
-is no way to fix it that doesn't involve adding in nasty <c>arch?</c> flags.
 </p>
 
 </body>
