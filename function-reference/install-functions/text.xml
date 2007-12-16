@@ -136,7 +136,7 @@ for all of these functions.
       <c>dohtml</c>
     </ti>
     <ti>
-      Install an HTML documentation file
+      Installs HTML document files into <c>/usr/share/doc/${PF}/html</c>
     </ti>
   </tr>
   <tr>
