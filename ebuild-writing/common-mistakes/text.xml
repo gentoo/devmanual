@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/common-mistakes/">
+<chapter>
+<title>Common Mistakes</title>
+
+<body>
+<p>
+This section contains information on the common mistakes developers make when
+writing ebuilds.
+</p>
+</body>
+
+<section>
+<title>Invalid use of <c>static</c> use-flag</title>
+<body>
+The <c>static</c> use-flag should only be used to make a binary use static
+linking instead of dynamic linking.  It should not be used to make a library
+install static libraries.  The package should always (if possible) install both
+the dynamic and static libraries.
+</body>
+</section>
+</chapter>
+
+</guide>

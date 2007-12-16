@@ -28,4 +28,5 @@ with some general notes and extended examples.
 <include href="using-eclasses/"/>
 <include href="functions/"/>
 <include href="misc-files/"/>
+<include href="common-mistakes/"/>
 </guide>
