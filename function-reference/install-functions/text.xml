@@ -240,7 +240,7 @@ for all of these functions.
       <c>fowners</c>
     </ti>
     <ti>
-      Call <c>chown</c> with the first argument as the mode on all additional arguments.
+      Call <c>chown</c> on the specified files in <c>${D}</c>
     </ti>
   </tr>
   <tr>
@@ -248,7 +248,7 @@ for all of these functions.
       <c>fperms</c>
     </ti>
     <ti>
-      Call <c>chown</c> with the first argument as the user on all additional arguments.
+      Call <c>chmod</c> on the specified files in <c>${D}</c>
     </ti>
   </tr>
   <tr>
