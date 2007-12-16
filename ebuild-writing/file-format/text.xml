@@ -79,6 +79,18 @@ Any of these suffixes may be followed by a non-zero positive integer.
 </p>
 
 <p>
+These suffixes can be chained together and will be processed iteratively.  To
+give some examples (the following list is from lowest version to highest):
+
+<ul>
+  <li>foo-1.0.0_alpha_rc1</li>
+  <li>foo-1.0.0_alpha_pre</li>
+  <li>foo-1.0.0_beta_pre</li>
+  <li>foo-1.0.0_beta_p1</li>
+</ul>
+</p>
+
+<p>
 Finally, version may have a Gentoo revision number in the form <c>-r1</c>. The initial
 Gentoo version should have no revision suffix, the first revision should be
 <c>-r1</c>, the second <c>-r2</c> and so on. See <uri link="::general-concepts/ebuild-revisions"/>.
