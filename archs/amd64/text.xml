@@ -70,8 +70,8 @@ doesn't help upstream at all.
 
 <p>
 Another bad idea is to (ab)use <c>append-flags</c> function from
-<c>flag-o-matic.eclass</c>. Applying <c>-fPIC</c> on all objects will slow down the
-binaries in a drastic way.
+<c>flag-o-matic.eclass</c>. Applying <c>-fPIC</c> on all objects should not be
+done.  It should only be applied to shared objects.
 </p>
 
 </body>
