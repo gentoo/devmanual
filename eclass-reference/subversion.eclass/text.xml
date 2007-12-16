@@ -88,6 +88,15 @@ See <uri link="::ebuild-writing/functions/src_unpack/svn-sources"/> for an intro
       such as *.diff.  This variable is empty by default.
     </ti>
   </tr>
+  <tr>
+    <ti>
+      <c>ESVN_OPTIONS</c>
+    </ti>
+    <ti>
+      Pass options to the update or checkout command.  This is useful for
+      specifying a particular revision to grab (e.g <c>-r 1337</c>).
+    </ti>
+  </tr>
 </table>
 </body>
 </subsection>
