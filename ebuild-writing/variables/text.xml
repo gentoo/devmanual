@@ -96,6 +96,13 @@ them.
       always prepend <c>${ROOT}</c> to the path.
     </ti>
   </tr>
+  <tr>
+    <ti><c>DISTDIR</c></ti>
+    <ti>
+      Contains the path to the directory where all the files
+      fetched for the package are stored.
+    </ti>
+  </tr>
 </table>
 
 </body>
