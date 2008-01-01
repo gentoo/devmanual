@@ -182,8 +182,7 @@ the asterisk postfix. This is most commonly seen in situations like:
 </p>
 
 <codesample lang="ebuild">
-DEPEND="gtk2? ( >=x11-libs/gtk+-2.4 )
-    !gtk2? ( =x11-libs/gtk+-1.2* )"
+DEPEND="gtk? ( =x11-libs/gtk+-1.2* )"
 </codesample>
 
 <p>
@@ -276,10 +275,22 @@ This can be nested:
 </p>
 
 <codesample lang="ebuild">
-DEPEND="gtk? (
-            gtk2? ( &gt;=x11-libs/gtk+-2.4 )
-            !gtk2? ( =x11-libs/gtk+-1.2* ) )
-    !gtk? ( sys-libs/ncurses )"
+DEPEND="!build? (
+    gcj? (
+        gtk? (
+            x11-libs/libXt
+            x11-libs/libX11
+            x11-libs/libXtst
+            x11-proto/xproto
+            x11-proto/xextproto
+            >=x11-libs/gtk+-2.2
+            x11-libs/pango
+        )
+        >=media-libs/libart_lgpl-2.1
+    )
+    >=sys-libs/ncurses-5.2-r2
+    nls? ( sys-devel/gettext )
+)"
 </codesample>
 
 </body>
