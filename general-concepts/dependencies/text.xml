@@ -223,6 +223,16 @@ Blockers can be optional based upon <c>USE</c> flags as per normal
 dependencies.
 </p>
 
+<p>
+Blockers added to older ebuilds should not be expected to be retroactive.  If
+the user already has the ebuild installed, any changes to the ebuild should not
+be expected to make any difference.  This means that you should add the
+blockers to whichever ebuild is the newest (even if it means that logically it
+would seem backwards).  For example, certain versions of portage don't like
+some versions of bash, but the blocker was put into bash because that was the
+newer package that caused the issues.
+</p>
+
 </body>
 </subsection>
 
