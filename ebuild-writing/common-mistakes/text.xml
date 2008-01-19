@@ -19,6 +19,28 @@ install static libraries.  The package should always (if possible) install both
 the dynamic and static libraries.
 </body>
 </section>
+
+<section>
+<title>Referencing the full path to documentation files that could be
+compressed</title>
+<body>
+When printing out to the users where to find files like INSTALL, do not specify
+the full path since <c>PORTAGE_COMPRESS</c> comes into play.  The file could be
+compressed with gzip, bzip2, or some other random compression tool.  So,
+instead of doing this:
+
+<codesample lang="ebuild">
+elog "They are listed in /usr/share/doc/${PF}/INSTALL.gz"
+</codesample>
+
+Do something like:
+
+<codesample lang="ebuild">
+elog "They are listed in the INSTALL file in /usr/share/doc/${PF}"
+</codesample>
+</body>
+</section>
+
 </chapter>
 
 </guide>
