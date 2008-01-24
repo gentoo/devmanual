@@ -73,7 +73,7 @@ standard output. This can be used in a <c>while</c> loop:
 </p>
 
 <codesample lang="ebuild">
-find ${S} -type f | while read f ; do
+find "${S}" -type f | while read f ; do
     einfo "Doing unholy things to ${f}"
 done
 </codesample>
@@ -88,7 +88,7 @@ Or a <c>for</c> loop (for small numbers of files):
 </p>
 
 <codesample lang="ebuild">
-for f in $(find ${S} -type f) ; do
+for f in $(find "${S}" -type f) ; do
     einfo "Calling down holy vengance upon ${f}"
 done
 </codesample>
@@ -107,7 +107,7 @@ doesn't gobble up the special characters:
 </p>
 
 <codesample lang="ebuild">
-find ${S} -name '*.backup' -exec rm '{}' \;
+find "${S}" -name '*.backup' -exec rm '{}' \;
 </codesample>
 
 <p>

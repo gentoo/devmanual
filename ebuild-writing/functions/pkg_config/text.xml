@@ -49,11 +49,11 @@ Taken from the <c>mysql</c> ebuilds. Note the use of <c>${ROOT}</c>.
 
 <codesample lang="ebuild">
 pkg_config() {
-    if [ ! -d ${ROOT}/var/lib/mysql/mysql ] ; then
+    if [ ! -d "${ROOT}"/var/lib/mysql/mysql ] ; then
         einfo "Press ENTER to create the mysql database and set proper"
         einfo "permissions on it, or Control-C to abort now..."
         read
-        ${ROOT}/usr/bin/mysql_install_db
+        "${ROOT}"/usr/bin/mysql_install_db
     else
         einfo "Hmm, it appears as though you already have the mysql"
         einfo "database in place.  If you are having problems trying"

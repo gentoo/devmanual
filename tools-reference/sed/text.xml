@@ -50,10 +50,10 @@ from the plugin files and convert it to Vim help format.
 # problems for us during the unmerge. Fortunately, sed can fix this
 # for us. First, we extract the documentation:
 sed -e '1,/^" HelpExtractorDoc:$/d' \
-    ${S}/plugin/ZoomWin.vim > ${S}/doc/ZoomWin.txt \
+    "${S}"/plugin/ZoomWin.vim > ${S}/doc/ZoomWin.txt \
     || die "help extraction failed"
 # Then we remove the help extraction code from the plugin file:
-sed -i -e '/^" HelpExtractor:$/,$d' ${S}/plugin/ZoomWin.vim \
+sed -i -e '/^" HelpExtractor:$/,$d' "${S}"/plugin/ZoomWin.vim \
     || die "help extract remove failed"
 </codesample>
 

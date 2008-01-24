@@ -59,7 +59,7 @@ src_test() {
 <body>
 <codesample lang="ebuild">
 src_test() {
-    cd ${S}/src/testdir
+    cd "${S}"/src/testdir
 
     # Test 49 won't work inside a portage environment
     sed -i -e 's~test49.out~~g' Makefile
