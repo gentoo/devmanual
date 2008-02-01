@@ -99,6 +99,29 @@ from the <c>vim</c> patch tarball:
 
 </body>
 </section>
+
+<section>
+<title>Adding Patches to the tree</title>
+<body>
+
+<p>
+When adding a patch to the tree be sure to check that the patch doesn't have
+CVS keywords in it that will be expanded (such as <c>$Id$</c>).  If the patch
+contains these, it will break manifests unless you add it to the tree
+correctly.  In the case that it does have the keywords, you should add it by
+doing:
+</p>
+
+<pre>
+cvs add -ko files/${P}-the-cool-patch.path
+</pre>
+
+<p>
+<c>-ko</c> disables keyword expansion for that specific file.  If it doesn't
+have keywords in it, then you can add it normally without the extra argument.
+</p>
+</body>
+</section>
 </body>
 </chapter>
 </guide>
