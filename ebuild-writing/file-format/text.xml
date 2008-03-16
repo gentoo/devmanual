@@ -83,8 +83,8 @@ These suffixes can be chained together and will be processed iteratively.  To
 give some examples (the following list is from lowest version to highest):
 
 <ul>
-  <li>foo-1.0.0_alpha_rc1</li>
   <li>foo-1.0.0_alpha_pre</li>
+  <li>foo-1.0.0_alpha_rc1</li>
   <li>foo-1.0.0_beta_pre</li>
   <li>foo-1.0.0_beta_p1</li>
 </ul>
