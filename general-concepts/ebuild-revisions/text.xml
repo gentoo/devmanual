@@ -9,7 +9,7 @@ Ebuilds may have a Gentoo revision number associated with them. This is a
 <c>-rX</c> suffix, where <c>X</c> is an integer <d/> see <uri
 link="::ebuild-writing/file-format#File Naming Rules"/>. This
 component must only be used for Gentoo changes, not upstream releases. By
-default, <c>-r0</c> is implied and should not be specified manually.
+default, <c>-r0</c> is implied.
 </p>
 
 <p>
