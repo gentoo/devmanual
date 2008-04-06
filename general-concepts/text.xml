@@ -23,7 +23,7 @@ writing ebuilds or working with the Portage tree.
 <include href="config-protect/"/>
 <include href="cvs-to-rsync/"/>
 <include href="dependencies/"/>
-<include href="digest-and-manifest/"/>
+<include href="manifest/"/>
 <include href="distributed-building/"/>
 <include href="ebuild-revisions/"/>
 <include href="emerge-and-ebuild/"/>
