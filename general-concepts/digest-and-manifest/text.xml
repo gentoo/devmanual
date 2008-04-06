@@ -13,20 +13,7 @@ be digitally signed.
 </p>
 
 <p>
-Inside the <c>files/</c> subdirectory, there is exactly one <c>digest</c> file per
-ebuild. Each file contains a digest (also MD5, RMD160, SHA256) and a file size for
-every file listed in <c>SRC_URI</c> for the ebuild. This is used to verify downloads
-and to catch any changed source files.
-</p>
-
-<p>
-When generating digests, it is necessary to include <e>all</e> of the files which
-<e>could</e> be downloaded (<c>SRC_URI</c> can contain conditional entries). Portage
-will do this automatically if <c>cvs</c> is included in <c>FEATURES</c>.
-</p>
-
-<p>
-To generate digests and <c>Manifest</c>, use <c>ebuild foo.ebuild digest</c>. When
+To generate the <c>Manifest</c>, use <c>ebuild foo.ebuild manifest</c>. When
 committing, the <c>Manifest</c> file must be regenerated to handle any CVS keyword
 expansion changes <d/> <c>repoman</c> will do this automatically.
 </p>

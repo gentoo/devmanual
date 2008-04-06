@@ -294,12 +294,6 @@ SRC_URI="http://example.com/files/${P}-core.tar.bz2
 </codesample>
 
 <p>
-When creating digests it may be necessary to have <e>all</e> SRC_URI components
-downloaded. If you have <c>FEATURES="cvs"</c> set, portage should get this right,
-although you may end up downloading more than necessary.
-</p>
-
-<p>
 If a <c>USE_EXPAND</c> variable is used to control whether certain optional
 components are installed, the correct thing to do if the variable is unset is
 generally to install <e>all</e> available components.

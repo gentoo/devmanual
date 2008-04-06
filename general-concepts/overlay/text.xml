@@ -22,7 +22,7 @@ overlay
     `-- gengetopt
         |-- Manifest
         |-- files
-        |   `-- digest-gengetopt-2.13
+        |   `-- gengetopt-2.13-foobar.patch
         `-- gengetopt-2.13.ebuild
 </pre>
 

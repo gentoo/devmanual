@@ -20,19 +20,11 @@ Relevant <c>FEATURES</c> for developers include:
     <th>Explanation</th>
   </tr>
   <tr>
-    <ti><c>autoaddcvs</c></ti>
-    <ti>Automatically runs a <c>cvs add</c> for certain files.</ti>
-  </tr>
-  <tr>
     <ti><c>collision-protect</c></ti>
     <ti>
       Raise an error if an installing package attempts to overwrite a file which
       is provided by a different package.
     </ti>
-  </tr>
-  <tr>
-    <ti><c>cvs</c></ti>
-    <ti>Generate proper digests even when <c>SRC_URI</c> has conditional elements.</ti>
   </tr>
   <tr>
     <ti><c>noauto</c></ti>

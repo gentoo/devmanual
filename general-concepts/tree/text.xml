@@ -27,10 +27,6 @@ The basic layout of the portage tree is as follows:
       Package files directory, for example <c>app-editors/vim/files</c>
       <ul>
         <li>
-        Digest files, for example <c>app-editors/vim/files/digest-vim-6.3.068</c>,
-        <c>app-editors/vim/files/digest-vim-7.0_alpha20050326</c>
-        </li>
-        <li>
         Small patches and other miscellaneous files, for example
         <c>app-editors/vim/files/vim-completion</c>
         </li>
