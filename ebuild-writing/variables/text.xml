@@ -253,6 +253,10 @@ When slots are not needed, use <c>SLOT="0"</c>. Do <b>not</b> use <c>SLOT=""</c>
 this will disable slotting for this package.
 </p>
 
+<p>
+See <uri link="::general-concepts/slotting/" /> for more information on this variable.
+</p>
+
 </body>
 </section>
 
