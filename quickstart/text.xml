@@ -55,7 +55,7 @@ src_compile() {
 src_install() {
     emake DESTDIR="${D}" install || die "install failed"
 
-    dodoc FAQ NEWS README
+    dodoc FAQ NEWS README || die
     dohtml EXTENDING.html ctags.html
 }
 </codesample>
@@ -220,7 +220,7 @@ src_compile() {
 
 src_install() {
     emake DESTDIR="${D}" install || die "install failed"
-    dodoc README CHANGES
+    dodoc README CHANGES || die
 }
 </codesample>
 
@@ -294,7 +294,7 @@ src_compile() {
 
 src_install() {
     emake DESTDIR="${D}" install || die "install failed"
-    dodoc README CHANGES
+    dodoc README CHANGES || die
 }
 </codesample>
 
@@ -428,7 +428,7 @@ src_install() {
         doins sylpheed.desktop
     fi
 
-    dodoc [A-Z][A-Z]* ChangeLog*
+    dodoc [A-Z][A-Z]* ChangeLog* || die
 }
 </codesample>
 

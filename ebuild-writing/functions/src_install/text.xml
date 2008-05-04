@@ -46,7 +46,7 @@ src_install()
 <codesample lang="ebuild">
 src_install() {
     emake DESTDIR="${D}" install || die "Install failed"
-    dodoc README CHANGES
+    dodoc README CHANGES || die
 }
 </codesample>
 </body>
@@ -157,14 +157,14 @@ src_install() {
     exeinto /etc/dev.d/net
     doexe etc/dev.d/net/hotplug.dev
 
-    doman *.8
-    doman extras/scsi_id/scsi_id.8
+    doman *.8 || die
+    doman extras/scsi_id/scsi_id.8 || die
 
-    dodoc ChangeLog FAQ HOWTO-udev_for_dev README TODO
-    dodoc docs/{overview,udev-OLS2003.pdf,udev_vs_devfs,RFC-dev.d,libsysfs.txt}
-    dodoc docs/persistent_naming/* docs/writing_udev_rules/*
+    dodoc ChangeLog FAQ HOWTO-udev_for_dev README TODO || die
+    dodoc docs/{overview,udev-OLS2003.pdf,udev_vs_devfs,RFC-dev.d,libsysfs.txt} || die
+    dodoc docs/persistent_naming/* docs/writing_udev_rules/* || die
 
-    newdoc extras/volume_id/README README_volume_id
+    newdoc extras/volume_id/README README_volume_id || die
 }
 </codesample>
 
