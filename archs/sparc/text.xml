@@ -5,9 +5,10 @@
 <body>
 
 <p>
-The SPARC port uses the <c>sparc</c> keyword. It focusses mainly upon <c>sun4u</c>
-hardware (Sun UltraSparc systems with <c>v9</c> CPUs), although <c>sun4m</c> (Sun 32
-bit hardware with <c>v8</c> and clones) is also sort-of supported.
+The SPARC port uses the <c>sparc</c> keyword. It focuses on <c>sun4u</c>
+hardware (Sun UltraSparc systems with <c>v9</c> CPUs). <c>v8</c> processors
+and 2.4 kernels should still work with Gentoo, but they are no longer supported
+by the Gentoo/SPARC team.
 </p>
 
 <section>
@@ -25,7 +26,9 @@ does not provide working 32 bit compatibility interfaces.
 </p>
 
 <p>
-All supported SPARC systems are big endian.
+All of the above SPARC systems are big endian, nevertheless the <c>v9</c>
+architecture also utilizes little-endian instructions to access data on PCI
+buses.
 </p>
 
 </body>
@@ -49,8 +52,7 @@ items must generally hold:
 <ul>
   <li>
     The package must have been tested by an arch team member (or someone with
-    permission from the arch team) <e>at least</e> on a <c>v9</c> system. Testing on
-    <c>v8</c> is encouraged but not required.
+    permission from the arch team) on a <c>v9</c> system.
   </li>
 </ul>
 
@@ -78,7 +80,8 @@ There are three basic SPARC instruction set standards.
   </li>
   <li>
     <c>v8</c> is an extension of <c>v7</c> with added support for hardware integer
-    multiplication and division. Gentoo sparc32 (<c>sun4m</c>) stages are <c>v8</c>.
+    multiplication and division. Last time Gentoo sparc32 (<c>sun4m</c>) stages
+    were available was on 2006.1 release.
   </li>
   <li>
     <c>v9</c> adds in 64 bit support and a large number of performance-enhancing
