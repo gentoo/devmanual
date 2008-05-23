@@ -23,7 +23,7 @@ To add a group, use the <c>enewgroup</c> function:
 </p>
 
 <pre>
-enewgroup &lt;name&gt; [uid]
+enewgroup &lt;name&gt; [gid]
 </pre>
 
 <p>
