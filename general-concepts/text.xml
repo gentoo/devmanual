@@ -43,4 +43,5 @@ writing ebuilds or working with the Portage tree.
 <include href="tree/"/>
 <include href="use-flags/"/>
 <include href="user-environment/"/>
+<include href="virtuals/"/>
 </guide>
