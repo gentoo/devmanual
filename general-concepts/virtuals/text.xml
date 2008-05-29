@@ -71,7 +71,7 @@ An example of a <e>new-style</e> virtual:
 
 <codesample lang="ebuild">
 DESCRIPTION="Virtual for C++ tr1 &lt;type_traits&gt;"
-HOMEPAGE="http://www.gentoo.org/proj/en/base/"
+HOMEPAGE=""
 SRC_URI=""
 LICENSE=""
 SLOT="0"
