@@ -32,7 +32,9 @@ exemptions).
 The <c>RDEPEND</c> ebuild variable should specify any dependencies which are
 required at runtime. This includes libraries (when dynamically linked), any data
 packages and (for interpreted languages) the relevant interpreter. If this
-variable is not specified, it defaults to the value of <c>DEPEND</c>.
+variable is not specified, it defaults to the value of <c>DEPEND</c>, but you
+should always explicitly define <c>RDEPEND="${DEPEND}"</c> (as in the future
+this setting is planned to be removed from Portage).
 </p>
 
 <p>
