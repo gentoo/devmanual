@@ -43,10 +43,10 @@ It is <e>not</e> correct to use the <c>${CC}</c> variable for this purpose.
 </note>
 
 <p>
-Sometimes a package will not use the user's <c>${CFLAGS}</c>. This must be worked
-around, as sometimes this variable is used for specifying critical ABI options.
-In these cases, the build scripts should be modified (for example, with <c>sed</c>)
-to use <c>${CFLAGS}</c> correctly.
+Sometimes a package will not use the user's <c>${CFLAGS}</c> or <c>${LDFLAGS}</c>.
+This must be worked around, as sometimes these variables are used for specifying
+critical ABI options. In these cases, the build scripts should be modified (for
+example, with <c>sed</c>) to use <c>${CFLAGS}</c> or <c>${LDFLAGS}</c> correctly.
 </p>
 
 <codesample lang="ebuild">
@@ -58,16 +58,23 @@ src_compile() {
 
     # We have a weird build.sh to work with which ignores our
     # compiler preferences. yay!
-    sed -i -e "s:cc -O2:$(tc-getCC) ${CFLAGS}:" build.sh \
+    sed -i -e "s:cc -O2:$(tc-getCC) ${CFLAGS} ${LDFLAGS}:" build.sh \
         || die "sed fix failed. Uh-oh..."
     ./build.sh || die "Build failed!"
 }
 </codesample>
 
 <note>
-When using <c>sed</c> with <c>CFLAGS</c>, it is not safe to use a comma or a
-slash as a delimiter. The vapier-recommended character is a colon.
+When using <c>sed</c> with <c>CFLAGS</c> or <c>LDFLAGS</c>, it is not safe to use
+a comma or a slash as a delimiter. The recommended character is a colon.
 </note>
+
+<p>
+Portage performs a QA check which verifies if LDFLAGS are respected. This QA check
+is enabled only when <c>LDFLAGS</c> variable contains <c>-Wl,--hash-style=gnu</c>.
+(This flag can be used only on systems which use <c>sys-libs/glibc</c> except for
+machines with a MIPS CPU.)
+</p>
 
 </body>
 </section>

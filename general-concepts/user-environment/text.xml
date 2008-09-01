@@ -79,7 +79,7 @@ respected (selective filtering is fine, but outright ignoring is not). Ignoring
 Some packages do this by accident. For example, one might see
 <c>CFLAGS=-Wall</c> in <c>Makefile.am</c>. To fix this, either <c>sed</c> in the user's
 <c>CFLAGS</c>, or (the better solution) change the variable to <c>AM_CFLAGS</c>, which
-will automatically be merged with the user's settings.
+will automatically be merged with the user's settings. LDFLAGS also should be respected.
 </p>
 </body>
 </section>

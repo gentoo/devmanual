@@ -17,7 +17,7 @@ Except where otherwise specified, any function which operates on
 </note>
 
 <p>
-Ebuilds must not simply ignore user CFLAGS <d/> see
+Ebuilds must not simply ignore user CFLAGS, CXXFLAGS or LDFLAGS<d/> see
 <uri link="::general-concepts/user-environment#Not Filtering Variables"/>.
 </p>
 </body>
