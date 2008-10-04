@@ -20,6 +20,7 @@ with some general notes and extended examples.
 </chapter>
 
 <include href="file-format/"/>
+<include href="eapi/"/>
 <include href="use-conditional-code/"/>
 <include href="error-handling/"/>
 <include href="users-and-groups/"/>
