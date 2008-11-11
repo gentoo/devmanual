@@ -38,7 +38,7 @@ fine too <d/> the formatting can be easily done by someone else (meaning, us).
 <p>
   Currently, sources are hosted on svn.gentoo.org. For current Gentoo developers,
   access is at <c>svn+ssh://svn.gentoo.org/var/svnroot/devmanual</c>. Non-developers
-  can find it via anonymous SVN at <c>http://anonsvn.gentoo.org/repositories/devmanual</c>.
+  can find it via anonymous SVN at <c>svn://anonsvn.gentoo.org/devmanual</c>.
 </p>
 
 <p>
