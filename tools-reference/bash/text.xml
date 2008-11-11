@@ -604,7 +604,7 @@ These are used <e>outside</e> of the <c>[[ ]]</c> blocks. For operator precedenc
 
 <note>
 These will also sometimes work <e>inside</e> <c>[[ ]]</c> constructs, and using
-<c>!</c> before a test is fairly common. <c>[[ ! -foo ]] &amp;&amp; bar</c> is fine. However,
+<c>!</c> before a test is fairly common. <c>[[ ! -f foo ]] &amp;&amp; bar</c> is fine. However,
 there are catches -- <c>[[ -f foo &amp;&amp; bar ]]</c> will <b>not</b> work properly, since
 commands cannot be run inside <c>[[ ]]</c> blocks.
 </note>

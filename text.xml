@@ -24,8 +24,8 @@ detailed, up to date technical content.
 <p>
 Contributions are encouraged. See the <uri link="::appendices/contributing"/>
 section for how to get started. If you have any corrections, suggestions or
-improvements please file a bug at <uri>http://bugs.gentoo.org</uri> and assign
-it to <c>qa@gentoo.org</c>. The <uri link="::appendices/contributors"/>
+improvements please file a bug at <uri link="http://bugs.gentoo.org">bugs.gentoo.org</uri>
+and assign it to <c>qa@gentoo.org</c>. The <uri link="::appendices/contributors"/>
 section lists specific contributions to this manual.
 </p>
 </body>
