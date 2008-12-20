@@ -72,21 +72,21 @@ them.
     <ti><c>WORKDIR</c></ti>
     <ti>
       Path to the ebuild's root build directory. Value:
-      <c>"${PORTAGE_TMPDIR}/portage/${PF}/work"</c>.
+      <c>"${PORTAGE_BUILDDIR}/work"</c>.
     </ti>
   </tr>
   <tr>
     <ti><c>T</c></ti>
     <ti>
        Path to a temporary directory which may be used by the
-       ebuild. Value: <c>"${PORTAGE_TMPDIR}/portage/${PF}/temp"</c>.
+       ebuild. Value: <c>"${PORTAGE_BUILDDIR}/temp"</c>.
     </ti>
   </tr>
   <tr>
     <ti><c>D</c></ti>
     <ti>
       Path to the temporary install directory. Value:
-      <c>"${PORTAGE_TMPDIR}/portage/${PF}/image"</c>.
+      <c>"${PORTAGE_BUILDDIR}/image"</c>.
     </ti>
   </tr>
   <tr>
