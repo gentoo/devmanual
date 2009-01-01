@@ -45,7 +45,7 @@ pkg_postinst()
 <body>
 <codesample lang="ebuild">
 pkg_postinst() {
-    if has_version '&lt;x11-wm/fluxbox-0.9.10-r3' ; then
+    if $OLD_FLUXBOX_VERSION ; then
         ewarn "You must restart fluxbox before using the [include] /directory/"
         ewarn "feature if you are upgrading from an older fluxbox!"
         ewarn " "
@@ -63,10 +63,10 @@ pkg_postinst() {
 <body>
 <p>
 The most common use for <c>pkg_postinst</c> is to display post-install
-informational messages or warnings. Note that <c>has_version</c> will
-operate on the version that <e>was</e> installed, which can be useful
-for selective upgrade messages.
-</p>
+informational messages or warnings.  If you want to display selective
+upgrade messages, you should do the call to <c>has_version</c> in an
+earlier phase, like <c>pkg_preinst</c>, and store the result in a global
+variable.</p>
 </body>
 </section>
 
