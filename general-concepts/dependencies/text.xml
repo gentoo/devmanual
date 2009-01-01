@@ -379,8 +379,61 @@ flag is not necessary if and only if all of the following hold:
 <body>
 
 <p>
-Currently it is impossible to depend upon "<c>foo</c> built with the <c>bar</c>
-<c>USE</c> flag enabled".
+In order to use built with use dependencies you must specify <c>EAPI=2</c>.
+</p>
+
+<p>
+Available specifiers are:
+</p>
+
+<p>
+<table>
+  <tr>
+    <th>Specifier</th>
+    <th>Meaning</th>
+  </tr>
+  <tr>
+    <ti><c>app-misc/foo[bar]</c></ti>
+    <ti>foo must have bar enabled.</ti>
+  </tr>
+  <tr>
+    <ti><c>app-misc/foo[bar,baz]</c></ti>
+    <ti>foo must have both bar and baz enabled.</ti>
+  </tr>
+  <tr>
+    <ti><c>app-misc/foo[-bar,baz]</c></ti>
+    <ti>foo must have bar disabled and baz enabled.</ti>
+  </tr>
+</table>
+</p>
+
+<p>
+There are also shortcuts for conditional situations:
+</p>
+
+<p>
+<table>
+  <tr>
+    <th>Compact form</th>
+    <th>Equivalent expanded form</th>
+  </tr>
+  <tr>
+    <ti><c>app-misc/foo[bar?]</c></ti>
+    <ti><c>bar? ( app-misc/foo[bar] ) !bar? ( app-misc/foo )</c></ti>
+  </tr>
+  <tr>
+    <ti><c>app-misc/foo[!bar?]</c></ti>
+    <ti><c>bar? (app-misc/foo ) !bar? ( app-misc/foo[-bar] )</c></ti>
+  </tr>
+  <tr>
+    <ti><c>app-misc/foo[bar=]</c></ti>
+    <ti><c>bar? ( app-misc/foo[bar] ) !bar? ( app-misc/foo[-bar] )</c></ti>
+  </tr>
+  <tr>
+    <ti><c>app-misc/foo[!bar=]</c></ti>
+    <ti><c>bar? ( app-misc/foo[-bar] ) !bar? ( app-misc/foo[bar] )</c></ti>
+  </tr>
+</table>
 </p>
 
 </body>
