@@ -6,11 +6,13 @@
 <body>
 
 <p>
-A <e>herd</e> is a collection of developers who maintain a collection of related
-packages. A herd has an associated email address which can be used for bugzilla
-assignments. This email address is <b>not</b> always <c>herdname@gentoo.org</c> <d/> for
-example, because of the way Gentoo's email aliases are set up, the <c>cron</c> herd
-use <c>cron-bugs@gentoo.org</c> (aliases cannot match system usernames).
+A <e>herd</e> is a collection of packages with an associated set of maintainers.
+It can happen for example because of retirement that a herd has no developers
+but this should be avoided if at all possible. A herd has an associated email
+address which can be used for bugzilla assignments. This email address is
+<b>not</b> always <c>herdname@gentoo.org</c> <d/> for example, because of the
+way Gentoo's email aliases are set up, the <c>cron</c> herd use
+<c>cron-bugs@gentoo.org</c> (aliases cannot match system usernames).
 </p>
 
 <p>
