@@ -48,8 +48,10 @@ function can die in multiple places.
 
 <p>
 Some portage-provided functions will automatically die upon failure. Others will
-not. It is safe to omit the <c>|| die</c> after a call to <c>epatch</c>, but not
-<c>econf</c> or <c>emake</c>.
+not. It is for example safe to omit the <c>|| die</c> after a call to <c>epatch</c>,
+but not <c>emake</c>. The reason is that external binaries are not able to call
+die that is a bash function. You can see what commands are external binaries
+with <c>ls /usr/lib/portage/bin/</c>.
 </p>
 
 <p>
@@ -57,6 +59,9 @@ Sometimes displaying additional error information beforehand can be useful. Use
 <c>eerror</c> to do this. See <uri link="::ebuild-writing/messages"/>.
 </p>
 
+<p>
+It's best to use <c>|| die</c> too often than too little.
+</p>
 </body>
 </section>
 
