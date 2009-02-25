@@ -26,10 +26,6 @@ has an associated <c>sparc</c> herd which maintains sparc-specific packages (suc
 as the <c>silo</c> bootloader). This is <e>not</e> always the case.
 </p>
 
-<p>
-The <c>herdstat</c> tool can display useful information about herds.
-</p>
-
 </body>
 </chapter>
 </guide>
