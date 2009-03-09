@@ -176,8 +176,7 @@ src_compile() {
 
     econf \
         # Other stuff
-        ${myconf} \
-        || die "configure failed"
+        ${myconf}
 
     emake || die "make failed"
 }

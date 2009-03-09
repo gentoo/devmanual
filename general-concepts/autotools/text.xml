@@ -126,7 +126,7 @@ src_unpack() {
 }
 
 src_compile() {
-    econf $(use_enable nls) || die "econf failed"
+    econf $(use_enable nls)
     emake || die "emake failed"
 }
 </codesample>

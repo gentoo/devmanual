@@ -60,7 +60,7 @@ src_compile() {
     einfo "Running autoreconf"
     autoreconf -f -i || die "autoreconf failed"
     replace-flags -O? -O1
-    econf --sysconfdir=/etc/devtodo || die "econf failed"
+    econf --sysconfdir=/etc/devtodo
     emake || die "emake failed"
 }
 

@@ -48,7 +48,7 @@ KEYWORDS="~mips ~sparc ~x86"
 IUSE=""
 
 src_compile() {
-    econf --with-posix-regex || die "econf failed"
+    econf --with-posix-regex
     emake || die "emake failed"
 }
 
@@ -135,10 +135,12 @@ details.
 Next, a function named <c>src_compile</c>. Portage will call this
 function when it wants to <e>compile</e> the package. The <c>econf</c>
 function is a wrapper for calling <c>./configure</c>, and <c>emake</c>
-is a wrapper for <c>make</c>. In both cases, the common <c>|| die
+is a wrapper for <c>make</c>. In the case of emake, the common <c>|| die
 &quot;something went wrong&quot;</c> idiom is used <d/> this is to
 ensure that if for some reason an error occurs, Portage will stop
-rather than trying to continue with the install.
+rather than trying to continue with the install. Note that <c>econf</c>
+does not need the <c>|| die</c> idiom, as it dies by itself if something
+failed.
 </p>
 
 <p>
@@ -214,7 +216,7 @@ DEPEND="dev-libs/popt
 RDEPEND="dev-libs/popt"
 
 src_compile() {
-    econf --with-popt || die "econf failed"
+    econf --with-popt
     emake || die "emake failed"
 }
 
@@ -288,7 +290,7 @@ src_unpack() {
 }
 
 src_compile() {
-    econf --with-popt || die "econf failed"
+    econf --with-popt
     emake || die "emake failed"
 }
 
@@ -336,7 +338,7 @@ DEPEND="virtual/libc
     !sys-libs/glibc"
 
 src_compile() {
-    econf $(use_enable nls) || die "econf failed"
+    econf $(use_enable nls)
     emake || die
 }
 
@@ -410,8 +412,7 @@ src_compile() {
         $(use_enable ipv6) \
         $(use_enable imlib) \
         $(use_enable gnome gdk-pixbuf) \
-        $(use_enable xface compface) \
-        || die
+        $(use_enable xface compface)
 
     emake || die
 }

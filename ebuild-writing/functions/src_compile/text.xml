@@ -54,8 +54,7 @@ src_compile() {
 
     econf \
         $(use_enable ssl ) \
-        $(use_enable perl perlinterp ) \
-        || die "Configure failed!"
+        $(use_enable perl perlinterp )
 
     emake || die "Make failed!"
 }
