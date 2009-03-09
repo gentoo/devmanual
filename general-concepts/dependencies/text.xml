@@ -189,7 +189,8 @@ DEPEND="gtk? ( =x11-libs/gtk+-1.2* )"
 
 <p>
 Note that the equals sign is mandatory, and that there is no dot before the
-asterisk.
+asterisk. Also note that when selecting all versions in a specific
+<c>SLOT</c>, <c>SLOT</c> dependencies should be used (see below).
 </p>
 
 </body>
@@ -246,8 +247,19 @@ newer package that caused the issues.
 <body>
 
 <p>
-It is not currently possible to depend upon a package in a particular <c>SLOT</c>.
+In order to depend on a package in a specific <c>SLOT</c> you must specify
+at least<c>EAPI="1"</c>.
 </p>
+
+<p>
+To depend on a specific <c>SLOT</c>, <c>:SLOT</c> should be appended to
+the package name, where 'SLOT' is the <c>SLOT</c> of the package wanted:
+</p>
+
+<codesample lang="ebuild">
+DEPEND="qt3? ( x11-libs/qt:3 )
+    gtk? ( x11-libs/gtk+:2 )
+</codesample>
 
 </body>
 </section>
@@ -379,7 +391,7 @@ flag is not necessary if and only if all of the following hold:
 <body>
 
 <p>
-In order to use built with use dependencies you must specify <c>EAPI=2</c>.
+In order to use built with use dependencies you must specify <c>EAPI="2"</c>.
 </p>
 
 <p>
