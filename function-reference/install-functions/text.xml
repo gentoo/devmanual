@@ -213,14 +213,6 @@ for all of these functions.
   </tr>
   <tr>
     <ti>
-      <c>dopython</c>
-    </ti>
-    <ti>
-      Install a Python file
-    </ti>
-  </tr>
-  <tr>
-    <ti>
       <c>dosbin</c>
     </ti>
     <ti>

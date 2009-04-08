@@ -119,7 +119,7 @@
 		      $data = 'exeinto' or $data = 'exeopts' or $data = 'fowners' or $data = 'fperms' or $data = 'insinto' or $data = 'insopts' or
 		      $data = 'into' or $data = 'libopts' or $data = 'newbin' or $data = 'newexe' or $data = 'newins' or $data = 'newman' or
 		      $data = 'newsbin' or $data = 'prepall' or $data = 'prepalldocs' or $data = 'prepallinfo' or $data = 'prepallman' or
-		      $data = 'prepallstrip' or $data = 'has' or $data = 'unpack' or $data = 'dopython' or $data = 'dosed' or $data = 'into' or
+		      $data = 'prepallstrip' or $data = 'has' or $data = 'unpack' or $data = 'dosed' or $data = 'into' or
 		      $data = 'doinitd' or $data = 'doconfd' or $data = 'doenvd' or $data = 'dojar' or $data = 'domo' or $data = 'dodir' or
 		      $data = 'ebegin' or $data = 'eend' or $data = 'newconfd' or $data = 'newdoc' or $data = 'newenvd' or $data = 'newinitd' or
 		      $data = 'newlib.a' or $data = 'newlib.so' or $data = 'hasq' or $data = 'hasv' or $data = 'useq' or $data = 'usev'">
