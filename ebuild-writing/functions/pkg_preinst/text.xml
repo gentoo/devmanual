@@ -61,7 +61,9 @@ There are a few things that are often done in <c>pkg_preinst</c>:
 
 <ul>
   <li>
-  Adding users and groups <d/> see <uri link="::ebuild-writing/users-and-groups"/>.
+  Adding users and groups. However, since <c>pkg_preinst</c> may be called 
+  after <c>src_compile</c>, <c>pkg_setup</c> is the more suitable location for
+  user creation <d/> see <uri link="::ebuild-writing/users-and-groups"/>.
   </li>
   <li>
   Modifying the install image for a particular system. This function
