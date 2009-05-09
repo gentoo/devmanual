@@ -248,7 +248,7 @@ newer package that caused the issues.
 
 <p>
 In order to depend on a package in a specific <c>SLOT</c> you must specify
-at least<c>EAPI="1"</c>.
+at least <c>EAPI="1"</c>.
 </p>
 
 <p>

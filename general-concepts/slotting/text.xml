@@ -36,7 +36,8 @@ possible that the user may have <c>foo-2.0</c> installed and no <c>foo-1.x</c> a
 </p>
 
 <p>
-It is not possible to <c>DEPEND</c> upon a package in a specific slot.
+To <c>DEPEND</c> upon a package in a specific slot, refer to
+<uri link="::general-concepts/dependencies#SLOT Dependencies" />.
 </p>
 
 <p>
