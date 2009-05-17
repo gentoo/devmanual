@@ -43,11 +43,11 @@ them.
   </tr>
   <tr>
     <ti><c>PVR</c></ti>
-    <ti>Package version and revision, for example <c>6.3-r0</c>, <c>6.3-r1</c>.</ti>
+    <ti>Package version and revision (if any), for example <c>6.3</c>, <c>6.3-r1</c>.</ti>
   </tr>
   <tr>
     <ti><c>PF</c></ti>
-    <ti>Package name, version and revision, for example <c>vim-6.3-r1</c>.</ti>
+    <ti>Full package name, <c>${PN}-${PVR}</c>, for example <c>vim-6.3-r1</c>.</ti>
   </tr>
   <tr>
     <ti><c>A</c></ti>
