@@ -80,11 +80,45 @@ Committing a broken eclass can kill huge numbers of packages. Since
 A simple way to verify syntax is <c>bash -n foo.eclass</c>.
 </p>
 
-<p>
-Eclasses must <b>not</b> be removed from the tree, even if they are no longer used,
-as this will cause problems for users who have installed packages which used the
-eclass in question.
-</p>
+</body>
+</section>
+
+<section>
+<title>Removing Eclasses</title>
+<body>
+
+<p>No longer used eclasses may be removed from the tree, but developers must
+adhere to the following process(developers must follow these rules because
+packages installed with a portage version of less than 2.1.4 would break
+during uninstallation or upgrades):</p>
+
+<ol>
+  <li>
+    Make sure that no packages or other eclasses in the tree <c>inherit</c> the
+    eclass.
+  </li>
+  <li>
+    Send a message to the gentoo-dev and gentoo-dev-announce mailing lists
+    announcing that the eclass you are deprecating is now deprecated.
+  </li>
+  <li>
+    Add a warning to all installation phases that the eclass is now deprecated,
+    perhaps with a hint at what, if any, eclass replaced the functionality that
+    the old eclass provided.
+  </li>
+  <li>
+    Remove all functionality related to installation of packages from the eclass.
+  </li>
+  <li>
+    Add a one line comment saying exactly <c># @DEAD</c> so that the
+    eclass-manpages package will not attempt to document it.
+  </li>
+  <li>
+    After two years have passed since the eclass was deprecated, the eclass may
+    be removed from the portage tree.
+  </li>
+</ol>
+
 
 </body>
 </section>
