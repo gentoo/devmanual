@@ -32,7 +32,7 @@ src_compile() {
 
     gcc -c $CONFIG $CFLAGS top_three.c -o top_three2.o || die
     gcc -c $CONFIG $CFLAGS gkrelltop.c -o gkrelltop2.o || die
-    gcc $LIBS $CONFIG $CFLAGS -o gkrelltop2.so $OBJS || die
+    gcc $LDFLAGS $CONFIG $CFLAGS -o gkrelltop2.so $OBJS $LIBS || die
 }
 </codesample>
 
