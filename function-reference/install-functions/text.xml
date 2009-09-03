@@ -10,6 +10,12 @@ library, handle various install-related tasks. <c>${D}</c> is automatically hand
 for all of these functions.
 </p>
 
+<p>
+The <c>do*</c> functions, when given multiple arguments, will work upon multiple
+targets. The <c>new*</c> functions take exactly two arguments (except as noted) <d />
+the first is the source name, the second the name to use when installing.
+</p>
+
 <table>
   <tr>
     <th>
@@ -340,12 +346,6 @@ for all of these functions.
     </ti>
   </tr>
 </table>
-
-<p>
-The <c>do*</c> functions, when given multiple arguments, will work upon multiple
-targets. The <c>new*</c> functions take exactly two arguments (except as noted) <d />
-the first is the source name, the second the name to use when installing.
-</p>
 
 </body>
 </chapter>
