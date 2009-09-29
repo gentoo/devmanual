@@ -435,7 +435,7 @@ There are also shortcuts for conditional situations:
   </tr>
   <tr>
     <ti><c>app-misc/foo[!bar?]</c></ti>
-    <ti><c>bar? (app-misc/foo ) !bar? ( app-misc/foo[-bar] )</c></ti>
+    <ti><c>bar? ( app-misc/foo ) !bar? ( app-misc/foo[-bar] )</c></ti>
   </tr>
   <tr>
     <ti><c>app-misc/foo[bar=]</c></ti>
