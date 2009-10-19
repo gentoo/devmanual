@@ -25,6 +25,21 @@
   similar. If you need a file renamed, removed or changed in a particular way, you
   should display a message informing the user.
 </p>
+
+<p>
+An ebuild can append to the <c>CONFIG_PROTECT_MASK</c> variable by using
+Portage's <uri link="::tasks-reference/environment/"/> mechanism. The ebuild
+has to generate an <c>env.d</c> file, then install it using <c>doenvd</c> or
+<c>newenvd</c>. <c>emerge</c> shall call <c>env-update</c> and generate the
+proper environment for proceeding with its merge. The following snippet (from
+<c>src_install</c>) shall cause <c>/etc/test.cfg</c> to be auto-merged without
+needing to call <c>etc-update</c> after the package is merged:
+</p>
+
+<codesample lang="ebuild">
+	newenvd - 99my-pkg &lt;&lt;&lt; "CONFIG_PROTECT_MASK=\"/etc/test.cfg\""
+</codesample>
+
 </body>
 </chapter>
 </guide>
