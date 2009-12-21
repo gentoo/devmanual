@@ -91,6 +91,10 @@ give some examples (the following list is from lowest version to highest):
 </p>
 
 <p>
+No integer part of the version may be longer than 18 digits.
+</p>
+
+<p>
 Finally, version may have a Gentoo revision number in the form <c>-r1</c>. The initial
 Gentoo version should have no revision suffix, the first revision should be
 <c>-r1</c>, the second <c>-r2</c> and so on. See <uri link="::general-concepts/ebuild-revisions"/>.
