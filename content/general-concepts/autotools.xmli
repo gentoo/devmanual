@@ -526,7 +526,7 @@ AM_CFLAGS="-Wall"
   </section>
 
   <section>
-    <title><command>aclocal</command> and <command>m4</command> Files</title>
+    <title><command>aclocal</command> and <filename>.m4</filename> Files</title>
 
     <para>
       In the <filename>configure.ac</filename> or <filename>configure.in</filename> files you can call not only the
