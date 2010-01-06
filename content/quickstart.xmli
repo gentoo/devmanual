@@ -2,7 +2,6 @@
 <chapter xmlns="http://docbook.org/ns/docbook"
          xmlns:xl="http://www.w3.org/1999/xlink"
          xmlns:xi="http://www.w3.org/2001/XInclude"
-	 xmlns:gentoodv="http://www.gentoo.org/2010/DBDevManual"
 	 xml:id="quickstart">
   <title>Quickstart Ebuild Guide</title>
 
@@ -31,7 +30,7 @@
       main tree).
     </para>
 
-    <gentoodv:codesample lang="ebuild"><![CDATA[
+    <programlisting language="ebuild"><![CDATA[
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
@@ -56,7 +55,7 @@ src_install() {
     dodoc FAQ NEWS README || die
     dohtml EXTENDING.html ctags.html
 }
-]]></gentoodv:codesample>
+]]></programlisting>
 
     <section>
       <title>Basic Format</title>
@@ -174,7 +173,7 @@ src_install() {
       Here's <filename>app-misc/detox/detox-1.1.1.ebuild</filename>:
     </para>
 
-    <gentoodv:codesample lang="ebuild"><![CDATA[
+    <programlisting language="ebuild"><![CDATA[
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
@@ -202,7 +201,7 @@ src_install() {
     emake DESTDIR="${D}" install || die "install failed"
     dodoc README CHANGES || die
 }
-]]></gentoodv:codesample>
+]]></programlisting>
 
     <para>
       Again, you can see the ebuild header and the various informational variables. In <varname>SRC_URI</varname>,
@@ -233,7 +232,7 @@ src_install() {
       ebuild. Here's <filename>app-misc/detox/detox-1.1.0.ebuild</filename>:
     </para>
 
-    <gentoodv:codesample lang="ebuild"><![CDATA[
+    <programlisting language="ebuild"><![CDATA[
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
@@ -271,7 +270,7 @@ src_install() {
     emake DESTDIR="${D}" install || die "install failed"
     dodoc README CHANGES || die
 }
-]]></gentoodv:codesample>
+]]></programlisting>
 
     <para>
       Note the <filename>${FILESDIR}/${P}-destdir.patch</filename> — this refers to
@@ -290,7 +289,7 @@ src_install() {
       <filename>libc</filename> implementations which don't have their own.
     </para>
 
-    <gentoodv:codesample lang="ebuild"><![CDATA[
+    <programlisting language="ebuild"><![CDATA[
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
@@ -315,7 +314,7 @@ src_compile() {
 src_install() {
     emake DESTDIR="${D}" install || die "install failed"
 }
-]]></gentoodv:codesample>
+]]></programlisting>
 
     <para>
       Note the <varname>IUSE</varname> variable. This lists all (non-special) use flags that are
@@ -336,7 +335,7 @@ src_install() {
       <filename>mail-client/sylpheed/sylpheed-1.0.4.ebuild</filename>:
     </para>
 
-    <gentoodv:codesample lang="ebuild"><![CDATA[
+    <programlisting language="ebuild"><![CDATA[
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
@@ -403,7 +402,7 @@ src_install() {
 
     dodoc [A-Z][A-Z]* ChangeLog* || die
 }
-]]></gentoodv:codesample>
+]]></programlisting>
 
     <para>
       Note the optional dependencies. Some of the <command>use_enable</command> lines use the
