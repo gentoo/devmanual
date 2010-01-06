@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.use-flags">
+  <title>USE Flags</title>
+
+  <para>
+    <varname>USE</varname> flags are to control optional dependencies and settings which the user may reasonably want to
+    select. For example, <package>vim</package> can optionally build with support for the Ruby language interpreter, and
+    it needs <package>ruby</package> installed to do this — we use the ruby <varname>USE</varname> flag to provide this
+    option. On the other hand, <package>glark</package> requires <package>ruby</package> no matter what, so no
+    <varname>USE</varname> flag is used there.
+  </para>
+
+  <para>
+    No combination of <varname>USE</varname> flags should cause a package to fail to build.
+  </para>
+
+  <para>
+    Packages should not configure and link based upon what is available at compile time — any autodetection must be
+    overridden.
+  </para>
+
+  <note>
+    <para>
+      The status of <varname>USE</varname> flags is saved in the VDB, and their value in <function>pkg_prerm</function> and
+      <function>pkg_postrm</function> is taken from there. This means that setting or unsetting a USE flag between merge
+      and unmerge has no effect.
+    </para>
+  </note>
+
+
+  <section>
+    <title><literal>noblah</literal> <varname>USE</varname> Flags</title>
+
+    <para>
+      If at all possible, avoid <literal>noblah</literal> style <varname>USE</varname> flags. These break
+      <filename>use.mask</filename> and cause all sorts of complications for arch developers. Here's why:
+    </para>
+
+    <para>
+      Consider a hypothetical package named <package>vplayer</package>, which plays videos. This package has optional
+      support, via <varname>USE</varname> flags, for various sound and video output methods, various video codecs and so
+      on.
+    </para>
+
+    <para>
+      One of vplayer's optional features is support for the 'fakemedia' codec, which is unfortunately only available as
+      a dodgy x86 binary. We <emphasis>could</emphasis> handle this by doing something like:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+RDEPEND="x86? ( fakemedia? ( >=media-libs/fakemedia-1.1 ) )"
+]]></programlisting>
+
+    <para>
+      Except this is pretty nasty — what happens when an AMD64 binary is made as well? Also, users on other archs will
+      see fakemedia listed in <command>emerge -pv</command> output, even though it is not actually available.
+    </para>
+
+    <para>
+      Similarly, say vplayer supports output via the ALSA codec as one option.  However, ALSA isn't (or wasn't when this
+      example was written) available on SPARC or Alpha. So we could do:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+DEPEND="!sparc? ( !alpha? ( alsa? ( media-libs/alsa-lib ) ) )"
+]]></programlisting>
+
+    <para>
+      Again, it's messy, and ALSA still shows up in the <command>emerge -p</command> output. Also, once ALSA starts
+      working on SPARC, every ebuild that does this would have to be manually edited.
+    </para>
+
+    <para>
+      The solution is <filename>use.mask</filename>, which is documented in <xref linkend="profiles.use.mask."/>.  Each
+      profile can have a <filename>use.mask</filename> file which can be used to forcibly disable certain USE flags on a
+      given arch (or subarch, or subprofile). So, if the <literal>fakemedia</literal> <varname>USE</varname> flag was
+      use.masked on every non-x86 profile, the following would be totally legal and wouldn't break anything:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+RDEPEND="fakemedia? ( >=media-libs/fakemedia-1-1 )"
+]]></programlisting>
+
+    <para>
+      Users of non-x86 would see the following when doing <command>emerge -pv vplayer</command>:
+    </para>
+
+    <programlisting><![CDATA[
+[ebuild   R   ] media-video/vplayer-1.2 alsa -blah (-fakemedia) xyz
+]]></programlisting>
+
+    <para>
+      To get a flag added to <filename>use.mask</filename>, ask the relevant arch team.
+    </para>
+  </section>
+
+  <section>
+    <title>Local and Global USE Flags</title>
+
+    <para>
+      USE flags are categorised as either local or global. A global USE flag must satisfy several criteria:
+    </para>
+
+    <itemizedlist>
+      <listitem><para>It is used by many different packages.</para></listitem>
+      <listitem><para>It has a general non-specific purpose.</para></listitem>
+    </itemizedlist>
+
+    <para>
+      The second point is important. If the effect of the <literal>thing</literal> <varname>USE</varname> flag upon
+      <package>pkg-one</package> is substantially different from the effect it has upon <package>pkg-two</package>,
+      then <literal>thing</literal> is not a suitable candidate for being made a global flag. In particular, note that
+      if <literal>client</literal> and <literal>server</literal> USE flags are ever introduced, they can not be
+      global USE flags for this reason.
+    </para>
+
+    <para>
+      Before introducing a new global USE flag, it must be discussed on the gentoo-dev mailing list.
+    </para>
+  </section>
+
+  <section>
+    <title>USE Flag Descriptions</title>
+
+    <para>
+      All USE flags must be described in either <filename>use.desc</filename> or <filename>use.local.desc</filename> in
+      the <filename>profiles/</filename> directory. See <command>man portage</command> or the comments in these files
+      for an explanation of the format. Remember to keep these files sorted.
+    </para>
+
+    <para>
+      The exceptions to this are <varname>USE_EXPAND</varname> flags, which must be documented in the
+      <filename>profiles/desc/</filename> directory. One file per <varname>USE_EXPAND</varname> variable is required,
+      which must contain descriptions of the possible values this variable can take. See the comments in these files for
+      the format, and remember to keep them sorted.
+    </para>
+  </section>
+
+  <section>
+    <title>Conflicting USE Flags</title>
+
+    <para>
+      Occasionally, ebuilds will have conflicting USE flags for functionality.  Checking for them and returning an error
+      is <emphasis>not</emphasis> a viable solution. Instead, you must pick one of the USE flags in conflict to favour.
+    </para>
+
+    <para>
+      One example comes from the <package>msmtp</package> ebuilds. The package can use either SSL with GnuTLS, SSL
+      with OpenSSL, or no SSL at all. Because GnuTLS is more featureful than OpenSSL, it is favoured:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+src_compile() {
+    local myconf
+
+    if use ssl &&; use gnutls ; then
+        myconf="${myconf} --enable-ssl --with-ssl=gnutls"
+    elif use ssl &&; ! use gnutls ; then
+        myconf="${myconf} --enable-ssl --with-ssl=openssl"
+    else
+        myconf="${myconf} --disable-ssl"
+    fi
+
+    econf \
+        # Other stuff
+        ${myconf}
+
+    emake || die "make failed"
+}
+]]></programlisting>
+
+  </section>
+
+  <section>
+    <title><varname>USE_EXPAND</varname> and <varname>ARCH</varname> <varname>USE</varname> Flags</title>
+
+
+    <para>
+      The <varname>VIDEO_CARDS</varname>, <varname>INPUT_DEVICES</varname> and <varname>LINGUAS</varname> variables are
+      automatically expanded into USE flags. These are known as <varname>USE_EXPAND</varname> variables. If the user has
+      <literal>LINGUAS="en fr"</literal> in <filename>make.conf</filename>, for example, then <literal>USE="linguas_en
+      linguas_fr"</literal> will automatically be set by Portage.
+    </para>
+
+    <para>
+      The <varname>USE_EXPAND</varname> list is set in <filename>profiles/base/make.default</filename> as of Portage
+      2.0.51.20. This must not be modified without discussion on the gentoo-dev list, and it must not be modified in any
+      subprofile.
+    </para>
+
+    <para>
+      The current architecture (e.g. <literal>x86</literal>, <literal>sparc</literal>, <literal>ppc-macos</literal>)
+      will automatically be set as a USE flag as well. See <filename>profiles/arch.list</filename> for a full list of
+      valid architecture keywords, and <link xl:href="http://www.gentoo.org/proj/en/glep/glep-0022.html">GLEP 22</link>
+      for an explanation of the format.
+    </para>
+
+    <warning>
+      <para>
+	It is a common misconception that the architecture variable is somehow related to
+	<varname>ACCEPT_KEYWORDS</varname>. It isn't. Accepting <literal>x86</literal> keywords on
+	<literal>sparc</literal>, for example, won't set <literal>USE="x86"</literal>. Similarly, there are no
+	<literal>~arch</literal> USE flags, so don't try <code>if use ~x86</code>.
+      </para>
+    </warning>
+  </section>
+</section>

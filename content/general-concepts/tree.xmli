@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.tree">
+  <title>The Portage Tree</title>
+
+  <para>
+    The basic layout of the portage tree is as follows:
+  </para>
+
+  <itemizedlist>
+    <listitem>
+      <para>
+	Categories, for example <filename>app-editors</filename>, <filename>sys-apps</filename>
+      </para>
+
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    Category metadata, for example <filename>app-admin/metadata.xml</filename>
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Package directories for example <filename>app-editors/vim</filename>
+	  </para>
+
+	  <itemizedlist>
+	    <listitem>
+	      <para>
+		Package metadata, for example <filename>app-editors/vim/metadata.xml</filename>
+	      </para>
+	    </listitem>
+
+	    <listitem>
+	      <para>
+		Package changelog, for example <filename>app-editors/vim/ChangeLog</filename>
+	      </para>
+	    </listitem>
+
+	    <listitem>
+	      <para>
+		Package Manifest, for example <filename>app-editors/vim/Manifest</filename>
+	      </para>
+	    </listitem>
+	    
+	    <listitem>
+	      <para>
+		Ebuilds, for example <filename>app-editors/vim/vim-6.3.068.ebuild</filename>,
+		<filename>app-editors/vim/vim-7.0_alpha20050326.ebuild</filename>
+	      </para>
+	    </listitem>
+
+	    <listitem>
+	      <para>
+		Package files directory, for example <filename>app-editors/vim/files</filename>
+	      </para>
+
+	      <itemizedlist>
+		<listitem>
+		  <para>
+		    Small patches and other miscellaneous files, for example
+		    <filename>app-editors/vim/files/vim-completion</filename>
+		  </para>
+		</listitem>
+	      </itemizedlist>
+	    </listitem>
+	  </itemizedlist>
+	</listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>
+	Eclasses directory, <filename>eclass/</filename>
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+	Licenses directory, <filename>licenses/</filename>
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+	Profiles directory, <filename>profiles/</filename>
+      </para>
+
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    Various control and documentation files, for example <filename>categories</filename>,
+	    <filename>info_pkgs</filename>, <filename>info_vars</filename>, <filename>package.mask</filename>,
+	    <filename>use.desc</filename>
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Updates directory, <filename>profiles/updates/</filename>
+	  </para>
+
+	  <itemizedlist>
+	    <listitem>
+	      <para>
+		Updates files, for example <filename>profiles/updates/1Q-2005</filename>
+	      </para>
+	    </listitem>
+	  </itemizedlist>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Main profile cascade
+	  </para>
+	</listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>
+	Scripts directory, <filename>scripts/</filename>
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+	Distfiles directory, <filename>distfiles/</filename>. This is not included in the main CVS tree, but it will be
+	found on most user systems.
+      </para>
+    </listitem>
+
+    <listitem>
+      <para>
+	Packages directory, <filename>packages</filename>. Again, this is found on user systems but not in the main CVS
+	tree.
+      </para>
+    </listitem>
+  </itemizedlist>
+
+
+  <section>
+    <title>What Belongs in the Tree?</title>
+
+    <para>
+      Things that do <emphasis>not</emphasis> belong in the tree:
+    </para>
+
+    <itemizedlist>
+      <listitem><para>Large patches</para></listitem>
+      <listitem><para>Non-text files</para></listitem>
+      <listitem><para>Photos of teletubbies</para></listitem>
+      <listitem><para>Files whose name starts with a dot</para></listitem>
+    </itemizedlist>
+
+    <para>
+      Software-wise, in general all of the following should be met in order for a package to be included in the tree:
+    </para>
+
+    <variablelist>
+      <varlistentry>
+	<term>Active, Cooperative Upstream</term>
+	<listitem>
+	  <para>
+	    If a package is undeveloped or unmaintained upstream, it can be extremely difficult to get problems
+	    fixed. If a package does not have an active upstream, the developers who add the package to the tree must
+	    ensure that they are able to fix any issues which may arise.
+	  </para>
+
+	  <para>
+	    Sometimes upstream may have a reason for not wanting their package included in the tree. This should be
+	    respected.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Reasonably Stable</term>
+	<listitem>
+	  <para>
+	    Keep super-experimental things out of the tree. If you must commit them, consider using
+	    <filename>package.mask</filename> until things calm down, or better yet make them available as overlay
+	    ebuilds.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Reasonably Useful</term>
+	<listitem>
+	  <para>
+	    Don't feel obliged to include "Joe's '1337 XMMS Skinz Collection" or "Hans' Super Cool Fast File System" in
+	    the tree just because a few users ask for it. Stick to things that might actually be of use.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Properly Packaged</term>
+	<listitem>
+	  <para>
+	    If something is only available in live CVS or dodgy autopackage format, don't include it until upstream can
+	    come up with a decent source package.  Similarly, avoid things that don't have a proper build system (where
+	    relevant) — these are very tricky to maintain.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Patching and Distribution Permitted</term>
+	<listitem>
+	  <para>
+	    If we can't patch packages as necessary ourselves, we end up relying entirely upon upstream for
+	    support. This can be problematic, especially if upstream are slow at fixing things. We don't want to be in
+	    the situation where we can't stable a critical package because we're still waiting for a closed-source
+	    vendor to get their act together.
+	  </para>
+
+	  <para>
+	    Similarly, not being able to mirror and distribute tarballs ourselves makes us rely entirely upon upstream
+	    mirrors. Experience has shown that these are often extremely unreliable, with files changing, moving or
+	    vanishing at random.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Working Ebuilds</term>
+	<listitem>
+	  <para>
+	    If you don't have a <emphasis>working</emphasis> ebuild, don't include it.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Portable</term>
+	<listitem>
+	  <para>
+	    If software is unportable, it's generally because it's badly written.  Remember that although x86 has a
+	    market majority <emphasis>now</emphasis>, it probably won't in the not too distant future once x86-64
+	    catches on.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Reasonable Security Record</term>
+	<listitem>
+	  <para>
+	    Don't include software that has a terrible security record. Each vulnerability is a <emphasis>lot</emphasis>
+	    of work for a lot of people (security teams, arch teams and package maintainers).
+	  </para>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+</section>

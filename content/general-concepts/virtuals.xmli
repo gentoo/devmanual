@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.virtuals">
+  <title>Virtuals</title>
+
+
+  <para>
+    Currently there exist two different forms of virtuals, our regular <varname>PROVIDE</varname> type virtuals, and so
+    called <emphasis>new-style</emphasis> virtuals.
+  </para>
+
+
+  <section>
+    <title><emphasis>Old-style</emphasis> Virtuals</title>
+
+    <para>
+      <emphasis>Old-style</emphasis> virtuals are not really packages, but are something you can depend upon and
+      install.  All <emphasis>old-style</emphasis> virtuals must have a category of "virtual".  In order to use an
+      <emphasis>old-style</emphasis> virtual there are a few things that need to be present in the tree:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+	<para>
+	  Atleast one ebuild must <varname>PROVIDE</varname> the virtual — see
+	  <xref linkend="ebuild-writing.variables.optional-variables"/>
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  An entry in the virtuals file for each profile to list the default provider
+	</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      <emphasis>Old-style</emphasis> virtuals are not as flexible as <emphasis>new-style</emphasis> virtuals because
+      there is no concept of a version.  You can only depend upon a virtual, but not a particular version of that
+      virtual.
+    </para>
+
+    <para>
+      There are some things that are still only possible with old-style virtuals,
+      which is why they are still useful:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+	<para>
+	  Packages providing the virtual can block the virtual, so you can ensure
+	  nothing else is installed that also provides that virtual.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  The ability to set a default in the profile for what the virtual should
+	  pull in (without the need of pulling the package into the system set).
+	</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title><emphasis>New-style</emphasis> Virtuals</title>
+
+    <para>
+      <emphasis>New-style</emphasis> virtuals are merely packages that are in the category of
+      <filename>virtual</filename>.  They use their dependency string to specify the providers for the virtual and
+      should not install any files.  Since they are regular ebuilds, there can be several versions of a virtual (which
+      can be helpful when a package may be provided by another in some versions, and not others — see the perl virtuals
+      for an example of this).  One other difference (besides not installing any files) is that a
+      <emphasis>new-style</emphasis> virtual has an empty string for the value of the <varname>LICENSE</varname> and
+      <varname>HOMEPAGE</varname> variables.  Since it installs no files, it really does not have a license.
+    </para>
+
+    <para>
+      An example of a <emphasis>new-style</emphasis> virtual:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+DESCRIPTION="Virtual for C++ tr1 <type_traits>"
+HOMEPAGE=""
+SRC_URI=""
+LICENSE=""
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86 ~x86-fbsd"
+IUSE=""
+RDEPEND="|| ( >=sys-devel/gcc-4.1 dev-libs/boost )"
+DEPEND=""
+]]></programlisting>
+
+    <para>
+      Looks familar...right?  It should since its going to look just like a regular ebuild.
+    </para>
+  </section>
+</section>

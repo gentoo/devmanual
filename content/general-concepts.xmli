@@ -30,5 +30,9 @@
   <xi:include parse="xml" href="general-concepts/portage-cache.xmli" />
   <xi:include parse="xml" href="general-concepts/sandbox.xmli" />
   <xi:include parse="xml" href="general-concepts/slotting.xmli" />
+  <xi:include parse="xml" href="general-concepts/tree.xmli" />
+  <xi:include parse="xml" href="general-concepts/use-flags.xmli" />
+  <xi:include parse="xml" href="general-concepts/user-environment.xmli" />
+  <xi:include parse="xml" href="general-concepts/virtuals.xmli" />
 
 </chapter>

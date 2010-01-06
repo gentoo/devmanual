@@ -22,6 +22,10 @@
     <d:tocentry linkend="general-concepts.portage-cache"><?dbhtml filename="general-concepts/portage-cache/index.html"?></d:tocentry>
     <d:tocentry linkend="general-concepts.sandbox"><?dbhtml filename="general-concepts/sandbox/index.html"?></d:tocentry>
     <d:tocentry linkend="general-concepts.slotting"><?dbhtml filename="general-concepts/slotting/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.tree"><?dbhtml filename="general-concepts/tree/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.use-flags"><?dbhtml filename="general-concepts/use-flags/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.user-environment"><?dbhtml filename="general-concepts/user-environment/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.virtuals"><?dbhtml filename="general-concepts/virtuals/index.html"?></d:tocentry>
   </d:tocentry>
 </toc>
 
