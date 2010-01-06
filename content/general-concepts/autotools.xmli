@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.autotools">
+
+  <title>The Basics of Autotools</title>
+
+  <note>
+    <para>
+      This is too long for <xref linkend="general-concepts" />. It needs to be split up and moved somewhere, either to a
+      top-level of its own or into <xref linkend="appendices" />.
+    </para>
+  </note>
+
+  <para>
+    An understanding of GNU autotools (<command>automake</command>, <command>autoconf</command> etc.) can be useful when
+    working with ebuilds:
+  </para>
+
+  <itemizedlist>
+    <listitem>
+      <para>
+	Finding and correcting build issues is often easier if the build system is not seen simply as a scary black box.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+	The autotools input files can help when determining a package's build-time dependencies.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+	The risk of accidentally breaking something by patching the wrong file at the wrong time is greatly reduced if the
+	relationship between the build system files is understood.
+      </para>
+    </listitem>
+  </itemizedlist>
+
+  <section>
+    <title>Major Autotools Components</title>
+
+    <para>
+      Autotools is a collection of related packages which, when used together, remove much of the difficulty involved in
+      creating portable software. These tools, together with a few relatively simple upstream-supplied input files, are
+      used to create the build system for a package.
+    </para>
+
+    <figure>
+      <title>How autotools fits together</title>
+
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="/general-concepts/autotools-diagram.png"
+		     align="center" />
+	</imageobject>
+      </mediaobject>
+
+      <para>
+	A basic overview of how the main autotools components fit together.
+      </para>
+    </figure>
+
+    <para>
+      In a simple setup:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+	<para>
+	  The <command>autoconf</command> program produces a <filename>configure</filename> script from either
+	  <filename>configure.in</filename> or <filename>configure.ac</filename> (see note below).
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  The <command>automake</command> program produces a <filename>Makefile.in</filename> from a
+	  <filename>Makefile.am</filename>.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  The <filename>configure</filename> script is run to produce one or more <filename>Makefile</filename> files
+	  from <filename>Makefile.in</filename> files.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  The <command>make</command> program uses the <filename>Makefile</filename> to compile the program.
+	</para>
+      </listitem>
+    </itemizedlist>
+
+    <note>
+      <para>
+	The <filename>configure.in</filename> name used to be standard. However, the GNU documentation now recommends
+	<filename>configure.ac</filename> as it is more obvious which program should be used when processing it. The
+	files perform the same purpose and have the same format — the only difference is the name.
+      </para>
+    </note>
+
+    <para>
+      You will see autotools being used variously in both <function>src_unpack</function> and
+      <function>src_compile</function>. The QA people prefer it in <function>src_unpack</function> — the rationale is
+      that <function>src_unpack</function> handles “getting the package ready to be compiled” — but there is no official
+      policy which mandates this.
+    </para>
+
+    <para>
+      The <command>autoreconf</command> tool supposedly runs <command>autoconf</command> (and
+      <command>automake</command>, <command>autoheader</command>, <command>aclocal</command>,
+      <command>autopoint</command> and <command>libtoolize</command>) as necessary. Sometimes it works. Some packages
+      ship a shell script named <filename>autogen.sh</filename> which does the same thing (this is
+      <emphasis>not</emphasis> related to <command>autogen</command>).
+    </para>
+
+    <warning>
+      <para>
+	You must <emphasis>not</emphasis> attempt to modify any of the generated files in between running
+	<command>./configure</command> and <command>make</command>. This can lead to autotools trying to be clever and
+	recreate the files, in turn leading to your changes being removed. In some situations this will also result in
+	<command>./configure</command> arguments being silently dropped, which can give broken dependencies.  The best
+	way to proceed is usually to work with the <filename>.ac</filename> / <filename>.in</filename> files instead.
+      </para>
+    </warning>
+  </section>
+
+  <section>
+    <title>Simple Autotools Patching Example</title>
+
+    <para>
+      The following snippet illustrates the correct way to proceed after patching either
+      <filename>Makefile.am</filename> or <filename>configure.ac</filename>:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+src_unpack() {
+    unpack ${A}
+    cd "${S}"
+
+    # Remove problematic LDFLAGS declaration
+    sed -i -e '/^LDFLAGS/d' src/Makefile.am
+
+    # Rerun autotools
+    einfo "Regenerating autotools files..."
+    WANT_AUTOCONF=2.5 autoconf || die "autoconf failed"
+    WANT_AUTOMAKE=1.9 automake || die "automake failed"
+}
+
+src_compile() {
+    econf $(use_enable nls)
+    emake || die "emake failed"
+}
+]]></programlisting>
+
+    <para>
+      The <command>einfo</command> message before running autotools is not mandatory. However, these steps can sometimes
+      take a while and may produce no output, so it may make sense to let the user know that something is still
+      happening. See <xref linkend="ebuild-writing.messages" />.
+    </para>
+  </section>
+
+  <section>
+    <title>The <filename>configure.ac</filename> File</title>
+
+    <para>
+      The <filename>configure.ac</filename> file is used to create the <filename>configure</filename> script. It
+      consists of a series of macros which are processed and expanded by <command>autoconf</command>.  These macros can
+      check for packages and libraries, handle <parameter>--enable</parameter> and <parameter>--with</parameter>
+      switches, and generate various files.
+    </para>
+
+    <section>
+      <title>Basic Format of <filename>configure.ac</filename></title>
+
+      <para>
+	The <filename>configure.ac</filename> file is a basic text file. Indenting and whitespace are largely
+	irrelevant. Comments are indicated by the string <literal>dnl</literal> (<filename>dnl</filename> is actually a
+	macro which discards the remainder of the input — it stands for “discard new line”).
+      </para>
+
+      <para>
+	If the previous sentence made you uneasy, you should probably stop reading this page. It gets far worse.
+      </para>
+
+      <para>
+	A typical file might start with something like the following:
+      </para>
+
+      <programlisting language="m4"><![CDATA[
+dnl Process this file with autoconf
+AC_INIT(appname, 0.1)
+AC_PREREQ(2.5)
+AC_CONFIG_SRCDIR(src/main.c)
+AC_CONFIG_AUX_DIR(config)
+AM_INIT_AUTOMAKE(1.8)
+]]></programlisting>
+
+      <para>
+	The <function>AC_PREREQ</function> line, if present, tells you which <command>autoconf</command> version you
+	need. This is useful, because <command>autoconf</command> is not compatible between versions.
+	In the above example, we need <literal>=autoconf-2.5*</literal>. and we should
+	<command>export WANT_AUTOCONF="2.5"</command> (or use the <command>autoconf-2.59</command> script) when calling
+	<command>autoconf</command>.
+      </para>
+
+      <para>
+	The <function>AM_INIT_AUTOMAKE</function> line tells us which <command>automake</command> version we need.
+	Again, there is little chance that an <command>automake-1.7</command> script will work properly with
+	<command>automake-1.8</command>. Setting <command>WANT_AUTOMAKE="1.8"</command> in the environment can be used
+	to make an unversioned <command>automake</command> call run the correct version.
+      </para>
+
+      <note>
+	<para>
+	  The <command>WANT_</command> variables are a Gentoo feature that originally came from Mandrake. Other
+	  distributions may handle things differently.
+	</para>
+      </note>
+
+      <para>
+	Usually, some standard checks will follow:
+      </para>
+
+      <programlisting language="m4"><![CDATA[
+dnl Check for toolchain and install components
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_RANLIB
+]]></programlisting>
+
+      <para>
+	For non-standard applications, you may also see manual checks:
+      </para>
+
+      <programlisting language="m4"><![CDATA[
+dnl Check for sed
+AC_CHECK_PROGS(regex_cmd, sed)
+if test x$regex_cmd = "x" ; then
+    AC_MSG_ERROR([sed is required to build the data files.])
+fi
+]]></programlisting>
+
+      <para>
+	You may also see checks for compiler features:
+      </para>
+
+      <programlisting language="m4"><![CDATA[
+dnl Check that our compiler can do const and inline
+AC_C_CONST
+AC_C_INLINE
+]]></programlisting>
+
+      <para>
+	Library and header checks:
+      </para>
+
+      <programlisting language="m4"><![CDATA[
+dnl Check for standard headers:
+AC_HEADER_STDC
+AC_HEADER_DIRENT
+AC_CHECK_HEADERS([stdlib.h stdio.h libintl.h locale.h])
+
+dnl Check for libraries:
+AC_CHECK_LIB(ssl, SSL_free)
+]]></programlisting>
+
+      <para>
+	And function checks:
+      </para>
+
+      <programlisting language="m4"><![CDATA[
+dnl Check for functions:
+AC_CHECK_FUNCS([setlocale strtol])
+]]></programlisting>
+
+      <para>
+	Often these will be all jumbled together without any useful comments. In some cases, many of the checks done
+	won't even be necessary for the application in question — most autotools code is copy/pasted rather than written
+	from scratch, and <command>autoscan</command> (a tool which helps write <command>configure.ac</command>) is
+	sometimes over-eager to add in checks.
+      </para>
+
+      <para>
+	The file will finish with some output functions:
+      </para>
+
+      <programlisting language="m4"><![CDATA[
+AM_CONFIG_HEADER(config.h)
+AC_OUTPUT(Makefile src/Makefile nls/Makefile man/Makefile tests/Makefile)
+]]></programlisting>
+
+      <para>
+	These are used to make the <filename>configure</filename> script generate the relevant files.
+      </para>
+    </section>
+
+    <section>
+      <title>Enable and Disable Checks</title>
+
+      <para>
+	So far we've only seen 'hard' dependencies. Many packages have <emphasis>optional</emphasis> support for various
+	extras (graphics toolkits, libraries which add functionality, interpreters, features, ...). This is (if we're
+	lucky) handled via <parameter>--enable-foo</parameter> and <parameter>--disable-foo</parameter> switches to
+	<command>./configure</command>. which are generated from <command>autoconf</command> rules.
+      </para>
+
+      <para>
+	A simple <parameter>--enable</parameter> / <parameter>--disable</parameter> function might look something like the
+	following:
+      </para>
+
+      <programlisting language="m4"><![CDATA[
+AC_MSG_CHECKING(--enable-cscope argument)
+AC_ARG_ENABLE(cscope,
+    [  --enable-cscope         Include cscope interface.],
+    [enable_cscope=$enableval],
+    [enable_cscope="no"])
+AC_MSG_RESULT($enable_cscope)
+if test "$enable_cscope" = "yes"; then
+  AC_DEFINE(FEAT_CSCOPE)
+fi
+]]></programlisting>
+
+      <para>
+	Sometimes more complicated checks are included based upon whether or not an option is enabled. There are also
+	some predefined macros which include <function>AC_ARG_ENABLE</function>. so grepping
+	<filename>configure.ac</filename> for <function>AC_ARG_ENABLE</function> may not give a complete list. A better
+	way is to use <command>./configure --help</command> and check the output.
+      </para>
+
+      <important>
+	<para>
+	  The third argument is used when a <parameter>--enable</parameter> or <parameter>--disable</parameter> switch
+	  to <command>./configure</command> is provided, and the fourth is used when such a switch is
+	  <emphasis>not</emphasis> passed. A common misconception is that the third is enable and the fourth is disable
+	  — this is <emphasis>not</emphasis> the case. You may encounter packages that get this wrong.
+	</para>
+      </important>
+
+      <para>
+	A simple way to check that a package is using this macro properly is to install the optional dependency, and
+	then try all of <command>./configure</command>.  <command>./configure --enable-foo</command> and
+	<command>./configure --disable-foo</command>. If the second and third runs give the same results, something is
+	wrong. If the first run gives a <emphasis>different</emphasis> result to the second and third, there is a good
+	chance that a misunderstanding of the <function>AC_ARG_ENABLE</function> arguments is to blame.
+      </para>
+    </section>
+
+    <section>
+      <title>With and Without Checks</title>
+
+      <para>
+	A simple <parameter>--with</parameter> / <parameter>--without</parameter> check might look like:
+      </para>
+
+      <programlisting language="m4"><![CDATA[
+AC_MSG_CHECKING([whether to enable foo])
+AC_ARG_WITH(foo,
+    [  --with-foo           enable foo support],
+    with_foo=$withval,
+    with_foo=yes)
+AC_MSG_RESULT($with_foo)
+]]></programlisting>
+
+      <para>
+	Again, the third argument is for 'specified' and the fourth for 'not specified', and there are standard macros
+	which include <parameter>--with</parameter> options.
+      </para>
+    </section>
+
+    <section>
+      <title>Automatic Checks</title>
+
+      <para>
+	It's possible to write autoconf rules which bypass the manual enable / disable convention (or which just ignore
+	what the user asks for). If your package does this, it must be fixed to avoid dependency problems.
+      </para>
+      
+      <para>
+	The most common form is packages which simply use <function>AC_CHECK_LIB</function> to decide whether or not to
+	enable a feature. If you find a package which does this, you <emphasis>must</emphasis> change the behaviour.
+      </para>
+    </section>
+
+    <section>
+      <title>Quoting Rules for <filename>configure.ac</filename></title>
+
+      <para>
+	Behind the scenes, <command>autoconf</command> makes heavy use of the <command>m4</command> macro processor to
+	do the work. The <command>m4</command> quote characters are set by <command>autoconf</command> to be
+	<literal>[</literal> and <literal>]</literal> for opening and closing quotes respectively. Using
+	<literal>"</literal> or <literal>'</literal> may produce unexpected results.
+      </para>
+
+      <para>
+	To include a literal left square bracket, the easiest thing to do is to use the special string
+	<literal>@&lt;:@</literal>. For a right bracket, use <literal>@:&gt;@</literal>.
+      </para>
+
+      <para>
+	For example:
+      </para>
+
+      <programlisting language="m4"><![CDATA[
+AC_MSG_RESULT(the first)
+AC_MSG_RESULT([the second])
+AC_MSG_RESULT("the third")
+AC_MSG_RESULT(@<:@the fourth@:>@)
+AC_MSG_RESULT([@<:@the fifth@:>@])
+]]></programlisting>
+
+      <para>
+	gives:
+      </para>
+
+      <programlisting><![CDATA[
+    the first
+    the second
+    "the third"
+    [the fourth]
+    [the fifth]
+]]></programlisting>
+
+      <para>
+	When in doubt, it is generally safest to quote macro arguments using <literal>[ ]</literal> rather than leaving
+	things unquoted.
+      </para>
+    </section>
+  </section>
+
+  <section>
+    <title>The <filename>Makefile.am</filename> Files</title>
+
+    <para>
+      The <filename>Makefile.am</filename> file is processed by <command>automake</command> to create
+      <filename>Makefile.in</filename>, which is in turn processed by <filename>configure</filename> to create
+      <filename>Makefile</filename>, which is in turn used by <command>make</command> to build the software.
+    </para>
+
+    <para>
+      The basic format is like that of a <filename>Makefile</filename>. However, you will see various 'special'
+      variables being set, rather than every rule being written manually.
+    </para>
+
+    <para>
+      A very simple example:
+    </para>
+
+    <programlisting language="make"><![CDATA[
+bin_PROGRAMS = myapp
+myapp_SOURCES = myapp_commandline.c myapp.c
+]]></programlisting>
+
+    <para>
+      All the standard GNU rules will be generated, so <command>make</command>. <command>make clean</command>.
+      <command>make distclean</command>. <command>make dist</command> and so on will all work here.
+    </para>
+
+    <para>
+      You may also see some standard <filename>Makefile</filename> constructs showing up whenever there isn't a standard
+      <command>automake</command> way of handling a certain task. For example:
+    </para>
+
+    <programlisting language="make"><![CDATA[
+CLEANFILES = glep31check.1
+man_MANS = glep31check.1
+EXTRA_DIST = glep31check.in
+
+%.1 : %.in
+    @regex_cmd@ -e "s,\@VERSION\@,$(VERSION),g" $? > $@
+]]></programlisting>
+
+    <para>
+      Here, the <literal>@regex_cmd@</literal> variable will be substituted with whatever <filename>configure</filename>
+      detects (<command>sed</command> in this case) when creating the <filename>Makefile</filename>.  This is handled
+      via the macro <function>AC_SUBST(VARNAME)</function> in <filename>configure.ac</filename>.
+    </para>
+
+    <section>
+      <title>Makefile Variables</title>
+
+      <para>
+	Sometimes, badly behaved <filename>Makefile.am</filename> files will override user variables such as
+	<varname>CFLAGS</varname>. This must not be allowed — see <xref
+	linkend="general-concepts.user-environment.not-filtering-variables" />. There are separate special variables
+	which should be used in these situations — for setting <varname>CFLAGS</varname>. for example, a
+	<filename>Makefile.am</filename> should use <varname>AM_CFLAGS</varname> so that user preferences are not
+	ignored.
+      </para>
+
+      <para>
+	So, if a <filename>Makefile.am</filename> contains, say:
+      </para>
+
+      <programlisting language="ebuild"><![CDATA[
+CFLAGS="-Wall"
+]]></programlisting>
+
+      <para>
+	You should <command>sed</command> or <command>patch</command> it to use:
+      </para>
+
+      <programlisting language="ebuild"><![CDATA[
+AM_CFLAGS="-Wall"
+]]></programlisting>
+
+      <para>
+	Remember to manually run <command>autoconf</command> then <command>automake</command> if you do this.
+      </para>
+    </section>
+  </section>
+
+  <section>
+    <title>The <filename>config.h.in</filename> File</title>
+
+    <para>
+      The <filename>config.h.in</filename> file is generated by <command>autoheader</command>. You shouldn't have to
+      worry about this usually, but occasionally you may need to run <command>autoheader</command> manually as part of
+      the build process if upstream do not ship a pre-generated version.
+    </para>
+  </section>
+
+  <section>
+    <title><command>aclocal</command> and <command>m4</command> Files</title>
+
+    <para>
+      In the <filename>configure.ac</filename> or <filename>configure.in</filename> files you can call not only the
+      default macros defined by <command>autoconf</command> and <command>automake</command>. but also other functions
+      which can be defined by specific packages like libraries and programs to check for their features in the correct
+      manner.
+    </para>
+
+    <para>
+      Those functions are (usually) defined in <filename>,m4</filename> files placed in the
+      <filename>/usr/share/aclocal</filename> directory by packages. Problems can arise when you need to regenerate the
+      autotools files, because the functions used by the <filename>configure.ac</filename> file can be defined in an
+      <filename>.m4</filename> macro file which isn't installed on the user's system. This is the case for example for
+      some optional features which require libraries and are disabled by <varname>USE</varname> flags. If the
+      <filename>,m4</filename> files aren't installed in the user's system, the <command>autoconf</command>> step will
+      fail.
+    </para>
+
+    <para>
+      To resolve this, most packages just ship the <command>m4</command> macro files needed for their
+      <filename>configure.ac</filename> in an <filename>m4</filename> subdirectory in the source package. Unfortunately,
+      not all <filename>m4</filename> directories are complete, even if they are present.
+    </para>
+
+    <para>
+      In those cases you need to find out the <filename>.m4</filename> file, usually installed by the dependency in
+      <filename>/usr/share/aclocal</filename>. and make sure that the <function>src_unpack</function> stage both makes
+      available those files to the autotools and calls <command>aclocal</command> to recreate the
+      <filename>aclocal.m4</filename> file which is used by <command>autoconf</command> when creating the configure
+      script.
+    </para>
+
+    <para>
+      Usually it's more than one <filename>.m4</filename> file which is missing, so you probably want to package them in
+      a tarball, and add it to <varname>SRC_URI</varname>. After making sure that the tarball is extracted somewhere in
+      <literal>${WORKDIR}</literal> (say, in a <filename>gentoo-m4</filename> directory), you usually have two general
+      ways to handle those macro files, one for packages which ships with an incomplete <filename>m4</filename>
+      directory and one for packages which ships without the <filename>m4</filename> directory.
+    </para>
+
+    <para>
+      In the first case you usually want to do something like:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+einfo "Regenerating autotools files..."
+cp "${WORKDIR}/gentoo-m4" "${S}/m4" || die "m4 copy failed"
+WANT_AUTOCONF="2.5" aclocal -I "${S}/m4" || die "aclocal failed"
+WANT_AUTOCONF="2.5" autoconf || die "autoconf failed"
+]]></programlisting>
+
+    <para>
+      and so on. In the second case you can simplify it in this way:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+einfo "Regenerating autotools files..."
+WANT_AUTOCONF="2.5" aclocal -I "${WORKDIR}/gentoo-m4" || die "aclocal failed"
+WANT_AUTOCONF="2.5" autoconf || die "autoconf failed"
+]]></programlisting>
+
+    <para>
+      without need to copy the files.
+    </para>
+
+    <para>
+      It's always better inform upstream when the needed <filename>.m4</filename> files are missing in the distribution,
+      asking them to add all the needed files in the source tarball to avoid version conflicts if the macro changes.
+    </para>
+  </section>
+
+  <!--
+      <title>Libtool</title>
+      TODO: Stuff about libtool, libtoolize, elibtoolize, libtool.eclass. Which I know almost nothing about... Yay!
+  -->
+
+  <section>
+    <title>Further Autotools Reading</title>
+
+    <para>
+      For more details on autotools:
+    </para>
+
+    <itemizedlist>
+
+      <listitem>
+	<para>
+	  The book "GNU Autoconf, Automake and Libtool" by Gary V. Vaughan, Ben Elliston, Tom Tromey and Ian Lance
+	  Taylor (often called "The Autobook") provides a good but somewhat outdated description of autotools. It is
+	  <link xl:href="http://sources.redhat.com/autobook/">freely available online</link>.
+	</para>
+      </listitem>
+      
+      <listitem>
+	<para>
+	  The GNU documentation for the various autotools components is of varying quality and completeness:
+	</para>
+
+	<itemizedlist>
+	  <listitem>
+	    <para>
+	      <link xl:href="http://www.gnu.org/software/automake/manual/automake.html">
+		GNU automake Manual
+	      </link>
+	    </para>
+	  </listitem>
+
+	  <listitem>
+	    <para>
+	      <link xl:href="http://www.gnu.org/software/autoconf/manual/">
+		GNU autoconf Manual
+	      </link>
+	    </para>
+	  </listitem>
+
+	  <listitem>
+	    <para>
+	      <link xl:href="http://www.gnu.org/software/libtool/manual/">
+		GNU libtool Manual
+	      </link>
+	    </para>
+	  </listitem>
+
+	  <listitem>
+	    <para>
+	      <link xl:href="http://www.gnu.org/software/m4/manual/m4.html">
+		GNU m4 Manual
+	      </link>
+	    </para>
+	  </listitem>
+	</itemizedlist>
+      </listitem>
+
+      <listitem>
+	<para>
+	  There are some good overview lectures available online. <link
+	  xl:href="http://vipe.technion.ac.il/~shlomif/lecture/Autotools/slides/">These slides</link> are one example.
+	</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+</chapter>
+

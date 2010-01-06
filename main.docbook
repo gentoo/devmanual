@@ -122,4 +122,5 @@
   </info>
 
   <xi:include parse="xml" href="content/quickstart.xmli" />
+  <xi:include parse="xml" href="content/general-concepts.xmli" />
 </book>
