@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.manifest">
+
+  <title><filename>Manifest</filename></title>
+
+  <para>
+    In the tree, every package has a <filename>Manifest</filename> file. This file lives in the same directory as the
+    ebuilds for the package. The <filename>Manifest</filename> file contains digests (currently MD5, RMD160 and SHA256)
+    and file size data for every file in the directory and any subdirectories. This is used to verify integrity. The
+    <filename>Manifest</filename> may also be digitally signed.
+  </para>
+
+  <para>
+    To generate the <filename>Manifest</filename>, use <command>ebuild foo.ebuild manifest</command>. When committing,
+    the <filename>Manifest</filename> file must be regenerated to handle any CVS keyword expansion changes —
+    <command>repoman</command> will do this automatically.
+  </para>
+</chapter>

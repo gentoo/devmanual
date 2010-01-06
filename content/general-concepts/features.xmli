@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.features">
+  <title><varname>FEATURES</varname></title>
+
+
+  <para>
+    The <varname>FEATURES</varname> variable specifies options which affect how Portage operates
+    and how packages are compiled. It is <emphasis>not</emphasis> used for settings which have a
+    substantial effect upon the resulting generated package.
+  </para>
+
+  <table>
+    <title>
+      Relevant <varname>FEATURES</varname> For Developers
+    </title>
+
+    <tgroup cols="2">
+      <thead>
+	<row>
+	  <entry>Feature</entry>
+	  <entry>Explanation</entry>
+	</row>
+      </thead>
+
+      <tbody>
+	<row>
+	  <entry><literal>collision-protect</literal></entry>
+	  <entry>
+	    Raise an error if an installing package attempts to overwrite a file which
+	    is provided by a different package.
+	  </entry>
+	</row>
+	<row>
+	  <entry><literal>noauto</literal></entry>
+	  <entry>When utilizing <command>ebuild</command>, only run the function requested.</entry>
+	</row>
+	<row>
+	  <entry><literal>sandbox</literal></entry>
+	  <entry>Enable the sandbox.</entry>
+	</row>
+	<row>
+	  <entry><literal>sign</literal></entry>
+	  <entry>GPG sign <filename>Manifest</filename> files.</entry>
+	</row>
+	<row>
+	  <entry><literal>strict</literal></entry>
+	  <entry>
+	    Do some extra checks for potentially dangerous situations (eg missing
+	    <filename>Manifest</filename> files).
+	  </entry>
+	</row>
+	<row>
+	  <entry><literal>test</literal></entry>
+	  <entry>Enable the <function>src_test</function> phase.</entry>
+	</row>
+	<row>
+	  <entry><literal>userpriv</literal></entry>
+	  <entry>Drop to non-root privileges for certain phases.</entry>
+	</row>
+	<row>
+	  <entry><literal>usersandbox</literal></entry>
+	  <entry>Enables the sandbox even when running non-privileged.</entry>
+	</row>
+      </tbody>
+    </tgroup>
+  </table>
+</chapter>

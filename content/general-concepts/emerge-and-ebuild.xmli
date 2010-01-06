@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.emerge-and-ebuild">
+
+  <title>Emerge and Ebuild Relationships</title>
+
+  <figure>
+    <title>
+      How <command>emerge</command>, <command>ebuild</command> and <filename>foo.ebuild</filename> interact
+    </title>
+
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="/images/emerge-end-ebuild-diagram.png"
+		   align="center" />
+      </imageobject>
+    </mediaobject>
+  </figure>
+
+  <para>
+    The <command>emerge</command> program is a high level wrapper for <filename>ebuild.sh</filename> that handles
+    dependency tracking, safe installs and uninstalls and so on. <command>emerge</command> calls
+    <filename>ebuild.sh</filename> during the build process, which in turn handles the ebuild file and any eclasses. The
+    <literal>${D}</literal> to <literal>${ROOT}</literal> install is handled by <command>emerge</command>.
+  </para>
+
+  <!-- TODO http://dev.gentoo.org/~g2boojum/portage.html -->
+</chapter>
+

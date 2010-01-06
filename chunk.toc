@@ -8,6 +8,10 @@
     <d:tocentry linkend="general-concepts.config-protect"><?dbhtml filename="general-concepts/config-protect/index.html"?></d:tocentry>
     <d:tocentry linkend="general-concepts.cvs-to-rsync"><?dbhtml filename="general-concepts/cvs-to-rsync/index.html"?></d:tocentry>
     <d:tocentry linkend="general-concepts.dependencies"><?dbhtml filename="general-concepts/dependencies/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.manifest"><?dbhtml filename="general-concepts/manifest/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.ebuild-revisions"><?dbhtml filename="general-concepts/ebuild-revisions/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.emerge-and-ebuild"><?dbhtml filename="general-concepts/emerge-and-ebuild/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.features"><?dbhtml filename="general-concepts/features/index.html"?></d:tocentry>
     </d:tocentry>
   </d:tocentry>
 </toc>
