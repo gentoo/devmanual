@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<part xmlns="http://docbook.org/ns/docbook"
+<chapter xmlns="http://docbook.org/ns/docbook"
          xmlns:xl="http://www.w3.org/1999/xlink"
          xmlns:xi="http://www.w3.org/2001/XInclude"
 	 xml:id="general-concepts">
 
   <title>General Concepts</title>
 
-  <partintro>
-    <para>
-      This section covers some general concepts with which you should be familiar when writing ebuilds or working with the
-      Portage tree.
-    </para>
-  </partintro>
+  <para>
+    This section covers some general concepts with which you should be familiar when writing ebuilds or working with the
+    Portage tree.
+  </para>
 
   <xi:include parse="xml" href="general-concepts/autotools.xmli" />
   <xi:include parse="xml" href="general-concepts/config-protect.xmli" />
@@ -33,4 +31,4 @@
   <xi:include parse="xml" href="general-concepts/sandbox.xmli" />
   <xi:include parse="xml" href="general-concepts/slotting.xmli" />
 
-</part>
+</chapter>

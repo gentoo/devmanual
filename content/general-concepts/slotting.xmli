@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<chapter xmlns="http://docbook.org/ns/docbook"
+<section xmlns="http://docbook.org/ns/docbook"
 	 xmlns:xl="http://www.w3.org/1999/xlink"
 	 xmlns:xi="http://www.w3.org/2001/XInclude"
 	 xml:id="general-concepts.slotting">
@@ -46,4 +46,4 @@
     (alphanumerics, hypens, full stops, underscores, the plus character) — other characters may cause problems with
     future portage enhancements.
   </para>
-</chapter>
+</section>
