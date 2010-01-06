@@ -15,5 +15,6 @@
 
   <xi:include parse="xml" href="general-concepts/autotools.xmli" />
   <xi:include parse="xml" href="general-concepts/config-protect.xmli" />
+  <xi:include parse="xml" href="general-concepts/cvs-to-rsync.xmli" />
 
 </part>
