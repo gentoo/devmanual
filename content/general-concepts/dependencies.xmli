@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.dependencies"> 
+
+  <title>Dependencies</title>
+
+  <para>
+    Automatic dependency resolution is one of the most useful features provided by <command>emerge</command>.
+  </para>
+
+  <section>
+    <title>Build Dependencies</title>
+
+    <para>
+      The <varname>DEPEND</varname> ebuild variable should specify any dependencies which are required to unpack, patch,
+      compile or install the package (but see <xref linkend="general-concepts.dependencies.implicit-system-dependency"
+      /> for exemptions).
+    </para>
+  </section>
+
+  <section>
+    <title>Runtime Dependencies</title>
+
+    <para>
+      The <varname>RDEPEND</varname> ebuild variable should specify any dependencies which are required at runtime. This
+      includes libraries (when dynamically linked), any data packages and (for interpreted languages) the relevant
+      interpreter. If this variable is not specified, it defaults to the value of <varname>DEPEND</varname>, but you
+      should always explicitly define <literal>RDEPEND="${DEPEND}"</literal> (as in the future this setting is planned
+      to be removed from Portage).
+    </para>
+
+    <para>
+      Note that when installing from a binary package, only <varname>RDEPEND</varname> will be checked. It is therefore
+      necessary to include items even if they are also listed in <varname>DEPEND</varname>.
+    </para>
+
+    <para>
+      Items which are in <varname>RDEPEND</varname> but not <varname>DEPEND</varname> could <emphasis>in
+      theory</emphasis>> be merged <emphasis>after</emphasis>> the target package. Portage does not currently do this.
+    </para>
+  </section>
+
+  <section>
+    <title>Post-Merge Dependencies</title>
+
+    <para>
+      The <varname>PDEPEND</varname> variable specifies dependencies which must be merged <emphasis>after</emphasis>>
+      the package. This is sometimes used for plugins which have a dependency upon the package being merged. Generally
+      <varname>PDEPEND</varname> should be avoided in favour of <varname>RDEPEND</varname> except where this will create
+      circular dependency chains.
+    </para>
+  </section>
+
+  <section xml:id="general-concepts.dependencies.implicit-system-dependency">
+    <title>Implicit System Dependency</title>
+
+    <para>
+      All packages have an implicit compile-time and runtime dependency upon the entire <literal>system</literal>
+      target. It is therefore not necessary, nor advisable, to specify dependencies upon <package>gcc</package>,
+      <package>libc</package> and so on, except where specific versions or packages (for example,
+      <package>glibc</package> over <package>uclibc</package>) are required.
+    </para>
+
+    <para>
+      However, packages which are included in the <literal>system</literal> target, or are dependencies of
+      <literal>system</literal> target packages, should generally include a complete dependency list (excluding
+      bootstrap packages). This makes <command>emerge -e system</command> possible when installing from a stage 1 or
+      stage 2 tarball.
+    </para>
+  </section>
+
+  <section>
+    <title>Basic Dependency Syntax</title>
+
+    <para>
+      A basic <varname>DEPEND</varname> specification might look like the following:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+DEPEND="dev-lang/ruby
+    dev-ruby/ruby-gtk2
+    dev-ruby/mysql-ruby"
+]]></programlisting>
+
+    <para>
+      Each atom is the full category and name of a package. Atoms are separated by arbitrary whitespace — convention is
+      to specify one atom per line for readability purposes. When specifying names, the category part should be treated
+      as mandatory.
+    </para>
+  </section>
+
+  <section>
+    <title>Version Dependencies</title>
+
+    <para>
+      Sometimes a particular version of a package is needed. Where this is known, it should be specified. A simple
+      example:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+DEPEND=">=dev-libs/openssl-0.9.7d"
+]]></programlisting>
+
+    <para>
+      This states that at least version 0.9.7d of <package>openssl</package> is required.
+    </para>
+
+    <table>
+      <title>Available Version Specifiers</title>
+
+      <tgroup cols="2">
+	<thead>
+	  <row>
+	    <entry>Specifier</entry>
+	    <entry>Meaning</entry>
+	  </row>
+	</thead>
+
+	<tbody>
+	  <row>
+	    <entry><literal>>=app-misc/foo-1.23</literal></entry>
+	    <entry>Version 1.23 or later is required.</entry>
+	  </row>
+	  <row>
+	    <entry><literal>>app-misc/foo-1.23</literal></entry>
+	    <entry>A version strictly later than 1.23 is required.</entry>
+	  </row>
+	  <row>
+	    <entry><literal>~app-misc/foo-1.23</literal></entry>
+	    <entry>Version 1.23 (or any <literal>1.23-r*</literal>) is required.</entry>
+	  </row>
+	  <row>
+	    <entry><literal>=app-misc/foo-1.23</literal></entry>
+	    <entry>
+	      Exactly version 1.23 is required. If at all possible,
+	      use the <literal>~</literal> form to simplify revision bumps.
+	    </entry>
+	  </row>
+	  <row>
+	    <entry><literal>&lt;=app-misc/foo-1.23</literal></entry>
+	    <entry>Version 1.23 or older is required.</entry>
+	  </row>
+	  <row>
+	    <entry><literal>&lt;app-misc/foo-1.23</literal></entry>
+	    <entry>A version strictly before 1.23 is required.</entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </table>
+
+    <section>
+      <title>Ranged Dependencies</title>
+
+      <para>
+	To specify "version 2.x (not 1.x or 3.x)" of a package, it is necessary to use the asterisk postfix. This is most
+	commonly seen in situations like:
+      </para>
+
+      <programlisting language="ebuild"><![CDATA[
+      DEPEND="gtk? ( =x11-libs/gtk+-1.2* )"
+      ]]></programlisting>
+
+      <para>
+	Note that the equals sign is mandatory, and that there is no dot before the asterisk. Also note that when
+	selecting all versions in a specific <varname>SLOT</varname>, <varname>SLOT</varname> dependencies should be used
+	(see below).
+      </para>
+    </section>
+
+    <section>
+      <title>Blockers</title>
+
+      <para>
+	Sometimes two packages cannot be installed in parallel. This is handled by blockers. A blocker is specified as
+	follows:
+      </para>
+
+      <programlisting language="ebuild"><![CDATA[
+      RDEPEND="!app-misc/foo"
+      ]]></programlisting>
+
+      <para>
+	Note that blockers are usually <emphasis>runtime</emphasis> rather than buildtime.
+      </para>
+
+      <para>
+	Specific versions can also be blocked:
+      </para>
+
+      <programlisting language="ebuild"><![CDATA[
+      RDEPEND="!&lt;app-misc/foo-1.3"
+      ]]></programlisting>
+
+      <para>
+	Blockers can be optional based upon <varname>USE</varname> flags as per normal dependencies.
+      </para>
+
+      <para>
+	Blockers added to older ebuilds should not be expected to be retroactive.  If the user already has the ebuild
+	installed, any changes to the ebuild should not be expected to make any difference.  This means that you should
+	add the blockers to whichever ebuild is the newest (even if it means that logically it would seem backwards).  For
+	example, certain versions of portage don't like some versions of bash, but the blocker was put into bash because
+	that was the newer package that caused the issues.
+      </para>
+    </section>
+  </section>
+
+  <section>
+    <title>SLOT Dependencies</title>
+
+    <para>
+      In order to depend on a package in a specific <varname>SLOT</varname> you must specify at least
+      <literal>EAPI="1"</literal>.
+    </para>
+
+    <para>
+      To depend on a specific <varname>SLOT</varname>, <literal>:SLOT</literal> should be appended to the package name,
+      where 'SLOT' is the <varname>SLOT</varname> of the package wanted:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+DEPEND="qt3? ( x11-libs/qt:3 )
+    gtk? ( x11-libs/gtk+:2 )
+]]></programlisting>
+
+  </section>
+
+  <section>
+    <title>USE-Conditional Dependencies</title>
+
+    <para>
+      To depend upon a certain package if and only if a given <varname>USE</varname> flag is set:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+DEPEND="perl? ( dev-lang/perl )
+    ruby? ( &gt;=dev-lang/ruby-1.8 )
+    python? ( dev-lang/python )"
+]]></programlisting>
+
+    <para>
+      It is also possible to depend upon a certain package if a given <varname>USE</varname> flag is
+      <emphasis>not</emphasis> set:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+RDEPEND="!crypt? ( net-misc/netkit-rsh )"
+]]></programlisting>
+
+    <para>
+      This should <emphasis>not</emphasis> be used for disabling a certain <varname>USE</varname> flag on a given
+      architecture. In order to do this, the architecture should add the <varname>USE</varname> flag to their
+      <filename>use.mask</filename> file in the <filename>profiles/default-linux/arch</filename> directory of the
+      Portage tree.
+    </para>
+
+    <para>
+      This can be nested:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+DEPEND="!build? (
+    gcj? (
+        gtk? (
+            x11-libs/libXt
+            x11-libs/libX11
+            x11-libs/libXtst
+            x11-proto/xproto
+            x11-proto/xextproto
+            >=x11-libs/gtk+-2.2
+            x11-libs/pango
+        )
+        >=media-libs/libart_lgpl-2.1
+    )
+    >=sys-libs/ncurses-5.2-r2
+    nls? ( sys-devel/gettext )
+)"
+]]></programlisting>
+  </section>
+
+  <section>
+    <title>Virtual Dependencies</title>
+
+    <para>
+      To depend upon a virtual package, use <literal>virtual/whatever</literal> as the atom.
+    </para>
+
+    <para>
+      Currently, you must not use any kind of version specification with virtuals — see <link
+      xl:href="http://www.gentoo.org/proj/en/glep/glep-0037.html">GLEP 37</link> for details and a proposed solution.
+    </para>
+  </section>
+
+  <section>
+    <title>Any of Many Dependencies</title>
+
+    <para>
+      To depend on either <package>foo</package> or <package>bar</package>:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+DEPEND="|| ( app-misc/foo app-misc/bar )"
+]]></programlisting>
+
+    <para>
+      To depend on either <package>foo</package> or <package>bar</package> if the <package>baz</package>
+      <varname>USE</varname> flag is set:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+DEPEND="baz? ( || ( app-misc/foo app-misc/bar ) )"
+]]></programlisting>
+
+    <section>
+      <title>Any of Many Versus USE</title>
+
+      <para>
+	Say <package>fnord</package> can be built against either <package>foo</package> or <package>bar</package>. Then
+	a <varname>USE</varname> flag is not necessary if and only if all of the following hold:
+      </para>
+
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    <package>fnord</package> is merged on a system which has <package>foo</package> and not
+	    <package>bar</package> installed.  <package>foo</package> is then unmerged, and <package>bar</package> is
+	    installed. <package>fnord</package> must continue to work correctly.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    A binary package of <package>fnord</package> made on a system with <package>foo</package> and not
+	    <package>bar</package> can be taken and installed on a system with <package>bar</package> and not
+	    <package>foo</package>
+	  </para>
+	</listitem>
+      </itemizedlist>
+    </section>.
+  </section>
+
+  <section>
+    <title>Built with USE Dependencies</title>
+
+    <para>
+      In order to use built with use dependencies you must specify <literal>EAPI="2"</literal>.
+    </para>
+
+    <table>
+      <title>Available Built with USE Dependency Specifiers</title>
+
+      <tgroup cols="2">
+	<thead>
+	  <row>
+	    <entry>Specifier</entry>
+	    <entry>Meaning</entry>
+	  </row>
+	</thead>
+
+	<tbody>
+	  <row>
+	    <entry><literal>app-misc/foo[bar]</literal></entry>
+	    <entry>foo must have bar enabled.</entry>
+	  </row>
+	  <row>
+	    <entry><literal>app-misc/foo[bar,baz]</literal></entry>
+	    <entry>foo must have both bar and baz enabled.</entry>
+	  </row>
+	  <row>
+	    <entry><literal>app-misc/foo[-bar,baz]</literal></entry>
+	    <entry>foo must have bar disabled and baz enabled.</entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </table>
+
+    <para>
+      There are also shortcuts for conditional situations:
+    </para>
+
+    <table>
+      <title>Available Built with USE Compact Dependency Specifiers</title>
+
+      <tgroup cols="2">
+	<thead>
+	  <row>
+	    <entry>Compact form</entry>
+	    <entry>Equivalent expanded form</entry>
+	  </row>
+	</thead>
+
+	<tbody>
+	  <row>
+	    <entry><literal>app-misc/foo[bar?]</literal></entry>
+	    <entry><literal>bar? ( app-misc/foo[bar] ) !bar? ( app-misc/foo )</literal></entry>
+	  </row>
+	  <row>
+	    <entry><literal>app-misc/foo[!bar?]</literal></entry>
+	    <entry><literal>bar? ( app-misc/foo ) !bar? ( app-misc/foo[-bar] )</literal></entry>
+	  </row>
+	  <row>
+	    <entry><literal>app-misc/foo[bar=]</literal></entry>
+	    <entry><literal>bar? ( app-misc/foo[bar] ) !bar? ( app-misc/foo[-bar] )</literal></entry>
+	  </row>
+	  <row>
+	    <entry><literal>app-misc/foo[!bar=]</literal></entry>
+	    <entry><literal>bar? ( app-misc/foo[-bar] ) !bar? ( app-misc/foo[bar] )</literal></entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </table>
+  </section>
+
+  <section>
+    <title>Legacy Inverse USE-Conditional Dependency Syntax</title>
+
+    <para>
+      When looking through old ebuild versions or the occasional user-submitted ebuild, you may see a
+      <varname>*DEPEND</varname> atom in the form:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+DEPEND="use-flag? ( app-misc/foo ) : ( app-misc/bar )"
+]]></programlisting>
+
+    <para>
+      <emphasis>This syntax is no longer permitted</emphasis>. It is exactly equivalent to the following, which should
+      be used instead:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+DEPEND="use-flag?  ( app-misc/foo )
+    !use-flag? ( app-misc/bar )"
+]]></programlisting>
+
+    <para>
+      It is useful to recognise the legacy syntax and to know that it is no longer valid.
+    </para>
+  </section>
+</chapter>
