@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.config-protect">
+  <title>Configuration File Protection</title>
+
+  <para>
+    Portage includes a system for configuration file protection which means ebuilds don't have to worry about
+    accidentally clobbering files in <filename>/etc</filename>. This is known as 'protection', and it is controlled by
+    the <varname>CONFIG_PROTECT</varname> and <varname>CONFIG_PROTECT_MASK</varname> variables.
+  </para>
+
+  <para>
+    Any directory which is listed in <varname>CONFIG_PROTECT</varname> (and any subdirectories thereof), except for any
+    which are listed in <varname>CONFIG_PROTECT_MASK</varname> (and subdirectories) are automatically 'protected' by
+    Portage when copying an image from <varname>DESTDIR</varname> to <varname>ROOT</varname>. Rather than installing
+    protected files directly, Portage will install them as <filename>._cfg0000_filename</filename>. These can then be
+    processed by the <command>etc-update</command> or <command>dispatch-conf</command> files at the user's discretion.
+  </para>
+
+  <para>
+    Packages must <emphasis>not</emphasis> attempt to override this system via <function>pkg_postinst</function> or
+    similar. If you need a file renamed, removed or changed in a particular way, you should display a message informing
+    the user.
+  </para>
+</chapter>

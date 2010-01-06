@@ -5,6 +5,7 @@
     <d:tocentry linkend="quickstart"><?dbhtml filename="quickstart/index.html"?></d:tocentry>
     <d:tocentry linkend="general-concepts"><?dbhtml filename="general-concepts/index.html"?>
     <d:tocentry linkend="general-concepts.autotools"><?dbhtml filename="general-concepts/autotools/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.config-protect"><?dbhtml filename="general-concepts/config-protect/index.html"?></d:tocentry>
     </d:tocentry>
   </d:tocentry>
 </toc>
