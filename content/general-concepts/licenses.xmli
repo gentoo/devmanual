@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.licenses">
+  <title>Licenses</title>
+
+  <para>
+    All ebuilds must specify a <varname>LICENSE</varname> (note the American English spelling) variable. The value of
+    this variable must be the name of a file in the Portage tree's <filename>licenses/</filename> directory.
+  </para>
+
+  <para>
+    If the application is multi-license (either of several licenses can be used) then use the following syntax:
+  </para>
+
+  <programlisting language="ebuild"><![CDATA[
+LICENSE="|| ( foo bar )"
+]]></programlisting>
+
+  <section>
+    <title>Adding New Licenses</title>
+
+    <para>
+      If your package's license is not already in the tree, you must add the license before committing the package. When
+      adding the license, use a plain text file if at all possible. Some licenses are PDF files rather than plain text —
+      this should only be done if we are legally required to do so.
+    </para>
+
+    <para>
+      It is not normally necessary to mail the <email>gentoo-dev@lists.gentoo.org</email> list before adding a new
+      license. You should only do so if the license could be considered 'questionable' or if you are unsure as to the
+      meaning of any part of it.
+    </para>
+  </section>
+</chapter>

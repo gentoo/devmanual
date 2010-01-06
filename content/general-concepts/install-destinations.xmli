@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.install-destinations">
+  <title>Install Destinations</title>
+
+  <para>
+    When an ebuild runs the <function>src_install</function> phase, it installs an image of the package in question from
+    <literal>${S}</literal> into <literal>${D}</literal>. Ebuilds must <emphasis>not</emphasis> attempt to perform any
+    operation upon the live filesystem at this stage — this will break binaries, and will (often) cause a sandbox
+    violation notice.
+  </para>
+
+  <para>
+    When installing, Portage will install the image in <literal>${D}</literal> into <literal>${ROOT}</literal>. By
+    default, <literal>${ROOT}</literal> points to <literal>/</literal>, although the user can alter this — for example,
+    the user may be building a minimal image for another system in a different location. If your package must operate on
+    the live filesystem (for example, to create some cache files during <function>pkg_postinst</function>), you must
+    ensure that you prefix any paths with <literal>${ROOT}</literal>.
+  </para>
+
+  <para>
+    When inside <function>pkg_preinst</function>, the image to be installed can be accessed under
+    <literal>"${D}"</literal>.
+  </para>
+</chapter>

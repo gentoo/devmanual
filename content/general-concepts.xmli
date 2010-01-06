@@ -22,5 +22,11 @@
   <xi:include parse="xml" href="general-concepts/ebuild-revisions.xmli" />
   <xi:include parse="xml" href="general-concepts/emerge-and-ebuild.xmli" />
   <xi:include parse="xml" href="general-concepts/features.xmli" />
+  <xi:include parse="xml" href="general-concepts/filesystem.xmli" />
+  <xi:include parse="xml" href="general-concepts/herds-and-projects.xmli" />
+  <xi:include parse="xml" href="general-concepts/install-destinations.xmli" />
+  <xi:include parse="xml" href="general-concepts/licenses.xmli" />
+  <!-- <xi:include parse="xml" href="general-concepts/linguas.xmli" /> -->
+  <xi:include parse="xml" href="general-concepts/mirrors.xmli" />
 
 </part>

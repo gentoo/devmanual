@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.mirrors">
+  <title>Mirrors</title>
+
+  <figure>
+    <title>Mirroring Process</title>
+
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="/images/mirrors-diagram.png"
+		   align="center" />
+      </imageobject>
+    </mediaobject>
+  </figure>
+
+  <section>
+    <title>Automatic Mirroring</title>
+
+    <para>
+      Packages will automatically have their <varname>SRC_URI</varname> components mirrored onto Gentoo mirrors.  When
+      fetching, Portage checks Gentoo mirrors first before trying the original upstream location.
+    </para>
+
+    <para>
+      This is generally desired behaviour — upstream mirrors are prone to being rearranged, tidied out or having files
+      modified.
+    </para>
+
+    <section>
+      <title>Restricting Automatic Mirroring</title>
+
+      <para>
+	Three <varname>RESTRICT</varname> keywords can be used to control the mirroring process.
+      </para>
+
+      <para>
+	The <literal>RESTRICT="mirror"</literal> setting should be used if we cannot legally mirror certain files; files
+	will still be downloaded from the original locations.
+      </para>
+
+      <para>
+	The <literal>RESTRICT="primaryuri"</literal> setting causes Portage to try original locations
+	<emphasis>first</emphasis>, and then fall back to mirrors if necessary — this is sometimes useful if approximate
+	download counts are needed, or if upstream have a reliable mirror setup.
+      </para>
+
+      <para>
+	There is also <literal>RESTRICT="fetch"</literal>>, which prevents Portage from trying to fetch anything
+	manually. The <xref linkend="ebuild-writing.functions.pkg_nofetch"/> function will be called if any
+	<varname>SRC_URI</varname> components cannot be found. This should only be used if a license requires it.
+      </para>
+    </section>
+
+    <section>
+      <title>Suitable Download Hosts</title>
+
+      <para>
+	Hosting files off <filename>dev.gentoo.org</filename> is <emphasis>not</emphasis> acceptable for main-tree items.
+	Instead, these files must be moved onto <literal>mirror://gentoo</literal> before release.
+      </para>
+    </section>
+  </section>
+
+  <section>
+    <title>Gentoo Mirrors</title>
+
+    <para>
+      To manually upload a file to <literal>mirror://gentoo</literal>, <command>scp</command> it to
+      <filename>dev.gentoo.org:/space/distfiles-local</filename>. You must ensure that the permissions are set to
+      <literal>ug+rw</literal> manually. The file should appear on the mirrors within four hours (note that this is
+      <emphasis>less frequent</emphasis> than <xref linkend="general-concepts.cvs-to-rsync"/>).
+    </para>
+
+    <para>
+      If the upstream download location for a package uses a non-standard TCP port (anything other than 21, 80 or 443),
+      you <emphasis>must</emphasis> manually mirror the files. Not doing so can cause all kinds of problems with strict
+      firewalls.
+    </para>
+  </section>
+
+</chapter>
+

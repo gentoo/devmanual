@@ -13,6 +13,11 @@
     <d:tocentry linkend="general-concepts.emerge-and-ebuild"><?dbhtml filename="general-concepts/emerge-and-ebuild/index.html"?></d:tocentry>
     <d:tocentry linkend="general-concepts.features"><?dbhtml filename="general-concepts/features/index.html"?></d:tocentry>
     </d:tocentry>
+    <d:tocentry linkend="general-concepts.filesystem"><?dbhtml filename="general-concepts/filesystem/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.herds-and-projects"><?dbhtml filename="general-concepts/herds-and-projects/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.install-destinations"><?dbhtml filename="general-concepts/install-destinations/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.licenses"><?dbhtml filename="general-concepts/licenses/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.mirrors"><?dbhtml filename="general-concepts/mirrors/index.html"?></d:tocentry>
   </d:tocentry>
 </toc>
 

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.filesystem">
+  <title>Filesystem</title>
+
+  <para>
+    The basic filesystem layout and purpose is as follows:
+  </para>
+
+  <itemizedlist>
+    <listitem><para>
+      <filename>/bin</filename>: Boot-critical applications
+    </para></listitem>
+
+    <listitem><para>
+      <filename>/etc</filename>: System administrator controlled configuration files
+    </para></listitem>
+
+    <listitem><para>
+      <filename>/lib</filename>: Boot-critical libraries
+    </para></listitem>
+
+    <listitem><para>
+      <filename>/opt</filename>: Binary-only applications.</para>
+    </listitem>
+
+    <listitem><para>
+      <filename>/sbin</filename>: System administrator boot-critical applications
+    </para></listitem>
+
+    <listitem><para>
+      <filename>/tmp</filename>: Temporary data</para>
+    </listitem>
+
+    <listitem>
+      <para>
+	<filename>/usr</filename>: General applications
+      </para>
+
+      <itemizedlist>
+	  <listitem><para>
+	    <filename>/usr/bin</filename>: Applications
+	  </para></listitem>
+
+	  <listitem><para>
+	    <filename>/usr/lib</filename>: Libraries
+	  </para></listitem>
+	  
+	  <listitem><para>
+	    <filename>/usr/local</filename>: Non-portage applications. <emphasis>Ebuilds must not install here</emphasis>.
+	  </para></listitem>
+
+	  <listitem><para>
+	    <filename>/usr/sbin</filename>: Non-system-critical system administrator applications
+	  </para></listitem>
+
+	  <listitem><para>
+	    <filename>/usr/share</filename>: Architecture independent application data and documentation
+	  </para></listitem>
+
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>
+	<filename>/var</filename>: Program generated data
+      </para>
+
+      <itemizedlist>
+	<listitem><para>
+	  <filename>/var/cache</filename>: Long term data which can be regenerated
+	</para></listitem>
+
+	<listitem><para>
+	  <filename>/var/lib</filename>: General application generated data
+	</para></listitem>
+
+	<listitem><para>
+	  <filename>/var/log</filename>: Log files
+	</para></listitem>
+      </itemizedlist>
+    </listitem>
+  </itemizedlist>
+
+  <para>
+    Where possible, we prefer to put non-boot-critical applications in <filename>/usr</filename> rather than
+    <filename>/</filename>. If a program is not needed in the boot process until after filesystems are mounted then it
+    generally does not belong on <filename>/</filename>.
+  </para>
+
+  <para>
+    Any binary which links against a library under <filename>/usr</filename> must itself go into
+    <filename>/usr</filename> (or possibly <filename>/opt</filename>).
+  </para>
+
+  <para>
+    The <filename>/opt</filename> top-level should only be used for binary-only applications.  Binary-only applications
+    must not be installed outside of <filename>/opt</filename>.
+  </para>
+
+  <para>
+    The <filename>/usr/local</filename> heirarchy is for non-portage software. Ebuilds must not attempt to put anything
+    in here.
+  </para>
+
+  <para>
+    The <filename>/usr/share</filename> directory is for <emphasis>architecture independent</emphasis> application data
+    which is not modified at runtime.
+  </para>
+
+  <para>
+    Try to avoid installing unnecessary things into <filename>/etc</filename> — every file in there is additional work
+    for the system administrator. In particular, non-text files and files that are not intended for system administrator
+    usage should be moved to <filename>/usr/share</filename>.
+  </para>
+
+  <section>
+    <title>FHS</title>
+
+    <para>
+      Gentoo does not consider the <link xl:href="http://www.pathname.com/fhs/"> Filesystem Hierarchy Standard</link> to
+      be an authoritative standard, although much of our policy coincides with it.
+    </para>
+  </section>
+</chapter>
