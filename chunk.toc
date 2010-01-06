@@ -2,30 +2,30 @@
 
 <toc xmlns="http://www.w3.org/1999/xhtml" role="chunk-toc">
   <d:tocentry xmlns:d="http://docbook.org/ns/docbook" linkend="index"><?dbhtml filename="index.html"?>
-    <d:tocentry linkend="quickstart"><?dbhtml filename="quickstart/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts"><?dbhtml filename="general-concepts/index.html"?>
-    <d:tocentry linkend="general-concepts.autotools"><?dbhtml filename="general-concepts/autotools/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.config-protect"><?dbhtml filename="general-concepts/config-protect/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.cvs-to-rsync"><?dbhtml filename="general-concepts/cvs-to-rsync/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.dependencies"><?dbhtml filename="general-concepts/dependencies/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.manifest"><?dbhtml filename="general-concepts/manifest/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.ebuild-revisions"><?dbhtml filename="general-concepts/ebuild-revisions/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.emerge-and-ebuild"><?dbhtml filename="general-concepts/emerge-and-ebuild/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.features"><?dbhtml filename="general-concepts/features/index.html"?></d:tocentry>
+    <d:tocentry linkend="quickstart"><?dbhtml filename="quickstart.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts"><?dbhtml filename="general-concepts.html"?>
+    <d:tocentry linkend="general-concepts.autotools"><?dbhtml filename="general-concepts/autotools.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.config-protect"><?dbhtml filename="general-concepts/config-protect.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.cvs-to-rsync"><?dbhtml filename="general-concepts/cvs-to-rsync.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.dependencies"><?dbhtml filename="general-concepts/dependencies.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.manifest"><?dbhtml filename="general-concepts/manifest.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.ebuild-revisions"><?dbhtml filename="general-concepts/ebuild-revisions.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.emerge-and-ebuild"><?dbhtml filename="general-concepts/emerge-and-ebuild.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.features"><?dbhtml filename="general-concepts/features.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.filesystem"><?dbhtml filename="general-concepts/filesystem.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.herds-and-projects"><?dbhtml filename="general-concepts/herds-and-projects.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.install-destinations"><?dbhtml filename="general-concepts/install-destinations.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.licenses"><?dbhtml filename="general-concepts/licenses.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.mirrors"><?dbhtml filename="general-concepts/mirrors.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.overlay"><?dbhtml filename="general-concepts/overlay.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.portage-cache"><?dbhtml filename="general-concepts/portage-cache.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.sandbox"><?dbhtml filename="general-concepts/sandbox.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.slotting"><?dbhtml filename="general-concepts/slotting.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.tree"><?dbhtml filename="general-concepts/tree.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.use-flags"><?dbhtml filename="general-concepts/use-flags.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.user-environment"><?dbhtml filename="general-concepts/user-environment.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.virtuals"><?dbhtml filename="general-concepts/virtuals.html"?></d:tocentry>
     </d:tocentry>
-    <d:tocentry linkend="general-concepts.filesystem"><?dbhtml filename="general-concepts/filesystem/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.herds-and-projects"><?dbhtml filename="general-concepts/herds-and-projects/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.install-destinations"><?dbhtml filename="general-concepts/install-destinations/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.licenses"><?dbhtml filename="general-concepts/licenses/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.mirrors"><?dbhtml filename="general-concepts/mirrors/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.overlay"><?dbhtml filename="general-concepts/overlay/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.portage-cache"><?dbhtml filename="general-concepts/portage-cache/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.sandbox"><?dbhtml filename="general-concepts/sandbox/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.slotting"><?dbhtml filename="general-concepts/slotting/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.tree"><?dbhtml filename="general-concepts/tree/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.use-flags"><?dbhtml filename="general-concepts/use-flags/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.user-environment"><?dbhtml filename="general-concepts/user-environment/index.html"?></d:tocentry>
-    <d:tocentry linkend="general-concepts.virtuals"><?dbhtml filename="general-concepts/virtuals/index.html"?></d:tocentry>
   </d:tocentry>
 </toc>
 
