@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+         xmlns:xl="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:gentoodv="http://www.gentoo.org/2010/DBDevManual"
+	 xml:id="quickstart">
+  <title>Quickstart Ebuild Guide</title>
+
+  <para>
+    This page provides a <emphasis>very</emphasis> brief introduction to ebuild writing. It does not attempt to cover
+    many of the details or problems that will be encountered by developers — rather, it gives some trivial examples
+    which may be of use when trying to grasp the basic idea of how ebuilds work.
+  </para>
+
+  <para>
+    For proper coverage of all the ins and outs, see <xref linkend="ebuild-writing" />.  The <xref
+    linkend="general-concepts" /> chapter will also be of use.
+  </para>
+
+  <para>
+    Note that the examples used here, whilst based upon real tree ebuilds, have had several parts chopped out, changed
+    and simplified.
+  </para>
+
+  <section>
+    <title>First Ebuild</title>
+
+    <para>
+      We'll start with an ebuild for the <emphasis>Exuberant Ctags</emphasis> utility, a source code indexing
+      tool. Here's a simplified <filename>dev-util/ctags/ctags-5.5.4.ebuild</filename> (you can see real ebuilds in the
+      main tree).
+    </para>
+
+    <gentoodv:codesample lang="ebuild"><![CDATA[
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+DESCRIPTION="Exuberant ctags generates tags files for quick source navigation"
+HOMEPAGE="http://ctags.sourceforge.net"
+SRC_URI="mirror://sourceforge/ctags/${P}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~mips ~sparc ~x86"
+IUSE=""
+
+src_compile() {
+    econf --with-posix-regex
+    emake || die "emake failed"
+}
+
+src_install() {
+    emake DESTDIR="${D}" install || die "install failed"
+
+    dodoc FAQ NEWS README || die
+    dohtml EXTENDING.html ctags.html
+}
+]]></gentoodv:codesample>
+
+    <section>
+      <title>Basic Format</title>
+
+      <para>
+	As you can see, ebuilds are just <command>bash</command> scripts that are executed within a special environment.
+      </para>
+
+      <para>
+	At the top of the ebuild is a header block. This is present in all ebuilds.
+      </para>
+
+      <para>
+	Ebuilds are indented using tabs, with each tab representing four places. See <xref
+	linkend="ebuild-writing.file-format" />.
+      </para>
+    </section>
+
+    <section>
+      <title>Information Variables</title>
+
+      <para>
+	Next, there are a series of variables. These tell Portage various things about the ebuild and package in
+	question.
+      </para>
+
+      <para>
+	The <varname>DESCRIPTION</varname> variable is set to a <emphasis>short</emphasis> description of the package
+	and its purpose.
+      </para>
+
+      <para>
+	The <varname>HOMEPAGE</varname> is a link to the package's homepage (remember to include the
+	<literal>http://</literal> part).
+      </para>
+
+      <para>
+	The <varname>LICENSE</varname> is <constant>GPL-2</constant> (the GNU General Public License version 2).
+      </para>
+
+      <para>
+	The <varname>SRC_URI</varname> tells Portage the address to use for downloading the source tarball. Here,
+	<literal>mirror://sourceforge/</literal> is a special notation meaning “any of the Sourceforge mirrors”.
+	<literal>${P}</literal> is a read-only variable set by Portage which is the package's name and version — in this
+	case, it would be <constant>ctags-5.5.4</constant>.
+      </para>
+
+      <para>
+	The <varname>SLOT</varname> variable tells Portage which slot this package installs to. If you've not seen slots
+	before, either just use <constant>&quot;0&quot;</constant> or read <xref linkend="general-concepts.slotting" />.
+      </para>
+
+      <para>
+	The <varname>KEYWORDS</varname> variable is set to archs upon which this ebuild has been tested. We use
+	<constant>~</constant> keywords for newly written ebuilds — packages are not committed straight to stable, even
+	if they seem to work. See <xref linkend="keywording" /> for details.
+      </para>
+    </section>
+
+    <section>
+      <title>Build Functions</title>
+
+      <para>
+	Next, a function named <function>src_compile</function>. Portage will call this function when it wants to
+	<emphasis>compile</emphasis> the package. The <command>econf</command> function is a wrapper for calling
+	<command>./configure</command>, and <command>emake</command> is a wrapper for <command>make</command>>. In the
+	case of emake, the common <command>|| die &quot;something went wrong&quot;</command> idiom is used — this is to
+	ensure that if for some reason an error occurs, Portage will stop rather than trying to continue with the
+	install. Note that <command>econf</command> does not need the <command>|| die</command> idiom, as it dies by
+	itself if something failed.
+      </para>
+
+      <para>
+	The <function>src_install</function> function is called by Portage when it wants to <emphasis>install</emphasis>
+	the package. A slight subtlety here — rather than installing straight to the live filesystem, we must install to
+	a special location which is given by the <literal>${D}</literal> variable (Portage sets this — see <xref
+	linkend="general-concepts.install-destinations" /> and <xref linkend="general-concepts.sandbox" />). Again, we
+	check for errors using the <command>|| die</command> construct.
+      </para>
+
+      <note>
+	<para>
+	  The canonical install method is <command>emake DESTDIR=&quot;${D}&quot; install</command>. This will work with
+	  any properly written standard <filename>Makefile</filename>. If this gives sandbox errors, try
+	  <command>einstall</command> instead. If this still fails, see <xref
+	  linkend="ebuild-writing.functions.src_install" /> for how to do manual installs.
+	</para>
+      </note>
+
+      <para>
+	The <command>dodoc</command> and <command>dohtml</command> are helper functions for installing files into the
+	relevant part of <filename>/usr/share/doc</filename>
+      </para>
+
+      <para>
+	Ebuilds can define other functions (see <xref linkend="ebuild-writing.functions" />).  In all cases, Portage
+	provides a reasonable default implementation which quite often does the 'right thing'. There was no need to
+	define a <function>src_unpack</function> function here, for example — this function is used to do any unpacking
+	of tarballs or patching of source files, but the default implementation does everything we need in this case.
+      </para>
+    </section>
+  </section>
+
+  <section>
+    <title>Ebuild with Dependencies</title>
+
+    <para>
+      In the ctags example, we didn't tell Portage about any dependencies. As it happens, that's ok, because ctags only
+      needs a basic toolchain to compile and run (see <xref
+      linkend="general-concepts.dependencies.implicit-system-dependency" /> for why we don't need to depend upon those
+      explicitly). However, life is rarely that simple.
+    </para>
+
+    <para>
+      Here's <filename>app-misc/detox/detox-1.1.1.ebuild</filename>:
+    </para>
+
+    <gentoodv:codesample lang="ebuild"><![CDATA[
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+DESCRIPTION="detox safely removes spaces and strange characters from filenames"
+HOMEPAGE="http://detox.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~hppa mips sparc x86"
+IUSE=""
+
+DEPEND="dev-libs/popt
+    sys-devel/flex
+    sys-devel/bison"
+RDEPEND="dev-libs/popt"
+
+src_compile() {
+    econf --with-popt
+    emake || die "emake failed"
+}
+
+src_install() {
+    emake DESTDIR="${D}" install || die "install failed"
+    dodoc README CHANGES || die
+}
+]]></gentoodv:codesample>
+
+    <para>
+      Again, you can see the ebuild header and the various informational variables. In <varname>SRC_URI</varname>,
+      <literal>${PN}</literal> is used to get the package's name <emphasis>without</emphasis> the version suffix (there
+      are more of these variables — see <xref linkend="ebuild-writing.variables.predefined-ro-vars" />).
+    </para>
+
+    <para>
+      Again, we define <function>src_compile</function> and <function>src_install</function> functions.
+    </para>
+
+    <para>
+      The <varname>DEPEND</varname> and <varname>RDEPEND</varname> variables are how Portage determines which packages
+      are needed to build and run the package. The <varname>DEPEND</varname> variable lists compile-time dependencies,
+      and the <varname>RDEPEND</varname> lists runtime dependencies. See <xref linkend="general-concepts.dependencies"
+      /> for some more complex examples.
+    </para>
+  </section>
+
+  <section>
+    <title>Ebuild with Patches</title>
+
+    <para>
+      Often we need to apply patches. This is done in the <function>src_unpack</function> function
+      using the <command>epatch</command> helper function. To use <command>epatch</command> one must
+      first tell Portage that the <filename>eutils</filename> eclass (an eclass is like a library)
+      is required <d/> this is done via <command>inherit eutils</command> at the top of the
+      ebuild. Here's <filename>app-misc/detox/detox-1.1.0.ebuild</filename>:
+    </para>
+
+    <gentoodv:codesample lang="ebuild"><![CDATA[
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+inherit eutils
+
+DESCRIPTION="detox safely removes spaces and strange characters from filenames"
+HOMEPAGE="http://detox.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~hppa ~mips ~sparc ~x86"
+IUSE=""
+
+DEPEND="dev-libs/popt
+    sys-devel/flex
+    sys-devel/bison"
+RDEPEND="dev-libs/popt"
+
+src_unpack() {
+    unpack ${A}
+    cd "${S}"
+
+    epatch "${FILESDIR}"/${P}-destdir.patch
+    epatch "${FILESDIR}"/${P}-parallel_build.patch
+}
+
+src_compile() {
+    econf --with-popt
+    emake || die "emake failed"
+}
+
+src_install() {
+    emake DESTDIR="${D}" install || die "install failed"
+    dodoc README CHANGES || die
+}
+]]></gentoodv:codesample>
+
+    <para>
+      Note the <filename>${FILESDIR}/${P}-destdir.patch</filename> — this refers to
+      <filename>detox-1.1.0-destdir.patch</filename>, which lives in the <filename>files/</filename>
+      subdirectory in the Portage tree. Larger patch files must go on the mirrors rather than in
+      <filename>files/</filename> — see <xref linkend="ebuild-writing.functions.src_unpack.epatch" />.
+    </para>
+  </section>
+
+  <section>
+    <title>Ebuild with USE Flags</title>
+
+    <para>
+      Now for some <varname>USE</varname> flags. Here's
+      <filename>dev-libs/libiconv/libiconv-1.9.2.ebuild</filename>, a replacement iconv for
+      <filename>libc</filename> implementations which don't have their own.
+    </para>
+
+    <gentoodv:codesample lang="ebuild"><![CDATA[
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+DESCRIPTION="GNU charset conversion library for libc which doesn't implement it"
+SRC_URI="ftp://ftp.gnu.org/pub/gnu/libiconv/${P}.tar.gz"
+HOMEPAGE="http://www.gnu.org/software/libiconv/"
+
+SLOT="0"
+LICENSE="LGPL-2.1"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+IUSE="nls"
+
+DEPEND="virtual/libc
+    !sys-libs/glibc"
+
+src_compile() {
+    econf $(use_enable nls)
+    emake || die
+}
+
+src_install() {
+    emake DESTDIR="${D}" install || die "install failed"
+}
+]]></gentoodv:codesample>
+
+    <para>
+      Note the <varname>IUSE</varname> variable. This lists all (non-special) use flags that are
+      used by the ebuild. This is used for the <command>emerge -pv</command> output, amongst other
+      things.
+    </para>
+
+    <para>
+      The package's <command>./configure</command> script takes the usual
+      <parameter>--enable-nls</parameter> or <parameter>--disable-nls</parameter> argument. We use
+      the <command>use_enable</command> utility function to generate this automatically, depending
+      on the user's <varname>USE</varname> flags (see <xref
+      linkend="function-reference.query-functions" />).
+    </para>
+
+    <para>
+      Another more complicated example, this time based upon
+      <filename>mail-client/sylpheed/sylpheed-1.0.4.ebuild</filename>:
+    </para>
+
+    <gentoodv:codesample lang="ebuild"><![CDATA[
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+inherit eutils
+
+DESCRIPTION="A lightweight email client and newsreader"
+HOMEPAGE="http://sylpheed.good-day.net/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+
+LICENSE="GPL-2"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+SLOT="0"
+
+IUSE="crypt gnome imlib ipv6 ldap nls pda ssl xface"
+
+DEPEND="=x11-libs/gtk+-1.2*
+    nls? ( >=sys-devel/gettext-0.12.1 )
+    crypt? ( >=app-crypt/gpgme-0.4.5 )
+    gnome? ( media-libs/gdk-pixbuf )
+    imlib? ( media-libs/imlib )
+    ldap? ( >=net-nds/openldap-2.0.11 )
+    pda? ( app-pda/jpilot )
+    ssl? ( dev-libs/openssl )
+    xface? ( >=media-libs/compface-1.4 )"
+RDEPEND="${DEPEND}
+    app-misc/mime-types
+    x11-misc/shared-mime-info"
+
+src_unpack() {
+    unpack ${A}
+    cd "${S}"
+
+    epatch "${FILESDIR}"/${PN}-namespace.diff
+    epatch "${FILESDIR}"/${PN}-procmime.diff
+}
+
+src_compile() {
+    econf \
+        $(use_enable nls) \
+        $(use_enable ssl) \
+        $(use_enable crypt gpgme) \
+        $(use_enable pda jpilot) \
+        $(use_enable ldap) \
+        $(use_enable ipv6) \
+        $(use_enable imlib) \
+        $(use_enable gnome gdk-pixbuf) \
+        $(use_enable xface compface)
+
+    emake || die
+}
+
+src_install() {
+    einstall || die "einstall failed"
+    dodir /usr/share/pixmaps
+    insinto /usr/share/pixmaps
+    doins *.png
+
+    if use gnome ; then
+        dodir /usr/share/gnome/apps/Internet
+        insinto /usr/share/gnome/apps/Internet
+        doins sylpheed.desktop
+    fi
+
+    dodoc [A-Z][A-Z]* ChangeLog* || die
+}
+]]></gentoodv:codesample>
+
+    <para>
+      Note the optional dependencies. Some of the <command>use_enable</command> lines use the
+      two-argument version — this is helpful when the USE flag name does not exactly match the
+      <command>./configure</command> argument.
+    </para>
+  </section>
+
+</chapter>

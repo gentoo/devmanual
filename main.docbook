@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 version="5.0" xml:lang="en"
+	 xml:id="index">
+  <info>
+    <title>Gentoo Development Manual</title>
+
+    <author>
+      <personname>
+	<firstname>Ciaran</firstname>
+	<surname>McCreesh</surname>
+      </personname>
+    </author>
+
+    <author>
+      <personname>
+	<firstname>Grant</firstname>
+	<surname>Goodyear</surname>
+      </personname>
+    </author>
+
+    <author>
+      <personname>
+	<firstname>Aaron</firstname>
+	<surname>Walker</surname>
+      </personname>
+    </author>
+
+    <author>
+      <personname>
+	<firstname>Robert</firstname>
+	<surname>Coie</surname>
+      </personname>
+    </author>
+
+    <author>
+      <personname>
+	<firstname>Tom</firstname>
+	<surname>Martin</surname>
+      </personname>
+    </author>
+
+    <author>
+      <personname>
+	<firstname>Paul</firstname>
+	<surname>Varner</surname>
+      </personname>
+    </author>
+
+    <author>
+      <personname>
+	<firstname>Ilya</firstname>
+	<surname>Volynets-Evenbakh</surname>
+      </personname>
+    </author>
+
+    <author>
+      <personname>
+	<firstname>Diego E.</firstname>
+	<surname>Pettenò</surname>
+      </personname>
+    </author>
+
+    <author>
+      <personname>
+	<firstname>Fernando J.</firstname>
+	<surname>Pereda</surname>
+      </personname>
+    </author>
+
+    <author>
+      <personname>
+	<firstname>Simon</firstname>
+	<surname>Stelling</surname>
+      </personname>
+    </author>
+
+    <author>
+      <personname>
+	<firstname>Alin</firstname>
+	<surname>Dobre</surname>
+      </personname>
+    </author>
+
+    <author>
+      <personname>
+	<firstname>Joseph</firstname>
+	<surname>Jezak</surname>
+      </personname>
+    </author>
+
+    <author>
+      <personname>
+	<firstname>Tim</firstname>
+	<surname>Yamin</surname>
+      </personname>
+    </author>
+
+    <author>
+      <personname>
+	<firstname>Mark</firstname>
+	<surname>Loeser</surname>
+      </personname>
+    </author>
+
+    <legalnotice>
+      <para>
+	This document is an ongoing work in progress. It contains gaps, inaccuracies, omissions, typos and the
+	occasional outright lie. The intent is to make a handbook giving developers and users correct, detailed, up to
+	date technical content.
+      </para>
+
+      <para>
+	Contributions are encouraged. See the <xref linkend="contributing" /> section for how to get started. If you
+	have any corrections, suggestions or improvements please file a bug at <link
+	xl:href="http://bugs.gentoo.org">bugs.gentoo.org</link> and assign it to <email>qa@gentoo.org</email>. The <xref
+	linkend="contributors" /> section lists specific contributions to this manual.
+      </para>
+    </legalnotice>
+  </info>
+
+  <xi:include parse="xml" href="content/quickstart.xmli" />
+</book>
