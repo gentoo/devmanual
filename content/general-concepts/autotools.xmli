@@ -51,7 +51,7 @@
 
       <mediaobject>
 	<imageobject>
-	  <imagedata fileref="/general-concepts/autotools-diagram.png"
+	  <imagedata fileref="/images/autotools-diagram.png"
 		     align="center" />
 	</imageobject>
       </mediaobject>
