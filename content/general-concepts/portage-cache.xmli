@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.portage-cache">
+
+  <title>The Portage Cache</title>
+
+  <para>
+    Portage uses a cache for most top-level variables (<varname>DEPEND</varname>, <varname>DESCRIPTION</varname>,
+    <varname>SRC_URI</varname> and so on). This cache may be generated on a different machine, so these variables must
+    be either static or generated using only unchanging 'version / name' variables (<varname>P</varname>,
+    <varname>PN</varname>, <varname>PV</varname>, <varname>PR</varname>, <varname>PVR</varname> and
+    <varname>PF</varname>).
+  </para>
+
+  <para>
+    So, the following will not work:
+  </para>
+
+  <programlisting language="ebuild"><![CDATA[
+# DO NOT DO THIS!
+if ! has_version "x11-libs/gtk+" ; then
+    DEPEND="${DEPEND}
+            gtk?  ( &gt;=x11-libs/gtk+-2 )
+            !gtk? ( =x11-libs/gtk+-1.2* )"
+fi
+]]></programlisting>
+
+  <para>
+    However, this is legal, since <varname>versionator.eclass</varname> works upon <varname>PV</varname>, and
+    <varname>PV</varname> and <varname>PN</varname> are both static:
+  </para>
+
+  <programlisting language="ebuild"><![CDATA[
+inherit versionator
+
+if [[ $(get_major_version) -ge 7 ]] ; then
+    IUSE="${IUSE} tcltk mzscheme"
+    DEPEND="${DEPEND}
+        tcltk?    ( dev-lang/tcl )
+        mzscheme? ( dev-lisp/mzscheme )"
+    RDEPEND="${RDEPEND}
+        tcltk?    ( dev-lang/tcl )
+        mzscheme? ( dev-lisp/mzscheme )"
+
+    if [[ "${MY_PN}" != "vim-core" ]] ; then
+        RDEPEND="${RDEPEND} !&lt;app-vim/align-30-r1"
+    fi
+fi
+]]></programlisting>
+
+  <section>
+    <title>Conditional Inherits</title>
+
+    <para>
+      Because eclasses modify various cached variables, conditional inheritance is not allowed except where the same
+      results will always be obtained on every system.  For example, inherits based upon <varname>USE</varname> flags
+      are illegal, but inherits based solely upon <varname>PN</varname> are allowed.
+    </para>
+
+    <para>
+      As an example of a legal and possibly useful conditional inherit, some eclasses do:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+if [[ "${PN##*-}" == "cvs" ]] ; then
+    inherit cvs
+fi
+]]></programlisting>
+
+    <para>
+      This allows the same eclass to be used for both regular and <package>-cvs</package> packages.
+    </para>
+  </section>
+</chapter>

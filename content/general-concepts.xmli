@@ -28,5 +28,9 @@
   <xi:include parse="xml" href="general-concepts/licenses.xmli" />
   <!-- <xi:include parse="xml" href="general-concepts/linguas.xmli" /> -->
   <xi:include parse="xml" href="general-concepts/mirrors.xmli" />
+  <xi:include parse="xml" href="general-concepts/overlay.xmli" />
+  <xi:include parse="xml" href="general-concepts/portage-cache.xmli" />
+  <xi:include parse="xml" href="general-concepts/sandbox.xmli" />
+  <xi:include parse="xml" href="general-concepts/slotting.xmli" />
 
 </part>

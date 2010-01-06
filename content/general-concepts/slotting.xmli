@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.slotting">
+  <title>Slotting</title>
+
+  <para>
+    Packages can support having multiple versions installed simultaneously. This is useful for libraries which may have
+    changed interfaces between versions — for example, the <package>gtk+</package> package can install both versions
+    <literal>1.2</literal> and <literal>2.6</literal> in parallel. This feature is called slotting.
+  </para>
+
+  <para>
+    Most packages have no need for slotting. These packages specify <literal>SLOT="0"</literal> in the ebuilds. This is
+    <emphasis>not</emphasis> the same as specifying an empty slot — an empty slot means "disable slotting entirely", and
+    should not be used.
+  </para>
+
+  <para>
+    Portage permits at most one instance of a package installation <emphasis>per <varname>SLOT</varname>
+    value</emphasis>.  For example, say we have the following:
+  </para>
+
+  <itemizedlist>
+    <listitem><para><package>foo-1.1</package> with <literal>SLOT="1"</literal></para></listitem>
+    <listitem><para><package>foo-1.2</package> with <literal>SLOT="1"</literal></para></listitem>
+    <listitem><para><package>foo-2.0</package> with <literal>SLOT="2"</literal></para></listitem>
+    <listitem><para><package>foo-2.1</package> with <literal>SLOT="2"</literal></para></listitem>
+  </itemizedlist>
+
+  <para>
+    Then the user could have, say, <package>foo-1.2</package> and <package>foo-2.0</package> installed in parallel,
+    but <emphasis>not</emphasis> <package>foo-1.1</package> and <package>foo-1.2</package>. Note that it is entirely
+    possible that the user may have <package>foo-2.0</package> installed and no <package>foo-1.x</package> at all.
+  </para>
+
+  <para>
+    To <varname>DEPEND</varname> upon a package in a specific slot, refer to <xref
+    linkend="general-concepts.dependencies.slot-dependencies"/>.
+  </para>
+
+  <para>
+    Currently portage will accept an arbitrary string for the value of <varname>SLOT</varname>. For future
+    compatibility, it is recommended that slots contain only characters which are allowed in an ebuild name or version
+    (alphanumerics, hypens, full stops, underscores, the plus character) — other characters may cause problems with
+    future portage enhancements.
+  </para>
+</chapter>

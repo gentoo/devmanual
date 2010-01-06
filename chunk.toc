@@ -18,6 +18,10 @@
     <d:tocentry linkend="general-concepts.install-destinations"><?dbhtml filename="general-concepts/install-destinations/index.html"?></d:tocentry>
     <d:tocentry linkend="general-concepts.licenses"><?dbhtml filename="general-concepts/licenses/index.html"?></d:tocentry>
     <d:tocentry linkend="general-concepts.mirrors"><?dbhtml filename="general-concepts/mirrors/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.overlay"><?dbhtml filename="general-concepts/overlay/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.portage-cache"><?dbhtml filename="general-concepts/portage-cache/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.sandbox"><?dbhtml filename="general-concepts/sandbox/index.html"?></d:tocentry>
+    <d:tocentry linkend="general-concepts.slotting"><?dbhtml filename="general-concepts/slotting/index.html"?></d:tocentry>
   </d:tocentry>
 </toc>
 

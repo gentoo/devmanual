@@ -207,7 +207,7 @@ DEPEND=">=dev-libs/openssl-0.9.7d"
     </section>
   </section>
 
-  <section>
+  <section xml:id="general-concepts.dependencies.slot-dependencies">
     <title>SLOT Dependencies</title>
 
     <para>

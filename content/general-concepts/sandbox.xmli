@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.sandbox">
+  <title>Sandbox</title>
+
+  <para>
+    During the <function>src_unpack</function>, <function>src_compile</function>, <function>src_test</function> and
+    <function>src_install</function> phases, <filename>ebuild.sh</filename> operates inside a
+    <emphasis>sandbox</emphasis>. This is a special environment which attempts to help prevent badly written ebuilds (or
+    ebuilds working with badly written build systems) accidentally writing outside of permitted locations.
+  </para>
+
+  <para>
+    <emphasis>All packages must build correctly when sandbox is active.</emphasis> Packages must not achieve this by
+    using sneaky tricks to make sandbox warnings not show up — the sandbox is there to ensure that binary packages will
+    work correctly, and that a badly written <filename>Makefile</filename> won't cause problems. Using
+    <command>addwrite</command> is generally <emphasis>not</emphasis> the correct solution.
+  </para>
+
+  <para>
+    See <xref linkend="function-reference.sandbox-functions"/> for details on sandbox-related functions. See <xref
+    linkend="appendices.common-problems.access-violations"/> for suggestions on fixing sandbox-related build problems.
+  </para>
+</chapter>

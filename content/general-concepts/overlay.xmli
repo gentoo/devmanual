@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="general-concepts.overlay">
+
+  <title>Overlay</title>
+
+  <para>
+    Portage can look in multiple places for packages by using an overlay. The locations of overlays are controlled by
+    the <varname>PORTDIR_OVERLAY</varname> variable, which should contain a space-separated list of paths.
+  </para>
+
+  <para>
+    The overlay should contain the same directory structure as <varname>PORTDIR</varname> (although only the necessary
+    directories need be included). For example, a simple overlay might have a directory structure like:
+  </para>
+
+  <programlisting><![CDATA[
+overlay
+|-- dev-util
+    `-- gengetopt
+        |-- Manifest
+        |-- files
+        |   `-- gengetopt-2.13-foobar.patch
+        `-- gengetopt-2.13.ebuild
+]]></programlisting>
+
+  <para>
+    An overlay can be used to 'add' items to the tree (although you must ensure that
+    <filename>/etc/portage/categories</filename> is used if any new categories are added) or to override existing
+    entries.
+  </para>
+
+  <section>
+    <title>Overlay and Eclasses</title>
+
+    <para>
+      Be very careful when using eclasses in an overlay. Portage will not do cache updates when an overlay eclass is
+      changed, nor will it do cache updates when a main Portage tree eclass which is used by an overlay ebuild
+      changes. You may also encounter bogus 'illegal inherit' notices when working with eclasses in an overlay (see
+      <xref linkend="appendices.common-problems.eclass-inherited-illegally"/>).  To be safe, manually
+      <command>touch</command> all relevant overlay files after updating overlay eclasses.
+    </para>
+  </section>
+
+</chapter>
