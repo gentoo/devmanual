@@ -8,6 +8,7 @@ generate: main.docbook
 		--stringparam base.dir public/ \
 		--stringparam chunk.toc chunk.toc \
 		--stringparam section.autolabel 1 \
+		--stringparam toc.section.depth 1 \
 		--stringparam collect.xref.targets "yes" \
 		--stringparam targets.filename "$(patsubst %.xhtml,%.olinkdb,$@)" \
 		$(XSL-NS-SS)/xhtml-1_1/chunktoc.xsl \
