@@ -12,7 +12,7 @@ generate: main.docbook
 		--stringparam toc.section.depth 1 \
 		--stringparam collect.xref.targets "yes" \
 		--stringparam targets.filename "$(patsubst %.xhtml,%.olinkdb,$@)" \
-		$(XSL-NS-SS)/xhtml-1_1/chunktoc.xsl \
+		stylesheets/gentoo.org.xsl \
 		$<
 
 chunk.toc.new:

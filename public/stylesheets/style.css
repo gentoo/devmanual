@@ -1,0 +1,67 @@
+/**
+ * Toffanin Mauro - toffanin.mauro@gmail.com
+ * v0.1 - 07.01.2009
+ */
+
+/**
+ * COLORS TABLE:
+ * blue: #0F83DB;
+ */
+
+/** General HTML Elements **/
+body {
+	font-family:Helvetica,"Helvetica Neue","Lucida Grande","Lucida Sans Unicode",Sans-Serif,Verdana,Arial;
+	font-size:1em;
+	max-width:800px;
+	margin:auto;
+	margin-top:50px;
+}
+hr {
+	border:0;
+	border-bottom:4px solid #1A1A1A;
+}
+p {
+	text-align:justify;
+}
+a[href=""] {
+	color:#0F83DB;
+	/* Resetting borders from the DocBook template */
+	text-decoration:none;
+	border:0;
+}
+
+/** General HTML Classes **/
+.legalnotice {
+	border-top:1px solid #1A1A1A;
+	border-bottom:1px solid #1A1A1A;
+}
+.chapter {
+}
+.section {
+}
+.toc > dl > dd {
+	margin-bottom:10px;
+}
+.programlisting {
+	background-color:#F8F8F8;
+	border:1px solid #1A1A1A;
+	border-left:16px solid #1A1A1A;
+	font-family:"Consolas","Bitstream Vera Sans Mono","Courier New",Courier,monospace !important;
+	font-size:0.9em !important;
+	font-style:normal !important;
+	font-weight:normal !important;
+	line-height:1.1em !important;
+	padding:5px;
+
+        -moz-border-radius:8px;
+        -webkit-border-radius:8px;
+        -khtml-border-radius:8px;
+        border-radius:8px; /* leave this CSS tag always as last */
+}
+.programlisting > a {
+	color:#333333;
+}
+.varname, .filename {
+	font-weight:bold;
+	font-size:1.2em;
+}

@@ -1,0 +1,22 @@
+/** Resetting elements */
+/*html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,
+del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, hr {
+	border:0;
+	color:#000000;
+	font-weight:inherit;
+	font-style:inherit;
+	font-size:100%;
+	font-family:inherit;
+	margin:0;
+	outline:none;
+	padding:0;
+	text-decoration:none;
+	vertical-align:baseline;
+}*/
+/* Remove possible quote marks (") from <q>, <blockquote>. */
+blockquote:before, blockquote:after, q:before, q:after { content:"";}
+blockquote, q { quotes:"" "";}

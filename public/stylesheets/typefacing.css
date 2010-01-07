@@ -1,0 +1,14 @@
+/** Typefacing tweaks **/
+html {
+	font-size:100.01%; /* FIX typefacing rendering on broken browsers */
+}
+.amp {
+	font-family:Baskerville,Georgia,"Times New Roman",sans-serif;
+	font-style:italic;
+}
+em {
+	font-style:italic;
+}
+.legalnotice {
+	font-style:italic;
+}
