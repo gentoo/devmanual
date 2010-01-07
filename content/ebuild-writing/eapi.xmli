@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="ebuild-writing.eapi">
+  <title><varname>EAPI</varname> Usage and Description</title>
+
+  <para>
+    This section provides usage and descriptions of the different EAPIs.
+  </para>
+
+  <section>
+    <title>Usage of EAPIs</title>
+
+    <para>
+      If <varname>EAPI</varname> is undefined in an ebuild, then <code>EAPI="0"</code> is selected. If you want to
+      override the <varname>EAPI</varname> variable, you have to specify it at the top of the ebuild:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+EAPI="1"
+
+inherit eutils
+
+]]></programlisting>
+
+    <important>
+      <para>
+	<varname>EAPI</varname> must only be defined in ebuild files, not eclasses. (eclasses may have
+	<varname>EAPI</varname>-conditional code)
+      </para>
+    </important>
+  </section>
+
+  <section>
+    <title><code>EAPI="1"</code></title>
+
+    <variablelist>
+      <varlistentry>
+	<term>Default <function>src_compile</function> Phase Function</term>
+
+	<listitem>
+	  <para>
+	    Support for the <varname>ECONF_SOURCE</varname> variable, which is also supported by
+	    <command>econf</command>, has been added to the default <function>src_compile</function> implementation.
+	  </para>
+
+	  <programlisting language="ebuild"><![CDATA[
+src_compile() {
+	if [[ -x ${ECONF_SOURCE:-.}/configure ]] ; then
+		econf
+	fi
+	if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ] ; then
+		emake || die "emake failed"
+	fi
+}
+]]></programlisting>
+	</listitem>
+      </varlistentry>
+	
+      <varlistentry>
+	<term><varname>SLOT</varname> dependencies</term>
+
+	<listitem>
+	  <para>
+	    Any valid atom can be constrained to match a specific <varname>SLOT</varname>. This is accomplished by
+	    appending a colon to the atom, followed by a <varname>SLOT</varname> value.
+	  </para>
+
+	  <itemizedlist>
+	    <listitem><para><package>x11-libs/qt:3</package></para></listitem>
+	    <listitem><para><package>~x11-libs/qt-3.3.8:3</package></para></listitem>
+	    <listitem><para><package>&gt;=x11-libs/qt-3.3.8:3</package></para></listitem>
+	    <listitem><para><package>=x11-libs/qt-3.3*:3</package></para></listitem>
+	  </itemizedlist>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><varname>IUSE</varname> defaults</term>
+
+	<listitem>
+	  <para>
+	    Add <literal>+</literal> or <literal>-</literal> before the name of the <varname>USE</varname> flag in
+	    <varname>IUSE</varname> to turn it on or off by default.
+	  </para>
+
+	  <important>
+	    <para>
+		The default <varname>USE</varname>-ordering is
+		<code>USE_ORDER="env:pkg:conf:defaults:pkginternal:env.d"</code> (see <command>man make.conf</command>).
+	    </para>
+
+	    <para>
+		Disabling default IUSE is pretty much useless as it does not override the profile and user config
+		(<filename>make.conf</filename> and <filename>package.use</filename>)
+	    </para>
+	  </important>
+
+	  <programlisting language="ebuild"><![CDATA[
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+EAPI="1"
+
+IUSE="foo +bar"
+]]></programlisting>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title><code>EAPI="2"</code></title>
+
+    <variablelist>
+      <title>Helpers</title>
+      <varlistentry>
+	<term><command>doman</command> Language Support</term>
+
+	<listitem>
+	  <para>
+	    <command>doman</command> automatically detects language codes and puts it in the
+	    appropriate directory.
+	  </para>
+
+	  <programlisting language="ebuild"><![CDATA[
+	  doman foo.1
+	  # will go into /usr/share/man/man1/foo.1
+	  doman foo.lang.1
+	  # will go into /usr/share/man/lang/man1/foo.1 with EAPI="2"
+	  ]]></programlisting>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+
+    <variablelist>
+      <title>Metadata</title>
+
+      <varlistentry>
+	<term>Blocker Atoms</term>
+
+	<listitem>
+	  <variablelist>
+	    <varlistentry>
+	      <term>New Meaning for Old Syntax</term>
+
+	      <listitem>
+		<para>
+		  Blocker atoms which use the previously existing !atom syntax now have a slightly different
+		  meaning. These blocker atoms indicate that conflicting packages may be temporarily installed
+		  simultaneously. When temporary simultaneous installation of conflicting packages occurs, the
+		  installation of a newer package may overwrite any colliding files that belong to an older package
+		  which is explicitly blocked. When such file collisions occur, the colliding files cease to belong to
+		  the older package, and they remain installed after the older package is eventually uninstalled. The
+		  older package is uninstalled only after any newer blocking packages have been merged on top of it.
+		</para>
+	      </listitem>
+	    </varlistentry>
+
+	    <varlistentry>
+	      <term>New <code>!!atom</code> Syntax</term>
+
+	      <listitem>
+		<para>
+		  A new <code>!!atom</code> syntax is now supported, for use in special cases for which temporary
+		  simultaneous installation of conflicting packages should not be allowed. If a given package happens
+		  to be blocked by a mixture of atoms consisting of both the <code>!atom</code> and
+		  <code>!!atom</code> syntaxes, the <code>!!atom</code> syntax takes precedence over the
+		  <code>!atom</code> syntax.
+		</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term><varname>USE</varname> Dependencies</term>
+
+	<listitem>
+	  <para>
+	    It is possible to depend on USE-flags of packages. See <xref
+	    linkend="general-concepts.dependencies.use-dependencies" />.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Customization of Output File Names in <varname>SRC_URI</varname></term>
+
+	<listitem>
+	  <para>
+	    A new syntax is supported which allows customization of the output file name for a given URI. In order to
+	    customize the output file name, a given URI should be followed by a <code>-&gt;</code> operator
+	    which, in turn, should be followed by the desired output file name. As usual, all tokens, including the
+	    operator and output file name, should be separated by whitespace.
+	  </para>
+	  
+	  <programlisting language="ebuild"><![CDATA[
+	  SRC_URI="http://dl.google.com/earth/client/GE4/release_4_3/GoogleEarthLinux.bin
+	  -&gt; GoogleEarthLinux-${PV}.bin"
+	  ]]></programlisting>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+
+    <variablelist>
+      <title>Phases</title>
+
+      <varlistentry>
+	<term>New <function>src_prepare</function> Phase Function</term>
+
+	<listitem>
+	  <para>
+	    A new <function>src_prepare</function> function is called after the <function>src_unpack</function>
+	    function, with work directory initially set to <varname>S</varname>.
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>New <function>src_configure</function> Phase Function</term>
+
+	<listitem>
+	  <para>
+	    The configure portion of the <function>src_compile</function> function has been split into a separate
+	    function which is named <function>src_configure</function>. The <function>src_configure</function> function
+	    is called in-between the <function>src_prepare</function> and <function>src_compile</function> functions.
+	  </para>
+
+	  <para>
+	    The default <function>src_configure</function> and <function>src_compile</function> functions in
+	    <code>EAPI=2</code> are the following:
+	  </para>
+
+	  <programlisting language="ebuild"><![CDATA[
+src_configure() {
+	if [[ -x ${ECONF_SOURCE:-.}/configure ]] ; then
+		econf
+	fi
+}
+
+src_compile() {
+	if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ] ; then
+		emake || die "emake failed"
+	fi
+}
+]]></programlisting>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Execution Order of Phase Functions</term>
+
+	<listitem>
+	  <orderedlist>
+	    <listitem><para><function>pkg_setup</function></para></listitem>
+	    <listitem><para><function>src_unpack</function></para></listitem>
+	    <listitem><para><function>src_prepare</function></para></listitem>
+	    <listitem><para><function>src_configure</function></para></listitem>
+	    <listitem><para><function>src_compile</function></para></listitem>
+	    <listitem><para><function>src_test</function></para></listitem>
+	    <listitem><para><function>src_install</function></para></listitem>
+	    <listitem><para><function>pkg_preinst</function></para></listitem>
+	    <listitem><para><function>pkg_postinst</function></para></listitem>
+	    <listitem><para><function>pkg_prerm</function></para></listitem>
+	    <listitem><para><function>pkg_postrm</function></para></listitem>
+	  </orderedlist>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Default Phase Functions</term>
+
+	<listitem>
+	  <para>
+	    The default <function>pkg_nofetch</function> and <function>src_*</function> phase functions are now
+	    accessible via a function having a name that begins with <function>default_</function> and ends with the
+	    respective phase function name. For example, a call to a function with the name
+	    <function>default_src_compile</function> is equivalent to a call to the default
+	    <function>src_compile</function> implementation.
+	  </para>
+
+	  <para>The default phase functions are:</para>
+
+	  <itemizedlist>
+	    <listitem><para><function>default_pkg_nofetch</function></para></listitem>
+	    <listitem><para><function>default_src_unpack</function></para></listitem>
+	    <listitem><para><function>default_src_prepare</function></para></listitem>
+	    <listitem><para><function>default_src_configure</function></para></listitem>
+	    <listitem><para><function>default_src_compile</function></para></listitem>
+	    <listitem><para><function>default_src_test</function></para></listitem>
+	  </itemizedlist>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Default Phase Function Alias</term>
+
+	<listitem>
+	  <para>
+	    A function named <command>default</command> is redefined for each phase so that it will call the
+	    <function>default_*</function> function corresponding to the current phase. For example, a call to the
+	    function named <command>default</command> during the <function>src_compile</function> phase is equivalent to
+	    a call to the function named <function>default_src_compile</function>.
+	  </para>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+</section>

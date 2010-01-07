@@ -340,7 +340,7 @@ DEPEND="baz? ( || ( app-misc/foo app-misc/bar ) )"
     </section>.
   </section>
 
-  <section>
+  <section xml:id="general-concepts.dependencies.use-dependencies">
     <title>Built with USE Dependencies</title>
 
     <para>

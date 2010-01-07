@@ -28,6 +28,7 @@
     </d:tocentry>
     <d:tocentry linkend="ebuild-writing"><?dbhtml filename="ebuild-writing.html"?>
     <d:tocentry linkend="ebuild-writing.file-format"><?dbhtml filename="ebuild-writing/file-format.html"?></d:tocentry>
+    <d:tocentry linkend="ebuild-writing.eapi"><?dbhtml filename="ebuild-writing/eapi.html"?></d:tocentry>
     </d:tocentry>
   </d:tocentry>
 </toc>

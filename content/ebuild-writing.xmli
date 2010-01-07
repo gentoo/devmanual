@@ -12,5 +12,6 @@
   </para>
 
   <xi:include parse="xml" href="ebuild-writing/file-format.xmli" />
+  <xi:include parse="xml" href="ebuild-writing/eapi.xmli" />
 
 </chapter>
