@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="ebuild-writing.file-format">
+  <title>Ebuild File Format</title>
+
+  <para>
+    An ebuild is a <command>bash</command> script which is executed within a special environment.  Files should be
+    simple text files with a <filename>.ebuild</filename> extension.
+  </para>
+
+  <section xml:id="ebuild-writing.file-format.file-naming-rules">
+    <title>File Naming Rules</title>
+
+    <para>
+      An ebuild should be named in the form <filename>name-version.ebuild</filename>.
+    </para>
+
+    <para>
+      The name section should contain only lowercase non-accented letters, the digits 0-9, hyphens, underscores and plus
+      characters. Uppercase characters are strongly discouraged, but technically valid.
+    </para>
+
+    <note>
+      <para>
+	This is the same as <link
+	xl:href="http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap03.html#tag_03_276">
+	IEEE1003.1-2004-3.276</link>, with the exception of the period character and with the addition of the plus
+	character to keep GTK+ and friends happy.
+      </para>
+    </note>
+    
+    <para>
+      The version section is more complicated. It consists of one or more numbers separated by full stop (or period, or
+      dot, or decimal point) characters (eg <package>1.2.3</package>, <package>20050108</package>). The final number
+      may have a single letter following it (e.g. <package>1.2b</package>). This letter should not be used to indicate
+      'beta' status — portage treats <package>1.2b</package> as being a later version than <package>1.2</package> or
+      <package>1.2a</package>.
+    </para>
+
+    <para>
+      There can be a suffix to version indicating the kind of release. In the following table, what portage considers to
+      be the 'lowest' version comes first.
+    </para>
+
+    <table>
+      <title>Version Suffixes for Ebuilds</title>
+      <tgroup cols="2">
+	<thead>
+	  <row>
+	    <entry>Suffix</entry>
+	    <entry>Meaning</entry>
+	  </row>
+	</thead>
+	<tbody>
+	  <row>
+	    <entry><filename>_alpha</filename></entry>
+	    <entry>Alpha release (earliest)</entry>
+	  </row>
+	  <row>
+	    <entry><filename>_beta</filename></entry>
+	    <entry>Beta release</entry>
+	  </row>
+	  <row>
+	    <entry><filename>_pre</filename></entry>
+	    <entry>Pre release</entry>
+	  </row>
+	  <row>
+	    <entry><filename>_rc</filename></entry>
+	    <entry>Release candidate</entry>
+	  </row>
+	  <row>
+	    <entry>(no suffix)</entry>
+	    <entry>Normal release</entry>
+	  </row>
+	  <row>
+	    <entry><filename>_p</filename></entry>
+	    <entry>Patch level</entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </table>
+
+    <para>
+      Any of these suffixes may be followed by a non-zero positive integer.
+    </para>
+
+    <para>
+      These suffixes can be chained together and will be processed iteratively.  To give some examples (the following
+      list is from lowest version to highest):
+    </para>
+
+    <itemizedlist>
+      <listitem><para><package>foo-1.0.0_alpha_pre</package></para></listitem>
+      <listitem><para><package>foo-1.0.0_alpha_rc1</package></para></listitem>
+      <listitem><para><package>foo-1.0.0_beta_pre</package></para></listitem>
+      <listitem><para><package>foo-1.0.0_beta_p1</package></para></listitem>
+    </itemizedlist>
+
+    <para>
+      No integer part of the version may be longer than 18 digits.
+    </para>
+
+    <para>
+      Finally, version may have a Gentoo revision number in the form <package>-r1</package>. The initial Gentoo
+      version should have no revision suffix, the first revision should be <package>-r1</package>, the second
+      <package>-r2</package> and so on. See <xref linkend="general-concepts.ebuild-revisions"/>.
+    </para>
+
+    <para>
+      Overall, this gives us a filename like <filename>libfoo-1.2.5b_pre5-r2.ebuild</filename>.
+    </para>
+  </section>
+
+  <section>
+    <title>Ebuild Header</title>
+
+    <para>
+      All ebuilds committed to the tree should have a three line header immediately at
+      the start indicating copyright. This must be an exact copy of the contents of
+      <filename>$(portageq portdir)/header.txt</filename>. Ensure that the <code>$Header: $</code> line is not
+      modified manually — CVS will handle this line specially.
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+]]></programlisting>
+  </section>
+
+  <section xml:id="ebuild-writing.file-format.indenting">
+    <title>Indenting and Whitespace</title>
+
+    <para>
+      Indenting in ebuilds must be done with tabs, one tab per indent level. Each tab represents four spaces. Tabs
+      should only be used for indenting, never inside strings.
+    </para>
+
+    <para>
+      Avoid trailing whitespace: repoman will warn you about this if your ebuild contains trailing or leading whitespace
+      (whitespace instead of tabs for indentation) when you commit.
+    </para>
+
+    <para>
+      Where possible, try to keep lines no wider than 80 positions. A 'position' is generally the same as a character —
+      tabs are four positions wide, and multibyte characters are just one position wide.
+    </para>
+  </section>
+
+  <section>
+    <title>Character Set</title>
+
+    <para>
+      All ebuilds (and eclasses, metadata files and ChangeLogs) must use the
+      UTF-8 character set. See <link xl:href="http://www.gentoo.org/proj/en/glep/glep-0031.html">GLEP 31</link>
+      for details.
+    </para>
+  </section>
+</section>

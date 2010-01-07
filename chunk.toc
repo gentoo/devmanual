@@ -27,6 +27,7 @@
     <d:tocentry linkend="general-concepts.virtuals"><?dbhtml filename="general-concepts/virtuals.html"?></d:tocentry>
     </d:tocentry>
     <d:tocentry linkend="ebuild-writing"><?dbhtml filename="ebuild-writing.html"?>
+    <d:tocentry linkend="ebuild-writing.file-format"><?dbhtml filename="ebuild-writing/file-format.html"?></d:tocentry>
     </d:tocentry>
   </d:tocentry>
 </toc>

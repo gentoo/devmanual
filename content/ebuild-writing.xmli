@@ -11,4 +11,6 @@
     functions available, and finishes off with some general notes and extended examples.
   </para>
 
+  <xi:include parse="xml" href="ebuild-writing/file-format.xmli" />
+
 </chapter>
