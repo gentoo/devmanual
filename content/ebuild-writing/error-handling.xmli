@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="ebuild-writing.error-handling">
+  <title>Error Handling</title>
+
+  <section>
+    <title>Importance of Error Handling</title>
+
+
+    <para>
+      Decent error handling is important because:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+	<para>
+	  Errors must be detected <emphasis>before</emphasis> portage tries to install a broken or incomplete package
+	  onto the live filesystem. If build failures aren't caught, a working package could be unmerged and replaced
+	  with nothing.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  When receiving bug reports, it is a lot easier to figure out what went wrong if you know exactly which call
+	  caused the error, rather than just knowing that, say, something somewhere in <function>src_compile</function>
+	  broke.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  Good error handling and notification can help cut down on the number of bug reports received for a package.
+	</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title>The <command>die</command> Function</title>
+
+
+    <para>
+      The <command>die</command> function should be used to indicate a fatal error and abort the build. Its parameters
+      should be the message to display.
+    </para>
+
+    <para>
+      Although <command>die</command> will work with no parameters, a short message should always be provided to ease
+      error identification. This is especially important when a function can die in multiple places.
+    </para>
+
+    <para>
+      Some portage-provided functions will automatically die upon failure. Others will not. It is for example safe to
+      omit the <code>|| die</code> after a call to <command>epatch</command>, but not <command>emake</command>. The
+      reason is that external binaries are not able to call <command>die</command> that is a bash function. You can see
+      what commands are external binaries with <code>ls /usr/lib/portage/bin/</code>.
+    </para>
+
+    <para>
+      Sometimes displaying additional error information beforehand can be useful. Use <command>eerror</command> to do
+      this. See <xref linkend="ebuild-writing.messages"/>.
+    </para>
+
+    <para>
+      It's best to use <code>|| die</code> too often than too little.
+    </para>
+  </section>
+
+  <section xml:id="ebuild-writing.error-handling.die-subshells">
+    <title><command>die</command> and Subshells</title>
+
+    <warning>
+      <para>
+	<command>die</command> <emphasis>will not work in a subshell</emphasis>.
+      </para>
+    </warning>
+
+    <para>
+      The following code will not work as expected, since the <command>die</command> is inside a subshell:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+[[ -f foorc ]] && ( update_foorc || die "Couldn't update foorc!" )
+]]></programlisting>
+
+    <para>
+      The correct way to rewrite this is to use an <code>if</code> block:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+if [[ -f foorc ]] ; then
+    update_foorc || die "Couldn't update foorc!"
+fi
+]]></programlisting>
+
+    <para>
+      When using pipes, a subshell is introduced, so the following is unsafe:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+cat list | while read file ; do epatch ${file} ; done
+]]></programlisting>
+
+    <para>
+      Using input redirection (see <xref linkend="tools-reference.cat.abuse-of-cat"/>) avoids this problem:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+while read file ; do epatch ${file} ; done < list
+]]></programlisting>
+  </section>
+
+  <section>
+    <title>The <command>assert</command> Function and <varname>$PIPESTATUS</varname></title>
+
+    <para>
+      When using pipes, simple conditionals and tests upon <varname>$?</varname> will not correctly detect errors
+      occurring in anything except the final command in the chain. To get around this, <command>bash</command> provides
+      the <varname>$PIPESTATUS</varname> variable, and portage provides the <command>assert</command> function to check
+      this variable.
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+bunzip2 "${DISTDIR}/${VIM_RUNTIME_SNAP}" | tar xf
+assert
+]]></programlisting>
+
+    <para>
+      If you need the gory details of <varname>$PIPESTATUS</varname>, see the <command>bash</command> manpage. Most of
+      the time, <command>assert</command> is enough.
+    </para>
+  </section>
+</section>

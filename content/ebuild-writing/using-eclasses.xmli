@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="ebuild-writing.using-eclasses">
+
+  <title>Using Eclasses</title>
+
+  <para>
+    An eclass is a collection (library) of functions or functionality that is shared between packages. See <xref
+    linkend="eclass-writing"/> for the full story on what eclasses can do, how they work and how to write them, and
+    <xref linkend="eclass-reference"/> for documentation on various commonly used eclasses. This section only explains
+    how to use an eclass which has already been written.
+  </para>
+
+  <section>
+    <title>The <command>inherit</command> Function</title>
+
+    <para>
+      To use an eclass, it must be 'inherited'. This is done via the <command>inherit</command> function, which is
+      provided by <filename>ebuild.sh</filename>. The <command>inherit</command> statement must come at the top of the
+      ebuild, <emphasis>before</emphasis> any functions. Conditional inherits are illegal (except where the inheritance
+      criteria are cache-constant — see <xref linkend="general-concepts.portage-cache"/>).
+    </para>
+
+    <para>
+      After inheriting an eclass, its provided functions can be used as normal. Here's
+      <filename>devtodo-0.1.18-r2.ebuild</filename>, which uses three eclasses:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+inherit eutils bash-completion flag-o-matic
+
+DESCRIPTION="A nice command line todo list for developers"
+HOMEPAGE="http://swapoff.org/DevTodo"
+SRC_URI="http://swapoff.org/files/${PN}/${P}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc s390 sparc x86 ppc64"
+IUSE=""
+
+RDEPEND="&gt;=sys-libs/ncurses-5.2
+    &gt;=sys-libs/readline-4.1"
+DEPEND="${RDEPEND}"
+
+src_unpack() {
+    unpack ${A}
+    cd "${S}"
+    epatch "${FILESDIR}/${P}-gentoo.diff"
+}
+
+src_compile() {
+    einfo "Running autoreconf"
+    autoreconf -f -i || die "autoreconf failed"
+    replace-flags -O? -O1
+    econf --sysconfdir=/etc/devtodo
+    emake || die "emake failed"
+}
+
+src_install() {
+    emake DESTDIR="${D}" install || die "make install failed"
+    dodoc AUTHORS ChangeLog QuickStart README TODO doc/scripts.sh \
+    doc/scripts.tcsh doc/todorc.example contrib/tdrec || die "dodoc failed"
+    dobashcompletion "${FILESDIR}/${PN}.bash-completion" ${PN}
+}
+
+pkg_postinst() {
+    echo
+    einfo "Because of a conflict with app-misc/tdl, the tdl symbolic link"
+    einfo "and manual page have been removed."
+    bash-completion_pkg_postinst
+}
+]]></programlisting>
+
+    <para>
+      Note the <command>inherit</command> immediately after the header.
+    </para>
+
+    <para>
+      The <filename>eutils</filename> eclass (see <xref linkend="eclass-reference.eutils.eclass"/>) is needed to get the
+      <command>epatch</command> function.  The <filename>flag-o-matic</filename> eclass (see <xref
+      linkend="eclass-reference.flag-o-matic.eclass"/>) is needed for <command>replace-flags</command>, and the
+      <filename>bash-completion</filename> eclass (see <xref linkend="eclass-reference.bash-completion.eclass"/>) is
+      used to handle the bash completion file via <command>dobashcompletion</command> and
+      <function>bash-completion_pkg_postinst</function>.
+    </para>
+  </section>
+</section>

@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="ebuild-writing.variables">
+  <title>Variables</title>
+
+  <para>
+    There are a number of special variables which must be set in ebuilds, and many more which can optionally be
+    specified. There are also some predefined variables which are of use throughout the ebuild.
+  </para>
+
+  <table xml:id="ebuild-writing.variables.predefined-ro-vars">
+    <title>Predefined Read-Only Variables</title>
+
+    <tgroup cols="2">
+      <thead>
+	<row>
+	  <entry>Variable</entry>
+	  <entry>Purpose</entry>
+	</row>
+      </thead>
+      <tbody>
+	<row>
+	  <entry><varname>P</varname></entry>
+	  <entry>Package name and version (excluding revision, if any), for example <literal>vim-6.3</literal>.</entry>
+	</row>
+	<row>
+	  <entry><varname>PN</varname></entry>
+	  <entry>Package name, for example <literal>vim</literal>.</entry>
+	</row>
+	<row>
+	  <entry><varname>PV</varname></entry>
+	  <entry>Package version (excluding revision, if any), for example <literal>6.3</literal>.</entry>
+	</row>
+	<row>
+	  <entry><varname>PR</varname></entry>
+	  <entry>Package revision, or <literal>r0</literal> if no revision exists.</entry>
+	</row>
+	<row>
+	  <entry><varname>PVR</varname></entry>
+	  <entry>
+	    Package version and revision (if any), for example <literal>6.3</literal>, <literal>6.3-r1</literal>.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>PF</varname></entry>
+	  <entry>Full package name, <literal>${PN}-${PVR}</literal>, for example <literal>vim-6.3-r1</literal>.</entry>
+	</row>
+	<row>
+	  <entry><varname>A</varname></entry>
+	  <entry>
+	    All the source files for the package (excluding those which are not available because of
+	    <varname>USE</varname> flags).
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>CATEGORY</varname></entry>
+	  <entry>Package's category, for example <literal>app-editors</literal>.</entry>
+	</row>
+	<row>
+	  <entry><varname>FILESDIR</varname></entry>
+	  <entry>
+	    Path to the ebuild's <filename>files/</filename> directory, commonly used for small patches and
+	    files. Value: <literal>"${PORTDIR}/${CATEGORY}/${PN}/files"</literal>.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>WORKDIR</varname></entry>
+	  <entry>
+	    Path to the ebuild's root build directory. Value: <literal>"${PORTAGE_BUILDDIR}/work"</literal>.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>T</varname></entry>
+	  <entry>
+	    Path to a temporary directory which may be used by the ebuild. Value:
+	    <literal>"${PORTAGE_BUILDDIR}/temp"</literal>.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>D</varname></entry>
+	  <entry>
+	    Path to the temporary install directory. Value: <literal>"${PORTAGE_BUILDDIR}/image"</literal>>.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>ROOT</varname></entry>
+	  <entry>
+	    Path to the root directory. When not using <varname>${D}</varname>, always prepend
+	    <varname>${ROOT}</varname> to the path.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>DISTDIR</varname></entry>
+	  <entry>
+	    Contains the path to the directory where all the files fetched for the package are stored.
+	  </entry>
+	</row>
+      </tbody>
+    </tgroup>
+
+    <caption>
+      <para>
+	These variables are defined for you. You must not attempt to set them.
+      </para>
+    </caption>
+  </table>
+
+  <table>
+    <title>Required Variables</title>
+    <tgroup cols="2">
+      <thead>
+	<row>
+	  <entry>Variable</entry>
+	  <entry>Purpose</entry>
+	</row>
+      </thead>
+      <tbody>
+	<row>
+	  <entry><varname>DESCRIPTION</varname></entry>
+	  <entry>
+	    A short (less than 80 characters) description of the package's purpose.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>SRC_URI</varname></entry>
+	  <entry>
+	    A list of source URIs for the package. Can contain <varname>USE</varname>-conditional parts, see <xref
+	    linkend="ebuild-writing.variables.SRC_URI"/>.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>HOMEPAGE</varname></entry>
+	  <entry>
+	    Package's homepage. If you are unable to locate an official one, try to provide a link to <link
+	    xl:href="http://freshmeat.net">freshmeat.net</link> or a similar package tracking site. Never refer to a
+	    variable name in the string; include only raw text.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>KEYWORDS</varname></entry>
+	  <entry>
+	    See <xref linkend="ebuild-writing.variables.KEYWORDS"/> and <xref linkend="keywording"/>.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>SLOT</varname></entry>
+	  <entry>
+	    The package's <varname>SLOT</varname>. See <xref linkend="ebuild-writing.variables.SLOT"/> and <xref
+	    linkend="general-concepts.slotting" />.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>LICENSE</varname></entry>
+	  <entry>
+	    The package's license, corresponding exactly (including case) to a file in <filename>licenses/</filename>. See
+	    <xref linkend="ebuild-writing.variables.LICENSE"/>.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>IUSE</varname></entry>
+	  <entry>
+	    A list of all <varname>USE</varname> flags (excluding arch flags, but including <varname>USE_EXPAND</varname>
+	    flags) used within the ebuild. See <xref linkend="ebuild-writing.variables.IUSE"/>.
+	  </entry>
+	</row>
+      </tbody>
+    </tgroup>
+
+    <caption>
+      <para>
+	These variables must be defined by every ebuild.
+      </para>
+    </caption>
+  </table>
+
+  <table>
+    <title>Optional Variables</title>
+
+    <tgroup cols="2">
+      <thead>
+	<row>
+	  <entry>Variable</entry>
+	  <entry>Purpose</entry>
+	</row>
+      </thead>
+
+      <tbody>
+	<row>
+	  <entry><varname>S</varname></entry>
+	  <entry>
+	    Path to the temporary build directory, used by <function>src_compile</function> and
+	    <function>src_install</function>. Default: <literal>"${WORKDIR}/${P}"</literal>. Ebuilds should
+	    <emphasis>not</emphasis> provide a value for this variable if it is the same as the default value.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>DEPEND</varname></entry>
+	  <entry>
+	    A list of the package's build dependencies.  See <xref linkend="general-concepts.dependencies"/>.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>RDEPEND</varname></entry>
+	  <entry>
+	    A list of the package's runtime dependencies. See <xref linkend="general-concepts.dependencies"/>.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>PDEPEND</varname></entry>
+	  <entry>
+	    A list of packages to be installed after the package is merged. Should only be used where
+	    <varname>RDEPEND</varname> is not possible. See <xref linkend="general-concepts.dependencies"/>.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>RESTRICT</varname></entry>
+	  <entry>
+	    A space-delimited list of portage features to restrict.  Valid values are <option>fetch</option>,
+	    <option>mirror</option>, <option>strip</option>, <option>test</option> and <option>userpriv</option>. See
+	    <command>man 5 ebuild</command> for details.
+	  </entry>
+	</row>
+	<row>
+	  <entry><varname>PROVIDE</varname></entry>
+	  <entry>
+	    Any virtuals provided by this package, for example <literal>"virtual/editor virtual/emacs"</literal>.
+	  </entry>
+	</row>
+      </tbody>
+    </tgroup>
+
+    <caption>
+      <para>
+	Specifying these variables is optional.
+      </para>
+    </caption>
+  </table>
+
+  <section xml:id="ebuild-writing.variables.SLOT">
+    <title><varname>SLOT</varname></title>
+
+    <para>
+      When slots are not needed, use <code>SLOT="0"</code>. Do <emphasis>not</emphasis> use
+      <code>SLOT=""</code>, as this will disable slotting for this package.
+    </para>
+
+    <para>
+      See <xref linkend="general-concepts.slotting"/> for more information on this variable.
+    </para>
+  </section>
+
+  <section xml:id="ebuild-writing.variables.KEYWORDS">
+    <title><varname>KEYWORDS</varname></title>
+
+    <para>
+      The only valid construct involving a <literal>*</literal> inside <varname>KEYWORDS</varname> is a
+      <literal>-*</literal>. Do <emphasis>not</emphasis> use <code>KEYWORDS="*"</code> or <code>KEYWORDS="~*"</code>.
+    </para>
+
+    <para>
+      See <xref linkend="keywording"/> for how to handle this variable.
+    </para>
+  </section>
+
+  <section xml:id="ebuild-writing.variables.SRC_URI">
+    <title><varname>SRC_URI</varname></title>
+
+    <section>
+      <title>Conditional Sources</title>
+
+      <para>
+	Conditional source files based upon USE flags are allowed using the usual <code>flag? ( )</code>
+	syntax. This is often useful for arch-specific code or for binary packages — downloading sparc binaries on ppc
+	would be a waste of bandwidth.
+      </para>
+
+      <programlisting language="ebuild"><![CDATA[
+SRC_URI="http://example.com/files/${P}-core.tar.bz2
+    x86?   ( http://example.com/files/${P}/${P}-sse-asm.tar.bz2 )
+    ppc?   ( http://example.com/files/${P}/${P}-vmx-asm.tar.bz2 )
+    sparc? ( http://example.com/files/${P}/${P}-vis-asm.tar.bz2 )
+    doc?   ( http://example.com/files/${P}/${P}-docs.tar.bz2 )"
+]]></programlisting>
+
+      <para>
+	If a <varname>USE_EXPAND</varname> variable is used to control whether certain optional components are
+	installed, the correct thing to do if the variable is unset is generally to install <emphasis>all</emphasis>
+	available components.
+      </para>
+
+      <programlisting language="ebuild"><![CDATA[
+SRC_URI="http://example.com/files/${P}-core.tar.bz2
+        examplecards_foo?  ( http://example.com/files/${P}-foo.tar.bz2 )
+        examplecards_bar?  ( http://example.com/files/${P}-bar.tar.bz2 )
+        examplecards_baz?  ( http://example.com/files/${P}-baz.tar.bz2 )
+        !examplecards_foo? ( !examplecards_bar? ( !examplecards_baz? (
+            http://example.com/files/${P}-foo.tar.bz2
+            http://example.com/files/${P}-bar.tar.bz2
+            http://example.com/files/${P}-baz.tar.bz2 ) ) )"
+]]></programlisting>
+    </section>
+  </section>
+
+  <section xml:id="ebuild-writing.variables.IUSE">
+    <title><varname>IUSE</varname></title>
+
+
+    <para>
+      Note that the <varname>IUSE</varname> variable is cumulative, so there is no need to specify
+      <varname>USE</varname> flags used only within inherited eclasses within the ebuild's <varname>IUSE</varname>. Also
+      note that it's really really broken in portage versions before 2.0.51.
+    </para>
+
+    <para>
+      Arch USE flags (<option>sparc</option>, <option>mips</option>, <option>x86-fbsd</option> and so on) should not be
+      listed.
+    </para>
+  </section>
+
+  <section xml:id="ebuild-writing.variables.LICENSE">
+    <title><varname>LICENSE</varname></title>
+
+    <para>
+      It is possible to specify multiple <varname>LICENSE</varname> entries, and entries which only apply if a
+      particular <varname>USE</varname> flag is set. The format is the same as for <varname>DEPEND</varname>. See
+      <link xl:href="http://www.gentoo.org/proj/en/glep/glep-0023.html"> GLEP 23</link> for details.
+    </para>
+  </section>
+
+  <section>
+    <title>Version Formatting Issues</title>
+    
+    <para>
+      Often upstream's tarball versioning format doesn't quite follow Gentoo conventions. Differences in how underscores
+      and hyphens are used are particularly common. For example, what Gentoo calls <package>foo-1.2.3b</package> may
+      be expecting a tarball named <filename>foo-1.2-3b.tar.bz2</filename>. Rather than hard coding version numbers, it
+      is preferable to make a <varname>MY_PV</varname> variable and use that. The easy way to do this, which should be
+      used unless you are sure you know what you are doing, is to use <filename>versionator.eclass</filename>:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+inherit versionator
+MY_PV=$(replace_version_separator 2 '-')
+]]></programlisting>
+
+    <para>
+      This code has the advantage that it will carry on working even if upstream switches to a format like
+      <filename>foo-1.3-4.5.tar.bz2</filename> (yes, this really happens).
+    </para>
+
+    <para>
+      It is also possible to use bash substitution to achieve the same effect (this is how versionator works
+      internally), but this is complicated, error prone and hard to read.
+    </para>
+
+    <para>
+      Some ebuilds use calls to <command>sed</command>, <command>awk</command> and / or <command>cut</command> to do
+      this. This must <emphasis>not</emphasis> be done for any new code, and should be fixed to use either versionator
+      or bash substitution where possible. Global scope non-bash code is highly discouraged.
+    </para>
+
+    <para>
+      The <filename>versionator.eclass</filename> can also be used to extract particular components from a version
+      string. See <command>man versionator.eclass</command> and the eclass source code for further documentation and
+      examples. A brief summary of the functions follows.
+    </para>
+
+    <table>
+      <title><filename>versionator.eclass</filename> Version Handling Functions</title>
+
+      <tgroup cols="2">
+	<thead>
+	  <row>
+	    <entry>Function</entry>
+	    <entry>Purpose</entry>
+	  </row>
+	</thead>
+	<tbody>
+	  <row>
+	    <entry><function>get_all_version_components</function></entry>
+	    <entry>Split up a version string into its component parts.</entry>
+	  </row>
+	  <row>
+	    <entry><function>get_version_components</function></entry>
+	    <entry>Get important version components, excluding '.', '-' and '_'.</entry>
+	  </row>
+	  <row>
+	    <entry><function>get_major_version</function></entry>
+	    <entry>Get the major version.</entry>
+	  </row>
+	  <row>
+	    <entry><function>get_version_component_range</function></entry>
+	    <entry>Extract a range of subparts from a version string.</entry>
+	  </row>
+	  <row>
+	    <entry><function>get_after_major_version</function></entry>
+	    <entry>Get everything after the major version.</entry>
+	  </row>
+	  <row>
+	    <entry><function>replace_version_separator</function></entry>
+	    <entry>Replace a particular version separator.</entry>
+	  </row>
+	  <row>
+	    <entry><function>replace_all_version_separators</function></entry>
+	    <entry>Replace all version separators.</entry>
+	  </row>
+	  <row>
+	    <entry><function>delete_version_separator</function></entry>
+	    <entry>Delete a version separator.</entry>
+	  </row>
+	  <row>
+	    <entry><function>delete_all_version_separators</function></entry>
+	    <entry>Delete all version separators.</entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </table>
+  </section>
+</section>

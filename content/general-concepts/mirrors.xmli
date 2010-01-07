@@ -29,7 +29,7 @@
       modified.
     </para>
 
-    <section>
+    <section xml:id="general-concepts.mirrors.restrict-mirroring">
       <title>Restricting Automatic Mirroring</title>
 
       <para>

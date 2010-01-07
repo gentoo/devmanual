@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="ebuild-writing.messages">
+  <title>Messages</title>
+
+  <para>
+    Sometimes it is necessary to display messages for the user. This can be for errors, post-install help messages,
+    pre-install warnings or simply to notify the user of what's going on. It is considered good form to display a
+    message before any particularly long and silent task is carried out, for example (and it also helps cut down on
+    bogus "compiling foo froze!" bugs).
+  </para>
+
+  <note>
+    <para>
+      It is a policy violation to use any of these functions to display a line of characters (a banner header). The use
+      of colours and special leading characters provided by these functions is sufficient to make a message stand out.
+    </para>
+  </note>
+
+  <para>
+    In all cases, assume that the user's terminal is no wider than 79 columns, and that the <command>elog</command>,
+    <command>einfo</command>, <command>ewarn</command> and <command>eerror</command> functions will occupy 4 columns
+    with their fancy leading markers.
+  </para>
+
+  <section>
+    <title>Information Messages</title>
+
+    <para>
+      There are a number of functions available to assist here. The <command>echo</command> bash internal is the
+      simplest — it simply displays its parameters as a message.
+    </para>
+
+    <para>
+      The <command>elog</command> function can be used to display an informational message which is meant to 'stand out'
+      and is logged by the elog functionality in Portage 2.1 and Paludis 0.6 or newer.  On a colour terminal, the
+      message provided will be prefixed with a green asterisk.  On earlier versions, elog behaves just like einfo.
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+pkg_postinst() {
+    elog "You will need to set up your /etc/foo/foo.conf file before"
+    elog "running foo for the first time. For details, please see the"
+    elog "foo.conf(5) manual page."
+}
+]]></programlisting>
+    
+    <para>
+      The <command>einfo</command> function can be used to display an informational message which is meant to 'stand
+      out'. On a colour terminal, the message provided will be prefixed with a green asterisk. einfo messages go to the
+      INFO elog class which is not logged by default.
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+src_compile() {
+    einfo "Starting a silent compile that takes hours."
+    ./build
+}
+]]></programlisting>
+  </section>
+
+  <section>
+    <title>Warning Messages</title>
+
+    <para>
+      The <command>ewarn</command> function is similar, but displays a yellow asterisk. This should be used for warning
+      messages rather than information.
+    </para>
+  </section>
+
+  <section>
+    <title>Error Messages</title>
+
+    <para>
+      The <command>eerror</command> function displays a red star, and is used for displaying error messages. It should
+      almost always be followed by a <command>die</command> call. This function is mainly used for displaying additional
+      error details before bailing out.
+    </para>
+  </section>
+
+  <section>
+    <title>Important Messages</title>
+    
+    <para>
+      For <emphasis>really</emphasis> important messages, <filename>eutils.eclass</filename> provides
+      <command>ebeep</command> and <command>epause</command>. The former will beep a number of times, and the latter
+      will pause for several seconds to allow the user to read any messages. Both can be disabled by the user — you must
+      <emphasis>not</emphasis> attempt to override the user's preference in this. <command>ebeep</command> takes an
+      optional parameter specifying how many times to beep.  <command>epause</command> takes an optional parameter
+      (which <emphasis>must</emphasis> be an exact whole number) specifying for how long it should sleep.
+    </para>
+
+    <para>
+      Do not abuse these functions — better to save them for when things really are important.
+    </para>
+
+    <para>
+      See <xref linkend="function-reference.message-functions" /> for a full list of functions.
+    </para>
+  </section>
+
+  <section>
+    <title>Good and Bad Messages</title>
+
+    <para>
+      Here is an example of a bad message:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+i=10
+while ((i--)) ; do
+    ewarn "PLEASE UPDATE TO YOUR PACKAGE TO USE linux-info.eclass"
+done
+]]></programlisting>
+
+    <itemizedlist>
+      <listitem>
+	<para>
+	  Displaying the same message repeatedly is excessive.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  The uppercase is excessive.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  The bad English looks unprofessional.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  The message will only confuse the end user and will not help them work out
+	  whether they have a problem and how to solve it if they do.
+	</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      It would be better written as:
+    </para>
+
+    <programlisting language="ebuild"><![CDATA[
+ewarn "The 'frozbinate' function provided by eutils.eclass is deprecated"
+ewarn "in favour of frozbinate.eclass, but this package has not been"
+ewarn "updated yet. If this is a package from the main tree, please check"
+ewarn "http://bugs.gentoo.org/ and file a bug if there is not one already."
+ewarn "If this is your own package, please read the comments in the"
+ewarn "frozbinate eclass for instructions on how to convert."
+]]></programlisting>
+  </section>
+</section>

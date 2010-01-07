@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="ebuild-writing.functions">
+  <title>Ebuild Functions</title>
+
+  <para>
+    When installing packages from source, the function call order is <function>pkg_setup</function>,
+    <function>src_unpack</function>, <function>src_compile</function>, <function>src_test</function> (optional,
+    <code>FEATURES="test"</code>), <function>src_install</function>, <function>pkg_preinst</function>,
+    <function>pkg_postinst</function>. When installing packages from a binary, the function call order is
+    <function>pkg_setup</function>, <function>pkg_preinst</function>, <function>pkg_postinst</function>.
+  </para>
+
+  <figure>
+    <title>How the ebuild functions are processed</title>
+
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="/images/functions-call-diagram.png"
+		   align="center" />
+      </imageobject>
+    </mediaobject>
+  </figure>
+
+  <para>
+    The <function>pkg_prerm</function> and <function>pkg_postrm</function> functions are called when uninstalling a
+    package. The <function>pkg_config</function> function is used for any special package configuration — it is only run
+    when explicitly requested by the user. The <function>pkg_nofetch</function> function is used when a
+    <code>RESTRICT="fetch"</code> package needs to obtain some <varname>SRC_URI</varname> components.
+  </para>
+
+  <para>
+    Between the transition from <function>pkg_preinst</function> to <function>pkg_postinst</function>, files are copied
+    over to the live filesystem from the sandboxed temporary installation location, and Portage records digests of the
+    files installed.
+  </para>
+
+  <para>
+    When testing or debugging, you can instruct Portage to execute a specific function from an ebuild by using the
+    <command>ebuild</command> command, see <command>man 1 ebuild</command> for further information.
+  </para>
+
+  <xi:include parse="xml" href="functions/pkg_nofetch.xmli" />
+
+</section>

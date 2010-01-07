@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="ebuild-writing.functions.pkg_nofetch">
+  <title><function>pkg_nofetch</function></title>
+
+  <variablelist>
+    <varlistentry>
+      <term>Purpose</term>
+      <listitem>
+	<para>
+	  Tell the user how to deal with fetch-restricted packages
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Sandbox</term>
+      <listitem>
+	<para>Enabled</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Privilege</term>
+      <listitem>
+	<para>root</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Called for</term>
+      <listitem>
+	  <para>ebuild</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+  <figure>
+    <title>Default <function>pkg_nofetch</function></title>
+
+    <programlisting language="ebuild"><![CDATA[
+pkg_nofetch()
+{
+    [ -z "${SRC_URI}" ] && return
+
+    echo "!!! The following are listed in SRC_URI for ${PN}:"
+    for MYFILE in `echo ${SRC_URI}`; do
+        echo "!!!   $MYFILE"
+    done
+    return
+}
+]]></programlisting>
+  </figure>
+
+  <example>
+    <title>Sample <function>pkg_nofetch</function></title>
+
+    <programlisting language="ebuild"><![CDATA[
+pkg_nofetch() {
+    einfo "Please download"
+    einfo "  - ${P}-main.tar.bz2"
+    einfo "  - ${P}-extras.tar.bz2"
+    einfo "from ${HOMEPAGE} and place them in ${DISTDIR}"
+}
+]]></programlisting>
+  </example>
+
+  <para>
+    This function is only triggered for packages which have <code>RESTRICT="fetch"</code> (see <xref
+    linkend="general-concepts.mirrors.restrict-mirroring"/>) set, and only if one or more components listed in
+    <varname>SRC_URI</varname> are not already available in the <filename>distfiles/</filename> directory.
+  </para>
+</section>
+

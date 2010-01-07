@@ -29,6 +29,13 @@
     <d:tocentry linkend="ebuild-writing"><?dbhtml filename="ebuild-writing.html"?>
     <d:tocentry linkend="ebuild-writing.file-format"><?dbhtml filename="ebuild-writing/file-format.html"?></d:tocentry>
     <d:tocentry linkend="ebuild-writing.eapi"><?dbhtml filename="ebuild-writing/eapi.html"?></d:tocentry>
+    <d:tocentry linkend="ebuild-writing.use-conditional-code"><?dbhtml filename="ebuild-writing/use-conditional-code.html"?></d:tocentry>
+    <d:tocentry linkend="ebuild-writing.error-handling"><?dbhtml filename="ebuild-writing/error-handling.html"?></d:tocentry>
+    <d:tocentry linkend="ebuild-writing.users-and-groups"><?dbhtml filename="ebuild-writing/users-and-groups.html"?></d:tocentry>
+    <d:tocentry linkend="ebuild-writing.messages"><?dbhtml filename="ebuild-writing/messages.html"?></d:tocentry>
+    <d:tocentry linkend="ebuild-writing.variables"><?dbhtml filename="ebuild-writing/variables.html"?></d:tocentry>
+    <d:tocentry linkend="ebuild-writing.using-eclasses"><?dbhtml filename="ebuild-writing/using-eclasses.html"?></d:tocentry>
+    <d:tocentry linkend="ebuild-writing.functions"><?dbhtml filename="ebuild-writing/functions.html"?></d:tocentry>
     </d:tocentry>
   </d:tocentry>
 </toc>
