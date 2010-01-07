@@ -12,8 +12,7 @@ generate: main.docbook
 		--stringparam toc.section.depth 1 \
 		--stringparam collect.xref.targets "yes" \
 		--stringparam targets.filename "$(patsubst %.xhtml,%.olinkdb,$@)" \
-		stylesheets/gentoo.org.xsl \
-		$<
+		stylesheets/gentoo.org.xsl $<
 
 chunk.toc.new:
 	$(XSLTPROC) \

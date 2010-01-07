@@ -5,11 +5,15 @@
 
 /**
  * COLORS TABLE:
+ * white background: #F9F9F9;
+ * black foreground: #1A1A1A;
  * blue: #0F83DB;
  */
 
 /** General HTML Elements **/
 body {
+	background-color:#F9F9F9;
+	color:#1A1A1A;
 	font-family:Helvetica,"Helvetica Neue","Lucida Grande","Lucida Sans Unicode",Sans-Serif,Verdana,Arial;
 	font-size:1em;
 	max-width:800px;
@@ -23,11 +27,12 @@ hr {
 p {
 	text-align:justify;
 }
-a[href=""] {
-	color:#0F83DB;
+a {
 	/* Resetting borders from the DocBook template */
 	text-decoration:none;
 	border:0;
+	font-weight:bold;
+	color:#0F83DB;
 }
 
 /** General HTML Classes **/
