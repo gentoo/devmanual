@@ -1,0 +1,80 @@
+/**
+ * @font-face is supported by:
+ * - Safari 3.1+;
+ * - Internet Explorer (only if EOT fonts are used);
+ * - Opera 9+;
+ * - Firefox 3.5+;
+ * - Konqueror 4.3+;
+ * - Google Chrome/Chromium;
+ */
+
+/** Sans font sets **/
+@font-face {
+	font-family: 'DroidSans';
+	src: url('../fonts/DroidSans.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'DroidSans-Bold';
+	src: url('../fonts/DroidSans-Bold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'DoridSans-Mono';
+	src: url('../fonts/DroidSansMono.ttf') format('truetype');
+}
+
+/** Sans Serif font sets **/
+@font-face {
+	font-family: 'DroidSerif-BoldItalic';
+	src: url('../fonts/DroidSerif-BoldItalic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'DroidSerif-Bold';
+	src: url('../fonts/DroidSerif-Bold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'DroidSerif-Regular';
+	src: url('../fonts/DroidSerif-Regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'DroidSerif-Italic';
+	src: url('../fonts/DroidSerif-Italic.ttf') format('truetype');
+}
+
+/** Typefacing elements **/
+html {
+	font-size:100.01%; /* FIX typefacing rendering on broken browsers */
+}
+body {
+/*	font-family:Helvetica,"Helvetica Neue","Lucida Grande","Lucida Sans Unicode",Sans-Serif,Verdana,Arial;*/
+	font-family: 'DroidSans';
+	font-size:1em;
+}
+.amp {
+/*	font-family:Baskerville,Georgia,"Times New Roman",sans-serif;*/
+	font-family: 'DroidSerif-Italic';
+}
+em {
+	font-family: 'DroidSerif-Italic';
+}
+
+/** DocBook elements **/
+para {
+}
+
+
+/** DocBook classes **/
+.legalnotice {
+	font-family: 'DroidSerif-Italic';
+}
+.programlisting {
+/*	font-family: "DroidSans-Mono","Consolas","Bitstream Vera Sans Mono","Courier New",Courier,monospace !important;*/
+	font-family: 'DoridSans-Mono';
+	font-size:0.9em !important;
+	font-style:normal !important;
+	font-weight:normal !important;
+	line-height:20px !important;
+}
+.varname, .filename {
+	font-family: 'DroidSans-Bold';
+	font-size:1.2em;
+}
