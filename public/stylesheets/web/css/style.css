@@ -14,7 +14,7 @@
 body {
 	background-color:#F9F9F9;
 	color:#1A1A1A;
-	max-width:800px;
+	max-width:730px;
 	margin:auto;
 	margin-top:40px;
 	margin-bottom:40px;
@@ -28,12 +28,13 @@ hr {
 }
 p {
 	text-align:justify;
+	text-indent:30px;
 }
 a {
 	/* Resetting borders from the DocBook template */
 	text-decoration:none;
 	border:0;
-	font-weight:bold;
+	border-bottom:1px dotted #0F83DB;
 	color:#0F83DB;
 }
 
@@ -46,12 +47,29 @@ a {
 }
 .section {
 }
-.toc > dl > dd {
+div.toc > dl > dd {
 	margin-bottom:10px;
+}
+div.toc > p {
+	text-indent:0px;
+}
+div.chapter > div.toc {
+	border:2px solid #1A1A1A;
+	padding:10px;
+	padding-left:30px; /* same as the <p> indentation */
+
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	-khtml-border-radius:8px;
+	border-radius:8px; /* leave this CSS tag always as last */
+}
+div.chapter > div.toc > dl > dt > span.section {
+/*	margin-left:20px; /* same as the <p> indentation */
+/*	border:1px solid red;*/
 }
 .programlisting {
 	background-color:#F8F8F8;
-	border:1px solid #1A1A1A;
+	border:2px solid #1A1A1A;
 	border-left:16px solid #1A1A1A;
 	padding:5px;
 
@@ -66,4 +84,7 @@ a {
 .navheader {
 	height:60px;
 /*	border:1px solid red;*/
+}
+h2.title {
+	border-bottom:2px solid #1A1A1A;
 }

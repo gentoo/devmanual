@@ -45,16 +45,16 @@ html {
 	font-size:100.01%; /* FIX typefacing rendering on broken browsers */
 }
 body {
-/*	font-family:Helvetica,"Helvetica Neue","Lucida Grande","Lucida Sans Unicode",Sans-Serif,Verdana,Arial;*/
-	font-family: 'DroidSans';
+/*	font-family:Helvetica,'Helvetica Neue','Lucida Grande','Lucida Sans Unicode',Sans-Serif,Verdana,Arial;*/
+	font-family:'DroidSans';
 	font-size:1em;
 }
-.amp {
-/*	font-family:Baskerville,Georgia,"Times New Roman",sans-serif;*/
-	font-family: 'DroidSerif-Italic';
+.amp, em {
+/*	font-family:Baskerville,Georgia,'Times New Roman,sans-serif;*/
+	font-family:'DroidSerif-Italic';
 }
-em {
-	font-family: 'DroidSerif-Italic';
+a {
+	font-family:'DroidSans-Bold';
 }
 
 /** DocBook elements **/
@@ -67,12 +67,12 @@ para {
 	font-family: 'DroidSerif-Italic';
 }
 .programlisting {
-/*	font-family: "DroidSans-Mono","Consolas","Bitstream Vera Sans Mono","Courier New",Courier,monospace !important;*/
-	font-family: 'DoridSans-Mono';
-	font-size:0.9em !important;
-	font-style:normal !important;
-	font-weight:normal !important;
-	line-height:20px !important;
+/*	font-family:'DroidSans-Mono','Consolas','Bitstream Vera Sans Mono','Courier New',Courier,monospace !important;*/
+	font-family:'DoridSans-Mono';
+	font-size:0.9em;
+	font-style:normal;
+	font-weight:normal;
+	line-height:20px;
 }
 .varname, .filename {
 	font-family: 'DroidSans-Bold';

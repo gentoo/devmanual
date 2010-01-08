@@ -72,7 +72,7 @@
 	<!-- Include latest versione of jQuery -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" />
 
-	<!-- Include hashgrid script (http://hashgrid.org)
+	<!-- Include hashgrid script (http://hashgrid.com)
 	     -->
 	<script type="text/javascript">
 		<xsl:attribute name="src">

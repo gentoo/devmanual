@@ -1,25 +1,24 @@
 /**
- * Grid
+ * Grid System
+ *
+ * total area:  770px - 203mm (A4 ISO format less the left/right margins)
+ * gutter/gap:   20px
+ * line height:  20px
+ * grid width:  730px (total area - 2 x gutter)
  */
-#grid{
+#grid {
 
     /* Vertical grid lines */
-    background: url(../images/hashtag-grid-980.gif) repeat-y 0 0;
+    background: url(../images/770-grid.png) repeat-y 0 0;
 
     /* Dimensions - same width as your grid with gutters */
-    width: 980px;
-
-    /* Grid (left-aligned)
-    position: absolute;
-    top: 0;
-    left: 0;
-    */
+    width: 770px;
 
     /* Grid (centered) */
     position: absolute;
     top: 0;
     left: 50%;
-    margin-left: -490px;
+    margin-left: -385px;
 
 }
 
@@ -29,12 +28,12 @@
  * Remember, the CSS properties that define the box model:
  * visible height = height + borders + margins + padding
  */
-#grid .horiz{
+#grid .horiz {
 
     /* 20px line height */
-    height: 19px;
-    border-bottom: 1px dotted #aaa;
-    margin: 0;
-    padding: 0;
+    height:19px;
+    border-bottom:1px dotted #AAA;
+    margin:0;
+    padding:0;
 
 }
