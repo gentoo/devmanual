@@ -11,33 +11,33 @@
 /** Sans font sets **/
 @font-face {
 	font-family: 'DroidSans';
-	src: url('../fonts/DroidSans.ttf') format('truetype');
+	src: url('/usr/share/fonts/droid/DroidSans.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'DroidSans-Bold';
-	src: url('../fonts/DroidSans-Bold.ttf') format('truetype');
+	src: url('/usr/share/fonts/droid/DroidSans-Bold.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'DoridSans-Mono';
-	src: url('../fonts/DroidSansMono.ttf') format('truetype');
+	src: url('/usr/share/fonts/droid/DroidSansMono.ttf') format('truetype');
 }
 
 /** Sans Serif font sets **/
 @font-face {
 	font-family: 'DroidSerif-BoldItalic';
-	src: url('../fonts/DroidSerif-BoldItalic.ttf') format('truetype');
+	src: url('/usr/share/fonts/droid/DroidSerif-BoldItalic.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'DroidSerif-Bold';
-	src: url('../fonts/DroidSerif-Bold.ttf') format('truetype');
+	src: url('/usr/share/fonts/droid/DroidSerif-Bold.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'DroidSerif-Regular';
-	src: url('../fonts/DroidSerif-Regular.ttf') format('truetype');
+	src: url('/usr/share/fonts/droid/DroidSerif-Regular.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'DroidSerif-Italic';
-	src: url('../fonts/DroidSerif-Italic.ttf') format('truetype');
+	src: url('/usr/share/fonts/droid/DroidSerif-Italic.ttf') format('truetype');
 }
 
 /** Typefacing elements **/
@@ -51,7 +51,7 @@ body {
 }
 .amp, em {
 /*	font-family:Baskerville,Georgia,'Times New Roman,sans-serif;*/
-	font-family:'DroidSerif-Italic';
+	font-style:italic;
 }
 a {
 	font-family:'DroidSans-Bold';
@@ -64,7 +64,7 @@ para {
 
 /** DocBook classes **/
 .legalnotice {
-	font-family: 'DroidSerif-Italic';
+	font-style:italic;
 }
 .programlisting {
 /*	font-family:'DroidSans-Mono','Consolas','Bitstream Vera Sans Mono','Courier New',Courier,monospace !important;*/
