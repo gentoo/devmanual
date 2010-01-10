@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="eclass-writing">
+  <title>Eclass Writing Guide</title>
+
+  <para>
+    This section provides a brief introduction to eclass authoring.
+  </para>
+
+  <important>
+    <para>
+      You should reread the <xref linkend="general-concepts.overlay.overlays-and-eclasses"/> and <xref
+      linkend="general-concepts.portage-cache"/> sections before continuing.
+    </para>
+  </important>
+
+  <section>
+    <title>Purpose of Eclasses</title>
+
+    <para>
+      An eclass is a collection of code which can be used by more than one ebuild. At the time of writing, all eclasses
+      live in the <filename>eclass/</filename> directory in the tree.  Roughly speaking, there are three kinds of
+      eclass:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+	<para>
+	  Those which provide common functions which are used by many ebuilds (for example, <filename>eutils</filename>,
+	  <filename>versionator</filename>, <filename>cvs</filename>, <filename>bash-completion</filename>)
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  Those which provide a basic build system for many similar packages (for example,
+	  <filename>vim-plugin</filename>, <filename>kde</filename>)
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  Those which handle one or a small number of packages with complex build systems (for example,
+	  <filename>vim</filename>, <filename>toolchain</filename>, <filename>kernel-2</filename>)
+	</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title>Adding and Updating Eclasses</title>
+
+    <para>
+      Before committing a new eclass to the tree, it should be emailed to the <email>gentoo-dev@lists.gentoo.org</email>
+      mailing list with a justification and a proposed implementation. Do not skip this step — sometimes a better
+      implementation or an alternative which does not require a new eclass will be suggested.
+    </para>
+
+    <para>
+      Before updating <filename>eutils</filename> or a similar widely used eclass, it is best to email the
+      <email>gentoo-dev@lists.gentoo.org</email> list. It may be that your proposed change is broken in a way you had
+      not anticipated, or that there is an existing function which performs the same purpose, or that your function may
+      be better off in its own eclass. If you don't email gentoo-dev first, and end up breaking something, expect to be
+      in a lot of trouble.
+    </para>
+
+    <para>
+      If there is an existing maintainer for an eclass (this is usually the case), you <emphasis>must</emphasis> talk to
+      the maintainer before committing any changes.
+    </para>
+
+    <para>
+      It is not usually necessary to email the gentoo-dev list before making changes to a non-general eclass which you
+      maintain. Use common sense here.
+    </para>
+
+    <warning>
+      <para>
+	Committing a broken eclass can kill huge numbers of packages. Since <command>repoman</command> is not
+	eclass-aware, be very sure you do proper testing.
+      </para>
+    </warning>
+
+    <para>
+      A simple way to verify syntax is <command>bash -n foo.eclass</command>.
+    </para>
+  </section>
+
+  <section>
+    <title>Removing Eclasses</title>
+
+
+    <para>
+      No longer used eclasses may be removed from the tree, but developers must adhere to the following
+      process(developers must follow these rules because packages installed with a portage version of less than 2.1.4
+      would break during uninstallation or upgrades):
+    </para>
+
+    <orderedlist>
+      <listitem>
+	<para>
+	  Make sure that no packages or other eclasses in the tree <command>inherit</command> the eclass.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  Send a message to the gentoo-dev and gentoo-dev-announce mailing lists announcing that the eclass you are
+	  deprecating is now deprecated.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  Add a warning to all installation phases that the eclass is now deprecated, perhaps with a hint at what, if
+	  any, eclass replaced the functionality that the old eclass provided.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  Remove all functionality related to installation of packages from the eclass.
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  Add a one line comment saying exactly <code># @DEAD</code> so that the eclass-manpages package will not
+	  attempt to document it.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  After two years have passed since the eclass was deprecated, the eclass may be removed from the portage tree.
+	</para>
+      </listitem>
+    </orderedlist>
+  </section>
+
+  <section>
+    <title>Basic Eclass Format</title>
+
+    <para>
+      An eclass is a <command>bash</command> script which is sourced within the ebuild environment.  Files should be a
+      simple text file with a <filename>.eclass</filename> extension. Allowed characters in the filename are lowercase
+      letters, the digits 0-9, hyphens, underscores and dots. Eclasses are not intrinsically versioned.
+    </para>
+
+    <para>
+      Eclasses should start with the standard ebuild header, along with comments explaining the maintainer and purpose
+      of the eclass, and any other relevant documentation.
+    </para>
+  </section>
+
+  <section>
+    <title>Eclass Variables</title>
+
+    <para>
+      Top level variables may be defined as for ebuilds. If any USE flags are used, <varname>IUSE</varname> must be
+      set. The <varname>KEYWORDS</varname> variable must <emphasis>not</emphasis> be set in an eclass.
+    </para>
+  </section>
+
+  <section>
+    <title>Eclass Functions</title>
+
+    <para>
+      Eclasses may define functions. These functions will be visible to anything which inherits the eclass.
+    </para>
+
+    <example>
+      <title>Simple Common Functions Eclass Example</title>
+
+      <para>
+	As an example, the following eclass was written to illustrate a better way of installing OSX application files
+	during a discussion on this subject. It defines a single function, <function>domacosapp</function>.
+      </para>
+
+      <programlisting language="ebuild"><![CDATA[
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+#
+# Original Author: Ciaran McCreesh <ciaranm@gentoo.org>
+# Purpose: install macos .app files to the relevant location.
+#
+# Bugs to osx@gentoo.org
+#
+
+# domacosapp: install a macos .app file. Usage is 'domacosapp file' or
+# 'domacosapp file newfile'.
+
+domacosapp() {
+    [[ -z "${1}" ]] && die "usage: domacosapp <file> <new file>"
+    if useq ppc-macos ; then
+        insinto /Applications
+        newins "$1" "${2:-${1}}" || die "Failed to install ${1}"
+    fi
+}
+      ]]></programlisting>
+    </example>
+
+    <section>
+      <title>Export Functions</title>
+
+      <para>
+	An eclass may provide default implementations for any of the standard ebuild functions
+	(<function>src_unpack</function>, <function>pkg_postinst</function> etc). This can be done either as a simple
+	function definition (which is not multiple eclass friendly) or using
+	<command>EXPORT_FUNCTIONS</command>. Functions given to <command>EXPORT_FUNCTIONS</command> are implemented as
+	normal, but have their name prefixed with <function>${ECLASS}_</function>.
+      </para>
+
+      <important>
+	<para>
+	  Only 'standard' functions should be specified in <command>EXPORT_FUNCTIONS</command>.
+	</para>
+      </important>
+
+      <note>
+	<para>
+	  <command>EXPORT_FUNCTIONS</command> is a function, <emphasis>not</emphasis> a variable.
+	</para>
+      </note>
+
+      <para>
+	If multiple eclasses export the same function, the latest (inherited last) defined version wins.  If an ebuild
+	defines a function that is exported, this gets priority over any eclass version. This can be used to override
+	eclass-defined defaults — for example, say we had <filename>fnord.eclass</filename>:
+      </para>
+
+      <programlisting language="ebuild"><![CDATA[
+EXPORT_FUNCTIONS src_compile
+
+fnord_src_compile() {
+    do_stuff || die
+}
+]]></programlisting>
+
+      <para>
+	Then an ebuild could do this:
+      </para>
+
+      <programlisting language="ebuild"><![CDATA[
+inherit fnord.eclass
+
+src_compile() {
+    do_pre_stuff || die
+    fnord_src_compile
+    do_post_stuff || die
+}
+]]></programlisting>
+
+      <example>
+	<title>Simple Build System Eclass Example</title>
+
+	<para>
+	  A simple eclass which defines a number of functions and a default <function>src_compile</function> for the
+	  (hypothetical) <command>jmake</command> build system might look something like the following:
+	</para>
+
+	<programlisting language="ebuild"><![CDATA[
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+# Original Author: Ciaran McCreesh <ciaranm@gentoo.org>
+# Purpose: Demonstration of EXPORT_FUNCTIONS. Defines simple wrappers for the
+# (hypothetical) 'jmake' build system and a default src_compile.
+
+EXPORT_FUNCTIONS src_compile
+
+DEPEND=">=sys-devel/jmake-2"
+
+jmake-configure() {
+    jmake configure --prefix=/usr "$@"
+}
+
+jmake-build() {
+    jmake dep && jmake build "$@"
+}
+
+jmake_src_compile() {
+    jmake-configure || die "configure failed"
+    jmake-build || die "build failed"
+}
+]]></programlisting>
+      </example>
+    </section>
+  </section>
+</chapter>

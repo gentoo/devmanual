@@ -32,7 +32,7 @@ overlay
     entries.
   </para>
 
-  <section>
+  <section xml:id="general-concepts.overlay.overlays-and-eclasses">
     <title>Overlay and Eclasses</title>
 
     <para>
