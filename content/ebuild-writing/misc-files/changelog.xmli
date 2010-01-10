@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="ebuild-writing.misc-files.changelog">
+  <title>ChangeLog</title>
+
+  <para>
+    The <filename>ChangeLog</filename> should be used to record all non-trivial changes to ebuilds, including
+    <emphasis>keywording changes</emphasis>. The echangelog tool should be used to create <filename>ChangeLog</filename>
+    entries — the format of a <filename>ChangeLog</filename> is now defined as "whatever <command>echangelog</command>
+    creates".
+  </para>
+
+  <para>
+    You should include references to any relevant bugs. The standard format for doing this is via the phrase
+    <literal>bug #20600</literal> — this format (with the hash sign included) is recognised via <link
+    xl:href="http://packages.gentoo.org/">packages.gentoo.org</link> and similar tools. When including user-submitted
+    ebuilds or patches, you should credit the user with their full name and email address (or whatever they use to
+    identify themselves on bugzilla — some users prefer to be known only by a nickname).
+  </para>
+
+  <para>
+    If you are changing keywords, make sure you clearly state what keywords you add or remove. "Marked stable" is a
+    nuisance for architecture teams, even if there was only one keyword in the ebuild at the time. "Stable on all archs"
+    isn't generally any better (and should you really be stabling on all archs?) — do you mean "all", or "all the ones
+    that are currently keyworded"? A list like "x86 sparc mips" is much more useful.
+  </para>
+
+  <para>
+    A typical <filename>ChangeLog</filename> snippet might look like the following:
+  </para>
+
+  <programlisting><![CDATA[
+  *vim-6.3.068 (25 Mar 2005)
+
+  25 Mar 2005; Ciaran McCreesh &lt;ciaranm@gentoo.org&gt; +vim-6.3.068.ebuild:
+  New release. Fixes bug #79981, bug #81289, bug #83383, bug #83416, bug
+  #83565, bug #85758, upstream patches up to 6.3.068.
+
+  22 Mar 2005; Aron Griffis &lt;agriffis@gentoo.org&gt; vim-6.3-r4.ebuild:
+  Stable on alpha
+  ]]></programlisting>
+
+  <section>
+    <title>Writing correct ChangeLog messages</title>
+
+    <note>
+      <para>
+	It is <emphasis>very</emphasis> important that your <command>cvs commit</command> messages are also informative
+	to aid the QA team or architecture teams as well as other developers if they are trying to troubleshoot issues
+	which are known to not have occured in previous versions of ebuilds, for example. If your ChangeLog message is
+	concise there is usually nothing wrong with using it as the <command>cvs commit</command> message.
+      </para>
+    </note>
+
+    <para>
+      Your message should explain what specifically you changed and, if relevant, why. You don't need to write an essay
+      or even a complete sentence (<filename>ChangeLog</filename> messages, however, are required to be in 'proper'
+      English so no <quote>fixed that bug kthx Bob</quote> messages — please do use punctuation), so long as it is
+      easily understandable and (preferably) greppable. Bad and good examples, all of which are based upon real
+      messages:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+	<para><emphasis>BAD:</emphasis> Changed keywords</para>
+	<para><emphasis>GOOD:</emphasis> Added ~x86 keyword</para>
+      </listitem>
+
+      <listitem>
+	<para><emphasis>BAD:</emphasis> Stable</para>
+	<para><emphasis>GOOD:</emphasis> Stable on x86, sparc, mips</para>
+      </listitem>
+
+      <listitem>
+	<para><emphasis>BAD:</emphasis> Fix stuff</para>
+	<para><emphasis>GOOD:</emphasis> Fix USE=foo logic error</para>
+      </listitem>
+
+      <listitem>
+	<para><emphasis>BAD:</emphasis> .</para>
+	<para><emphasis>GOOD:</emphasis> Purge old ebuilds</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  <emphasis>BAD:</emphasis> Who the fuck reads this anyway? (<emphasis>Editor's note</emphasis>:
+	  No, seriously, this is a genuine example. Do <emphasis>not</emphasis> do
+	  this...)
+	</para>
+	<para><emphasis>GOOD:</emphasis> Version bump to 0.5.1.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

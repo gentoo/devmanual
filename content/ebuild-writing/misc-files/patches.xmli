@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="ebuild-writing.misc-files.patches">
+  <title>Patches</title>
+
+  <para>
+    There is no fixed rule for patch naming. The following are guidelines only.
+  </para>
+
+  <para>
+    Small patches (less than, say, a few KBytes) should be added to <varname>${FILESDIR}</varname>. If you anticipate
+    having several patches, it often helps to create version numbered subdirectories —
+    <varname>${FILESDIR}/${PV}/</varname> is conventional. Patches are best named
+    <filename>${P}-what-it-does.patch</filename> (or <filename>.diff</filename>), where
+    <filename>what-it-does</filename> is a two or three word description of what the patch is for. If the patch is to
+    fix a specific bug, it is often useful to add in the bug number — for example,
+    <filename>vim-7.0-cron-vars-79981.patch</filename>. If the patch is pulled from upstream's CVS / SVN repository, it
+    can help to include the revision number in the patch name as a suffix to the version part —
+    <filename>fluxbox-0.9.12-3860-menu-backups.patch</filename>.
+  </para>
+
+  <para>
+    Larger patches should be mirrored. When mirroring patches, choosing a name that will not cause conflicts is
+    important — the <filename>${P}</filename> prefix is highly recommended here. Mirrored patches are often compressed
+    with <command>bzip2</command>. Remember to list these patches in <varname>SRC_URI</varname>.
+  </para>
+
+  <important>
+    <para>
+      Patches included in <varname>${FILESDIR}</varname> should never be compressed.
+    </para>
+  </important>
+
+  <para>
+    If a package requires many patches, even if they are individually small, it is often best to create a patch tarball
+    to avoid cluttering up the tree too much.
+  </para>
+
+  <section>
+    <title>Patch Descriptions</title>
+
+    <para>
+      It is possible to include a description with a patch. This is often helpful when others come to work with your
+      packages, or, indeed when you come back to take a look at your own package a few months later. Good things to
+      include in comments are:
+    </para>
+
+    <itemizedlist>
+      <listitem><para>
+	What the patch actually does. Bug numbers are good here.
+      </para></listitem>
+      <listitem><para>
+	Where the patch came from. Is it an upstream CVS/SVN pull,
+	something from Bugzilla, something you wrote?
+      </para></listitem>
+      <listitem><para>
+	Whether the patch has been sent upstream, if applicable.
+      </para></listitem>
+    </itemizedlist>
+
+    <para>
+      To include the description, simply insert it at the top of the patch file. The <command>patch</command> tool will
+      ignore leading text until it finds something that looks like it might be a 'start patching' instruction, so as
+      long as each description line starts with letters (rather than numbers, symbols or whitespace) there shouldn't be
+      a problem. Alternatively, prefix each description line with a hash (that's <literal>#</literal>, or 'pound' to the
+      USians) sign. It's also best to leave a single blank line after the description and before the main patch.
+    </para>
+
+    <para>
+      Here's a simple example (<filename>023_all_vim-6.3-apache-83565.patch</filename>) from the
+      <package>vim</package> patch tarball:
+    </para>
+
+    <programlisting><![CDATA[
+# Detect Gentoo apache files properly. Gentoo bug 83565.
+
+--- runtime/filetype.vim.orig   2005-03-25 01:44:12.000000000 +0000
++++ runtime/filetype.vim        2005-03-25 01:45:15.000000000 +0000
+@@ -93,6 +93,9 @@
+ " Gentoo apache config file locations (Gentoo bug #76713)
+ au BufNewFile,BufRead /etc/apache2/conf/*/* setf apache
+
++" More Gentoo apache config file locations (Gentoo bug #83565)
++au BufNewFile,BufRead /etc/apache2/{modules,vhosts}.d/*.conf setf apache
++
+ " XA65 MOS6510 cross assembler
+ au BufNewFile,BufRead *.a65                    setf a65
+]]></programlisting>
+  </section>
+
+  <section>
+    <title>Adding Patches to the tree</title>
+
+    <para>
+      When adding a patch to the tree be sure to check that the patch doesn't have CVS keywords in it that will be
+      expanded (such as <code>$Id$</code>). If the patch contains these, it will break manifests unless you add
+      it to the tree correctly.  In the case that it does have the keywords, you should add it by doing:
+    </para>
+
+    <programlisting><![CDATA[
+      cvs add -ko files/${P}-the-cool-patch.path
+]]></programlisting>
+
+    <para>
+      <option>-ko</option> disables keyword expansion for that specific file.  If it doesn't have keywords in it, then
+      you can add it normally without the extra argument.
+    </para>
+  </section>
+</section>
