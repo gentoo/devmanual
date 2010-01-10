@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="ebuild-writing.use-conditional-code">
+  <title><varname>USE</varname> Flag Conditional Code</title>
+
+  <para>
+    Often a particular block of code must only be executed if a given USE flag is set (or unset). For large blocks,
+    <code>if use foo</code> is best, or for inverse tests either <code>if ! use foo</code> or <code>if use !foo</code>
+    can be used (the former is more common and is recommended for readability). For single-statement conditions, the
+    <code>use foo &amp;&amp; blah</code> (or <code>use foo || blah</code> for negatives) form is often more readable.
+  </para>
+
+  <para>
+    The <code>if [ "`use foo`" ]</code> and <code>if [ -n "`use foo`" ]</code> forms which are occasionally seen in
+    older code must <emphasis>not</emphasis> be used.
+  </para>
+
+  <note>
+    <para>
+      <command>die</command> will not work as expected within a subshell, so code in the form <code>use foo &amp;&amp; (
+      blah ; blah )</code> should be avoided in favour of a proper if statement. See <xref
+      linkend="ebuild-writing.error-handling.die-subshells"/>.
+    </para>
+  </note>
+
+  <programlisting language="ebuild"><![CDATA[
+    # USE conditional blocks...
+    if use livecd ; then
+        # remove some extra files for a small livecd install
+        rm -fr "${vimfiles}"/{compiler,doc,ftplugin,indent}
+    fi
+
+    # Inverse USE conditional blocks...
+    if ! use cscope ; then
+        # the --disable-cscope configure arg doesn't quite work properly,
+        # so sed it out of feature.h if we're not USEing cscope.
+        sed -i -e '/# define FEAT_CSCOPE/d' src/feature.h || die "couldn't disable cscope"
+    fi
+
+    # USE conditional statements...
+    use ssl && epatch "${FILESDIR}/${P}-ssl.patch"
+    use sparc && filter-flags -fomit-frame-pointer
+
+    # Inverse USE conditional statements...
+    use ncurses || epatch "${FILESDIR}/${P}-no-ncurses.patch"
+]]></programlisting>
+
+  <para>
+    For echoing content based upon a <varname>USE</varname> flag, there is often a better helper function available.
+  </para>
+
+  <para>
+    You must not rely upon <command>use</command> producing an output — this no longer happens.  If you really need
+    output displayed, use the <command>usev</command> function. The <command>useq</command> function is available for
+    explicitly requesting no output.
+  </para>
+</section>

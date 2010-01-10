@@ -13,6 +13,7 @@
 
   <xi:include parse="xml" href="ebuild-writing/file-format.xmli" />
   <xi:include parse="xml" href="ebuild-writing/eapi.xmli" />
+  <xi:include parse="xml" href="ebuild-writing/use-conditional-code.xmli" />
   <xi:include parse="xml" href="ebuild-writing/error-handling.xmli" />
   <xi:include parse="xml" href="ebuild-writing/users-and-groups.xmli" />
   <xi:include parse="xml" href="ebuild-writing/messages.xmli" />
