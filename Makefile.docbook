@@ -2,9 +2,12 @@ XSLTPROC = xsltproc
 
 XSL-NS-SS = http://docbook.sourceforge.net/release/xsl-ns/current/
 
+BASEURI := $(shell pwd)/public/
+
 generate: main.docbook
 	$(XSLTPROC) \
 		--xinclude \
+		--stringparam baseuri "${BASEURI}" \
 		--stringparam base.dir public/ \
 		--stringparam chunk.toc chunk.toc \
 		--stringparam section.autolabel 1 \
