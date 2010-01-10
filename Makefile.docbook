@@ -3,7 +3,7 @@ XSLTPROC = xsltproc
 XSL-NS-SS = http://docbook.sourceforge.net/release/xsl-ns/current/
 
 BASEURI := $(shell pwd)/public/
-
+CSS_THEME_NAME := localhost-html/
 generate: main.docbook
 	$(XSLTPROC) \
 		--xinclude \
@@ -15,6 +15,7 @@ generate: main.docbook
 		--stringparam toc.section.depth 1 \
 		--stringparam collect.xref.targets "yes" \
 		--stringparam targets.filename "$(patsubst %.xhtml,%.olinkdb,$@)" \
+		--stringparam css.theme.name "${CSS_THEME_NAME}" \
 		stylesheets/gentoo.org.xsl $<
 
 chunk.toc.new:
