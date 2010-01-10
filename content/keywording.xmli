@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="keywording">
+  <title>Keywording</title>
+
+  <note>
+    <para>
+      <emphasis>Terminology</emphasis>: The term 'package' refers to an entire directory, for example
+      <package>app-editors/vim</package> — it does <emphasis>not</emphasis> refer to a specific version. The terms
+      'ebuild' or 'package version' are used when this meaning is intended. This distinction is important.
+    </para>
+  </note>
+
+  <para>
+    Every ebuild should specify a <varname>KEYWORDS</varname> variable. This variable is used to indicate the
+    suitability and stability of both the package and the ebuild on each given arch (<option>sparc</option>,
+    <option>ppc</option>, <option>x86-fbsd</option>, ...).
+  </para>
+
+  <note>
+    <para>
+      The term 'arch' is used in this sense for historical reasons. As a result of <link
+      xl:href="http://www.gentoo.org/proj/en/glep/glep-0022.html">GLEP 22</link> and the various non-Linux ports, this
+      is no longer a particularly accurate term.
+    </para>
+  </note>
+
+  <para>
+    A sample <varname>KEYWORDS</varname>> entry might look like:
+  </para>
+
+  <programlisting language="ebuild"><![CDATA[
+KEYWORDS="x86 sparc mips ~ppc ~ppc-macos -ia64"
+]]></programlisting>
+
+  <para>
+    The different levels of keyword are:
+  </para>
+
+  <variablelist>
+    <varlistentry>
+      <term>
+	<option>arch</option> (e.g. <option>x86</option>, <option>ppc-macos</option>)
+      </term>
+
+      <listitem>
+	<para>
+	  Both the package version <emphasis>and</emphasis> the ebuild are widely tested, known to work and not have any
+	  serious issues on the indicated platform.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>
+	<option>~arch</option> (e.g.<option>~x86</option>, <option>~ppc-macos</option>)
+      </term>
+
+      <listitem>
+	<para>
+	  The package version and the ebuild are believed to work and do not have any known serious bugs, but more
+	  testing is required before the package version is considered suitable for <option>arch</option>.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>No keyword</term>
+
+      <listitem>
+	<para>
+	  If a package has no keyword for a given arch, it means it is not known whether the package will work, or that
+	  insufficient testing has occurred for <option>~arch</option>.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>
+	<option>-arch</option> (e.g. <option>-x86</option>, <option>-ppc-macos</option>)
+      </term>
+
+      <listitem>
+	<para>
+	  The package version will not work on the arch. This could be caused by badly written code (for example,
+	  non-64-bit or endian clean code), relying upon particular hardware (for example, a BIOS querying tool would
+	  not work on non-BIOS architectures) or binary only packages.
+	</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+  <para>
+    The <option>-*</option> keyword is special. It is used to indicate package versions which are not worth trying to
+    test on unlisted archs. For example, a binary-only package which is only supported upstream on
+    <option>x86</option> and <option>ppc</option> might use:
+  </para>
+
+  <programlisting language="ebuild"><![CDATA[
+KEYWORDS="-* x86 ppc"
+]]></programlisting>
+
+  <para>
+    This is different in implication from <code>"x86 ppc"</code> — the former implies that
+    it will not work on other archs, whereas the latter implies that it has not been
+    tested.
+  </para>
+
+  <para>
+    Do <emphasis>not</emphasis> use the <option>*</option> or <option>~*</option> special keywords in ebuilds.
+  </para>
+
+  <section>
+    <title>Equal Visibility Requirement</title>
+
+    <para>
+      An ebuild <emphasis>must not</emphasis> depend upon any package that is of a lower keyword level than itself. For
+      example, if <package>foo-1.2</package> depends upon <package>bar-1.2</package>, and
+      <package>bar-1.2</package> is <package>~x86</package>, then <package>foo-1.2</package> must
+      <emphasis>not</emphasis> be marked stable on <package>x86</package> unless <package>bar-1.2</package> is also
+      stabilised.
+    </para>
+
+    <para>
+      You may assume that if a user accepts <option>~arch</option> for a given arch then they also
+      accept <option>arch</option>.
+    </para>
+
+    <para>
+      For optional dependencies, all <emphasis>possible</emphasis> dependencies must satisfy the above.  Note that
+      certain <varname>USE</varname> flags can be forcibly disabled on a per-profile basis — talk to the arch teams if
+      you require this. For either-or dependencies, <emphasis>at least one</emphasis> of the options must be of equal or
+      better visibility than the package in question.
+    </para>
+  </section>
+
+  <section>
+    <title>Hard Masks</title>
+
+    <para>
+      The <filename>package.mask</filename> file can be used to 'hard mask' individual or groups of ebuilds. This should
+      be used for testing ebuilds or beta releases of software, and may also be used if a package has serious
+      compatibility problems. Packages which are not hard masked must <emphasis>not</emphasis> have a dependency upon
+      hard masked packages.
+    </para>
+
+    <para>
+      The only time it is acceptable for a user to see the <quote>Possibly a DEPEND problem</quote> error message
+      is if they have manually changed visibility levels for a package (for example, through
+      <filename>/etc/portage/</filename>) and have missed a dependency.  <emphasis>You should never commit a change
+      which could cause this error to appear on a user system</emphasis>.
+    </para>
+  </section>
+
+  <section>
+    <title>Keywording New Packages</title>
+
+    <important>
+      <para>
+	New packages should be marked as <option>~arch</option> only upon architectures for which the committing
+	developer has tested.
+      </para>
+    </important>
+
+    <para>
+      Do <emphasis>not</emphasis> assume that your package works on all architectures. Do <emphasis>not</emphasis>
+      assume that user submitted ebuilds will have correct <varname>KEYWORDS</varname> — chances are they just copied
+      from somewhere else. Do <emphasis>not</emphasis> assume that upstream's 'supported architectures' list is
+      correct. Do <emphasis>not</emphasis> assume that because your code is written in Perl / Python / Java / whatever
+      that it will run on other archs (there is at least one case of a <command>vim</command> script which only worked
+      on <option>x86</option>).
+    </para>
+
+    <para>
+      Note that most (non-x86) archs expect you to be on the arch team and bugzilla alias if you are committing packages
+      with keywords for that arch, and may have additional requirements of which you should be aware (on
+      <option>mips</option>, for example, there are multiple ABIs and byte orders to consider — a package working on
+      your <option>o32</option> box may not work on <option>o64</option> or <option>n32</option>). Contact the
+      individual arch teams for details.
+    </para>
+
+    <para>
+      Do <emphasis>not</emphasis> commit straight to <option>arch</option>.
+    </para>
+  </section>
+
+  <section xml:id="keywording.keywording-on-upgrades">
+    <title>Keywording on Upgrades</title>
+
+    <para>
+      When upgrading, drop all existing keywords from <option>arch</option> to <option>~arch</option>, and leave any
+      existing <option>~arch</option> keywords intact. This must be done even if you <emphasis>think</emphasis> you're
+      just making a trivial fix — there have been several examples of the stable tree getting broken this way.
+    </para>
+
+    <para>
+      Sometimes you may need to remove a keyword because of new unresolved dependencies. If you do this, you
+      <emphasis>must</emphasis> file a bug notifying the relevant arch teams.
+    </para>
+
+    <para>
+      This also applies to revision bumps, not just to upstream version changes.
+    </para>
+  </section>
+
+  <section>
+    <title>Moving from <option>~arch</option> to <option>arch</option></title>
+
+    <para>
+      Moving a package from <option>~arch</option> to <option>arch</option> is done only by the relevant arch teams.  If
+      you have access to non-x86 hardware but are not on the arch teams, you may wish to make individual arrangements —
+      the arch teams are happy for help, so long as they know what is going on. Please note that
+      <option>x86</option> is now no longer an exception and stabilisation must be done through the
+      <option>x86</option> arch team unless you have individual arrangements — see <link
+      xl:href="http://www.gentoo.org/proj/en/glep/glep-0040.html">GLEP 40</link> for further details.
+    </para>
+
+    <para>
+      For a package to move to stable, the following guidelines must be met:
+    </para>
+    
+    <itemizedlist>
+      <listitem>
+	<para>
+	  The package has spent a reasonable amount of time in <option>~arch</option> first. Thirty days is the usual
+	  figure, although this is clearly only a guideline. For critical packages, a much longer duration is
+	  expected. For small packages which have only minor changes between versions, a shorter period is sometimes
+	  appropriate.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  The package must not have any non-<option>arch</option> dependencies.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  The package must not have any severe outstanding bugs or issues.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  The package must be widely tested.
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  If the package is a library, it should be known not to break any package which depends upon it.
+	</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      For security fixes, the "reasonable amount of time" guideline may be relaxed.  See the <link
+      xl:href="http://www.gentoo.org/security/en/vulnerability-policy.xml"> Vulnerability Treatment Policy</link>
+    </para>
+  </section>
+
+  <section>
+    <title>Removing Package Versions</title>
+
+    <para>
+      When removing ebuild, ensure that you do not remove the most recent version at any given keyword level on any
+      profile. The aim here is:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+	<para>
+	  Never to force a downgrade. (Exception: occasionally you really do want to force a downgrade, for example if
+	  the newly committed <package>foo-1.3</package> turns out to be badly broken and that making everyone downgrade
+	  to <package>foo-1.2</package> is the better option. This is rare.)
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  Do not break any existing dependencies.
+	</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      If you would like a particular package version moved to stable on certain archs so that you can tidy up, file a
+      bug.
+    </para>
+  </section>
+</chapter>

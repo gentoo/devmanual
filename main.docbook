@@ -126,4 +126,5 @@
   <xi:include parse="xml" href="content/ebuild-writing.xmli" />
   <xi:include parse="xml" href="content/eclass-writing.xmli" />
   <xi:include parse="xml" href="content/profiles.xmli" />
+  <xi:include parse="xml" href="content/keywording.xmli" />
 </book>

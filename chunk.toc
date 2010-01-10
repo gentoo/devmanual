@@ -41,6 +41,7 @@
     </d:tocentry>
     <d:tocentry linkend="eclass-writing"><?dbhtml filename="eclass-writing.html"?></d:tocentry>
     <d:tocentry linkend="profiles"><?dbhtml filename="profiles.html"?></d:tocentry>
+    <d:tocentry linkend="keywording"><?dbhtml filename="keywording.html"?></d:tocentry>
   </d:tocentry>
 </toc>
 
