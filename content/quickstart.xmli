@@ -228,7 +228,7 @@ src_install() {
       Often we need to apply patches. This is done in the <function>src_unpack</function> function
       using the <command>epatch</command> helper function. To use <command>epatch</command> one must
       first tell Portage that the <filename>eutils</filename> eclass (an eclass is like a library)
-      is required <d/> this is done via <command>inherit eutils</command> at the top of the
+      is required — this is done via <command>inherit eutils</command> at the top of the
       ebuild. Here's <filename>app-misc/detox/detox-1.1.0.ebuild</filename>:
     </para>
 
