@@ -28,7 +28,7 @@ hr {
 }
 p {
 	text-align:justify;
-	text-indent:30px;
+/*	text-indent:30px;*/
 }
 a {
 	/* Resetting borders from the DocBook template */

@@ -9,10 +9,11 @@
 
 <!-- List of the configurable parameters -->
 <xsl:param name="baseuri"></xsl:param>
-<xsl:param name="theme-name">web/</xsl:param>
-<xsl:param name="css-path">css/</xsl:param>
-<xsl:param name="js-path">js/</xsl:param>
-<xsl:param name="images-path">images/</xsl:param>
+<xsl:param name="css.themes.path" select="'css-themes/'"></xsl:param>
+<xsl:param name="css.theme.name" select="'localhost-html'"></xsl:param>
+<xsl:param name="css.styles.path" select="'styles/'"></xsl:param>
+<xsl:param name="css.js.path" select="'js/'"></xsl:param>
+<xsl:param name="css.images.path" select="'images/'"></xsl:param>
 
 <xsl:template name="user.head.content">
 	<!-- Include the reset Style Sheet
@@ -22,9 +23,10 @@
 	<link rel="stylesheet" type="text/css">
 		<xsl:attribute name="href">
 			<xsl:value-of select="$baseuri" />
-			<xsl:text>stylesheets/</xsl:text>
-			<xsl:value-of select="$theme-name" />
-			<xsl:value-of select="$css-path" />
+			<xsl:value-of select="$css.themes.path" />
+			<xsl:value-of select="$css.theme.name" />
+			<xsl:text>/</xsl:text>
+			<xsl:value-of select="$css.styles.path" />
 			<xsl:text>reset.css</xsl:text>
 		</xsl:attribute>
 	</link>
@@ -34,10 +36,11 @@
 	<link rel="stylesheet" type="text/css">
 		<xsl:attribute name="href">
 			<xsl:value-of select="$baseuri" />
-			<xsl:text>stylesheets/</xsl:text>
-			<xsl:value-of select="$theme-name" />
-			<xsl:value-of select="$css-path" />
-			<xsl:text>style.css</xsl:text>
+			<xsl:value-of select="$css.themes.path" />
+			<xsl:value-of select="$css.theme.name" />
+			<xsl:text>/</xsl:text>
+			<xsl:value-of select="$css.styles.path" />
+			<xsl:text>main.css</xsl:text>
 		</xsl:attribute>
 	</link>
 
@@ -47,9 +50,10 @@
 	<link rel="stylesheet" type="text/css">
 		<xsl:attribute name="href">
 			<xsl:value-of select="$baseuri" />
-			<xsl:text>stylesheets/</xsl:text>
-			<xsl:value-of select="$theme-name" />
-			<xsl:value-of select="$css-path" />
+			<xsl:value-of select="$css.themes.path" />
+			<xsl:value-of select="$css.theme.name" />
+			<xsl:text>/</xsl:text>
+			<xsl:value-of select="$css.styles.path" />
 			<xsl:text>typefacing.css</xsl:text>
 		</xsl:attribute>
 	</link>
@@ -59,9 +63,10 @@
 	<link rel="stylesheet" type="text/css">
 		<xsl:attribute name="href">
 			<xsl:value-of select="$baseuri" />
-			<xsl:text>stylesheets/</xsl:text>
-			<xsl:value-of select="$theme-name" />
-			<xsl:value-of select="$css-path" />
+			<xsl:value-of select="$css.themes.path" />
+			<xsl:value-of select="$css.theme.name" />
+			<xsl:text>/</xsl:text>
+			<xsl:value-of select="$css.styles.path" />
 			<xsl:text>grid.css</xsl:text>
 		</xsl:attribute>
 	</link>
@@ -77,9 +82,10 @@
 	<script type="text/javascript">
 		<xsl:attribute name="src">
 			<xsl:value-of select="$baseuri" />
-			<xsl:text>stylesheets/</xsl:text>
-			<xsl:value-of select="$theme-name" />
-			<xsl:value-of select="$js-path" />
+			<xsl:value-of select="$css.themes.path" />
+			<xsl:value-of select="$css.theme.name" />
+			<xsl:text>/</xsl:text>
+			<xsl:value-of select="$css.js.path" />
 			<xsl:text>hashgrid.js</xsl:text>
 		</xsl:attribute>
 	</script>
