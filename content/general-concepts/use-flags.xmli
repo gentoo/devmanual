@@ -31,7 +31,7 @@
   </note>
 
 
-  <section>
+  <section xml:id="general-concepts.use-flags.noblah-flags">
     <title><literal>noblah</literal> <varname>USE</varname> Flags</title>
 
     <para>
@@ -74,7 +74,7 @@ DEPEND="!sparc? ( !alpha? ( alsa? ( media-libs/alsa-lib ) ) )"
     </para>
 
     <para>
-      The solution is <filename>use.mask</filename>, which is documented in <xref linkend="profiles.use.mask."/>.  Each
+      The solution is <filename>use.mask</filename>, which is documented in <xref linkend="profiles.use.mask"/>.  Each
       profile can have a <filename>use.mask</filename> file which can be used to forcibly disable certain USE flags on a
       given arch (or subarch, or subprofile). So, if the <literal>fakemedia</literal> <varname>USE</varname> flag was
       use.masked on every non-x86 profile, the following would be totally legal and wouldn't break anything:
@@ -97,7 +97,7 @@ RDEPEND="fakemedia? ( >=media-libs/fakemedia-1-1 )"
     </para>
   </section>
 
-  <section>
+  <section xml:id="general-concepts.use-flags.local-and-global">
     <title>Local and Global USE Flags</title>
 
     <para>

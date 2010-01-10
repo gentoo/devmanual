@@ -37,7 +37,7 @@ pkg_setup() {
 ]]></programlisting>
   </section>
 
-  <section>
+  <section xml:id="general-concepts.user-environment.not-filtering-variables">
     <title>Not Filtering Variables</title>
 
     <para>

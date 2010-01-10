@@ -175,7 +175,7 @@
     </caption>
   </table>
 
-  <table>
+  <table xml:id="ebuild-writing.variables.optional-variables">
     <title>Optional Variables</title>
 
     <tgroup cols="2">

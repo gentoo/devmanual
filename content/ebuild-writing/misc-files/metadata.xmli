@@ -9,7 +9,7 @@
     The <filename>metadata.xml</filename> file is used to specify additional data about a package or category.
   </para>
 
-  <section>
+  <section xml:id="ebuild-writing.misc-files.metadata.category-metadata">
     <title>Category Metadata</title>
 
     <para>
