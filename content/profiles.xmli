@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="profiles">
+  <title>Profiles</title>
+
+  <para>
+    This section provides details on the <filename>profiles/</filename> directory. All of these files are also
+    documented in <command>man portage</command>.
+  </para>
+
+  <variablelist>
+    <varlistentry>
+      <term>Profiles <filename>categories</filename> File</term>
+
+      <listitem>
+	<para>
+	  The <filename>profiles/categories</filename> file contains an asciibetically sorted list of all the valid
+	  categories in the portage tree. When adding a new category, remember to update and commit this file
+	  <emphasis>before</emphasis> making any related commits.
+	</para>
+
+	<para>
+	  The <filename>categories</filename> file is a straight list. For descriptions, see <xref
+	  linkend="ebuild-writing.misc-files.metadata.category-metadata"/>.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Profiles <filename>info_</filename> Files</term>
+
+      <listitem>
+	<para>
+	  The <filename>profiles/info_pkgs</filename> file controls the packages whose versions are listed when
+	  <command>emerge info</command> is run. The <filename>profiles/info_vars</filename> file controls the displayed
+	  environment variables. Do not add to these files without discussion on the
+	  <email>gentoo-dev@lists.gentoo.org</email> mailing list.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Profiles <filename>package.mask</filename> File</term>
+      
+      <listitem>
+	<para>
+	  The <filename>package.mask</filename> file can be used to hard mask packages or certain versions of
+	  packages. This is often used when adding certain experimental (either in ebuild or upstream terms) packages to
+	  the tree. The format is described in <command>man portage</command>.
+	</para>
+
+	<para>
+	  This file can be used in subprofiles to mask packages only for certain setups.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Profiles <filename>packages</filename> File</term>
+
+      <listitem>
+	<para>
+	  The <filename>packages</filename> file in <filename>profiles/</filename> controls the packages pulled in by the
+	  <package>system</package> target. The <filename>base/packages</filename> file must not be modified without
+	  discussion on the <email>gentoo-dev@lists.gentoo.org</email> list; subprofile overrides are up to the
+	  relevant arch teams.
+	</para>
+
+	<para>
+	  Note that <filename>packages</filename> can be used to require that specific versions of a package be used,
+	  for example <code>&lt;sys-kernel/linux-headers-2.5</code> in a profile requiring a 2.4 kernel. If this is done
+	  with the intention of requiring <emphasis>only</emphasis> a lower version (that is to say, not a &gt; or &gt;=
+	  restriction, and with slots not affecting the outcome), then the entry in <filename>packages</filename> must
+	  be accompanied by a corresponding <filename>package.mask</filename> entry to ensure that no other versions get
+	  installed.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Profiles <filename>profiles.desc</filename> File</term>
+
+      <listitem>
+	<para>To Be Written</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Profiles <filename>updates/</filename> Directory</term>
+
+      <listitem>
+	<para>To Be Written</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Profiles <filename>use.desc</filename> and <filename>use.local.desc</filename> Files</term>
+
+      <listitem>
+	<para>
+	  The <filename>use.desc</filename> file contains a list of all global non-expanded <varname>USE</varname>
+	  flags, together with a short description. This file should not be modified without discussion on the
+	  <email>gentoo-dev@lists.gentoo.org</email> list.
+	</para>
+
+	<para>
+	  The <filename>use.local.desc</filename> file contains a list of all local <varname>USE</varname> flags,
+	  together with the relevant packages, and a short description. This file can be added to without general
+	  discussion.
+	</para>
+
+	<para>
+	  Having a small number of packages using identically named local <varname>USE</varname> flags is allowed. If
+	  the number starts to grow substantially, it may be worth proposing that the flag becomes a global — see <xref
+	  linkend="general-concepts.use-flags.local-and-global"/>.
+	</para>
+
+	<para>
+	  All non-expand flags must be listed in exactly one of these files.
+	</para>
+
+	<para>
+	  Expanded flags are listed in <filename>desc/${prefix}.desc</filename>, where <filename>${prefix}</filename> is
+	  the name of the environment variable to be expanded in lowercase. Instead of listing the complete flag only
+	  the flag's suffix, i.e. the environment variable's possible values are listed.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry xml:id="profiles.use.mask">
+      <term>Profiles <filename>use.mask</filename> File</term>
+      
+      <listitem>
+	<para>
+	  The <filename>use.mask</filename> file can be used to mark <varname>USE</varname> flags as unavailable on a
+	  particular profile. This can be useful for various reasons:
+	</para>
+
+	<itemizedlist>
+	  <listitem>
+	    <para>
+	      Masking hardware-specific feature flags. For example, <option>mmx</option> and <option>sse</option> are
+	      only available on x86, <option>altivec</option> is only available on ppc and <option>vis</option> is only
+	      available on sparc v9.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Disabling unavailable soft dependencies. A simple hypothetical example — say <package>fooapp</package>
+	      works on mips, but has an optional dependency (controlled by the <option>bar</option> flag) upon
+	      <package>libbar</package>, which doesn't work on mips. Then by adding the <option>bar</option> flag to
+	      <filename>profiles/default-linux/mips/use.mask</filename>, <package>fooapp</package> could be made
+	      available to mips users with the unresolvable dependency forcibly disabled.
+	    </para>
+	  </listitem>
+	</itemizedlist>
+
+	<para>
+	  Note that <filename>use.mask</filename> is a per-flag thing, not per package's use of a given
+	  flag. This is one of the reasons that USE flags must have a specific well
+	  defined purpose.
+	</para>
+
+	<para>
+	  Updates to <filename>use.mask</filename> should be handled via the relevant arch team.
+	</para>
+
+	<para>
+	  See <xref linkend="general-concepts.use-flags.noblah-flags"/> for more discussion.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Profiles <filename>virtuals</filename> Files</term>
+
+      <listitem>
+	<para>
+	  The <filename>virtuals</filename> files in <filename>profiles/</filename> control the default provider for
+	  virtuals. It can be overridden in subprofiles for profile-specific defaults.
+	</para>
+
+	<para>
+	  Before adding a new virtual, it should be discussed on <email>gentoo-dev@lists.gentoo.org</email>.
+	</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</chapter>

@@ -40,6 +40,7 @@
     <d:tocentry linkend="ebuild-writing.common-mistakes"><?dbhtml filename="ebuild-writing/common-mistaks.html"?></d:tocentry>
     </d:tocentry>
     <d:tocentry linkend="eclass-writing"><?dbhtml filename="eclass-writing.html"?></d:tocentry>
+    <d:tocentry linkend="profiles"><?dbhtml filename="profiles.html"?></d:tocentry>
   </d:tocentry>
 </toc>
 

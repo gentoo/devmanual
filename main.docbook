@@ -125,4 +125,5 @@
   <xi:include parse="xml" href="content/general-concepts.xmli" />
   <xi:include parse="xml" href="content/ebuild-writing.xmli" />
   <xi:include parse="xml" href="content/eclass-writing.xmli" />
+  <xi:include parse="xml" href="content/profiles.xmli" />
 </book>
