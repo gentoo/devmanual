@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xmlns="http://docbook.org/ns/docbook"
+	 xmlns:xl="http://www.w3.org/1999/xlink"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xml:id="ebuild-writing.common-mistakes">
+  <title>Common Mistakes</title>
+  
+  <para>
+    This section contains information on the common mistakes developers make when writing ebuilds.
+  </para>
+
+  <variablelist>
+    <varlistentry>
+      <term>
+	Invalid use of <varname>static</varname> use-flag
+      </term>
+
+      <listitem>
+	<para>
+	  The <varname>static</varname> use-flag should only be used to make a binary use static linking instead of
+	  dynamic linking.  It should not be used to make a library install static libraries.  The package should always
+	  (if possible) install both the dynamic and static libraries.
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>
+      Referencing the full path to documentation files that could be compressed
+      </term>
+
+      <listitem>
+	<para>
+	  When printing out to the users where to find files like INSTALL, do not specify the full path since
+	  <varname>PORTAGE_COMPRESS</varname> comes into play.  The file could be compressed with
+	  <command>gzip</command>, <command>bzip2</command>, or some other random compression tool.  So, instead of
+	  doing this:
+	</para>
+
+	<programlisting language="ebuild"><![CDATA[
+elog "They are listed in /usr/share/doc/${PF}/INSTALL.gz"
+]]></programlisting>
+
+	<para>
+	  Do something like:
+	</para>
+
+	<programlisting language="ebuild"><![CDATA[
+elog "They are listed in the INSTALL file in /usr/share/doc/${PF}"
+]]></programlisting>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</section>

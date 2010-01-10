@@ -37,6 +37,7 @@
     <d:tocentry linkend="ebuild-writing.using-eclasses"><?dbhtml filename="ebuild-writing/using-eclasses.html"?></d:tocentry>
     <d:tocentry linkend="ebuild-writing.functions"><?dbhtml filename="ebuild-writing/functions.html"?></d:tocentry>
     <d:tocentry linkend="ebuild-writing.misc-files"><?dbhtml filename="ebuild-writing/misc-files.html"?></d:tocentry>
+    <d:tocentry linkend="ebuild-writing.common-mistakes"><?dbhtml filename="ebuild-writing/common-mistaks.html"?></d:tocentry>
     </d:tocentry>
   </d:tocentry>
 </toc>
