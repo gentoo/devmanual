@@ -11,6 +11,12 @@ This section provides usage and descriptions of the different EAPIs.
 <section>
 <title>Usage of EAPIs</title>
 <body>
+<important>
+An overview about the important features of each EAPI is provided in the
+appendix of the Package Manager Specification.  The two-page leaflet
+can be printed out, consulted for reference and is available
+as <c>app-doc/pms</c> in the main tree.
+</important>
 <p>
 If EAPI is undefined in an ebuild, then EAPI="0" is selected. If you want to override
 the EAPI variable, you have to specify it at the top of the ebuild:
