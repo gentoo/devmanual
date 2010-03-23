@@ -72,8 +72,14 @@ package being merged. Generally <c>PDEPEND</c> should be avoided in favour of
 <p>
 All packages have an implicit compile-time and runtime dependency upon the
 entire <c>system</c> target. It is therefore not necessary, nor advisable, to
-specify dependencies upon <c>gcc</c>, <c>libc</c> and so on, except where specific
-versions or packages (for example, <c>glibc</c> over <c>uclibc</c>) are required.
+specify dependencies upon toolchain packages like <c>gcc</c>, <c>libc</c> and
+so on, except where specific versions or packages (for example, <c>glibc</c>
+over <c>uclibc</c>) are required.  Note that this rule also needs consideration
+for packages like <c>flex</c>, <c>zlib</c> and <c>libtool</c>, which aren't in
+the <c>system</c> target for every profile.  For example, the embedded profile
+doesn't have <c>zlib</c> in <c>system</c> target, the <c>libtool</c> ABI might
+change and break building order and <c>flex</c> might get removed from the
+<c>system</c> target in future.
 </p>
 
 <p>
