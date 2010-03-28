@@ -351,27 +351,29 @@ GLEP 23</uri> for details.
 </section>
 
 <section>
-<title>Version Formatting Issues</title>
+<title>Version and Name Formatting Issues</title>
 <body>
 
 <p>
-Often upstream's tarball versioning format doesn't quite follow Gentoo
-conventions. Differences in how underscores and hyphens are used are
-particularly common. For example, what Gentoo calls <c>foo-1.2.3b</c> may be
-expecting a tarball named <c>foo-1.2-3b.tar.bz2</c>. Rather than hard coding version
-numbers, it is preferable to make a <c>MY_PV</c> variable and use that. The easy
-way to do this, which should be used unless you are sure you know what you are
-doing, is to use the <c>versionator</c> eclass:
+Often upstream's tarball versioning or naming format doesn't quite follow Gentoo
+conventions. Using capital letters in names or differences in how underscores and hyphens
+are used in versions are particularly common. For example, what Gentoo calls <c>foo-1.2.3b</c> may be
+expecting a tarball named <c>Foo-1.2-3b.tar.bz2</c>. Rather than hard coding the package string,
+it is preferable to make <c>MY_PN</c>, <c>MY_PV</c> and <c>MY_P</c> variables and use those to define the
+upstream naming. The easy way of redefining the version, which should be used unless you are sure
+you know what you are doing, is to use the <c>versionator</c> eclass:
 </p>
 
 <codesample lang="ebuild">
 inherit versionator
+MY_PN="Foo"
 MY_PV=$(replace_version_separator 2 '-')
+MY_P="${MY_PN}-${MY_PV}"
 </codesample>
 
 <p>
 This code has the advantage that it will carry on working even if upstream
-switches to a format like <c>foo-1.3-4.5.tar.bz2</c> (yes, this really happens).
+switches to a format like <c>Foo-1.3-4.5.tar.bz2</c> (yes, this really happens).
 </p>
 
 <p>
