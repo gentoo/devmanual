@@ -305,6 +305,30 @@ src_compile() {
 
 </body>
 </section>
+<section>
+<title>EAPI="3"</title>
+<body>
+
+<ul>
+	<li>
+		<p><b>Gentoo Prefix support</b></p>
+		<p>
+			Support for the <c>EPREFIX</c>, <c>EROOT</c>, and <c>ED</c>
+			variables. If an ebuild uses one of these, it must be EAPI3 aware.
+		</p>
+	</li>
+	<li>
+		<p><b>src_unpack() .tar.xz support</b></p>
+		<p>
+			Support for the <c>.tar.xz</c> format from upstream tarballs.
+			unpack() in src_unpack() will only operate on a .tar.xz tarball if
+			the ebuild is EAPI3 aware.
+		</p>
+	</li>
+</ul>
+
+</body>
+</section>
 
 
 </body>
