@@ -28,7 +28,6 @@ ebuilds.
 <include href="ekeyword/"/>
 <include href="false-and-true/"/>
 <include href="find/"/>
-<include href="gentoo-syntax/"/>
 <include href="grep/"/>
 <include href="head-and-tail/"/>
 <!--

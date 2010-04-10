@@ -5,8 +5,14 @@
 <body>
 
 <p>
-For full whitespace, character set, syntax and indent settings for
-<c>vim</c> and <c>gvim</c>, emerge the <c>app-vim/gentoo-syntax</c> package.
+For full whitespace, character set, syntax highlighting and indent settings for
+all of Gentoo's file-types in <c>vim</c> and <c>gvim</c>, emerge the
+<c>app-vim/gentoo-syntax</c> package.
+</p>
+
+<p>
+Full documentation is provided with the package, and can be viewed
+by using <c>vim</c>'s internal help browser (<c>:help gentoo-syntax</c>).
 </p>
 
 <p>
@@ -17,4 +23,3 @@ of interest. The ! is required to replace spaces with tabs.
 </body>
 </chapter>
 </guide>
-
