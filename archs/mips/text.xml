@@ -102,6 +102,9 @@ It is generally expected that anyone who does keywording for MIPS should be on
 the <c>mips@</c> alias.
 </p>
 
+<p>
+MIPS doesn't currently use stable keywords so don't file stable requests to them.
+</p>
 </body>
 </section>
 
