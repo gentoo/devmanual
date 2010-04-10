@@ -462,8 +462,7 @@ There are also shortcuts for conditional situations:
 <body>
 
 <p>
-When looking through old ebuild versions or the occasional user-submitted
-ebuild, you may see a <c>*DEPEND</c> atom in the form:
+Once upon a time the ? conditional operator was allowed in <c>*DEPEND</c>:
 </p>
 
 <codesample lang="ebuild">
