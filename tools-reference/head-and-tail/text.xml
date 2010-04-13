@@ -74,7 +74,7 @@ foo=$(sed -n -e '/somestring/{ p ; q }' input.txt )
 sed -n -e '/somestring/p' input.txt | tail -n 1
 
 # good: do this in pure sed using the hold space
-sed -n -e '/somestring/h ; ${ x ; p }'
+sed -n -e '/somestring/h ; $ {x;p}'
 </codesample>
 
 <p>
