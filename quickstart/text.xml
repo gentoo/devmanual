@@ -34,7 +34,7 @@ can see real ebuilds in the main tree).
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -49,11 +49,11 @@ IUSE=""
 
 src_compile() {
     econf --with-posix-regex
-    emake || die "emake failed"
+    emake || die
 }
 
 src_install() {
-    emake DESTDIR="${D}" install || die "install failed"
+    emake DESTDIR="${D}" install || die
 
     dodoc FAQ NEWS README || die
     dohtml EXTENDING.html ctags.html
@@ -197,7 +197,7 @@ Here's <c>app-misc/detox/detox-1.1.1.ebuild</c>:
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -207,21 +207,21 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~hppa mips sparc x86"
+KEYWORDS="~hppa ~mips sparc x86"
 IUSE=""
 
-DEPEND="dev-libs/popt
+RDEPEND="dev-libs/popt"
+DEPEND="${RDEPEND}
     sys-devel/flex
     sys-devel/bison"
-RDEPEND="dev-libs/popt"
 
 src_compile() {
     econf --with-popt
-    emake || die "emake failed"
+    emake || die
 }
 
 src_install() {
-    emake DESTDIR="${D}" install || die "install failed"
+    emake DESTDIR="${D}" install || die
     dodoc README CHANGES || die
 }
 </codesample>
@@ -261,7 +261,7 @@ this is done via <c>inherit eutils</c> at the top of the ebuild. Here's
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -276,26 +276,26 @@ SLOT="0"
 KEYWORDS="~hppa ~mips ~sparc ~x86"
 IUSE=""
 
-DEPEND="dev-libs/popt
+RDEPEND="dev-libs/popt
+DEPEND="${RDEPEND}
     sys-devel/flex
     sys-devel/bison"
-RDEPEND="dev-libs/popt"
 
 src_unpack() {
     unpack ${A}
     cd "${S}"
 
-    epatch "${FILESDIR}"/${P}-destdir.patch
-    epatch "${FILESDIR}"/${P}-parallel_build.patch
+    epatch "${FILESDIR}"/${P}-destdir.patch \
+        "${FILESDIR}"/${P}-parallel_build.patch
 }
 
 src_compile() {
     econf --with-popt
-    emake || die "emake failed"
+    emake || die
 }
 
 src_install() {
-    emake DESTDIR="${D}" install || die "install failed"
+    emake DESTDIR="${D}" install || die
     dodoc README CHANGES || die
 }
 </codesample>
@@ -321,21 +321,20 @@ replacement iconv for <c>libc</c> implementations which don't have their own.
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 DESCRIPTION="GNU charset conversion library for libc which doesn't implement it"
-SRC_URI="ftp://ftp.gnu.org/pub/gnu/libiconv/${P}.tar.gz"
 HOMEPAGE="http://www.gnu.org/software/libiconv/"
+SRC_URI="ftp://ftp.gnu.org/pub/gnu/libiconv/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="LGPL-2.1"
+SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="nls"
 
-DEPEND="virtual/libc
-    !sys-libs/glibc"
+DEPEND="!sys-libs/glibc"
 
 src_compile() {
     econf $(use_enable nls)
@@ -343,7 +342,7 @@ src_compile() {
 }
 
 src_install() {
-    emake DESTDIR="${D}" install || die "install failed"
+    emake DESTDIR="${D}" install || die
 }
 </codesample>
 
@@ -365,7 +364,7 @@ Another more complicated example, this time based upon
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -376,30 +375,29 @@ HOMEPAGE="http://sylpheed.good-day.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 SLOT="0"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+IUSE="crypt imlib ipv6 ldap nls pda ssl xface"
 
-IUSE="crypt gnome imlib ipv6 ldap nls pda ssl xface"
-
-DEPEND="=x11-libs/gtk+-1.2*
-    nls? ( >=sys-devel/gettext-0.12.1 )
+RDEPEND="=x11-libs/gtk+-2*
     crypt? ( >=app-crypt/gpgme-0.4.5 )
-    gnome? ( media-libs/gdk-pixbuf )
-    imlib? ( media-libs/imlib )
+    imlib? ( media-libs/imlib2 )
     ldap? ( >=net-nds/openldap-2.0.11 )
     pda? ( app-pda/jpilot )
     ssl? ( dev-libs/openssl )
-    xface? ( >=media-libs/compface-1.4 )"
-RDEPEND="${DEPEND}
+    xface? ( >=media-libs/compface-1.4 )
     app-misc/mime-types
     x11-misc/shared-mime-info"
+DEPEND="${RDEPEND}
+    dev-util/pkgconfig
+    nls? ( >=sys-devel/gettext-0.12.1 )"
 
 src_unpack() {
     unpack ${A}
     cd "${S}"
 
-    epatch "${FILESDIR}"/${PN}-namespace.diff
-    epatch "${FILESDIR}"/${PN}-procmime.diff
+    epatch "${FILESDIR}"/${PN}-namespace.diff \
+        "${FILESDIR}"/${PN}-procmime.diff
 }
 
 src_compile() {
@@ -411,23 +409,16 @@ src_compile() {
         $(use_enable ldap) \
         $(use_enable ipv6) \
         $(use_enable imlib) \
-        $(use_enable gnome gdk-pixbuf) \
         $(use_enable xface compface)
 
     emake || die
 }
 
 src_install() {
-    einstall || die "einstall failed"
-    dodir /usr/share/pixmaps
-    insinto /usr/share/pixmaps
-    doins *.png
+    emake DESTDIR="${D}" install || die
 
-    if use gnome ; then
-        dodir /usr/share/gnome/apps/Internet
-        insinto /usr/share/gnome/apps/Internet
-        doins sylpheed.desktop
-    fi
+    doicon sylpheed.png
+    domenu sylpheed.desktop
 
     dodoc [A-Z][A-Z]* ChangeLog* || die
 }
