@@ -197,22 +197,6 @@ see <c>man eutils.eclass</c>.
       enabled.
     </ti>
   </tr>
-  <tr>
-    <ti>
-      <c>dopamd</c>
-    </ti>
-    <ti>
-      Install a pam auth config file.
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>newpamd</c>
-    </ti>
-    <ti>
-      Install a pam auth config file (two arg version).
-    </ti>
-  </tr>
 </table>
 
 </body>
