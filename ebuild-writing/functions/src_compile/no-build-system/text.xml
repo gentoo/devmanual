@@ -8,36 +8,51 @@
 Occasionally some really small packages are shipped simply as a single
 <c>.c</c> file. In these circumstances, you can either write your own
 <c>Makefile</c> and ship it with the source tarball, or just manually
-compile the thing from within the ebuild. Here's an example, from
-<c>app-misc/hilite</c>:
+compile the thing from within the ebuild, preferebly explaining why.
+Here's an example, from <c>app-misc/hilite</c>:
 </p>
 
 <codesample lang="ebuild">
 src_compile() {
-    $(tc-getCC ) ${CFLAGS} -o ${PN} ${P}.c \
-        || die "Compile failed!"
+    $(tc-getCC) ${LDFLAGS} ${CFLAGS} -o ${PN} ${P}.c || die
 }
 </codesample>
 
 <p>
-Here's an example from <c>x11-plugins/gkrelltop</c>, which ships with a
-<c>Makefile</c> that doesn't actually work:
+Here's an example from <c>x11-plugins/asclock</c>, which ships with a
+broken build system that doesn't actually work:
 </p>
 
 <codesample lang="ebuild">
 src_compile() {
-    CONFIG="-DLINUX -DGKRELLM2 -fPIC $(pkg-config gtk+-2.0 --cflags)"
-    LIBS="$(pkg-config gtk+-2.0 --libs) -shared"
-    OBJS="top_three2.o gkrelltop2.o"
-
-    gcc -c $CONFIG $CFLAGS top_three.c -o top_three2.o || die
-    gcc -c $CONFIG $CFLAGS gkrelltop.c -o gkrelltop2.o || die
-    gcc $LDFLAGS $CONFIG $CFLAGS -o gkrelltop2.so $OBJS $LIBS || die
+    local x
+    for x in asclock parser symbols config
+    do
+        $(tc-getCC) \
+            ${CPPFLAGS} ${CFLAGS} ${ASFLAGS} \
+            -I/usr/include \
+            -Dlinux \
+            -D_POSIX_C_SOURCE=199309L \
+            -D_POSIX_SOURCE \
+            -D_XOPEN_SOURCE \
+            -D_BSD_SOURCE \
+            -D_SVID_SOURCE \
+            -DFUNCPROTO=15 \
+            -DNARROWPROTO \
+            -c -o ${x}.o ${x}.c || die "compile asclock failed"
+    done
+    $(tc-getCC) \
+        ${LDFLAGS} \
+        -o asclock \
+        asclock.o parser.o symbols.o config.o \
+        -L/usr/lib \
+        -L/usr/lib/X11 \
+        -lXpm -lXext -lX11 || die "link asclock failed"
 }
 </codesample>
 
 <p>
-A possibly better alternative would be to patch the <c>Makefile</c>
+A possibly better alternative would be to patch the build system
 and send it upstream.
 </p>
 
