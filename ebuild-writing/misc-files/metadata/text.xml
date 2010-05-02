@@ -10,6 +10,49 @@ package or category.
 </p>
 
 <section>
+<title>Package Metadata</title>
+<body>
+<p>
+For packages, <c>metadata.xml</c> can specify a long description and
+maintainer information. If a long description in any language is
+provided, an English long description must be present. A typical
+example might look like:
+</p>
+
+<codesample lang="sgml">
+    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+    &lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+    &lt;pkgmetadata&gt;
+        &lt;herd&gt;vim&lt;/herd&gt;
+        &lt;maintainer&gt;
+            &lt;email&gt;ciaranm@gentoo.org&lt;/email&gt;
+            &lt;name&gt;Ciaran McCreesh&lt;/name&gt;
+        &lt;/maintainer&gt;
+        &lt;longdescription lang="en"&gt;
+            This package provides Vim syntax highlighting for Cfengine configuration
+            files, and automatic filetype detection for these files based upon
+            filename.
+        &lt;/longdescription&gt;
+    &lt;/pkgmetadata&gt;
+</codesample>
+
+<p>
+All new packages <b>must</b> include a <c>metadata.xml</c> file which
+specifies at <e>least</e> a herd. If no herd is suitable, <c>no-herd</c>
+should be used, and at least one maintainer must be listed <d/> however,
+if at all possible, find a herd willing to be listed.
+</p>
+
+<p>
+Commits of package metadata files are handled by <c>repoman</c>. You
+should ensure that you have <c>dev-libs/libxml2</c> installed so that
+the XML can be validated.
+</p>
+
+</body>
+</section>
+
+<section>
 <title>Category Metadata</title>
 <body>
 <p>
@@ -57,48 +100,6 @@ cvs commit -m "Adding category metadata.xml for my-category" metadata.xml
 </body>
 </section>
 
-<section>
-<title>Package Metadata</title>
-<body>
-<p>
-For packages, <c>metadata.xml</c> can specify a long description and
-maintainer information. If a long description in any language is
-provided, an English long description must be present. A typical
-example might look like:
-</p>
-
-<codesample lang="sgml">
-    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-    &lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
-    &lt;pkgmetadata&gt;
-        &lt;herd&gt;vim&lt;/herd&gt;
-        &lt;maintainer&gt;
-            &lt;email&gt;ciaranm@gentoo.org&lt;/email&gt;
-            &lt;name&gt;Ciaran McCreesh&lt;/name&gt;
-        &lt;/maintainer&gt;
-        &lt;longdescription lang="en"&gt;
-            This package provides Vim syntax highlighting for Cfengine configuration
-            files, and automatic filetype detection for these files based upon
-            filename.
-        &lt;/longdescription&gt;
-    &lt;/pkgmetadata&gt;
-</codesample>
-
-<p>
-All new packages <b>must</b> include a <c>metadata.xml</c> file which
-specifies at <e>least</e> a herd. If no herd is suitable, <c>no-herd</c>
-should be used, and at least one maintainer must be listed <d/> however,
-if at all possible, find a herd willing to be listed.
-</p>
-
-<p>
-Commits of package metadata files are handled by <c>repoman</c>. You
-should ensure that you have <c>dev-libs/libxml2</c> installed so that
-the XML can be validated.
-</p>
-
-</body>
-</section>
 </body>
 </chapter>
 </guide>
