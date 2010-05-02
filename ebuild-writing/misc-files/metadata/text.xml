@@ -50,6 +50,11 @@ if at all possible, find a herd willing to be listed.
 </p>
 
 <p>
+If a package has no maintainer, <c>maintainer-needed@gentoo.org</c>
+should be listed as the maintainer.
+</p>
+
+<p>
 Commits of package metadata files are handled by <c>repoman</c>. You
 should ensure that you have <c>dev-libs/libxml2</c> installed so that
 the XML can be validated.
