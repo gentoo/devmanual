@@ -23,16 +23,22 @@ example might look like:
     &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
     &lt;pkgmetadata&gt;
-        &lt;herd&gt;vim&lt;/herd&gt;
+        &lt;herd&gt;freedesktop&lt;/herd&gt;
         &lt;maintainer&gt;
-            &lt;email&gt;ciaranm@gentoo.org&lt;/email&gt;
-            &lt;name&gt;Ciaran McCreesh&lt;/name&gt;
+            &lt;email&gt;dang@gentoo.org&lt;/email&gt;
+            &lt;name&gt;Daniel Gryniewicz&lt;/name&gt;
         &lt;/maintainer&gt;
         &lt;longdescription lang="en"&gt;
-            This package provides Vim syntax highlighting for Cfengine configuration
-            files, and automatic filetype detection for these files based upon
-            filename.
+           HAL provides a view of the various hardware attached to a system.
+           In addition to this, HAL keeps detailed metadata for each piece of
+           hardware and provide hooks such that system- and desktop-level software
+           can react to changes in the hardware configuration in order to maintain
+           system policy.
         &lt;/longdescription&gt;
+       &lt;flag name="laptop"&gt;Adds support for power management scripts
+                (&lt;pkg&gt;sys-power/pm-utils&lt;/pkg&gt;)&lt;/flag&gt;
+        &lt;flag name="selinux"&gt;Installs SELinux policies and links HAL to the SELinux
+                libraries.&lt;/flag&gt;
     &lt;/pkgmetadata&gt;
 </codesample>
 
