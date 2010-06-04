@@ -356,7 +356,7 @@ src_install() {
 }
 		</codesample>
 		<codesample lang="ebuild">
-EAPI=3
+EAPI=4
 ...
 src_install() {
 	emake DESTDIR="${D}" install
