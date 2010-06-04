@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_configure/configuring/">
+<chapter>
+<title>Configuring a Package</title>
+
+<body>
+<p>
+Many packages come with an autoconf-generated <c>./configure</c>
+script for checking the build environment and configuring optional
+support for libraries. The <c>econf</c> function should be used where
+possible <d/> this will provide correct build and path specifications for
+a Gentoo environment.
+</p>
+
+<p>
+Often the configure script will try to automatically enable support
+for optional components based upon installed packages. This
+must <b>not</b> be allowed to happen. For example, if a user has Perl
+installed but has <c>USE="-perl"</c>, packages with <e>optional</e>
+Perl support must not link against Perl. This automatic detection can
+usually be overridden using <c>--enable-</c> and <c>--disable</c>
+or <c>--with-</c> and <c>--without-</c> switches (but note that these
+don't always work <d/> make sure these are tested properly!).
+</p>
+
+<p>
+The <c>use_enable</c> and <c>use_with</c> utility functions should,
+where appropriate, be used to generate these switches.
+</p>
+
+<codesample lang="ebuild">
+src_configure() {
+    # We have optional perl, python and ruby support
+    econf \
+        $(use_enable perl ) \
+        $(use_enable python ) \
+        $(use_enable ruby )
+}
+
+src_configure() {
+    # Our package optional IPv6 support which uses --with rather than
+    # --enable / --disable
+
+    econf $(use_with ipv6 )
+}
+</codesample>
+
+<p>
+Sometimes the package's choice of name for the option will not exactly
+match the name or case of the <c>USE</c> flag. This is very often the
+case with the <c>X</c> flag. For these situations, there are two
+argument forms:
+</p>
+
+<codesample lang="ebuild">
+src_configure() {
+    # Our package has optional perl, python and ruby support
+    econf \
+        $(use_enable perl perlinterp ) \
+        $(use_enable python pythoninterp ) \
+        $(use_enable ruby rubyinterp )
+
+    # ...
+}
+
+src_compile() {
+    econf $(use_with X x11 )
+}
+</codesample>
+
+<p>
+To check for an unset <c>USE</c> flag, the <c>use_enable !flag</c>
+form can be used.
+</p>
+</body>
+
+</chapter>
+</guide>
