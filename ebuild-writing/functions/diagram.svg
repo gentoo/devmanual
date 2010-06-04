@@ -1,71 +1,318 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
-    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg viewBox="0 100 830 80" width="830" height="80" xmlns="http://www.w3.org/2000/svg" version="1.1">
-    <desc>Ebuild Function Order</desc>
-    <rect x="-10" y="-10" width="1000" height="1000" fill="#eeeeee" id="background" />
-
-    <rect x="10" y="110" width="80" height="30"
-        fill="#ccccff" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="50" y="130">pkg_setup</text>
-
-    <line x1="90" y1="125"  x2="130" y2="125" stroke-width="2" stroke="black" />
-    <line x1="130" y1="125" x2="122" y2="120" stroke-width="2" stroke="black" />
-    <line x1="130" y1="125" x2="122" y2="130" stroke-width="2" stroke="black" />
-
-    <rect x="130" y="110" width="80" height="30"
-        fill="#ffffff" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="170" y="130">src_unpack</text>
-
-    <line x1="210" y1="125" x2="250" y2="125" stroke-width="2" stroke="black" />
-    <line x1="250" y1="125" x2="242" y2="120" stroke-width="2" stroke="black" />
-    <line x1="250" y1="125" x2="242" y2="130" stroke-width="2" stroke="black" />
-
-    <rect x="250" y="110" width="80" height="30"
-        fill="#ffffff" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="290" y="130">src_compile</text>
-
-    <line x1="330" y1="125" x2="370" y2="125" stroke-width="2" stroke="black" />
-    <line x1="370" y1="125" x2="362" y2="120" stroke-width="2" stroke="black" />
-    <line x1="370" y1="125" x2="362" y2="130" stroke-width="2" stroke="black" />
-
-    <path d="M 330 125 Q 350 125 350 137 Q 350 150 370 150
-             L 450 150 Q 470 150 470 137 Q 470 125 490 125"
-        stroke-width="2" stroke="black" fill="none" />
-
-    <rect x="370" y="110" width="80" height="30"
-        fill="#ccffcc" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="410" y="130">src_test</text>
-
-    <line x1="450" y1="125" x2="490" y2="125" stroke-width="2" stroke="black" />
-    <line x1="490" y1="125" x2="482" y2="120" stroke-width="2" stroke="black" />
-    <line x1="490" y1="125" x2="482" y2="130" stroke-width="2" stroke="black" />
-
-    <rect x="490" y="110" width="80" height="30"
-        fill="#ffffff" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="530" y="130">src_install</text>
-
-    <line x1="570" y1="125" x2="610" y2="125" stroke-width="2" stroke="black" />
-    <line x1="610" y1="125" x2="602" y2="120" stroke-width="2" stroke="black" />
-    <line x1="610" y1="125" x2="602" y2="130" stroke-width="2" stroke="black" />
-
-    <rect x="610" y="110" width="80" height="30"
-        fill="#ccccff" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="650" y="130">pkg_preinst</text>
-
-    <line x1="690" y1="125" x2="730" y2="125" stroke-width="2" stroke="black" />
-    <line x1="730" y1="125" x2="722" y2="120" stroke-width="2" stroke="black" />
-    <line x1="730" y1="125" x2="722" y2="130" stroke-width="2" stroke="black" />
-
-    <rect x="730" y="110" width="80" height="30"
-        fill="#ccccff" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="770" y="130">pkg_postinst</text>
-
-    <path d="M  90 125 Q 110 125 110 142 Q 110 160 130 160
-             L 570 160 Q 590 160 590 142 Q 590 125 610 125"
-        stroke-width="2" stroke="black" fill="none" />
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="1100"
+   height="80"
+   viewBox="0 100 830 80"
+   id="svg2503">
+  <defs
+     id="defs2577" />
+  <desc
+     id="desc2505">Ebuild Function Order</desc>
+  <rect
+     width="1100"
+     height="1000"
+     x="-135"
+     y="-10"
+     id="background"
+     style="fill:#eeeeee" />
+  <line
+     style="stroke:#000000;stroke-width:2.19613099"
+     id="line2593"
+     y2="125"
+     x2="372.11496"
+     y1="125"
+     x1="323.88504" />
+  <rect
+     width="80"
+     height="30"
+     x="-115"
+     y="110"
+     id="rect2508"
+     style="fill:#ccccff;stroke:#000000;stroke-width:2" />
+  <text
+     x="-75.000008"
+     y="130"
+     id="text2510"
+     style="text-anchor:middle">pkg_setup</text>
+  <g
+     transform="translate(-125,0)"
+     id="g2599">
+    <line
+       id="line2512"
+       y2="125"
+       x2="130"
+       y1="125"
+       x1="90"
+       style="stroke:#000000;stroke-width:2" />
+    <line
+       id="line2514"
+       y2="120"
+       x2="122"
+       y1="125"
+       x1="130"
+       style="stroke:#000000;stroke-width:2" />
+    <line
+       id="line2516"
+       y2="130"
+       x2="122"
+       y1="125"
+       x1="130"
+       style="stroke:#000000;stroke-width:2" />
+  </g>
+  <rect
+     width="80"
+     height="30"
+     x="4.9999924"
+     y="110"
+     id="rect2518"
+     style="fill:#ffffff;stroke:#000000;stroke-width:2" />
+  <text
+     x="44.999992"
+     y="130"
+     id="text2520"
+     style="text-anchor:middle">src_unpack</text>
+  <line
+     x1="373"
+     y1="125"
+     x2="365"
+     y2="120"
+     id="line2524"
+     style="stroke:#000000;stroke-width:2" />
+  <line
+     x1="373"
+     y1="125"
+     x2="365"
+     y2="130"
+     id="line2526"
+     style="stroke:#000000;stroke-width:2" />
+  <rect
+     width="80"
+     height="30"
+     x="373"
+     y="110"
+     id="rect2528"
+     style="fill:#ffffff;stroke:#000000;stroke-width:2" />
+  <text
+     x="413"
+     y="130"
+     id="text2530"
+     style="text-anchor:middle">src_compile</text>
+  <line
+     x1="453"
+     y1="125"
+     x2="493"
+     y2="125"
+     id="line2532"
+     style="stroke:#000000;stroke-width:2" />
+  <line
+     x1="493"
+     y1="125"
+     x2="485"
+     y2="120"
+     id="line2534"
+     style="stroke:#000000;stroke-width:2" />
+  <line
+     x1="493"
+     y1="125"
+     x2="485"
+     y2="130"
+     id="line2536"
+     style="stroke:#000000;stroke-width:2" />
+  <path
+     d="M 453,125 C 466.33333,125 473,129 473,137 C 473,145.66667 479.66667,150 493,150 L 573,150 C 586.33333,150 593,145.66667 593,137 C 593,129 599.66667,125 613,125"
+     id="path2538"
+     style="fill:none;stroke:#000000;stroke-width:2" />
+  <rect
+     width="80"
+     height="30"
+     x="493"
+     y="110"
+     id="rect2540"
+     style="fill:#ccffcc;stroke:#000000;stroke-width:2" />
+  <text
+     x="532.99994"
+     y="130"
+     id="text2542"
+     style="text-anchor:middle">src_test</text>
+  <line
+     x1="572.99994"
+     y1="125"
+     x2="612.99994"
+     y2="125"
+     id="line2544"
+     style="stroke:#000000;stroke-width:2" />
+  <line
+     x1="612.99994"
+     y1="125"
+     x2="604.99994"
+     y2="120"
+     id="line2546"
+     style="stroke:#000000;stroke-width:2" />
+  <line
+     x1="612.99994"
+     y1="125"
+     x2="604.99994"
+     y2="130"
+     id="line2548"
+     style="stroke:#000000;stroke-width:2" />
+  <rect
+     width="80"
+     height="30"
+     x="612.99994"
+     y="110"
+     id="rect2550"
+     style="fill:#ffffff;stroke:#000000;stroke-width:2" />
+  <text
+     x="652.99994"
+     y="130"
+     id="text2552"
+     style="text-anchor:middle">src_install</text>
+  <line
+     x1="692.99994"
+     y1="125"
+     x2="732.99994"
+     y2="125"
+     id="line2554"
+     style="stroke:#000000;stroke-width:2" />
+  <line
+     x1="732.99994"
+     y1="125"
+     x2="724.99994"
+     y2="120"
+     id="line2556"
+     style="stroke:#000000;stroke-width:2" />
+  <line
+     x1="732.99994"
+     y1="125"
+     x2="724.99994"
+     y2="130"
+     id="line2558"
+     style="stroke:#000000;stroke-width:2" />
+  <rect
+     width="80"
+     height="30"
+     x="732.99994"
+     y="110"
+     id="rect2560"
+     style="fill:#ccccff;stroke:#000000;stroke-width:2" />
+  <text
+     x="772.99994"
+     y="130"
+     id="text2562"
+     style="text-anchor:middle">pkg_preinst</text>
+  <line
+     x1="812.99994"
+     y1="125"
+     x2="852.99994"
+     y2="125"
+     id="line2564"
+     style="stroke:#000000;stroke-width:2" />
+  <line
+     x1="852.99994"
+     y1="125"
+     x2="844.99994"
+     y2="120"
+     id="line2566"
+     style="stroke:#000000;stroke-width:2" />
+  <line
+     x1="852.99994"
+     y1="125"
+     x2="844.99994"
+     y2="130"
+     id="line2568"
+     style="stroke:#000000;stroke-width:2" />
+  <rect
+     width="80"
+     height="30"
+     x="852.99994"
+     y="110"
+     id="rect2570"
+     style="fill:#ccccff;stroke:#000000;stroke-width:2" />
+  <text
+     x="892.99994"
+     y="130"
+     id="text2572"
+     style="text-anchor:middle">pkg_postinst</text>
+  <path
+     d="M -34.79404,125.20597 C -15.171638,125.20597 -5.3604277,130.80594 -5.3604277,142.00588 C -5.3604277,153.86465 4.4507723,159.79403 24.073182,159.79403 L 671.61258,159.79403 C 691.23498,159.79403 701.04619,153.86465 701.04619,142.00588 C 701.04619,130.80594 710.85739,125.20597 730.4798,125.20597"
+     id="path2574"
+     style="fill:none;stroke:#000000;stroke-width:2.41193652" />
+  <rect
+     width="80"
+     height="30"
+     x="245"
+     y="110"
+     id="rect2583"
+     style="fill:#ffffff;stroke:#000000;stroke-width:2" />
+  <text
+     x="286.13922"
+     y="129.99992"
+     id="text2585"
+     style="text-anchor:middle">src_configure</text>
+  <rect
+     width="80"
+     height="30"
+     x="125"
+     y="110"
+     id="rect2587"
+     style="fill:#ffffff;stroke:#000000;stroke-width:2" />
+  <text
+     x="167.51736"
+     y="129.99992"
+     id="text2589"
+     style="text-anchor:middle">src_prepare</text>
+  <g
+     transform="translate(-5.0000077,0)"
+     id="g2604">
+    <line
+       x1="90"
+       y1="125"
+       x2="130"
+       y2="125"
+       id="line2606"
+       style="stroke:#000000;stroke-width:2" />
+    <line
+       x1="130"
+       y1="125"
+       x2="122"
+       y2="120"
+       id="line2608"
+       style="stroke:#000000;stroke-width:2" />
+    <line
+       x1="130"
+       y1="125"
+       x2="122"
+       y2="130"
+       id="line2610"
+       style="stroke:#000000;stroke-width:2" />
+  </g>
+  <g
+     transform="translate(115,0)"
+     id="g2612">
+    <line
+       style="stroke:#000000;stroke-width:2"
+       id="line2614"
+       y2="125"
+       x2="130"
+       y1="125"
+       x1="90" />
+    <line
+       style="stroke:#000000;stroke-width:2"
+       id="line2616"
+       y2="120"
+       x2="122"
+       y1="125"
+       x1="130" />
+    <line
+       style="stroke:#000000;stroke-width:2"
+       id="line2618"
+       y2="130"
+       x2="122"
+       y1="125"
+       x1="130" />
+  </g>
 </svg>
-
-<!-- vim: set ft=xml sw=4 sts=4 et : -->
-
