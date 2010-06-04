@@ -303,12 +303,10 @@ src_compile() {
 </body>
 </subsection>
 
-<!-- TODO EAPI=3 (Prefix) -->
-
 </body>
 </section>
 <section>
-<title>EAPI="4"</title>
+<title>EAPI="3"</title>
 <body>
 
 <ul>
