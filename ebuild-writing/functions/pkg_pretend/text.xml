@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/pkg_pretend/">
+<chapter>
+<title>pkg_pretend</title>
+
+<body>
+<table>
+  <tr>
+    <th>Function</th>
+    <ti><c>pkg_pretend</c></ti>
+  </tr>
+  <tr>
+    <th>Purpose</th>
+    <ti>run sanity checks for a package during dependency calculation time</ti>
+  </tr>
+  <tr>
+    <th>Sandbox</th>
+    <ti>?</ti>
+  </tr>
+  <tr>
+    <th>Privilege</th>
+    <ti>root</ti>
+  </tr>
+  <tr>
+    <th>Called for</th>
+    <ti>ebuild</ti>
+  </tr>
+  <tr>
+    <th>EAPI</th>
+    <ti>3</ti>
+  </tr>
+</table>
+</body>
+
+<section>
+<title>Default <c>pkg_pretend</c></title>
+<body>
+<codesample lang="ebuild">
+pkg_pretend()
+{
+    return
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Sample <c>pkg_pretend</c></title>
+<body>
+<codesample lang="ebuild">
+pkg_pretend() {
+	if use kernel_linux ; then
+		if [[ -e "${ROOT}"/usr/src/linux/.config ]] ; then
+			if kernel_is lt 2 6 30 ; then
+				CONFIG_CHECK="FUSE_FS"
+				FUSE_FS_ERROR="this is an unrealistic testcase..."
+				check_extra_config
+			fi
+		fi
+	fi
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Notes on <c>pkg_pretend</c></title>
+<body>
+<p>
+the <c>pkg_pretend</c> phase can be used to do sanity checks
+before the main phase function sequence is run (meaning this phase is
+executed after the package manager has calculated the dependencies
+and before installing them).
+This phase typically checks for a kernel configuration and may
+<c>eerror</c> and <c>die</c> when needed.
+<important>
+	There is no guarantee that the ebuild's dependencies are installed
+	when this phase is called.
+</important>
+<important>
+	As <c>pkg_pretend</c> is not called in the main phase function
+	sequence, environment saving is not guaranteed.
+</important>
+</p>
+</body>
+</section>
+
+</chapter>
+</guide>
