@@ -11,7 +11,7 @@
   </tr>
   <tr>
     <th>Purpose</th>
-    <ti>Configure and build the package.<important>the configure parts of <c>src_compile</c> have been splitted out in EAPI=2 to <c>src_configure</c>. see <uri link="::ebuild-writing/functions/src_configure"/></ti>
+    <ti>Configure and build the package.<important>the configure parts of <c>src_compile</c> have been splitted out in EAPI=2 to <c>src_configure</c>. see <uri link="::ebuild-writing/functions/src_configure"/></important></ti>
   </tr>
   <tr>
     <th>Sandbox</th>
