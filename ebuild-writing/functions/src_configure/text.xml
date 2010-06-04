@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_configure/">
+<chapter>
+<title>src_configure</title>
+
+<body>
+<table>
+  <tr>
+    <th>Function</th>
+    <ti><c>src_configure</c></ti>
+  </tr>
+  <tr>
+    <th>Purpose</th>
+    <ti>Configure the package.</ti>
+  </tr>
+  <tr>
+    <th>Sandbox</th>
+    <ti>Enabled</ti>
+  </tr>
+  <tr>
+    <th>Privilege</th>
+    <ti>user</ti>
+  </tr>
+  <tr>
+    <th>Called for</th>
+    <ti>ebuild</ti>
+  </tr>
+  <tr>
+    <th>EAPI</th>
+    <ti>2</ti>
+  </tr>
+</table>
+</body>
+
+<section>
+<title>Default <c>src_configure</c></title>
+<body>
+<codesample lang="ebuild">
+src_configure() {
+	if [[ -x ${ECONF_SOURCE:-.}/configure ]] ; then
+        econf
+    fi
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Sample <c>src_configure</c></title>
+<body>
+<codesample lang="ebuild">
+src_configure() {
+    use sparc &amp;&amp; filter-flags -fomit-frame-pointer
+    append-ldflags -Wl,-z,now
+
+    econf \
+        $(use_enable ssl ) \
+        $(use_enable perl perlinterp )
+}
+</codesample>
+</body>
+</section>
+
+<section>
+<title><c>src_configure</c> Processes</title>
+<body>
+<p>
+The following subsections cover different topics which often occur when writing
+<c>src_configure</c> functions.
+</p>
+
+<contentsTree/>
+</body>
+</section>
+
+</chapter>
+
+<include href="configuring/"/>
+<!--<include href="build-environment/"/>
+<include href="building/"/>
+<include href="distutils/"/>
+<include href="no-build-system/"/>-->
+</guide>
+
