@@ -306,7 +306,7 @@ src_compile() {
 </body>
 </section>
 <section>
-<title>EAPI="3"</title>
+<title>EAPI="4"</title>
 <body>
 
 <ul>
@@ -330,6 +330,269 @@ src_compile() {
 </body>
 </section>
 
+<section>
+<title>EAPI="4"</title>
+<body>
+
+<subsection>
+<title>Helpers</title>
+<body>
+<ul>
+	<li>
+		<p><b>utilities die on their own, unless the nonfatal command is used</b></p>
+		<p>
+			<!-- TODO link auf fuunction-reference -->
+			ebuild functions all die on their own in EAPI=4. In case that this
+			non-zero exit status is expected, you may call <c>nonfatal function
+			[arg,...]</c>.
+		</p>
+		<p>Example:</p>
+		<codesample lang="ebuild">
+EAPI=1
+...
+src_install() {
+	emake DESTDIR="${D}" install || die "make install failed"
+	dodoc ChangeLog README
+}
+		</codesample>
+		<codesample lang="ebuild">
+EAPI=3
+...
+src_install() {
+	emake DESTDIR="${D}" install
+	nonfatal dodoc ChangeLog README
+}
+		</codesample>
+	</li>
+	<li>
+		<p><b>recursive dodoc</b></p>
+		<p>
+			<c>dodoc</c> supports <c>-r</c> as the first argument, which leads
+			<c>dodoc</c> to install the specified documentation directory
+			recursively into the docdir.
+		</p>
+		<p>Example:</p>
+		<codesample lang="ebuild">
+src_install() {
+	default
+	dodoc ChangeLog
+	dodoc -r doc/
+}
+		</codesample>
+	</li>
+	<li>
+		<p><b>doins symlink supports</b></p>
+		<p>
+			withing EAPI=4, <c>doins</c> supports to install symlinks as symlinks
+			when installing recursively. For older EAPIs, the symlink behaviour
+			is undefined.
+		</p>
+	</li>
+	<li>
+		<p><b>dosed and dohard are banned</b></p>
+		<p>
+			<c>dosed</c> and <c>dohard</c> commands are banned in this EAPI.
+		</p>
+	</li>
+	<li>
+		<p><b>unpack supports .xz and .tar.xz</b></p>
+		<p>
+			The <c>unpack</c> command supports xz-archives and xz-compressed tar
+			files. Please note that the ebuilds must ensure that
+			<c>app-arch/xz-utils</c> are installed.
+		</p>
+	</li>
+	<li>
+		<p><b>econf adds --disable-dependency-tracking</b></p>
+		<p>
+			Withing EAPI=4, <c>econf</c> adds
+			<c>--disable-dependency-tracking</c> to the default configure
+			options.
+		</p>
+	</li>
+	<li>
+		<p><b>controllable compression via docompress</b></p>
+		<p>
+			to compress files in the destination-folder <c>${D}</c>, the
+			<c>docompress</c> command may be used (in <c>src_install</c>, after
+			the target files are in <c>${D}</c>).
+			to control which items should be compressed and which shouldn't
+			be compressed, you may include and exclude directories. the default
+			inclusion list contains
+			<ul>
+				<li><c>/usr/share/doc</c></li>
+				<li><c>/usr/share/info</c></li>
+				<li><c>/usr/share/man</c></li>
+			</ul>
+			the default exclusion list contains
+			<ul>
+				<li><c>/usr/share/doc/${PF}/html</c></li>
+			</ul>
+			when a directory is in- or excluded, all files and directories in the
+			given directories shall be added to the corresponding list. if a
+			file is in- or excluded, the file shall be added to the corresponding
+			list (exclusion is stronger than inclusion - if a file is in both
+			lists, the inclusion will be ignored). if a non-existing file or
+			directory is given, it will be ignored.
+			if the first argument of <c>docompress</c> is <c>-x</c>, the item
+			specified will be added to the exclusion list, otherwise it will be
+			added to the inclusion list.
+		</p>
+	</li>
+</ul>
+</body>
+</subsection>
+
+<subsection>
+<title>Metadata</title>
+<body>
+<ul>
+	<li>
+		<p><b>slot operator dependencies</b></p>
+		<p>
+			an operator slot dependency contains of a colon followed by einer a
+			'<c>*</c>' or '<c>=</c>':
+			<ul>
+				<li><c>*</c> means that any slot of the given package is
+				acceptable. additional for runtime-dependencies is that the
+				current package will not break, when the given package is replaced
+				by a different slot.</li>
+				<li><c>=</c> means that any slot of the given package is
+				acceptable. but unlike above (<c>*</c>), for runtime-dependencies
+				it will break if the slot of the given package and the current
+				package do not match.</li>
+			</ul>
+		</p>
+	</li>
+	<li>
+		<p><b>use dependencies default</b></p>
+		<p>
+			additional to the use-deps specified in EAPI=2, a <c>(+)</c> or
+			<c>(-)</c> may be added to the use-dep to define a default-value in
+			case the use-flag does not exist in the given packge. the <c>(+)</c>
+			means that this use-flag is assumed to be enabled, the <c>(-)</c> the
+			opposite.
+			example:
+			<codesample lang="ebuild">
+DEPEND="
+	>=dev-libs/boost-1.32[boost(+)]
+	sys-devel/gcc[openmp(-)]"
+			</codesample>
+		</p>
+	</li>
+</ul>
+</body>
+</subsection>
+
+<subsection>
+<title>Phases</title>
+<body>
+<ul>
+	<li>
+		<p><b>new pkg_pretend phase</b></p>
+		<p>
+			the new <c>pkg_pretend</c> phase can be used to do sanity checks
+			before the main phase function sequence is run (meaning this phase is
+			executed after the package manager has calculated the dependencies
+			and before installing them).
+			This phase typically checks for a kernel configuration and may
+			<c>eerror</c> and <c>die</c> when needed.
+			<important>
+				There is no guarantee that the ebuild's dependencies are installed
+				when this phase is called.
+			</important>
+			<important>
+				As <c>pkg_pretend</c> is not called in the main phase function
+				sequence, environment saving is not guaranteed.
+			</important>
+		</p>
+		<p>Example:</p>
+		<codesample lang="ebuild">
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+EAPI="4"
+inherit linux-info
+...
+
+pkg_pretend() {
+	if use kernel_linux ; then
+		if [[ -e "${ROOT}"/usr/src/linux/.config ]] ; then
+			if kernel_is lt 2 6 30 ; then
+				CONFIG_CHECK="FUSE_FS"
+				FUSE_FS_ERROR="this is an unrealistic testcase..."
+				check_extra_config
+			fi
+		fi
+	fi
+}
+		</codesample>
+	</li>
+	<li>
+		<p><b>default src_install is no longer a non-op</b></p>
+		<p>
+			the default implementation of <c>src_install</c> is no longer a
+			non-op in EAPI=4:
+		</p>
+		<codesample lang="ebuild">
+src_install() {
+	if [[ -f Makefile ]] || [[ -f GNUmakefile]] || [[ -f makefile ]] ; then
+		emake DESTDIR="${D}" install
+	fi
+
+	if ! declare -p DOCS >/dev/null 2>&amp;1 ; then
+		local d
+		for d in README* ChangeLog AUTHORS NEWS TODO CHANGES THANKS BUGS \
+				FAQ CREDITS CHANGELOG ; do
+			[[ -s "${d}" ]] &amp;&amp; dodoc "${d}"
+		done
+	# TODO: wrong "declare -a" command...
+	elif declare -p DOCS | grep -q `^declare -a` ; then
+		dodoc "${DOCS[@]}"
+	else
+		dodoc ${DOCS}
+	fi
+}
+		</codesample>
+	</li>
+	<li>
+		<p><b>pkg_info for non-installed packages</b></p>
+		<p>
+			the <c>pkg_info</c> function may also be called by the
+			package-manager for non-installed packages.
+			the ebuild writers should note, that dependencies may not be
+			available.
+		</p>
+	</li>
+</ul>
+</body>
+</subsection>
+
+<subsection>
+<title>Variables</title>
+<body>
+<ul>
+	<li>
+		<p><b>AA and KV variables are gone</b></p>
+		<p>
+			the <c>${AA}</c> and <c>${KV}</c> variables are no longer set in
+			EAPI=4.
+		</p>
+	</li>
+	<li>
+		<p><b>no more RDEPEND="${DEPEND}"</b></p>
+		<p>
+			when <c>RDEPEND</c> is unset, there will no longer be an automatic
+			assignement of <c>RDEPEND="${DEPEND}"</c>.
+		</p>
+	</li>
+</ul>
+</body>
+</subsection>
+
+</body>
+</section>
 
 </body>
 </chapter>
