@@ -12,7 +12,7 @@ distinction is important.
 </note>
 
 <p>
-Every ebuild should specify a <c>KEYWORDS</c> variable. This variable is used to
+Every ebuild must specify a <c>KEYWORDS</c> variable. This variable is used to
 indicate the suitability and stability of both the package and the ebuild on
 each given arch (<c>sparc</c>, <c>ppc</c>, <c>x86-obsd</c>, ...).
 </p>
