@@ -95,23 +95,8 @@ is mainly used for displaying additional error details before bailing out.
 </section>
 
 <section>
-<title>Important Messages</title>
+<title>Message function reference</title>
 <body>
-
-<p>
-For <e>really</e> important messages, <c>eutils.eclass</c> provides <c>ebeep</c> and
-<c>epause</c>. The former will beep a number of times, and the latter will pause
-for several seconds to allow the user to read any messages. Both can be disabled
-by the user <d/> you must <b>not</b> attempt to override the user's preference in
-this. <c>ebeep</c> takes an optional parameter specifying how many times to beep.
-<c>epause</c> takes an optional parameter (which <b>must</b> be an exact whole number)
-specifying for how long it should sleep.
-</p>
-
-<p>
-Do not abuse these functions <d/> better to save them for when things really are
-important.
-</p>
 
 <p>
 See <uri link="::function-reference/message-functions/"/> for a full list of functions.

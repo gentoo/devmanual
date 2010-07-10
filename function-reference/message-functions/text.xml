@@ -77,7 +77,9 @@ displaying informational messages.
 </table>
 
 <p>
-The following are available from <c>eutils.eclass</c>:
+	The following are available from <c>eutils.eclass</c> in EAPIs 0, 1 and 2.
+	They are deprecated in favor of GLEP 42 news items and package manager
+	message logging functionality.
 </p>
 
 <table>
