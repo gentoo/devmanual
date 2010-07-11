@@ -95,6 +95,19 @@ is mainly used for displaying additional error details before bailing out.
 </section>
 
 <section>
+<title>QA warnings</title>
+<body>
+
+<p>
+	The <c>eqawarn</c> function can be used by eclass authors to notify ebuild writers about
+	deprecated functionality. eqawarn is defined in eutils. Portage doesn't log the qa message
+	class by default so users don't get annoyed by seeing messages they can't do much about.
+</p>
+
+</body>
+</section>
+
+<section>
 <title>Message function reference</title>
 <body>
 
