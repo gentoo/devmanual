@@ -151,7 +151,9 @@ RDEPEND="fakemedia? ( >=media-libs/fakemedia-1-1 )"
 	explanation of the format. Remember to keep these files sorted. The file
 	<c>use.local.desc</c> is automatically generated from entries in the
 	package's <c>metadata.xml</c> and may be used by tools that parse the tree.
-	See GLEP 56 for more info.
+	See
+	<uri link="http://www.gentoo.org/proj/en/glep/glep-0056.html">GLEP 56</uri>
+	for more info.
 </p>
 <p>
 	The exceptions to this are <c>USE_EXPAND</c> flags, which must be
