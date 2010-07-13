@@ -206,31 +206,33 @@ src_compile() {
 <body>
 
 <p>
-The <c>VIDEO_CARDS</c>, <c>INPUT_DEVICES</c> and <c>LINGUAS</c> variables are
-automatically expanded into USE flags. These are known as <c>USE_EXPAND</c>
-variables. If the user has <c>LINGUAS="en fr"</c> in <c>make.conf</c>, for example,
-then <c>USE="linguas_en linguas_fr"</c> will automatically be set by Portage.
+	The <c>VIDEO_CARDS</c>, <c>INPUT_DEVICES</c> and <c>LINGUAS</c> variables
+	are automatically expanded into USE flags. These are known as
+	<c>USE_EXPAND</c> variables. If the user has <c>LINGUAS="en fr"</c> in
+	<c>make.conf</c>, for example, then <c>USE="linguas_en linguas_fr"</c> will
+	automatically be set by Portage.
 </p>
 
 <p>
-The <c>USE_EXPAND</c> list is set in <c>profiles/base/make.default</c> as of Portage
-2.0.51.20. This must not be modified without discussion on the gentoo-dev list,
-and it must not be modified in any subprofile.
+	The <c>USE_EXPAND</c> list is set in <c>profiles/base/make.default</c> as of
+	Portage 2.0.51.20. This must not be modified without discussion on the
+	gentoo-dev list, and it must not be modified in any subprofile.
 </p>
 
 <p>
-The current architecture (e.g. <c>x86</c>, <c>sparc</c>, <c>ppc-macos</c>) will
-automatically be set as a USE flag as well. See <c>profiles/arch.list</c> for a
-full list of valid architecture keywords, and
-<uri link="http://www.gentoo.org/proj/en/glep/glep-0022.html">GLEP 22</uri> for
-an explanation of the format.
+	The current architecture (e.g. <c>x86</c>, <c>sparc</c>, <c>ppc-macos</c>)
+	will automatically be set as a USE flag as well. See
+	<c>profiles/arch.list</c> for a full list of valid architecture keywords,
+	and
+	<uri link="http://www.gentoo.org/proj/en/glep/glep-0022.html">GLEP 22</uri>
+	for an explanation of the format.
 </p>
 
 <warning>
-It is a common misconception that the architecture variable is somehow
-related to <c>ACCEPT_KEYWORDS</c>. It isn't. Accepting <c>x86</c> keywords on
-<c>sparc</c>, for example, won't set <c>USE="x86"</c>. Similarly, there are no
-<c>~arch</c> USE flags, so don't try <c>if use ~x86</c>.
+	It is a common misconception that the architecture variable is somehow
+	related to <c>ACCEPT_KEYWORDS</c>. It isn't. Accepting <c>x86</c> keywords
+	on <c>sparc</c>, for example, won't set <c>USE="x86"</c>. Similarly, there
+	are no <c>~arch</c> USE flags, so don't try <c>if use ~x86</c>.
 </warning>
 
 </body>
