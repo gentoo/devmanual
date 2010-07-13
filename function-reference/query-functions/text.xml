@@ -87,14 +87,6 @@ query variables and similar state.
   </tr>
   <tr>
     <ti>
-      <c>portageq</c>
-    </ti>
-    <ti>
-      Wrapper for <c>portageq</c>
-    </ti>
-  </tr>
-  <tr>
-    <ti>
       <c>best_version pkg</c>
     </ti>
     <ti>

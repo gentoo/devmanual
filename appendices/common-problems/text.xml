@@ -64,11 +64,11 @@ in use, there are various alternatives:
     </p>
   </dd>
   <dt>
-    <c>has_version</c>, <c>best_version</c>, <c>portageq</c>
+    <c>has_version</c>, <c>best_version</c>
   </dt>
   <dd>
     <p>
-    Calls to any of these globally indicates a serious problem. You must <b>not</b>
+    Calls to either of these globally indicates a serious problem. You must <b>not</b>
     have metadata varying based upon system-dependent information <d/> see
     <uri link="::general-concepts/portage-cache/"/>. You should rewrite your ebuilds
     to correctly use dependencies.
