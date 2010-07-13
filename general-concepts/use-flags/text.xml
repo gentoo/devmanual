@@ -145,18 +145,20 @@ RDEPEND="fakemedia? ( >=media-libs/fakemedia-1-1 )"
 <title>USE Flag Descriptions</title>
 <body>
 <p>
-All USE flags must be described in either <c>use.desc</c> or <c>metadata.xml</c>
-in the <c>profiles/</c> directory. See <c>man portage</c> or the comments in
-these files for an explanation of the format. Remember to keep these files
-sorted. The file <c>use.local.desc</c> is automatically generated from entries
-in the package's <c>metadata.xml</c> and may be used by tools that parse the
-tree. See GLEP 56 for more info.
+	All USE flags must be described in either <c>use.desc</c> in the
+	<c>profiles/</c> directory or <c>metadata.xml</c> in the package's
+	directory. See <c>man portage</c> or the comments in these files for an
+	explanation of the format. Remember to keep these files sorted. The file
+	<c>use.local.desc</c> is automatically generated from entries in the
+	package's <c>metadata.xml</c> and may be used by tools that parse the tree.
+	See GLEP 56 for more info.
 </p>
 <p>
-The exceptions to this are <c>USE_EXPAND</c> flags, which must be documented in the 
-<c>profiles/desc/</c> directory. One file per <c>USE_EXPAND</c> variable is required,
-which must contain descriptions of the possible values this variable can take. See the
-comments in these files for the format, and remember to keep them sorted.
+	The exceptions to this are <c>USE_EXPAND</c> flags, which must be
+	documented in the <c>profiles/desc/</c> directory. One file per
+	<c>USE_EXPAND</c> variable is required, which must contain descriptions of
+	the possible values this variable can take. See the comments in these files
+	for the format, and remember to keep them sorted.
 </p>
 </body>
 </section>
