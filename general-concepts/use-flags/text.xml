@@ -114,25 +114,28 @@ RDEPEND="fakemedia? ( >=media-libs/fakemedia-1-1 )"
 <body>
 
 <p>
-USE flags are categorised as either local or global. A global USE flag must satisfy several criteria:
+	USE flags are categorised as either local or global. A global USE flag must
+	satisfy several criteria:
 </p>
 
 <ul>
-  <li>It is used by many different packages.</li>
+	<li>It is used by many different packages, at least 5 seems to be agreed
+		upon.</li>
   <li>It has a general non-specific purpose.</li>
 </ul>
 
 <p>
-The second point is important. If the effect of the <c>thing</c> USE flag upon
-<c>pkg-one</c> is substantially different from the effect it has upon <c>pkg-two</c>,
-then <c>thing</c> is not a suitable candidate for being made a global flag. In
-particular, note that if <c>client</c> and <c>server</c> USE flags are ever
-introduced, they can not be global USE flags for this reason.
+	The second point is important. If the effect of the USE flag upon
+	<c>pkg-one</c> is substantially different from the effect it has upon
+	<c>pkg-two</c>, then the flag is not a suitable candidate for being made a
+	global flag. In particular, note that if <c>client</c> and <c>server</c>
+	USE flags are ever introduced, they can not be global USE flags for this
+	reason.
 </p>
 
 <p>
-Before introducing a new global USE flag, it must be discussed on the gentoo-dev
-mailing list.
+	Before introducing a new global USE flag, it must be discussed on the
+	gentoo-dev mailing list.
 </p>
 
 </body>
