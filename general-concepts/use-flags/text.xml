@@ -5,26 +5,32 @@
 
 <body>
 <p>
-<c>USE</c> flags are to control optional dependencies and settings which the user may
-reasonably want to select. For example, <c>vim</c> can optionally build with support for
-the <c>ruby</c> interpreter, and it needs <c>ruby</c> installed to do this <d/> we use
-the ruby <c>USE</c> flag to provide this option. On the other hand, <c>glark</c> requires
-<c>ruby</c> no matter what, so no <c>USE</c> flag is used there.
+	<c>USE</c> flags are to control optional dependencies and settings which
+	the user may reasonably want to select. For example, <c>app-editors/vim</c>
+	can optionally build with support for the <c>ruby</c> interpreter, and it
+	needs <c>dev-lang/ruby</c> installed to do this <d/> we use the ruby
+	<c>USE</c> flag to provide this option. On the other hand,
+	<c>app-text/glark</c> requires <c>ruby</c> no matter what, so no <c>USE</c>
+	flag is used there.
 </p>
 
 <p>
-No combination of <c>USE</c> flags should cause a package to fail to build.
+	No combination of <c>USE</c> flags should cause a package to fail to build
+	because users can set any combination of flags.
 </p>
 
 <p>
-Packages should not configure and link based upon what is available at compile time
-<d/> any autodetection must be overridden.
+	Packages should not configure and link based upon what is available at
+	compile time <d/> any autodetection must be overridden. This is commonly
+	referred to as the dependency being "automagic" - This is bad because the
+	dependency is not detected by the package manager tools and can easily
+	break, among other issues.
 </p>
 
 <note>
-The status of USE flags is saved in the VDB, and their value in
-<c>pkg_prerm</c> and <c>pkg_postrm</c> is taken from there. This means that setting or
-unsetting a USE flag between merge and unmerge has no effect.
+	The status of USE flags is saved in the VDB, and their value in
+	<c>pkg_prerm</c> and <c>pkg_postrm</c> is taken from there. This means that
+	setting or unsetting a USE flag between merge and unmerge has no effect.
 </note>
 </body>
 
