@@ -38,20 +38,20 @@
 <title><c>noblah</c> USE Flags</title>
 <body>
 <p>
-If at all possible, avoid <c>noblah</c> style <c>USE</c> flags. These break <c>use.mask</c>
-and cause all sorts of complications for arch developers. Here's why:
+	Avoid <c>noblah</c> style <c>USE</c> flags. These break <c>use.mask</c> and
+	cause all sorts of complications for arch developers. Here's why:
 </p>
 
 <p>
-Consider a hypothetical package named 'vplayer', which plays videos. This
-package has optional support, via <c>USE</c> flags, for various sound and video output
-methods, various video codecs and so on.
+	Consider a hypothetical package named 'vplayer', which plays videos. This
+	package has optional support, via <c>USE</c> flags, for various sound and
+	video output methods, various video codecs and so on.
 </p>
 
 <p>
-One of vplayer's optional features is support for the 'fakemedia' codec, which
-is unfortunately only available as a dodgy x86 binary. We <e>could</e> handle this by
-doing something like:
+	One of vplayer's optional features is support for the 'fakemedia' codec,
+	which is unfortunately only available as a dodgy x86 binary. We <e>could</e>
+	handle this by doing something like:
 </p>
 
 <codesample lang="ebuild">
@@ -59,15 +59,15 @@ RDEPEND="x86? ( fakemedia? ( >=media-libs/fakemedia-1.1 ) )"
 </codesample>
 
 <p>
-Except this is pretty nasty <d/> what happens when an AMD64 binary is made as
-well? Also, users on other archs will see fakemedia listed in <c>emerge -pv</c>
-output, even though it is not actually available.
+	Except this is pretty nasty <d/> what happens when an AMD64 binary is made
+	as well? Also, users on other archs will see fakemedia listed in
+	<c>emerge -pv</c> output, even though it is not actually available.
 </p>
 
 <p>
-Similarly, say vplayer supports output via the ALSA codec as one option.
-However, ALSA isn't (or wasn't when this example was written) available on SPARC
-or Alpha. So we could do:
+	Similarly, say vplayer supports output via the ALSA codec as one option.
+	However, ALSA isn't (or wasn't when this example was written) available on
+	SPARC or Alpha. So we could do:
 </p>
 
 <codesample lang="ebuild">
@@ -75,17 +75,18 @@ DEPEND="!sparc? ( !alpha? ( alsa? ( media-libs/alsa-lib ) ) )"
 </codesample>
 
 <p>
-Again, it's messy, and ALSA still shows up in the <c>emerge -p</c> output. Also,
-once ALSA starts working on SPARC, every ebuild that does this would have to be
-manually edited.
+	Again, it's messy, and ALSA still shows up in the <c>emerge -p</c> output.
+	Also, once ALSA starts working on SPARC, every ebuild that does this would
+	have to be manually edited.
 </p>
 
 <p>
-The solution is <c>use.mask</c>, which is documented in <uri link="::profiles/use.mask/"/>.
-Each profile can have a <c>use.mask</c> file which can be used to forcibly disable
-certain USE flags on a given arch (or subarch, or subprofile). So, if the
-<c>fakemedia</c> USE flag was use.masked on every non-x86 profile, the following
-would be totally legal and wouldn't break anything:
+	The solution is <c>use.mask</c>, which is documented in
+	<uri link="::profiles/use.mask/"/>. Each profile can have a <c>use.mask</c>
+	file which can be used to forcibly disable certain USE flags on a given
+	arch (or subarch, or subprofile). So, if the <c>fakemedia</c> USE flag was
+	use.masked on every non-x86 profile, the following would be totally legal
+	and wouldn't break anything:
 </p>
 
 <codesample lang="ebuild">
@@ -93,15 +94,16 @@ RDEPEND="fakemedia? ( >=media-libs/fakemedia-1-1 )"
 </codesample>
 
 <p>
-Users of non-x86 would see the following when doing <c>emerge -pv vplayer</c>:
+	Users of non-x86 would see the following when doing
+	<c>emerge -pv vplayer</c>:
 </p>
 
 <pre>
-[ebuild   R   ] media-video/vplayer-1.2 alsa -blah (-fakemedia) xyz
+	[ebuild   R   ] media-video/vplayer-1.2 alsa -blah (-fakemedia) xyz
 </pre>
 
 <p>
-To get a flag added to <c>use.mask</c>, ask the relevant arch team.
+	To get a flag added to <c>use.mask</c>, ask the relevant arch team.
 </p>
 
 </body>
