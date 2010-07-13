@@ -167,15 +167,16 @@ RDEPEND="fakemedia? ( >=media-libs/fakemedia-1-1 )"
 <title>Conflicting USE Flags</title>
 <body>
 <p>
-Occasionally, ebuilds will have conflicting USE flags for functionality.
-Checking for them and returning an error is <e>not</e> a viable solution. Instead,
-you must pick one of the USE flags in conflict to favour.
+	Occasionally, ebuilds will have conflicting USE flags for functionality.
+	Checking for them and returning an error is <e>not</e> a viable solution.
+	Instead, you must pick one of the USE flags in conflict to favour and should
+	alert the user that a particular flag is being used instead.
 </p>
 
 <p>
-One example comes from the <c>msmtp</c> ebuilds. The package can use either SSL
-with GnuTLS, SSL with OpenSSL, or no SSL at all. Because GnuTLS is more
-featureful than OpenSSL, it is favoured:
+	One example comes from the <c>mail-mta/msmtp</c> ebuilds. The package can
+	use either SSL with GnuTLS, SSL with OpenSSL, or no SSL at all. Because
+	GnuTLS is more featureful than OpenSSL, it is favoured:
 </p>
 
 <codesample lang="ebuild">
