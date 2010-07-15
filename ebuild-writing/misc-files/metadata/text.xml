@@ -35,10 +35,12 @@ example might look like:
            can react to changes in the hardware configuration in order to maintain
            system policy.
         &lt;/longdescription&gt;
-       &lt;flag name="laptop"&gt;Adds support for power management scripts
+	&lt;use&gt;
+	       &lt;flag name="laptop"&gt;Adds support for power management scripts
                 (&lt;pkg&gt;sys-power/pm-utils&lt;/pkg&gt;)&lt;/flag&gt;
-        &lt;flag name="selinux"&gt;Installs SELinux policies and links HAL to the SELinux
-                libraries.&lt;/flag&gt;
+        	&lt;flag name="selinux"&gt;Installs SELinux policies and links HAL to the SELinux
+                	libraries.&lt;/flag&gt;
+	&lt;/use;&gt;
     &lt;/pkgmetadata&gt;
 </codesample>
 
