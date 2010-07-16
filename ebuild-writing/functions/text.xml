@@ -6,7 +6,7 @@
 <body>
 <p>
 When installing packages from source, the function call order is <c>pkg_setup</c>,
-<c>src_unpack</c>, <c>src_compile</c>, <c>src_test</c> (optional, <c>FEATURES="test"</c>),
+<c>src_unpack</c>, <c>src_prepare</c>, <c>src_compile</c>, <c>src_test</c> (optional, <c>FEATURES="test"</c>),
 <c>src_install</c>, <c>pkg_preinst</c>, <c>pkg_postinst</c>. When installing packages
 from a binary, the function call order is <c>pkg_setup</c>, <c>pkg_preinst</c>,
 <c>pkg_postinst</c>.
@@ -46,6 +46,7 @@ page for further information.
 <include href="pkg_nofetch/"/>
 <include href="pkg_setup/"/>
 <include href="src_unpack/"/>
+<include href="src_prepare/"/>
 <include href="src_compile/"/>
 <include href="src_test/"/>
 <include href="src_install/"/>
