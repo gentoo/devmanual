@@ -46,10 +46,17 @@ from <c>app-admin/showconsole</c>:
 
 <codesample lang="ebuild">
 src_unpack() {
-    unpack ${P}.tar.bz2
+    unpack ${A}
     cd "${S}"
-    epatch "${DISTDIR}/${P}-suse-update.patch.bz2"
+    epatch "${WORKDIR}/${P}-suse-update.patch.bz2"
     epatch "${FILESDIR}/${PV}-no-TIOCGDEV.patch"
+}
+</codesample>
+<p>As stated before, if you are using EAPI >=2, you should apply the patches in the <uri link="::ebuild-writing/functions/src_prepare">src_prepare</uri> function</p>
+<codesample lang="ebuild">
+src_prepare() {
+	epatch "${WORKDIR}/${P}-suse-update.patch.bz2"
+	epatch "${FILESDIR}/${PV}-no-TIOCGDEV.patch"
 }
 </codesample>
 
