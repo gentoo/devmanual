@@ -55,6 +55,10 @@ src_unpack() {
     sed -i -e 's/"ispell"/"aspell"/' src/defaults.h || die "Sed failed!"
 }
 </codesample>
+<note>
+When using EAPI >=2, you should use the <uri link="::ebuild-writing/functions/src_prepare">src_prepare</uri> function to apply patches or alter any of the source files, instead of the src_unpack.
+</note>
+
 </body>
 </section>
 
