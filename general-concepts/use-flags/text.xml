@@ -27,6 +27,14 @@
 	break, among other issues.
 </p>
 
+<p>
+	The usage of a <c>USE</c> flag should not control runtime dependencies when
+	the package does not link to it. Doing so will create extra
+	configuration for the package and re-compilation for no underlying file
+	change on disk. This should be avoided and instead can be conveyed to the
+	user via post install messages if needed.
+</p>
+
 <note>
 	The status of USE flags is saved in the VDB, and their value in
 	<c>pkg_prerm</c> and <c>pkg_postrm</c> is taken from there. This means that
