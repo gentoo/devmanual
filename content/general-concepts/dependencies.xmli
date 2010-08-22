@@ -422,8 +422,7 @@ DEPEND="baz? ( || ( app-misc/foo app-misc/bar ) )"
     <title>Legacy Inverse USE-Conditional Dependency Syntax</title>
 
     <para>
-      When looking through old ebuild versions or the occasional user-submitted ebuild, you may see a
-      <varname>*DEPEND</varname> atom in the form:
+    Once upon a time the ? conditional operator was allowed in <command>*DEPEND</command>:
     </para>
 
     <programlisting language="ebuild"><![CDATA[
