@@ -9,6 +9,50 @@
     The <filename>metadata.xml</filename> file is used to specify additional data about a package or category.
   </para>
 
+    <section>
+    <title>Package Metadata</title>
+
+    <para>
+      For packages, <filename>metadata.xml</filename> can specify a long description and maintainer information. If a
+      long description in any language is provided, an English long description must be present. A typical example might
+      look like:
+    </para>
+
+    <programlisting language="sgml"><![CDATA[
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+    <pkgmetadata>
+        <herd>freedesktop</herd>
+        <maintainer>
+            <email>dang@gentoo.org</email>
+            <name>Daneel Grynewwicz</name>
+        </maintainer>
+        <longdescription lang="en">
+	HAL provides a view of the various hardware attached to a
+	system.
+	In addition to this, HAL keeps detailed metadata for each
+	piece of hardware and provide hooks such that system- and
+	desktop-level software can react to changes in the 
+	hardware configuration in order to maintain system policy.
+	</longdescription>
+	<flag name="laptop">Adds support for power management scripts
+	(<pkg>sys-power/pm-utils</pkg>) </flag>
+	<flag anme="selinux"> Installs SELinux policies and links HAL to the SELinux libraries</flag>
+    </pkgmetadata>
+]]></programlisting>
+
+    <para>
+      All new packages <emphasis>must</emphasis> include a <filename>metadata.xml</filename> file which specifies at
+      <emphasis>least</emphasis> a herd. If no herd is suitable, <literal>no-herd</literal> should be used, and at least
+      one maintainer must be listed — however, if at all possible, find a herd willing to be listed. If a package has no maintainer, <command>maintainer-needed@gentoo.org</command> should be listed as the maintainer.
+    </para>
+
+    <para>
+      Commits of package metadata files are handled by <command>repoman</command>. You should ensure that you have
+      <package>dev-libs/libxml2</package> installed so that the XML can be validated.
+    </para>
+  </section>
+
   <section xml:id="ebuild-writing.misc-files.metadata.category-metadata">
     <title>Category Metadata</title>
 
@@ -51,41 +95,4 @@ cvs commit -m "Adding category metadata.xml for my-category" metadata.xml
 ]]></programlisting>
   </section>
 
-  <section>
-    <title>Package Metadata</title>
-
-    <para>
-      For packages, <filename>metadata.xml</filename> can specify a long description and maintainer information. If a
-      long description in any language is provided, an English long description must be present. A typical example might
-      look like:
-    </para>
-
-    <programlisting language="sgml"><![CDATA[
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-    <pkgmetadata>
-        <herd>vim</herd>
-        <maintainer>
-            <email>ciaranm@gentoo.org</email>
-            <name>Ciaran McCreesh</name>
-        </maintainer>
-        <longdescription lang="en">
-            This package provides Vim syntax highlighting for Cfengine configuration
-            files, and automatic filetype detection for these files based upon
-            filename.
-        </longdescription>
-    </pkgmetadata>
-]]></programlisting>
-
-    <para>
-      All new packages <emphasis>must</emphasis> include a <filename>metadata.xml</filename> file which specifies at
-      <emphasis>least</emphasis> a herd. If no herd is suitable, <literal>no-herd</literal> should be used, and at least
-      one maintainer must be listed — however, if at all possible, find a herd willing to be listed.
-    </para>
-
-    <para>
-      Commits of package metadata files are handled by <command>repoman</command>. You should ensure that you have
-      <package>dev-libs/libxml2</package> installed so that the XML can be validated.
-    </para>
-  </section>
 </section>

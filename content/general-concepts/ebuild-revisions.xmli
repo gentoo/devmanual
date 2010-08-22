@@ -23,6 +23,11 @@
     not affect the installed package for users who already managed to compile it.
     Small documentation fixes are also usually not grounds for a new revision.
   </para>
+  <important>
+  For ebuilds marked stable on at least one arch, only trivial edits can be made
+  without a bump (e.g. typo fixes in elog messages). Even simple changes may
+  result in a breakage. <emphasis role="strong">Modifying stable ebuilds should be  avoided.</emphasis>
+  </important>
 
   <para>
     When doing a revision bump, the usual rules about dropping to <literal>~arch</literal> apply.
