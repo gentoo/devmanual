@@ -333,21 +333,28 @@ SRC_URI="http://example.com/files/${P}-core.tar.bz2
     <title>Version Formatting Issues</title>
     
     <para>
-      Often upstream's tarball versioning format doesn't quite follow Gentoo conventions. Differences in how underscores
-      and hyphens are used are particularly common. For example, what Gentoo calls <package>foo-1.2.3b</package> may
-      be expecting a tarball named <filename>foo-1.2-3b.tar.bz2</filename>. Rather than hard coding version numbers, it
-      is preferable to make a <varname>MY_PV</varname> variable and use that. The easy way to do this, which should be
-      used unless you are sure you know what you are doing, is to use <filename>versionator.eclass</filename>:
+    Often upstream's tarball versioning or naming format doesn't quite follow
+    Gentoo conventions. Using capital letters in names or differences in how
+    underscores and hyphens are used in versions are particularly common. 
+    For example, what Gentoo calls <command>foo-1.2.3b</command> may be
+    expecting a tarball named <command>Foo-1.2-3b.tar.bz2</command>. 
+    Rather than hard   coding the package string, 
+    it is preferable to make <command>MY_PN</command>, <command>MY_PV</command> and <command>MY_P</command>
+    variables and use those to define the upstream naming. 
+    The easy way of redefining the version, which should be
+    used unless you are sure you know what you are doing, is to use the <command>versionator</command> eclass:
     </para>
 
     <programlisting language="ebuild"><![CDATA[
 inherit versionator
+MY_PN="Foo"
 MY_PV=$(replace_version_separator 2 '-')
+MY_P="${MY_PN}-${MY_PV}"
 ]]></programlisting>
 
     <para>
       This code has the advantage that it will carry on working even if upstream switches to a format like
-      <filename>foo-1.3-4.5.tar.bz2</filename> (yes, this really happens).
+      <command>Foo-1.3-4.5.tar.bz2</command> (yes, this really happens).
     </para>
 
     <para>

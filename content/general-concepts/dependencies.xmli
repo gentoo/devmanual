@@ -58,9 +58,15 @@
 
     <para>
       All packages have an implicit compile-time and runtime dependency upon the entire <literal>system</literal>
-      target. It is therefore not necessary, nor advisable, to specify dependencies upon <package>gcc</package>,
-      <package>libc</package> and so on, except where specific versions or packages (for example,
-      <package>glibc</package> over <package>uclibc</package>) are required.
+      target. It is therefore not necessary, nor advisable, to
+      specify dependencies upon toolchain packages like <command>gcc</command>, <command>libc</command>
+    and so on, except where specific versions or packages (for example,
+    <command>glibc</command> over <command>uclibc</command>) are required.  Note that this rule also needs consideration for packages like <command>flex</command>, <command>zlib</command> and <command>libtool</command>, which
+    aren't in the <command>system</command> target for every profile. 
+    For example, the embedded profile doesn't have <command>zlib</command> 
+    in <command>system</command> target, the <command>libtool</command> ABI 
+    might change and break building order and <command>flex</command> might 
+    get removed from the<command>system</command> target in future.
     </para>
 
     <para>
