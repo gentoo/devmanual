@@ -10,6 +10,8 @@ When installing packages from source, the function call order is <c>pkg_setup</c
 <c>src_install</c>, <c>pkg_preinst</c>, <c>pkg_postinst</c>. When installing packages
 from a binary, the function call order is <c>pkg_setup</c>, <c>pkg_preinst</c>,
 <c>pkg_postinst</c>.
+As some phases haven't been introduced from the beginning, you can have a look at
+<uri link="::ebuild-writing/eapi"/> for an overview, what have been introduced in which EAPI.
 </p>
 
 <figure short="How the ebuild functions are processed" link="diagram.png"/>
@@ -43,10 +45,12 @@ page for further information.
 </section>
 </chapter>
 
+<include href="pkg_pretend/"/>
 <include href="pkg_nofetch/"/>
 <include href="pkg_setup/"/>
 <include href="src_unpack/"/>
 <include href="src_prepare/"/>
+<include href="src_configure/"/>
 <include href="src_compile/"/>
 <include href="src_test/"/>
 <include href="src_install/"/>
@@ -55,4 +59,5 @@ page for further information.
 <include href="pkg_prerm/"/>
 <include href="pkg_postrm/"/>
 <include href="pkg_config/"/>
+<include href="pkg_info/"/>
 </guide>
