@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<guide self="ebuild-writing/functions/src_unpack/epatch/">
+<guide self="ebuild-writing/functions/src_prepare/epatch/">
 <chapter>
 <title>Patching with epatch</title>
 
@@ -7,8 +7,8 @@
 <p>
 The canonical way of applying patches in ebuilds is to
 use <c>epatch</c> (from <c>eutils.eclass</c>, which you must make sure
-to import!) inside <c>src_unpack</c>. This function automatically
-handles <c>-p</c> levels, <c>gunzip</c> and so on as necessary.
+to import!) inside <c>src_prepare</c>. This function automatically
+handles <c>-p</c> levels, <c>gunzip</c> and so on as necessary. Note the old ebuild may still use src_unpack to apply patches. This is because those ebuilds are based in EAPI="1". You are advised to use EAPI="2" and apply your patches in src_prepare function instead.
 </p>
 
 <p>
