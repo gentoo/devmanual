@@ -58,4 +58,6 @@ src_prepare() {
 </section>
 
 </chapter>
+<include href="epatch/"/>
+<include href="autopackage/"/>
 </guide>
