@@ -37,7 +37,7 @@ To apply a patch, use <c>patch -pX &lt; whatever.patch</c>,
 where <c>X</c> is a number representing the number of path components
 which must be removed (typically this is <c>0</c> or <c>1</c>). Within
 ebuilds, use the <c>epatch</c> function instead — see
-<uri link="::ebuild-writing/functions/src_unpack/epatch"/>.
+<uri link="::ebuild-writing/functions/src_prepare/epatch"/>.
 </p>
 
 <p>

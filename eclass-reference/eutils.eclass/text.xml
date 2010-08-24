@@ -60,7 +60,7 @@ see <c>man eutils.eclass</c>.
     </ti>
     <ti>
       Apply a patch (see <c>man eutils.eclass</c> and
-      <uri link="::ebuild-writing/functions/src_unpack/epatch"/>).
+      <uri link="::ebuild-writing/functions/src_prepare/epatch"/>).
     </ti>
   </tr>
   <tr>
