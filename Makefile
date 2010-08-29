@@ -1,7 +1,11 @@
 text_files := $(shell find -name "text.xml" | sed -e "s/text.xml$$/index.html/")
 image_files := $(shell find -name "*.svg" | sed -e "s/svg$$/png/")
 
-all: $(text_files) $(image_files)
+all: prereq $(text_files) $(image_files)
+
+prereq:
+	@type -p convert &>/dev/null || { echo "media-gfx/imagemagick with truetype and corefonts is required" >&2; exit 1; }; \
+		type -p xsltproc &>/dev/null || { echo "dev-libs/libxslt is required" >&2; exit 1; }
 
 %index.html : %text.xml
 	xsltproc devbook.xsl $< > $@ 
