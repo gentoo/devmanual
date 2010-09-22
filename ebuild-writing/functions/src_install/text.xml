@@ -119,43 +119,43 @@ upon the <c>sys-fs/udev</c> install:
 
 <codesample lang="ebuild">
 src_install() {
-    dobin udevinfo
-    dobin udevtest
+    dobin udevinfo || die
+    dobin udevtest || die
     into /
-    dosbin udev
-    dosbin udevd
-    dosbin udevsend
-    dosbin udevstart
-    dosbin extras/scsi_id/scsi_id
-    dosbin extras/volume_id/udev_volume_id
+    dosbin udev || die
+    dosbin udevd || die
+    dosbin udevsend || die
+    dosbin udevstart || die
+    dosbin extras/scsi_id/scsi_id || die
+    dosbin extras/volume_id/udev_volume_id || die
 
     exeinto /etc/udev/scripts
-    doexe extras/ide-devfs.sh
-    doexe extras/scsi-devfs.sh
-    doexe extras/cdsymlinks.sh
-    doexe extras/dvb.sh
+    doexe extras/ide-devfs.sh || die
+    doexe extras/scsi-devfs.sh || die
+    doexe extras/cdsymlinks.sh || die
+    doexe extras/dvb.sh || die
 
     insinto /etc/udev
-    newins "${FILESDIR}/udev.conf.post_050" udev.conf
-    doins extras/cdsymlinks.conf
+    newins "${FILESDIR}/udev.conf.post_050" udev.conf || die
+    doins extras/cdsymlinks.conf || die
 
     # For devfs style layout
     insinto /etc/udev/rules.d/
-    newins etc/udev/gentoo/udev.rules 50-udev.rules
+    newins etc/udev/gentoo/udev.rules 50-udev.rules || die
 
     # scsi_id configuration
     insinto /etc
-    doins extras/scsi_id/scsi_id.config
+    doins extras/scsi_id/scsi_id.config || die
 
     # set up symlinks in /etc/hotplug.d/default
-    dodir /etc/hotplug.d/default
-    dosym ../../../sbin/udevsend /etc/hotplug.d/default/10-udev.hotplug
+    dodir /etc/hotplug.d/default || die
+    dosym ../../../sbin/udevsend /etc/hotplug.d/default/10-udev.hotplug || die
 
     # set up the /etc/dev.d directory tree
-    dodir /etc/dev.d/default
-    dodir /etc/dev.d/net
+    dodir /etc/dev.d/default || die
+    dodir /etc/dev.d/net || die
     exeinto /etc/dev.d/net
-    doexe etc/dev.d/net/hotplug.dev
+    doexe etc/dev.d/net/hotplug.dev || die
 
     doman *.8 || die
     doman extras/scsi_id/scsi_id.8 || die
