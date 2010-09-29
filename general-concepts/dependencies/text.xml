@@ -462,7 +462,7 @@ There are also shortcuts for conditional situations:
 <body>
 
 <p>
-Once upon a time the ? conditional operator was allowed in <c>*DEPEND</c>:
+	Once upon a time the <c>:</c> conditional operator was allowed in <c>*DEPEND</c>:
 </p>
 
 <codesample lang="ebuild">
