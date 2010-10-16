@@ -23,7 +23,10 @@ query variables and similar state.
       <c>use flagname</c>
     </ti>
     <ti>
-      Returns a true value if and only if <c>flagname</c> is included in <c>USE</c>
+      Returns a true value if and only if <c>flagname</c> is enabled.
+      The condition is inverted if prefixed with an exclamation mark,
+      <c>!flagname</c>.
+      It is guaranteed that <c>use</c> produces no output.
     </ti>
   </tr>
   <tr>
@@ -31,7 +34,7 @@ query variables and similar state.
       <c>useq flagname</c>
     </ti>
     <ti>
-      As <c>use</c>, guaranteed to produce no output.
+      Deprecated synonym for <c>use</c>.
     </ti>
   </tr>
   <tr>
@@ -65,8 +68,11 @@ query variables and similar state.
       <c>has flag string</c>
     </ti>
     <ti>
-      Returns true if <c>flag</c> is included in the flag list <c>string</c> (example:
-      <c>if has ccache $FEATURES ; then</c>).
+      Returns true if <c>flag</c> is included in the flag list <c>string</c>
+      (example: <c>if has ccache $FEATURES ; then</c>).
+      The condition is inverted if prefixed with an exclamation mark,
+      <c>!flag</c>.
+      It is guaranteed that <c>has</c> produces no output.
     </ti>
   </tr>
   <tr>
@@ -74,7 +80,7 @@ query variables and similar state.
       <c>hasq flag string</c>
     </ti>
     <ti>
-      As <c>has</c>, guaranteed quiet.
+      Deprecated synonym for <c>has</c>.
     </ti>
   </tr>
   <tr>

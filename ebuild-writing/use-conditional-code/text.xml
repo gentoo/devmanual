@@ -52,9 +52,11 @@ function available.
 </p>
 
 <p>
-You must not rely upon <c>use</c> producing an output <d/> this no longer happens.
-If you really need output displayed, use the <c>usev</c> function. The
-<c>useq</c> function is available for explicitly requesting no output.
+It is guaranteed that <c>use</c> produces no output. If you need output
+displayed, use the <c>usev</c> function; it echoes the USE flag's name
+if the condition is met.
+The <c>useq</c> function is a deprecated synonym for <c>use</c>, don't
+use it in new code.
 </p>
 </body>
 

@@ -195,7 +195,7 @@ a single function, <c>domacosapp</c>.
 
 domacosapp() {
     [[ -z "${1}" ]] &amp;&amp; die "usage: domacosapp &lt;file&gt; &lt;new file&gt;"
-    if useq ppc-macos ; then
+    if use ppc-macos ; then
         insinto /Applications
         newins "$1" "${2:-${1}}" || die "Failed to install ${1}"
     fi
