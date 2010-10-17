@@ -35,7 +35,7 @@ them.
   </tr>
   <tr>
     <ti><c>PV</c></ti>
-    <ti>Package version (excluding revision, if any), for example <c>6.3</c>.</ti>
+    <ti>Package version (excluding revision, if any), for example <c>6.3</c>. It should reflect the upstream versioning scheme.</ti>
   </tr>
   <tr>
     <ti><c>PR</c></ti>
