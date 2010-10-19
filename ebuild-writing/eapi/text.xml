@@ -186,7 +186,7 @@ doman foo.lang.1
 			<li><c>foo[bar,baz]</c> means that the package foo must have both
 				the bar and baz USE-flags enabled
 			</li>
-			<li><c>foo[-bar,baz]</c> means that the packge foo must have the
+			<li><c>foo[-bar,baz]</c> means that the package foo must have the
 				bar USE-flag disabled and baz USE-flag enabled</li>
 			<li><c>foo[bar?]</c> means <c>bar? ( foo[bar] ) !bar? ( foo )</c></li>
 			<li><c>foo[!bar?]</c> means <c>bar? ( foo ) !bar? ( foo[-bar] )</c></li>
@@ -342,7 +342,7 @@ src_compile() {
 		<p><b>utilities die on their own, unless the nonfatal command is used</b></p>
 		<p>
 			<!-- TODO link auf fuunction-reference -->
-			ebuild functions all die on their own in EAPI=4. In case that this
+			Ebuild functions all die on their own in EAPI=4. In case that this
 			non-zero exit status is expected, you may call <c>nonfatal function
 			[arg,...]</c>.
 		</p>
@@ -383,7 +383,7 @@ src_install() {
 	<li>
 		<p><b>doins symlink supports</b></p>
 		<p>
-			withing EAPI=4, <c>doins</c> supports to install symlinks as symlinks
+			Within EAPI=4, <c>doins</c> supports installing symlinks as symlinks
 			when installing recursively. For older EAPIs, the symlink behaviour
 			is undefined.
 		</p>
@@ -391,7 +391,7 @@ src_install() {
 	<li>
 		<p><b>dosed and dohard are banned</b></p>
 		<p>
-			<c>dosed</c> and <c>dohard</c> commands are banned in this EAPI.
+			The <c>dosed</c> and <c>dohard</c> commands are banned in this EAPI.
 		</p>
 	</li>
 	<li>
@@ -405,7 +405,7 @@ src_install() {
 	<li>
 		<p><b>econf adds --disable-dependency-tracking</b></p>
 		<p>
-			Withing EAPI=4, <c>econf</c> adds
+			Within EAPI=4, <c>econf</c> adds
 			<c>--disable-dependency-tracking</c> to the default configure
 			options.
 		</p>
@@ -413,28 +413,28 @@ src_install() {
 	<li>
 		<p><b>controllable compression via docompress</b></p>
 		<p>
-			to compress files in the destination-folder <c>${D}</c>, the
+			To compress files in the destination-folder <c>${D}</c>, the
 			<c>docompress</c> command may be used (in <c>src_install</c>, after
 			the target files are in <c>${D}</c>).
-			to control which items should be compressed and which shouldn't
-			be compressed, you may include and exclude directories. the default
-			inclusion list contains
+			To control which items should be compressed and which shouldn't
+			be compressed, you may include and exclude directories. The default
+			inclusion list contains:
 			<ul>
 				<li><c>/usr/share/doc</c></li>
 				<li><c>/usr/share/info</c></li>
 				<li><c>/usr/share/man</c></li>
 			</ul>
-			the default exclusion list contains
+			The default exclusion list contains:
 			<ul>
 				<li><c>/usr/share/doc/${PF}/html</c></li>
 			</ul>
-			when a directory is in- or excluded, all files and directories in the
-			given directories shall be added to the corresponding list. if a
+			When a directory is in- or excluded, all files and directories in the
+			given directories shall be added to the corresponding list. If a
 			file is in- or excluded, the file shall be added to the corresponding
-			list (exclusion is stronger than inclusion - if a file is in both
-			lists, the inclusion will be ignored). if a non-existing file or
+			list (exclusion is stronger than inclusion <d/> if a file is in both
+			lists, the inclusion will be ignored). If a non-existing file or
 			directory is given, it will be ignored.
-			if the first argument of <c>docompress</c> is <c>-x</c>, the item
+			If the first argument of <c>docompress</c> is <c>-x</c>, the item
 			specified will be added to the exclusion list, otherwise it will be
 			added to the inclusion list.
 		</p>
@@ -450,29 +450,29 @@ src_install() {
 	<li>
 		<p><b>slot operator dependencies</b></p>
 		<p>
-			an operator slot dependency contains of a colon followed by einer a
+			An operator slot dependency contains of a colon followed by either a
 			'<c>*</c>' or '<c>=</c>':
 			<ul>
 				<li><c>*</c> means that any slot of the given package is
-				acceptable. additional for runtime-dependencies is that the
-				current package will not break, when the given package is replaced
-				by a different slot.</li>
+				acceptable. In addition, for runtime dependencies, the
+				package will not break if the given package is replaced by
+				a different slot.</li>
 				<li><c>=</c> means that any slot of the given package is
-				acceptable. but unlike above (<c>*</c>), for runtime-dependencies
-				it will break if the slot of the given package and the current
-				package do not match.</li>
+				acceptable. Unlike (<c>*</c>), the package will break for
+				runtime dependencies if the slot of the given package and
+				the current package do not match.</li>
 			</ul>
 		</p>
 	</li>
 	<li>
 		<p><b>use dependencies default</b></p>
 		<p>
-			additional to the use-deps specified in EAPI=2, a <c>(+)</c> or
+			In addition to the use-deps specified in EAPI=2, a <c>(+)</c> or
 			<c>(-)</c> may be added to the use-dep to define a default-value in
-			case the use-flag does not exist in the given packge. the <c>(+)</c>
-			means that this use-flag is assumed to be enabled, the <c>(-)</c> the
-			opposite.
-			example:
+			case the use-flag does not exist in the given package. The
+			<c>(+)</c> means that this use-flag is assumed to be enabled,
+			<c>(-)</c> the opposite.
+			<p>Example:</p>
 			<codesample lang="ebuild">
 DEPEND="
 	>=dev-libs/boost-1.32[boost(+)]
@@ -491,7 +491,7 @@ DEPEND="
 	<li>
 		<p><b>new pkg_pretend phase</b></p>
 		<p>
-			the new <c>pkg_pretend</c> phase can be used to do sanity checks
+			The new <c>pkg_pretend</c> phase can be used to do sanity checks
 			before the main phase function sequence is run (meaning this phase is
 			executed after the package manager has calculated the dependencies
 			and before installing them).
@@ -530,10 +530,9 @@ pkg_pretend() {
 		</codesample>
 	</li>
 	<li>
-		<p><b>default src_install is no longer a non-op</b></p>
+		<p><b>default src_install is no longer a no-op</b></p>
 		<p>
-			the default implementation of <c>src_install</c> is no longer a
-			non-op in EAPI=4:
+			The default <c>src_install</c> function in EAPI=4:
 		</p>
 		<codesample lang="ebuild">
 src_install() {
@@ -559,9 +558,9 @@ src_install() {
 	<li>
 		<p><b>pkg_info for non-installed packages</b></p>
 		<p>
-			the <c>pkg_info</c> function may also be called by the
-			package-manager for non-installed packages.
-			the ebuild writers should note, that dependencies may not be
+			The <c>pkg_info</c> function may also be called by the
+			package manager for non-installed packages.
+			Ebuild writers should note that dependencies may not be
 			available.
 		</p>
 	</li>
@@ -576,15 +575,15 @@ src_install() {
 	<li>
 		<p><b>AA and KV variables are gone</b></p>
 		<p>
-			the <c>${AA}</c> and <c>${KV}</c> variables are no longer set in
+			The <c>${AA}</c> and <c>${KV}</c> variables are no longer set in
 			EAPI=4.
 		</p>
 	</li>
 	<li>
 		<p><b>no more RDEPEND="${DEPEND}"</b></p>
 		<p>
-			when <c>RDEPEND</c> is unset, there will no longer be an automatic
-			assignement of <c>RDEPEND="${DEPEND}"</c>.
+			When <c>RDEPEND</c> is unset, there will no longer be an automatic
+			assignment of <c>RDEPEND="${DEPEND}"</c>.
 		</p>
 	</li>
 </ul>
