@@ -36,6 +36,10 @@ To specify "the last five lines", use <c>tail -n5</c>. To specify "all
 but the first five lines", use <c>tail -n+5</c>.
 </p>
 
+<warning>
+<c>head/tail -5</c> syntax is deprecated and not POSIX compliant.
+</warning>
+
 <p>
 For full details, see <uri link="http://www.opengroup.org/onlinepubs/000095399/utilities/tail.html">
 IEEE1003.1-2004-tail</uri>. Note that tail-1 on GNU systems describes
