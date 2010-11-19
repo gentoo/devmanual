@@ -88,9 +88,7 @@ A simple way to verify syntax is <c>bash -n foo.eclass</c>.
 <body>
 
 <p>No longer used eclasses may be removed from the tree, but developers must
-adhere to the following process(developers must follow these rules because
-packages installed with a portage version of less than 2.1.4 would break
-during uninstallation or upgrades):</p>
+adhere to the following process:</p>
 
 <ol>
   <li>
@@ -98,24 +96,16 @@ during uninstallation or upgrades):</p>
     eclass.
   </li>
   <li>
-    Send a message to the gentoo-dev and gentoo-dev-announce mailing lists
-    announcing that the eclass you are deprecating is now deprecated.
+    Send a lastrite message to the gentoo-dev and gentoo-dev-announce
+    mailing-lists, announcing that the not-used eclass will be removed in 30
+    days.
   </li>
   <li>
-    Add a warning to all installation phases that the eclass is now deprecated,
-    perhaps with a hint at what, if any, eclass replaced the functionality that
-    the old eclass provided.
+    Add a one line comment to the eclass, saying exactly <c># @DEAD</c> so that
+    the eclass-manpages package will not attempt to document it.
   </li>
   <li>
-    Remove all functionality related to installation of packages from the eclass.
-  </li>
-  <li>
-    Add a one line comment saying exactly <c># @DEAD</c> so that the
-    eclass-manpages package will not attempt to document it.
-  </li>
-  <li>
-    After two years have passed since the eclass was deprecated, the eclass may
-    be removed from the portage tree.
+    Wait for the 30-day period to pass, then remove the eclass from the tree.
   </li>
 </ol>
 
