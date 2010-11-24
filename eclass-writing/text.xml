@@ -114,7 +114,8 @@ during uninstallation or upgrades):</p>
     eclass-manpages package will not attempt to document it.
   </li>
   <li>
-    After two years have passed since the eclass was deprecated, a QA member should write an entry on package.mask stating that the eclass will be removed in 30+ days. When this lastrite period is over, the eclass may be removed from the protage tree.
+    After two years have passed since the eclass was deprecated, the eclass may
+    be removed from the portage tree.
   </li>
 </ol>
 
