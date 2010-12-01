@@ -48,6 +48,31 @@ found. This should only be used if a license requires it.
 </subsection>
 
 <subsection>
+<title>Replacing Automatically Mirrored Files</title>
+<body>
+<p>
+On rare occasions you may need to replace a file that is already mirrored.  In this case proceed as
+follows:
+<ol>
+  <li>Put a copy of the new distfile on dev.gentoo.org into /space/distfiles-local</li>
+  <li>commit the new manifest to CVS</li>
+  <li>wait</li>
+</ol>
+After a few hours a cron job on dev.gentoo.org will fetch the file and replace the version on the
+mirrors.  The file will be automatically removed from /space/distfiles-local after approximately two
+weeks.
+</p>
+
+<p>
+More general information about the internals of mirroring can be found on <uri
+link="http://www.gentoo.org/proj/en/infrastructure/mirrors/overview-distfile.xml">infrastructure's
+pages</uri>.
+</p>
+</body>
+</subsection>
+
+
+<subsection>
 <title>Suitable Download Hosts</title>
 <body>
 <p>
