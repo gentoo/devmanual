@@ -285,6 +285,35 @@ jmake_src_compile() {
 </body>
 </section>
 
+<section>
+<title>Handling incorrect usage of an eclass</title>
+<body>
+
+<p>
+Sometimes an eclass is used incorrectly by an ebuild and the eclass
+knows it is being used incorrectly- the common example is an 
+eclass that only works with a specific set of EAPIs, but is being
+accessed inherited by an ebuild with a different EAPI.
+In those cases, used sparingly as a last resort, it is allowed
+for an eclass to invoke die from the global scope.  For example:
+</p>
+
+<codesample lang="ebuild">
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+# Original Author: Captain Tight Pant
+# Purpose: Demonstration of die upon invalid EAPI usage.
+
+case ${EAPI:-0} in
+  0) die "this eclass doesn't support EAPI 0" ;;
+  *) ;;
+esac
+</codesample>
+</body>
+</section>
+
 </body>
 
 </chapter>
