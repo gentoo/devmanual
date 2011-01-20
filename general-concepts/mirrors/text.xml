@@ -76,8 +76,20 @@ pages</uri>.
 <title>Suitable Download Hosts</title>
 <body>
 <p>
-Hosting files off <c>dev.gentoo.org</c> is <b>not</b> acceptable for main-tree items.
-Instead, these files must be moved onto <c>mirror://gentoo</c> before release.
+If you have to host a source file (patch or tarball) yourself, as long as it is suitable to be
+distributed by Gentoo Foundation (by license and legality), you're suggested to use your developer's
+space at <c>dev.gentoo.org</c>.
+</p>
+
+<p>
+Previous policy was to use <c>mirror://gentoo</c> directly, but this is now deprecated, as that
+wouldn't allow to have long-term availability and traceability of the source files, which might be a
+requirement of the license.
+</p>
+
+<p>
+When you upload the file to <c>dev.gentoo.org:~/public_html</c>, you must ensure that it, and its
+parent directories, are world-readable.
 </p>
 </body>
 </subsection>
