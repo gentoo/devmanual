@@ -171,14 +171,6 @@ the first is the source name, the second the name to use when installing.
   </tr>
   <tr>
     <ti>
-      <c>dojar</c>
-    </ti>
-    <ti>
-      Install a <c>.jar</c> file
-    </ti>
-  </tr>
-  <tr>
-    <ti>
       <c>dolib</c>
     </ti>
     <ti>
