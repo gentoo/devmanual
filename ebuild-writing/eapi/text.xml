@@ -604,6 +604,27 @@ src_install() {
 		</p>
 	</li>
 	<li>
+		<p><b>MERGE_TYPE</b></p>
+		<p>
+			The <c>MERGE_TYPE</c> variable contains the type of package that
+			is being merged. Possible values are:
+			<dl>
+				<dt><c>source</c></dt>
+				<dd><p>
+					if building and installing a package from source,
+				</p></dd>
+				<dt><c>binary</c></dt>
+				<dd><p>
+					if installing a binary package,
+				</p></dd>
+				<dt><c>buildonly</c></dt>
+				<dd><p>
+					if building a binary package without installing it.
+				</p></dd>
+			</dl>
+		</p>
+	</li>
+	<li>
 		<p><b>AA and KV variables are gone</b></p>
 		<p>
 			The <c>AA</c> and <c>KV</c> variables are no longer set in EAPI=4.
