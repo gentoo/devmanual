@@ -580,6 +580,30 @@ src_install() {
 <body>
 <ul>
 	<li>
+		<p><b>REPLACING_VERSIONS and REPLACED_BY_VERSION</b></p>
+		<p>
+			The <c>REPLACING_VERSIONS</c> variable contains a
+			whitespace-separated list of all versions (<c>PVR</c>) of this
+			package that are being replaced (uninstalled or overwritten) as a
+			result of this install. It is a list, not a single optional value,
+			to handle pathological cases such as installing <c>foo-2:2</c> to
+			replace <c>foo-2:1</c> and <c>foo-3:2</c>.
+		</p>
+		<p>
+			<c>REPLACING_VERSIONS</c> is valid in <c>pkg_preinst</c> and
+			<c>pkg_postinst</c>. In addition, it may be available in
+			<c>pkg_pretend</c> and <c>pkg_setup</c>, although you should take
+			care to handle binary package creation and installation correctly
+			when using it in these phases.
+		</p>
+		<p>
+			The <c>REPLACED_BY</c> variable contains the single version
+			(<c>PVR</c>) of this package that is replacing us, if we are being
+			uninstalled as part of an install, or an empty string otherwise.
+			It is valid in <c>pkg_prerm</c> and <c>pkg_postrm</c>.
+		</p>
+	</li>
+	<li>
 		<p><b>AA and KV variables are gone</b></p>
 		<p>
 			The <c>AA</c> and <c>KV</c> variables are no longer set in EAPI=4.
