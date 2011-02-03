@@ -582,8 +582,7 @@ src_install() {
 	<li>
 		<p><b>AA and KV variables are gone</b></p>
 		<p>
-			The <c>${AA}</c> and <c>${KV}</c> variables are no longer set in
-			EAPI=4.
+			The <c>AA</c> and <c>KV</c> variables are no longer set in EAPI=4.
 		</p>
 	</li>
 	<li>
