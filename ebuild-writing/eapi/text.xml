@@ -323,7 +323,7 @@ src_compile() {
 		<p>
 			The <c>unpack</c> command supports xz-archives and xz-compressed tar
 			files. Please note that the ebuilds must ensure that
-			<c>app-arch/xz-utils</c> are installed.
+			<c>app-arch/xz-utils</c> is installed.
 		</p>
 	</li>
 </ul>
