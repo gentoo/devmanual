@@ -319,11 +319,11 @@ src_compile() {
 		</p>
 	</li>
 	<li>
-		<p><b>src_unpack() .tar.xz support</b></p>
+		<p><b>unpack supports .xz and .tar.xz</b></p>
 		<p>
-			Support for the <c>.tar.xz</c> format from upstream tarballs.
-			unpack() in src_unpack() will only operate on a .tar.xz tarball if
-			the ebuild is EAPI3 aware.
+			The <c>unpack</c> command supports xz-archives and xz-compressed tar
+			files. Please note that the ebuilds must ensure that
+			<c>app-arch/xz-utils</c> are installed.
 		</p>
 	</li>
 </ul>
@@ -393,14 +393,6 @@ src_install() {
 		<p><b>dosed and dohard are banned</b></p>
 		<p>
 			The <c>dosed</c> and <c>dohard</c> commands are banned in this EAPI.
-		</p>
-	</li>
-	<li>
-		<p><b>unpack supports .xz and .tar.xz</b></p>
-		<p>
-			The <c>unpack</c> command supports xz-archives and xz-compressed tar
-			files. Please note that the ebuilds must ensure that
-			<c>app-arch/xz-utils</c> are installed.
 		</p>
 	</li>
 	<li>
