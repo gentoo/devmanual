@@ -178,6 +178,15 @@ teams for details.
 </p>
 
 <p>
+	It's important to note that alternative arches (like alpha, arm, ia64, s390,
+	sh, sparc, hppa, mips, ppc*) are mainly undermanned arches, some of them are
+	slow, they have more basic problems and have a small userbase. Just file
+	bugs for these architectures when a package is going to be a dependency of a
+	package already keyworded.
+</p>
+
+
+<p>
 Do <b>not</b> commit straight to <c>arch</c>.
 </p>
 
