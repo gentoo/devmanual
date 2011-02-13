@@ -448,23 +448,6 @@ src_install() {
 <body>
 <ul>
 	<li>
-		<p><b>slot operator dependencies</b></p>
-		<p>
-			An operator slot dependency contains of a colon followed by either a
-			'<c>*</c>' or '<c>=</c>':
-			<ul>
-				<li><c>*</c> means that any slot of the given package is
-				acceptable. In addition, for runtime dependencies, the
-				package will not break if the given package is replaced by
-				a different slot.</li>
-				<li><c>=</c> means that any slot of the given package is
-				acceptable. Unlike (<c>*</c>), the package will break for
-				runtime dependencies if the slot of the given package and
-				the current package do not match.</li>
-			</ul>
-		</p>
-	</li>
-	<li>
 		<p><b>use dependencies default</b></p>
 		<p>
 			In addition to the use-deps specified in EAPI=2, a <c>(+)</c> or
