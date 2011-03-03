@@ -555,6 +555,47 @@ src_install() {
 <body>
 <ul>
 	<li>
+		<p><b>REQUIRED_USE</b></p>
+		<p>
+			The <c>REQUIRED_USE</c> variable contains a list of assertions that
+			must be met by the configuration of USE flags to be valid for this
+			ebuild. In order to be matched, a USE flag in a terminal element
+			must be enabled (or disabled if it has an exclamation mark prefix).
+		</p>
+		<p>
+			Essentially, <c>REQUIRED_USE</c> is an analogue of <c>DEPEND</c>
+			style syntax. For example, to state that some combination is
+			forbidden, i.e. "if <c>foo</c> is set, <c>bar</c> must be unset":
+		</p>
+		<codesample lang="ebuild">
+REQUIRED_USE="foo? ( !bar )"
+		</codesample>
+		<p>
+			To state "if <c>foo</c> is set, then at least one of <c>bar</c>,
+			<c>baz</c>, and <c>quux</c> must be activated":
+		</p>
+		<codesample lang="ebuild">
+REQUIRED_USE="foo? ( || ( bar baz quux ) )"
+		</codesample>
+		<p>
+			To state "exactly one of <c>foo</c>, <c>bar</c>, or <c>baz</c> must
+			be set, but not several":
+		</p>
+		<codesample lang="ebuild">
+REQUIRED_USE="^^ ( foo bar baz )"
+		</codesample>
+		<p>
+			Note that the last relationship is that of an Exclusive OR (XOR).
+			While an XOR could be formed from usual <c>DEPEND</c> syntax, a
+			specific <c>^^</c> operator has been added for this case.
+		</p>
+		<important>
+			See section
+			<uri link="::general-concepts/use-flags/#conflicting-use-flags" />
+			for when (and when not) to use <c>REQUIRED_USE</c>.
+		</important>
+	</li>
+	<li>
 		<p><b>REPLACING_VERSIONS and REPLACED_BY_VERSION</b></p>
 		<p>
 			The <c>REPLACING_VERSIONS</c> variable contains a

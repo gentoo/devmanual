@@ -210,6 +210,29 @@ src_compile() {
     emake || die "make failed"
 }
 </codesample>
+
+<p>
+	In some exceptional cases, above policy would break reverse USE
+	dependencies. To avoid this, the ebuild can specify allowed USE flag
+	combinations with <c>REQUIRED_USE</c> (available in EAPI 4). See section
+	<uri link="::ebuild-writing/eapi/#eapi=&quot;4&quot;" /> for a description
+	of its syntax.
+</p>
+
+<p>
+	For example, if a package <c>dev-libs/foo</c> can be built with either
+	<c>USE="a"</c> or <c>USE="b"</c> but not with both, then preferring one of
+	the flags would break packages that depend on either <c>dev-libs/foo[a]</c>
+	or <c>dev-libs/foo[b]</c>. Therefore, the ebuild should specify
+	<c>REQUIRED_USE="a? ( !b )"</c> in this case.
+</p>
+
+<note>
+	In order to avoid forcing users to micro-manage flags too much,
+	<c>REQUIRED_USE</c> should be used sparingly. Follow the normal policy
+	whenever it is possible to do a build that will presumably suit the user's
+	needs.
+</note>
 </body>
 </section>
 
