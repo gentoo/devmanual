@@ -21,6 +21,22 @@ the dynamic and static libraries.
 </section>
 
 <section>
+<title>Invalid use of <c>ROOT</c></title>
+<body>
+<p>
+The usage of <c>ROOT</c> is only designed to influence the way the package is
+installed (ie. into <c>ROOT</c>) - building and compiling should not depend on
+<c>ROOT</c>. As a consequence of this the usage of <c>ROOT</c> in <c>src_*</c>
+functions is not allowed.
+</p>
+
+<p>
+See also <uri link="::ebuild-writing/variables#ROOT"/>.
+</p>
+</body>
+</section>
+
+<section>
 <title>Referencing the full path to documentation files that could be
 compressed</title>
 <body>
