@@ -1,91 +1,53 @@
 <?xml version="1.0"?>
-<guide self="general-concepts/viruals/">
+<guide self="general-concepts/virtuals/">
 <chapter>
 <title>Virtuals</title>
 
 <body>
 <p>
-Currently there exist two different forms of virtuals, our regular
-<c>PROVIDE</c> type virtuals, and so called <e>new-style</e> virtuals.
-</p>
-</body>
-
-<section>
-<title><e>Old-style</e> Virtuals</title>
-<body>
-<p>
-<e>Old-style</e> virtuals are not really packages, but are something you can depend
-upon and install.  All <e>old-style</e> virtuals must have a category of
-"virtual".  In order to use an <e>old-style</e> virtual there are a few things
-that need to be present in the tree:
-
-<ul>
-  <li>
-    Atleast one ebuild must <c>PROVIDE</c> the virtual <d/> see
-    <uri link="::ebuild-writing/variables#Optional Variables" />
-  </li>
-  <li>
-    An entry in the virtuals file for each profile to list the default provider
-  </li>
-</ul>
-
-<e>Old-style</e> virtuals are not as flexible as <e>new-style</e> virtuals
-because there is no concept of a version.  You can only depend upon a virtual,
-but not a particular version of that virtual.
-</p>
-<p>
-There are some things that are still only possible with old-style virtuals,
-which is why they are still useful:
-
-<ul>
-  <li>
-    Packages providing the virtual can block the virtual, so you can ensure
-    nothing else is installed that also provides that virtual.
-  </li>
-  <li>
-    The ability to set a default in the profile for what the virtual should
-    pull in (without the need of pulling the package into the system set).
-  </li>
-</ul>
-</p>
-</body>
-</section>
-
-<section>
-<title><e>New-style</e> Virtuals</title>
-<body>
-<p>
-<e>New-style</e> virtuals are merely packages that are in the category of
-<c>virtual</c>.  They use their dependency string to specify the providers for
-the virtual and should not install any files.  Since they are regular ebuilds,
-there can be several versions of a virtual (which can be helpful when a package
-may be provided by another in some versions, and not others <d/> see the perl
-virtuals for an example of this).  One other difference (besides not installing
-any files) is that a <e>new-style</e> virtual has an empty string for the value
-of the <c>LICENSE</c> and <c>HOMEPAGE</c> variables.  Since it installs no files,
-it really does not have a license.
+Virtuals are merely packages that are in the category of <c>virtual</c>.  They
+use their dependency string to specify the providers for the virtual and should
+not install any files.  Since they are regular ebuilds, there can be several
+versions of a virtual (which can be helpful when a package may be provided by
+another in some versions, and not others <d/> see the perl virtuals for an
+example of this).  One other difference (besides not installing any files) is
+that a virtual has an empty string for the value of the <c>LICENSE</c> and
+<c>HOMEPAGE</c> variables.  Since it installs no files, it really does not have
+a license.
 </p>
 
 <p>
-An example of a <e>new-style</e> virtual:
+Before adding a new virtual, it should be discussed on <c>gentoo-dev</c>.
+</p>
+
+<p>
+An example of a virtual:
 
 <codesample lang="ebuild">
+EAPI=4
+
 DESCRIPTION="Virtual for C++ tr1 &lt;type_traits&gt;"
 HOMEPAGE=""
 SRC_URI=""
+
 LICENSE=""
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86 ~x86-fbsd"
 IUSE=""
-RDEPEND="|| ( >=sys-devel/gcc-4.1 dev-libs/boost )"
+
 DEPEND=""
+RDEPEND="|| ( >=sys-devel/gcc-4.1 dev-libs/boost )"
 </codesample>
 
 Looks familar...right?  It should since its going to look just like a regular
 ebuild.
 </p>
+
+<note>
+The so-called <e>old-style</e> or <c>PROVIDE</c> type virtuals have been banned
+from the Portage tree.
+</note>
 </body>
-</section>
 
 </chapter>
 </guide>

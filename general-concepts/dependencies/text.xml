@@ -327,23 +327,6 @@ DEPEND="!build? (
 </section>
 
 <section>
-<title>Virtual Dependencies</title>
-<body>
-
-<p>
-To depend upon a virtual package, use <c>virtual/whatever</c> as the atom.
-</p>
-
-<p>
-Currently, you must not use any kind of version specification with virtuals <d/>
-see <uri link="http://www.gentoo.org/proj/en/glep/glep-0037.html">GLEP 37</uri>
-for details and a proposed solution.
-</p>
-
-</body>
-</section>
-
-<section>
 <title>
 Any of Many Dependencies
 </title>

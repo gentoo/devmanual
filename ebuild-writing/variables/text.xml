@@ -232,13 +232,6 @@ Specifying the following variables is optional:
     <c>userpriv</c>. See <c>man 5 ebuild</c> for details.
     </ti>
   </tr>
-  <tr>
-    <ti><c>PROVIDE</c></ti>
-    <ti>
-    Any virtuals provided by this package, for example
-    <c>"virtual/editor virtual/emacs"</c>.
-    </ti>
-  </tr>
 </table>
 
 </body>

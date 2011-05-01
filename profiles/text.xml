@@ -26,6 +26,5 @@ are also documented in <c>man portage</c>.
 <include href="updates/"/>
 <include href="use.desc/"/>
 <include href="use.mask/"/>
-<include href="virtuals/"/>
 
 </guide>
