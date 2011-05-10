@@ -6,8 +6,8 @@
 <body>
 <p>
 The <c>ChangeLog</c> must be updated with each commit. The
-echangelog tool should be used to create <c>ChangeLog</c> entries
-— the format of a <c>ChangeLog</c> is now defined as "whatever
+echangelog tool should be used to create <c>ChangeLog</c> entries;
+the format of a <c>ChangeLog</c> is now defined as "whatever
 <c>echangelog</c> creates".
 </p>
 
