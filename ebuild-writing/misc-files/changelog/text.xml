@@ -5,11 +5,10 @@
 
 <body>
 <p>
-The <c>ChangeLog</c> should be used to record all non-trivial changes
-to ebuilds, including <e>keywording changes</e>. The echangelog tool
-should be used to create <c>ChangeLog</c> entries — the format of a
-<c>ChangeLog</c> is now defined as "whatever <c>echangelog</c>
-creates".
+The <c>ChangeLog</c> must be updated with each commit. The
+echangelog tool should be used to create <c>ChangeLog</c> entries
+— the format of a <c>ChangeLog</c> is now defined as "whatever
+<c>echangelog</c> creates".
 </p>
 
 <p>
