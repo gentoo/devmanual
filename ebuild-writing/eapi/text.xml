@@ -655,6 +655,15 @@ REQUIRED_USE="|| ( foo bar baz )"
 		</p>
 	</li>
 	<li>
+		<p><b>DOCS</b></p>
+		<p>
+			The <c>DOCS</c> variable is an array or whitespace-separated list
+			of documentation files for the default <c>src_install</c> function
+			to install using <c>dodoc</c>. If undefined, a reasonable default
+			list is used. See the default <c>src_install</c> function above.
+		</p>
+	</li>
+	<li>
 		<p><b>AA and KV variables are gone</b></p>
 		<p>
 			The <c>AA</c> and <c>KV</c> variables are no longer set in EAPI=4.
