@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/news/">
+<chapter>
+<title>News Items</title>
+
+<body>
+<p>
+Gentoo News Items were created to provide a communication medium to push critical 
+messages to users via the rsync tree.  The original proposal for news items is outlined
+in <uri link="http://www.gentoo.org/proj/en/glep/glep-0042.html">GLEP 42: Critical News Reporting.</uri>  
+</p>
+
+<p>
+News Items can be read using the eselect command. More information on use of this tool to 
+read or delete news items can be found on the news.eselect man page.
+</p>
+</body>
+
+<section>
+<title>Adding a news item</title>
+<body>
+
+<p>
+<ul>
+    <li>Choose a file name in the proper format: YYYY-MM-DD-name.lang.txt, where the date is followed by a name (a-z, 0-9, + (plus), - (hyphen) and _ (underscore)), the two-letter ISO language code (en for English must be chosen as default) and the file extension txt.</li>
+    <li>Write the news item, which is similar to a RFC-compliant email. Details concerning what is allowed can be found in the appropriate GLEP section. As a note: Exceptions depending on installed packages or activated profiles is possible.</li>
+    <li>Send the news item to the gentoo-dev mailing list and the Gentoo PR team (pr@gentoo.org) 72 hours in advance of commit.</li>
+    <li>Wait for corrections or feedback that your news item is not of great importance and should be revoked (can be possible).</li>
+    <li>Upon acceptance, create a detached armored GnuPG signature with gpg --local-user --detach-sign --armor YYYY-MM-DD-name.lang.txt</li>
+    <li>Create a directory structure for your item in the Gentoo News repository gentoo-news: YYYY (e.g. 2011 for a news item published in 2011).</li>
+    <li>Add both the signature and the news file to that directory.</li>
+    <li>Commit both items to the svn gentoo-news repository.</li>
+</ul>
+</p>
+</body>
+</section>
+
+</chapter>
+</guide>

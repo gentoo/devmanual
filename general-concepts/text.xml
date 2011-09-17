@@ -34,6 +34,7 @@ writing ebuilds or working with the Portage tree.
 <include href="licenses/"/>
 <include href="linguas/"/>
 <include href="mirrors/"/>
+<include href="news/"/>
 <include href="overlay/"/>
 <include href="pic/"/>
 <include href="portage-cache/"/>

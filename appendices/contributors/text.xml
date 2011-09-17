@@ -56,6 +56,9 @@ This page lists the contributions to the Gentoo Development Guide:
 <author name="Mark Loeser" email="halcy0n@gentoo.org">
   XSL Stylesheets, current maintainer
 </author>
+<author name="Mike Pagano" email="mpagano@gentoo.org">
+  <uri link="::general-concepts/news"/>
+</author>
 </authors>
 
 </body>
