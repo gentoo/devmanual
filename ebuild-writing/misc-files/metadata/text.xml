@@ -45,10 +45,9 @@ example might look like:
 </codesample>
 
 <p>
-All new packages <b>must</b> include a <c>metadata.xml</c> file which
-specifies at <e>least</e> a herd. If no herd is suitable, <c>no-herd</c>
-should be used, and at least one maintainer must be listed <d/> however,
-if at all possible, find a herd willing to be listed.
+All new packages <b>must</b> include a <c>metadata.xml</c> file. That file
+should specify at least one herd or one maintainer. It is however recommended,
+if at all possible, to find a herd willing to be listed.
 </p>
 
 <p>
