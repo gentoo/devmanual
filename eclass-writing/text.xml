@@ -62,6 +62,13 @@ lot of trouble.
 </p>
 
 <p>
+When removing a function or changing the API of an eclass, make
+sure that it doesn't break any ebuilds in the tree, and post a
+notice to gentoo-dev at least 30 days in advance, preferably with
+a patch included.
+</p>
+
+<p>
 If there is an existing maintainer for an eclass (this is usually the case), you
 <b>must</b> talk to the maintainer before committing any changes.
 </p>
