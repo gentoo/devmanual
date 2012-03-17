@@ -27,9 +27,9 @@ read or delete news items can be found on the news.eselect man page.
     <li>Send the news item to the gentoo-dev mailing list and the Gentoo PR team (pr@gentoo.org) 72 hours in advance of commit.</li>
     <li>Wait for corrections or feedback that your news item is not of great importance and should be revoked (can be possible).</li>
     <li>Upon acceptance, create a detached armored GnuPG signature with gpg --local-user --detach-sign --armor YYYY-MM-DD-name.lang.txt</li>
-    <li>Create a directory structure for your item in the Gentoo News repository gentoo-news: YYYY (e.g. 2011 for a news item published in 2011).</li>
-    <li>Add both the signature and the news file to that directory.</li>
-    <li>Commit both items to the svn gentoo-news repository.</li>
+    <li>Create a directory structure for your item in the gentoo-news repository (<c>git+ssh://git@git.gentoo.org/proj/gentoo-news.git</c>): YYYY/YYYY-MM-DD-name/.</li>
+    <li>Add both the news file and the signature to that directory.</li>
+    <li>Commit and push your changes to the gentoo-news repository.</li>
 </ul>
 </p>
 </body>
