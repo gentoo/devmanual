@@ -249,7 +249,7 @@ src_compile() {
 </p>
 
 <p>
-	The <c>USE_EXPAND</c> list is set in <c>profiles/base/make.default</c> as of
+	The <c>USE_EXPAND</c> list is set in <c>profiles/base/make.defaults</c> as of
 	Portage 2.0.51.20. This must not be modified without discussion on the
 	gentoo-dev list, and it must not be modified in any subprofile.
 </p>
