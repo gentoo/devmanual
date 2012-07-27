@@ -109,11 +109,11 @@ them.
 </section>
 
 <section>
-<title>Required Variables</title>
+<title>Ebuild-defined Variables</title>
 <body>
 
 <p>
-The following variables must be defined by every ebuild.
+The following variables may or must be defined by every ebuild.
 </p>
 
 <table>
@@ -122,10 +122,26 @@ The following variables must be defined by every ebuild.
     <th>Purpose</th>
   </tr>
   <tr>
+    <ti><c>EAPI</c></ti>
+    <ti>
+    The EAPI. See <uri link="::ebuild-writing/eapi"/>.
+    </ti>
+  </tr>
+  <tr>
     <ti><c>DESCRIPTION</c></ti>
     <ti>
-    A short (less than 80 characters) description of the
-    package's purpose.
+    A short (less than 80 characters) description of the package's
+    purpose. Mandatory.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>HOMEPAGE</c></ti>
+    <ti>
+    Package's homepage. Mandatory (except for virtuals). If you are
+    unable to locate an official one, try to provide a link to
+    <uri link="http://freshmeat.net">freshmeat.net</uri> or a similar
+    package tracking site. Never refer to a variable name in the
+    string; include only raw text.
     </ti>
   </tr>
   <tr>
@@ -137,12 +153,18 @@ The following variables must be defined by every ebuild.
     </ti>
   </tr>
   <tr>
-    <ti><c>HOMEPAGE</c></ti>
+    <ti><c>LICENSE</c></ti>
     <ti>
-    Package's homepage. If you are unable to locate an official one, try
-    to provide a link to <uri link="http://freshmeat.net">freshmeat.net</uri>
-    or a similar package tracking site. Never refer to a variable name in 
-    the string; include only raw text.
+    The package's license, corresponding exactly (including case)
+    to a file in <c>licenses/</c>. Mandatory (except for virtuals).
+    See <uri link="::ebuild-writing/variables#LICENSE"/>.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>SLOT</c></ti>
+    <ti>
+    The package's <c>SLOT</c>. Mandatory.
+    See <uri link="::ebuild-writing/variables#SLOT"/>.
     </ti>
   </tr>
   <tr>
@@ -153,21 +175,6 @@ The following variables must be defined by every ebuild.
     </ti>
   </tr>
   <tr>
-    <ti><c>SLOT</c></ti>
-    <ti>
-    The package's <c>SLOT</c>. See
-    <uri link="::ebuild-writing/variables#SLOT"/>.
-    </ti>
-  </tr>
-  <tr>
-    <ti><c>LICENSE</c></ti>
-    <ti>
-    The package's license, corresponding exactly (including
-    case) to a file in <c>licenses/</c>. See
-    <uri link="::ebuild-writing/variables#LICENSE"/>.
-    </ti>
-  </tr>
-  <tr>
     <ti><c>IUSE</c></ti>
     <ti>
     A list of all <c>USE</c> flags (excluding arch flags, but
@@ -175,31 +182,12 @@ The following variables must be defined by every ebuild.
     <uri link="::ebuild-writing/variables#IUSE"/>.
     </ti>
   </tr>
-</table>
-
-</body>
-</section>
-
-<section>
-<title>Optional Variables</title>
-<body>
-
-<p>
-Specifying the following variables is optional:
-</p>
-
-<table>
   <tr>
-    <th>Variable</th>
-    <th>Purpose</th>
-  </tr>
-  <tr>
-    <ti><c>S</c></ti>
+    <ti><c>RESTRICT</c></ti>
     <ti>
-    Path to the temporary build directory, used by
-    <c>src_compile</c> and <c>src_install</c>. Default:
-    <c>"${WORKDIR}/${P}"</c>. Ebuilds should <b>not</b> provide a
-    value for this variable if it is the same as the default value.
+    A space-delimited list of portage features to restrict.
+    Valid values are <c>fetch</c>, <c>mirror</c>, <c>strip</c>, <c>test</c> and
+    <c>userpriv</c>. See <c>man 5 ebuild</c> for details.
     </ti>
   </tr>
   <tr>
@@ -225,11 +213,12 @@ Specifying the following variables is optional:
     </ti>
   </tr>
   <tr>
-    <ti><c>RESTRICT</c></ti>
+    <ti><c>S</c></ti>
     <ti>
-    A space-delimited list of portage features to restrict.
-    Valid values are <c>fetch</c>, <c>mirror</c>, <c>strip</c>, <c>test</c> and
-    <c>userpriv</c>. See <c>man 5 ebuild</c> for details.
+    Path to the temporary build directory, used by
+    <c>src_compile</c> and <c>src_install</c>. Default:
+    <c>"${WORKDIR}/${P}"</c>. Ebuilds should <b>not</b> provide a
+    value for this variable if it is the same as the default value.
     </ti>
   </tr>
 </table>

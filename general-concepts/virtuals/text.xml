@@ -11,9 +11,8 @@ not install any files.  Since they are regular ebuilds, there can be several
 versions of a virtual (which can be helpful when a package may be provided by
 another in some versions, and not others <d/> see the perl virtuals for an
 example of this).  One other difference (besides not installing any files) is
-that a virtual has an empty string for the value of the <c>LICENSE</c> and
-<c>HOMEPAGE</c> variables.  Since it installs no files, it really does not have
-a license.
+that a virtual does not define <c>HOMEPAGE</c> and <c>LICENSE</c> variables.
+Since it installs no files, it really does not have a license.
 </p>
 
 <p>
@@ -27,15 +26,9 @@ An example of a virtual:
 EAPI=4
 
 DESCRIPTION="Virtual for C++ tr1 &lt;type_traits&gt;"
-HOMEPAGE=""
-SRC_URI=""
-
-LICENSE=""
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86 ~x86-fbsd"
-IUSE=""
 
-DEPEND=""
 RDEPEND="|| ( >=sys-devel/gcc-4.1 dev-libs/boost )"
 </codesample>
 
