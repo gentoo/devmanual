@@ -34,9 +34,11 @@ can see real ebuilds in the main tree).
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
+
+EAPI=4
 
 DESCRIPTION="Exuberant ctags generates tags files for quick source navigation"
 HOMEPAGE="http://ctags.sourceforge.net"
@@ -47,15 +49,14 @@ SLOT="0"
 KEYWORDS="~mips ~sparc ~x86"
 IUSE=""
 
-src_compile() {
+src_configure() {
     econf --with-posix-regex
-    emake || die
 }
 
 src_install() {
-    emake DESTDIR="${D}" install || die
+    emake DESTDIR="${D}" install
 
-    dodoc FAQ NEWS README || die
+    dodoc FAQ NEWS README
     dohtml EXTENDING.html ctags.html
 }
 </codesample>
@@ -91,6 +92,10 @@ the ebuild and package in question.
 </p>
 
 <p>
+The <c>EAPI</c> of the ebuild, see <uri link="::ebuild-writing/eapi"/>.
+</p>
+
+<p>
 The <c>DESCRIPTION</c> variable is set to a <e>short</e> description
 of the package and its purpose.
 </p>
@@ -101,15 +106,15 @@ include the <c>http://</c> part).
 </p>
 
 <p>
-The <c>LICENSE</c> is <c>GPL-2</c> (the GNU General Public License version 2).
-</p>
-
-<p>
 The <c>SRC_URI</c> tells Portage the address to use for downloading
 the source tarball. Here, <c>mirror://sourceforge/</c> is a special
 notation meaning &quot;any of the Sourceforge mirrors&quot;.
 <c>${P}</c> is a read-only variable set by Portage which is the package's
 name and version <d/> in this case, it would be <c>ctags-5.5.4</c>.
+</p>
+
+<p>
+The <c>LICENSE</c> is <c>GPL-2</c> (the GNU General Public License version 2).
 </p>
 
 <p>
@@ -132,15 +137,11 @@ details.
 
 <body>
 <p>
-Next, a function named <c>src_compile</c>. Portage will call this
-function when it wants to <e>compile</e> the package. The <c>econf</c>
-function is a wrapper for calling <c>./configure</c>, and <c>emake</c>
-is a wrapper for <c>make</c>. In the case of emake, the common <c>|| die
-&quot;something went wrong&quot;</c> idiom is used <d/> this is to
-ensure that if for some reason an error occurs, Portage will stop
-rather than trying to continue with the install. Note that <c>econf</c>
-does not need the <c>|| die</c> idiom, as it dies by itself if something
-failed.
+Next, a function named <c>src_configure</c>. Portage will call this
+function when it wants to <e>configure</e> the package. The <c>econf</c>
+function is a wrapper for calling <c>./configure</c>. If for some reason
+an error occurs in <c>econf</c>, Portage will stop rather than trying to
+continue with the install.
 </p>
 
 <p>
@@ -149,8 +150,7 @@ to <e>install</e> the package. A slight subtlety here <d/> rather than
 installing straight to the live filesystem, we must install to a
 special location which is given by the <c>${D}</c> variable (Portage sets
 this <d/> see <uri link="::general-concepts/install-destinations"/> and
-<uri link="::general-concepts/sandbox"/>). Again, we check
-for errors using the <c>|| die</c> construct.
+<uri link="::general-concepts/sandbox"/>).
 </p>
 
 <note>
@@ -169,12 +169,22 @@ files into the relevant part of <c>/usr/share/doc</c>.
 
 <p>
 Ebuilds can define other functions (see <uri link="::ebuild-writing/functions"/>).
-In all cases, Portage provides a reasonable default implementation which quite
-often does the 'right thing'. There was no need to define a <c>src_unpack</c>
-function here, for example <d/> this function is used to do any unpacking of
-tarballs or patching of source files, but the default implementation does
-everything we need in this case.
+In all cases, Portage provides a reasonable default implementation which
+quite often does the 'right thing'. There was no need to define
+<c>src_unpack</c> and <c>src_compile</c> functions here, for example
+<d/> the <c>src_unpack</c> function is used to do any unpacking of
+tarballs or patching of source files, but the default implementation
+does everything we need in this case.
+Similarly, the default <c>src_compile</c> function will call
+<c>emake</c> which is a wrapper for <c>make</c>.
 </p>
+
+<note>
+Formerly, the <c>|| die</c> construct had to be used after every command
+to check for errors. This is no longer necessary in EAPI 4 <d/>
+functions provided by Portage will die by themselves if something
+failed.
+</note>
 </body>
 </subsection>
 
@@ -197,9 +207,11 @@ Here's <c>app-misc/detox/detox-1.1.1.ebuild</c>:
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
+
+EAPI=4
 
 DESCRIPTION="detox safely removes spaces and strange characters from filenames"
 HOMEPAGE="http://detox.sourceforge.net/"
@@ -215,14 +227,13 @@ DEPEND="${RDEPEND}
     sys-devel/flex
     sys-devel/bison"
 
-src_compile() {
+src_configure() {
     econf --with-popt
-    emake || die
 }
 
 src_install() {
-    emake DESTDIR="${D}" install || die
-    dodoc README CHANGES || die
+    emake DESTDIR="${D}" install
+    dodoc README CHANGES
 }
 </codesample>
 
@@ -235,7 +246,7 @@ variables <d/> see
 </p>
 
 <p>
-Again, we define <c>src_compile</c> and <c>src_install</c> functions.
+Again, we define <c>src_configure</c> and <c>src_install</c> functions.
 </p>
 
 <p>
@@ -253,17 +264,20 @@ compile-time dependencies, and the <c>RDEPEND</c> lists runtime dependencies. Se
 
 <body>
 <p>
-Often we need to apply patches. This is done in the <c>src_unpack</c> function
-using the <c>epatch</c> helper function. To use <c>epatch</c> one must first tell
-Portage that the <c>eutils</c> eclass (an eclass is like a library) is required <d/>
+Often we need to apply patches. This is done in the <c>src_prepare</c>
+function using the <c>epatch</c> helper function. To use <c>epatch</c>
+one must first tell Portage that the <c>eutils</c> eclass (an eclass is
+like a library) is required <d/>
 this is done via <c>inherit eutils</c> at the top of the ebuild. Here's
 <c>app-misc/detox/detox-1.1.0.ebuild</c>:
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
+
+EAPI=4
 
 inherit eutils
 
@@ -276,27 +290,23 @@ SLOT="0"
 KEYWORDS="~hppa ~mips ~sparc ~x86"
 IUSE=""
 
-RDEPEND="dev-libs/popt
+RDEPEND="dev-libs/popt"
 DEPEND="${RDEPEND}
     sys-devel/flex
     sys-devel/bison"
 
-src_unpack() {
-    unpack ${A}
-    cd "${S}"
-
+src_prepare() {
     epatch "${FILESDIR}"/${P}-destdir.patch \
         "${FILESDIR}"/${P}-parallel_build.patch
 }
 
-src_compile() {
+src_configure() {
     econf --with-popt
-    emake || die
 }
 
 src_install() {
-    emake DESTDIR="${D}" install || die
-    dodoc README CHANGES || die
+    emake DESTDIR="${D}" install
+    dodoc README CHANGES
 }
 </codesample>
 
@@ -321,9 +331,11 @@ replacement iconv for <c>libc</c> implementations which don't have their own.
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
+
+EAPI=4
 
 DESCRIPTION="GNU charset conversion library for libc which doesn't implement it"
 HOMEPAGE="http://www.gnu.org/software/libiconv/"
@@ -336,13 +348,12 @@ IUSE="nls"
 
 DEPEND="!sys-libs/glibc"
 
-src_compile() {
+src_configure() {
     econf $(use_enable nls)
-    emake || die
 }
 
 src_install() {
-    emake DESTDIR="${D}" install || die
+    emake DESTDIR="${D}" install
 }
 </codesample>
 
@@ -364,9 +375,11 @@ Another more complicated example, this time based upon
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
+
+EAPI=4
 
 inherit eutils
 
@@ -392,15 +405,12 @@ DEPEND="${RDEPEND}
     dev-util/pkgconfig
     nls? ( >=sys-devel/gettext-0.12.1 )"
 
-src_unpack() {
-    unpack ${A}
-    cd "${S}"
-
+src_prepare() {
     epatch "${FILESDIR}"/${PN}-namespace.diff \
         "${FILESDIR}"/${PN}-procmime.diff
 }
 
-src_compile() {
+src_configure() {
     econf \
         $(use_enable nls) \
         $(use_enable ssl) \
@@ -410,17 +420,15 @@ src_compile() {
         $(use_enable ipv6) \
         $(use_enable imlib) \
         $(use_enable xface compface)
-
-    emake || die
 }
 
 src_install() {
-    emake DESTDIR="${D}" install || die
+    emake DESTDIR="${D}" install
 
     doicon sylpheed.png
     domenu sylpheed.desktop
 
-    dodoc [A-Z][A-Z]* ChangeLog* || die
+    dodoc [A-Z][A-Z]* ChangeLog*
 }
 </codesample>
 
