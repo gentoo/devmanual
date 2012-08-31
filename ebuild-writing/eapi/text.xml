@@ -590,6 +590,14 @@ REQUIRED_USE="^^ ( foo bar baz )"
 			While an XOR could be formed from usual <c>DEPEND</c> syntax, a
 			specific <c>^^</c> operator has been added for this case.
 		</p>
+		<p>
+			Finally, to state "at least one of <c>foo</c>, <c>bar</c>, or
+			<c>baz</c> must be set":
+		</p>
+		<codesample lang="ebuild">
+REQUIRED_USE="|| ( foo bar baz )"
+		</codesample>
+
 		<important>
 			See section
 			<uri link="::general-concepts/use-flags/#conflicting-use-flags" />
