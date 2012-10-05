@@ -26,9 +26,9 @@ LICENSE="|| ( foo bar )"
 <p>
 If your package's license is not already in the tree, you must add the
 license before committing the package. When adding the license, use a
-plain text file if at all possible. Some licenses are PDF files rather
-than plain text <d/> this should only be done if we are legally required
-to do so.
+plain text file (UTF-8 encoded) if at all possible. Some licenses are
+PDF files rather than plain text <d/> this should only be done if we
+are legally required to do so.
 </p>
 
 <p>
