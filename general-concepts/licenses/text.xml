@@ -35,10 +35,10 @@ as listed in $PORTDIR/profiles/license_groups. For more information see the
 </p>
 
 <p>
-It is not normally necessary to mail the <c>gentoo-dev</c> list before
-adding a new license. You should only do so if the license could be
-considered 'questionable' or if you are unsure as to the meaning of
-any part of it.
+It is not normally necessary to mail the <c>gentoo-dev</c> list or
+<c>licenses@gentoo.org</c> before adding a new license. You should
+only do so if the license could be considered 'questionable' or if
+you are unsure as to the meaning of any part of it.
 </p>
 
 </body>
