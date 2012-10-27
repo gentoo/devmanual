@@ -22,6 +22,11 @@ updates have been made.
 See echangelog-1 for details.
 </p>
 
+<note>
+The <c>echangelog</c> tool is considered deprecated as <c>repoman commit -m "[your message here]"</c>
+ will create a ChangeLog entry automatically when used for commits in the portage tree.
+</note>
+
 </body>
 </chapter>
 </guide>
