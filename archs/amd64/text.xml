@@ -186,84 +186,9 @@ To understand how this is done in the ebuild, read
 As you read above, 32bit applications must be linked against 32bit libraries.
 For that, we've put together the most used libraries and stuck them into the
 so-called <c>emul-linux-x86</c> packages, which are located in the
-<c>app-emulation</c> category.
+<c>app-emulation</c> category. The current list of all the <c>emul-linux-x86</c>
+packages, can be found <uri link="http://dev.gentoo.org/~pacho/emul.html">here.</uri>
 </p>
-
-<dl>
-  <dt>
-    emul-linux-x86-baselibs
-  </dt>
-  <dd>
-    <p>
-      Contains very basic libraries like zlib, pam, ncurses.
-    </p>
-  </dd>
-  <dt>
-    emul-linux-x86-compat
-  </dt>
-  <dd>
-    <p>
-      Contains very old libraries for compatibility with binary-only programs.
-    </p>
-  </dd>
-  <dt>
-    emul-linux-x86-glibc
-  </dt>
-  <dd>
-    <p>
-      Only used for compatibility reasons. This package is blocked by all
-      2005.0 profiles.
-    </p>
-  </dd>
-  <dt>
-    emul-linux-x86-gtklibs
-  </dt>
-  <dd>
-    <p>
-      The name says it <d/> GTK and its engines belong herein.
-    </p>
-  </dd>
-  <dt>
-    emul-linux-x86-nvidia
-  </dt>
-  <dd>
-    <p>
-      Obsolete, <c>media-video/nvidia-glx</c> includes the 32bit library.
-    </p>
-  </dd>
-  <dt>
-    emul-linux-x86-qtlibs
-  </dt>
-  <dd>
-    <p>
-      QT goes here.
-    </p>
-  </dd>
-  <dt>
-    emul-linux-x86-sdl
-  </dt>
-  <dd>
-    <p>
-      libsdl and friends are here.
-    </p>
-  </dd>
-  <dt>
-    emul-linux-soundlibs
-  </dt>
-  <dd>
-    <p>
-      alsa, libogg, just everything that is needed to get sound is located here.
-    </p>
-  </dd>
-  <dt>
-    emul-linux-x86-xlibs
-  </dt>
-  <dd>
-    <p>
-      Contains the basic X libraries.
-    </p>
-  </dd>
-</dl>
 
 <p>
 These packages only provide pre-compiled libraries. Currently, the
