@@ -18,9 +18,14 @@ can be printed out, consulted for reference and is available
 as <c>app-doc/pms</c> in the main tree.
 </important>
 <p>
-If EAPI is undefined in an ebuild, then EAPI="0" is selected. If you want to override
+If EAPI is undefined in an ebuild, then EAPI=0 is selected. If you want to override
 the EAPI variable, you have to specify it at the top of the ebuild:
 </p>
+
+<note>
+Most developers prefer to set the EAPI version without quotes. However, the PMS allows single and double quotes as well.
+</note>
+
 <codesample lang="ebuild">
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
@@ -112,7 +117,7 @@ IUSE="foo +bar"
 
 
 <section>
-<title>EAPI="2"</title>
+<title>EAPI=2</title>
 <body>
 
 <subsection>
@@ -128,7 +133,7 @@ IUSE="foo +bar"
 doman foo.1
 # will go into /usr/share/man/man1/foo.1
 doman foo.lang.1
-# will go into /usr/share/man/lang/man1/foo.1 with EAPI="2"
+# will go into /usr/share/man/lang/man1/foo.1 with EAPI=2
 		</codesample>
 		</p>
 	</li>
@@ -306,7 +311,7 @@ src_compile() {
 </body>
 </section>
 <section>
-<title>EAPI="3"</title>
+<title>EAPI=3</title>
 <body>
 
 <ul>
@@ -331,7 +336,7 @@ src_compile() {
 </section>
 
 <section>
-<title>EAPI="4"</title>
+<title>EAPI=4</title>
 <body>
 
 <subsection>
@@ -494,7 +499,7 @@ DEPEND="
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="4"
+EAPI=4
 inherit linux-info
 ...
 
