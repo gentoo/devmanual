@@ -37,7 +37,7 @@ fine too <d/> the formatting can be easily done by someone else (meaning, us).
 
 <p>
   Currently, sources are hosted on git.overlays.gentoo.org. For current Gentoo developers,
-  access is at <c>git+ssh://git.overlays.gentoo.org/proj/devmanual.git</c>. Non-developers
+  access is at <c>git+ssh://git@git.overlays.gentoo.org/proj/devmanual.git</c>. Non-developers
   can clone the respository by typing <c>git clone git://git.overlays.gentoo.org/proj/devmanual.git</c>.
 </p>
 
