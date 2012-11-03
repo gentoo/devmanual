@@ -11,15 +11,19 @@ writing ebuilds.
 </body>
 
 <section>
+<title>Common Ebuild Writing Mistakes</title>
+<body>
+
+<subsection>
 <title>Invalid use of <c>static</c> use-flag</title>
 <body>
 The <c>static</c> use-flag should only be used to make a binary use static
 linking instead of dynamic linking. It should not be used to make a library
 install static libraries. Instead, the <c>static-libs</c> use-flag is used for this.
 </body>
-</section>
+</subsection>
 
-<section>
+<subsection>
 <title>Invalid use of <c>ROOT</c></title>
 <body>
 <p>
@@ -33,9 +37,9 @@ functions is not allowed.
 See also <uri link="::ebuild-writing/variables#ROOT"/>.
 </p>
 </body>
-</section>
+</subsection>
 
-<section>
+<subsection>
 <title>Referencing the full path to documentation files that could be
 compressed</title>
 <body>
@@ -54,9 +58,9 @@ Do something like:
 elog "They are listed in the INSTALL file in /usr/share/doc/${PF}"
 </codesample>
 </body>
-</section>
+</subsection>
 
-<section>
+<subsection>
 <title>Build log not verbose</title>
 <body>
 When writing ebuilds, you should always check the build log, because the build
@@ -85,6 +89,366 @@ option like 'V=1' to enable full verbosity.
 <note> If you notice non-verbose build log in any package open a bug and make it block the
 tracker bug #429308</note>
 </body>
+</subsection>
+
+<subsection>
+<title>Missing/Invalid/Broken Header</title>
+<body>
+
+<p>
+When you submit your ebuilds, the header should be <e>exactly</e> the same as
+the one in <path>/usr/portage/skel.ebuild</path>. Most importantly, do not
+modify it in any way and make sure that the <c>&#36;Header: &#36;</c> line is 
+intact.
+</p>
+
+<p>
+The first three lines <e>must</e> look like this:
+</p>
+
+<pre caption="Valid Header">
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# &#36;Header: &#36;
+</pre>
+
+<p>
+Only if you are submitting a patched or version bumped ebuild, should you not
+need to modify the <c>&#36;Header: &#36;</c> line. But the line must be present.
+When we check the ebuild into CVS, it will modify that header with the 
+appropriate version and date information. So there is no need for you to 
+manually modify it.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>IUSE Missing</title>
+<body>
+
+<p>
+By far the most common omission is the IUSE variable. You must (according to the
+<uri link="::ebuild-writing/variables#iuse">Ebuild Writing tutorial</uri>) include the IUSE
+variable even if there are no USE flags in use. If there are no USE flags
+supported, then just add the following:
+</p>
+
+<pre caption="Empty IUSE">
+IUSE=""
+</pre>
+
+</body>
+</subsection>
+<subsection>
+<title>Redefined P, PV, PN, PF</title>
+<body>
+
+<p>
+You should never redefine those variables. Always use MY_P, MY_PN, MY_PV,
+P0, etc. See other ebuilds that do it in portage for more information. Most
+ebuilds use bash "Parameter Expansion". Please read the man page for bash to
+understand how "Parameter Expansion" works.
+</p>
+
+<p>
+By the way, if you find a package that re-defines it, don't copy it. Submit a
+bug about that ebuild.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Including version numbers in SRC_URI and S</title>
+<body>
+
+<p>
+You should try not to include version numbers in the SRC_URI and S. Always try
+to use ${PV} or ${P}. It makes maintaining the ebuild much easier. If a version
+number is not consistent with the tarball/source, then use MY_P. An example
+dev-python/pyopenal fetches a tarball called PyOpenAL, so we redefine it like:
+</p>
+
+<pre caption="Example versioning redefinition">
+MY_P=${P/pyopenal/PyOpenAL}
+SRC_URI="http://oomadness.tuxfamily.org/downloads/${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P}
+</pre>
+
+</body>
+</subsection>
+<subsection>
+<title>DEPEND has syntactical errors</title>
+<body>
+
+<p>
+There are many things that go wrong with user submitted DEPEND and RDEPEND
+fields. Here are some important points to follow when you write the dependency
+part.
+</p>
+
+<ul>
+  <li>
+    <e>Always include the CATEGORY.</e><br />
+    For example, use <c>&gt;=x11-libs/gtk+-2</c> and not <c>&gt;=gtk+-2</c>.
+  </li>
+  <li>
+    <e>Do not put an asterisk (*) for &gt;= dependencies.</e><br />
+    For example, it should be <c>&gt;=x11-libs/gtk+-2</c> rather than
+    <c>&gt;=x11-libs/gtk+-2*</c>.
+  </li>
+  <li><e>GTK specific. Always use =x11-libs/gtk+-1.2* for GTK+1 apps.</e></li>
+  <li>
+    <e>Never depend on a meta package.</e><br />
+    So don't depend on gnome-base/gnome, always depend on the specific
+    libraries like libgnome.
+  </li>
+  <li>
+    <e>One dependency per line.</e><br />
+    Don't put multiple dependency on the same line. It makes it ugly to read 
+    and hard to follow.
+  </li>
+</ul>
+
+</body>
+</subsection>
+<subsection>
+<title>DEPEND is incomplete</title>
+<body>
+
+<p>
+This is another very common error. The ebuild submitter submits an ebuild
+that "just works" without checking if the dependencies are correct. Here are
+some tips on how to find the correct dependencies.
+</p>
+
+<ul>
+  <li>
+    <e>Look in configure.in or configure.ac</e><br />
+    Look for checks for packages in here. Things to look out for are pkg-config
+    checks or AM_* functions that check for a specific version.
+  </li>
+  <li>
+    <e>Look at included .spec files</e><br />
+    A good indication of dependencies is to look at the included .spec files
+    for relevant deps. However, do not trust them to be the definitive complete
+    list of dependencies
+  </li>
+  <li>
+    <e>Look at the application/library website</e><br />
+    Check the application website for possible dependencies that they suggest
+    are needed.
+  </li>
+  <li>
+    <e>Read the README and INSTALL for the package</e><br />
+    They usually also contain useful information about building and installing
+    packages.
+  </li>
+  <li>
+    <e>Remember non-binary dependencies such as pkg-config, doc generation
+    programs, etc.</e><br />
+    Usually the build process requires some dependencies such as intltool,
+    libtool, pkg-config, doxygen, scrollkeeper, gtk-doc, etc. Make sure those
+    are clearly stated.
+  </li>
+</ul>
+
+</body>
+</subsection>
+<subsection>
+<title>LICENSE Invalid</title>
+<body>
+
+<p>
+Another common mistake users make when submitting ebuilds is supplying an
+invalid license. For example, <c>GPL</c> is not a valid license. You need to 
+specify <c>GPL-1</c> or <c>GPL-2</c>. Same with <c>LGPL</c>. Make sure the 
+license you use in the <c>LICENSE</c> field is something that exists in 
+<path>/usr/portage/licenses</path>. As a tip, check the <path>COPYING</path> 
+in a source tarball for the license. If a package does not specify it
+uses <c>GPL-1</c> or <c>GPL-2</c>, it is very likely it uses <c>GPL-2</c>.
+</p>
+
+<p>
+If the license for the package you submit is unique and not in
+<path>/usr/portage/licenses/</path>, then you must submit the new license in a 
+separate file.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Untested ARCHs in KEYWORDS</title>
+<body>
+
+<p>
+Please do not add other ARCHs into KEYWORDS unless the ebuild has been tested on
+that ARCH. Also all new ebuilds should be ~x86 or whatever architecture it is.
+Make sure when you bump a version, the stable KEYWORDS are all marked as
+<c>~</c>.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>SLOT missing</title>
+<body>
+
+<p>
+Make sure you have the SLOT variable in the ebuild. If you don't plan to use it,
+don't remove it. Put in:
+</p>
+
+<pre caption="Default SLOT variable">
+SLOT="0"
+</pre>
+
+</body>
+</subsection>
+<subsection>
+<title>DESCRIPTION and HOMEPAGE wrong</title>
+<body>
+
+<p>
+Please check if the HOMEPAGE variable is right and leads users to the right
+page if they want to find out more about the package. And make sure the
+DESCRIPTION is not overly long. Good descriptions will describe the main
+function of the package in a sentence.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Wrongfully used spaces instead of TABS</title>
+<body>
+
+<p>
+It is no fun reformatting lines of ebuilds because the submitter did not follow
+the guidelines to use TABS rather than spaces. So <e>please</e> use tabs!
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Trailing whitespace</title>
+<body>
+
+<p>
+I'm often guilty of this. Remember to run repoman over your ebuilds so it can
+tell you if there is trailing whitespace at the end of lines or on empty lines.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Adding redundant S=${WORKDIR}/${P}</title>
+<body>
+
+<p>
+If <c>S=${WORKDIR}/${P}</c>, then you should not add it to your ebuild. This is 
+implied already, you should only add it if it is something other than 
+<c>${WORKDIR}/${P}</c>.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Documentation missing</title>
+<body>
+
+<p>
+If your package has documentation, make sure you install it using <c>dodoc</c> 
+or in <path>/usr/share/doc/${PF}</path>. Remember to check for errors when 
+running <c>dodoc</c>/<c>doins</c>.
+</p>
+
+</body>
+</subsection>
+
+</body>
+</section>
+
+
+<section>
+<title>Common Ebuild Submission Mistakes</title>
+<subsection>
+<title>Introduction</title>
+<body>
+
+<p>
+Please submit ebuilds properly by following the <uri
+link="::ebuild-writing/ebuild-maintenance#adding-a-new-ebuild">Adding new Ebuild</uri> tutorial.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Tarball'ing an ebuild</title>
+<body>
+
+<p>
+Please please please do not attach ebuilds as tarballs. Attach patches
+separately as well so we can easily examine them.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Inlining Ebuilds</title>
+<body>
+
+<p>
+Don't cut and paste an ebuild into bugzilla's comment field.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>No description on what the package is</title>
+<body>
+
+<p>
+Please let us know what the package is, and fill in the URL with the home page
+of the application, if any exists.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Package updates without changing the ChangeLog</title>
+<body>
+
+<p>
+If you submit a package update, then make sure you explain what changes you made
+to the ebuild. For example if a package introduces a new features/option and you
+use a USE flag, list it in your bug. Don't make us hunt for it.
+</p>
+
+<p>
+It is wise to submit a diff for a package update rather than the whole ebuild.
+The best way to generate it would be:
+</p>
+
+<pre caption="Creating a diff">
+$ <i>diff -u some-package-0.1.0.ebuild some-package-0.2.0.ebuild &gt; ~/some-package-0.2.0.diff</i>
+</pre>
+
+</body>
+</subsection>
+<subsection>
+<title>Submitting unchanged ebuilds for version bumps</title>
+<body>
+
+<p>
+If you are submitting a new version for a package in portage, make sure the
+existing ebuild works and make sure changes are incorporated in the new ebuild
+(such as added documentation.) If there are no required changes to the ebuild
+from the previous version, then don't attach the ebuild. Just say so in the bug
+report that you copied the ebuild over and verified that the package works and
+installs properly.
+</p>
+
+</body>
+</subsection>
 </section>
 
 </chapter>
