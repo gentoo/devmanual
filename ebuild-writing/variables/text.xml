@@ -309,6 +309,9 @@ Note that the <c>IUSE</c> variable is cumulative, so there is no need to specify
 USE flags used only within inherited eclasses within the ebuild's IUSE. Also
 note that it's really really broken in portage versions before 2.0.51.
 </p>
+<important>
+You must always add the IUSE variable in your ebuild even if it is empty.
+</important>
 
 <p>
 Arch USE flags (<c>sparc</c>, <c>mips</c>, <c>x86-fbsd</c> and so on) should not be
