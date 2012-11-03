@@ -1,0 +1,325 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/ebuild-maintenance/">
+<chapter>
+<title>Ebuild Maintenance</title>
+
+<body>
+<p>
+This guide aims to explain common everyday ebuild maintenance
+routines, as well as other rarer maintenance routines which
+developers may not be familiar with.
+</p>
+
+<section>
+<title>Adding a new ebuild</title>
+<body>
+<p>
+When adding a new ebuild, you should only include <c>KEYWORDS</c> for
+architectures on which you have actually tested the ebuild, confirming
+that it works as it should and that <c>USE</c> flags are properly
+honoured in the resulting package which would be installed. If
+possible, you should give the actual library or application thorough
+testing as well, since you would be responsible for any breakages for
+your architecture(s). Minimal testing such as checking that the
+application starts up without any errors should always be performed.
+</p>
+
+<p>
+If you are adding a user-submitted ebuild, do not assume that the
+submitter has done testing on various architectures: often, <c>KEYWORDS</c>
+are cloned across packages or generated from documentation in the
+source packages, which does not signify that the package does indeed
+work on those architectures.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Stabilizing ebuilds</title>
+<body>
+
+<p>
+Only architecture maintainers for a given architecture should mark packages as 
+stable on that architecture. The maintainer of the package should always be 
+contacted just in case there are reasons not to do so. The exception to this 
+is if you are part of an architecture team, in which case you may mark the 
+package stable for that architecture. If you are not part of an architecture 
+team, you should consult the guidelines below; if the architecture you are 
+looking for is not listed then please consult the relevant lead.
+</p>
+
+<p>
+You should <e>never</e> stabilize packages on
+architectures for which you cannot test and instead you should file a bug to
+the relevant architecture team, such as <mail link="sparc@gentoo.org">
+sparc@gentoo.org</mail> asking them to stabilize the
+ebuild. Alternatively, you may be able to find Gentoo developers on
+IRC who could help you with your request.
+</p>
+
+<p>
+It is best to not use <mail link="arch-maintainers@gentoo.org">
+arch-maintainers@gentoo.org</mail>, adding architecture teams onto a
+bug's CC list individually instead. That way teams can remove
+themselves from the list when they are done, giving a clear indication
+of which teams still have to stabilize a package.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Stabilization rules</title>
+<body>
+
+<p>
+SPARC: You must have prior permission from the arch lead. Usually we expect
+you to be on the sparc alias for QA reasons, although other arrangements
+can be made if you will only be working with a small group of packages.
+</p>
+
+<p>
+ALPHA: Maintainers may keyword their own packages but are reminded to inform
+the Alpha team if they can help out with testing and keywording packages so
+the team can keep an eye out for possible keywording mistakes.
+</p>
+
+<p>
+MIPS: You must have prior permission from any senior MIPS developer. Because
+of the massive range of hardware involved, being on the mips alias and
+having access to a variety of MIPS systems are generally requirements.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Upgrading ebuilds</title>
+<body>
+
+<p>
+New ebuilds should rarely go in with "<c>arch</c>" keywords and even if they do
+not, the package <e>must</e> be tested on any architectures listed in the
+<c>KEYWORDS</c> variable of the new ebuild.
+</p>
+
+<p>
+Exceptions to the no "<c>arch</c>" rule are major bug fixes, or
+security fixes. If the previous version of the ebuild
+contains <c>KEYWORDS</c> which you cannot test for, you should
+downgrade them: turn any "<c>arch</c>" keyword to "<c>~arch</c>". If you
+think that your package may not work at all even on "<c>~arch</c>"
+then it is best to leave the keyword out and request testing from the
+relevant team: if you are to do this, you must file a bug to the team
+in question.
+</p>
+
+<p>
+If a new version introduces new dependencies which are not available
+on some architectures, then you should file a bug or ask on IRC before
+you upgrade the package. If you really need to get the ebuild added in
+a hurry, for example, for a security fix, then you should drop
+any <c>KEYWORDS</c> which are causing problems and CC the relevant
+architectures on the bug - you should file a new bug to the
+architecture in question regarding this if no bug is already
+available.
+</p>
+
+<p>
+If there are no new dependencies, do not remove keywords if your
+commit fails with repoman - please try a full <c>cvs update</c> and if
+you still have problems, then commit with <c>repoman -I</c> and file a
+bug to the broken architecture, noting it in your CVS commit message.
+</p>
+
+<warn>
+When committing, make sure that you reference any bugs in the
+ChangeLog as well as the CVS message. Failing to do so is considered
+to be in very poor taste and may result in disciplinary action.
+</warn>
+
+</body>
+</section>
+
+<section>
+<title>Moving ebuilds</title>
+<body>
+
+<p>
+Moving ebuilds is a two-step process:
+</p>
+
+<p>
+Firstly, you need to move the ebuild in CVS. To do this, you should
+copy the ebuild to its new location and commit that as you would with
+a <uri link="#adding-a-new-ebuild">new ebuild</uri>.
+</p>
+
+<p>
+After this, you should change any ebuilds which <c>DEPEND</c> on the
+old ebuild to depend on the new one. After this, should add an entry to the
+latest file in <path>profiles/updates/</path> in the Portage tree in the in
+the following format:
+</p>
+
+<pre caption="Adding an entry to updates">
+move net-misc/fwbuilder net-firewall/fwbuilder
+</pre>
+
+<p>
+This example would transparently move <path>net-misc/fwbuilder</path> to
+<path>net-firewall/fwbuilder</path> if users have it installed. This
+way, users would now automatically receive updates
+for <path>net-firewall/fwbuilder</path> when they are available.
+</p>
+
+<p>
+Once this step is concluded, you are allowed to remove the old package.
+Simply issue a <c>cvs remove -Rf $PN</c> in the package category and commit
+the changes afterwards with a meaningful commit message. Don't forget to update
+entries in files such as profiles/package.mask to reflect the new category. Finally
+remember to change the title to open bugs related to this package if needed.
+</p>
+
+<pre caption="Removing a package">
+net-misc # cvs rm -Rf fwbuilder
+cvs remove: use `cvs commit' to remove these files permanently
+net-misc # cvs ci -m "Moving net-misc/fwbuilder to net-firewall/fwbuilder."
+</pre>
+
+<note>
+CVS cannot destroy directories: it will simply not re-create them if
+they are blank, providing you use CVS with the <c>-P</c> flag.
+</note>
+
+</body>
+</section>
+
+<section>
+<title>Changing ebuild's SLOT</title>
+<body>
+<p>
+The process for changing the ebuild's SLOT is very similar to the previous process.
+Besides changing the SLOT in the ebuild file, you also need to create a new entry
+in <path>profiles/updates/</path> in the Portage tree in the following format:
+</p>
+
+<pre caption="Adding an entry to updates">
+slotmove app-text/gtkspell 0 2
+</pre>
+
+<p>Make sure that you have fixed all the reverse dependencies and that you have
+updated every file in <path>profiles/</path> directory that happens to contain an
+entry which may be affected by your change.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Removing ebuilds</title>
+<body>
+
+<p>
+When removing an ebuild make sure that no dependencies in Portage are broken
+due to the removal - additionally, your CVS commit message should explain
+clearly why the ebuild is being removed from CVS.
+</p>
+
+<p>
+If you need to remove ebuilds, make sure you do not accidentally remove
+the newest/only stable ebuild for any architecture. If you would like to
+get a newer version marked stable, then please file a bug or ask on IRC.
+</p>
+
+<p>
+You should also not cause an unnecessary downgrade for any "<c>~arch</c>"
+when removing ebuilds - instead, it is best to get the newest version
+marked "<c>~arch</c>" first and then remove redundant versions of the ebuild.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Removing a package</title>
+<body>
+
+<p>
+When removing packages follow these steps:
+</p>
+
+<ol>
+  <li>Make sure that no dependencies in Portage are broken due to the removal</li>
+  <li>Send last rites to gentoo-dev-announce and gentoo-dev</li>
+  <li>Mask the package</li>
+  <li>Wait 30 days (or more)</li>
+  <li>Remove from CVS unless the reason for removal has been fixed</li>
+  <li>Remove package.mask entry</li>
+  <li>Close open bugs as WONTFIX</li>
+</ol> 
+
+<p>
+In order to remove a package completely from CVS, delete any files from the
+directory and commit this, CVS will take care of removing empty directories
+itself.
+</p>
+
+<pre caption="Removing a package from CVS"><comment>#</comment> <keyword>cd</keyword> app-admin
+<comment>#</comment> <keyword>cvs</keyword> rm -Rf scotty
+<comment>#</comment> <keyword>cvs</keyword> ci -m "app-admin/scotty removal (pending 21st July 2006), see #77501 for reference." scotty</pre>
+
+</body>
+</section>
+
+<section>
+<title>Conflicting files</title>
+<body>
+
+<p>
+When you encounter a package that is trying to install files that are
+already provided by another package (detectable with
+<c>FEATURES=collision-protect</c> for example) you have to fix this
+situation before you can commit the ebuild or, if you encounter this
+with an existing package, file a bug about that package (see below for
+a few exceptions). The reason file conflicts are critical is because
+if "foo" provides the file <path>/usr/bin/example</path> and "bar" is
+going to overwrite it, and later "bar" is unmerged, Portage will remove
+<path>/usr/bin/example</path> and it is therefore likely it will break
+"foo".
+</p>
+
+<p>
+The most obvious fix is to add a blocking dependency to both packages
+that want to install that file, so they can't be installed at the same
+time. But unless there are also other reasons for those packages to
+block each other you should avoid this if possible and rather fix the
+package, which could include one or more of the following steps:
+</p>
+
+<ul>
+  <li>Make "foo" (R)DEPEND on "bar" and not install the conflicting 
+  file.</li>
+  <li>Remove conflicting files from "foo" in <c>src_install</c>
+  or <c>pkg_preinst</c>.</li>
+  <li>Move conflicting files into a new subpackage and make "foo" and
+  "bar" both (R)DEPEND on that package.</li>
+  <li>Change the location where "foo" or "bar" installs conflicting
+  files.</li>
+</ul>
+
+<p>
+In some cases conflicting files can't be really fixed or aren't
+critical, currently known exceptions are Perl module manpages
+(overwriting the ones from Perl itself) and <c>CONFIG_PROTECT</c>'ed
+files (which should still be fixed, but aren't critical as Portage
+won't overwrite them).
+</p>
+
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>
