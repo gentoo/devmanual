@@ -19,30 +19,451 @@ provided, an English long description must be present. A typical
 example might look like:
 </p>
 
+<subsection>
+<body>
+
+<p>
+A <path>metadata.xml</path> file can contain a number of tags:
+</p>
+
+<table>
+<tr>
+  <th>tag</th>
+  <th>description</th>
+</tr>
+<tr>
+  <ti>
+    <brite>&lt;pkgmetadata&gt;</brite>
+  </ti>
+  <ti>
+    This is the root element of the <path>metadata.xml</path> file for
+    packages. It has no attributes. The following subtags are
+    allowed:
+    <brite>&lt;herd&gt;</brite>,
+    <brite>&lt;maintainer&gt;</brite>,
+    <brite>&lt;longdescription&gt;</brite>,
+    <brite>&lt;use&gt;</brite>, and
+    <brite>&lt;upstream&gt;</brite>.
+    There should be at least one <brite>&lt;herd&gt;</brite> or
+    <brite>&lt;maintainer&gt;</brite> subtag.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <brite>&lt;catmetadata&gt;</brite>
+  </ti>
+  <ti>
+    This is the root element of the <path>metadata.xml</path> file for
+    categories as per <uri link="/proj/en/glep/glep-0034.html">GLEP 34</uri>.
+    It has no attributes. It contains a number of 
+    <brite>&lt;longdescription&gt;</brite> tags, each for a different 
+    language.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <brite>&lt;herd&gt;</brite>
+  </ti>
+  <ti>
+    If a package is maintained by one or more herds, names of these herds
+    can be specified with the <brite>&lt;herd&gt;</brite> tag. The names
+    used in this tag must be the same as specified in the <uri 
+    link="http://sources.gentoo.org/viewcvs.py/*checkout*/gentoo/xml/htdocs/proj/en/metastructure/herds/herds.xml?content-type=text/plain&amp;rev=HEAD">herds.xml</uri>
+    file.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <brite>&lt;maintainer&gt;</brite>
+  </ti>
+  <ti>
+    Besides being part of a herd, a package can also be maintained directly. 
+    The maintainers of a package can be specified with the 
+    <brite>&lt;maintainer&gt;</brite> tag. This tag has one required subtag: 
+    <brite>&lt;email&gt;</brite>. It has two optional subtags:
+    <brite>&lt;name&gt;</brite>, and <brite>&lt;description&gt;</brite>.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;email&gt;</brite></ti>
+  <ti>
+    This contains the e-mail address of the maintainer. It is required.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;name&gt;</brite></ti>
+  <ti>
+    This contains freetext with the name of the maintainer. It is optional.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;description&gt;</brite></ti>
+  <ti>
+    The description tag contains a description of the maintainership, or for 
+    example a remark that someone interested can take over the maintainership. 
+    It is optional.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;longdescription&gt;</brite></ti>
+  <ti>
+    This tag contains a description of the package. This is to augment the 
+    DESCRIPTION field in the ebuilds themselves. This tag has two optional
+    subtags: <brite>&lt;pkg&gt;</brite> and <brite>&lt;cat&gt;</brite>.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;use&gt;</brite></ti>
+  <ti>
+    This tag contains descriptions of <uri
+    link="::ebuild-writing/variables#iuse">USE flags</uri>.
+    This tag is optional and, if specified, has one required subtag:
+    <brite>&lt;flag&gt;</brite>.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;flag&gt;</brite></ti>
+  <ti>
+    This tag contains a description of how the named USE flag affects this
+    package. It is required if the <brite>&lt;use&gt;</brite> tag is specified.
+    It also requires the USE flag to be named in the <c>name</c> attribute.
+    This tag has two optional subtags: <brite>&lt;pkg&gt;</brite> and
+    <brite>&lt;cat&gt;</brite>.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;upstream&gt;</brite></ti>
+  <ti>
+    This tag contains information about the upstream developers/project.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;maintainer&gt;</brite></ti>
+  <ti>
+    Name and e-mail of an upstream maintainer. May appear more than once.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;name&gt;</brite></ti>
+  <ti>
+    The name of an upstream maintainer should contain a block of text with upstream's name.
+    This element is mandatory for an upstream maintainer and must appear only once.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;email&gt;</brite></ti>
+  <ti>
+    The email address of an upstream may appear only once.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;changelog&gt;</brite></ti>
+  <ti>
+    Should contain a URL where the location of the upstream changelog can be found.
+    The URL must be version independent and must point to a changelog which is only
+    updated on new releases of the corresponding package. (This also implies that
+    one can link to an automatically updated changelog in case of vcs snapshots
+    only.)
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;doc&gt;</brite></ti>
+  <ti>
+    Should contain a URL where the location of the upstream documentation can be
+    found. The link must not point to any third party documentation and must be
+    version independent. If the documentation is available in more than one language,
+    a lang attribute can be used which follows the same rules as the one for
+    longdescription.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;bugs-to&gt;</brite></ti>
+  <ti>
+    Should contain a place where bugs can be filed, a URL or an e-mail address prefixed
+    with mailto:.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;remote-id&gt;</brite></ti>
+  <ti>
+    Should specify a type of package identification tracker and the identification that
+    corresponds to the package in question. remote-id should make it easier to index
+    information such as its Freshmeat ID or its CPAN name.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;pkg&gt;</brite></ti>
+  <ti>
+    This tag contains a valid package name in the format of a DEPEND.
+  </ti>
+</tr>
+<tr>
+  <ti><brite>&lt;cat&gt;</brite></ti>
+  <ti>
+    This tag contains a valid category name as defined in
+    <path>profiles/categories</path>.
+  </ti>
+</tr>
+</table>
+
+<p>
+There are also some attributes that can be used with these tags. They are all
+optional:
+</p>
+
+<table>
+<tr>
+  <th>attribute</th>
+  <th>tags</th>
+  <th>description</th>
+</tr>
+<tr>
+  <ti>lang</ti>
+  <ti>
+    <brite>&lt;description&gt;</brite>, <brite>&lt;longdescription&gt;</brite>,
+    <brite>&lt;use&gt;</brite>, <brite>&lt;doc&gt;</brite>
+  </ti>
+  <ti>
+    In every case where a description is required, there must be at
+    <e>least</e> an english description.  If an additional description in
+    another language is given, this attribute is used to specify the language
+    used.  The format is the two-character language code as defined by the <uri
+    link="http://www.w3.org/WAI/ER/IG/ert/iso639.htm#2letter">ISO-639-1</uri>
+    norm.
+  </ti>
+</tr>
+<tr>
+  <ti>restrict</ti>
+  <ti>
+    <brite>&lt;herd&gt;</brite>, <brite>&lt;maintainer&gt;</brite>, 
+    <brite>&lt;longdescription&gt;</brite>, <brite>&lt;flag&gt;</brite>
+  </ti>
+  <ti>
+    The restrict attribute allows one to restrict the application of certain
+    tags to certain versions of a package. When this attribute is used, a tag 
+    without this attribute must also exist. That tag without the restrict 
+    attribute will serve as the default. The format of the restrict attribute 
+    is that of the DEPEND flag, except that "&lt;" and 
+    "&gt;" need to be specified by &amp;lt; and &amp;gt;.<br />
+    <br />
+    For example, in the <c>sys-libs/db</c> package, 
+    <c>restrict="&amp;gt;=sys-libs/db-3.2.9-r5"</c>  on the
+    <brite>maintainer</brite> tag shows that I'm currently maintaining all
+    versions greater then 3.2.9-r5.
+  </ti>
+</tr>
+<tr>
+  <ti>name</ti>
+  <ti>
+    <brite>&lt;flag&gt;</brite>
+  </ti>
+  <ti>
+    This attribute is required on the <brite>&lt;flag&gt;</brite> tag. It
+    simply contains the USE flag.
+    <br /><br />
+    For example, in the <c>sys-apps/hal</c> package, <c>&lt;flag name='acpi'&gt;
+    Enables ACPI&lt;/flag&gt;</c>
+  </ti>
+</tr>
+<tr>
+  <ti>status</ti>
+  <ti>
+    <brite>&lt;maintainer&gt;</brite>
+  </ti>
+  <ti>
+    The upstream maintainer element has a status attribute, which is one of active or inactive.
+    This attribute is not mandatory. The absence of it shall be interpreted as unknown.
+    Please note: This attribute is only allowed in the &lt;upstream&gt; &lt;maintainer&gt; element!
+  </ti>
+</tr>
+<tr>
+  <ti>type</ti>
+  <ti>
+    <brite>&lt;remote-id&gt;</brite>
+  </ti>
+  <ti>
+    A string identifying the type of upstream source. A list of valid strings are kept in metadata.dtd.
+    Developers should email the gentoo-dev mailing list before using a new type value. 
+  </ti>
+</tr>
+
+</table>
+
+</body>
+</subsection>
+
+</body>
+</section>
+
+<section>
+<title>Metadata Examples</title>
+<subsection>
+<title>First Example</title>
+<body>
+
+<p>
+In this first example we provide you with the <path>metadata.xml</path> for 
+OpenOffice of which the ebuilds are completely managed by a herd called
+<c>openoffice</c>:
+</p>
+
 <codesample lang="sgml">
-    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-    &lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
-    &lt;pkgmetadata&gt;
-        &lt;herd&gt;freedesktop&lt;/herd&gt;
-        &lt;maintainer&gt;
-            &lt;email&gt;dang@gentoo.org&lt;/email&gt;
-            &lt;name&gt;Daniel Gryniewicz&lt;/name&gt;
-        &lt;/maintainer&gt;
-        &lt;longdescription lang="en"&gt;
-           HAL provides a view of the various hardware attached to a system.
-           In addition to this, HAL keeps detailed metadata for each piece of
-           hardware and provide hooks such that system- and desktop-level software
-           can react to changes in the hardware configuration in order to maintain
-           system policy.
-        &lt;/longdescription&gt;
-	&lt;use&gt;
-	       &lt;flag name="laptop"&gt;Adds support for power management scripts
-                (&lt;pkg&gt;sys-power/pm-utils&lt;/pkg&gt;)&lt;/flag&gt;
-        	&lt;flag name="selinux"&gt;Installs SELinux policies and links HAL to the SELinux
-                	libraries.&lt;/flag&gt;
-	&lt;/use&gt;
-    &lt;/pkgmetadata&gt;
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;pkgmetadata&gt;
+  &lt;herd&gt;openoffice&lt;/herd&gt;
+  &lt;longdescription&gt;
+    OpenOffice is the  opensource version of staroffice.
+    This ebuild allows you to compile it yourself. Unfortunately this
+    compilation can take up to a day depending on the speed of your
+    computer. It will however make a snappier openoffice than the binary
+    version.
+  &lt;/longdescription&gt;
+&lt;/pkgmetadata&gt;
 </codesample>
+
+<p>
+The <c>openoffice</c> herd is defined in <path>herds.xml</path> by the
+<uri link="/proj/en/metastructure">Gentoo Metastructure Project</uri>:
+</p>
+
+<note>
+This example may be outdated when you read it. It's just an example!
+</note>
+
+<codesample lang="sgml">
+&lt;herd&gt;
+  &lt;name&gt;openoffice&lt;/name&gt;
+  &lt;email&gt;openoffice@gentoo.org&lt;/email&gt;
+  &lt;description&gt;Openoffice related packages&lt;/description&gt;
+  &lt;maintainer&gt;&lt;email&gt;pauldv@gentoo.org&lt;/email&gt;&lt;/maintainer&gt;
+  &lt;maintainer&gt;&lt;email&gt;suka@gentoo.org&lt;/email&gt;&lt;/maintainer&gt;
+&lt;/herd&gt;
+</codesample>
+
+<p>
+If you want to add (or remove) yourself from a herd, edit <path>herds.xml</path>
+located in <path>[gentoo]/xml/htdocs/proj/en/metastructure/herds</path> in Gentoo's CVS repository. Make sure you
+know the e-mail alias the herd listens to (for instance the "sound" herd has
+<mail link="sound@gentoo.org">sound@gentoo.org</mail>) and add yourself to the
+alias (by editing <path>/var/mail/alias/misc/&lt;alias name&gt;</path> on 
+dev.gentoo.org).
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Second Example</title>
+<body>
+
+<p>
+For the second example, we will examine the <path>metadata.xml</path> of
+<c>app-portage/mirrorselect</c>.  This ebuild is maintained by the
+<c>tools-portage</c> herd, but has a separate maintainer.
+</p>
+
+<pre caption="Herd &amp; individually maintained package">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;pkgmetadata&gt;
+  &lt;herd&gt;tools-portage&lt;/herd&gt;
+  &lt;maintainer&gt;
+    &lt;email&gt;johnm@gentoo.org&lt;/email&gt;
+    &lt;name&gt;John Mylchreest&lt;/name&gt;
+  &lt;/maintainer&gt;
+  &lt;longdescription&gt;
+    This utility is used to select the fastest mirror (distfiles) and provide a
+    nicer front-end for mirror selection (both rsync + distfiles) to a user.
+  &lt;/longdescription&gt;
+&lt;/pkgmetadata&gt;
+</pre>
+
+</body>
+</subsection>
+<subsection>
+<title>Third Example</title>
+<body>
+
+<p>
+For the third example, we will describe the <path>metadata.xml</path> of
+<c>sys-apps/hal</c>. This ebuild is maintained by the <c>gentopia</c> herd
+and contains USE flag descriptions.
+</p>
+
+<codesample lang="sgml">
+&lt;?xml version="1.0" encoding="UTF-8"&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;pkgmetadata&gt;
+&lt;herd&gt;gentopia&lt;/herd&gt;
+&lt;maintainer&gt;
+	&lt;email&gt;compnerd@gentoo.org&lt;/email&gt;
+&lt;/maintainer&gt;
+&lt;maintainer&gt;
+	&lt;email&gt;steev@gentoo.org&lt;/email&gt;
+&lt;/maintainer&gt;
+&lt;use&gt;
+	&lt;flag name='acpi'&gt;Enables HAL to attempt to read from
+	/proc/acpi/event, if unavailable, HAL will read events from
+	&lt;pkg&gt;sys-power/acpid&lt;/pkg&gt;. If you need multiple acpi
+	readers, ensure acpid is in your default runlevel along with HAL. This
+	will also enable HAL to read Toshia and IBM acpi events which do not
+	get sent via /proc/acpi/event&lt;/flag&gt;
+	&lt;flag name='crypt'&gt;Allows HAL to mount volumes that are encrypted using
+	LUKS. &lt;pkg&gt;sys-fs/cryptsetup-luks&lt;/pkg&gt; which has recently been renamed
+	to &lt;pkg&gt;sys-fs/cryptsetup&lt;/pkg&gt; allows you to create such encrypted
+	volumes. HAL will be able to handle volumes that are removable or
+	fixed.&lt;/flag&gt;
+	&lt;flag name='dell'&gt;Builds an installs the Dell addon, which reads data from
+	the Dell SM BIOS via &lt;pkg&gt;sys-libs/libsmbios&lt;/pkg&gt;. It will read your
+	service tag information and your hardware backlight data as well as
+	allow you to modify the backlight settings on a Dell laptop.&lt;/flag&gt;
+	&lt;flag name='disk-partition'&gt;Allows HAL to use libparted from
+	&lt;pkg&gt;sys-apps/parted&lt;/pkg&gt; to read raw partition data from your disks
+	and process that data. Future versions of HAL (possibly 0.5.11 and
+	higher) will allow you to create, modify, delete and format partitions
+	from a GUI interface agnostic of your desktop environment.&lt;/flag&gt;
+	&lt;flag name='doc'&gt;Generates documentation that describes HAL's fdi
+	format.&lt;/flag&gt;
+	&lt;flag name='pcmcia'&gt;Allows HAL to process PCMCIA/CardBus slot data which
+	includes inserts and removals and act on these events.&lt;/flag&gt;
+	&lt;flag name='selinux'&gt;Installs SELinux policies and links HAL to the SELinux
+	libraries.&lt;/flag&gt;
+&lt;/use&gt;
+&lt;/pkgmetadata&gt;
+</codesample>
+
+</body>
+</subsection>
+<subsection>
+<title>Fourth Example</title>
+<body>
+
+<p>
+This example demonstrates the usage of the upstream element:
+</p>
+
+<codesample lang="sgml">
+&lt;upstream&gt;
+        &lt;maintainer status="inactive"&gt;
+                &lt;name&gt;Foo Bar&lt;/name&gt;
+                &lt;email&gt;foo@bar.bar&lt;/email&gt;
+        &lt;/maintainer&gt;
+        &lt;maintainer status="active"&gt;
+                &lt;name&gt;Foo Gentoo&lt;/name&gt;
+                &lt;email&gt;foo@gentoo.org&lt;/email&gt;
+        &lt;/maintainer&gt;
+        &lt;changelog&gt;http://foo.bar/changelog.txt&lt;/changelog&gt;
+        &lt;doc lang="en"&gt;http://foo.bar/doc/index.html&lt;/doc&gt;
+        &lt;doc lang="de"&gt;http://foo.bar/doc/index.de.html&lt;/doc&gt;
+        &lt;bugs-to&gt;https://bugs.foo.bar&lt;/bugs-to&gt;
+        &lt;remote-id type="freshmeat"&gt;foobar&lt;/remote-id&gt;
+        &lt;remote-id type="sourceforge"&gt;foobar&lt;/remote-id&gt;
+&lt;/upstream&gt;
+</codesample>
+
+</body>
+</subsection>
+
 
 <p>
 All new packages <b>must</b> include a <c>metadata.xml</c> file. That file
@@ -67,7 +488,6 @@ should ensure that you have <c>dev-libs/libxml2</c> installed so that
 the XML can be validated.
 </p>
 
-</body>
 </section>
 
 <section>
