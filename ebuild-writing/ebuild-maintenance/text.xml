@@ -13,6 +13,78 @@ developers may not be familiar with.
 <section>
 <title>Adding a new ebuild</title>
 <body>
+
+<subsection>
+<title>What (not) to put in the Portage tree</title>
+<body>
+
+<p>
+Before writing a new ebuild, check 
+<uri link="http://bugs.gentoo.org/">bugs.gentoo.org</uri> 
+to see if an ebuild has already been written for the package, but has not yet 
+been added to the Portage tree.  Go to <uri 
+link="http://bugs.gentoo.org/">bugs.gentoo.org</uri>, choose query and select 
+Advanced Search; as product select <e>Gentoo Linux</e>, as component select 
+<e>ebuilds</e>.  In the search field put the name of the ebuild and as status 
+select NEW, ASSIGNED, REOPENED and RESOLVED (RESOLVED is important), then 
+submit the query.  For you lazy people, click <uri 
+link="http://bugs.gentoo.org/query.cgi?product=Gentoo%20Linux&amp;component=Ebuilds&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;bug_status=RESOLVED">here</uri>.
+</p>
+
+<p>
+In general, the Portage tree should only be used for storing 
+<path>.ebuild</path> files, as well as any relatively small companion
+files, such as patches or sample configuration files.  These types of
+files should be placed in the <path>/usr/portage/mycat/mypkg/files</path>
+directory to keep the main <path>mycat/mypkg</path> directory uncluttered.
+Exceptions to this rule are for larger patch files (we recommend this for patches
+above 20KB) which should be put onto the Gentoo mirrors so that people
+do not waste excessive amounts of bandwidth and hard drive
+space. Also, you should not add binary (non-ASCII) files to the
+Portage CVS tree. If you need to do this in another CVS tree, for
+example, if you need to add a small PNG graphic for whatever reason,
+be sure to add it to CVS by using the <c>-kb</c> option, like so:
+</p>
+
+<pre caption="Adding binary files to CVS">
+# <i>cvs add -kb myphoto.png</i>
+</pre>
+
+<p>
+The <c>-kb</c> option tells CVS that <path>myphoto.png</path> is a binary
+file and should be treated specially.  For example, merging the 
+differences between two different versions of this file should not be 
+allowed to happen, for obvious reasons.  Also, speaking of merging 
+changes, any patches you add to Portage should generally <e>not</e> be 
+compressed.  This will allow CVS to merge changes and correctly inform 
+developers of conflicts.
+</p>
+
+<p>
+Remember, the packages that you commit must be <e>ready</e> <e>out of the 
+box</e> for end users when committed as stable.  Make sure that you have a good 
+set of default settings that will satisfy the majority of systems and 
+users that will use your package.  If your package is broken, and you are 
+not sure how to get it to work, check some other distributions that have 
+done their own versions of the package.  You can check 
+<uri link="http://cvs.mandriva.com/cgi-bin/viewvc.cgi/SPECS/">Mandriva</uri>
+or <uri link="http://www.debian.org/distrib/packages">Debian</uri> or 
+<uri link="http://cvs.fedora.redhat.com/">Fedora</uri> for some 
+examples.
+</p>
+
+<p>
+When committing to CVS, all developers should use <c>repoman commit</c> 
+instead of <c>cvs commit</c> to submit their ebuilds.  Before committing, 
+please run <c>repoman full</c> to make sure you didn't forget something.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Initial Architecture Keywords</title>
+<body>
 <p>
 When adding a new ebuild, you should only include <c>KEYWORDS</c> for
 architectures on which you have actually tested the ebuild, confirming
@@ -31,6 +103,73 @@ are cloned across packages or generated from documentation in the
 source packages, which does not signify that the package does indeed
 work on those architectures.
 </p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>CVS Commit Policy</title>
+<body>
+
+<ul>
+<li>Always run <c>repoman scan</c> before you commit.</li>
+<li>Please run <c>repoman full</c> before you commit.</li>
+<li>Always test that <path>package.mask</path> is okay by doing 
+<c>emerge --pretend mypkg</c> before you commit and check 
+that it doesn't contain any conflicts.</li>
+<li>Always update the <path>ChangeLog</path> before you commit.</li>
+<li>Always commit the updated <path>package.mask</path> before 
+the updated package, in case conflicts occur while you commit 
+<path>package.mask</path>.</li>
+<li>Always do atomic commits; if you commit a package with a new license, 
+or that is masked, then first commit the revised <path>package.mask</path> and/or license, 
+then commit the ebuild, <path>ChangeLog</path>, patches
+and <uri link="::ebuild-writing/misc-files/metadata">metadata.xml</uri> all in <b>one</b> go
+to avoid breaking users' installations.</li>
+</ul>
+
+</body>
+</subsection>
+
+<subsection>
+<title>The files Directory</title>
+<body>
+
+<p>
+As noted earlier, under each package subdirectory is
+a <path>files/</path> directory. Any patches, configuration files, or
+other ancillary files your package might require should be added to
+this directory; any files bigger than 20KB-or-so should go to the
+mirrors to lower the amount of (unneeded) files our users have to
+download. You may want to consider naming patches you create yourself
+just to get your package to build with a version-specific name, such
+as <path>mypkg-1.0-gentoo.diff</path>, or more
+simply, <path>1.0-gentoo.diff</path>.  Also note that the
+<path>gentoo</path> extension informs people that this patch was created 
+by us, the Gentoo Linux developers, rather than having been grabbed from a 
+mailing list or somewhere else. Again, you should not compress these 
+patches because CVS does not play well with binary files.
+</p>
+
+<p>
+Consider prefixing or suffixing (such as <path>mypkg-1.0</path>) every file 
+you put into the <path>files/</path> directory, so that the files used for 
+each individual version on an ebuild are distinguishable from one another, and 
+so that the changes between different revisions are visible.  This is generally 
+a really good idea :).  You may want to use a different suffix if you wish to 
+convey more meaning with the patch name.
+</p>
+
+<p>
+If you have many files that should go into the <path>files/</path> directory, 
+consider creating subdirectories such as <path>files/1.0/</path> and putting the
+relevant files in the appropriate subdirectory.  If you use this method, 
+you do not need to add version information to the names of the files, 
+which is often more convenient.
+</p>
+
+</body>
+</subsection>
 
 </body>
 </section>
