@@ -14,9 +14,8 @@ writing ebuilds.
 <title>Invalid use of <c>static</c> use-flag</title>
 <body>
 The <c>static</c> use-flag should only be used to make a binary use static
-linking instead of dynamic linking.  It should not be used to make a library
-install static libraries.  The package should always (if possible) install both
-the dynamic and static libraries.
+linking instead of dynamic linking. It should not be used to make a library
+install static libraries. Instead, the <c>static-libs</c> use-flag is used for this.
 </body>
 </section>
 
@@ -75,8 +74,8 @@ by default. If you call emake directly for whatever reason, you can do 'emake VE
 </p>
 
 <p>
-For <c>autotools</c> based build systems you can pass '--disable-silent-rules' to econf,
-or use EAPI 5 where that argument is passed automatically. 'emake V=1' should also work.
+For <c>autotools</c> based build systems you can pass '--disable-silent-rules' to econf
+until a new EAPI does that automatically. 'emake V=1' should also work.
 </p>
 
 <p>
