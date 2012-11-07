@@ -5,7 +5,7 @@
 <body>
 
 <p>
-The following functions, which are all provided <c>ebuild.sh</c> and the standard
+The following functions, which are all provided by <c>ebuild.sh</c> and the standard
 library, handle various install-related tasks. <c>${D}</c> is automatically handled
 for all of these functions.
 </p>
