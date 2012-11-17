@@ -683,6 +683,137 @@ REQUIRED_USE="|| ( foo bar baz )"
 </body>
 </section>
 
+<section>
+<title>EAPI=5</title>
+<body>
+
+<subsection>
+<title>Metadata</title>
+<body>
+<ul>
+	<li>
+		<p><b>REQUIRED_USE supports new at-most-one-of operator</b></p>
+		<p>
+		The new <b>at-most-one-of</b> operator consists of the string <c>'??'</c>, and is satisfied if zero or one (but no more) of its child elements is matched.
+		</p>
+	</li>
+	<li>
+		<p><b>SLOT supports optional "sub-slot" part</b></p>
+		<p>
+		The <c>SLOT</c> variable may contain an optional <b>sub-slot</b> part that follows the regular slot and is delimited by a <c>/</c> character. The sub-slot must be a valid slot name. The sub-slot is used to represent cases in which an upgrade to a new version of a package with a different sub-slot may require dependent packages to be rebuilt. When the sub-slot part is omitted from the SLOT definition, the package is considered to have an implicit sub-slot which is equal to the regular slot.
+		</p>
+	</li>
+	<li>
+		<p><b>Dependency atom slot operators</b></p>
+		<p>
+		A slot dependency may contain an optional sub-slot part that follows the regular slot and is delimited by a <c>/</c> character. An operator slot dependency consists of a colon followed by one of the following operators:
+		</p>
+		<ul>
+			<li>
+			<c>*</c> Indicates that any slot value is acceptable. In addition, for runtime dependencies, indicates that the package will not break if the matched package is uninstalled and replaced by a different matching package in a different slot.
+			</li>
+			<li>
+			<c>=</c> Indicates that any slot value is acceptable. In addition, for runtime dependencies, indicates that the package will break unless a matching package with slot and sub-slot equal to the slot and sub-slot of the best installed version at the time the package was installed is available.
+			</li>
+			<li>
+			<c>slot=</c> Indicates that only a specific slot value is acceptable, and otherwise behaves identically to the plain equals slot operator.
+			</li>
+		</ul>
+	</li>
+</ul>
+</body>
+</subsection>
+
+<subsection>
+<title>Profiles</title>
+<body>
+<ul>
+	<li>
+		<p><b>Profile stable USE forcing and masking</b></p>
+		<p>
+		In profile directories with an EAPI supporting stable masking, new USE configuration files are supported: <c>use.stable.mask</c>, <c>use.stable.force</c>, <c>package.use.stable.mask</c> and <c>package.use.stable.force</c>. These files behave similarly to previously supported USE configuration files, except that they only influence packages that are merged due to a stable keyword.
+		</p>
+	</li>
+</ul>
+</body>
+</subsection>
+
+<subsection>
+<title>Helpers</title>
+<body>
+<ul>
+	<li>
+		<p><b>econf adds --disable-silent-rules</b></p>
+		<p>
+		This option will automatically be passed if <c>--disable-silent-rules</c> occurs in the output of <c>configure --help</c>.
+		</p>
+	</li>
+	<li>
+		<p><b>new* commands can read from standard input</b></p>
+		<p>
+		Standard input is read when the first parameter is <c>-</c> (a hyphen).
+		</p>
+	</li>
+	<li>
+		<p><b>New option --host-root for {has,best}_version</b></p>
+		<p>
+		This option <c>--host-root</c> will cause the query to apply to the host root instead of ROOT.
+		</p>
+	</li>
+	<li>
+		<p><b>New doheader helper function</b></p>
+		<p>
+		Installs the given header files into <c>/usr/include/</c>, by default with file mode <c>0644</c>. This can be overridden by setting <c>INSOPTIONS</c> with the <c>insopts</c> function.
+		</p>
+	</li>
+	<li>
+		<p><b>New usex helper function</b></p>
+		<p>
+		<!-- We probably need an example here -->
+		<pre>
+USAGE: usex &#9001;USE flag&#9002; [true output] [false output] [true suffix] [false suffix]
+DESCRIPTION:
+If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
+ otherwise echo [false output][false suffix] (defaults to "no").
+		</pre>
+		</p>
+	</li>
+</ul>
+</body>
+</subsection>
+
+<subsection>
+<title>Phases</title>
+<body>
+<ul>
+	<li>
+		<p><b>src_test supports parallel tests</b></p>
+		<p>
+		Unlike older EAPIs, the default <c>src_test</c> implementation will not pass the -j1 option to emake.
+		</p>
+	</li>
+</ul>
+</body>
+</subsection>
+
+<subsection>
+<title>Variables</title>
+<body>
+<ul>
+	<li>
+		<p><b>EBUILD_PHASE_FUNC</b></p>
+		<p>
+		During execution of an ebuild phase function (such as <c>pkg_setup</c> or <c>src_unpack</c>),
+		the <c>EBUILD_PHASE_FUNC</c> variable will contain the name of the phase function that is currently executing.
+		</p>
+	</li>
+</ul>
+</body>
+</subsection>
+
+</body>
+</section>
+
 </body>
 </chapter>
 </guide>
