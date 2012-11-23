@@ -86,8 +86,10 @@ or use EAPI 5 where that argument is passed automatically. 'emake V=1' should al
 For custom Makefiles you often have to write a patch. Try to get upstream to include an
 option like 'V=1' to enable full verbosity.
 </p>
-<note> If you notice non-verbose build log in any package open a bug and make it block the
-tracker bug #429308</note>
+<note>In case you encounter an affected package which uses a build system not
+controllable by portage or eclasses you should file a bug (preferably with a patch)
+and make it block the tracker bug #429308. Solutions above ebuild level are
+preferred.</note>
 </body>
 </subsection>
 
