@@ -306,8 +306,7 @@ SRC_URI="http://example.com/files/${P}-core.tar.bz2
 
 <p>
 Note that the <c>IUSE</c> variable is cumulative, so there is no need to specify
-USE flags used only within inherited eclasses within the ebuild's IUSE. Also
-note that it's really really broken in portage versions before 2.0.51.
+USE flags used only within inherited eclasses within the ebuild's IUSE.
 </p>
 <important>
 You must always add the IUSE variable in your ebuild even if it is empty.
