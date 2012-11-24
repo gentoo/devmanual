@@ -125,23 +125,6 @@ manually modify it.
 </body>
 </subsection>
 <subsection>
-<title>IUSE Missing</title>
-<body>
-
-<p>
-By far the most common omission is the IUSE variable. You must (according to the
-<uri link="::ebuild-writing/variables#iuse">Ebuild Writing tutorial</uri>) include the IUSE
-variable even if there are no USE flags in use. If there are no USE flags
-supported, then just add the following:
-</p>
-
-<pre caption="Empty IUSE">
-IUSE=""
-</pre>
-
-</body>
-</subsection>
-<subsection>
 <title>Redefined P, PV, PN, PF</title>
 <body>
 

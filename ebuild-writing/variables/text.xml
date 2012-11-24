@@ -308,9 +308,9 @@ SRC_URI="http://example.com/files/${P}-core.tar.bz2
 Note that the <c>IUSE</c> variable is cumulative, so there is no need to specify
 USE flags used only within inherited eclasses within the ebuild's IUSE.
 </p>
-<important>
-You must always add the IUSE variable in your ebuild even if it is empty.
-</important>
+<note>
+You need not assign the IUSE variable in your ebuild if it is empty.
+</note>
 
 <p>
 Arch USE flags (<c>sparc</c>, <c>mips</c>, <c>x86-fbsd</c> and so on) should not be
