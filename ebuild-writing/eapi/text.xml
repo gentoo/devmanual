@@ -704,21 +704,45 @@ REQUIRED_USE="|| ( foo bar baz )"
 		</p>
 	</li>
 	<li>
-		<p><b>Dependency atom slot operators</b></p>
+		<p><b>Slot operators and sub-slots in dependencies</b></p>
 		<p>
-		A slot dependency may contain an optional sub-slot part that follows the regular slot and is delimited by a <c>/</c> character. An operator slot dependency consists of a colon followed by one of the following operators:
+		A slot dependency may contain an optional sub-slot part that follows the regular slot and is delimited by a <c>/</c> character. This can be useful for packages installing pre-built binaries that require a library with a specific soname version which corresponds to the sub-slot. For example:
+		</p>
+		<codesample lang="ebuild">
+RDEPEND="dev-libs/foo:0/3"
+		</codesample>
+		<p>
+		Dependency atoms can use <b>slot operators</b> to clarify what should happen if the slot and/or sub-slot of a runtime dependency changes:
 		</p>
 		<ul>
 			<li>
-			<c>*</c> Indicates that any slot value is acceptable. In addition, for runtime dependencies, indicates that the package will not break if the matched package is uninstalled and replaced by a different matching package in a different slot.
+			<c>:*</c> Indicates that any slot value is acceptable. In addition, for runtime dependencies, indicates that the package specifying the dependency will not break if the package matching the dependency is replaced by a different matching package with a different slot and/or sub-slot.
 			</li>
 			<li>
-			<c>=</c> Indicates that any slot value is acceptable. In addition, for runtime dependencies, indicates that the package will break unless a matching package with slot and sub-slot equal to the slot and sub-slot of the best installed version at the time the package was installed is available.
+			<c>:=</c> Indicates that any slot value is acceptable. In addition, for runtime dependencies, indicates that the package specifying the dependency will break unless there is available a package matching the dependency and whose slot and sub-slot are equal to the slot and sub-slot of the best installed version that had matched this dependency at the time when the package specifying this dependency had been installed.
 			</li>
 			<li>
-			<c>slot=</c> Indicates that only a specific slot value is acceptable, and otherwise behaves identically to the plain equals slot operator.
+			<c>:slot=</c> Indicates that only a specific slot value is acceptable, and otherwise behaves identically to the <c>:=</c> operator.
+				<note>
+				use <c>:slot/subslot</c> without a <c>=</c> to depend on a specific slot and sub-slot pair; it's a syntax error to use <c>:slot/subslot=</c> in an ebuild.
+				</note>
 			</li>
 		</ul>
+		<p>
+		The <c>:slot</c> dependency syntax continues to behave like in EAPI=4 or earlier, i.e. it indicates that only the specific slot value is acceptable, but the package will not break when the version matching the runtime dependency is replaced by a version with a different sub-slot.
+		</p>
+		<p>
+		For example:
+		</p>
+		<codesample lang="ebuild">
+RDEPEND="dev-libs/foo:2=
+	&gt;=dev-libs/bar-0.9:=
+	media-gfx/baz:*
+	x11-misc/wombat:0"
+		</codesample>
+		<p>
+		means that the package should be rebuilt when <c>foo:2</c> or <c>&gt;=bar-0.9</c> are upgraded to versions with different subslots, but that changes in subslots of <c>baz</c> or <c>wombat:0</c> should be ignored.
+		</p>
 	</li>
 </ul>
 </body>

@@ -267,6 +267,45 @@ DEPEND="qt3? ( x11-libs/qt:3 )
     gtk? ( x11-libs/gtk+:2 )
 </codesample>
 
+<subsection>
+<title>Slot Operators</title>
+<body>
+
+<p>
+In <c>EAPI="5"</c> and higher, you can use slot operators appended to the package
+name to declare whether or not your package should be rebuilt after the versions
+satisfying its runtime dependencies are updated to versions with a different slot
+or <uri link="::general-concepts/slotting#Sub-Slots">sub-slot</uri>:
+</p>
+
+<ul>
+  <li><c>:=</c> means that any slot is acceptable, and that your package should be
+  rebuilt if the version best matching the runtime dependency is updated to a
+  version with a different slot or subslot;</li>
+  <li><c>:*</c> means that any slot is acceptable, and explicitly declares that
+  changes in the slot or sub-slot can be ignored;</li>
+  <li><c>:SLOT=</c> means that only the 'SLOT' slot is acceptable, and that your
+  package should be rebuilt if the version matching the runtime dependency is
+  updated to another version with this slot but with a different subslot;</li>
+  <li><c>:SLOT</c> means that only the 'SLOT' slot is acceptable, and that changes
+  in the sub-slot can be ignored (like in previous EAPIs).</li>
+  <li><c>:SLOT/SUBSLOT</c> means a dependency on a specific slot and sub-slot pair,
+  which can be useful for packages installing pre-built binaries that require a
+  library with a particular soname version corresponding to the sub-slot.</li>
+</ul>
+
+<p>
+For example:
+</p>
+
+<codesample lang="ebuild">
+RDEPEND="media-libs/cogl:1.0=
+    gnutls? ( &gt;=net-libs/gnutls-2.8:= )"
+</codesample>
+
+</body>
+</subsection>
+
 </body>
 </section>
 

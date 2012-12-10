@@ -7,7 +7,7 @@
 <p>
 Packages can support having multiple versions installed simultaneously. This is
 useful for libraries which may have changed interfaces between versions <d/> for
-example, the <c>gtk+</c> package can install both versions <c>1.2</c> and <c>2.6</c> in
+example, the <c>gtk+</c> package can install both versions <c>2.24</c> and <c>3.6</c> in
 parallel. This feature is called slotting.
 </p>
 
@@ -39,15 +39,62 @@ possible that the user may have <c>foo-2.0</c> installed and no <c>foo-1.x</c> a
 To <c>DEPEND</c> upon a package in a specific slot, refer to
 <uri link="::general-concepts/dependencies#SLOT Dependencies" />.
 </p>
+</body>
+
+<section>
+<title>Sub-Slots</title>
+
+<body>
+<p>
+Sometimes a package installs a library that changes interfaces between versions,
+but it's undesirable or inconvenient to allow some of these versions to be installed
+simultaneously. In <c>EAPI=5</c> and higher, this situation can be handled by
+using sub-slots, which are delimited from the regular slot by a <c>/</c> character,
+as in <c>SLOT="slot/subslot"</c>. Packages can
+<uri link="::general-concepts/dependencies#Slot Operators">request to be
+automatically rebuilt</uri> when the subslot of a runtime dependency changes.
+</p>
 
 <p>
-Currently portage will accept an arbitrary string for the value of <c>SLOT</c>. For
-future compatibility, it is recommended that slots contain only characters which
-are allowed in an ebuild name or version (alphanumerics, hypens, full stops,
-underscores, the plus character) <d/> other characters may cause problems with
-future portage enhancements.
+For example, suppose package <c>foo</c> installs a library whose soname is
+different for different versions. It would be reasonable to use the soname version
+as the sub-slot name:
 </p>
+
+<ul>
+  <li><c>foo-1.1</c> installs <c>libfoo.so.5</c> <d/> <c>SLOT="1/5"</c></li>
+  <li><c>foo-1.2</c> installs <c>libfoo.so.6</c> <d/> <c>SLOT="1/6"</c></li>
+  <li><c>foo-2.0</c> installs <c>libfoo-2.so.0</c> <d/> <c>SLOT="2/0"</c></li>
+  <li><c>foo-2.1</c> installs <c>libfoo-2.so.1</c> <d/> <c>SLOT="2/1"</c></li>
+</ul>
+
+<p>
+Other ebuilds that install binaries which link to <c>libfoo-2</c> (or <c>libfoo</c>)
+can then request to be automatically rebuilt when the installed version of
+<c>foo:2</c> or <c>foo:1</c> changes sub-slots <d/> for example, when the user
+upgrades from <c>foo-2.0</c> to <c>foo-2.1</c>.
+</p>
+
+<p>
+If an ebuild does not explicitly declare a sub-slot, the regular slot is used
+as the value of the sub-slot by default.
+</p>
+
 </body>
+</section>
+
+<section>
+<title>Slot Names</title>
+
+<body>
+<p>
+Current versions of portage accept slot and sub-slot names that begin with an
+alphanumeric character or <c>'_'</c>, and contain alphanumerics and <c>'_'</c>,
+<c>'-'</c>, <c>'.'</c>, and <c>'+'</c> characters.
+</p>
+
+</body>
+</section>
 
 </chapter>
 </guide>
