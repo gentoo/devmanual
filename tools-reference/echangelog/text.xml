@@ -5,7 +5,7 @@
 <body>
 
 <p>
-The <c>echangelog</c> tool should be used to generate <c>ChangeLog</c>
+The <c>echangelog</c> tool should be used to generate <uri link="::ebuild-writing/misc-files/changelog/">ChangeLog</uri>
 entries. This tool uses the <c>ECHANGELOG_USER</c> environment
 variable, which should be set in the format "Your Name
 &lt;user@gentoo.org&gt;". The changelog message should be passed to
