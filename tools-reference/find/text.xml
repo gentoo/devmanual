@@ -24,26 +24,37 @@ Useful rules include:
   <tr>
     <th>Rule</th>
     <th>Effect</th>
+    <th>POSIX?</th>
   </tr>
   <tr>
     <ti><c>-name "blah"</c></ti>
     <ti>
       Only find files named <c>blah</c>. The <c>*</c> and <c>?</c>
-      wildcards may be used but will probably need escaping by the
-      shell.
+      wildcards may be used but should be quoted as in <c>-name 'blah*'</c>.
     </ti>
+    <ti>yes</ti>
+  </tr>
+    <tr>
+    <ti><c>\! -name "blah"</c></ti>
+    <ti>
+      Only find files not named <c>blah</c>.
+    </ti>
+    <ti>yes</ti>
   </tr>
   <tr>
     <ti><c>-type f</c></ti>
     <ti>Find only regular files, not directories.</ti>
+    <ti>yes</ti>
   </tr>
   <tr>
     <ti><c>-type d</c></ti>
     <ti>Find only directories.</ti>
+    <ti>yes</ti>
   </tr>
   <tr>
     <ti><c>-type l</c></ti>
     <ti>Find only symbolic links.</ti>
+    <ti>yes</ti>
   </tr>
   <tr>
     <ti><c>-user foo</c></ti>
@@ -52,6 +63,7 @@ Useful rules include:
       named users rather than numeric UIDs. In particular, <c>root</c>
       may not be UID 0 on some systems.
     </ti>
+    <ti>yes</ti>
   </tr>
   <tr>
     <ti><c>-group foo</c></ti>
@@ -59,13 +71,53 @@ Useful rules include:
       Find only files belonging to group <c>foo</c>. It is best to use
       named groups rather than numeric GIDs.
     </ti>
+    <ti>yes</ti>
+  </tr>
+  <tr>
+    <ti><c>-maxdepth 3</c></ti>
+    <ti>
+     Only descend 3 levels into subdirectories.
+     <c>-maxdepth 1</c> will ignore all subdiretories of the specified path.
+    </ti>
+    <ti>no, GNU and BSD</ti>
+  </tr>
+  <tr>
+    <ti><c>-mindepth 2</c></ti>
+    <ti>
+     Ignore the first 2 directory levels before a match occurs.
+     <c>-mindepth 1</c> will process all files except the command line arguments.
+    </ti>
+    <ti>no, GNU and BSD</ti>
+  </tr>
+  <tr>
+    <ti><c>-exec foo '{}'</c></ti>
+    <ti>
+     Execute a command. <c>{}</c> is replaced replaced by the name of the
+     current matched file. See examples below.
+    </ti>
+    <ti>yes</ti>
+  </tr>
+  <tr>
+    <ti><c>-execdir foo '{}'</c></ti>
+    <ti>
+     Same as <c>-exec</c> but runs the command from within the basedir
+     of the match.
+    </ti>
+    <ti>no, GNU and BSD</ti>
+  </tr>
+    <tr>
+    <ti><c>-delete</c></ti>
+    <ti>
+     Delete the match.
+    </ti>
+    <ti>no, GNU and FBSD</ti>
   </tr>
 </table>
 
-<p>
-The <c>-mindepth</c> and <c>-maxdepth</c> options are GNU extensions
-that should be avoided if possible.
-</p>
+<note>
+EAPI>=5 assumes GNU find, so it is safe to use GNU extensions in
+ebuild context for those EAPIs.
+</note>
 
 <p>
 By default, <c>find</c> will echo a list of matching files to the
@@ -73,15 +125,10 @@ standard output. This can be used in a <c>while</c> loop:
 </p>
 
 <codesample lang="ebuild">
-find "${S}" -type f | while read f ; do
+while read f ; do
     einfo "Doing unholy things to ${f}"
-done
+done &lt; &lt;(find "${S}" -type f)
 </codesample>
-
-<warning>
-The <c>die</c> construct will <b>not work</b> during the above loop.
-See <uri link="::ebuild-writing/error-handling/#die and Subshells"/>.
-</warning>
 
 <p>
 Or a <c>for</c> loop (for small numbers of files):
@@ -99,16 +146,56 @@ may cause serious problems.
 </warning>
 
 <p>
-As an alternative, <c>find</c> supports a <c>-exec</c> argument. It
-accepts a command to run, terminated by a semicolon. Inside the
-command, the string <c>{}</c> is replaced by the name of the current
-matched file. Be careful with escaping to ensure that <c>bash</c>
-doesn't gobble up the special characters:
+As an alternative you can use the <c>-exec</c> argument. Be careful
+with escaping to ensure that <c>bash</c> doesn't gobble up the special
+characters:
 </p>
 
 <codesample lang="ebuild">
-find "${S}" -name '*.backup' -exec rm '{}' \;
+find "${S}" -name '*.data' -exec mv '{}' "${S}/data/" \;
 </codesample>
+
+<p>
+When <c>-exec</c> is terminated by a <c>;</c> character
+(needs escaping or quoting) then the command line is built seperately
+for every match.
+If it is terminated by a <c>+</c> character then the command line is
+built by appending each selected file name at the end.
+</p>
+
+<p>
+The syntax below is useful if the command you want to run accepts multiple
+arguments such as <c>doins</c> and is more efficient in that case:
+</p>
+
+<codesample lang="ebuild">
+find "${S}" -name '*.so*' -exec doexe '{}' +
+</codesample>
+
+<p>
+Find also supports negative matches:
+</p>
+
+<codesample lang="ebuild">
+find "${S}/bundled-libs" \! -name 'libbass.so' -delete
+</codesample>
+
+<p>
+This will delete all files in the "bundled-libs" folder except "libbass.so".
+Make sure you always escape the <c>!</c> character, so it's not
+interpreted by the shell.
+</p>
+
+<warning>
+The <c>-exec</c> argument has security issues, because of
+<uri link="https://www.gnu.org/software/findutils/manual/html_mono/find.html#Race-Conditions-with-_002dexec">race conditions</uri>
+(this is also true for <c>find . -print0 | xargs ...</c> constructs).
+This should not be a problem in ebuild context, because directories
+typically aren't writeable by random users. However you should
+consider <c>-execdir</c> as an alternative approach which runs the
+command from inside the basedir of the match (note that <c>-execdir</c>
+is not POSIX, see the table).
+</warning>
 
 <p>
 See find-1 and
