@@ -56,7 +56,7 @@ src_install() {
 			[[ -s "${d}" ]] &amp;&amp; dodoc "${d}"
 		done
 	# TODO: wrong "declare -a" command...
-	elif declare -p DOCS | grep -q `^declare -a` ; then
+	elif declare -p DOCS | grep -q "^declare -a" ; then
 		dodoc "${DOCS[@]}"
 	else
 		dodoc ${DOCS}
