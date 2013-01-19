@@ -534,7 +534,6 @@ src_install() {
 				FAQ CREDITS CHANGELOG ; do
 			[[ -s "${d}" ]] &amp;&amp; dodoc "${d}"
 		done
-	# TODO: wrong "declare -a" command...
 	elif declare -p DOCS | grep -q "^declare -a" ; then
 		dodoc "${DOCS[@]}"
 	else
