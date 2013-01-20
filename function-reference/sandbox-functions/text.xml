@@ -41,7 +41,7 @@ with the sandbox.
       <c>adddeny</c>
     </ti>
     <ti>
-      Add one single additional item to the sandbox deny write list.
+      Add one single additional item to the sandbox deny (read/write) list.
     </ti>
   </tr>
   <tr>
