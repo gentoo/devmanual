@@ -5,6 +5,21 @@
 
 <body>
 <p>
+The Package Manager Specification (PMS) is a community-driven standardization
+effort to ensure that the ebuild file format, the ebuild repository format
+(of which the portage tree is Gentoo's main incarnation) as well as behavior
+of the package managers interacting with these ebuilds is properly written
+down and agreed upon.
+</p>
+
+<p>
+EAPI is a version defined in ebuilds and other package manager related files
+which inform the package manager about the file syntax and content. It is,
+in effect, the version of the package manager specification (PMS) that the
+file adheres to.
+</p>
+
+<p>
 This section provides usage and descriptions of the different EAPIs.
 </p>
 
