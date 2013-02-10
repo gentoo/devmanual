@@ -27,10 +27,23 @@ the first is the source name, the second the name to use when installing.
   </tr>
   <tr>
     <ti>
+      <c>into</c>
+    </ti>
+    <ti>
+      Change install location for
+      <c>dobin</c>, <c>newbin</c>,
+      <c>dosbin</c>, <c>newsbin</c>,
+      <c>doman</c>, <c>newman</c>,
+      <c>doinfo</c>, <c>newinfo</c>,
+      <c>dolib</c>, <c>newlib</c>
+    </ti>
+  </tr>
+  <tr>
+    <ti>
       <c>insinto</c>
     </ti>
     <ti>
-      Change install location for <c>doins</c>, <c>newins</c> etc
+      Change install location for <c>doins</c>, <c>newins</c>
     </ti>
   </tr>
   <tr>
@@ -38,7 +51,7 @@ the first is the source name, the second the name to use when installing.
       <c>exeinto</c>
     </ti>
     <ti>
-      Change install location for <c>doexe</c>, <c>newexe</c> etc
+      Change install location for <c>doexe</c>, <c>newexe</c>
     </ti>
   </tr>
   <tr>
@@ -46,7 +59,7 @@ the first is the source name, the second the name to use when installing.
       <c>docinto</c>
     </ti>
     <ti>
-      Change install location for <c>dodoc</c>, <c>newdoc</c> etc
+      Change install location for <c>dodoc</c>, <c>newdoc</c>
     </ti>
   </tr>
   <tr>
