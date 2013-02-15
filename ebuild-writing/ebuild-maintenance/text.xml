@@ -230,6 +230,10 @@ of the massive range of hardware involved, being on the mips alias and
 having access to a variety of MIPS systems are generally requirements.
 </p>
 
+<p>
+Exotic architectures (like alpha, ia64, s390, sh, sparc, hppa, ppc*) are short on manpower, so it's best if you avoid opening stabilization bugs for them unless it is absolutely necessary (eg, a reverse dependency for your package). More about keywording policies can be found in the <uri link="::keywording">keywording</uri> section.
+</p>
+
 </body>
 </section>
 
