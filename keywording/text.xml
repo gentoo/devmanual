@@ -29,7 +29,7 @@ A sample <c>KEYWORDS</c> entry might look like:
 </p>
 
 <codesample lang="ebuild">
-KEYWORDS="x86 sparc mips ~ppc ~ppc-macos -ia64"
+KEYWORDS="x86 sparc ~mips ~ppc ~ppc-macos -ia64"
 </codesample>
 
 <p>
@@ -179,7 +179,7 @@ teams for details.
 
 <p>
 	It's important to note that alternative arches (like alpha, arm, ia64, s390,
-	sh, sparc, hppa, mips, ppc*) are mainly undermanned arches, some of them are
+	sh, sparc, hppa, ppc*) are mainly undermanned arches, some of them are
 	slow, they have more basic problems and have a small userbase. Just file
 	bugs for these architectures when a package is going to be a dependency of a
 	package already keyworded.
