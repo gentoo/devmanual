@@ -40,31 +40,6 @@ format.
 </body>
 
 <section>
-<title>Notes on Using <c>rpm.eclass</c></title>
-<body>
-
-<p>
-There are two ways to unpack a rpm file <d/> using
-the <c>rpmoffset</c> program from <c>rpm2targz</c> and <c>cpio</c>, or
-by using <c>rpm2cpio</c> from <c>app-arch/rpm</c>. Normally, for
-unpacking an RPM file, installing the entire RPM application is
-overkill. Because of this, the eclass will only use <c>rpm2cpio</c>
-if <c>rpm</c> is already installed on the system. If you want to force
-the eclass to only use the RPM offset method, set
-<c>USE_RPMOFFSET_ONLY=1</c>.
-</p>
-
-<p>
-Another issue that might arise is that <c>rpmoffset</c> and cpio are not able
-to unpack the RPM file correctly. If this occurs, then you need to add
-<c>app-arch/rpm</c> to the <c>DEPEND</c> variable so
-that <c>rpm2cpio</c> will be used instead.
-</p>
-
-</body>
-</section>
-
-<section>
 <title>Example RPM Handling</title>
 <body>
 
