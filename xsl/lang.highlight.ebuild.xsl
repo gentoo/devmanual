@@ -299,12 +299,6 @@
 	<span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 
-      <!--  distutils -->
-      <xsl:when test="$data = 'distutils_src_compile' or $data = 'distutils_src_install' or $data = 'distutils_pkg_postrm' or
-		      $data = 'distutils_pkg_postinst' or $data = 'distutils_python_version' or $data = 'disutils_python_tkinter'">
-	<span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
       <!--  depend$dataapache -->
       <xsl:when test="$data = 'need_apache' or $data = 'need_apache1' or $data = 'need_apache2'">
 	<span class="Statement"><xsl:value-of select="$data"/></span>

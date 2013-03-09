@@ -114,6 +114,5 @@ The following subsections cover different topics which often occur when writing
 <include href="build-environment/"/>
 <!--<include href="configuring/"/>-->
 <include href="building/"/>
-<include href="distutils/"/>
 <include href="no-build-system/"/>
 </guide>

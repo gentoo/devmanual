@@ -14,7 +14,6 @@ This page lists the contributions to the Gentoo Development Guide:
 </author>
 <author name="Grant Goodyear" email="g2boojum@gentoo.org">
   <uri link="::tools-reference/cat/#Here Documents"/>,
-  <uri link="::ebuild-writing/functions/src_compile/distutils"/>
 </author>
 <author name="Aaron Walker" email="ka0ttic@gentoo.org">
   <uri link="::tasks-reference/completion"/>,
