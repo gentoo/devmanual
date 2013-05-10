@@ -51,7 +51,7 @@ Some portage-provided functions will automatically die upon failure. Others will
 not. It is for example safe to omit the <c>|| die</c> after a call to <c>epatch</c>,
 but not <c>emake</c>. The reason is that external binaries are not able to call
 die that is a bash function. You can see what commands are external binaries
-with <c>ls /usr/lib*/portage/bin/ebuild-helpers</c>.
+with <c>ls /usr/lib*/portage/bin/ebuild-helpers</c>. In <uri link="::ebuild-writing/eapi/#eapi=4">EAPI>=4</uri> all ebuild-helpers automatically die upon failure.
 </p>
 
 <p>
