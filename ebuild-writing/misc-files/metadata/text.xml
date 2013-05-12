@@ -324,7 +324,7 @@ OpenOffice of which the ebuilds are completely managed by a herd called
 
 <p>
 The <c>openoffice</c> herd is defined in <path>herds.xml</path> by the
-<uri link="/proj/en/metastructure">Gentoo Metastructure Project</uri>:
+<uri link="http://www.gentoo.org/proj/en/metastructure">Gentoo Metastructure Project</uri>:
 </p>
 
 <note>
