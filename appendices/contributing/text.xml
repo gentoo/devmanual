@@ -36,9 +36,11 @@ fine too <d/> the formatting can be easily done by someone else (meaning, us).
   <body>
 
 <p>
-  Currently, sources are hosted on <c>https://github.com/gentoo/devmanual.gentoo.org</c>. For current Gentoo developers,
-  access is at <c>git@github.com:gentoo/devmanual.gentoo.org.git</c>. Non-developers
-  can clone the respository by typing <c>git clone git://github.com/gentoo/devmanual.gentoo.org.git</c>.
+  Currently, sources are hosted on git.overlays.gentoo.org. For current Gentoo developers,
+  access is at <c>git+ssh://git@git.overlays.gentoo.org/proj/devmanual.git</c>. Non-developers
+  can clone the respository by typing <c>git clone git://git.overlays.gentoo.org/proj/devmanual.git</c>.
+  The sources are also hosted in <c>https://github.com/gentoo/devmanual.gentoo.org</c> for those who
+  perfer to submit patches using pull requests.
 </p>
 
 <p>
