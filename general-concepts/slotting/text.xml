@@ -80,6 +80,15 @@ If an ebuild does not explicitly declare a sub-slot, the regular slot is used
 as the value of the sub-slot by default.
 </p>
 
+<note>
+Care must be taken when using sub-slots in a library ebuild for the first time.
+Adding sub-slots will trigger rebuilds for all the packages that already use sub-slot
+dependencies (e.g. Switching from SLOT="0" to SLOT="0/14" in <c>media-libs/libpng</c> and
+package <c>foo</c> depends on <c>libpng:0=</c>).
+Therefore, it's best if you start using sub-slots in the library when the existing library
+interface changes.
+</note>
+
 </body>
 </section>
 
