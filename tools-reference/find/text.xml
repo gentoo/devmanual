@@ -92,7 +92,7 @@ Useful rules include:
   <tr>
     <ti><c>-exec foo '{}'</c></ti>
     <ti>
-     Execute a command. <c>{}</c> is replaced replaced by the name of the
+     Execute a command. <c>{}</c> is replaced by the name of the
      current matched file. See examples below.
     </ti>
     <ti>yes</ti>
@@ -157,7 +157,7 @@ find "${S}" -name '*.data' -exec mv '{}' "${S}/data/" \;
 
 <p>
 When <c>-exec</c> is terminated by a <c>;</c> character
-(needs escaping or quoting) then the command line is built seperately
+(needs escaping or quoting) then the command line is built separately
 for every match.
 If it is terminated by a <c>+</c> character then the command line is
 built by appending each selected file name at the end.

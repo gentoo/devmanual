@@ -416,7 +416,7 @@ applications and libraries, we treat <c>/usr/include/asm</c> a bit special.
 </p>
 
 <p>
-This is what <c>/usr/include/asm/types.h</c> looks like on a AMD64 box:
+This is what <c>/usr/include/asm/types.h</c> looks like on an AMD64 box:
 </p>
 
 <codesample lang="c">
@@ -432,7 +432,7 @@ This is what <c>/usr/include/asm/types.h</c> looks like on a AMD64 box:
 
 <p>
 As you can see, this is just a wrapper that decides which file you need
-depending on the the parameter <c>-D</c> given to gcc. You'll probably run into
+depending on the parameter <c>-D</c> given to gcc. You'll probably run into
 some troubles if you try to compile something by hand and forget to append
 <c>-D__x86_64__</c> to your <c>CFLAGS</c>. Of course, this is <b>not necessary</b> when
 using portage. For an explanation, see the <uri link="::archs/amd64/#The ABI Variable"/>
