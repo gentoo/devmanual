@@ -237,6 +237,15 @@ The following variables may or must be defined by every ebuild.
     for now.
     </ti>
   </tr>
+  <tr>
+    <ti><c>DOCS</c></ti>
+    <ti>
+    An array or space-delimited list of documentation files for
+    the default src_install function to install using dodoc. If
+    undefined, a reasonable default list is used. (Requires
+    <uri link="::ebuild-writing/eapi/#eapi=4">EAPI>=4</uri>.)
+    </ti>
+  </tr>
 </table>
 
 </body>
