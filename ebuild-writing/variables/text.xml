@@ -229,6 +229,14 @@ The following variables may or must be defined by every ebuild.
     value for this variable if it is the same as the default value.
     </ti>
   </tr>
+  <tr>
+    <ti><c>PROPERTIES</c></ti>
+    <ti>
+    A space-delimited list of properties, with conditional
+    syntax support. <c>interactive</c> is the only valid value
+    for now.
+    </ti>
+  </tr>
 </table>
 
 </body>
