@@ -183,6 +183,14 @@ The following variables may or must be defined by every ebuild.
     </ti>
   </tr>
   <tr>
+    <ti><c>REQUIRED_USE</c></ti>
+    <ti>
+    A list of assertions that must be met by the configuration of
+    <c>USE</c> flags to be valid for this ebuild. (Requires
+    <uri link="::ebuild-writing/eapi/#eapi=4">EAPI>=4</uri>.)
+    </ti>
+  </tr>
+  <tr>
     <ti><c>RESTRICT</c></ti>
     <ti>
     A space-delimited list of portage features to restrict.
