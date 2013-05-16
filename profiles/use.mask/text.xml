@@ -19,7 +19,7 @@ particular profile. This can be useful for various reasons:
     Disabling unavailable soft dependencies. A simple hypothetical example <d /> say
     <c>fooapp</c> works on <c>mips</c>, but has an optional dependency (controlled by
     the <c>bar</c> flag) upon <c>libbar</c>, which doesn't work on <c>mips</c>. Then by
-    adding the <c>bar</c> flag to <c>profiles/default-linux/mips/use.mask</c>,
+    adding the <c>bar</c> flag to <c>profiles/arch/mips/use.mask</c>,
     <c>fooapp</c> could be made available to <c>mips</c> users with the unresolvable
     dependency forcibly disabled.
   </li>
