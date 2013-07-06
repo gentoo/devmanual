@@ -78,9 +78,9 @@ activated by <e>(setq x-select-enable-clipboard t)</e>.
 
 <p>
 For easy editing of ebuilds an Emacs mode has been created, which is
-found in the package <e>app-emacs/gentoo-syntax</e>.
-It supports ebuilds, eclasses and eselect files, highlights keywords
-and also provides a hook for your own customisation. 
+found in the package <e>app-emacs/ebuild-mode</e>.
+It supports ebuilds and eclasses, highlights keywords and also
+provides a hook for your own customisation.
 </p>
 
 </body>
