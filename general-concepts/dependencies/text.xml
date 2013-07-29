@@ -208,7 +208,7 @@ asterisk. Also note that when selecting all versions in a specific
 
 <p>
 Sometimes two packages cannot be installed in parallel. This is handled by
-blockers. A blocker is specified as follows:
+blockers. A softblocker is specified as follows:
 </p>
 
 <codesample lang="ebuild">
@@ -216,7 +216,19 @@ RDEPEND="!app-misc/foo"
 </codesample>
 
 <p>
-Note that blockers are usually <e>runtime</e> rather than buildtime.
+Portage will try to resolve this conflict automatically if possible.
+Sometimes we need to use a hardblocker to ensure correct emerge order.
+Those cannot be resolved by Portage and must be taken care of by the user.
+A hardblocker is specified as follows:
+</p>
+
+<codesample lang="ebuild">
+RDEPEND="!!app-misc/foo"
+</codesample>
+
+<p>
+Hardblockers always take precedence over softblockers and need at least EAPI="2".
+Also note that blockers are usually <e>runtime</e> rather than buildtime.
 </p>
 
 <p>
