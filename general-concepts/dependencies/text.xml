@@ -279,6 +279,15 @@ DEPEND="qt3? ( x11-libs/qt:3 )
     gtk? ( x11-libs/gtk+:2 )
 </codesample>
 
+<p>
+To depend on a specific version or version-range within a SLOT we use:
+</p>
+
+<codesample lang="ebuild">
+DEPEND="qt3? ( ~x11-libs/qt-3.3.8:3 )
+    gtk? ( >=x11-libs/gtk+-2.24.9:2 )
+</codesample>
+
 <subsection>
 <title>Slot Operators</title>
 <body>
