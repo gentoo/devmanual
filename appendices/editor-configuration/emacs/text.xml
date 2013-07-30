@@ -53,20 +53,20 @@ For specifying coding system to use on a per-file basis, the
 <body>
 
 <p>
-Files must end with a newline, in order to let tools like <e>diff</e>
+Files must end with a newline, in order to let tools like <c>diff</c>
 operate properly. To avoid accidental deletions, setting
-<e>(setq require-final-newline 'ask)</e> in your startup file will
+<c>(setq require-final-newline 'ask)</c> in your startup file will
 automatically check for the existence of it and ask you to add one.
 </p>
 
 <p>
 Other useful settings can be disabled backup files
-(by <e>(setq make-backup-files nil)</e> and
-<e>(setq vc-cvs-stay-local nil)</e>), so you don't clutter CVS
+(by <c>(setq make-backup-files nil)</c> and
+<c>(setq vc-cvs-stay-local nil)</c>), so you don't clutter CVS
 directories and confuse repoman with it (by adding unnecessary entries
 into a Manifest file e.g.). Emacs can even contact the outside world
 by using the X servers clipboard abilities when yanking, which is
-activated by <e>(setq x-select-enable-clipboard t)</e>.
+activated by <c>(setq x-select-enable-clipboard t)</c>.
 </p>
 
 </body>
@@ -78,7 +78,7 @@ activated by <e>(setq x-select-enable-clipboard t)</e>.
 
 <p>
 For easy editing of ebuilds an Emacs mode has been created, which is
-found in the package <e>app-emacs/ebuild-mode</e>.
+found in the package <c>app-emacs/ebuild-mode</c>.
 It supports ebuilds and eclasses, highlights keywords and also
 provides a hook for your own customisation.
 </p>
