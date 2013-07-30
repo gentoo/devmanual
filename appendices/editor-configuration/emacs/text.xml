@@ -8,43 +8,29 @@
 <body>
 
 <p>
-Emacs 21 has built-in Unicode support, and (fortunately) it supports
-UTF-8 far better than UTF-16 and other variants. Some extensions to this
-functionality are available in the package <c>app-emacs/mule-ucs</c>, although
-this is not necessary (and I would not recommend it unless absolutely
-necessary, as the potential for unexpected bugs or quirky behaviour is
-increased). The best solution is using Emacs 22 or higher as encoding
-support has been greatly improved.
+GNU Emacs has built-in Unicode support, and since version 23 it uses
+UTF-8 as its internal encoding. It is recommended to start Emacs from
+within a UTF-8 locale which will control the default coding system.
 </p>
 
 <p>
-In versions of Emacs below 21.3, and a non-UTF-8 locale is used when
-opening a UTF-8 file, auto-detection of the character set is effectively
-disabled and characters will be garbled. The UTF-8 character set can be
-preferred with <c>M-x prefer-coding-system</c> and entering <c>utf-8</c> when
-prompted. Otherwise, it is necessary to tell Emacs that a UTF-8 file is
-being opened by prefixing the <c>C-x C-f</c> or <c>C-x C-v</c> command with
-<c>C-x C-m c utf-8 RET</c>. As a diagnostic measure, the coding system currently
-in use can be determined with <c>C-h C &lt;RET&gt;</c>.
+Emacs will normally autodetect the coding system for given text.
+In rare cases it may be necessary to tell Emacs that a UTF-8 file is
+being opened by prefixing the <c>C-x C-f</c> or <c>C-x C-v</c> command
+with <c>C-x C-m c utf-8 RET</c>. As a diagnostic measure, the coding
+system currently in use can be determined with <c>C-h C RET</c>.
 </p>
 
 <p>
-Newer Emacs versions will autodetect the coding system for given text.
-</p>
-
-<p>
-If it is desired to prefer UTF-8 to the regular character set,
-the following can be used inside of the Emacs startup file:
+If it is desired to prefer UTF-8 to the regular character set in a
+non-UTF-8 locale, the following can be used inside of the Emacs
+startup file:
 </p>
 
 <pre>
     (prefer-coding-system 'utf-8)
 </pre>
 
-<p>
-For specifying coding system to use on a per-file basis, the
-<c>modify-coding-system</c> function can be used.
-</p>
 </body>
 </section>
 
