@@ -92,20 +92,20 @@ provides a hook for your own customisation.
 
 <ul>
   <li>
-    <uri link="http://www.gnu.org/software/emacs/manual/emacs.html#Recognize%20Coding">
-    http://www.gnu.org/software/emacs/manual/emacs.html#Recognize%20Coding</uri>
+    <uri link="http://www.gnu.org/software/emacs/manual/html_node/emacs/Recognize-Coding.html">
+    http://www.gnu.org/software/emacs/manual/html_node/emacs/Recognize-Coding.html</uri>
   </li>
   <li>
-    <uri link="http://www.gnu.org/software/emacs/manual/emacs.html#Specify%20Coding">
-    http://www.gnu.org/software/emacs/manual/emacs.html#Specify%20Coding</uri>
+    <uri link="http://www.gnu.org/software/emacs/manual/html_node/emacs/Specify-Coding.html">
+    http://www.gnu.org/software/emacs/manual/html_node/emacs/Specify-Coding.html</uri>
   </li>
   <li>
-    <uri link="http://www.emacswiki.org/cgi-bin/wiki/UnicodeEncoding">
-    http://www.emacswiki.org/cgi-bin/wiki/UnicodeEncoding</uri>
+    <uri link="http://www.emacswiki.org/emacs/UnicodeEncoding">
+    http://www.emacswiki.org/emacs/UnicodeEncoding</uri>
   </li>
   <li>
-    <uri link="http://www.emacswiki.org/cgi-bin/wiki/ChangingEncodings">
-    http://www.emacswiki.org/cgi-bin/wiki/ChangingEncodings</uri>
+    <uri link="http://www.emacswiki.org/emacs/ChangingEncodings">
+    http://www.emacswiki.org/emacs/ChangingEncodings</uri>
   </li>
 </ul>
 
