@@ -6,7 +6,7 @@
 <body>
 <p>
 As with CVS, an eclass exists for working directly with upstream
-Subversion repositories. See <uri link="eclass-reference/subversion.eclass/"/>
+Subversion repositories. See <uri link="::eclass-reference/subversion.eclass/">subversion.eclass</uri>
 for a full list of functions and variables. Also see
 the <uri link="::ebuild-writing/functions/src_unpack/cvs-sources"/> 
 ection.
@@ -82,7 +82,7 @@ following variables are also noteworthy:
 </table>
 
 <p>
-See the eclass itself and <uri link="eclass-reference/subversion.eclass/"/>
+See the eclass itself and <uri link="::eclass-reference/subversion.eclass/">subversion.eclass</uri>
 for the full range of options. To perform the actual checkout, use
 the <c>subversion_src_unpack</c> function, which calls
 both <c>subversion_svn_fetch</c> and <c>subversion_bootstrap</c>

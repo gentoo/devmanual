@@ -78,7 +78,8 @@ pages</uri>.
 <p>
 If you have to host a source file (patch or tarball) yourself, as long as it is suitable to be
 distributed by Gentoo Foundation (by license and legality), you're suggested to use your developer's
-space at <c>dev.gentoo.org</c>.
+space at <c>dev.gentoo.org</c>. Since external overlays may use your patches/tarballs, using the
+dev space at <c>dev.gentoo.org</c> keeps the distfiles available even if you retire.
 </p>
 
 <p>
