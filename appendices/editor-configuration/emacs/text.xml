@@ -8,43 +8,29 @@
 <body>
 
 <p>
-Emacs 21 has built-in Unicode support, and (fortunately) it supports
-UTF-8 far better than UTF-16 and other variants. Some extensions to this
-functionality are available in the package <c>app-emacs/mule-ucs</c>, although
-this is not necessary (and I would not recommend it unless absolutely
-necessary, as the potential for unexpected bugs or quirky behaviour is
-increased). The best solution is using Emacs 22 or higher as encoding
-support has been greatly improved.
+GNU Emacs has built-in Unicode support, and since version 23 it uses
+UTF-8 as its internal encoding. It is recommended to start Emacs from
+within a UTF-8 locale which will control the default coding system.
 </p>
 
 <p>
-In versions of Emacs below 21.3, and a non-UTF-8 locale is used when
-opening a UTF-8 file, auto-detection of the character set is effectively
-disabled and characters will be garbled. The UTF-8 character set can be
-preferred with <c>M-x prefer-coding-system</c> and entering <c>utf-8</c> when
-prompted. Otherwise, it is necessary to tell Emacs that a UTF-8 file is
-being opened by prefixing the <c>C-x C-f</c> or <c>C-x C-v</c> command with
-<c>C-x C-m c utf-8 RET</c>. As a diagnostic measure, the coding system currently
-in use can be determined with <c>C-h C &lt;RET&gt;</c>.
+Emacs will normally autodetect the coding system for given text.
+In rare cases it may be necessary to tell Emacs that a UTF-8 file is
+being opened by prefixing the <c>C-x C-f</c> or <c>C-x C-v</c> command
+with <c>C-x C-m c utf-8 RET</c>. As a diagnostic measure, the coding
+system currently in use can be determined with <c>C-h C RET</c>.
 </p>
 
 <p>
-Newer Emacs versions will autodetect the coding system for given text.
-</p>
-
-<p>
-If it is desired to prefer UTF-8 to the regular character set,
-the following can be used inside of the Emacs startup file:
+If it is desired to prefer UTF-8 to the regular character set in a
+non-UTF-8 locale, the following can be used inside of the Emacs
+startup file:
 </p>
 
 <pre>
     (prefer-coding-system 'utf-8)
 </pre>
 
-<p>
-For specifying coding system to use on a per-file basis, the
-<c>modify-coding-system</c> function can be used.
-</p>
 </body>
 </section>
 
@@ -53,20 +39,20 @@ For specifying coding system to use on a per-file basis, the
 <body>
 
 <p>
-Files must end with a newline, in order to let tools like <e>diff</e>
+Files must end with a newline, in order to let tools like <c>diff</c>
 operate properly. To avoid accidental deletions, setting
-<e>(setq require-final-newline 'ask)</e> in your startup file will
+<c>(setq require-final-newline 'ask)</c> in your startup file will
 automatically check for the existence of it and ask you to add one.
 </p>
 
 <p>
 Other useful settings can be disabled backup files
-(by <e>(setq make-backup-files nil)</e> and
-<e>(setq vc-cvs-stay-local nil)</e>), so you don't clutter CVS
+(by <c>(setq make-backup-files nil)</c> and
+<c>(setq vc-cvs-stay-local nil)</c>), so you don't clutter CVS
 directories and confuse repoman with it (by adding unnecessary entries
 into a Manifest file e.g.). Emacs can even contact the outside world
 by using the X servers clipboard abilities when yanking, which is
-activated by <e>(setq x-select-enable-clipboard t)</e>.
+activated by <c>(setq x-select-enable-clipboard t)</c>.
 </p>
 
 </body>
@@ -78,7 +64,7 @@ activated by <e>(setq x-select-enable-clipboard t)</e>.
 
 <p>
 For easy editing of ebuilds an Emacs mode has been created, which is
-found in the package <e>app-emacs/ebuild-mode</e>.
+found in the package <c>app-emacs/ebuild-mode</c>.
 It supports ebuilds and eclasses, highlights keywords and also
 provides a hook for your own customisation.
 </p>
@@ -92,20 +78,20 @@ provides a hook for your own customisation.
 
 <ul>
   <li>
-    <uri link="http://www.gnu.org/software/emacs/manual/emacs.html#Recognize%20Coding">
-    http://www.gnu.org/software/emacs/manual/emacs.html#Recognize%20Coding</uri>
+    <uri link="http://www.gnu.org/software/emacs/manual/html_node/emacs/Recognize-Coding.html">
+    http://www.gnu.org/software/emacs/manual/html_node/emacs/Recognize-Coding.html</uri>
   </li>
   <li>
-    <uri link="http://www.gnu.org/software/emacs/manual/emacs.html#Specify%20Coding">
-    http://www.gnu.org/software/emacs/manual/emacs.html#Specify%20Coding</uri>
+    <uri link="http://www.gnu.org/software/emacs/manual/html_node/emacs/Specify-Coding.html">
+    http://www.gnu.org/software/emacs/manual/html_node/emacs/Specify-Coding.html</uri>
   </li>
   <li>
-    <uri link="http://www.emacswiki.org/cgi-bin/wiki/UnicodeEncoding">
-    http://www.emacswiki.org/cgi-bin/wiki/UnicodeEncoding</uri>
+    <uri link="http://www.emacswiki.org/emacs/UnicodeEncoding">
+    http://www.emacswiki.org/emacs/UnicodeEncoding</uri>
   </li>
   <li>
-    <uri link="http://www.emacswiki.org/cgi-bin/wiki/ChangingEncodings">
-    http://www.emacswiki.org/cgi-bin/wiki/ChangingEncodings</uri>
+    <uri link="http://www.emacswiki.org/emacs/ChangingEncodings">
+    http://www.emacswiki.org/emacs/ChangingEncodings</uri>
   </li>
 </ul>
 

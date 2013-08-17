@@ -53,7 +53,7 @@ pkg_pretend() {
 		if [[ -e "${ROOT}"/usr/src/linux/.config ]] ; then
 			if kernel_is lt 2 6 30 ; then
 				CONFIG_CHECK="FUSE_FS"
-				FUSE_FS_ERROR="this is an unrealistic testcase..."
+				ERROR_FUSE_FS="this is an unrealistic testcase..."
 				check_extra_config
 			fi
 		fi
