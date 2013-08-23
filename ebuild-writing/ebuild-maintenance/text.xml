@@ -38,8 +38,9 @@ files, such as patches or sample configuration files.  These types of
 files should be placed in the <path>/usr/portage/mycat/mypkg/files</path>
 directory to keep the main <path>mycat/mypkg</path> directory uncluttered.
 Exceptions to this rule are for larger patch files (we recommend this for patches
-above 20KB) which should be put onto the Gentoo mirrors so that people
-do not waste excessive amounts of bandwidth and hard drive
+above 20KB) which should be distributed as tarballs via the
+<uri link="::general-concepts/mirrors/#suitable-download-hosts">Gentoo mirror system</uri>
+so that people do not waste excessive amounts of bandwidth and hard drive
 space. Also, you should not add binary (non-ASCII) files to the
 Portage CVS tree. If you need to do this in another CVS tree, for
 example, if you need to add a small PNG graphic for whatever reason,
