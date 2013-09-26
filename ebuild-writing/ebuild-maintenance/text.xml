@@ -233,9 +233,11 @@ the team can keep an eye out for possible keywording mistakes.
 </p>
 
 <p>
-Exotic architectures (like alpha, ia64, s390, sh, sparc, hppa, ppc*) are short on manpower, so it's best if you avoid opening stabilization bugs for them unless it is absolutely necessary (eg, a reverse dependency for your package). More about keywording policies can be found in the <uri link="::keywording">keywording</uri> section.
+Exotic architectures (like alpha, ia64, sparc, hppa, ppc*) are short on manpower, so it's best if you avoid opening stabilization bugs for them unless it is absolutely necessary (eg, a reverse dependency for your package). More about keywording policies can be found in the <uri link="::keywording">keywording</uri> section.
 </p>
-
+<p>
+Some architectures (like m68k, mips, s390, sh) do not maintain a stable keyword. So there is no use in marking a package stable for one of these architectures.
+</p>
 </body>
 </section>
 
