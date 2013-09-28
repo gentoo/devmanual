@@ -37,7 +37,7 @@ src_unpack() {
 </codesample>
 
 <p>
-For larger patches, using <c>mirror://gentoo/</c> rather
+For larger patches, using  <uri link="::general-concepts/mirrors/#suitable-download-hosts">your devspace</uri> rather
 than <c>files/</c> is more appropriate. In these situations, it is
 usually best to <c>bzip2</c> the patch in question (as opposed to
 <c>files/</c> patches, which must not be compressed). For example,
