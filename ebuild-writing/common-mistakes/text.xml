@@ -416,6 +416,19 @@ the purpose of this interface, because it is not reliable anymore.
 </body>
 </subsection>
 
+<subsection>
+<title>Masking unsupported/broken USE flags</title>
+<body>
+<p>
+Exceptionally, a package may have an unsupported/broken USE flag
+(this can happen with <e>vanilla</e> or <e>custom-cflags</e>).
+Then the USE flag must be masked for that ebuild
+(usually in <e>profiles/base/package.use.mask</e>),
+at least when the ebuild hits the stable branch.
+</p>
+</body>
+</subsection>
+
 </body>
 </section>
 
