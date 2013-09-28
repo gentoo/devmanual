@@ -47,6 +47,12 @@ A typical <c>ChangeLog</c> snippet might look like the following:
       Stable on alpha
 </pre>
 
+<note>
+If a <c>ChangeLog</c> file is not present in your current working directory,
+then you should write a <c>ChangeLog</c> entry in the parent's directory
+<c>ChangeLog</c> file.
+</note>
+
 <section>
 <title>Writing correct ChangeLog messages</title>
 <body>
