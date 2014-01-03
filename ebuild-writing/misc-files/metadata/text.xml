@@ -144,16 +144,16 @@ A <path>metadata.xml</path> file can contain a number of tags:
   </ti>
 </tr>
 <tr>
+  <ti><brite>&lt;email&gt;</brite></ti>
+  <ti>
+    The email address of an upstream may appear only once and must appear in first place.
+  </ti>
+</tr>
+<tr>
   <ti><brite>&lt;name&gt;</brite></ti>
   <ti>
     The name of an upstream maintainer should contain a block of text with upstream's name.
     This element is mandatory for an upstream maintainer and must appear only once.
-  </ti>
-</tr>
-<tr>
-  <ti><brite>&lt;email&gt;</brite></ti>
-  <ti>
-    The email address of an upstream may appear only once.
   </ti>
 </tr>
 <tr>
@@ -445,12 +445,12 @@ This example demonstrates the usage of the upstream element:
 <codesample lang="sgml">
 &lt;upstream&gt;
         &lt;maintainer status="inactive"&gt;
-                &lt;name&gt;Foo Bar&lt;/name&gt;
                 &lt;email&gt;foo@bar.bar&lt;/email&gt;
+                &lt;name&gt;Foo Bar&lt;/name&gt;
         &lt;/maintainer&gt;
         &lt;maintainer status="active"&gt;
-                &lt;name&gt;Foo Gentoo&lt;/name&gt;
                 &lt;email&gt;foo@gentoo.org&lt;/email&gt;
+                &lt;name&gt;Foo Gentoo&lt;/name&gt;
         &lt;/maintainer&gt;
         &lt;changelog&gt;http://foo.bar/changelog.txt&lt;/changelog&gt;
         &lt;doc lang="en"&gt;http://foo.bar/doc/index.html&lt;/doc&gt;
