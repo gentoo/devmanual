@@ -99,7 +99,8 @@ Finally, version may have a Gentoo revision number in the form <c>-r1</c>. The i
 Gentoo version should have no revision suffix, the first revision should be
 <c>-r1</c>, the second <c>-r2</c> and so on. See <uri link="::general-concepts/ebuild-revisions"/>.
 Revision numbers are distinguished from patch releases by revision bumps being
-changes by Gentoo developers, while patch releases are new releases by upstream.
+changes by Gentoo developers, while patch releases are new releases by upstream (with the exception
+of snapshots, see below).
 </p>
 
 <p>
@@ -107,8 +108,11 @@ Overall, this gives us a filename like <c>libfoo-1.2.5b_pre5-r2.ebuild</c>.
 </p>
 
 <p>
-When packaging a snapshot of a source repository, the standard naming format is
-$(last-released-version)_pYYYYMMDD
+When packaging a snapshot of a source repository, there are two commonly used formats. The first
+treats the snapshot as a patch to the previous version, and so the ebuild version is in the format
+$(last-released-version)_pYYYYMMDD. Alternatively, the snapshot may be treated as a pre-release to
+an upcoming version, usually used when a release is anticipated but not out yet. The format for this
+is $(upcoming-version)_preYYYYMMDD.
 </p>
 
 </body>
