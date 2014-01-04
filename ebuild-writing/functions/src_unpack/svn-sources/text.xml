@@ -19,7 +19,7 @@ ection.
 
 <p>
 Note that Subversion ebuilds should <b>not</b> generally be added to
-the tree (except under <c>package.mask</c>) for much the same reasons
+the tree (unless introduced with <c>KEYWORDS=""</c>) for much the same reasons
 that live CVS ebuilds should not (see
 <uri link="::ebuild-writing/functions/src_unpack/cvs-sources#Disadvantages of CVS Sources"/>).
 Indeed, there should be even less impetus to add a live Subversion ebuild than a live CVS ebuild, as

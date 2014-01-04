@@ -17,7 +17,7 @@ need to test unreleased snapshots on a regular basis.
 
 <p>
 Note that CVS ebuilds should <b>not</b> generally be added to the tree
-(except under <c>package.mask</c>) for the following reasons:
+(except with <c>KEYWORDS=""</c>) for the following reasons:
 </p>
 
 <ul>
