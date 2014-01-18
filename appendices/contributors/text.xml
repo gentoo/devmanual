@@ -55,6 +55,13 @@ This page lists the contributions to the Gentoo Development Guide:
 <author name="Mark Loeser" email="halcy0n@gentoo.org">
   XSL Stylesheets, current maintainer
 </author>
+<author name="Ulrich Müller" email="ulm@gentoo.org">
+  <uri link="::ebuild-writing"/>,
+  <uri link="::appendices/editor-configuration/emacs"/>,
+  <uri link="::general-concepts/licenses/"/>,
+  <uri link="::general-concepts/virtuals/"/>,
+  <uri link="::ebuild-writing/eapi/"/>
+</author>
 <author name="Mike Pagano" email="mpagano@gentoo.org">
   <uri link="::general-concepts/news"/>
 </author>
