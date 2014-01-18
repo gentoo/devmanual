@@ -19,8 +19,7 @@ ection.
 
 <p>
 Note that Subversion ebuilds should <b>not</b> generally be added to
-the tree (unless introduced with <c>KEYWORDS=""</c>) for much the same reasons
-that live CVS ebuilds should not (see
+the tree for much the same reasons that live CVS ebuilds should not (see
 <uri link="::ebuild-writing/functions/src_unpack/cvs-sources#Disadvantages of CVS Sources"/>).
 Indeed, there should be even less impetus to add a live Subversion ebuild than a live CVS ebuild, as
 Subversion checkouts are roughly a factor of five larger than an
@@ -41,6 +40,14 @@ $ svn export svn://svn.berlios.de/svnroot/repos/gentoo-syntax -r HEAD gentoo-syn
 <section>
 <title>Using Subversion Sources</title>
 <body>
+
+<note>
+Subversion ebuilds must be either with empty <c>KEYWORDS</c> or
+package.masked (but <e>not</e> both). Empty <c>KEYWORDS</c> are
+strongly preferred. This applies to "live" ebuilds (<c>-9999</c>) and
+to ebuilds that extract a static revision but still use Subversion for
+fetching.
+</note>
 
 <p>
 To use a Subversion source, <c>subversion.eclass</c> must be

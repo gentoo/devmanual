@@ -17,7 +17,7 @@ need to test unreleased snapshots on a regular basis.
 
 <p>
 Note that CVS ebuilds should <b>not</b> generally be added to the tree
-(except with <c>KEYWORDS=""</c>) for the following reasons:
+for the following reasons:
 </p>
 
 <ul>
@@ -75,6 +75,14 @@ date or revision are even worse candidates for tree inclusion:
 <section>
 <title>Using CVS Sources</title>
 <body>
+
+<note>
+CVS ebuilds must be either with empty <c>KEYWORDS</c> or
+package.masked (but <e>not</e> both). Empty <c>KEYWORDS</c> are
+strongly preferred. This applies to "live" ebuilds (<c>-9999</c>) and
+to ebuilds that extract a static revision but still use CVS for
+fetching.
+</note>
 
 <p>
 To use a CVS source, <c>cvs.eclass</c> must be inherited, and then a
