@@ -20,15 +20,15 @@ developers may not be familiar with.
 
 <p>
 Before writing a new ebuild, check 
-<uri link="http://bugs.gentoo.org/">bugs.gentoo.org</uri> 
+<uri link="https://bugs.gentoo.org/">bugs.gentoo.org</uri> 
 to see if an ebuild has already been written for the package, but has not yet 
 been added to the Portage tree.  Go to <uri 
-link="http://bugs.gentoo.org/">bugs.gentoo.org</uri>, choose query and select 
+link="https://bugs.gentoo.org/">bugs.gentoo.org</uri>, choose query and select 
 Advanced Search; as product select <e>Gentoo Linux</e>, as component select 
 <e>ebuilds</e>.  In the search field put the name of the ebuild and as status 
 select NEW, ASSIGNED, REOPENED and RESOLVED (RESOLVED is important), then 
 submit the query.  For you lazy people, click <uri 
-link="http://bugs.gentoo.org/query.cgi?product=Gentoo%20Linux&amp;component=Ebuilds&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;bug_status=RESOLVED">here</uri>.
+link="https://bugs.gentoo.org/query.cgi?product=Gentoo%20Linux&amp;component=Ebuilds&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;bug_status=RESOLVED">here</uri>.
 </p>
 
 <p>
