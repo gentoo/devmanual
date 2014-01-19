@@ -44,7 +44,7 @@ fine too <d/> the formatting can be easily done by someone else (meaning, us).
 </p>
 
 <p>
-  To build the devmanual, simply run <c>make</c> in the <c>trunk</c> directory of the repository.
+  To build the devmanual, simply run <c>make</c> in the top directory of the repository.
   You need <c>xsltproc</c> (from <c>dev-libs/libxslt</c>) for the XML to HTML
   conversion and optionally also <c>ImageMagick</c> for the SVG to PNG conversion
   used in some of the figures throughout the document.
