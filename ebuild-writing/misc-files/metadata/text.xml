@@ -362,7 +362,7 @@ For the second example, we will examine the <path>metadata.xml</path> of
 <c>tools-portage</c> herd, but has a separate maintainer.
 </p>
 
-<pre caption="Herd &amp; individually maintained package">
+<codesample lang="sgml">
 &lt;?xml version='1.0' encoding='UTF-8'?&gt;
 &lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
 &lt;pkgmetadata&gt;
@@ -376,7 +376,7 @@ For the second example, we will examine the <path>metadata.xml</path> of
     nicer front-end for mirror selection (both rsync + distfiles) to a user.
   &lt;/longdescription&gt;
 &lt;/pkgmetadata&gt;
-</pre>
+</codesample>
 
 </body>
 </subsection>
