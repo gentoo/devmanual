@@ -97,6 +97,8 @@ The <c>autoreconf</c> tool supposedly runs <c>autoconf</c> (and <c>automake</c>,
 <c>autoheader</c>, <c>aclocal</c>, <c>autopoint</c> and <c>libtoolize</c>) as necessary.
 Sometimes it works. Some packages ship a shell script named <c>autogen.sh</c> which
 does the same thing (this is <e>not</e> related to <c>autogen</c>).
+The autotools.eclass contains helper functions for the stand-alone tools with their
+corresponding names e.g. <c>eautoconf</c> and <c>eautomake</c>.
 </p>
 
 <warning>
@@ -122,22 +124,23 @@ either <c>Makefile.am</c> or <c>configure.ac</c>:
 </p>
 
 <codesample lang="ebuild">
-src_unpack() {
-    unpack ${A}
-    cd "${S}"
+EAPI="5"
 
+inherit autotools
+
+src_prepare() {
     # Remove problematic LDFLAGS declaration
-    sed -i -e '/^LDFLAGS/d' src/Makefile.am
+    sed -i -e '/^LDFLAGS/d' src/Makefile.am || die
 
     # Rerun autotools
     einfo "Regenerating autotools files..."
-    WANT_AUTOCONF=2.5 autoconf || die "autoconf failed"
-    WANT_AUTOMAKE=1.9 automake || die "automake failed"
+    WANT_AUTOCONF=2.5 eautoconf
+    WANT_AUTOMAKE=1.9 eautomake
 }
 
 src_compile() {
     econf $(use_enable nls)
-    emake || die "emake failed"
+    emake
 }
 </codesample>
 
