@@ -34,7 +34,7 @@ some MIPS and SPARC systems.
 <p>
 Sometimes a package will try to use a bizarre compiler, or will need to be told
 which compiler to use. In these situations, the <c>tc-getCC()</c> function from
-<c>toolchain-funcs.eclass</c> should be used. Other similar functions are available
+<uri link="::eclass-reference/toolchain-funcs.eclass/">toolchain-funcs.eclass</uri> should be used. Other similar functions are available
 <d/> these are documented in <c>man toolchain-funcs.eclass</c>.
 </p>
 
