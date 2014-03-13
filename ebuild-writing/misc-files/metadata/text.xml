@@ -54,7 +54,7 @@ A <path>metadata.xml</path> file can contain a number of tags:
   </ti>
   <ti>
     This is the root element of the <path>metadata.xml</path> file for
-    categories as per <uri link="/proj/en/glep/glep-0034.html">GLEP 34</uri>.
+    categories as per <uri link="https://wiki.gentoo.org/wiki/GLEP:34">GLEP 34</uri>.
     It has no attributes. It contains a number of 
     <brite>&lt;longdescription&gt;</brite> tags, each for a different 
     language.
@@ -496,9 +496,9 @@ the XML can be validated.
 <p>
 For categories, <c>metadata.xml</c> specifies a long description (in
 English and optionally in other languages). The format is specified
-formally in <uri link="http://www.gentoo.org/proj/en/glep/glep-0034.html">
+formally in <uri link="https://wiki.gentoo.org/wiki/GLEP:34">
 GLEP 34</uri>, and the character set <b>must</b> be UTF-8 as specified
-by <uri link="http://www.gentoo.org/proj/en/glep/glep-0031.html">GLEP
+by <uri link="https://wiki.gentoo.org/wiki/GLEP:31">GLEP
 31</uri>. A typical example:
 </p>
 

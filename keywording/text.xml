@@ -19,7 +19,7 @@ each given arch (<c>sparc</c>, <c>ppc</c>, <c>x86-obsd</c>, ...).
 
 <note>
 The term 'arch' is used in this sense for historical reasons. As a result
-of <uri link="http://www.gentoo.org/proj/en/glep/glep-0022.html">GLEP 22</uri>
+of <uri link="https://wiki.gentoo.org/wiki/GLEP:22">GLEP 22</uri>
 and the various non-Linux ports, this is no longer a particularly
 accurate term.
 </note>
@@ -228,7 +228,7 @@ to make individual arrangements <d /> the arch teams are happy for help, so long
 they know what is going on. Please note that <c>x86</c> is now no longer an exception
 and stabilisation must be done through the <c>x86</c> arch team unless you have
 individual arrangements <d /> see
-<uri link="http://www.gentoo.org/proj/en/glep/glep-0040.html">GLEP 40</uri>
+<uri link="https://wiki.gentoo.org/wiki/GLEP:40">GLEP 40</uri>
 for further details.
 </p>
 

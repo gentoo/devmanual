@@ -352,7 +352,7 @@ listed.
 <p>
 It is possible to specify multiple <c>LICENSE</c> entries, and entries which only
 apply if a particular <c>USE</c> flag is set. The format is the same as for
-<c>DEPEND</c>. See <uri link="http://www.gentoo.org/proj/en/glep/glep-0023.html">
+<c>DEPEND</c>. See <uri link="https://wiki.gentoo.org/wiki/GLEP:23">
 GLEP 23</uri> for details.
 </p>
 
