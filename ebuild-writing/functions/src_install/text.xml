@@ -62,18 +62,21 @@ src_install() {
 	fi
 }
 </codesample>
+<important>The following examples assume EAPI &#8805; 4</important>
 </body>
 </section>
 
 <section>
 <title>Sample <c>src_install</c></title>
 <body>
+
 <codesample lang="ebuild">
 src_install() {
-    emake DESTDIR="${D}" install || die "Install failed"
-    dodoc README CHANGES || die
+    emake DESTDIR="${D}" install
+    dodoc README CHANGES
 }
 </codesample>
+
 </body>
 </section>
 
@@ -87,7 +90,7 @@ install to a non-root location. If possible, this should be used:
 </p>
 
 <codesample lang="ebuild">
-    emake DESTDIR="${D}" install || die "Install failed"
+    emake DESTDIR="${D}" install
 </codesample>
 
 <note>
@@ -97,19 +100,17 @@ if you hit an error.
 </note>
 
 <p>
-Sometimes this will end up installing a few things into strange
-places. If and only if this is the case, the <c>einstall</c> function
-can be used:
+  Sometimes this will end up installing a few things into strange
+  places. If and only if this is the case, the <c>einstall</c>
+  function can be used. It is usually necessary to include additional
+  <c>dodoc</c> statements for the <c>README</c>, <c>ChangeLog</c>, etc
+  in these cases:
 </p>
 
 <codesample lang="ebuild">
-    einstall || die "einstall failed"
+    einstall
+    dodoc README CHANGES
 </codesample>
-
-<p>
-It is usually necessary to include additional <c>dodoc</c> statements for the
-<c>README</c>, <c>ChangeLog</c>, etc in these cases.
-</p>
 
 <note>
 There is no need to <c>dodoc</c> <c>COPYING</c>! The license belongs
@@ -124,6 +125,7 @@ example.
 <section>
 <title>Trivial Installs</title>
 <body>
+
 <p>
 For some packages with no <c>Makefile</c> that only install a small
 number of files, writing a manual install using <c>cp</c> is the
@@ -138,58 +140,58 @@ compilation required) themes:
 
 <p>
 Or sometimes a combination of <c>insinto</c> and <c>doins</c> (plus related
-functions -- see Install Functions Reference) <d/> the following is based
+functions -- see <uri link="::function-reference/install-functions"/>) <d/> the following is based
 upon the <c>sys-fs/udev</c> install:
 </p>
 
 <codesample lang="ebuild">
 src_install() {
-    dobin udevinfo || die
-    dobin udevtest || die
+    dobin udevinfo
+    dobin udevtest
     into /
-    dosbin udev || die
-    dosbin udevd || die
-    dosbin udevsend || die
-    dosbin udevstart || die
-    dosbin extras/scsi_id/scsi_id || die
-    dosbin extras/volume_id/udev_volume_id || die
+    dosbin udev
+    dosbin udevd
+    dosbin udevsend
+    dosbin udevstart
+    dosbin extras/scsi_id/scsi_id
+    dosbin extras/volume_id/udev_volume_id
 
     exeinto /etc/udev/scripts
-    doexe extras/ide-devfs.sh || die
-    doexe extras/scsi-devfs.sh || die
-    doexe extras/cdsymlinks.sh || die
-    doexe extras/dvb.sh || die
+    doexe extras/ide-devfs.sh
+    doexe extras/scsi-devfs.sh
+    doexe extras/cdsymlinks.sh
+    doexe extras/dvb.sh
 
     insinto /etc/udev
-    newins "${FILESDIR}/udev.conf.post_050" udev.conf || die
-    doins extras/cdsymlinks.conf || die
+    newins "${FILESDIR}/udev.conf.post_050" udev.conf
+    doins extras/cdsymlinks.conf
 
     # For devfs style layout
     insinto /etc/udev/rules.d/
-    newins etc/udev/gentoo/udev.rules 50-udev.rules || die
+    newins etc/udev/gentoo/udev.rules 50-udev.rules
 
     # scsi_id configuration
     insinto /etc
-    doins extras/scsi_id/scsi_id.config || die
+    doins extras/scsi_id/scsi_id.config
 
     # set up symlinks in /etc/hotplug.d/default
-    dodir /etc/hotplug.d/default || die
-    dosym ../../../sbin/udevsend /etc/hotplug.d/default/10-udev.hotplug || die
+    dodir /etc/hotplug.d/default
+    dosym ../../../sbin/udevsend /etc/hotplug.d/default/10-udev.hotplug
 
     # set up the /etc/dev.d directory tree
-    dodir /etc/dev.d/default || die
-    dodir /etc/dev.d/net || die
+    dodir /etc/dev.d/default
+    dodir /etc/dev.d/net
     exeinto /etc/dev.d/net
-    doexe etc/dev.d/net/hotplug.dev || die
+    doexe etc/dev.d/net/hotplug.dev
 
-    doman *.8 || die
-    doman extras/scsi_id/scsi_id.8 || die
+    doman *.8
+    doman extras/scsi_id/scsi_id.8
 
-    dodoc ChangeLog FAQ HOWTO-udev_for_dev README TODO || die
-    dodoc docs/{overview,udev-OLS2003.pdf,udev_vs_devfs,RFC-dev.d,libsysfs.txt} || die
-    dodoc docs/persistent_naming/* docs/writing_udev_rules/* || die
+    dodoc ChangeLog FAQ HOWTO-udev_for_dev README TODO
+    dodoc docs/{overview,udev-OLS2003.pdf,udev_vs_devfs,RFC-dev.d,libsysfs.txt}
+    dodoc docs/persistent_naming/* docs/writing_udev_rules/*
 
-    newdoc extras/volume_id/README README_volume_id || die
+    newdoc extras/volume_id/README README_volume_id
 }
 </codesample>
 
