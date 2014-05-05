@@ -32,7 +32,8 @@
 <title>Default <c>src_install</c></title>
 <body>
 <p>
-For EAPI &lt; 4, the default <c>src_install</c> function is the following:
+For EAPIs 0,1,2, and 3, the default <c>src_install</c> function is the
+following:
 </p>
 <codesample lang="ebuild">
 src_install()
@@ -41,7 +42,7 @@ src_install()
 }
 </codesample>
 <p>
-For EAPI &#8805; 4, the default <c>src_install</c> function is the following:
+For EAPIs 4 and later, the default <c>src_install</c> function is the following:
 </p>
 <codesample lang="ebuild">
 src_install() {
