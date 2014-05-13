@@ -400,23 +400,6 @@ running <c>dodoc</c>/<c>doins</c>.
 </subsection>
 
 <subsection>
-<title>Pkgconfig files</title>
-<body>
-
-<p>
-Pkgconfig files (foo.pc) are common interfaces to standardize access to libraries
-across distros. It is important that these are never modified, created or renamed
-anywhere except upstream. Report bugs, write patches and send them upstream, but
-don't mess with them in your ebuild unless it's a trivial (like adding libsuffix)
-or unavoidable fix (which should be discussed with other devs first).</p>
-<p>
-Ignoring this policy can result in breakage for other distros and also breaks
-the purpose of this interface, because it is not reliable anymore.
-</p>
-</body>
-</subsection>
-
-<subsection>
 <title>Masking unsupported/broken USE flags</title>
 <body>
 <p>
