@@ -646,7 +646,7 @@ REQUIRED_USE="|| ( foo bar baz )"
 			when using it in these phases.
 		</p>
 		<p>
-			The <c>REPLACED_BY</c> variable contains the single version
+			The <c>REPLACED_BY_VERSION</c> variable contains the single version
 			(<c>PVR</c>) of this package that is replacing us, if we are being
 			uninstalled as part of an install, or an empty string otherwise.
 			It is valid in <c>pkg_prerm</c> and <c>pkg_postrm</c>.
