@@ -510,6 +510,8 @@
           </div>
         </div>
       </footer>
+      <script src="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/jquery.min.js"></script>
+      <script src="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/bootstrap.min.js"></script>
     </body>
     </html>
   </xsl:template>
