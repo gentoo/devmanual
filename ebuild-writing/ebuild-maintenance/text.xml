@@ -468,6 +468,20 @@ won't overwrite them).
 </body>
 </section>
 
+<section>
+<title>Homepage unavailable</title>
+<body>
+
+<p>
+If the <c>HOMEPAGE</c> of your package seems to be unavailable or it 
+never existed at all, please set the HOMEPAGE variable in every ebuild
+to <uri link="https://wiki.gentoo.org/wiki/No_homepage">
+https://wiki.gentoo.org/wiki/No_homepage</uri>
+</p>
+
+</body>
+</section>
+
 </body>
 </chapter>
 </guide>
