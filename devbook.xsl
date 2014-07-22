@@ -335,6 +335,7 @@
   <!-- TOC Tree -->
   <xsl:template match="contentsTree" name="contentsTree">
     <xsl:param name="depth" select="0"/>
+    <xsl:param name="ulclass"/>
     <xsl:param name="maxdepth">
       <xsl:choose>
 	<xsl:when test="@maxdepth"><xsl:value-of select="@maxdepth"/></xsl:when>
@@ -376,7 +377,7 @@
 	</xsl:for-each>
       </xsl:when>
       <xsl:otherwise>
-	<ul>
+	<ul class="{$ulclass}">
 	  <xsl:for-each select="document($doc_self)/guide/include">
 	    <xsl:variable name="extraction_counter_node">
 	      <xsl:call-template name="contentsTree">
@@ -484,8 +485,14 @@
               </div>
               <div class="collapse navbar-collapse navbar-main-collapse">
                 <ul class="nav navbar-nav">
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><xsl:value-of select="/guide/chapter[1]/title"/> <span class="caret"></span></a>
+                    <xsl:call-template name="contentsTree">
+                      <xsl:with-param name="maxdepth" select="1"/>
+                      <xsl:with-param name="ulclass">dropdown-menu</xsl:with-param>
+                    </xsl:call-template>
+                  </li>
                   <li><xsl:call-template name="findPrevious"/></li>
-                  <li><xsl:call-template name="findParent"/></li>
                   <li><xsl:call-template name="findNext"/></li>
                 </ul>
               </div>
@@ -559,7 +566,7 @@
       -->
       <xsl:when test="count(/guide/include) &gt; 0">
 	<xsl:variable name="doc" select="/guide/include[1]/@href"/>
-	<a href="{concat($doc, 'index.html')}"><xsl:value-of select="document(concat(/guide/@self, $doc, 'text.xml'))/guide/chapter[1]/title"/> &#x2192;</a>
+	<a href="{concat($doc, 'index.html')}"><xsl:value-of select="document(concat(/guide/@self, $doc, 'text.xml'))/guide/chapter[1]/title"/> <span class="glyphicon glyphicon-arrow-right"/></a>
       </xsl:when>
       <xsl:otherwise>
 	<!-- This document's path -->
@@ -592,7 +599,7 @@
                 <xsl:with-param name="append">../</xsl:with-param>
 	      </xsl:call-template>
 	    </xsl:variable>
-	    <a href="{concat($relative_path_depth_recursion, $relative_path, 'index.html')}"><xsl:value-of select="document(concat($parentItem_actual, 'text.xml'))/guide/chapter[1]/title"/> &#x2192;</a>
+	    <a href="{concat($relative_path_depth_recursion, $relative_path, 'index.html')}"><xsl:value-of select="document(concat($parentItem_actual, 'text.xml'))/guide/chapter[1]/title"/> <span class="glyphicon glyphicon-arrow-right"/></a>
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <!-- We need to recurse downwards; so we need to strip off a directory element off our absolute path to feed
@@ -639,7 +646,7 @@
 	       * Fully recurse up the node to get the last extremity
 	     * Otherwise list the parent -->
       <xsl:when test="/guide/@root">
-	<a href="#">&#x2190; <xsl:value-of select="/guide/chapter[1]/title"/></a>
+	<a href="#"><span class="glyphicon glyphicon-arrow-left"/> <xsl:value-of select="/guide/chapter[1]/title"/></a>
       </xsl:when>
       <xsl:otherwise>
 	<!-- This document's path -->
@@ -662,10 +669,10 @@
 	    </xsl:call-template>
 	    </xsl:variable>
 	    <!-- Make a relative <a> link; we need an absolute reference for the XSLT processor though... -->
-	    <a href="{concat('../', substring-before($myItem_path, 'text.xml'), 'index.html')}">&#x2190; <xsl:value-of select="document(concat($parentItem_path, $myItem_path))/guide/chapter[1]/title"/></a>
+	    <a href="{concat('../', substring-before($myItem_path, 'text.xml'), 'index.html')}"><span class="glyphicon glyphicon-arrow-left"/> <xsl:value-of select="document(concat($parentItem_path, $myItem_path))/guide/chapter[1]/title"/></a>
 	  </xsl:when>
 	  <xsl:otherwise>
-	    <a href="../index.html">&#x2190; <xsl:value-of select="document(concat(/guide/@self, '../text.xml'))/guide/chapter[1]/title"/></a>
+	    <a href="../index.html"><span class="glyphicon glyphicon-arrow-left"/> <xsl:value-of select="document(concat(/guide/@self, '../text.xml'))/guide/chapter[1]/title"/></a>
 	  </xsl:otherwise>
 	</xsl:choose>
       </xsl:otherwise>
