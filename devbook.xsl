@@ -494,6 +494,18 @@
         </nav>
       </header>
       <div class="container">
+        <div class="row">
+          <div class="col-md010">
+            <ol class="breadcrumb">
+              <xsl:call-template name="printParentDocs">
+                <xsl:with-param name="path" select="/guide/@self"/>
+                <xsl:with-param name="depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
+              </xsl:call-template>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="container">
         <xsl:apply-templates/>
       </div>
       <footer>
@@ -657,6 +669,26 @@
 	  </xsl:otherwise>
 	</xsl:choose>
       </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="printParentDocs">
+    <xsl:param name="depth"/>
+    <xsl:choose>
+      <xsl:when test="$depth &gt; 0">
+        <xsl:variable name="relative_path_depth_recursion">
+          <xsl:call-template name="str:repeatString">
+            <xsl:with-param name="count" select="$depth"/>
+            <xsl:with-param name="append">../</xsl:with-param>
+          </xsl:call-template>
+        </xsl:variable>
+
+        <li><a href="{$relative_path_depth_recursion}index.html"><xsl:value-of select="document(concat(/guide/@self, concat($relative_path_depth_recursion, 'text.xml')))/guide/chapter[1]/title"/></a></li>
+
+        <xsl:call-template name="printParentDocs">
+          <xsl:with-param name="depth" select="$depth - 1"/>
+        </xsl:call-template>
+      </xsl:when>
     </xsl:choose>
   </xsl:template>
 
