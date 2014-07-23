@@ -227,30 +227,30 @@
   </xsl:template>
 
   <xsl:template match="important">
-    <div class="important">
-    <p class="first admonition-title">Important</p>
-    <p class="last"><xsl:apply-templates/></p>
+    <div class="alert alert-info" role="alert">
+    <strong>Important:</strong>
+    <xsl:apply-templates/>
     </div>
   </xsl:template>
 
   <xsl:template match="note">
-    <div class="note">
-    <p class="first admonition-title">Note</p>
-    <p class="last"><xsl:apply-templates/></p>
+    <div class="alert alert-success" role="alert">
+    <strong>Note:</strong>
+    <xsl:apply-templates/>
     </div>
   </xsl:template>
 
   <xsl:template match="todo">
-    <div class="todo">
-    <p class="first admonition-title">Todo</p>
-    <p class="last"><xsl:apply-templates/></p>
+    <div class="alert alert-success" role="alert">
+    <strong>Todo:</strong>
+    <xsl:apply-templates/>
     </div>
   </xsl:template>
 
   <xsl:template match="warning">
-    <div class="warning">
-    <p class="first admonition-title">Warning</p>
-    <p class="last"><xsl:apply-templates/></p>
+    <div class="alert alert-warning" role="alert">
+    <strong>Warning:</strong>
+    <xsl:apply-templates/>
     </div>
   </xsl:template>
 

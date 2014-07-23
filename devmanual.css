@@ -156,58 +156,6 @@ code, pre, tt {
     font-family: monospace;
 }
 
-div.warning    p.admonition-title,
-div.note       p.admonition-title,
-div.todo       p.admonition-title,
-div.admonition p.admonition-title,
-div.important  p.admonition-title {
-    font-weight: bold;
-    display: inline;
-}
-
-div.warning    p,
-div.note       p,
-div.todo       p,
-div.admonition p,
-div.important  p {
-    display: inline;
-}
-
-div.warning    p.admonition-title:after,
-div.note       p.admonition-title:after,
-div.todo       p.admonition-title:after,
-div.admonition p.admonition-title:after,
-div.important  p.admonition-title:after {
-    content: ":";
-}
-
-div.note, div.warning,
-div.important, div.todo,
-div.admonition {
-    padding: 4px;
-    text-align: justify;
-}
-
-div.note {
-    background-color: #c9c4ff;
-}
-
-div.warning {
-    background-color: #ee9999;
-}
-
-div.important {
-    background-color: #99ee99;
-}
-
-div.todo {
-    background-color: #cccccc;
-}
-
-div.admonition {
-    background-color: #ffffff;
-}
-
 blockquote.epigraph p {
     font-size: 80%;
     font-style: italic;
