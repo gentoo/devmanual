@@ -114,7 +114,7 @@ doing:
 </p>
 
 <pre>
-cvs add -ko files/${P}-the-cool-patch.path
+cvs add -ko files/${P}-the-cool-patch.patch
 </pre>
 
 <p>
