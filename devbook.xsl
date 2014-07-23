@@ -85,7 +85,7 @@
   <!-- Tables -->
   <!-- From the Gentoo GuideXML Stylesheet -->
   <xsl:template match="table">
-  <table><xsl:apply-templates/></table>
+  <table class="table"><xsl:apply-templates/></table>
   </xsl:template>
 
   <xsl:template match="tr">
@@ -111,7 +111,7 @@
 
   <!-- Table Heading -->
   <xsl:template match="th">
-    <td class="devbook">
+    <th>
       <xsl:if test="@colspan">
 	<xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
 	<!-- Center only when item spans several columns as
@@ -124,10 +124,8 @@
       <xsl:if test="@rowspan">
 	<xsl:attribute name="rowspan"><xsl:value-of select="@rowspan"/></xsl:attribute>
       </xsl:if>
-      <b>
 	<xsl:apply-templates/>
-      </b>
-    </td>
+    </th>
   </xsl:template>
   <!-- End Table Jojo -->
 
