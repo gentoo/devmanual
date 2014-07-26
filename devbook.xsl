@@ -33,7 +33,7 @@
         </xsl:call-template>
       </xsl:variable>
 
-      <h2><a name="{$anchor}"><xsl:apply-templates select="title"/></a></h2>
+      <h2 id="{$anchor}"><xsl:apply-templates select="title"/></h2>
       <xsl:apply-templates select="(body|subsection)"/>
     </div>
   </xsl:template>
@@ -46,7 +46,7 @@
         </xsl:call-template>
       </xsl:variable>
 
-      <h3><a name="{$anchor}"><xsl:apply-templates select="title"/></a></h3>
+      <h3 id="{$anchor}"><xsl:apply-templates select="title"/></h3>
       <xsl:apply-templates select="(body|subsubsection)"/>
 
       <!-- If you need, change here to add more nesting levels -->
@@ -61,7 +61,7 @@
         </xsl:call-template>
       </xsl:variable>
 
-      <h4><a name="{$anchor}"><xsl:apply-templates select="title"/></a></h4>
+      <h4 id="{$anchor}"><xsl:apply-templates select="title"/></h4>
       <xsl:apply-templates select="(body)"/>
 
       <!-- If you need, change here to add more nesting levels -->
