@@ -447,7 +447,6 @@ In order to use built with use dependencies you must specify <c>EAPI="2"</c>.
 Available specifiers are:
 </p>
 
-<p>
 <table>
   <tr>
     <th>Specifier</th>
@@ -466,13 +465,11 @@ Available specifiers are:
     <ti>foo must have bar disabled and baz enabled.</ti>
   </tr>
 </table>
-</p>
 
 <p>
 There are also shortcuts for conditional situations:
 </p>
 
-<p>
 <table>
   <tr>
     <th>Compact form</th>
@@ -495,7 +492,23 @@ There are also shortcuts for conditional situations:
     <ti><c>bar? ( app-misc/foo[-bar] ) !bar? ( app-misc/foo[bar] )</c></ti>
   </tr>
 </table>
+
+<subsection>
+<title>Use dependency defaults</title>
+<body>
+
+<p>
+If a dependency is introducing or removing a <c>USE</c> flag in new versions, a use
+dependency default may be used. Appending a <c>(+)</c> or <c>(-)</c> suffix will indicate
+whether the absence of the flag from a particular version should indicate its
+presence or absence.
 </p>
+<p>
+<c>>=dev-libs/boost-1.48[threads(+)]</c> will treat all versions without <c>threads</c> as having it set.
+</p>
+
+</body>
+</subsection>
 
 </body>
 </section>
