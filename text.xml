@@ -22,13 +22,6 @@ section lists specific contributions to this manual.
 </body>
 
 <section>
-<title>Contents</title>
-<body>
-<contentsTree maxdepth="1"/>
-</body>
-</section>
-
-<section>
 <title>Full Contents</title>
 <body>
 <contentsTree/>
