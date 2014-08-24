@@ -21,7 +21,7 @@
 </xsl:variable>
 
   <xsl:template match="chapter">
-    <h1><xsl:apply-templates select="title"/></h1>
+    <h1 class="first-header"><xsl:apply-templates select="title"/></h1>
     <xsl:apply-templates select="(body|section)"/>
   </xsl:template>
 
