@@ -535,7 +535,7 @@
               <small>
                 Gentoo is a trademark of the Gentoo Foundation, Inc.
                 The text of this document is distributed under the <a href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons Attribution-ShareAlike 2.0 License</a>.
-                The <a href="#">Gentoo Name and Logo Usage Guidelines</a> apply.
+                The <a href="http://www.gentoo.org/main/en/name-logo.xml">Gentoo Name and Logo Usage Guidelines</a> apply.
               </small>
             </div>
           </div>
