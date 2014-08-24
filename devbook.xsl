@@ -524,6 +524,12 @@
       <footer>
         <div class="container">
           <div class="row">
+            <div class="col-md-4">
+              <strong>Questions or comments?</strong><br />
+              Please feel free to <a href="http://www.gentoo.org/main/en/contact.xml">contact us</a>.
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-12">
               <strong>Copyright 2001-2014 Gentoo Foundation, Inc.</strong><br />
               <small>
