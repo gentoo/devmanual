@@ -528,6 +528,8 @@
               <strong>Questions or comments?</strong><br />
               Please feel free to <a href="http://www.gentoo.org/main/en/contact.xml">contact us</a>.
             </div>
+            <div class="col-md-8">
+            </div>
           </div>
           <div class="row">
             <div class="col-md-12">
