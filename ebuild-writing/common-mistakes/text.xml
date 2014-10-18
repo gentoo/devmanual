@@ -391,9 +391,17 @@ implied already, you should only add it if it is something other than
 <body>
 
 <p>
-If your package has documentation, make sure you install it using <c>dodoc</c> 
-or in <path>/usr/share/doc/${PF}</path>. Remember to check for errors when 
+If your package has documentation, make sure you install it using <c>dodoc</c>
+or in <path>/usr/share/doc/${PF}</path>. Remember to check for errors when
 running <c>dodoc</c>/<c>doins</c>.
+</p>
+
+<p>
+If the package documentation is large or requires additional
+dependencies to build, you should make it optional with the <c>doc</c>
+USE flag.  If the documentation is small and does not require
+additional dependencies (e.g. <c>README</c> files), install it
+unconditionally.
 </p>
 
 </body>
