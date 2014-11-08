@@ -21,7 +21,7 @@
 </xsl:variable>
 
   <xsl:template match="chapter">
-    <h1><xsl:apply-templates select="title"/></h1>
+    <h1 class="first-header"><xsl:apply-templates select="title"/></h1>
     <xsl:apply-templates select="(body|section)"/>
   </xsl:template>
 
@@ -33,7 +33,7 @@
         </xsl:call-template>
       </xsl:variable>
 
-      <h2><a name="{$anchor}"><xsl:apply-templates select="title"/></a></h2>
+      <h2 id="{$anchor}"><xsl:apply-templates select="title"/></h2>
       <xsl:apply-templates select="(body|subsection)"/>
     </div>
   </xsl:template>
@@ -46,7 +46,7 @@
         </xsl:call-template>
       </xsl:variable>
 
-      <h3><a name="{$anchor}"><xsl:apply-templates select="title"/></a></h3>
+      <h3 id="{$anchor}"><xsl:apply-templates select="title"/></h3>
       <xsl:apply-templates select="(body|subsubsection)"/>
 
       <!-- If you need, change here to add more nesting levels -->
@@ -61,7 +61,7 @@
         </xsl:call-template>
       </xsl:variable>
 
-      <h4><a name="{$anchor}"><xsl:apply-templates select="title"/></a></h4>
+      <h4 id="{$anchor}"><xsl:apply-templates select="title"/></h4>
       <xsl:apply-templates select="(body)"/>
 
       <!-- If you need, change here to add more nesting levels -->
@@ -85,7 +85,7 @@
   <!-- Tables -->
   <!-- From the Gentoo GuideXML Stylesheet -->
   <xsl:template match="table">
-  <table><xsl:apply-templates/></table>
+  <table class="table"><xsl:apply-templates/></table>
   </xsl:template>
 
   <xsl:template match="tr">
@@ -111,7 +111,7 @@
 
   <!-- Table Heading -->
   <xsl:template match="th">
-    <td class="devbook">
+    <th>
       <xsl:if test="@colspan">
 	<xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
 	<!-- Center only when item spans several columns as
@@ -124,10 +124,8 @@
       <xsl:if test="@rowspan">
 	<xsl:attribute name="rowspan"><xsl:value-of select="@rowspan"/></xsl:attribute>
       </xsl:if>
-      <b>
 	<xsl:apply-templates/>
-      </b>
-    </td>
+    </th>
   </xsl:template>
   <!-- End Table Jojo -->
 
@@ -227,30 +225,30 @@
   </xsl:template>
 
   <xsl:template match="important">
-    <div class="important">
-    <p class="first admonition-title">Important</p>
-    <p class="last"><xsl:apply-templates/></p>
+    <div class="alert alert-info" role="alert">
+    <strong>Important:</strong>
+    <xsl:apply-templates/>
     </div>
   </xsl:template>
 
   <xsl:template match="note">
-    <div class="note">
-    <p class="first admonition-title">Note</p>
-    <p class="last"><xsl:apply-templates/></p>
+    <div class="alert alert-success" role="alert">
+    <strong>Note:</strong>
+    <xsl:apply-templates/>
     </div>
   </xsl:template>
 
   <xsl:template match="todo">
-    <div class="todo">
-    <p class="first admonition-title">Todo</p>
-    <p class="last"><xsl:apply-templates/></p>
+    <div class="alert alert-success" role="alert">
+    <strong>Todo:</strong>
+    <xsl:apply-templates/>
     </div>
   </xsl:template>
 
   <xsl:template match="warning">
-    <div class="warning">
-    <p class="first admonition-title">Warning</p>
-    <p class="last"><xsl:apply-templates/></p>
+    <div class="alert alert-warning" role="alert">
+    <strong>Warning:</strong>
+    <xsl:apply-templates/>
     </div>
   </xsl:template>
 
@@ -335,6 +333,7 @@
   <!-- TOC Tree -->
   <xsl:template match="contentsTree" name="contentsTree">
     <xsl:param name="depth" select="0"/>
+    <xsl:param name="ulclass"/>
     <xsl:param name="maxdepth">
       <xsl:choose>
 	<xsl:when test="@maxdepth"><xsl:value-of select="@maxdepth"/></xsl:when>
@@ -376,7 +375,7 @@
 	</xsl:for-each>
       </xsl:when>
       <xsl:otherwise>
-	<ul>
+	<ul class="{$ulclass}">
 	  <xsl:for-each select="document($doc_self)/guide/include">
 	    <xsl:variable name="extraction_counter_node">
 	      <xsl:call-template name="contentsTree">
@@ -419,66 +418,133 @@
   <xsl:template match="/">
     <html lang="en-GB" xml:lang="en-GB" xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Gentoo Development Guide: <xsl:value-of select="/guide/chapter[1]/title"/></title>
-        <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
-        <xsl:variable name="relative_path_depth_recursion">
-          <xsl:call-template name="str:repeatString">
-            <xsl:with-param name="count" select="$relative_path_depth"/>
-            <xsl:with-param name="append">../</xsl:with-param>
-          </xsl:call-template>
-        </xsl:variable>	
-        <link rel="stylesheet" href="{$relative_path_depth_recursion}devmanual.css" type="text/css" />
+      <title>Gentoo Development Guide: <xsl:value-of select="/guide/chapter[1]/title"/></title>
+      <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
+      <xsl:variable name="relative_path_depth_recursion">
+        <xsl:call-template name="str:repeatString">
+          <xsl:with-param name="count" select="$relative_path_depth"/>
+          <xsl:with-param name="append">../</xsl:with-param>
+        </xsl:call-template>
+      </xsl:variable>
+      <link rel="stylesheet" href="{$relative_path_depth_recursion}devmanual.css" type="text/css" />
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="Gentoo Infrastructure Status provides information on the status of the services the Gentoo Linux distribution offers to its developers and users." />
+      <link href="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/bootstrap.min.css" rel="stylesheet" media="screen" />
+      <link href="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/tyrian.min.css" rel="stylesheet" media="screen" />
+      <link rel="icon" href="http://www.gentoo.org/favicon.ico" type="image/x-icon" />
     </head>
     <body>
-      <div class="main">
-	<h1>Gentoo Development Guide</h1>
-	<div class="navtop" style="text-align: center;">
-	  <table style="border-top: 1px dashed #330066; margin-left: auto; margin-right: auto;
-			width: 100%;">
-
-	    <col width="33%" />
-	    <col width="34%" />
-	    <col width="33%" />
-	    <tr>
-	      <td style="text-align: center; border-right: 1px dashed #330066;">&#x2190; <xsl:call-template name="findPrevious"/></td>
-	      <td style="text-align: center;">&#x2191; <xsl:call-template name="findParent"/> &#x2191;</td>
-	      <td style="text-align: center; border-left: 1px dashed #330066;"><xsl:call-template name="findNext"/> &#x2192;</td>
-	    </tr>
-	  </table>
-	</div>
-
-	<div class="document">
-	  <xsl:apply-templates/>
-	</div>
-
-	<div class="navbottom" style="text-align: center;">
-	  <table style="border-top: 1px dashed #330066; margin-left: auto; margin-right: auto;
-			width: 100%;">
-
-	    <col width="33%" />
-	    <col width="34%" />
-	    <col width="33%" />
-	    <tr>
-	      <td style="text-align: center; border-right: 1px dashed #330066;">&#x2190; <xsl:call-template name="findPrevious"/></td>
-	      <td style="text-align: center;">&#x2191; <xsl:call-template name="findParent"/> &#x2191;</td>
-	      <td style="text-align: center; border-left: 1px dashed #330066;"><xsl:call-template name="findNext"/> &#x2192;</td>
-	    </tr>
-	  </table>
-	</div>
+      <header>
+        <div class="site-title">
+          <div class="container">
+            <div class="row">
+              <div class="site-title-buttons">
+                <div class="btn-group btn-group-sm">
+                  <a href="http://get.gentoo.org/" type="button" class="btn get-gentoo"><span class="fa fa-download"></span> <strong>Get Gentoo!</strong></a>
+                  <div class="btn-group btn-group-sm">
+                    <button type="button" class="gentoo-org-sites btn" data-toggle="dropdown">
+                      <span class="glyphicon glyphicon-globe"></span> gentoo.org sites <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a href="http://www.gentoo.org/" title="Main Gentoo website"><span class="fa fa-home fa-fw"></span> gentoo.org</a></li>
+                      <li><a href="http://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text fa-fw"></span> Wiki</a></li>
+                      <li><a href="https://bugs.gentoo.org/" title="Report issues and find common issues"><span class="fa fa-bug fa-fw"></span> Bugs</a></li>
+                      <li><a href="http://forums.gentoo.org/" title="Discuss with the community"><span class="fa fa-comments-o fa-fw"></span> Forums</a></li>
+                      <li><a href="http://packages.gentoo.org/" title="Find software for your Gentoo"><span class="fa fa-hdd-o fa-fw"></span> Packages</a></li>
+                      <li class="divider"></li>
+                      <li><a href="http://overlays.gentoo.org/" title="Collaborate on maintaining packages"><span class="fa fa-code-fork fa-fw"></span> Overlays</a></li>
+                      <li><a href="http://planet.gentoo.org/" title="Find out what's going on in the developer community"><span class="fa fa-rss fa-fw"></span> Planet</a></li>
+                      <li><a href="http://archives.gentoo.org/" title="Read up on past discussions"><span class="fa fa-archive fa-fw"></span> Archives</a></li>
+                      <li><a href="http://sources.gentoo.org/" title="Browse our source code"><span class="fa fa-code fa-fw"></span> Sources</a></li>
+                      <li class="divider"></li>
+                      <li><a href="http://infra-status.gentoo.org/" title="Get updates on the services provided by Gentoo"><span class="fa fa-tasks fa-fw"></span> Infra Status</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="logo">
+                <img src="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/site-logo.png" alt="Gentoo Linux Logo"/>
+                <span class="site-label">Gentoo Development Guide</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav class="tyrian-navbar" role="navigation">
+          <div class="container">
+            <div class="row">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="collapse navbar-collapse navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                  <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
+                  <xsl:variable name="relative_path_depth_recursion">
+                    <xsl:call-template name="str:repeatString">
+                      <xsl:with-param name="count" select="$relative_path_depth"/>
+                      <xsl:with-param name="append">../</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:variable>
+                  <li><a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'), '/index.html', substring-after(@link, '##'))}"><span class="glyphicon glyphicon-home"/>&#160; Home</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><xsl:value-of select="/guide/chapter[1]/title"/> <span class="caret"></span></a>
+                    <xsl:call-template name="contentsTree">
+                      <xsl:with-param name="maxdepth" select="1"/>
+                      <xsl:with-param name="ulclass">dropdown-menu</xsl:with-param>
+                    </xsl:call-template>
+                  </li>
+                  <li><xsl:call-template name="findPrevious"/></li>
+                  <li><xsl:call-template name="findNext"/></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md010">
+            <ol class="breadcrumb">
+              <xsl:call-template name="printParentDocs">
+                <xsl:with-param name="path" select="/guide/@self"/>
+                <xsl:with-param name="depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
+              </xsl:call-template>
+            </ol>
+          </div>
+        </div>
       </div>
-
-      <div class="footer">
-	<p>
-	    <a href="http://validator.w3.org/check/referer"><img src="/icons/icon_mini-xhtml.png" alt="Valid XHTML 1.0" /></a>
-	    <a href="http://jigsaw.w3.org/css-validator/check/referer"><img src="/icons/icon_mini-css.png" alt="Valid CSS" /></a>
-	    <a href="http://www.gentoo.org/"><img src="/icons/icon_mini-gentoo.png" alt="Powered by Gentoo" /></a>
-	    <a href="http://creativecommons.org/licenses/by-sa/2.0/"><img src="/icons/icon_mini-creativecommons.png" alt="Creative Commons License" /></a>
-	    <img src="/icons/icon_mini-xml.png" alt="XML Powered!"/>
-	  <br />
-	  <br />
-	  The text of this document is distributed under the <a href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons Attribution-ShareAlike 2.0 License</a>.
-	</p>
+      <div class="container">
+        <xsl:apply-templates/>
       </div>
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-4">
+              <strong>Questions or comments?</strong><br />
+              Please feel free to <a href="http://www.gentoo.org/main/en/contact.xml">contact us</a>.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <strong>Copyright 2001-2014 Gentoo Foundation, Inc.</strong><br />
+              <small>
+                Gentoo is a trademark of the Gentoo Foundation, Inc.
+                The text of this document is distributed under the <a href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons Attribution-ShareAlike 2.0 License</a>.
+                The <a href="http://www.gentoo.org/main/en/name-logo.xml">Gentoo Name and Logo Usage Guidelines</a> apply.
+              </small>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <script src="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/jquery.min.js"></script>
+      <script src="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/bootstrap.min.js"></script>
     </body>
     </html>
   </xsl:template>
@@ -514,7 +580,7 @@
       -->
       <xsl:when test="count(/guide/include) &gt; 0">
 	<xsl:variable name="doc" select="/guide/include[1]/@href"/>
-	<a href="{concat($doc, 'index.html')}"><xsl:value-of select="document(concat(/guide/@self, $doc, 'text.xml'))/guide/chapter[1]/title"/></a>
+	<a href="{concat($doc, 'index.html')}"><xsl:value-of select="document(concat(/guide/@self, $doc, 'text.xml'))/guide/chapter[1]/title"/> &#160;<span class="glyphicon glyphicon-arrow-right"/></a>
       </xsl:when>
       <xsl:otherwise>
 	<!-- This document's path -->
@@ -547,7 +613,7 @@
                 <xsl:with-param name="append">../</xsl:with-param>
 	      </xsl:call-template>
 	    </xsl:variable>
-	    <a href="{concat($relative_path_depth_recursion, $relative_path, 'index.html')}"><xsl:value-of select="document(concat($parentItem_actual, 'text.xml'))/guide/chapter[1]/title"/></a>
+	    <a href="{concat($relative_path_depth_recursion, $relative_path, 'index.html')}"><xsl:value-of select="document(concat($parentItem_actual, 'text.xml'))/guide/chapter[1]/title"/> &#160;<span class="glyphicon glyphicon-arrow-right"/></a>
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <!-- We need to recurse downwards; so we need to strip off a directory element off our absolute path to feed
@@ -594,7 +660,7 @@
 	       * Fully recurse up the node to get the last extremity
 	     * Otherwise list the parent -->
       <xsl:when test="/guide/@root">
-	<a href="#"><xsl:value-of select="/guide/chapter[1]/title"/></a>
+	<a href="#"><span class="glyphicon glyphicon-arrow-left"/>&#160; <xsl:value-of select="/guide/chapter[1]/title"/></a>
       </xsl:when>
       <xsl:otherwise>
 	<!-- This document's path -->
@@ -617,23 +683,43 @@
 	    </xsl:call-template>
 	    </xsl:variable>
 	    <!-- Make a relative <a> link; we need an absolute reference for the XSLT processor though... -->
-	    <a href="{concat('../', substring-before($myItem_path, 'text.xml'), 'index.html')}"><xsl:value-of select="document(concat($parentItem_path, $myItem_path))/guide/chapter[1]/title"/></a>
+	    <a href="{concat('../', substring-before($myItem_path, 'text.xml'), 'index.html')}"><span class="glyphicon glyphicon-arrow-left"/>&#160; <xsl:value-of select="document(concat($parentItem_path, $myItem_path))/guide/chapter[1]/title"/></a>
 	  </xsl:when>
 	  <xsl:otherwise>
-	    <a href="../index.html"><xsl:value-of select="document(concat(/guide/@self, '../text.xml'))/guide/chapter[1]/title"/></a>
+	    <a href="../index.html"><span class="glyphicon glyphicon-arrow-left"/>&#160; <xsl:value-of select="document(concat(/guide/@self, '../text.xml'))/guide/chapter[1]/title"/></a>
 	  </xsl:otherwise>
 	</xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template name="printParentDocs">
+    <xsl:param name="depth"/>
+    <xsl:choose>
+      <xsl:when test="$depth &gt; 0">
+        <xsl:variable name="relative_path_depth_recursion">
+          <xsl:call-template name="str:repeatString">
+            <xsl:with-param name="count" select="$depth"/>
+            <xsl:with-param name="append">../</xsl:with-param>
+          </xsl:call-template>
+        </xsl:variable>
+
+        <li><a href="{$relative_path_depth_recursion}index.html"><xsl:value-of select="document(concat(/guide/@self, concat($relative_path_depth_recursion, 'text.xml')))/guide/chapter[1]/title"/></a></li>
+
+        <xsl:call-template name="printParentDocs">
+          <xsl:with-param name="depth" select="$depth - 1"/>
+        </xsl:call-template>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template name="findParent">
     <xsl:choose>
     <xsl:when test="not(/guide/@root)">
-      <a href="../index.html"><xsl:value-of select="document(concat(/guide/@self, '../text.xml'))/guide/chapter[1]/title"/></a>
+      <a href="../index.html">&#x2191; <xsl:value-of select="document(concat(/guide/@self, '../text.xml'))/guide/chapter[1]/title"/> &#x2191;</a>
     </xsl:when>
     <xsl:otherwise>
-      <a href="#"><xsl:value-of select="/guide/chapter[1]/title"/></a>
+      <a href="#">&#x2191; <xsl:value-of select="/guide/chapter[1]/title"/> &#x2191;</a>
     </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
