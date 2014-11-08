@@ -6,7 +6,7 @@
 
 <p>
 The MIPS port uses the <c>mips</c> keyword. It focuses upon commonly available
-hardware <d/> mainly SGI and Cobalt systems <d/> although various embedded and
+hardware <d/> mainly SGI, Cobalt, Cavium Octeon and the MIPS Creator CI20 systems <d/> although various embedded and
 special purpose boards are also supported.
 </p>
 
