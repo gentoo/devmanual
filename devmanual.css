@@ -176,7 +176,7 @@ pre span.Identifier { color: #ff8bff; }
 pre span.Type { color: #ff8bff; }
 pre span.PreProc { color: #409090; }
 pre span.String { color: #ffcd8b; background-color: #404040; }
-pre span.Constant { color: #675338; }
+pre span.Constant { color: #333; }
 pre span.lnr { color: #8b8bcd; background-color: #2e2e2e; }
 pre span.Comment { color: #cd8b00; }
 pre span.Statement { color: #808bed; }
