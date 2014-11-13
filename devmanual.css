@@ -169,19 +169,12 @@ td.devbook {
     vertical-align: top;
 }
 
-pre span.Normal { color: #cfbfad; background-color: #1e1e27; }
-pre span.Number { color: #506dbd; }
-pre span.Special { color: #c080d0; }
-pre span.Identifier { color: #ff8bff; }
-pre span.Type { color: #ff8bff; }
-pre span.PreProc { color: #409090; }
-pre span.String { color: #ffcd8b; background-color: #404040; }
-pre span.Constant { color: #333; }
-pre span.lnr { color: #8b8bcd; background-color: #2e2e2e; }
-pre span.Comment { color: #cd8b00; }
-pre span.Statement { color: #808bed; }
-pre span.DiffAdd { color: #40c060; }
-pre span.Title { color: #40c060; font-weight: bold; }
-pre span.Underlined { font-weight: bold; color: #fff0c0; }
+pre span.Special { color: magenta; }
+pre span.Identifier { color: blue; }
+pre span.Type { color: blue; }
+pre span.PreProc { color: magenta; }
+pre span.Constant { color: black; }
+pre span.Comment { color: red; }
+pre span.Statement { color: darkred; }
 
 /* vim: set ts=4 tw=80 et : */
