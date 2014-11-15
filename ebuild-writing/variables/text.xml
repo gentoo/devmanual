@@ -215,9 +215,9 @@ The following variables may or must be defined by every ebuild.
   <tr>
     <ti><c>PDEPEND</c></ti>
     <ti>
-    A list of packages to be installed after the package
-    is merged. Should only be used where <c>RDEPEND</c> is not
-    possible. See <uri link="::general-concepts/dependencies"/>.
+    A list of packages to be installed (if possible) after the package
+    is merged. Use this only when <c>RDEPEND</c> would cause cyclic
+    dependencies. See <uri link="::general-concepts/dependencies"/>.
     </ti>
   </tr>
   <tr>
