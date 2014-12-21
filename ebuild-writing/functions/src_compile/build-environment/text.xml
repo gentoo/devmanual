@@ -64,7 +64,7 @@ line in the correct place.
 
 <p>
 The <c>filter-flags</c> function can be used to remove a particular flag from
-<c>CFLAGS</c>. Multiple arguments can be supplied; each is the name of a flag to
+<c>{C,CPP,CXX,CCAS,F,FC,LD}FLAGS</c>. Multiple arguments can be supplied; each is the name of a flag to
 remove.
 </p>
 
