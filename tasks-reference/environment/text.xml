@@ -23,7 +23,7 @@ should be a series of lines in the form <c>VARIABLE="the value"</c>.
 
 <p>
 There is further discussion in the <uri
-link="http://www.gentoo.org/doc/en/handbook/handbook-x86.xml?part=2&amp;chap=5">
+link="https://wiki.gentoo.org/wiki/Handbook:X86/Working/EnvVar">
 Environment Variables section</uri>.
 </p>
 
