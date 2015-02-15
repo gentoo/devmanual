@@ -96,7 +96,8 @@ query variables and similar state.
       <c>best_version pkg</c>
     </ti>
     <ti>
-      Echoes the 'best' version of <c>pkg</c> which is currently installed.
+      Echoes the highest versioned atom of <c>pkg</c> which is currently
+      installed.
     </ti>
   </tr>
   <tr>
