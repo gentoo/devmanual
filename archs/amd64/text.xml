@@ -81,51 +81,6 @@ done.  It should only be applied to shared objects.
 </section>
 
 <section>
-<title>Assembler Optimisation</title>
-<body>
-
-<p>
-Modern x86 processors support special instruction sets like <c>mmx</c>, <c>sse</c>,
-<c>SSE2</c> and <c>3DNow!</c>. AMD64 also provides support for them, but in most
-cases, x86 assembler code is incompatible with AMD64 assembler. There are lots
-of packages that provide support through USE flags for these instruction sets.
-Originally, the USE flags were introduced to keep support for older processors
-such as the Pentium I that can't handle such code. Currently, all AMD64s support the
-same combination of extended instruction sets, so there is no reason to make 
-use of the mentioned USE flags. That's why these USE flags are hard-masked in 
-all AMD64-profiles. This doesn't mean we don't support the extensions 
-themselves, instead, we hard-enable them. 
-</p>
-
-<p>
-The following USE flags are masked on AMD64:
-</p>
-
-<ul>
-  <li>
-    mmx
-  </li>
-  <li>
-    mmx2
-  </li>
-  <li>
-    sse
-  </li>
-  <li>
-    sse2
-  </li>
-  <li>
-    3dnow
-  </li>
-  <li>
-    3dnowext
-  </li>
-</ul>
-
-</body>
-</section>
-
-<section>
 <title>Multilib on AMD64</title>
 <body>
 
