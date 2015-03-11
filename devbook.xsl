@@ -533,7 +533,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <strong>Copyright 2001-2014 Gentoo Foundation, Inc.</strong><br />
+              <strong>Copyright 2001-2015 Gentoo Foundation, Inc.</strong><br />
               <small>
                 Gentoo is a trademark of the Gentoo Foundation, Inc.
                 The text of this document is distributed under the <a href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons Attribution-ShareAlike 2.0 License</a>.
