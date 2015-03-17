@@ -63,7 +63,7 @@ src_configure() {
     # ...
 }
 
-src_compile() {
+src_configure() {
     econf $(use_with X x11 )
 }
 </codesample>
