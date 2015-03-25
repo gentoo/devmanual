@@ -23,7 +23,7 @@
   </tr>
   <tr>
     <th>Called for</th>
-    <ti>ebuild</ti>
+    <ti>ebuild, binary</ti>
   </tr>
   <tr>
     <th>EAPI</th>
