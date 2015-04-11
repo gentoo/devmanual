@@ -432,7 +432,7 @@ at least when the ebuild hits the stable branch.
 
 <p>
 Please submit ebuilds properly by following the <uri
-link="::ebuild-writing/ebuild-maintenance#adding-a-new-ebuild">Adding new Ebuild</uri> tutorial.
+link="::ebuild-maintenance#adding-a-new-ebuild">Adding new Ebuild</uri> tutorial.
 </p>
 
 </body>

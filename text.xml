@@ -39,6 +39,7 @@ section lists specific contributions to this manual.
 <include href="quickstart/"/>
 <include href="general-concepts/"/>
 <include href="ebuild-writing/"/>
+<include href="ebuild-maintenance/" />
 <include href="eclass-writing/"/>
 <include href="profiles/"/>
 <include href="keywording/"/>
