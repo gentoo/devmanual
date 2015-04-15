@@ -25,9 +25,11 @@ discouraged, but technically valid.
 </p>
 
 <note>
-This is the same as <uri link="http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap03.html#tag_03_276">
-IEEE1003.1-2004-3.276</uri>, with the exception of the period character and with the
-addition of the plus character to keep GTK+ and friends happy.
+This is the same as
+<uri link="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_278">
+IEEE Std 1003.1-2013, section 3.278</uri>, with the exception of the period
+character and with the addition of the plus character to keep GTK+ and friends
+happy.
 </note>
 
 <p>
