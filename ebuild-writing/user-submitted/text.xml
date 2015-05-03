@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/user-submitted/">
+<chapter>
+<title>User-submitted Ebuilds</title>
+
+<body>
+
+<p>
+User-submitted ebuilds should never be blindly trusted and should
+always be well-tested and audited before being committed to the tree.
+The developer committing the user-submitted ebuild is vouching that
+the ebuild meets all Gentoo Linux development standards.
+</p>
+
+<p>
+The user-submitted ebuild must not contain custom headers like this:
+</p>
+
+<pre caption="A custom header that should be transferred to the ChangeLog">
+# Ebuild updated by: me &lt;me@example.com&gt;
+</pre>
+
+<p>
+Such information should be added to the <c>ChangeLog</c> instead.
+The first <c>ChangeLog</c> entry should always credit the user who
+submitted the ebuild, with their full name and e-mail address.
+</p>
+
+<p>
+Users should be encouraged to submit diffs to an existing ebuild if they
+are submitting an upgrade. Doing this will help to avoid re-introduction
+of previously fixed bugs into "new" ebuilds. When not working from a
+diff but from a complete user-submitted ebuild, the <c>diff</c> command
+should be used to see what has changed; attention should be payed for
+anything from the current ebuild that should appear in the new ebuild,
+or anything in the new ebuild that should be fixed or removed.
+</p>
+
+<p>
+In general, it is preferable to have the user do the work required to
+get their ebuild up to par, so that they can learn from their mistakes
+and submit cleaner ebuilds in the future. Be sure to be thankful for any
+submission, even if it isn't very good. Be polite but honest <d/> if an
+ebuild isn't usable, the user can be told in a way that does not insult
+their current ebuild-writing abilities. Remember that the user who
+submitted that broken ebuild may be a skilled and productive member of
+our project in the future <d/> that is, if they receive the right amount
+of encouragement and support and continue to improve in their abilities.
+</p>
+
+</body>
+</chapter>
+</guide>
