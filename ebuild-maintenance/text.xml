@@ -180,6 +180,15 @@ which is often more convenient.
 <body>
 <p>Usually you don't just change other developers ebuilds without permission unless you know that developer does not mind or if you are part of the herd involved in maintenance (this information can typically be found in metadata.xml). Start with filing a bug or trying to catch them on IRC or via email. Sometimes you cannot reach them, or there is no response to your bug. It's a good idea to consult other developers on how to handle the situation, especially if it's a critical issue that needs to be handled ASAP. Otherwise a soft limit of 2 to 4 weeks depending on the severity of the bug is an acceptable time frame before you go ahead and fix it yourself.</p> 
 <important> Common sense dictates to us that toolchain/base-system/core packages and eclasses or anything else which is delicate (e.g. glibc) or widely used (e.g. gtk+) should usually be left to those maintainers. If in doubt, don't touch it.</important>
+
+<p>
+Respect developers' coding preferences. Unnecessarily changing the
+syntax of an ebuild can cause complications for others. Syntax changes
+should only be done if there is a real benefit, such as faster
+compilation, improved information for the end user, or compliance with
+Gentoo policies.
+</p>
+
 </body>
 </section>
 
