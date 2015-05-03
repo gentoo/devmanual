@@ -5,10 +5,13 @@
 <body>
 
 <p>
-The <c>package.mask</c> file can be used to hard mask packages or certain versions
-of packages. This is often used when adding certain experimental (either in
-ebuild or upstream terms) packages to the tree. The format is described in
-<c>man portage</c>.
+The <c>package.mask</c> file can be used to hard mask packages or
+certain versions of packages that should not be merged by users.
+This is often used when adding certain experimental (either in ebuild
+or upstream terms) packages to the tree, or to prevent merging of
+packages that are broken or break something else. Every entry should
+have a comment detailing the specific reason for the mask. The format
+of the <c>package.mask</c> file is described in <c>man portage</c>.
 </p>
 
 <p>
