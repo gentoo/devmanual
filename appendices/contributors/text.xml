@@ -49,8 +49,8 @@ This page lists the contributions to the Gentoo Development Guide:
 <author name="Joseph Jezak" email="josejx@gentoo.org">
   <uri link="::archs/ppc"/>
 </author>
-<author name="Tim Yamin" email="plasm@roo.me.uk">
-  XSL Stylesheets, previous maintainer
+<author name="Ursula Maplehurst" email="plasm@roo.me.uk">
+  Previous maintainer (XSL Stylesheets, legacy Developer Handbook content)
 </author>
 <author name="Mark Loeser" email="halcy0n@gentoo.org">
   XSL Stylesheets, current maintainer
