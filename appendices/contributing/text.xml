@@ -40,11 +40,11 @@ Currently, sources are hosted on
 <uri link="https://gitweb.gentoo.org/proj/devmanual.git">git.gentoo.org</uri>.
 For current Gentoo developers, access is at
 <c>git+ssh://git@git.gentoo.org/proj/devmanual.git</c>.
-Non-developers can clone the respository by typing
+Non-developers can clone the repository by typing
 <c>git clone git://anongit.gentoo.org/proj/devmanual.git</c>.
 The sources are also hosted on
 <uri link="https://github.com/gentoo/devmanual.gentoo.org">GitHub</uri>
-for those who perfer to submit patches using pull requests.
+for those who prefer to submit patches using pull requests.
 </p>
 
 <p>
