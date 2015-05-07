@@ -80,6 +80,7 @@ Things that do <b>not</b> belong in the tree:
   <li>Large patches</li>
   <li>Non-text files</li>
   <li>Photos of teletubbies</li>
+  <li>Files whose name contains characters outside <c>[A-Za-z0-9._+-]</c></li>
   <li>Files whose name starts with a dot</li>
 </ul>
 
