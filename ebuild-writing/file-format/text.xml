@@ -33,6 +33,11 @@ happy.
 </note>
 
 <p>
+The name must not begin with a hyphen or a plus sign, and must not end
+in a hyphen followed by anything that could be mistaken for a version.
+</p>
+
+<p>
 The version section is more complicated. It consists of one or more numbers
 separated by full stop (or period, or dot, or decimal point) characters (eg
 <c>1.2.3</c>, <c>20050108</c>). The final number may have a single letter following it
