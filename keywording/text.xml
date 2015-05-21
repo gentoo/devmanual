@@ -12,7 +12,7 @@ distinction is important.
 </note>
 
 <p>
-Every ebuild must specify a <c>KEYWORDS</c> variable. This variable is used to
+Most ebuilds specify a <c>KEYWORDS</c> variable. This variable is used to
 indicate the suitability and stability of both the package and the ebuild on
 each given arch (<c>sparc</c>, <c>ppc</c>, <c>x86-obsd</c>, ...).
 </p>
@@ -98,6 +98,12 @@ tested.
 <p>
 Do <b>not</b> use the <c>*</c> or <c>~*</c> special keywords in ebuilds.
 </p>
+
+<note>
+Usually, "live" ebuilds
+(see <uri link="::ebuild-writing/functions/src_unpack/cvs-sources"/>)
+do not specify a <c>KEYWORDS</c> variable, or assign the empty string to it.
+</note>
 
 <section>
 <title>Equal Visibility Requirement</title>
