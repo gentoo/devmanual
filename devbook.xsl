@@ -2,8 +2,7 @@
   xmlns:str="http://exslt.org/strings"
   xmlns:exslt="http://exslt.org/common"
   extension-element-prefixes="str exslt xsl"
-  exclude-result-prefixes="str exslt xsl"
-  xmlns="http://www.w3.org/1999/xhtml">
+  exclude-result-prefixes="str exslt xsl">
 
 <xsl:import href="xsl/str.tokenize.function.xsl"/>
 <xsl:import href="xsl/lang.highlight.c.xsl"/>
@@ -12,8 +11,7 @@
 <xsl:import href="xsl/lang.highlight.m4.xsl"/>
 <xsl:import href="xsl/lang.highlight.sgml.xsl"/>
 
-<xsl:output method="xml" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" 
-	    doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" indent="yes"/>
+<xsl:output method="xml" indent="yes" omit-xml-declaration="yes"/>
 
 <xsl:variable name="newline">
 <xsl:text>
@@ -416,7 +414,8 @@
   </xsl:template>
 
   <xsl:template match="/">
-    <html lang="en-GB" xml:lang="en-GB" xmlns="http://www.w3.org/1999/xhtml">
+    <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
+    <html>
     <head>
       <title>Gentoo Development Guide: <xsl:value-of select="/guide/chapter[1]/title"/></title>
       <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
