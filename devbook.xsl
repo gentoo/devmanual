@@ -11,7 +11,7 @@
 <xsl:import href="xsl/lang.highlight.m4.xsl"/>
 <xsl:import href="xsl/lang.highlight.sgml.xsl"/>
 
-<xsl:output method="xml" indent="yes" omit-xml-declaration="yes"/>
+<xsl:output method="html" indent="yes" omit-xml-declaration="yes"/>
 
 <xsl:variable name="newline">
 <xsl:text>
