@@ -7,11 +7,11 @@ prereq:
 	@type -p convert &>/dev/null || { echo "media-gfx/imagemagick with corefonts, svg and truetype required" >&2; exit 1; }; \
 		type -p xsltproc &>/dev/null || { echo "dev-libs/libxslt is required" >&2; exit 1; }
 
-%index.html : %text.xml
+%index.html : %text.xml devbook.xsl
 	xsltproc devbook.xsl $< > $@ 
 
 # Someone should figure out a way to put this to the pattern
-index.html : text.xml
+index.html : text.xml devbook.xsl
 	xsltproc devbook.xsl $< > $@ 
 
 %.png : %.svg
