@@ -440,7 +440,7 @@
             <div class="row">
               <div class="site-title-buttons">
                 <div class="btn-group btn-group-sm">
-                  <a href="http://get.gentoo.org/" type="button" class="btn get-gentoo"><span class="fa fa-download"></span> <strong>Get Gentoo!</strong></a>
+                  <a href="http://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-download"></span> <strong>Get Gentoo!</strong></a>
                   <div class="btn-group btn-group-sm">
                     <button type="button" class="gentoo-org-sites btn" data-toggle="dropdown">
                       <span class="glyphicon glyphicon-globe"></span> gentoo.org sites <span class="caret"></span>
