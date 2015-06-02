@@ -428,7 +428,7 @@
       <link rel="stylesheet" href="{$relative_path_depth_recursion}devmanual.css" type="text/css" />
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="description" content="Gentoo Infrastructure Status provides information on the status of the services the Gentoo Linux distribution offers to its developers and users." />
+      <meta name="description" content="The Gentoo Devmanual is a technical manual which covers topics such as writing ebuilds and eclasses, and policies that developers should be abiding by." />
       <link href="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/bootstrap.min.css" rel="stylesheet" media="screen" />
       <link href="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/tyrian.min.css" rel="stylesheet" media="screen" />
       <link rel="icon" href="http://www.gentoo.org/favicon.ico" type="image/x-icon" />
