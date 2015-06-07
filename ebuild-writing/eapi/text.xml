@@ -369,19 +369,31 @@ src_compile() {
 		</p>
 		<p>Example:</p>
 		<codesample lang="ebuild">
-EAPI=1
+EAPI=2
 ...
-src_install() {
-	emake DESTDIR="${D}" install || die "make install failed"
-	dodoc ChangeLog README
+src_test() {
+	if ! emake check ; then
+		local a
+		eerror "Tests failed. Looking for files for you to add to your bug report..."
+		while IFS='' read -r -d $'\0' a ; do
+			eerror "    ${a}"
+		done &lt; &lt;(find "${S}" -type f '(' -name '*.epicfail' -o -name '*.log' ')' -print0)
+		die "Make check failed"
+	fi
 }
 		</codesample>
 		<codesample lang="ebuild">
 EAPI=4
 ...
-src_install() {
-	emake DESTDIR="${D}" install
-	nonfatal dodoc ChangeLog README
+src_test() {
+	if ! nonfatal emake check ; then
+		local a
+		eerror "Tests failed. Looking for files for you to add to your bug report..."
+		while IFS='' read -r -d $'\0' a ; do
+			eerror "    ${a}"
+		done &lt; &lt;(find "${S}" -type f '(' -name '*.epicfail' -o -name '*.log' ')' -print0)
+		die "Make check failed"
+	fi
 }
 		</codesample>
 	</li>
