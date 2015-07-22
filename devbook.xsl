@@ -431,7 +431,7 @@
       <meta name="description" content="The Gentoo Devmanual is a technical manual which covers topics such as writing ebuilds and eclasses, and policies that developers should be abiding by." />
       <link href="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/bootstrap.min.css" rel="stylesheet" media="screen" />
       <link href="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/tyrian.min.css" rel="stylesheet" media="screen" />
-      <link rel="icon" href="http://www.gentoo.org/favicon.ico" type="image/x-icon" />
+      <link rel="icon" href="https://www.gentoo.org/favicon.ico" type="image/x-icon" />
     </head>
     <body>
       <header>
