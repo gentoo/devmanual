@@ -323,6 +323,30 @@ SRC_URI="http://example.com/files/${P}-core.tar.bz2
 
 </body>
 </subsection>
+
+<subsection>
+<title>Renaming Sources</title>
+<body>
+
+<p>
+Sometimes the upstream URI uses generic names that can easily clash with other
+packages when creating a single mirror. Using the <c>-&gt;</c> syntax allows
+you to rename the file when it's fetched from upstream for storing on mirrors
+and in the local distdir.
+</p>
+
+<p>
+Here we download a file from upstream which has a plain name like
+<c>1.0.tar.gz</c> and save/mirror it with a better name like
+<c>thepackage-1.0.tar.gz</c>.
+</p>
+
+<codesample lang="ebuild">
+SRC_URI="http://example.com/files/${PV}.tar.gz -> ${P}.tar.gz"
+</codesample>
+
+</body>
+</subsection>
 </section>
 
 <section>
