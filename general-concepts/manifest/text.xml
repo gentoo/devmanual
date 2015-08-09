@@ -25,15 +25,14 @@ expansion changes <d/> <c>repoman</c> will do this automatically.
 </section>
 
 <section>
-<title>Signing the Manifest using your GPG key</title>
+<title>Signing the Manifest using GPG key (GLEP 63)</title>
 <body>
 <p>
 Requirements:
 </p>
 
 <ul>
-  <li>&gt;=sys-apps/portage-2.0.51_pre10</li>
-  <li>&gt;=app-crypt/gnupg-1.2.4</li>
+  <li>app-crypt/gkeys</li>
 </ul>
 
 <p>
@@ -42,13 +41,10 @@ Key Setup:
 
 <ul>
   <li>
-    <uri link="http://www.gentoo.org/doc/en/gnupg-user.xml#doc_chap2">Create</uri>
-    a new DSA GnuPG key with at least a 1024 bit keylength, an expiration
-    period no longer than 6 months and a good passphrase.
+    <uri link="https://wiki.gentoo.org/wiki/Project:Gentoo-keys/Generating_GLEP_63_based_OpenPGP_keys">Generating a GLEP 63 based OpenPGP key</uri> with app-crypt/gkeys. This guarantees that the generated key applies to <uri link="https://wiki.gentoo.org/wiki/GLEP:63">GLEP 63</uri> specification.
   </li>
   <li>
-    <uri link="http://www.gentoo.org/doc/en/gnupg-user.xml#doc_chap3">Upload</uri>
-    the key to a keyserver.
+    <uri link="https://wiki.gentoo.org/wiki/Project:Gentoo-keys/Generating_GLEP_63_based_OpenPGP_keys#Publishing_the_public_key">Publish</uri> the public key to a keyserver.
   </li>
 </ul>
 
