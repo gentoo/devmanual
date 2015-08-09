@@ -138,7 +138,7 @@ is to use <c>9999</c> as the version (or as the last version component).
 <p>
 All ebuilds committed to the tree should have a three line header immediately at
 the start indicating copyright. This must be an exact copy of the contents of
-<c>$(portageq portdir)/header.txt</c>. Ensure that the <c>$Header: $</c> line is not
+<c>$(portageq get_repo_path / gentoo)/header.txt</c>. Ensure that the <c>$Header: $</c> line is not
 modified manually <d/> CVS will handle this line specially.
 </p>
 
