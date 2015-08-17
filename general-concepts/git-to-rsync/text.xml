@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<guide self="general-concepts/cvs-to-rsync/">
+<guide self="general-concepts/git-to-rsync/">
 <chapter>
-<title>CVS to RSYNC</title>
+<title>Git to RSYNC</title>
 
 <body>
 
@@ -11,10 +11,10 @@
 
 <ul>
   <li>
-    Developer commits to CVS.
+    Developer commits to local Git clone and pushes to central remote Git epository. Commits and pushes are signed using Git mechanisms based on GPG.
   </li>
   <li>
-    Staging box syncs from CVS and generates the metadata cache.
+    Staging box syncs from central Git repository, generates the metadata cache, ChangeLogs and signed Manifests from Git history.
   </li>
   <li>
     <c>rsync1</c> syncs from the staging box.
@@ -27,8 +27,8 @@
   </li>
 </ul>
 
-<figure short="CVS to RSYNC Propagation" link="diagram.png">
-  Diagram showing CVS to RSYNC Propagation
+<figure short="Git to RSYNC Propagation" link="diagram.png">
+  Diagram showing Git to RSYNC Propagation
 </figure>
 
 <p>

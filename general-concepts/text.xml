@@ -21,7 +21,7 @@ writing ebuilds or working with the Portage tree.
 
 <include href="autotools/"/>
 <include href="config-protect/"/>
-<include href="cvs-to-rsync/"/>
+<include href="git-to-rsync/"/>
 <include href="dependencies/"/>
 <include href="manifest/"/>
 <include href="distributed-building/"/>
