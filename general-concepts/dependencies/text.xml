@@ -229,7 +229,7 @@ RDEPEND="!!app-misc/foo"
 </codesample>
 
 <p>
-Hardblockers always take precedence over softblockers and need at least EAPI="2".
+Hardblockers always take precedence over softblockers and need at least EAPI=2.
 Also note that blockers are usually <e>runtime</e> rather than buildtime.
 </p>
 
@@ -268,7 +268,7 @@ newer package that caused the issues.
 
 <p>
 In order to depend on a package in a specific <c>SLOT</c> you must specify
-at least <c>EAPI="1"</c>.
+at least <c>EAPI=1</c>.
 </p>
 
 <p>
@@ -295,7 +295,7 @@ DEPEND="qt3? ( ~x11-libs/qt-3.3.8:3 )
 <body>
 
 <p>
-In <c>EAPI="5"</c> and higher, you can use slot operators appended to the package
+In <c>EAPI=5</c> and higher, you can use slot operators appended to the package
 name to declare whether or not your package should be rebuilt after the versions
 satisfying its runtime dependencies are updated to versions with a different slot
 or <uri link="::general-concepts/slotting#Sub-Slots">sub-slot</uri>:
@@ -442,7 +442,7 @@ flag is not necessary if and only if all of the following hold:
 <body>
 
 <p>
-In order to use built with use dependencies you must specify <c>EAPI="2"</c>.
+In order to use built with use dependencies you must specify <c>EAPI=2</c>.
 </p>
 
 <p>
