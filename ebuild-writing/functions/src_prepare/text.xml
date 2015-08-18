@@ -32,7 +32,7 @@
 <title>Default <c>src_prepare</c></title>
 <body>
 <p>
-Starting from EAPI="2", the src_prepare function is the appropriate area to perform
+Starting from EAPI=2, the src_prepare function is the appropriate area to perform
 any kind of patching and source code manipulation, instead of src_unpack.
 </p>
 <codesample lang="ebuild">

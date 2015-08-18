@@ -124,7 +124,7 @@ either <c>Makefile.am</c> or <c>configure.ac</c>:
 </p>
 
 <codesample lang="ebuild">
-EAPI="5"
+EAPI=5
 
 inherit autotools
 
