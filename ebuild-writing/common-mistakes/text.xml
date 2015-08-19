@@ -150,8 +150,7 @@ Removing "-Werror" from configure.ac can cause breakage in very rare cases where
 <p>
 When you submit your ebuilds, the header should be <e>exactly</e> the same as
 the one in <path>/usr/portage/skel.ebuild</path>. Most importantly, do not
-modify it in any way and make sure that the <c>&#36;Header: &#36;</c> line is 
-intact.
+modify it in any way and make sure that the <c>&#36;Id&#36;</c> line is intact.
 </p>
 
 <p>
@@ -159,17 +158,16 @@ The first three lines <e>must</e> look like this:
 </p>
 
 <pre caption="Valid Header">
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# &#36;Header: &#36;
+# &#36;Id&#36;
 </pre>
 
 <p>
 Only if you are submitting a patched or version bumped ebuild, should you not
-need to modify the <c>&#36;Header: &#36;</c> line. But the line must be present.
-When we check the ebuild into CVS, it will modify that header with the 
-appropriate version and date information. So there is no need for you to 
-manually modify it.
+need to modify the <c>&#36;Id&#36;</c> line. But the line must be present.
+It will be expanded on the staging box automatically. So there is no need for you to manually modify it.
+See <uri link="::general-concepts/git-to-rsync"/>.
 </p>
 
 </body>

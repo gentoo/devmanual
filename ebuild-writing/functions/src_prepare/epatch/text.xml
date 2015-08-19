@@ -66,14 +66,14 @@ Remember to add the patch to <c>SRC_URI</c>.
 </body>
 
 <subsection>
-<title>CVS Keyword Lines and Patches</title>
+<title>Git Keyword Expansion Lines and Patches</title>
 <body>
 <p>
-If your patch includes any changes to CVS <c>$Id: $</c>
-(or <c>$Header: $</c>, or <c>$Date: $</c>) lines, it cannot be
-distributed under <c>files/</c>, since CVS will clobber the patch when
-you commit. In these situations, either remove this hunk of the patch
-manually, or mirror the file.
+If your patch includes any changes to Git <c>$Id$</c>
+(or <c>$Date$</c>) lines, it cannot be
+distributed under <c>files/</c>, since Git will clobber the patch when
+keywords are expanded on the staging box. In these situations, either remove this hunk of the patch
+manually, or mirror the file. See <uri link="::general-concepts/git-to-rsync"/>.
 </p>
 </body>
 </subsection>
