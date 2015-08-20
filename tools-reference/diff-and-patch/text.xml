@@ -19,8 +19,9 @@ and <c>newfile</c>. To operate over directories instead, use <c>diff
 </p>
 
 <note>
-<c>cvs</c> and <c>svn</c> provide <c>cvs diff</c> and <c>svn diff</c>
-respectively which may be more helpful.
+VCS like <c>git</c>,<c>svn</c> or <c>cvs</c> provide built-in diff
+functionality (<c>git diff</c>, <c>svn diff</c>, <c>cvs diff</c>)
+which may be more helpful.
 </note>
 
 <p>
