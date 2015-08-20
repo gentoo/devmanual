@@ -138,14 +138,14 @@ is to use <c>9999</c> as the version (or as the last version component).
 <p>
 All ebuilds committed to the tree should have a three line header immediately at
 the start indicating copyright. This must be an exact copy of the contents of
-<c>$(portageq get_repo_path / gentoo)/header.txt</c>. Ensure that the <c>$Header: $</c> line is not
-modified manually <d/> CVS will handle this line specially.
+<c>$(portageq get_repo_path / gentoo)/header.txt</c>. Ensure that the <c>$Id$</c> line is not
+modified manually <d/> will be expanded on staging box. See <uri link="::general-concepts/git-to-rsync"/>.
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 </codesample>
 
 </body>

@@ -176,9 +176,9 @@ a single function, <c>domacosapp</c>.
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 #
 # Original Author: Ciaran McCreesh &lt;ciaranm@gentoo.org&gt;
@@ -263,9 +263,9 @@ something like the following:
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 # Original Author: Ciaran McCreesh &lt;ciaranm@gentoo.org&gt;
 # Purpose: Demonstration of EXPORT_FUNCTIONS. Defines simple wrappers for the
@@ -306,9 +306,9 @@ for an eclass to invoke die from the global scope.  For example:
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 # Purpose: Demonstration of die upon invalid EAPI usage.
 
