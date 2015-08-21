@@ -42,12 +42,12 @@ Key Setup:
 
 <ul>
   <li>
-    <uri link="http://www.gentoo.org/doc/en/gnupg-user.xml#doc_chap2">Create</uri>
+    <uri link="https://www.gentoo.org/doc/en/gnupg-user.xml#doc_chap2">Create</uri>
     a new DSA GnuPG key with at least a 1024 bit keylength, an expiration
     period no longer than 6 months and a good passphrase.
   </li>
   <li>
-    <uri link="http://www.gentoo.org/doc/en/gnupg-user.xml#doc_chap3">Upload</uri>
+    <uri link="https://www.gentoo.org/doc/en/gnupg-user.xml#doc_chap3">Upload</uri>
     the key to a keyserver.
   </li>
 </ul>

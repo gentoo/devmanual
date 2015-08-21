@@ -15,7 +15,7 @@ the format of a <c>ChangeLog</c> is now defined as "whatever
 You should include references to any relevant bugs. The standard
 format for doing this is via the phrase <c>bug #20600</c> — this
 format (with the hash sign included) is recognised via
-<uri link="http://packages.gentoo.org">packages.gentoo.org</uri> and
+<uri link="https://packages.gentoo.org">packages.gentoo.org</uri> and
 similar tools. When including user-submitted ebuilds or patches, you
 should credit the user with their full name and email address (or
 whatever they use to identify themselves on bugzilla <d/> some users

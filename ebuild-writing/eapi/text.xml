@@ -340,7 +340,7 @@ src_compile() {
 		<p>
 			Support for the <c>EPREFIX</c>, <c>EROOT</c>, and <c>ED</c>
 			variables. If an ebuild uses one of these, it must be EAPI3 aware.
-			See <uri link="http://www.gentoo.org/proj/en/gentoo-alt/prefix/techdocs.xml#doc_chap2">Gentoo Prefix Techdocs</uri> for more information.
+			See <uri link="https://www.gentoo.org/proj/en/gentoo-alt/prefix/techdocs.xml#doc_chap2">Gentoo Prefix Techdocs</uri> for more information.
 		</p>
 	</li>
 	<li>

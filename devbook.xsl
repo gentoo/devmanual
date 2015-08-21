@@ -440,24 +440,24 @@
             <div class="row">
               <div class="site-title-buttons">
                 <div class="btn-group btn-group-sm">
-                  <a href="http://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-download"></span> <strong>Get Gentoo!</strong></a>
+                  <a href="https://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-download"></span> <strong>Get Gentoo!</strong></a>
                   <div class="btn-group btn-group-sm">
                     <button type="button" class="gentoo-org-sites btn" data-toggle="dropdown">
                       <span class="glyphicon glyphicon-globe"></span> gentoo.org sites <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a href="http://www.gentoo.org/" title="Main Gentoo website"><span class="fa fa-home fa-fw"></span> gentoo.org</a></li>
-                      <li><a href="http://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text fa-fw"></span> Wiki</a></li>
+                      <li><a href="https://www.gentoo.org/" title="Main Gentoo website"><span class="fa fa-home fa-fw"></span> gentoo.org</a></li>
+                      <li><a href="https://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text fa-fw"></span> Wiki</a></li>
                       <li><a href="https://bugs.gentoo.org/" title="Report issues and find common issues"><span class="fa fa-bug fa-fw"></span> Bugs</a></li>
-                      <li><a href="http://forums.gentoo.org/" title="Discuss with the community"><span class="fa fa-comments-o fa-fw"></span> Forums</a></li>
-                      <li><a href="http://packages.gentoo.org/" title="Find software for your Gentoo"><span class="fa fa-hdd-o fa-fw"></span> Packages</a></li>
+                      <li><a href="https://forums.gentoo.org/" title="Discuss with the community"><span class="fa fa-comments-o fa-fw"></span> Forums</a></li>
+                      <li><a href="https://packages.gentoo.org/" title="Find software for your Gentoo"><span class="fa fa-hdd-o fa-fw"></span> Packages</a></li>
                       <li class="divider"></li>
-                      <li><a href="http://overlays.gentoo.org/" title="Collaborate on maintaining packages"><span class="fa fa-code-fork fa-fw"></span> Overlays</a></li>
-                      <li><a href="http://planet.gentoo.org/" title="Find out what's going on in the developer community"><span class="fa fa-rss fa-fw"></span> Planet</a></li>
-                      <li><a href="http://archives.gentoo.org/" title="Read up on past discussions"><span class="fa fa-archive fa-fw"></span> Archives</a></li>
-                      <li><a href="http://sources.gentoo.org/" title="Browse our source code"><span class="fa fa-code fa-fw"></span> Sources</a></li>
+                      <li><a href="https://overlays.gentoo.org/" title="Collaborate on maintaining packages"><span class="fa fa-code-fork fa-fw"></span> Overlays</a></li>
+                      <li><a href="https://planet.gentoo.org/" title="Find out what's going on in the developer community"><span class="fa fa-rss fa-fw"></span> Planet</a></li>
+                      <li><a href="https://archives.gentoo.org/" title="Read up on past discussions"><span class="fa fa-archive fa-fw"></span> Archives</a></li>
+                      <li><a href="https://sources.gentoo.org/" title="Browse our source code"><span class="fa fa-code fa-fw"></span> Sources</a></li>
                       <li class="divider"></li>
-                      <li><a href="http://infra-status.gentoo.org/" title="Get updates on the services provided by Gentoo"><span class="fa fa-tasks fa-fw"></span> Infra Status</a></li>
+                      <li><a href="https://infra-status.gentoo.org/" title="Get updates on the services provided by Gentoo"><span class="fa fa-tasks fa-fw"></span> Infra Status</a></li>
                     </ul>
                   </div>
                 </div>
@@ -527,7 +527,7 @@
             </div>
             <div class="col-md-4">
               <strong>Questions or comments?</strong><br />
-              Please feel free to <a href="http://www.gentoo.org/main/en/contact.xml">contact us</a>.
+              Please feel free to <a href="https://www.gentoo.org/main/en/contact.xml">contact us</a>.
             </div>
           </div>
           <div class="row">
@@ -536,7 +536,7 @@
               <small>
                 Gentoo is a trademark of the Gentoo Foundation, Inc.
                 The text of this document is distributed under the <a href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons Attribution-ShareAlike 2.0 License</a>.
-                The <a href="http://www.gentoo.org/main/en/name-logo.xml">Gentoo Name and Logo Usage Guidelines</a> apply.
+                The <a href="https://www.gentoo.org/main/en/name-logo.xml">Gentoo Name and Logo Usage Guidelines</a> apply.
               </small>
             </div>
           </div>

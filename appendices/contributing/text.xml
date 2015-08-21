@@ -63,7 +63,7 @@ for those who prefer to submit patches using pull requests.
 <body>
 
 <p>
-DevBook XML is heavily based on <uri link="http://www.gentoo.org/doc/en/xml-guide.xml">
+DevBook XML is heavily based on <uri link="https://www.gentoo.org/doc/en/xml-guide.xml">
 GuideXML</uri> and many tags are similar, if not the same. The main differences
 occur in layout which are designed to make a large-scale publication easier
 to produce and manage using a hierarchical tree system. Before starting off you

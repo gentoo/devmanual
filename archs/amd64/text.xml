@@ -142,7 +142,7 @@ As you read above, 32bit applications must be linked against 32bit libraries.
 For that, we've put together the most used libraries and stuck them into the
 so-called <c>emul-linux-x86</c> packages, which are located in the
 <c>app-emulation</c> category. The current list of all the <c>emul-linux-x86</c>
-packages, can be found <uri link="http://dev.gentoo.org/~pacho/emul.html">here.</uri>
+packages, can be found <uri link="https://dev.gentoo.org/~pacho/emul.html">here.</uri>
 </p>
 
 <p>
@@ -596,13 +596,13 @@ segmentation faults or strange behaviour. GCC 4.0 refuses to compile such code.
 
 <ul>
   <li>
-    <uri link="http://amd64.gentoo.org/">Gentoo/AMD64 Project</uri>
+    <uri link="https://amd64.gentoo.org/">Gentoo/AMD64 Project</uri>
   </li>
   <li>
-    <uri link="http://www.gentoo.org/doc/en/gentoo-amd64-faq.xml">Gentoo/Linux AMD64 FAQ</uri>
+    <uri link="https://www.gentoo.org/doc/en/gentoo-amd64-faq.xml">Gentoo/Linux AMD64 FAQ</uri>
   </li>
   <li>
-    <uri link="http://forums.gentoo.org/viewforum-f-46.html">Gentoo on AMD64 Forum</uri>
+    <uri link="https://forums.gentoo.org/viewforum-f-46.html">Gentoo on AMD64 Forum</uri>
   </li>
 </ul>
 

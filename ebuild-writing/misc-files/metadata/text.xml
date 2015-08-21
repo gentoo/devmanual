@@ -68,7 +68,7 @@ A <path>metadata.xml</path> file can contain a number of tags:
     If a package is maintained by one or more herds, names of these herds
     can be specified with the <brite>&lt;herd&gt;</brite> tag. The names
     used in this tag must be the same as specified in the <uri 
-    link="http://sources.gentoo.org/viewcvs.py/*checkout*/gentoo/xml/htdocs/proj/en/metastructure/herds/herds.xml?content-type=text/plain&amp;rev=HEAD">herds.xml</uri>
+    link="https://sources.gentoo.org/viewcvs.py/*checkout*/gentoo/xml/htdocs/proj/en/metastructure/herds/herds.xml?content-type=text/plain&amp;rev=HEAD">herds.xml</uri>
     file.
   </ti>
 </tr>
@@ -309,7 +309,7 @@ OpenOffice of which the ebuilds are completely managed by a herd called
 
 <codesample lang="sgml">
 &lt;?xml version='1.0' encoding='UTF-8'?&gt;
-&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
 &lt;pkgmetadata&gt;
   &lt;herd&gt;openoffice&lt;/herd&gt;
   &lt;longdescription&gt;
@@ -324,7 +324,7 @@ OpenOffice of which the ebuilds are completely managed by a herd called
 
 <p>
 The <c>openoffice</c> herd is defined in <path>herds.xml</path> by the
-<uri link="http://www.gentoo.org/proj/en/metastructure">Gentoo Metastructure Project</uri>:
+<uri link="https://www.gentoo.org/proj/en/metastructure">Gentoo Metastructure Project</uri>:
 </p>
 
 <note>
@@ -364,7 +364,7 @@ For the second example, we will examine the <path>metadata.xml</path> of
 
 <codesample lang="sgml">
 &lt;?xml version='1.0' encoding='UTF-8'?&gt;
-&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
 &lt;pkgmetadata&gt;
   &lt;herd&gt;tools-portage&lt;/herd&gt;
   &lt;maintainer&gt;
@@ -392,7 +392,7 @@ and contains USE flag descriptions.
 
 <codesample lang="sgml">
 &lt;?xml version="1.0" encoding="UTF-8"&gt;
-&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
 &lt;pkgmetadata&gt;
 &lt;herd&gt;gentopia&lt;/herd&gt;
 &lt;maintainer&gt;
@@ -504,7 +504,7 @@ by <uri link="https://wiki.gentoo.org/wiki/GLEP:31">GLEP
 
 <codesample lang="sgml">
     &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-    &lt;!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+    &lt;!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
     &lt;catmetadata&gt;
             &lt;longdescription lang="en"&gt;
                 The app-vim category contains plugins and syntax file

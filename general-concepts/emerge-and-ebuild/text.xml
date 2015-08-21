@@ -15,7 +15,7 @@ dependency tracking, safe installs and uninstalls and so on. <c>emerge</c> calls
 and any eclasses. The <c>${D}</c> to <c>${ROOT}</c> install is handled by <c>emerge</c>.
 </p>
 
-<todo>http://dev.gentoo.org/~g2boojum/portage.html</todo>
+<todo>https://dev.gentoo.org/~g2boojum/portage.html</todo>
 
 </body>
 </chapter>
