@@ -18,7 +18,7 @@ is conventional. Patches are best named <c>${P}-what-it-does.patch</c> (or
 description of what the patch is for. If the patch is to fix a
 specific bug, it is often useful to add in the bug number <d/> for
 example, <c>vim-7.0-cron-vars-79981.patch</c>. If the patch is pulled from
-upstream's CVS / SVN repository, it can help to include the revision
+upstream's VCS repository, it can help to include the revision
 number in the patch name as a suffix to the version part <d/>
 <c>fluxbox-0.9.12-3860-menu-backups.patch</c>.
 </p>
@@ -57,7 +57,7 @@ later. Good things to include in comments are:
     What the patch actually does. Bug numbers are good here.
   </li>
   <li>
-    Where the patch came from. Is it an upstream CVS/SVN pull,
+    Where the patch came from. Is it an upstream VCS pull,
     something from Bugzilla, something you wrote?
   </li>
   <li>
@@ -107,20 +107,16 @@ from the <c>vim</c> patch tarball:
 
 <p>
 When adding a patch to the tree be sure to check that the patch doesn't have
-CVS keywords in it that will be expanded (such as <c>$Id$</c>).  If the patch
+Git keywords in it that will be expanded (such as <c>$Id$</c>).  If the patch
 contains these, it will break manifests unless you add it to the tree
-correctly.  In the case that it does have the keywords, you should add it by
-doing:
+correctly.  In the case that it does have the keywords, you should remove them.
+Afterwards they can be added like every other file:
 </p>
 
 <pre>
-cvs add -ko files/${P}-the-cool-patch.patch
+git add files/${P}-the-cool-patch.patch
 </pre>
 
-<p>
-<c>-ko</c> disables keyword expansion for that specific file.  If it doesn't
-have keywords in it, then you can add it normally without the extra argument.
-</p>
 </body>
 </section>
 </body>
