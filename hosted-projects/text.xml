@@ -112,8 +112,9 @@ In practice, this means the following:
 
 <p>
 All hosted projects should use an appropriate open / free / libre license.
-Typically this will be the GPL v2 for software, and the Creative Commons license
-for documentation. However, reasonable exceptions can be made <d/> sometimes it
+Typically this will be the GPL v2 for software, and some version of the
+Creative Commons Attribution-ShareAlike License (CC-BY-SA-*) for documentation.
+However, reasonable exceptions can be made <d/> sometimes it
 makes more sense to use the LGPL or a *BSD license, and for application-specific
 projects going with the application's license may make more sense (the
 <c>gentoo-syntax</c> package for <c>vim</c> uses the <c>vim</c> license, for example).
