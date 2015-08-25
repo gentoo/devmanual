@@ -545,7 +545,8 @@
               <strong>Copyright (C) 2001-2015 Gentoo Foundation, Inc.</strong><br />
               <small>
                 Gentoo is a trademark of the Gentoo Foundation, Inc.
-                The text of this document is distributed under the <a href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons Attribution-ShareAlike 2.0 License</a>.
+                The text of this document is distributed under the
+                <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
                 The <a href="https://www.gentoo.org/inside-gentoo/foundation/name-logo-guidelines.html">Gentoo Name and Logo Usage Guidelines</a> apply.
               </small>
             </div>
