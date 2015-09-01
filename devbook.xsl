@@ -440,31 +440,34 @@
             <div class="row">
               <div class="site-title-buttons">
                 <div class="btn-group btn-group-sm">
-                  <a href="https://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-download"></span> <strong>Get Gentoo!</strong></a>
+                  <a href="https://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-fw fa-download"></span> <strong> Get Gentoo!</strong></a>
                   <div class="btn-group btn-group-sm">
-                    <button type="button" class="gentoo-org-sites btn" data-toggle="dropdown">
-                      <span class="glyphicon glyphicon-globe"></span> gentoo.org sites <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
+                    <a class="btn gentoo-org-sites dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+                      <span class="fa fa-fw fa-map-o"></span> <span class="hidden-xs"> gentoo.org sites </span> <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
                       <li><a href="https://www.gentoo.org/" title="Main Gentoo website"><span class="fa fa-home fa-fw"></span> gentoo.org</a></li>
-                      <li><a href="https://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text fa-fw"></span> Wiki</a></li>
+                      <li><a href="https://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text-o fa-fw"></span> Wiki</a></li>
                       <li><a href="https://bugs.gentoo.org/" title="Report issues and find common issues"><span class="fa fa-bug fa-fw"></span> Bugs</a></li>
                       <li><a href="https://forums.gentoo.org/" title="Discuss with the community"><span class="fa fa-comments-o fa-fw"></span> Forums</a></li>
                       <li><a href="https://packages.gentoo.org/" title="Find software for your Gentoo"><span class="fa fa-hdd-o fa-fw"></span> Packages</a></li>
                       <li class="divider"></li>
-                      <li><a href="https://overlays.gentoo.org/" title="Collaborate on maintaining packages"><span class="fa fa-code-fork fa-fw"></span> Overlays</a></li>
                       <li><a href="https://planet.gentoo.org/" title="Find out what's going on in the developer community"><span class="fa fa-rss fa-fw"></span> Planet</a></li>
                       <li><a href="https://archives.gentoo.org/" title="Read up on past discussions"><span class="fa fa-archive fa-fw"></span> Archives</a></li>
                       <li><a href="https://sources.gentoo.org/" title="Browse our source code"><span class="fa fa-code fa-fw"></span> Sources</a></li>
                       <li class="divider"></li>
-                      <li><a href="https://infra-status.gentoo.org/" title="Get updates on the services provided by Gentoo"><span class="fa fa-tasks fa-fw"></span> Infra Status</a></li>
+                      <li><a href="https://infra-status.gentoo.org/" title="Get updates on the services provided by Gentoo"><span class="fa fa-server fa-fw"></span> Infra Status</a></li>
                     </ul>
                   </div>
                 </div>
               </div>
               <div class="logo">
-                <img src="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/site-logo.png" alt="Gentoo Linux Logo"/>
-                <span class="site-label">Gentoo Development Guide</span>
+                <a href="/" title="Back to the homepage" class="site-logo">
+                  <object data="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/site-logo.svg" type="image/svg+xml">
+                    <img src="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/site-logo.png" alt="Gentoo Linux Logo" />
+                  </object>
+                </a>
+                <span class="site-label">Development Guide</span>
               </div>
             </div>
           </div>
@@ -523,20 +526,27 @@
       <footer>
         <div class="container">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-xs-12 col-md-offset-2 col-md-7">
             </div>
-            <div class="col-md-4">
-              <strong>Questions or comments?</strong><br />
-              Please feel free to <a href="https://www.gentoo.org/main/en/contact.xml">contact us</a>.
+            <div class="col-xs-12 col-md-3">
+              <h3 class="footerhead">Questions or comments?</h3>
+              Please feel free to <a href="https://www.gentoo.org/inside-gentoo/contact/">contact us</a>.
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12">
-              <strong>Copyright 2001-2015 Gentoo Foundation, Inc.</strong><br />
+            <div class="col-xs-2 col-sm-3 col-md-2">
+              <ul class="footerlinks three-icons">
+                <li><a href="http://twitter.com/gentoo" title="@Gentoo on Twitter"><span class="fa fa-twitter fa-fw"></span></a></li>
+                <li><a href="https://plus.google.com/+Gentoo" title="+Gentoo on Google+"><span class="fa fa-google-plus fa-fw"></span></a></li>
+                <li><a href="https://www.facebook.com/gentoo.org" title="Gentoo on Facebook"><span class="fa fa-facebook fa-fw"></span></a></li>
+              </ul>
+            </div>
+            <div class="col-xs-10 col-sm-9 col-md-10">
+              <strong>Copyright (C) 2001-2015 Gentoo Foundation, Inc.</strong><br />
               <small>
                 Gentoo is a trademark of the Gentoo Foundation, Inc.
                 The text of this document is distributed under the <a href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons Attribution-ShareAlike 2.0 License</a>.
-                The <a href="https://www.gentoo.org/main/en/name-logo.xml">Gentoo Name and Logo Usage Guidelines</a> apply.
+                The <a href="https://www.gentoo.org/inside-gentoo/foundation/name-logo-guidelines.html">Gentoo Name and Logo Usage Guidelines</a> apply.
               </small>
             </div>
           </div>
