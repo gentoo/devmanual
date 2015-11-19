@@ -857,6 +857,141 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 </body>
 </section>
 
+<section>
+<title>EAPI=6</title>
+<body>
+
+<subsection>
+<title>Bash version</title>
+<body>
+<p>Ebuilds can use features of Bash version 4.2 (was 3.2 before).</p>
+</body>
+</subsection>
+
+<subsection>
+<title>Ebuild environment</title>
+<body>
+<ul>
+	<li>
+		<p><b>Locale settings</b></p>
+		<p>It is ensured that the behaviour of case modification and collation order for ASCII characters (<c>LC_CTYPE</c> and <c>LC_COLLATE</c>) are the same as in the POSIX locale.</p>
+	</li>
+	<li>
+		<p><b><c>failglob</c> enabled</b></p>
+		<p>
+		The <c>failglob</c> option of Bash is set in global scope, so that unintentional pattern expansion will be caught as an error.
+		</p>
+	</li>
+</ul>
+</body>
+</subsection>
+
+<subsection>
+<title>Phases</title>
+<body>
+<ul>
+	<li>
+		<p><b>New <c>src_prepare</c> Phase Function</b></p>
+		<p>
+			This phase is no longer a no-op, it supports applying patches via the <c>PATCHES</c> variable and applying user patches via <c>eaply_user</c>. The default <c>src_prepare</c> looks like this:
+			<codesample lang="ebuild">
+src_prepare() {
+	if declare -p PATCHES | grep -q "^declare -a "; then
+		[[ -n ${PATCHES[@]} ]] &amp;&amp; eapply "${PATCHES[@]}"
+	else
+		[[ -n ${PATCHES} ]] &amp;&amp; eapply ${PATCHES}
+	fi
+	eapply_user
+}
+			</codesample>
+		</p>
+	</li>
+	<li>
+		<p><b>New <c>src_install</c> Phase Function</b></p>
+		<p>
+			This phase uses the new <c>einstalldocs</c> function for installation of documentation. The default <c>src_install</c> looks like this:
+			<codesample lang="ebuild">
+src_install() {
+	if [[ -f Makefile ]] || [[ -f GNUmakefile ]] || [[ -f makefile ]]; then
+		emake DESTDIR="${D}" install
+	fi
+	einstalldocs
+}
+			</codesample>
+		</p>
+	</li>
+</ul>
+</body>
+</subsection>
+
+<subsection>
+<title>Helpers</title>
+<body>
+<ul>
+	<li>
+		<p><b><c>einstall</c> banned</b></p>
+		<p>
+			The <c>einstall</c> helper has been banned with <c>EAPI=6</c>.
+		</p>
+	</li>
+	<li>
+		<p><b><c>nonfatal die</c></b></p>
+		<p>
+			When <c>die</c> or <c>assert</c> are called under the <c>nonfatal</c> command and with the <c>-n</c> option, they will not abort the build process but return with an error.
+		</p>
+	</li>
+	<li>
+		<p><b><c>eapply</c> support</b></p>
+		<p>
+			The <c>eapply</c> command is a simplified substitute for <c>epatch</c> (from <c>eutils.eclass</c>), implemented in the package manager. The patches from its file or directory arguments are applied using patch <c>-p1</c>.
+		</p>
+	</li>
+	<li>
+		<p><b><c>eapply_user</c> support</b></p>
+		<p>
+			The <c>eapply_user</c> command permits the package manager to apply user-provided patches. It must be called from every <c>src_prepare</c> function.
+		</p>
+	</li>
+	<li>
+		<p><b><c>econf</c> adds <c>--docdir</c> and <c>--htmldir</c></b></p>
+		<p>
+			Options <c>--docdir</c> and <c>--htmldir</c> are passed to <c>configure</c>, in addition to the existing options.
+		</p>
+	</li>
+	<li>
+		<p><b><c>in_iuse</c> support</b></p>
+		<p>
+			The <c>in_iuse</c> function returns <c>true</c> if the <c>USE</c> flag given as its argument is available in the ebuild for <c>USE</c> queries.
+		</p>
+	</li>
+	<li>
+		<p><b><c>unpack</c> changes</b></p>
+		<ul>
+			<li><p><c>unpack</c> supports absolute and relative paths.</p></li>
+			<li><p><c>unpack</c> supports <c>.txz</c> (xz compressed tarball).</p></li>
+			<li><p><c>unpack</c> matches filename extensions case-insensitively.</p></li>
+		</ul>
+	</li>
+	<li>
+		<p><b><c>einstalldocs</c> support</b></p>
+		<p>
+			The <c>einstalldocs</c> function will in-stall the files specified by the <c>DOCS</c> variable (or a default set of files if <c>DOCS</c> is unset) and by the <c>HTML_DOCS</c> variable.
+		</p>
+	</li>
+	<li>
+		<p><b><c>get_libdir</c> support</b></p>
+		<p>
+			The <c>get_libdir</c> command outputs the <c>lib*</c> directory basename suitable for the current ABI.
+		</p>
+	</li>
+</ul>
+</body>
+</subsection>
+
+
+</body>
+</section>
+
 </body>
 </chapter>
 </guide>
