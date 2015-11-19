@@ -806,7 +806,8 @@ RDEPEND="dev-libs/foo:2=
 	<li>
 		<p><b>New doheader helper function</b></p>
 		<p>
-		Installs the given header files into <c>/usr/include/</c>, by default with file mode <c>0644</c>. This can be overridden by setting <c>INSOPTIONS</c> with the <c>insopts</c> function.
+		Installs the given header files into <c>/usr/include/</c>. If option
+		<c>-r</c> is specified, descends recursively into any directories given.
 		</p>
 	</li>
 	<li>
