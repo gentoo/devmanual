@@ -875,12 +875,12 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 <ul>
 	<li>
 		<p><b>Locale settings</b></p>
-		<p>It is ensured that the behaviour of case modification and collation order for ASCII characters (<c>LC_CTYPE</c> and <c>LC_COLLATE</c>) are the same as in the POSIX locale.</p>
+		<p>With <c>EAPI=6</c> both <c>LC_CTYPE</c> and <c>LC_COLLATE</c> are set to <c>C</c>.</p>
 	</li>
 	<li>
 		<p><b><c>failglob</c> enabled</b></p>
 		<p>
-		The <c>failglob</c> option of Bash is set in global scope, so that unintentional pattern expansion will be caught as an error.
+			For <c>EAPI=6</c>, the <c>failglob</c> option of bash is set in the global scope of ebuilds. If set, failed pattern matches during filename expansion result in an error when the ebuild is being sourced.
 		</p>
 	</li>
 </ul>
@@ -892,9 +892,9 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 <body>
 <ul>
 	<li>
-		<p><b>New <c>src_prepare</c> Phase Function</b></p>
+		<p><b>Update default implementation of <c>src_prepare</c></b></p>
 		<p>
-			This phase is no longer a no-op, it supports applying patches via the <c>PATCHES</c> variable and applying user patches via <c>eaply_user</c>. The default <c>src_prepare</c> looks like this:
+			This phase is no longer a no-op, it supports applying patches via the <c>PATCHES</c> variable and applying user patches via <c>eapply_user</c>. The default <c>src_prepare</c> looks like this:
 			<codesample lang="ebuild">
 src_prepare() {
 	if declare -p PATCHES | grep -q "^declare -a "; then
@@ -944,13 +944,14 @@ src_install() {
 	<li>
 		<p><b><c>eapply</c> support</b></p>
 		<p>
-			The <c>eapply</c> command is a simplified substitute for <c>epatch</c> (from <c>eutils.eclass</c>), implemented in the package manager. The patches from its file or directory arguments are applied using patch <c>-p1</c>.
+			The <c>eapply</c> command is a simplified substitute for <c>epatch</c> (from <c>eutils.eclass</c>), implemented in the package manager. The patches from its file or directory arguments are applied using patch <c>-p1</c>, but it accepts <c>patch(1)</c> options from GNU patch to override default behavior.
 		</p>
 	</li>
 	<li>
 		<p><b><c>eapply_user</c> support</b></p>
 		<p>
 			The <c>eapply_user</c> command permits the package manager to apply user-provided patches. It must be called from every <c>src_prepare</c> function.
+			<note><c>eapply_user</c> doesn't need to be called explicitly when default <c>src_prepare</c> is called.</note>
 		</p>
 	</li>
 	<li>
@@ -962,13 +963,13 @@ src_install() {
 	<li>
 		<p><b><c>in_iuse</c> support</b></p>
 		<p>
-			The <c>in_iuse</c> function returns <c>true</c> if the <c>USE</c> flag given as its argument is available in the ebuild for <c>USE</c> queries.
+			The <c>in_iuse</c> function returns <c>true</c> if the given parameter is available in the ebuilds <c>USE</c>.
 		</p>
 	</li>
 	<li>
 		<p><b><c>unpack</c> changes</b></p>
 		<ul>
-			<li><p><c>unpack</c> supports absolute and relative paths.</p></li>
+			<li><p><c>unpack</c> supports elative paths without leading <c>./</c> (<c>unpack foo/bar.tar.gz</c> is valid as relative path).</p></li>
 			<li><p><c>unpack</c> supports <c>.txz</c> (xz compressed tarball).</p></li>
 			<li><p><c>unpack</c> matches filename extensions case-insensitively.</p></li>
 		</ul>
@@ -976,7 +977,7 @@ src_install() {
 	<li>
 		<p><b><c>einstalldocs</c> support</b></p>
 		<p>
-			The <c>einstalldocs</c> function will in-stall the files specified by the <c>DOCS</c> variable (or a default set of files if <c>DOCS</c> is unset) and by the <c>HTML_DOCS</c> variable.
+			The <c>einstalldocs</c> function will install the files specified by the <c>DOCS</c> variable (or a default set of files if <c>DOCS</c> is unset) and by the <c>HTML_DOCS</c> variable.
 		</p>
 	</li>
 	<li>
