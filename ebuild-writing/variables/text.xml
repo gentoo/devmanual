@@ -130,7 +130,7 @@ The following variables may or must be defined by every ebuild.
   <tr>
     <ti><c>DESCRIPTION</c></ti>
     <ti>
-    A short (less than 80 characters) description of the package's
+    A short (not more than 80 characters) description of the package's
     purpose. Mandatory.
     </ti>
   </tr>
