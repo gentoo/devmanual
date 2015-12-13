@@ -112,16 +112,14 @@ if you hit an error.
 </note>
 
 <p>
-  Sometimes this will end up installing a few things into strange
-  places. If and only if this is the case, the <c>einstall</c>
-  function can be used. It is usually necessary to include additional
-  <c>dodoc</c> statements for the <c>README</c>, <c>ChangeLog</c>, etc
-  in these cases:
+Usually the package's build system will not install the <c>README</c>,
+<c>ChangeLog</c>, etc. files, so it is necessary to include additional
+<c>dodoc</c> statements for them:
 </p>
 
 <codesample lang="ebuild">
-	einstall
-	dodoc README CHANGES
+    emake DESTDIR="${D}" install
+    dodoc README CHANGES
 </codesample>
 
 <note>
