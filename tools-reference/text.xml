@@ -23,7 +23,6 @@ ebuilds.
 <include href="cat/"/>
 <include href="cut/"/>
 <include href="diff-and-patch/"/>
-<include href="echangelog/"/>
 <include href="echo/"/>
 <include href="ekeyword/"/>
 <include href="false-and-true/"/>
