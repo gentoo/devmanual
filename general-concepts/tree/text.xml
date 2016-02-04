@@ -17,7 +17,6 @@ The basic layout of the portage tree is as follows:
     Package directories for example <c>app-editors/vim</c>
     <ul>
       <li>Package metadata, for example <c>app-editors/vim/metadata.xml</c></li>
-      <li>Package changelog, for example <c>app-editors/vim/ChangeLog</c></li>
       <li>Package Manifest, for example <c>app-editors/vim/Manifest</c></li>
       <li>
       Ebuilds, for example <c>app-editors/vim/vim-6.3.068.ebuild</c>,
