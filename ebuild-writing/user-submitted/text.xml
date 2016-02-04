@@ -16,14 +16,16 @@ the ebuild meets all Gentoo Linux development standards.
 The user-submitted ebuild must not contain custom headers like this:
 </p>
 
-<pre caption="A custom header that should be transferred to the ChangeLog">
+<pre caption="A custom header that should be included in the commit message instead">
 # Ebuild updated by: me &lt;me@example.com&gt;
 </pre>
 
 <p>
-Such information should be added to the <c>ChangeLog</c> instead.
-The first <c>ChangeLog</c> entry should always credit the user who
-submitted the ebuild, with their full name and e-mail address.
+Such information should be included in the git commit message instead.
+Note that ebuilds received in the form of git patches or pull requests
+will have the user as the commit author by default, in which case
+including the user information in the commit message explicitly
+may not be necessary.
 </p>
 
 <p>
