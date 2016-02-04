@@ -42,22 +42,9 @@ above 20KB) which should be distributed as tarballs via the
 <uri link="::general-concepts/mirrors/#suitable-download-hosts">Gentoo mirror system</uri>
 so that people do not waste excessive amounts of bandwidth and hard drive
 space. Also, you should not add binary (non-ASCII) files to the
-Portage CVS tree. If you need to do this in another CVS tree, for
-example, if you need to add a small PNG graphic for whatever reason,
-be sure to add it to CVS by using the <c>-kb</c> option, like so:
-</p>
-
-<pre caption="Adding binary files to CVS">
-# <i>cvs add -kb myphoto.png</i>
-</pre>
-
-<p>
-The <c>-kb</c> option tells CVS that <path>myphoto.png</path> is a binary
-file and should be treated specially.  For example, merging the 
-differences between two different versions of this file should not be 
-allowed to happen, for obvious reasons.  Also, speaking of merging 
+git tree. Also, speaking of merging
 changes, any patches you add to Portage should generally <e>not</e> be 
-compressed.  This will allow CVS to merge changes and correctly inform 
+compressed.  This will allow git to merge changes and correctly inform
 developers of conflicts.
 </p>
 
@@ -149,7 +136,7 @@ simply, <path>1.0-gentoo.diff</path>.  Also note that the
 <path>gentoo</path> extension informs people that this patch was created 
 by us, the Gentoo Linux developers, rather than having been grabbed from a 
 mailing list or somewhere else. Again, you should not compress these 
-patches because CVS does not play well with binary files.
+patches.
 </p>
 
 <p>
