@@ -59,11 +59,11 @@ The basic layout of the portage tree is as follows:
   <li>Scripts directory, <c>scripts/</c></li>
   <li>
   Distfiles directory, <c>distfiles/</c>. This is not included in the main
-  CVS tree, but it will be found on most user systems.
+  git tree, but it will be found on most user systems.
   </li>
   <li>
   Packages directory, <c>packages</c>. Again, this is found on user systems but not
-  in the main CVS tree.
+  in the main git tree.
   </li>
 </ul>
 </body>
