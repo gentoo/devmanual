@@ -275,14 +275,14 @@ available.
 
 <p>
 If there are no new dependencies, do not remove keywords if your
-commit fails with repoman - please try a full <c>cvs update</c> and if
+commit fails with repoman - please try a full <c>git pull</c> and if
 you still have problems, then commit with <c>repoman -I</c> and file a
-bug to the broken architecture, noting it in your CVS commit message.
+bug to the broken architecture, noting it in your git commit message.
 </p>
 
 <warn>
 When committing, make sure that you reference any bugs in the
-ChangeLog as well as the CVS message. Failing to do so is considered
+commit message. Failing to do so is considered
 to be in very poor taste and may result in disciplinary action.
 </warn>
 
