@@ -428,20 +428,34 @@ When removing packages follow these steps:
   <li>Send last rites to gentoo-dev-announce and gentoo-dev</li>
   <li>Mask the package</li>
   <li>Wait 30 days (or more)</li>
-  <li>Remove from CVS unless the reason for removal has been fixed</li>
+  <li>Remove from the git tree unless the reason for removal has been fixed</li>
   <li>Remove package.mask entry</li>
   <li>Close open bugs as WONTFIX</li>
 </ol> 
 
 <p>
-In order to remove a package completely from CVS, delete any files from the
-directory and commit this, CVS will take care of removing empty directories
-itself.
+Here is a list of commands that will delete <path>dev-util/pmk</path>
+from the tree:
 </p>
 
-<pre caption="Removing a package from CVS"><comment>#</comment> <keyword>cd</keyword> app-admin
-<comment>#</comment> <keyword>cvs</keyword> rm -Rf scotty
-<comment>#</comment> <keyword>cvs</keyword> ci -m "app-admin/scotty removal (pending 21st July 2006), see #77501 for reference." scotty</pre>
+<pre caption="Removing a package from git">
+<comment>#</comment> <keyword>cd</keyword> dev-util
+<comment>#</comment> <keyword>git</keyword> rm -rf pmk
+<comment>#</comment> <keyword>git</keyword> commit --gpg-sign</pre>
+
+<p>
+An example commit message is shown below:
+</p>
+
+<pre caption="Package removal commit message">
+commit e0bbcf8291501dc7de6b4b120d4372061367dd7a
+Author: Michael Palimaka &lt;kensington@gentoo.org&gt;
+Date:   Fri Jan 29 07:11:01 2016 +1100
+
+  dev-util/pmk: remove last-rited package
+
+  Gentoo-bug: 541522
+</pre>
 
 </body>
 </section>
