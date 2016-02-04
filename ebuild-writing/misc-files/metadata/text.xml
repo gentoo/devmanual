@@ -532,7 +532,21 @@ is currently:
 <pre>
 xmllint --noout --valid metadata.xml
 glep31check metadata.xml
-cvs commit -m "Adding category metadata.xml for my-category" metadata.xml
+git add metadata.xml
+git commit --gpg-sign
+</pre>
+
+<p>
+The commit message should be formatted properly.
+A sample commit is shown below:
+</p>
+
+<pre>
+commit db359439bcd52f5a7f20d2332ab62feb16657504
+Author: Alexis Ballier &lt;aballier@gentoo.org&gt;
+Date:   Tue Sep 22 10:47:49 2015 +0200
+
+  dev-ros: Add metadata.xml for the category.
 </pre>
 
 </body>
