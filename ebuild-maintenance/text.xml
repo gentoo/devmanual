@@ -96,7 +96,7 @@ work on those architectures.
 </subsection>
 
 <subsection>
-<title>CVS Commit Policy</title>
+<title>Git Commit Policy</title>
 <body>
 
 <ul>
@@ -105,15 +105,18 @@ work on those architectures.
 <li>Always test that <path>package.mask</path> is okay by doing 
 <c>emerge --pretend mypkg</c> before you commit and check 
 that it doesn't contain any conflicts.</li>
-<li>Always update the <path>ChangeLog</path> before you commit.</li>
-<li>Always commit the updated <path>package.mask</path> before 
-the updated package, in case conflicts occur while you commit 
-<path>package.mask</path>.</li>
+<li>Always commit the updated <path>package.mask</path> before
+the updated package.</li>
 <li>Always do atomic commits; if you commit a package with a new license, 
 or that is masked, then first commit the revised <path>package.mask</path> and/or license, 
 then commit the ebuild, <path>ChangeLog</path>, patches
 and <uri link="::ebuild-writing/misc-files/metadata">metadata.xml</uri> all in <b>one</b> go
-to avoid breaking users' installations.</li>
+.</li>
+<note> Although the set of changes in a single git commit is atomic, and
+combining <path>package.mask</path>/license changes with ebuild changes in a
+single commit wouldn't break atomicity, it is not currently possible to do so
+using <c>repoman commit</c>.</note>
+<!-- See: https://bugs.gentoo.org/show_bug.cgi?id=390651 -->
 </ul>
 
 </body>
