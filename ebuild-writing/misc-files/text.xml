@@ -18,6 +18,5 @@ This section contains some notes on various miscellaneous files.
 </chapter>
 
 <include href="metadata/"/>
-<include href="changelog/"/>
 <include href="patches/"/>
 </guide>
