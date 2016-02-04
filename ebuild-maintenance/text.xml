@@ -290,55 +290,81 @@ to be in very poor taste and may result in disciplinary action.
 </section>
 
 <section>
-<title>Moving ebuilds</title>
+<title>Moving a package</title>
 <body>
 
 <p>
-Moving ebuilds is a two-step process:
-</p>
-
-<p>
-Firstly, you need to move the ebuild in CVS. To do this, you should
-copy the ebuild to its new location and commit that as you would with
-a <uri link="#adding-a-new-ebuild">new ebuild</uri>.
-</p>
-
-<p>
-After this, you should change any ebuilds which <c>DEPEND</c> on the
-old ebuild to depend on the new one. After this, should add an entry to the
-latest file in <path>profiles/updates/</path> in the Portage tree in the in
-the following format:
+Moving a package in the tree requires several operations. Firstly,
+the package directory needs to be moved to the correct category
+using <c>git mv</c>. After this, a new entry needs to be added to
+the latest file in <path>profiles/updates/</path> in the
+following format:
 </p>
 
 <pre caption="Adding an entry to updates">
-move net-misc/fwbuilder net-firewall/fwbuilder
+move old-category/package-name new-category/package-name
 </pre>
 
 <p>
-This example would transparently move <path>net-misc/fwbuilder</path> to
-<path>net-firewall/fwbuilder</path> if users have it installed. This
-way, users would now automatically receive updates
-for <path>net-firewall/fwbuilder</path> when they are available.
+Following the update entry, ebuilds that have a
+<uri link="::general-concepts/dependencies">dependency</uri>
+to this package (in other words, the reverse dependencies of
+the package to be moved) need to be updated properly.
 </p>
 
 <p>
-Once this step is concluded, you are allowed to remove the old package.
-Simply issue a <c>cvs remove -Rf $PN</c> in the package category and commit
-the changes afterwards with a meaningful commit message. Don't forget to update
-entries in files such as profiles/package.mask to reflect the new category. Finally
-remember to change the title to open bugs related to this package if needed.
+Next is checking the files under <path>profiles/</path> such as
+<path>profiles/package.mask</path> and update them to reflect the ebuild
+move. Various eclasses automatically provide some of the dependencies upon
+inherit, so the files under <path>eclass/</path> should be checked and updated
+properly as well. Lastly, the titles of the open bugs related to the package
+should be updated.
 </p>
 
-<pre caption="Removing a package">
-net-misc # cvs rm -Rf fwbuilder
-cvs remove: use `cvs commit' to remove these files permanently
-net-misc # cvs ci -m "Moving net-misc/fwbuilder to net-firewall/fwbuilder."
-</pre>
+<p>
+Here is an example where the package
+<path>net-misc/fwbuilder</path> is transparently moved to
+<path>net-firewall/fwbuilder</path>:
+</p>
 
-<note>
-CVS cannot destroy directories: it will simply not re-create them if
-they are blank, providing you use CVS with the <c>-P</c> flag.
-</note>
+<ol>
+  <li>Issue <c>git mv net-misc/fwbuilder net-firewall/fwbuilder</c></li>
+  <li>
+    <p>
+      Add the following entry to the latest file in
+      <path>profile/updates/</path>:
+    </p>
+    <p><c>move net-misc/fwbuilder net-firewall/fwbuilder</c></p>
+  </li>
+  <li>Update the reverse dependencies of the package</li>
+  <li>
+    Update <path>profiles/package.mask</path> and other related files under
+    <path>profiles/</path>
+  </li>
+  <li>Check the eclasses that may be referencing the package</li>
+  <li>
+    Stage all the changed files using <c>git add</c>. For example: <c>git add
+    profiles/package.mask</c>
+  </li>
+  <li>
+    Commit all the changes in one commit using: <c>git commit --gpg-sign</c>
+  </li>
+  <li>Update any open bugs related to the package</li>
+</ol>
+
+<p>
+It is very important to commit all the changes in a single commit to ensure
+that no breakage occurs. The commit message should follow a format similar
+to the following:
+</p>
+
+<pre>
+commit d391643289097344a0b18ab2665bb26198a0e3a1
+Author: Guilherme Amadio &lt;amadio@gentoo.org&gt;
+Date:   Tue Nov 3 20:26:52 2015 +0100
+
+  media-fonts/nanumfont: renamed to media-fonts/nanum
+</pre>
 
 </body>
 </section>
