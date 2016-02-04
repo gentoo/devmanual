@@ -62,8 +62,8 @@ examples.
 </p>
 
 <p>
-When committing to CVS, all developers should use <c>repoman commit</c> 
-instead of <c>cvs commit</c> to submit their ebuilds.  Before committing, 
+When committing to git, all developers should use <c>repoman commit</c>
+instead of <c>git commit</c> to submit their ebuilds.  Before committing,
 please run <c>repoman full</c> to make sure you didn't forget something.
 </p>
 
