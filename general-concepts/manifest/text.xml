@@ -18,8 +18,8 @@ The <c>Manifest</c> may also be digitally signed.
 
 <p>
 To generate the <c>Manifest</c>, use <c>ebuild foo.ebuild manifest</c>. When
-committing, the <c>Manifest</c> file must be regenerated to handle any CVS keyword
-expansion changes <d/> <c>repoman</c> will do this automatically.
+committing, the <c>Manifest</c> file must be regenerated to handle any
+changes <d/> <c>repoman</c> will do this automatically.
 </p>
 </body>
 </section>
