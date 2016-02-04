@@ -55,7 +55,7 @@ On rare occasions you may need to replace a file that is already mirrored.  In t
 follows:
 <ol>
   <li>Put a copy of the new distfile on dev.gentoo.org into /space/distfiles-local</li>
-  <li>commit the new manifest to CVS</li>
+  <li>commit the new manifest to the git tree</li>
   <li>wait</li>
 </ol>
 After a few hours a cron job on dev.gentoo.org will fetch the file and replace the version on the
