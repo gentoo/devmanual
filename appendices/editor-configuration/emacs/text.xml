@@ -47,8 +47,8 @@ automatically check for the existence of it and ask you to add one.
 
 <p>
 Other useful settings can be disabled backup files
-(by <c>(setq make-backup-files nil)</c> and
-<c>(setq vc-cvs-stay-local nil)</c>), so you don't clutter CVS
+(by <c>(setq make-backup-files nil)</c>, so you don't clutter the git
+repository
 directories and confuse repoman with it (by adding unnecessary entries
 into a Manifest file e.g.). Emacs can even contact the outside world
 by using the X servers clipboard abilities when yanking, which is
