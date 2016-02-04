@@ -396,8 +396,8 @@ entry which may be affected by your change.
 
 <p>
 When removing an ebuild make sure that no dependencies in Portage are broken
-due to the removal - additionally, your CVS commit message should explain
-clearly why the ebuild is being removed from CVS.
+due to the removal - additionally, your git commit message should explain
+clearly why the ebuild is being removed from the git repository.
 </p>
 
 <p>
