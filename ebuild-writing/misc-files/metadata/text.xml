@@ -531,7 +531,6 @@ is currently:
 
 <pre>
 xmllint --noout --valid metadata.xml
-glep31check metadata.xml
 git add metadata.xml
 git commit --gpg-sign
 </pre>
