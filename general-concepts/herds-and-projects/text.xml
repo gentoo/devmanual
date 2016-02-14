@@ -1,9 +1,105 @@
 <?xml version="1.0"?>
 <guide self="general-concepts/herds-and-projects/">
 <chapter>
-<title>Herds and Projects</title>
+<title>Projects and Herds</title>
 
 <body>
+
+<section>
+<title>Projects</title>
+<body>
+
+<p>
+The management structure of Gentoo, called the "metastructure", is
+defined in
+<uri link="https://wiki.gentoo.org/wiki/GLEP:39#Specification">
+GLEP 39</uri>. In Gentoo, a project is a group of developers working
+towards a common goal in various different areas. For example, the
+<uri link="https://wiki.gentoo.org/wiki/Project:Devmanual">
+Devmanual</uri> project focuses on maintaining this document. Many
+others are responsible for maintaining packages. Projects spanning a
+large area of topics can have multiple subprojects specializing in
+particular fields within the domain of the parent project and thus
+form a project hierarchy.
+</p>
+
+<p>
+A package maintained by a project needs to have the
+project explicitly listed as a maintainer in its
+<uri link="::ebuild-writing/misc-files/metadata">metadata.xml</uri>.
+The full listing of all the projects can be found on
+<uri link="https://api.gentoo.org/metastructure/projects.xml">
+api.gentoo.org</uri> or on the
+<uri link="https://wiki.gentoo.org/wiki/Project:Gentoo">wiki</uri>.
+</p>
+
+<subsection>
+<title>Starting New Projects</title>
+<body>
+
+<p>
+According to the metastructure any developer may create a new
+project. There are two procedures involved in starting a new project:
+
+<ol>
+  <li>
+    Create a new project page <uri
+    link="https://wiki.gentoo.org/wiki/Gentoo_Wiki:Developer_Central/Project_pages">
+    through the wiki</uri>.
+  </li>
+  <li>
+    Post a Request For Comments (RFC) email to the gentoo-dev
+    mailing list.
+  </li>
+</ol>
+
+There is no approval required for the RFC and negative comments do not
+block a developer from creating a project. Competing projects are
+allowed to co-exist in Gentoo; existence of another project with
+similar goals do not block another developer from starting a new
+project with the same goals.
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>Joining and Leaving a Project</title>
+<body>
+
+<p>
+Members of a project are managed through the project's page on the
+Gentoo Wiki. Each page has a "Project" template in its source which
+lists the members of the project. Simply modifying the list is
+sufficient for adding or removing a developer. Note that different
+projects have different requirements and procedures for recruiting
+developers, which may require prior arrangements to be made before
+modifying the member list.
+</p>
+
+<p>
+Developers should remember to add themselves to the alias by editing
+<c><path>/var/mail/alias/misc/&lt;alias name&gt;</path></c> on
+dev.gentoo.org. For example, the alias for the Devmanual project is
+located at <c>/var/mail/alias/misc/devmanual</c>, which corresponds to
+the project's email address <c>devmanual@gentoo.org</c>.
+</p>
+
+</body>
+</subsection>
+
+</body>
+</section>
+
+<section>
+<title>Herds</title>
+<body>
+
+<warning>
+Herds have been declared obsolete as per the Gentoo Council's <uri
+link="https://projects.gentoo.org/council/meeting-logs/20160110-summary.txt">
+decision on January 10, 2016</uri>. The following section is preserved
+for historical purposes.
+</warning>
 
 <p>
 A <e>herd</e> is a collection of packages with an associated set of maintainers.
@@ -25,6 +121,9 @@ Sometimes herd and project names overlap <d/> for example, the <c>sparc</c> proj
 has an associated <c>sparc</c> herd which maintains sparc-specific packages (such
 as the <c>silo</c> bootloader). This is <e>not</e> always the case.
 </p>
+
+</body>
+</section>
 
 </body>
 </chapter>
