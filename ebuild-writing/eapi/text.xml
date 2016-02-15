@@ -875,7 +875,11 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 <ul>
 	<li>
 		<p><b>Locale settings</b></p>
-		<p>With <c>EAPI=6</c> both <c>LC_CTYPE</c> and <c>LC_COLLATE</c> are set to <c>C</c>.</p>
+		<p>
+			Behaviour of case modification and collation order (<c>LC_CTYPE</c>
+			and <c>LC_COLLATE</c>) are guaranteed to be the same as in the
+			C locale, as far as characters in the ASCII range are concerned.
+		</p>
 	</li>
 	<li>
 		<p><b><c>failglob</c> enabled</b></p>
