@@ -10,16 +10,7 @@ package or category.
 </p>
 
 <section>
-<title>Package Metadata</title>
-<body>
-<p>
-For packages, <c>metadata.xml</c> can specify a long description and
-maintainer information. If a long description in any language is
-provided, an English long description must be present. A typical
-example might look like:
-</p>
-
-<subsection>
+<title>Syntax</title>
 <body>
 
 <p>
@@ -39,13 +30,10 @@ A <path>metadata.xml</path> file can contain a number of tags:
     This is the root element of the <path>metadata.xml</path> file for
     packages. It has no attributes. The following subtags are
     allowed:
-    <brite>&lt;herd&gt;</brite>,
     <brite>&lt;maintainer&gt;</brite>,
     <brite>&lt;longdescription&gt;</brite>,
     <brite>&lt;use&gt;</brite>, and
     <brite>&lt;upstream&gt;</brite>.
-    There should be at least one <brite>&lt;herd&gt;</brite> or
-    <brite>&lt;maintainer&gt;</brite> subtag.
   </ti>
 </tr>
 <tr>
@@ -62,26 +50,16 @@ A <path>metadata.xml</path> file can contain a number of tags:
 </tr>
 <tr>
   <ti>
-    <brite>&lt;herd&gt;</brite>
-  </ti>
-  <ti>
-    If a package is maintained by one or more herds, names of these herds
-    can be specified with the <brite>&lt;herd&gt;</brite> tag. The names
-    used in this tag must be the same as specified in the <uri 
-    link="https://sources.gentoo.org/viewcvs.py/*checkout*/gentoo/xml/htdocs/proj/en/metastructure/herds/herds.xml?content-type=text/plain&amp;rev=HEAD">herds.xml</uri>
-    file.
-  </ti>
-</tr>
-<tr>
-  <ti>
     <brite>&lt;maintainer&gt;</brite>
   </ti>
   <ti>
-    Besides being part of a herd, a package can also be maintained directly. 
-    The maintainers of a package can be specified with the 
-    <brite>&lt;maintainer&gt;</brite> tag. This tag has one required subtag: 
+    This tag specifies the persons and/or projects responsible for
+    the maintenance of a package. The <c>type</c> attribute must
+    be specified and can be either <c>"person"</c> or
+    <c>"project"</c>. There is one required subtag:
     <brite>&lt;email&gt;</brite>. It has two optional subtags:
-    <brite>&lt;name&gt;</brite>, and <brite>&lt;description&gt;</brite>.
+    <brite>&lt;name&gt;</brite> and
+    <brite>&lt;description&gt;</brite>.
   </ti>
 </tr>
 <tr>
@@ -207,8 +185,7 @@ A <path>metadata.xml</path> file can contain a number of tags:
 </table>
 
 <p>
-There are also some attributes that can be used with these tags. They are all
-optional:
+There are also some attributes that can be used with these tags:
 </p>
 
 <table>
@@ -235,7 +212,7 @@ optional:
 <tr>
   <ti>restrict</ti>
   <ti>
-    <brite>&lt;herd&gt;</brite>, <brite>&lt;maintainer&gt;</brite>, 
+    <brite>&lt;maintainer&gt;</brite>,
     <brite>&lt;longdescription&gt;</brite>, <brite>&lt;flag&gt;</brite>
   </ti>
   <ti>
@@ -244,12 +221,7 @@ optional:
     without this attribute must also exist. That tag without the restrict 
     attribute will serve as the default. The format of the restrict attribute 
     is that of the DEPEND flag, except that "&lt;" and 
-    "&gt;" need to be specified by &amp;lt; and &amp;gt;.<br />
-    <br />
-    For example, in the <c>sys-libs/db</c> package, 
-    <c>restrict="&amp;gt;=sys-libs/db-3.2.9-r5"</c>  on the
-    <brite>maintainer</brite> tag shows that I'm currently maintaining all
-    versions greater then 3.2.9-r5.
+    "&gt;" need to be specified by "&amp;lt;" and "&amp;gt;".
   </ti>
 </tr>
 <tr>
@@ -282,212 +254,298 @@ optional:
     <brite>&lt;remote-id&gt;</brite>
   </ti>
   <ti>
-    A string identifying the type of upstream source. A list of valid strings are kept in metadata.dtd.
+    A string identifying the type of upstream source. A list of valid strings are kept in
+    <uri link="https://www.gentoo.org/dtd/metadata.dtd">metadata.dtd</uri>.
     Developers should email the gentoo-dev mailing list before using a new type value. 
+  </ti>
+</tr>
+<tr>
+  <ti>type</ti>
+  <ti>
+    <brite>&lt;maintainer&gt;</brite>
+  </ti>
+  <ti>
+    Defines the type of the maintainer for a package. There are only
+    two valid values: <c>"person"</c> and <c>"project"</c>. The latter
+    denotes an official
+    <uri link="::general-concepts/herds-and-projects">
+    Gentoo project</uri>.
   </ti>
 </tr>
 
 </table>
 
 </body>
-</subsection>
-
-</body>
 </section>
-
 <section>
-<title>Metadata Examples</title>
+<title>Package Metadata</title>
+<body>
+<p>
+All packages <b>must</b> include a <c>metadata.xml</c> file which
+provides information about package description, maintainers, local USE
+flags, upstream etc.
+</p>
+
+<p>
+For developers' convenience, a skeleton file is provided in the
+Gentoo tree with the name
+<uri link="https://gitweb.gentoo.org/repo/gentoo.git/tree/skel.metadata.xml">
+skel.metadata.xml</uri>. The metadata file can also be created
+using the <c>app-portage/metagen</c> tool.
+</p>
+
+<p>
+Commits of package metadata files are handled by <c>repoman</c>. In
+order for metadata checks to be performed, <c>dev-libs/libxml2</c>
+must be installed on the system.
+</p>
+
+<p>
+Unless specified otherwise, the maintainer who is listed in the
+metadata first shall be the assignee for the bugs for that package as
+per <uri link="https://wiki.gentoo.org/wiki/GLEP:67#Bug_assignment">
+GLEP 67</uri>.
+</p>
+
 <subsection>
-<title>First Example</title>
+<title>Package Metadata Examples</title>
 <body>
 
 <p>
-In this first example we provide you with the <path>metadata.xml</path> for 
-OpenOffice of which the ebuilds are completely managed by a herd called
-<c>openoffice</c>:
+In the following sections, various examples of metadata.xml are
+provided. These examples are based on actual package metadata files to
+keep things as realistic as possible. However, they may not include
+these files verbatim and should be taken as hypothetical examples.
 </p>
 
-<codesample lang="sgml">
-&lt;?xml version='1.0' encoding='UTF-8'?&gt;
-&lt;!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
-&lt;pkgmetadata&gt;
-  &lt;herd&gt;openoffice&lt;/herd&gt;
-  &lt;longdescription&gt;
-    OpenOffice is the  opensource version of staroffice.
-    This ebuild allows you to compile it yourself. Unfortunately this
-    compilation can take up to a day depending on the speed of your
-    computer. It will however make a snappier openoffice than the binary
-    version.
-  &lt;/longdescription&gt;
-&lt;/pkgmetadata&gt;
-</codesample>
-
-<p>
-The <c>openoffice</c> herd is defined in <path>herds.xml</path> by the
-<uri link="https://www.gentoo.org/proj/en/metastructure">Gentoo Metastructure Project</uri>:
-</p>
-
-<note>
-This example may be outdated when you read it. It's just an example!
-</note>
-
-<codesample lang="sgml">
-&lt;herd&gt;
-  &lt;name&gt;openoffice&lt;/name&gt;
-  &lt;email&gt;openoffice@gentoo.org&lt;/email&gt;
-  &lt;description&gt;Openoffice related packages&lt;/description&gt;
-  &lt;maintainer&gt;&lt;email&gt;pauldv@gentoo.org&lt;/email&gt;&lt;/maintainer&gt;
-  &lt;maintainer&gt;&lt;email&gt;suka@gentoo.org&lt;/email&gt;&lt;/maintainer&gt;
-&lt;/herd&gt;
-</codesample>
-
-<p>
-If you want to add (or remove) yourself from a herd, edit <path>herds.xml</path>
-located in <path>[gentoo]/xml/htdocs/proj/en/metastructure/herds</path> in Gentoo's CVS repository. Make sure you
-know the e-mail alias the herd listens to (for instance the "sound" herd has
-<mail link="sound@gentoo.org">sound@gentoo.org</mail>) and add yourself to the
-alias (by editing <path>/var/mail/alias/misc/&lt;alias name&gt;</path> on 
-dev.gentoo.org).
-</p>
-
-</body>
-</subsection>
-<subsection>
-<title>Second Example</title>
+<subsubsection>
+<title>Projects as Maintainers</title>
 <body>
 
 <p>
-For the second example, we will examine the <path>metadata.xml</path> of
-<c>app-portage/mirrorselect</c>.  This ebuild is maintained by the
-<c>tools-portage</c> herd, but has a separate maintainer.
+For the first example, a package maintained by a single project is
+presented. It is a simplified version of <path>metadata.xml</path> for
+the package <path>app-office/libreoffice</path>. The package
+maintainer is identified by the email address <c>office@gentoo.org</c>
+with the name <c>Gentoo Office Project</c> as specified in the
+optional &lt;name&gt; subtag. It also provides a long package
+description.
 </p>
 
 <codesample lang="sgml">
-&lt;?xml version='1.0' encoding='UTF-8'?&gt;
-&lt;!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
 &lt;pkgmetadata&gt;
-  &lt;herd&gt;tools-portage&lt;/herd&gt;
-  &lt;maintainer&gt;
-    &lt;email&gt;johnm@gentoo.org&lt;/email&gt;
-    &lt;name&gt;John Mylchreest&lt;/name&gt;
+  &lt;maintainer type="project"&gt;
+    &lt;email&gt;office@gentoo.org&lt;/email&gt;
+    &lt;name&gt;Gentoo Office Project&lt;/name&gt;
   &lt;/maintainer&gt;
   &lt;longdescription&gt;
-    This utility is used to select the fastest mirror (distfiles) and provide a
-    nicer front-end for mirror selection (both rsync + distfiles) to a user.
+    LibreOffice is the successor of OpenOffice.org. This ebuild
+    allows you to compile it yourself. Unfortunately this compilation can
+    take up to a day depending on the speed of your computer. It will
+    however make a snappier LibreOffice than the binary version.
+  &lt;/longdescription&gt;
+&lt;/pkgmetadata&gt;
+</codesample>
+
+<p>
+The email address <c>office@gentoo.org</c> corresponds to the
+<c>Gentoo Office Project</c> as defined in
+<uri link="https://api.gentoo.org/metastructure/projects.xml">
+projects.xml</uri>. This file lists all the projects in Gentoo and it
+is generated from the
+<uri link="https://wiki.gentoo.org/wiki/Project:Gentoo">
+projects listing</uri> available on the Gentoo Wiki:
+</p>
+
+<codesample lang="sgml">
+&lt;project&gt;
+  &lt;email&gt;office@gentoo.org&lt;/email&gt;
+  &lt;name&gt;Gentoo Office Project&lt;/name&gt;
+  &lt;url&gt;https://wiki.gentoo.org/wiki/Project:Office&lt;/url&gt;
+  &lt;description&gt;
+    The Office project manages the office implementations
+    and related packages in Gentoo.
+  &lt;/description&gt;
+  &lt;member&gt;
+    &lt;email&gt;dilfridge@gentoo.org&lt;/email&gt;
+    &lt;name&gt;Andreas K. Hüttel&lt;/name&gt;
+    &lt;role&gt;member&lt;/role&gt;
+  &lt;/member&gt;
+  &lt;member&gt;
+    &lt;email&gt;scarabeus@gentoo.org&lt;/email&gt;
+    &lt;name&gt;Tomáš Chvátal&lt;/name&gt;
+    &lt;role&gt;member&lt;/role&gt;
+  &lt;/member&gt;
+&lt;/project&gt;
+</codesample>
+
+</body>
+</subsubsection>
+<subsubsection>
+<title>Local USE Flag Descriptions</title>
+<body>
+
+<p>
+The second example is formed after the <path>metadata.xml</path> of
+<path>sys-apps/portage</path>. It lists multiple maintainers where one
+is a developer and the other is a project. It illustrates how local
+USE flag descriptions are specified and also contains an upstream
+element. It is also worth pointing out the use of <c>mailto:</c>
+prefix in &lt;bugs-to&gt; tag due to the presence of an email address
+as opposed to a URL. Conversely, email addresses specified in the
+&lt;email&gt; tags require no such prefix.
+</p>
+
+<codesample lang="sgml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;pkgmetadata&gt;
+  &lt;upstream&gt;
+    &lt;bugs-to&gt;mailto:dev-portage@gentoo.org&lt;/bugs-to&gt;
+    &lt;changelog&gt;https://gitweb.gentoo.org/proj/portage.git/plain/RELEASE-NOTES&lt;/changelog&gt;
+    &lt;doc&gt;https://wiki.gentoo.org/wiki/Handbook:AMD64/Working/Portage&lt;/doc&gt;
+  &lt;/upstream&gt;
+  &lt;maintainer type="person"&gt;
+    &lt;email&gt;larry@gentoo.org&lt;/email&gt;
+    &lt;name&gt;Larry the Cow&lt;/name&gt;
+  &lt;/maintainer&gt;
+  &lt;maintainer type="project"&gt;
+    &lt;email&gt;dev-portage@gentoo.org&lt;/email&gt;
+  &lt;/maintainer&gt;
+  &lt;use&gt;
+    &lt;flag name="epydoc"&gt;Build html API documentation with epydoc.&lt;/flag&gt;
+    &lt;flag name="ipc"&gt;Use inter-process communication between portage and running ebuilds.&lt;/flag&gt;
+    &lt;flag name="pypy2_0"&gt;Use pypy-c2.0 as Python interpreter.&lt;/flag&gt;
+    &lt;flag name="python2"&gt;Use python2 as Python interpreter.&lt;/flag&gt;
+    &lt;flag name="python3"&gt;Use python3 as Python interpreter.&lt;/flag&gt;
+    &lt;flag name="xattr"&gt;
+      Preserve extended attributes (filesystem-stored metadata) when
+      installing files. Usually only required for hardened systems.
+    &lt;/flag&gt;
+  &lt;/use&gt;
+&lt;/pkgmetadata&gt;
+</codesample>
+
+</body>
+</subsubsection>
+<subsubsection>
+<title>Split Maintainership</title>
+<body>
+
+<p>
+This example splits the maintainership based on package versions using
+the attribute <c>restrict</c>. According to the
+<path>metadata.xml</path> of <path>sys-boot/grub</path>, the ebuilds
+for version 2 and above are maintained by floppym@gentoo.org whereas
+earlier versions are maintained by the Gentoo Base System
+project. Note the use of "&amp;gt;" as opposed to "&gt;" in
+<c>restrict</c>.
+</p>
+
+<p>
+The example also uses the <c>&lt;pkg&gt;</c> tag in USE flag
+descriptions. Slot operators are not allowed inside &lt;pkg&gt;,
+therefore the notation &lt;pkg&gt;sys-boot/grub&lt;/pkg&gt;<c>:2</c>
+is adopted as opposed to
+&lt;pkg&gt;sys-boot/grub<c>:2</c>&lt;/pkg&gt;.
+</p>
+
+<p>
+Lastly, the <c>&lt;remote-id&gt;</c> tag in the upstream description
+is demonstrated.
+</p>
+
+<codesample lang="sgml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;pkgmetadata&gt;
+  &lt;maintainer restrict="&amp;gt;=sys-boot/grub-2" type="person"&gt;
+    &lt;email&gt;floppym@gentoo.org&lt;/email&gt;
+  &lt;/maintainer&gt;
+  &lt;maintainer type="project"&gt;
+    &lt;email&gt;base-system@gentoo.org&lt;/email&gt;
+    &lt;name&gt;Gentoo Base System&lt;/name&gt;
+  &lt;/maintainer&gt;
+  &lt;use&gt;
+    &lt;flag name="device-mapper"&gt;
+      Enable support for device-mapper from &lt;pkg&gt;sys-fs/lvm2&lt;/pkg&gt;
+    &lt;/flag&gt;
+    &lt;flag name="efiemu"&gt;
+      Build and install the efiemu runtimes
+    &lt;/flag&gt;
+    &lt;flag name="fonts"&gt;Build and install fonts for the gfxterm module&lt;/flag&gt;
+    &lt;flag name="mount"&gt;
+      Build and install the grub-mount utility
+    &lt;/flag&gt;
+    &lt;flag name="libzfs"&gt;
+      Enable support for &lt;pkg&gt;sys-fs/zfs&lt;/pkg&gt;
+    &lt;/flag&gt;
+    &lt;flag name="multislot"&gt;
+      Allow concurrent installation of &lt;pkg&gt;sys-boot/grub&lt;/pkg&gt;:0 and
+      &lt;pkg&gt;sys-boot/grub&lt;/pkg&gt;:2 by renaming all programs.
+    &lt;/flag&gt;
+    &lt;flag name="themes"&gt;Build and install GRUB themes (starfield)&lt;/flag&gt;
+    &lt;flag name="truetype"&gt;
+      Build and install grub-mkfont conversion utility
+    &lt;/flag&gt;
+  &lt;/use&gt;
+  &lt;upstream&gt;
+    &lt;remote-id type="sourceforge"&gt;dejavu&lt;/remote-id&gt;
+  &lt;/upstream&gt;
+&lt;/pkgmetadata&gt;
+</codesample>
+
+</body>
+</subsubsection>
+</body>
+</subsection>
+<subsection>
+<title>Maintainer-Needed</title>
+<body>
+
+<p>
+Maintainer-needed, or orphaned, packages have no maintainers
+responsible for them. Per
+<uri link="https://wiki.gentoo.org/wiki/GLEP:67#Case_of_maintainer-needed_packages">
+GLEP 67</uri>, these packages must not contain any &lt;maintainer&gt;
+subtags under &lt;pkgmetadata&gt; in their <c>metadata.xml</c>. By
+convention, a comment line containing the string <c>maintainer-needed</c>
+is inserted. Other tags which are relevant to the package may be
+present in the metadata. Bugs for these packages must be assigned to
+<c>maintainer-needed@gentoo.org</c>. The QA team periodically generates the
+<uri link="https://qa-reports.gentoo.org/output/maintainer-needed.html">
+orphaned packages list</uri> along with their corresponding bugs as
+part of the QA reports.
+</p>
+
+<codesample lang="sgml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;pkgmetadata&gt;
+  &lt;!-- maintainer-needed --&gt;
+  &lt;upstream&gt;
+    &lt;maintainer status="active"&gt;
+      &lt;email&gt;rasmus@alum.mit.edu&lt;/email&gt;
+      &lt;name&gt;Matt Rasmussen&lt;/name&gt;
+    &lt;/maintainer&gt;
+    &lt;doc lang="en"&gt;http://keepnote.org/manual/&lt;/doc&gt;
+    &lt;bugs-to&gt;https://code.google.com/p/keepnote/issues/list&lt;/bugs-to&gt;
+  &lt;/upstream&gt;
+  &lt;longdescription lang="en"&gt;
+    KeepNote is a note taking application. With KeepNote, you can
+    store your class notes, TODO lists, research notes, journal entries,
+    paper outlines, etc in a simple notebook hierarchy with rich-text
+    formatting, images, and more. Using full-text search, you can
+    retrieve any note for later reference.
   &lt;/longdescription&gt;
 &lt;/pkgmetadata&gt;
 </codesample>
 
 </body>
 </subsection>
-<subsection>
-<title>Third Example</title>
-<body>
-
-<p>
-For the third example, we will describe the <path>metadata.xml</path> of
-<c>sys-apps/hal</c>. This ebuild is maintained by the <c>gentopia</c> herd
-and contains USE flag descriptions.
-</p>
-
-<codesample lang="sgml">
-&lt;?xml version="1.0" encoding="UTF-8"&gt;
-&lt;!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
-&lt;pkgmetadata&gt;
-&lt;herd&gt;gentopia&lt;/herd&gt;
-&lt;maintainer&gt;
-	&lt;email&gt;compnerd@gentoo.org&lt;/email&gt;
-&lt;/maintainer&gt;
-&lt;maintainer&gt;
-	&lt;email&gt;steev@gentoo.org&lt;/email&gt;
-&lt;/maintainer&gt;
-&lt;use&gt;
-	&lt;flag name='acpi'&gt;Enables HAL to attempt to read from
-	/proc/acpi/event, if unavailable, HAL will read events from
-	&lt;pkg&gt;sys-power/acpid&lt;/pkg&gt;. If you need multiple acpi
-	readers, ensure acpid is in your default runlevel along with HAL. This
-	will also enable HAL to read Toshia and IBM acpi events which do not
-	get sent via /proc/acpi/event&lt;/flag&gt;
-	&lt;flag name='crypt'&gt;Allows HAL to mount volumes that are encrypted using
-	LUKS. &lt;pkg&gt;sys-fs/cryptsetup-luks&lt;/pkg&gt; which has recently been renamed
-	to &lt;pkg&gt;sys-fs/cryptsetup&lt;/pkg&gt; allows you to create such encrypted
-	volumes. HAL will be able to handle volumes that are removable or
-	fixed.&lt;/flag&gt;
-	&lt;flag name='dell'&gt;Builds an installs the Dell addon, which reads data from
-	the Dell SM BIOS via &lt;pkg&gt;sys-libs/libsmbios&lt;/pkg&gt;. It will read your
-	service tag information and your hardware backlight data as well as
-	allow you to modify the backlight settings on a Dell laptop.&lt;/flag&gt;
-	&lt;flag name='disk-partition'&gt;Allows HAL to use libparted from
-	&lt;pkg&gt;sys-apps/parted&lt;/pkg&gt; to read raw partition data from your disks
-	and process that data. Future versions of HAL (possibly 0.5.11 and
-	higher) will allow you to create, modify, delete and format partitions
-	from a GUI interface agnostic of your desktop environment.&lt;/flag&gt;
-	&lt;flag name='doc'&gt;Generates documentation that describes HAL's fdi
-	format.&lt;/flag&gt;
-	&lt;flag name='pcmcia'&gt;Allows HAL to process PCMCIA/CardBus slot data which
-	includes inserts and removals and act on these events.&lt;/flag&gt;
-	&lt;flag name='selinux'&gt;Installs SELinux policies and links HAL to the SELinux
-	libraries.&lt;/flag&gt;
-&lt;/use&gt;
-&lt;/pkgmetadata&gt;
-</codesample>
-
 </body>
-</subsection>
-<subsection>
-<title>Fourth Example</title>
-<body>
-
-<p>
-This example demonstrates the usage of the upstream element:
-</p>
-
-<codesample lang="sgml">
-&lt;upstream&gt;
-        &lt;maintainer status="inactive"&gt;
-                &lt;email&gt;foo@bar.bar&lt;/email&gt;
-                &lt;name&gt;Foo Bar&lt;/name&gt;
-        &lt;/maintainer&gt;
-        &lt;maintainer status="active"&gt;
-                &lt;email&gt;foo@gentoo.org&lt;/email&gt;
-                &lt;name&gt;Foo Gentoo&lt;/name&gt;
-        &lt;/maintainer&gt;
-        &lt;changelog&gt;http://foo.bar/changelog.txt&lt;/changelog&gt;
-        &lt;doc lang="en"&gt;http://foo.bar/doc/index.html&lt;/doc&gt;
-        &lt;doc lang="de"&gt;http://foo.bar/doc/index.de.html&lt;/doc&gt;
-        &lt;bugs-to&gt;https://bugs.foo.bar&lt;/bugs-to&gt;
-        &lt;remote-id type="freshmeat"&gt;foobar&lt;/remote-id&gt;
-        &lt;remote-id type="sourceforge"&gt;foobar&lt;/remote-id&gt;
-&lt;/upstream&gt;
-</codesample>
-
-</body>
-</subsection>
-
-
-<p>
-All new packages <b>must</b> include a <c>metadata.xml</c> file. That file
-should specify at least one herd or one maintainer. It is however recommended,
-if at all possible, to find a herd willing to be listed.
-</p>
-
-<p>
-If a package has no maintainer, <c>maintainer-needed@gentoo.org</c>
-should be listed as the maintainer.
-</p>
-
-<p>
-To easily create <c>metadata.xml </c>files, you can use
-<c>app-portage/metagen</c>. There is also a skeleton file, see
-<c>/usr/portage/skel.metadata.xml</c>.
-</p>
-
-<p>
-Commits of package metadata files are handled by <c>repoman</c>. You
-should ensure that you have <c>dev-libs/libxml2</c> installed so that
-the XML can be validated.
-</p>
-
 </section>
 
 <section>
