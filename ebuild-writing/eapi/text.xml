@@ -973,7 +973,7 @@ src_install() {
 	<li>
 		<p><b><c>unpack</c> changes</b></p>
 		<ul>
-			<li><p><c>unpack</c> supports elative paths without leading <c>./</c> (<c>unpack foo/bar.tar.gz</c> is valid as relative path).</p></li>
+			<li><p><c>unpack</c> supports relative paths without leading <c>./</c> (<c>unpack foo/bar.tar.gz</c> is valid as relative path).</p></li>
 			<li><p><c>unpack</c> supports <c>.txz</c> (xz compressed tarball).</p></li>
 			<li><p><c>unpack</c> matches filename extensions case-insensitively.</p></li>
 		</ul>
