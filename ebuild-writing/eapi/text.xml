@@ -14,7 +14,7 @@ down and agreed upon.
 
 <p>
 EAPI is a version defined in ebuilds and other package manager related files
-which inform the package manager about the file syntax and content. It is,
+which informs the package manager about the file syntax and content. It is,
 in effect, the version of the package manager specification (PMS) that the
 file adheres to.
 </p>
