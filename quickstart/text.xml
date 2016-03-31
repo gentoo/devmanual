@@ -34,7 +34,7 @@ can see real ebuilds in the main tree).
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -206,7 +206,7 @@ Here's <c>app-misc/detox/detox-1.1.1.ebuild</c>:
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -271,7 +271,7 @@ this is done via <c>inherit eutils</c> at the top of the ebuild. Here's
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -329,7 +329,7 @@ replacement iconv for <c>libc</c> implementations which don't have their own.
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -373,7 +373,7 @@ Another more complicated example, this time based upon
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 

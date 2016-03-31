@@ -42,7 +42,7 @@ Most developers prefer to set the EAPI version without quotes. However, the PMS 
 </note>
 
 <codesample lang="ebuild">
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -120,7 +120,7 @@ src_compile() {
 		</important>
 
 		<codesample lang="ebuild">
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -515,7 +515,7 @@ DEPEND="
 		</p>
 		<p>Example:</p>
 		<codesample lang="ebuild">
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
