@@ -26,11 +26,11 @@ link="::general-concepts/portage-cache"/>).
 </p>
 
 <p>
-After inheriting an eclass, its provided functions can be used as normal. Here'san example ebuild, <c>foomatic-0.1-r2.ebuild</c>, which uses four eclasses:
+After inheriting an eclass, its provided functions can be used as normal. Here's an example ebuild, <c>foomatic-0.1-r2.ebuild</c>, which uses four eclasses:
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
