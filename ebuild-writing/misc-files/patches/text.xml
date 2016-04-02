@@ -107,8 +107,8 @@ from the <c>vim</c> patch tarball:
 
 <p>
 When adding a patch to the tree be sure to check that the patch doesn't have
-Git keywords in it that will be expanded (such as <c>$Id$</c>).  If the patch
-contains these, it will break manifests unless you add it to the tree
+Git keywords in it that will be expanded (such as <c>&#36;Id&#36;</c>).  If
+the patch contains these, it will break manifests unless you add it to the tree
 correctly.  In the case that it does have the keywords, you should remove them.
 Afterwards they can be added like every other file:
 </p>

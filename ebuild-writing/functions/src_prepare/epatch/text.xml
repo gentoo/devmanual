@@ -69,8 +69,8 @@ Remember to add the patch to <c>SRC_URI</c>.
 <title>Git Keyword Expansion Lines and Patches</title>
 <body>
 <p>
-If your patch includes any changes to Git <c>$Id$</c>
-(or <c>$Date$</c>) lines, it cannot be
+If your patch includes any changes to Git <c>&#36;Id&#36;</c>
+(or <c>&#36;Date&#36;</c>) lines, it cannot be
 distributed under <c>files/</c>, since Git will clobber the patch when
 keywords are expanded on the staging box. In these situations, either remove this hunk of the patch
 manually, or mirror the file. See <uri link="::general-concepts/git-to-rsync"/>.
