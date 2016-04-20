@@ -441,8 +441,12 @@ Next is checking the files under <path>profiles/</path> such as
 <path>profiles/package.mask</path> and update them to reflect the ebuild
 move. Various eclasses automatically provide some of the dependencies upon
 inherit, so the files under <path>eclass/</path> should be checked and updated
-properly as well. Lastly, the titles of the open bugs related to the package
-should be updated.
+properly. If the package metadata.xml has tags with <c>restrict</c>
+attribute, they should be updated to reflect the move. The
+metadata.xml for various packages may contain references to the
+package being moved using the <c>&lt;pkg&gt;</c> tag which need to be
+updated accordingly as well. Lastly, the titles of the open bugs
+related to the package should be updated.
 </p>
 
 <p>
@@ -466,6 +470,12 @@ Here is an example where the package
     <path>profiles/</path>
   </li>
   <li>Check the eclasses that may be referencing the package</li>
+  <li>
+    Update all the
+    <uri link="::ebuild-writing/misc-files/metadata">metadata.xml</uri>
+    files which contain a reference to this package using the
+    <c>&lt;pkg&gt;</c> tag or the <c>restrict</c> attribute.
+  </li>
   <li>
     Stage all the changed files using <c>git add</c>. For example: <c>git add
     profiles/package.mask</c>
@@ -554,6 +564,11 @@ When removing packages follow these steps:
   <li>Wait 30 days (or more)</li>
   <li>Remove from the git tree unless the reason for removal has been fixed</li>
   <li>Remove package.mask entry</li>
+  <li>
+    Remove the <c>&lt;pkg&gt;</c> tags referencing this package in the
+    <uri link="::ebuild-writing/misc-files/metadata">metadata.xml</uri>
+    files of other packages.
+  </li>
   <li>Close open bugs as WONTFIX</li>
 </ol> 
 
