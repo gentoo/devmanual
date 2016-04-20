@@ -222,7 +222,7 @@ that it doesn't contain any conflicts.</li>
 the updated package.</li>
 <li>Always do atomic commits; if you commit a package with a new license, 
 or that is masked, then first commit the revised <path>package.mask</path> and/or license, 
-then commit the ebuild, <path>ChangeLog</path>, patches
+then commit the ebuild, patches
 and <uri link="::ebuild-writing/misc-files/metadata">metadata.xml</uri> all in <b>one</b> go
 .</li>
 <note> Although the set of changes in a single git commit is atomic, and
