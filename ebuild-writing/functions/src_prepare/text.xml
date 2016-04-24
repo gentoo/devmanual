@@ -57,6 +57,18 @@ src_prepare() {
 </body>
 </section>
 
+<section>
+<title><c>src_prepare</c> Processes</title>
+<body>
+<p>
+The following subsections cover different topics which often occur
+when writing <c>src_prepare</c> functions.
+</p>
+
+<contentsTree/>
+</body>
+</section>
+
 </chapter>
 <include href="epatch/"/>
 <include href="autopackage/"/>
