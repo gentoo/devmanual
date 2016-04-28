@@ -549,6 +549,56 @@ is demonstrated.
 
 </body>
 </subsubsection>
+<subsubsection>
+<title>Slots and Subslots</title>
+<body>
+
+<p>
+The main focus of this example is to demonstrate how slots and
+subslots are specified, by examining the metadata of
+<path>media-libs/libpng</path>. There may be multiple reasons for
+slotting depending on the nature of the package. For this particular
+package, it can be seen that the slots are used to provide different
+versions of the library with varying binary compatibility and that
+developers are advised to build against the slot 0. Furthermore,
+different versions of this package with the same subslot provide the
+same Application Binary Interface (ABI), according to the description
+specified in the <c>&lt;subslots&gt;</c> tag.
+</p>
+
+<codesample lang="sgml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;pkgmetadata&gt;
+  &lt;maintainer type="project"&gt;
+    &lt;email&gt;base-system@gentoo.org&lt;/email&gt;
+    &lt;name&gt;Gentoo Base System&lt;/name&gt;
+  &lt;/maintainer&gt;
+  &lt;use&gt;
+    &lt;flag name="apng"&gt;support unofficial APNG (Animated PNG) spec&lt;/flag&gt;
+  &lt;/use&gt;
+  &lt;upstream&gt;
+    &lt;remote-id type="cpe"&gt;cpe:/a:libpng:libpng&lt;/remote-id&gt;
+    &lt;remote-id type="sourceforge"&gt;apng&lt;/remote-id&gt;
+  &lt;/upstream&gt;
+  &lt;slots&gt;
+    &lt;slot name="0"&gt;
+      For building against. This is the only slot
+      that provides headers and command line tools.
+    &lt;/slot&gt;
+    &lt;slot name="1.2"&gt;
+      For binary compatibility, provides libpng12.so.0 only.
+    &lt;/slot&gt;
+    &lt;slot name="1.5"&gt;
+      For binary compatibility, provides libpng15.so.15 only.
+    &lt;/slot&gt;
+    &lt;subslots&gt;Reflect ABI compatibility for libpng.so.&lt;/subslots&gt;
+  &lt;/slots&gt;
+&lt;/pkgmetadata&gt;
+</codesample>
+
+</body>
+</subsubsection>
 </body>
 </subsection>
 <subsection>
