@@ -11,7 +11,9 @@
 
 <ul>
   <li>
-    Developer commits to local Git clone and pushes to central remote Git epository. Commits and pushes are signed using Git mechanisms based on GPG.
+    Developer commits to local Git clone and pushes to central remote
+    Git repository. Commits and pushes are signed using Git
+    mechanisms based on GPG.
   </li>
   <li>
     Staging box syncs from central Git repository, generates the metadata cache, ChangeLogs and signed Manifests from Git history.
