@@ -26,9 +26,8 @@ been added to the Portage tree.  Go to <uri
 link="https://bugs.gentoo.org/">bugs.gentoo.org</uri>, choose query and select 
 Advanced Search; as product select <e>Gentoo Linux</e>, as component select 
 <e>ebuilds</e>.  In the search field put the name of the ebuild and as status 
-select NEW, ASSIGNED, REOPENED and RESOLVED (RESOLVED is important), then 
-submit the query.  For you lazy people, click <uri 
-link="https://bugs.gentoo.org/query.cgi?product=Gentoo%20Linux&amp;component=Ebuilds&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;bug_status=RESOLVED">here</uri>.
+select all possible fields, then submit the query. For you lazy people, click
+<uri link="https://bugs.gentoo.org/query.cgi?format=advanced&amp;product=Gentoo%20Linux&amp;component=New%20Ebuilds&amp;bug_Status=UNCONFIRMED&amp;bug_status=CONFIRMED&amp;bug_status=IN_PROGRESS&amp;bug_status=RESOLVED&amp;bug_status=VERIFIED">here</uri>.
 </p>
 
 <p>
