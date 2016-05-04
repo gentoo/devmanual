@@ -214,31 +214,11 @@ ebuilds.
 </p>
 
 <p>
-Access violations most commonly occur during the install phase. See
-<c>src_install</c> and <uri link="::general-concepts/install-destinations/"/>
-for discussion.
-</p>
-
-<p>
-Sometimes problems can also occur with packages attempting to write to
-<c>${HOME}</c>. To get around this, it is usually sufficient to trick the build
-system into using a safer location. For example, the <c>fluxbox</c> menu generator
-tries to work in <c>${HOME}/.fluxbox</c> <d/> to get around this, the following is
-used:
-</p>
-
-<codesample lang="ebuild">
-ebegin "Creating a menu file (may take a while)"
-mkdir -p "${T}/home/.fluxbox" || die "mkdir home failed"
-MENUFILENAME="${S}/data/menu" MENUTITLE="Fluxbox ${PV}" \
-    CHECKINIT="no. go away." HOME="${T}/home" \
-    "${S}"/util/fluxbox-generate_menu -is -ds \
-    || die "menu generation failed"
-eend $?
-</codesample>
-
-<p>
-In this situation, providing a fake home directory is all that is needed.
+Access violations most commonly occur during the install
+phase. Sometimes it is possible to get around the sandbox violations
+by tricking the build system into using a safer location. See
+<c>src_install</c> and
+<uri link="::general-concepts/install-destinations/"/> for discussion.
 </p>
 
 </body>
