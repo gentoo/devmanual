@@ -90,6 +90,14 @@ them.
     </ti>
   </tr>
   <tr>
+    <ti><c>HOME</c></ti>
+    <ti>
+      Path to a temporary directory for use by any programs invoked by
+      an ebuild that may read or modify the home directory. Value:
+      <c>"${PORTAGE_BUILDDIR}/homedir"</c>.
+    </ti>
+  </tr>
+  <tr>
     <ti><c>ROOT</c></ti>
     <ti>
       Path to the root directory. When not using <c>${D}</c>,
