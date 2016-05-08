@@ -100,8 +100,9 @@ them.
   <tr>
     <ti><c>ROOT</c></ti>
     <ti>
-      Path to the root directory. When not using <c>${D}</c>,
-      always prepend <c>${ROOT}</c> to the path.
+      The absolute path to the root directory into which the package is to be
+      merged. Use this when referring to installed files in <c>pkg_*</c>
+      functions. Never use this in <c>src_*</c> functions.
     </ti>
   </tr>
   <tr>
