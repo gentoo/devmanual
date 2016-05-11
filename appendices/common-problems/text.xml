@@ -58,7 +58,7 @@ in use, there are various alternatives:
     Usually when any of the above are used in global scope, it is to manipulate
     a version or program name string. These should be avoided in favour of
     pure <c>bash</c> constructs. The <c>versionator</c> eclass is often of use here.
-    See <uri link="::ebuild-writing/variables/#Version Formatting Issues"/>,
+    See <uri link="::ebuild-writing/variables/#Version and Name Formatting Issues"/>,
     <c>man versionator.eclass</c> and <uri
     link="::tools-reference/bash/#Bash Variable Manipulation"/>.
     </p>
