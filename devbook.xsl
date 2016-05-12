@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
   xmlns:str="http://exslt.org/strings"
   xmlns:exslt="http://exslt.org/common"
@@ -11,7 +12,7 @@
 <xsl:import href="xsl/lang.highlight.m4.xsl"/>
 <xsl:import href="xsl/lang.highlight.sgml.xsl"/>
 
-<xsl:output method="html" indent="yes" omit-xml-declaration="yes"/>
+<xsl:output method="html" encoding="UTF-8" indent="yes" omit-xml-declaration="yes"/>
 
 <xsl:variable name="newline">
 <xsl:text>
@@ -426,7 +427,6 @@
         </xsl:call-template>
       </xsl:variable>
       <link rel="stylesheet" href="{$relative_path_depth_recursion}devmanual.css" type="text/css" />
-      <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="description" content="The Gentoo Devmanual is a technical manual which covers topics such as writing ebuilds and eclasses, and policies that developers should be abiding by." />
       <link href="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/bootstrap.min.css" rel="stylesheet" media="screen" />
