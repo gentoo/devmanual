@@ -417,7 +417,7 @@
     <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
     <html>
     <head>
-      <title>Gentoo Development Guide: <xsl:value-of select="/guide/chapter[1]/title"/></title>
+      <title><xsl:value-of select="/guide/chapter[1]/title"/> – Gentoo Development Guide</title>
       <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
       <xsl:variable name="relative_path_depth_recursion">
         <xsl:call-template name="str:repeatString">
