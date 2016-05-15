@@ -101,8 +101,8 @@ them.
     <ti><c>ROOT</c></ti>
     <ti>
       The absolute path to the root directory into which the package is to be
-      merged. Use this when referring to installed files in <c>pkg_*</c>
-      functions. Never use this in <c>src_*</c> functions.
+      merged. Only allowed in pkg_* phases. See
+      <uri link="::ebuild-writing/variables#ROOT"/>
     </ti>
   </tr>
   <tr>
@@ -387,6 +387,57 @@ It is possible to specify multiple <c>LICENSE</c> entries, and entries which onl
 apply if a particular <c>USE</c> flag is set. The format is the same as for
 <c>DEPEND</c>. See <uri link="https://wiki.gentoo.org/wiki/GLEP:23">
 GLEP 23</uri> for details.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>ROOT</title>
+<body>
+
+<p>
+The idea behind <c>ROOT</c> is that one can build a system with
+<c>ROOT=/somewhere</c> and then chroot into it or tar up
+<c>/somewhere</c> as a system image. It is not designed to allow the
+user to run <c>/somewhere/usr/bin/foo</c>.
+</p>
+
+<p>
+Ebuilds may reference <c>ROOT</c> only during <c>pkg_*</c> phases. It
+can't be used correctly in <c>src_*</c> phases, since <c>ROOT</c> may
+be different when merging a binary package. For example, a binary
+package may be built with <c>ROOT=/</c> and then installed onto a
+system using <c>ROOT=/somewhere</c>.
+</p>
+
+<p>
+When building a package, <c>ROOT</c> should not be used to satisfy the
+required dependencies on libraries, headers files etc. Instead, the
+files on the build system should be specified using <c>/</c>.
+</p>
+
+<p>
+In a cross compiling environment, ebuilds must not call any of the
+binaries inside <c>ROOT</c> since they may not be executable on the
+build system.
+</p>
+
+<p>
+Below is an example of an ebuild that uses <c>ROOT</c> in
+<c>pkg_postinst()</c> to conditionally print an error message if an
+old and obsolete configuration file still exists:
+
+<codesample lang="ebuild">
+pkg_postinst() {
+	if [[ -e "${ROOT}/etc/oldconfig" ]]; then
+		ewarn "You still have the obsolete config file "
+		ewarn "    ${ROOT}/etc/oldconfig."
+		ewarn "Please migrate your settings to ${ROOT}/etc/newconfig"
+		ewarn "and remove ${ROOT}/etc/oldconfig."
+	fi
+}
+</codesample>
 </p>
 
 </body>
