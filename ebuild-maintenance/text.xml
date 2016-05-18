@@ -482,6 +482,11 @@ Here is an example where the package
   <li>
     Commit all the changes in one commit using: <c>git commit --gpg-sign</c>
   </li>
+  <li>
+    Update any <uri link="::general-concepts/news">news items</uri>
+    referencing the package in a <c>Display-If-Installed</c> header
+    or in the item's body (and increment their <c>Revision</c>).
+  </li>
   <li>Update any open bugs related to the package</li>
 </ol>
 
