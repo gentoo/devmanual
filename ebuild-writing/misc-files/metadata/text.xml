@@ -657,18 +657,18 @@ English and optionally in other languages). A typical example:
 </p>
 
 <codesample lang="sgml">
-    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-    &lt;!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
-    &lt;catmetadata&gt;
-            &lt;longdescription lang="en"&gt;
-                The app-vim category contains plugins and syntax file
-                packages for the Vim text editor.
-            &lt;/longdescription&gt;
-            &lt;longdescription lang="de"&gt;
-                Die Kategorie app-vim enthält Plugins und Syntax-Pakete
-                für den Vim Texteditor.
-            &lt;/longdescription&gt;
-    &lt;/catmetadata&gt;
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;catmetadata&gt;
+  &lt;longdescription lang="en"&gt;
+    The app-vim category contains plugins and syntax file
+    packages for the Vim text editor.
+  &lt;/longdescription&gt;
+  &lt;longdescription lang="de"&gt;
+    Die Kategorie app-vim enthält Plugins und Syntax-Pakete
+    für den Vim Texteditor.
+  &lt;/longdescription&gt;
+&lt;/catmetadata&gt;
 </codesample>
 
 <p>
