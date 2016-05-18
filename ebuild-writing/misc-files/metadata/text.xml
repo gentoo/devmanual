@@ -658,7 +658,7 @@ English and optionally in other languages). A typical example:
 
 <codesample lang="sgml">
     &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-    &lt;!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
+    &lt;!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
     &lt;catmetadata&gt;
             &lt;longdescription lang="en"&gt;
                 The app-vim category contains plugins and syntax file
