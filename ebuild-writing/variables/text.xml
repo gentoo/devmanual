@@ -16,8 +16,9 @@ which are of use throughout the ebuild.
 <body>
 
 <p>
-The following variables are defined for you. You must not attempt to set
-them.
+The following variables are defined for you. You must not attempt to
+set them. Developers must not rely on package manager specific values
+for these variables when writing ebuilds.
 </p>
 
 <table>
@@ -64,14 +65,14 @@ them.
     <ti><c>FILESDIR</c></ti>
     <ti>
       Path to the ebuild's <c>files/</c> directory, commonly used
-      for small patches and files. Value:
+      for small patches and files. For example:
       <c>"${PORTDIR}/${CATEGORY}/${PN}/files"</c>.
     </ti>
   </tr>
   <tr>
     <ti><c>WORKDIR</c></ti>
     <ti>
-      Path to the ebuild's root build directory. Value:
+      Path to the ebuild's root build directory. For example:
       <c>"${PORTAGE_BUILDDIR}/work"</c>.
     </ti>
   </tr>
@@ -79,13 +80,13 @@ them.
     <ti><c>T</c></ti>
     <ti>
        Path to a temporary directory which may be used by the
-       ebuild. Value: <c>"${PORTAGE_BUILDDIR}/temp"</c>.
+       ebuild. For example: <c>"${PORTAGE_BUILDDIR}/temp"</c>.
     </ti>
   </tr>
   <tr>
     <ti><c>D</c></ti>
     <ti>
-      Path to the temporary install directory. Value:
+      Path to the temporary install directory. For example:
       <c>"${PORTAGE_BUILDDIR}/image"</c>.
     </ti>
   </tr>
@@ -93,7 +94,7 @@ them.
     <ti><c>HOME</c></ti>
     <ti>
       Path to a temporary directory for use by any programs invoked by
-      an ebuild that may read or modify the home directory. Value:
+      an ebuild that may read or modify the home directory. For example:
       <c>"${PORTAGE_BUILDDIR}/homedir"</c>.
     </ti>
   </tr>
