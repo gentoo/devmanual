@@ -431,15 +431,26 @@ old and obsolete configuration file still exists:
 
 <codesample lang="ebuild">
 pkg_postinst() {
-	if [[ -e "${ROOT}/etc/oldconfig" ]]; then
+	if [[ -e "${ROOT}etc/oldconfig" ]]; then
 		ewarn "You still have the obsolete config file "
-		ewarn "    ${ROOT}/etc/oldconfig."
-		ewarn "Please migrate your settings to ${ROOT}/etc/newconfig"
-		ewarn "and remove ${ROOT}/etc/oldconfig."
+		ewarn "    ${ROOT}etc/oldconfig."
+		ewarn "Please migrate your settings to ${ROOT}etc/newconfig"
+		ewarn "and remove ${ROOT}etc/oldconfig."
 	fi
 }
 </codesample>
+
+The <c>ROOT</c> variable always ends in a trailing slash. Therefore,
+there is no need to prefix it with <c>/</c> when joining paths.
 </p>
+
+<note>
+Future EAPI may remove the trailing slash at the end per
+<uri link="https://bugs.gentoo.org/465772">Bug 465722</uri>.
+Developers can use <c>${ROOT%/}</c> to ensure maximum compatibility
+with both the current and the future EAPI.
+</note>
+
 
 </body>
 </section>
