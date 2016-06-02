@@ -382,7 +382,10 @@ for an eclass to invoke die from the global scope.  For example:
 # Distributed under the terms of the GNU General Public License v2
 # &#36;Id&#36;
 
-# Purpose: Demonstration of die upon invalid EAPI usage.
+# @ECLASS: eapi-die.eclass
+# @MAINTAINER:
+# Gentoo Devmanual Project &lt;devmanual@gentoo.org&gt;
+# @BLURB: Calls die when used with an invalid EAPI.
 
 case ${EAPI:-0} in
   0) die "this eclass doesn't support EAPI 0" ;;
