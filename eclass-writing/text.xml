@@ -251,18 +251,19 @@ a single function, <c>domacosapp</c>.
 # Distributed under the terms of the GNU General Public License v2
 # &#36;Id&#36;
 
-#
-# Original Author: Ciaran McCreesh &lt;ciaranm@gentoo.org&gt;
-# Purpose: install macos .app files to the relevant location.
-#
-# Bugs to osx@gentoo.org
-#
+# @ECLASS: macosapp.eclass
+# @MAINTAINER:
+# Ciaran McCreesh &lt;ciaranm@gentoo.org&gt;
+# @BLURB: install macos .app files to the relevant location.
 
-# domacosapp: install a macos .app file. Usage is 'domacosapp file' or
-# 'domacosapp file newfile'.
-
+# @FUNCTION: domacosapp
+# @USAGE: &lt;app-file&gt; [new-file]
+# @DESCRIPTION:
+# Install the given .app file into the appropriate location. If
+# [new-file] is given, it will be used as the new (installed) name of
+# the file. Otherwise &lt;app-file&gt; is installed as-is.
 domacosapp() {
-    [[ -z "${1}" ]] &amp;&amp; die "usage: domacosapp &lt;file&gt; &lt;new file&gt;"
+    [[ -z "${1}" ]] &amp;&amp; die "usage: domacosapp &lt;file&gt; [new file]"
     if use ppc-macos ; then
         insinto /Applications
         newins "$1" "${2:-${1}}" || die "Failed to install ${1}"
