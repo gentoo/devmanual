@@ -121,6 +121,29 @@ adhere to the following process:</p>
 </section>
 
 <section>
+<title>Documenting Eclasses</title>
+<body>
+
+<p>
+Eclasses are documented as any other bash project is, with code
+comments. We do however have a standard format for eclass, variable,
+and function headers. The <c>app-portage/eclass-manpages</c> package
+processes these headers to create documentation for the eclass. The
+result can be seen in our <uri link="::eclass-reference/">eclass
+reference</uri>, or by installing <c>app-portage/eclass-manpages</c>.
+</p>
+<p>
+The format for eclass, variable, and function headers are described
+below. Before committing your eclass, please ensure that the
+<c>eclass-to-manpage.sh</c> script (currently in <c>$FILESDIR</c> for
+<c>app-portage/eclass-manpages</c> in the <c>gentoo.git</c> repo) does
+not report any errors or serious warnings for your eclass.
+</p>
+</body>
+</section>
+
+
+<section>
 <title>Basic Eclass Format</title>
 <body>
 
@@ -132,10 +155,28 @@ underscores and dots. Eclasses are not intrinsically versioned.
 </p>
 
 <p>
-Eclasses should start with the standard ebuild header, along with comments
-explaining the maintainer and purpose of the eclass, and any other relevant
-documentation.
+Eclasses should start with the standard ebuild header, along with
+comments explaining the maintainer and purpose of the eclass, and any
+other relevant documentation. The format supported by
+<c>app-portage/eclass-manpages</c> is as follows:
 </p>
+
+<codesample lang="ebuild">
+# @ECLASS: foo.eclass
+# @MAINTAINER:
+# &lt;required; list of contacts, one per line&gt;
+# @AUTHOR:
+# &lt;optional; list of authors, one per line&gt;
+# @BUGREPORTS:
+# &lt;optional; description of how to report bugs;
+#  default: tell people to use bugs.gentoo.org&gt;
+# @VCSURL: &lt;optional; url to vcs for this eclass; default: https://gitweb.gentoo.org/repo/gentoo.git/log/eclass/@ECLASS@&gt;
+# @BLURB: &lt;required; short description&gt;
+# @DESCRIPTION:
+# &lt;optional; long description&gt;
+# @EXAMPLE:
+# &lt;optional; example usage&gt;
+</codesample>
 
 </body>
 </section>
@@ -149,6 +190,21 @@ Top level variables may be defined as for ebuilds. If any USE flags are
 used, <c>IUSE</c> must be set. The <c>KEYWORDS</c> variable must <b>not</b> be set in an
 eclass.
 </p>
+<p>
+You should document the meaning, usage, and default value of every
+variable in your eclass. The standard format supported by
+<c>app-portage/eclass-manpages</c> is,
+</p>
+
+<codesample lang="ebuild">
+# @ECLASS-VARIABLE: foo
+# [@DEFAULT_UNSET]
+# [@INTERNAL]
+# [@REQUIRED]
+# @DESCRIPTION:
+# &lt;required; blurb about this variable&gt;
+# foo=&quot;&lt;default value&gt;&quot;
+</codesample>
 
 </body>
 </section>
@@ -161,7 +217,22 @@ eclass.
 Eclasses may define functions. These functions will be visible to anything which
 inherits the eclass.
 </p>
+<p>
+You should document the purpose, arguments, usage, and return value of
+every function in your eclass. The standard format supported by
+<c>app-portage/eclass-manpages</c> is,
+</p>
 
+<codesample lang="ebuild">
+# @FUNCTION: foo
+# @USAGE: &lt;required arguments to foo&gt; [optional arguments to foo]
+# @RETURN: &lt;whatever foo returns&gt;
+# @MAINTAINER:
+# &lt;optional; list of contacts, one per line&gt;
+# [@INTERNAL]
+# @DESCRIPTION:
+# &lt;required if no @RETURN; blurb about this function&gt;
+</codesample>
 </body>
 </section>
 
