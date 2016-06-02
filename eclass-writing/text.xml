@@ -339,22 +339,41 @@ something like the following:
 # Distributed under the terms of the GNU General Public License v2
 # &#36;Id&#36;
 
-# Original Author: Ciaran McCreesh &lt;ciaranm@gentoo.org&gt;
-# Purpose: Demonstration of EXPORT_FUNCTIONS. Defines simple wrappers for the
-# (hypothetical) 'jmake' build system and a default src_compile.
+# @ECLASS: jmake.eclass
+# @MAINTAINER:
+# Gentoo Devmanual Project &lt;devmanual@gentoo.org&gt;
+# @AUTHOR:
+# Ciaran McCreesh &lt;ciaranm@gentoo.org&gt;
+# @BLURB: Demonstrate a simple build system eclass.
+# @DESCRIPTION:
+# Demonstrates EXPORT_FUNCTIONS and defines simple wrappers for the
+# (hypothetical) jmake build system and a default src_compile.
 
 EXPORT_FUNCTIONS src_compile
 
 DEPEND="&gt;=sys-devel/jmake-2"
 
+# @FUNCTION: jmake-configure
+# @USAGE: [additional-args]
+# @DESCRIPTION:
+# Passes all arguments through to the appropriate &quot;jmake configure&quot;
+# command.
 jmake-configure() {
     jmake configure --prefix=/usr "$@"
 }
 
+# @FUNCTION: jmake-build
+# @USAGE: [additional-args]
+# @DESCRIPTION:
+# First builds all dependencies, and then passes through its arguments
+# to the appropriate &quot;jmake build&quot; command.
 jmake-build() {
     jmake dep &amp;&amp; jmake build "$@"
 }
 
+# @FUNCTION: jmake-src_compile
+# @DESCRIPTION:
+# Calls jmake-configure() and jmake-build() to compile a jmake project.
 jmake_src_compile() {
     jmake-configure || die "configure failed"
     jmake-build || die "build failed"
