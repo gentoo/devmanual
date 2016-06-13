@@ -24,12 +24,13 @@ number in the patch name as a suffix to the version part <d/>
 </p>
 
 <p>
-Larger patches should be <uri link="::general-concepts/mirrors/#suitable-download-hosts">mirrored</uri>,
-preferrable on the Gentoo Infrastructure. When mirroring patches, choosing a
-name that will not cause conflicts is important — the <c>${P}</c>
-prefix is highly recommended here. Mirrored patches are often
-compressed with <c>bzip2</c>. Remember to list these patches in
-<c>SRC_URI</c>.
+Larger patches should be
+<uri link="::general-concepts/mirrors/#suitable-download-hosts">
+mirrored</uri>, preferably on the Gentoo Infrastructure. When
+mirroring patches, choosing a name that will not cause conflicts is
+important — the <c>${P}</c> prefix is highly recommended
+here. Mirrored patches are often compressed with <c>xz</c> or
+<c>bzip2</c>. Remember to list these patches in <c>SRC_URI</c>.
 </p>
 
 <note>
