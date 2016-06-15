@@ -13,8 +13,10 @@ detailed, up to date technical content.
 <p>
 Contributions are encouraged. See the <uri link="::appendices/contributing"/>
 section for how to get started. If you have any corrections, suggestions or
-improvements please look at the <uri link="https://bugs.gentoo.org/buglist.cgi?product=Doc%20Other;component=Devmanual;resolution=---">bug list</uri>
-and file a <uri link="https://bugs.gentoo.org/enter_bug.cgi?product=Doc%20Other;component=Devmanual;format=guided">new bug</uri>.
+improvements please look at the
+<uri link="https://bugs.gentoo.org/buglist.cgi?product=Documentation;component=Devmanual;resolution=---">bug list</uri>
+and file a
+<uri link="https://bugs.gentoo.org/enter_bug.cgi?product=Documentation;component=Devmanual;format=guided">new bug</uri>.
 The <uri link="::appendices/contributors"/>
 section lists specific contributions to this manual.
 </p>
