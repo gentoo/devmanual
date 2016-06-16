@@ -127,7 +127,7 @@ useful:
     <ti><c>""</c></ti>
   </tr>
   <tr>
-    <ti><c>ECVS_TOPDIR</c></ti>
+    <ti><c>ECVS_TOP_DIR</c></ti>
     <ti>Unpack location</ti>
     <ti><c>"${DISTDIR}/cvs-src/${ECVS_MODULE}"</c></ti>
   </tr>
