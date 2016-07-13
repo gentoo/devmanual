@@ -441,7 +441,7 @@ pkg_postinst() {
 </codesample>
 
 The <c>ROOT</c> variable always ends in a trailing slash. Therefore,
-there is no need to prefix it with <c>/</c> when joining paths.
+there is no need to suffix it with <c>/</c> when joining paths.
 </p>
 
 <note>
