@@ -13,7 +13,8 @@ parallel. This feature is called slotting.
 
 <p>
 Most packages have no need for slotting. These packages specify <c>SLOT="0"</c> in
-the ebuilds. This is <b>not</b> the same as specifying an empty slot <d/> an empty
+the ebuilds. This is <b>not</b> the same as specifying an empty slot
+(<c>SLOT=""</c>) <d/> an empty
 slot means &quot;disable slotting entirely&quot;, and should not be used.
 </p>
 
