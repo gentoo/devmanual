@@ -123,7 +123,7 @@ the first is the source name, the second the name to use when installing.
       <c>dodoc</c>
     </ti>
     <ti>
-      Install a documentation file
+      Install a documentation file into <c>/usr/share/doc/${PF}</c>
     </ti>
   </tr>
   <tr>
@@ -148,6 +148,14 @@ the first is the source name, the second the name to use when installing.
     </ti>
     <ti>
       Create a hardlink to the first argument from the second argument
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>doheader</c>
+    </ti>
+    <ti>
+      Installs the given header files into <c>/usr/include</c>
     </ti>
   </tr>
   <tr>
