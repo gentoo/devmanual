@@ -403,11 +403,11 @@ you still have problems, then commit with <c>repoman -I</c> and file a
 bug to the broken architecture, noting it in your git commit message.
 </p>
 
-<warn>
+<warning>
 When committing, make sure that you reference any bugs in the
 commit message. Failing to do so is considered
 to be in very poor taste and may result in disciplinary action.
-</warn>
+</warning>
 
 </body>
 </section>
