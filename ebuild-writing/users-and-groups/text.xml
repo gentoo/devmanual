@@ -8,8 +8,10 @@
 If your ebuild requires a user or group to be added for a daemon, for example,
 this should be performed via the functions available in <c>user.eclass</c>.
 Regardless of whether you are adding a group or a user, this should be performed
-in the <c>pkg_setup</c> function: <c>pkg_setup</c> is sandbox-safe,
-is called before the compile process so a build that requires the user to exist will
+in the <c>pkg_setup</c> phase function. <c>pkg_setup</c> is called
+before the compile process, with
+<uri link="::general-concepts/sandbox">sandbox</uri>
+disabled, so a build that requires the user to exist will
 have it, and is also called for both binary and source packages. You may also
 use the <c>pkg_preinst</c> or <c>pkg_postinst</c> functions for user creation, if
 the user is not required during or before <c>src_install</c>.
