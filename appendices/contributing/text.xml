@@ -48,10 +48,11 @@ for those who prefer to submit patches using pull requests.
 </p>
 
 <p>
-  To build the devmanual, simply run <c>make</c> in the top directory of the repository.
-  You need <c>xsltproc</c> (from <c>dev-libs/libxslt</c>) for the XML to HTML
-  conversion and optionally also <c>ImageMagick</c> for the SVG to PNG conversion
-  used in some of the figures throughout the document.
+To build the devmanual, simply run <c>make</c> in the top directory of
+the repository. You need <c>xsltproc</c> (from
+<c>dev-libs/libxslt</c>) for the XML to HTML conversion and optionally
+also <c>ImageMagick</c> for the SVG to PNG conversion used in some of
+the figures throughout the document.
 </p>
   </body>
 </subsection>
