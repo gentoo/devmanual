@@ -52,7 +52,7 @@ To add a user, use the <c>enewuser</c> function:
 </p>
 
 <pre>
-enewuser &lt;user&gt; [uid] [shell] [homedir] [groups] [params]
+enewuser &lt;user&gt; [uid] [shell] [homedir] [groups]
 </pre>
 
 <p>
@@ -76,11 +76,6 @@ wrapped correctly, for example:
 <pre>
 enewuser frozd -1 -1 -1 "backup,frozd"
 </pre>
-
-<p>
-Finally, any data left over for the <c>params</c> argument is passed directly to
-useradd.
-</p>
 
 <note>
 User IDs should rarely be hardcoded. If this is the case, you should
