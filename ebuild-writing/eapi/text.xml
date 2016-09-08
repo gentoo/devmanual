@@ -815,7 +815,7 @@ RDEPEND="dev-libs/foo:2=
 		<p>
 		<!-- We probably need an example here -->
 		<pre>
-USAGE: usex &#9001;USE flag&#9002; [true output] [false output] [true suffix] [false suffix]
+USAGE: usex &lt;USE flag&gt; [true output] [false output] [true suffix] [false suffix]
 DESCRIPTION:
 If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
  otherwise echo [false output][false suffix] (defaults to "no").
