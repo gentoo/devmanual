@@ -267,7 +267,7 @@ the first is the source name, the second the name to use when installing.
       <c>keepdir</c>
     </ti>
     <ti>
-      Create a directory with an empty <c>.keep</c> file in it.
+      Create a directory which will be preserved by the package manager. This is typically accomplished by inserting an empty <c>.keep_${CATEGORY}_${PN}-${SLOT%/*}</c> file in the directory.
     </ti>
   </tr>
   <tr>
