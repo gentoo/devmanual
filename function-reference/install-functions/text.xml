@@ -312,6 +312,14 @@ the first is the source name, the second the name to use when installing.
   </tr>
   <tr>
     <ti>
+      <c>newheader</c>
+    </ti>
+    <ti>
+      Install a header file using the second argument as the name
+    </ti>
+  </tr>
+  <tr>
+    <ti>
       <c>newinitd</c>
     </ti>
     <ti>
