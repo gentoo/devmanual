@@ -67,7 +67,7 @@ the first is the source name, the second the name to use when installing.
       <c>insopts</c>
     </ti>
     <ti>
-      Specify arguments passed to <c>install</c> (eg <c>-s</c>, <c>-m644</c>).
+      Specify arguments passed to <c>install</c> (eg <c>-s</c>, <c>-m644</c>)
     </ti>
   </tr>
   <tr>
@@ -267,7 +267,7 @@ the first is the source name, the second the name to use when installing.
       <c>keepdir</c>
     </ti>
     <ti>
-      Create a directory with an empty <c>.keep</c> file in it.
+      Create a directory with an empty <c>.keep</c> file in it
     </ti>
   </tr>
   <tr>
@@ -275,7 +275,7 @@ the first is the source name, the second the name to use when installing.
       <c>newbin</c>
     </ti>
     <ti>
-      Install a binary using the second argument as the name.
+      Install a binary using the second argument as the name
     </ti>
   </tr>
   <tr>
@@ -283,7 +283,7 @@ the first is the source name, the second the name to use when installing.
       <c>newconfd</c>
     </ti>
     <ti>
-      Install an <c>/etc/conf.d</c> entry using the second argument as the name.
+      Install an <c>/etc/conf.d</c> entry using the second argument as the name
     </ti>
   </tr>
   <tr>
@@ -291,7 +291,7 @@ the first is the source name, the second the name to use when installing.
       <c>newdoc</c>
     </ti>
     <ti>
-      Install a documentation file using the second argument as the name.
+      Install a documentation file using the second argument as the name
     </ti>
   </tr>
   <tr>
@@ -299,7 +299,7 @@ the first is the source name, the second the name to use when installing.
       <c>newenvd</c>
     </ti>
     <ti>
-      Install an <c>/etc/env.d</c> file using the second argument as the name.
+      Install an <c>/etc/env.d</c> file using the second argument as the name
     </ti>
   </tr>
   <tr>
@@ -307,7 +307,7 @@ the first is the source name, the second the name to use when installing.
       <c>newexe</c>
     </ti>
     <ti>
-      Install an executable file using the second argument as the name.
+      Install an executable file using the second argument as the name
     </ti>
   </tr>
   <tr>
@@ -315,7 +315,7 @@ the first is the source name, the second the name to use when installing.
       <c>newinitd</c>
     </ti>
     <ti>
-      Install an <c>/etc/init.d</c> file using the second argument as the name.
+      Install an <c>/etc/init.d</c> file using the second argument as the name
     </ti>
   </tr>
   <tr>
@@ -323,7 +323,7 @@ the first is the source name, the second the name to use when installing.
       <c>newins</c>
     </ti>
     <ti>
-      Install a miscellaneous file using the second argument as the name.
+      Install a miscellaneous file using the second argument as the name
     </ti>
   </tr>
   <tr>
@@ -331,7 +331,7 @@ the first is the source name, the second the name to use when installing.
       <c>newlib.a</c>
     </ti>
     <ti>
-      Install a <c>.a</c> library file using the second argument as the name.
+      Install a <c>.a</c> library file using the second argument as the name
     </ti>
   </tr>
   <tr>
@@ -339,7 +339,7 @@ the first is the source name, the second the name to use when installing.
       <c>newlib.so</c>
     </ti>
     <ti>
-      Install a <c>.so</c> library file using the second argument as the name.
+      Install a <c>.so</c> library file using the second argument as the name
     </ti>
   </tr>
   <tr>
@@ -347,7 +347,7 @@ the first is the source name, the second the name to use when installing.
       <c>newman</c>
     </ti>
     <ti>
-      Install a manual page using the second argument as the name.
+      Install a manual page using the second argument as the name
     </ti>
   </tr>
   <tr>
@@ -355,7 +355,7 @@ the first is the source name, the second the name to use when installing.
       <c>newsbin</c>
     </ti>
     <ti>
-      Install an <c>sbin</c> file using the second argument as the name.
+      Install an <c>sbin</c> file using the second argument as the name
     </ti>
   </tr>
 </table>
