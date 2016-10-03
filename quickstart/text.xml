@@ -38,7 +38,7 @@ can see real ebuilds in the main tree).
 # Distributed under the terms of the GNU General Public License v2
 # &#36;Id&#36;
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Exuberant ctags generates tags files for quick source navigation"
 HOMEPAGE="http://ctags.sourceforge.net"
@@ -56,7 +56,6 @@ src_install() {
     emake DESTDIR="${D}" install
 
     dodoc FAQ NEWS README
-    dohtml EXTENDING.html ctags.html
 }
 </codesample>
 </body>
@@ -162,7 +161,7 @@ installs.
 </note>
 
 <p>
-The <c>dodoc</c> and <c>dohtml</c> are helper functions for installing
+The <c>dodoc</c> is a helper function for installing
 files into the relevant part of <c>/usr/share/doc</c>.
 </p>
 
