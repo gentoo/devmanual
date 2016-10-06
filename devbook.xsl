@@ -492,7 +492,7 @@
                       <xsl:with-param name="append">../</xsl:with-param>
                     </xsl:call-template>
                   </xsl:variable>
-                  <li><a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'), '/index.html', substring-after(@link, '##'))}"><span class="glyphicon glyphicon-home"/>&#160; Home</a></li>
+                  <li><a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'), 'index.html', substring-after(@link, '##'))}"><span class="glyphicon glyphicon-home"/>&#160; Home</a></li>
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><xsl:value-of select="/guide/chapter[1]/title"/> <span class="caret"></span></a>
                     <xsl:call-template name="contentsTree">
