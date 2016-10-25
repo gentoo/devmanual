@@ -113,6 +113,24 @@ for these variables when writing ebuilds.
       fetched for the package are stored.
     </ti>
   </tr>
+  <tr>
+    <ti><c>EPREFIX</c></ti>
+    <ti>
+      The normalised offset-prefix path of an offset installation.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>ED</c></ti>
+    <ti>
+      Shorthand for <c>${D%/}${EPREFIX}/</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>EROOT</c></ti>
+    <ti>
+      Shorthand for <c>${ROOT%/}${EPREFIX}/</c>.
+    </ti>
+  </tr>
 </table>
 
 </body>
