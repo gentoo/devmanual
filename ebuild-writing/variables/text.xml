@@ -457,18 +457,7 @@ pkg_postinst() {
 	fi
 }
 </codesample>
-
-The <c>ROOT</c> variable always ends in a trailing slash. Therefore,
-there is no need to suffix it with <c>/</c> when joining paths.
 </p>
-
-<note>
-Future EAPI may remove the trailing slash at the end per
-<uri link="https://bugs.gentoo.org/465772">Bug 465722</uri>.
-Developers can use <c>${ROOT%/}</c> to ensure maximum compatibility
-with both the current and the future EAPI.
-</note>
-
 
 </body>
 </section>
@@ -561,6 +550,29 @@ follows.
     <ti>Delete all version separators.</ti>
   </tr>
 </table>
+
+</body>
+</section>
+
+<section>
+<title>Trailing Slashes in Variables</title>
+<body>
+
+<p>
+The following variables always end in a trailing slash by default:
+<c>D</c>, <c>ED</c>, <c>ROOT</c>, <c>EROOT</c>. Therefore, there is no
+need to suffix them with <c>/</c> when joining paths.
+</p>
+
+<note>
+Future EAPI may remove the trailing slash at the end per
+<uri link="https://bugs.gentoo.org/465772">Bug 465722</uri>.
+To ease the transition, and ensure maximum compatibility with both the
+current and the future EAPI, developers are encouraged to use the bash
+suffix removal for the trailing slash and add an explicit <c>/</c>
+when joining paths. For example: <c>${D%/}/</c>, <c>${ED%/}/</c>,
+<c>${ROOT%/}/</c>, <c>${EROOT%/}/</c>.
+</note>
 
 </body>
 </section>
