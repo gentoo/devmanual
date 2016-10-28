@@ -237,7 +237,7 @@ part.
   </li>
   <li>
     <e>One dependency per line.</e><br />
-    Don't put multiple dependency on the same line. It makes it ugly to read 
+    Don't put multiple dependency on the same line. It makes it ugly to read
     and hard to follow.
   </li>
 </ul>
@@ -293,17 +293,17 @@ some tips on how to find the correct dependencies.
 
 <p>
 Another common mistake users make when submitting ebuilds is supplying an
-invalid license. For example, <c>GPL</c> is not a valid license. You need to 
-specify <c>GPL-1</c> or <c>GPL-2</c>. Same with <c>LGPL</c>. Make sure the 
-license you use in the <c>LICENSE</c> field is something that exists in 
-<path>/usr/portage/licenses</path>. As a tip, check the <path>COPYING</path> 
+invalid license. For example, <c>GPL</c> is not a valid license. You need to
+specify <c>GPL-1</c> or <c>GPL-2</c>. Same with <c>LGPL</c>. Make sure the
+license you use in the <c>LICENSE</c> field is something that exists in
+<path>/usr/portage/licenses</path>. As a tip, check the <path>COPYING</path>
 in a source tarball for the license. If a package does not specify it
 uses <c>GPL-1</c> or <c>GPL-2</c>, it is very likely it uses <c>GPL-2</c>.
 </p>
 
 <p>
 If the license for the package you submit is unique and not in
-<path>/usr/portage/licenses/</path>, then you must submit the new license in a 
+<path>/usr/portage/licenses/</path>, then you must submit the new license in a
 separate file.
 </p>
 
@@ -377,8 +377,8 @@ tell you if there is trailing whitespace at the end of lines or on empty lines.
 <body>
 
 <p>
-If <c>S=${WORKDIR}/${P}</c>, then you should not add it to your ebuild. This is 
-implied already, you should only add it if it is something other than 
+If <c>S=${WORKDIR}/${P}</c>, then you should not add it to your ebuild. This is
+implied already, you should only add it if it is something other than
 <c>${WORKDIR}/${P}</c>.
 </p>
 
