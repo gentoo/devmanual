@@ -19,19 +19,19 @@ developers may not be familiar with.
 <body>
 
 <p>
-Before writing a new ebuild, check 
-<uri link="https://bugs.gentoo.org/">bugs.gentoo.org</uri> 
-to see if an ebuild has already been written for the package, but has not yet 
-been added to the Portage tree.  Go to <uri 
-link="https://bugs.gentoo.org/">bugs.gentoo.org</uri>, choose query and select 
-Advanced Search; as product select <e>Gentoo Linux</e>, as component select 
-<e>ebuilds</e>.  In the search field put the name of the ebuild and as status 
+Before writing a new ebuild, check
+<uri link="https://bugs.gentoo.org/">bugs.gentoo.org</uri>
+to see if an ebuild has already been written for the package, but has not yet
+been added to the Portage tree.  Go to <uri
+link="https://bugs.gentoo.org/">bugs.gentoo.org</uri>, choose query and select
+Advanced Search; as product select <e>Gentoo Linux</e>, as component select
+<e>ebuilds</e>.  In the search field put the name of the ebuild and as status
 select all possible fields, then submit the query. For you lazy people, click
 <uri link="https://bugs.gentoo.org/query.cgi?format=advanced&amp;product=Gentoo%20Linux&amp;component=New%20Ebuilds&amp;bug_Status=UNCONFIRMED&amp;bug_status=CONFIRMED&amp;bug_status=IN_PROGRESS&amp;bug_status=RESOLVED&amp;bug_status=VERIFIED">here</uri>.
 </p>
 
 <p>
-In general, the Portage tree should only be used for storing 
+In general, the Portage tree should only be used for storing
 <path>.ebuild</path> files, as well as any relatively small companion
 files, such as patches or sample configuration files.  These types of
 files should be placed in the <path>/usr/portage/mycat/mypkg/files</path>
@@ -42,21 +42,21 @@ above 20KB) which should be distributed as tarballs via the
 so that people do not waste excessive amounts of bandwidth and hard drive
 space. Also, you should not add binary (non-ASCII) files to the
 git tree. Also, speaking of merging
-changes, any patches you add to Portage should generally <e>not</e> be 
+changes, any patches you add to Portage should generally <e>not</e> be
 compressed.  This will allow git to merge changes and correctly inform
 developers of conflicts.
 </p>
 
 <p>
-Remember, the packages that you commit must be <e>ready</e> <e>out of the 
-box</e> for end users when committed as stable.  Make sure that you have a good 
-set of default settings that will satisfy the majority of systems and 
-users that will use your package.  If your package is broken, and you are 
-not sure how to get it to work, check some other distributions that have 
-done their own versions of the package.  You can check 
+Remember, the packages that you commit must be <e>ready</e> <e>out of the
+box</e> for end users when committed as stable.  Make sure that you have a good
+set of default settings that will satisfy the majority of systems and
+users that will use your package.  If your package is broken, and you are
+not sure how to get it to work, check some other distributions that have
+done their own versions of the package.  You can check
 <uri link="http://cvs.mandriva.com/cgi-bin/viewvc.cgi/SPECS/">Mandriva</uri>
-or <uri link="http://www.debian.org/distrib/packages">Debian</uri> or 
-<uri link="http://cvs.fedora.redhat.com/">Fedora</uri> for some 
+or <uri link="http://www.debian.org/distrib/packages">Debian</uri> or
+<uri link="http://cvs.fedora.redhat.com/">Fedora</uri> for some
 examples.
 </p>
 
@@ -214,13 +214,13 @@ Gentoo-Bug: 01234
 <ul>
 <li>Always run <c>repoman scan</c> before you commit.</li>
 <li>Please run <c>repoman full</c> before you commit.</li>
-<li>Always test that <path>package.mask</path> is okay by doing 
-<c>emerge --pretend mypkg</c> before you commit and check 
+<li>Always test that <path>package.mask</path> is okay by doing
+<c>emerge --pretend mypkg</c> before you commit and check
 that it doesn't contain any conflicts.</li>
 <li>Always commit the updated <path>package.mask</path> before
 the updated package.</li>
-<li>Always do atomic commits; if you commit a package with a new license, 
-or that is masked, then first commit the revised <path>package.mask</path> and/or license, 
+<li>Always do atomic commits; if you commit a package with a new license,
+or that is masked, then first commit the revised <path>package.mask</path> and/or license,
 then commit the ebuild, patches
 and <uri link="::ebuild-writing/misc-files/metadata">metadata.xml</uri> all in <b>one</b> go
 .</li>
@@ -248,26 +248,26 @@ download. You may want to consider naming patches you create yourself
 just to get your package to build with a version-specific name, such
 as <path>mypkg-1.0-gentoo.diff</path>, or more
 simply, <path>1.0-gentoo.diff</path>.  Also note that the
-<path>gentoo</path> extension informs people that this patch was created 
-by us, the Gentoo Linux developers, rather than having been grabbed from a 
-mailing list or somewhere else. Again, you should not compress these 
+<path>gentoo</path> extension informs people that this patch was created
+by us, the Gentoo Linux developers, rather than having been grabbed from a
+mailing list or somewhere else. Again, you should not compress these
 patches.
 </p>
 
 <p>
-Consider prefixing or suffixing (such as <path>mypkg-1.0</path>) every file 
-you put into the <path>files/</path> directory, so that the files used for 
-each individual version on an ebuild are distinguishable from one another, and 
-so that the changes between different revisions are visible.  This is generally 
-a really good idea :).  You may want to use a different suffix if you wish to 
+Consider prefixing or suffixing (such as <path>mypkg-1.0</path>) every file
+you put into the <path>files/</path> directory, so that the files used for
+each individual version on an ebuild are distinguishable from one another, and
+so that the changes between different revisions are visible.  This is generally
+a really good idea :).  You may want to use a different suffix if you wish to
 convey more meaning with the patch name.
 </p>
 
 <p>
-If you have many files that should go into the <path>files/</path> directory, 
+If you have many files that should go into the <path>files/</path> directory,
 consider creating subdirectories such as <path>files/1.0/</path> and putting the
-relevant files in the appropriate subdirectory.  If you use this method, 
-you do not need to add version information to the names of the files, 
+relevant files in the appropriate subdirectory.  If you use this method,
+you do not need to add version information to the names of the files,
 which is often more convenient.
 </p>
 
@@ -310,12 +310,12 @@ Gentoo policies.
 <body>
 
 <p>
-Only architecture maintainers for a given architecture should mark packages as 
-stable on that architecture. The maintainer of the package should always be 
-contacted just in case there are reasons not to do so. The exception to this 
-is if you are part of an architecture team, in which case you may mark the 
-package stable for that architecture. If you are not part of an architecture 
-team, you should consult the guidelines below; if the architecture you are 
+Only architecture maintainers for a given architecture should mark packages as
+stable on that architecture. The maintainer of the package should always be
+contacted just in case there are reasons not to do so. The exception to this
+is if you are part of an architecture team, in which case you may mark the
+package stable for that architecture. If you are not part of an architecture
+team, you should consult the guidelines below; if the architecture you are
 looking for is not listed then please consult the relevant lead.
 </p>
 
@@ -574,7 +574,7 @@ When removing packages follow these steps:
     files of other packages.
   </li>
   <li>Close open bugs as WONTFIX</li>
-</ol> 
+</ol>
 
 <p>
 Here is a list of commands that will delete <path>dev-util/pmk</path>
@@ -629,7 +629,7 @@ package, which could include one or more of the following steps:
 </p>
 
 <ul>
-  <li>Make "foo" (R)DEPEND on "bar" and not install the conflicting 
+  <li>Make "foo" (R)DEPEND on "bar" and not install the conflicting
   file.</li>
   <li>Remove conflicting files from "foo" in <c>src_install</c>
   or <c>pkg_preinst</c>.</li>
@@ -655,7 +655,7 @@ won't overwrite them).
 <body>
 
 <p>
-If the <c>HOMEPAGE</c> of your package seems to be unavailable or it 
+If the <c>HOMEPAGE</c> of your package seems to be unavailable or it
 never existed at all, please set the HOMEPAGE variable in every ebuild
 to <uri link="https://wiki.gentoo.org/wiki/No_homepage">
 https://wiki.gentoo.org/wiki/No_homepage</uri>
