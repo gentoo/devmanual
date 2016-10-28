@@ -429,8 +429,8 @@
       <link rel="stylesheet" href="{$relative_path_depth_recursion}devmanual.css" type="text/css" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="description" content="The Gentoo Devmanual is a technical manual which covers topics such as writing ebuilds and eclasses, and policies that developers should be abiding by." />
-      <link href="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/bootstrap.min.css" rel="stylesheet" media="screen" />
-      <link href="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/tyrian.min.css" rel="stylesheet" media="screen" />
+      <link href="https://assets.gentoo.org/tyrian/bootstrap.min.css" rel="stylesheet" media="screen" />
+      <link href="https://assets.gentoo.org/tyrian/tyrian.min.css" rel="stylesheet" media="screen" />
       <link rel="icon" href="https://www.gentoo.org/favicon.ico" type="image/x-icon" />
     </head>
     <body>
@@ -463,8 +463,8 @@
               </div>
               <div class="logo">
                 <a href="/" title="Back to the homepage" class="site-logo">
-                  <object data="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/site-logo.svg" type="image/svg+xml">
-                    <img src="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/site-logo.png" alt="Gentoo Linux Logo" />
+                  <object data="https://assets.gentoo.org/tyrian/site-logo.svg" type="image/svg+xml">
+                    <img src="https://assets.gentoo.org/tyrian/site-logo.png" alt="Gentoo Linux Logo" />
                   </object>
                 </a>
                 <span class="site-label">Development Guide</span>
@@ -553,8 +553,8 @@
           </div>
         </div>
       </footer>
-      <script src="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/jquery.min.js"></script>
-      <script src="https://1b9a50f4f9de4348cd9f-e703bc50ba0aa66772a874f8c7698be7.ssl.cf5.rackcdn.com/bootstrap.min.js"></script>
+      <script src="https://assets.gentoo.org/tyrian/jquery.min.js"></script>
+      <script src="https://assets.gentoo.org/tyrian/bootstrap.min.js"></script>
     </body>
     </html>
   </xsl:template>
