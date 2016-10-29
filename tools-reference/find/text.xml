@@ -112,6 +112,15 @@ Useful rules include:
     </ti>
     <ti>no, GNU and FBSD</ti>
   </tr>
+  <tr>
+    <ti><c>-print0</c></ti>
+    <ti>
+      Separate file names by a NUL character instead of a newline in
+      the output. This is useful for guarding against files which may
+      include a newline in their names.
+    </ti>
+    <ti>no, GNU and FBSD</ti>
+  </tr>
 </table>
 
 <note>
@@ -121,29 +130,29 @@ ebuild context for those EAPIs.
 
 <p>
 By default, <c>find</c> will echo a list of matching files to the
-standard output. This can be used in a <c>while</c> loop:
-</p>
-
-<codesample lang="ebuild">
-while read f ; do
-    einfo "Doing unholy things to ${f}"
-done &lt; &lt;(find "${S}" -type f)
-</codesample>
-
-<p>
-Or a <c>for</c> loop (for small numbers of files):
+standard output separated by newlines. It can be combined with a
+<c>for</c> loop for a small number of files with no weird characters
+and spaces in their names:
 </p>
 
 <codesample lang="ebuild">
 for f in $(find "${S}" -type f) ; do
-    einfo "Calling down holy vengance upon ${f}"
+    einfo "Doing unholy things to ${f}"
 done
 </codesample>
 
-<warning>
-In both cases, files with weird characters or spaces in their names
-may cause serious problems.
-</warning>
+<p>
+The above loop may cause issues with files containing special
+characters in their names. A better way is to run <c>find</c> with the
+<c>-print0</c> option in a <c>while</c> loop (note the options passed
+to <c>while</c> and <c>read</c> for changing the delimiter):
+</p>
+
+<codesample lang="ebuild">
+while IFS="" read -d $'\0' -r f ; do
+    einfo "Calling down holy vengance upon ${f}"
+done &lt; &lt;(find "${S}" -type f -print0)
+</codesample>
 
 <p>
 As an alternative you can use the <c>-exec</c> argument. Be careful
