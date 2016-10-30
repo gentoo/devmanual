@@ -125,23 +125,20 @@ adhere to the following process:</p>
 <body>
 
 <p>
-Eclasses are documented as any other bash project is, with code
-comments. We do however have a standard format for eclass, variable,
-and function headers. The <c>app-portage/eclass-manpages</c> package
-processes these headers to create documentation for the eclass. The
-result can be seen in our <uri link="::eclass-reference/">eclass
-reference</uri>, or by installing <c>app-portage/eclass-manpages</c>.
+Eclasses are documented with comment blocks that follow a special
+markup syntax. The comment blocks are separated by blank lines and
+each block documents an individual element of an eclass.
 </p>
+
 <p>
-The format for eclass, variable, and function headers are described
-below. Before committing your eclass, please ensure that the
-<c>eclass-to-manpage.sh</c> script (currently in <c>$FILESDIR</c> for
-<c>app-portage/eclass-manpages</c> in the <c>gentoo.git</c> repo) does
-not report any errors or serious warnings for your eclass.
+Documentation tags for various eclass elements are explained in their
+respective sections below. Common to all the tags that accept
+multiline freetext, the <c>@CODE</c> tag should be used when necessary
+to create unformatted code chunks (such as example code) by placing
+the tag at the beginning and the end.
 </p>
 </body>
 </section>
-
 
 <section>
 <title>Basic Eclass Format</title>
@@ -157,26 +154,135 @@ underscores and dots. Eclasses are not intrinsically versioned.
 <p>
 Eclasses should start with the standard ebuild header, along with
 comments explaining the maintainer and purpose of the eclass, and any
-other relevant documentation. The format supported by
-<c>app-portage/eclass-manpages</c> is as follows:
+other relevant documentation. Eclass documentation block should be the
+first documentation block to appear in the eclass. The following table
+summarizes the available documentation tags:
 </p>
 
-<codesample lang="ebuild">
-# @ECLASS: foo.eclass
-# @MAINTAINER:
-# &lt;required; list of contacts, one per line&gt;
-# @AUTHOR:
-# &lt;optional; list of authors, one per line&gt;
-# @BUGREPORTS:
-# &lt;optional; description of how to report bugs;
-#  default: tell people to use bugs.gentoo.org&gt;
-# @VCSURL: &lt;optional; url to vcs for this eclass; default: https://gitweb.gentoo.org/repo/gentoo.git/log/eclass/@ECLASS@&gt;
-# @BLURB: &lt;required; short description&gt;
-# @DESCRIPTION:
-# &lt;optional; long description&gt;
-# @EXAMPLE:
-# &lt;optional; example usage&gt;
-</codesample>
+<table>
+<tr>
+  <th>tag</th>
+  <th>optional?</th>
+  <th>arguments</th>
+  <th>description</th>
+</tr>
+<tr>
+  <ti>
+    <c>@ECLASS:</c>
+  </ti>
+  <ti>
+    NO
+  </ti>
+  <ti>
+    Name of the eclass being documented.
+  </ti>
+  <ti>
+    Documents various information about the eclass. Must appear as the
+    first tag in the comment block.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@MAINTAINER:</c>
+  </ti>
+  <ti>
+    NO
+  </ti>
+  <ti>
+    One or more name and email pairs.
+  </ti>
+  <ti>
+    List of maintainers for the eclass to be contacted. One line per
+    maintainer. Must start on a newline after the tag.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@AUTHOR:</c>
+  </ti>
+  <ti>
+    YES
+  </ti>
+  <ti>
+    One or more name and email pairs.
+  </ti>
+  <ti>
+    List of authors for the eclass. One line per author. Must start on
+    a newline after the tag.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@BUGREPORTS:</c>
+  </ti>
+  <ti>
+    YES
+  </ti>
+  <ti>
+    Multiline freetext.
+  </ti>
+  <ti>
+    Describes how bugs related to this eclass should be reported.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@VCSURL:</c>
+  </ti>
+  <ti>
+    YES
+  </ti>
+  <ti>
+    A URI string.
+  </ti>
+  <ti>
+    Points to the URL of the VCS that contains the eclass source.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@BLURB:</c>
+  </ti>
+  <ti>
+    NO
+  </ti>
+  <ti>
+    Single line freetext.
+  </ti>
+  <ti>
+    Contains a short description for the eclass. Must be on the same
+    line with the tag.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@DESCRIPTION:</c>
+  </ti>
+  <ti>
+    YES
+  </ti>
+  <ti>
+    Multiline freetext.
+  </ti>
+  <ti>
+    Long description for the eclass.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@EXAMPLE:</c>
+  </ti>
+  <ti>
+    YES
+  </ti>
+  <ti>
+    Multiline freetext.
+  </ti>
+  <ti>
+    Examples that illustrate various uses of this eclass.
+  </ti>
+</tr>
+</table>
 
 </body>
 </section>
@@ -190,21 +296,95 @@ Top level variables may be defined as for ebuilds. If any USE flags are
 used, <c>IUSE</c> must be set. The <c>KEYWORDS</c> variable must <b>not</b> be set in an
 eclass.
 </p>
+
 <p>
 You should document the meaning, usage, and default value of every
-variable in your eclass. The standard format supported by
-<c>app-portage/eclass-manpages</c> is,
+variable in your eclass. The tags available for documenting eclass
+variables are as follows:
 </p>
 
-<codesample lang="ebuild">
-# @ECLASS-VARIABLE: foo
-# [@DEFAULT_UNSET]
-# [@INTERNAL]
-# [@REQUIRED]
-# @DESCRIPTION:
-# &lt;required; blurb about this variable&gt;
-# foo=&quot;&lt;default value&gt;&quot;
-</codesample>
+<table>
+<tr>
+  <th>tag</th>
+  <th>optional?</th>
+  <th>arguments</th>
+  <th>description</th>
+</tr>
+<tr>
+  <ti nowrap="nowrap">
+    <c>@ECLASS-VARIABLE:</c>
+  </ti>
+  <ti>
+    NO
+  </ti>
+  <ti>
+    Name of the eclass variable to which the documentation applies.
+  </ti>
+  <ti>
+    This tag applies to eclass specific variables that affect the
+    default behavior of the eclass. Read-only variables, which are
+    exported by the eclass for developer use, are also documented with
+    this tag. Must appear as the first tag in the comment block.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@DEFAULT_UNSET</c>
+  </ti>
+  <ti>
+    YES
+  </ti>
+  <ti>
+    <d/>
+  </ti>
+  <ti>
+    Indicates that this variable is unset by default if not set by the
+    developer.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@INTERNAL</c>
+  </ti>
+  <ti>
+    YES
+  </ti>
+  <ti>
+    <d/>
+  </ti>
+  <ti>
+    Indicates that the variable is internal to the eclass.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@REQUIRED</c>
+  </ti>
+  <ti>
+    YES
+  </ti>
+  <ti>
+    <d/>
+  </ti>
+  <ti>
+    Indicates that this variable must be set by the developer.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@DESCRIPTION:</c>
+  </ti>
+  <ti>
+    NO
+  </ti>
+  <ti>
+    Multiline freetext.
+  </ti>
+  <ti>
+    Long description for the eclass variable.
+  </ti>
+</tr>
+</table>
 
 </body>
 </section>
@@ -217,22 +397,207 @@ variable in your eclass. The standard format supported by
 Eclasses may define functions. These functions will be visible to anything which
 inherits the eclass.
 </p>
+
 <p>
 You should document the purpose, arguments, usage, and return value of
-every function in your eclass. The standard format supported by
-<c>app-portage/eclass-manpages</c> is,
+every function in your eclass. The standard tags available for
+documentation are:
 </p>
 
-<codesample lang="ebuild">
-# @FUNCTION: foo
-# @USAGE: &lt;required arguments to foo&gt; [optional arguments to foo]
-# @RETURN: &lt;whatever foo returns&gt;
-# @MAINTAINER:
-# &lt;optional; list of contacts, one per line&gt;
-# [@INTERNAL]
-# @DESCRIPTION:
-# &lt;required if no @RETURN; blurb about this function&gt;
-</codesample>
+<table>
+<tr>
+  <th>tag</th>
+  <th>optional?</th>
+  <th>arguments</th>
+  <th>description</th>
+</tr>
+<tr>
+  <ti>
+    <c>@FUNCTION:</c>
+  </ti>
+  <ti>
+    NO
+  </ti>
+  <ti>
+    Name of the function to which the documentation block applies.
+  </ti>
+  <ti>
+    Documents information about an eclass function such as its calling
+    convention etc. Must appear as the first tag in the comment block.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@USAGE:</c>
+  </ti>
+  <ti>
+    NO
+  </ti>
+  <ti>
+    List of required and optional arguments to the function.
+  </ti>
+  <ti>
+    List of arguments that the eclass function accepts, specified in
+    the following syntax: <c>&lt;</c>Required arguments<c>&gt;</c>
+    <c>[</c>Optional arguments<c>]</c>
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@RETURN:</c>
+  </ti>
+  <ti>
+    <b>*</b>
+  </ti>
+  <ti>
+    Return value of the function.
+  </ti>
+  <ti>
+    <p>Description for the value returned by the function.</p>
+    <p><b>*</b>: Not optional for functions that return a value.</p>
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@MAINTAINER:</c>
+  </ti>
+  <ti>
+    YES
+  </ti>
+  <ti>
+    Multiline freetext.
+  </ti>
+  <ti>
+    List of contacts for the eclass function. One line per
+    maintainer. Must start on a newline after the tag.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@INTERNAL</c>
+  </ti>
+  <ti>
+    YES
+  </ti>
+  <ti>
+    <d/>
+  </ti>
+  <ti>
+    Indicates that the function is internal to the eclass and should
+    not be called from outside.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@DESCRIPTION:</c>
+  </ti>
+  <ti>
+    <b>*</b>
+  </ti>
+  <ti>
+    Multiline freetext.
+  </ti>
+  <ti>
+    <p>Long description for the eclass function.</p>
+    <p><b>*:</b> Not optional if <c>RETURN:</c> is absent.</p>
+  </ti>
+</tr>
+</table>
+
+</body>
+</section>
+<section>
+<title>Eclass Function Variables</title>
+<body>
+
+<p>
+Eclass functions may make use of variables just like any other bash
+function. Special function-specific variables should be documented
+using the following tags:
+</p>
+
+<table>
+<tr>
+  <th>tag</th>
+  <th>optional?</th>
+  <th>arguments</th>
+  <th>description</th>
+</tr>
+<tr>
+  <ti>
+    <c>@VARIABLE:</c>
+  </ti>
+  <ti>
+    NO
+  </ti>
+  <ti>
+    Name of the function-specific variable to which the documentation applies.
+  </ti>
+  <ti>
+    This tag applies to variables consumed by specific functions of
+    the eclass. They are in effect only when the specific function is
+    called.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@DEFAULT_UNSET</c>
+  </ti>
+  <ti>
+    YES
+  </ti>
+  <ti>
+    <d/>
+  </ti>
+  <ti>
+    Indicates that this variable is unset by default if not set by the
+    developer.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@INTERNAL</c>
+  </ti>
+  <ti>
+    YES
+  </ti>
+  <ti>
+    <d/>
+  </ti>
+  <ti>
+    Indicates that the variable is internal to the eclass function.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@REQUIRED</c>
+  </ti>
+  <ti>
+    YES
+  </ti>
+  <ti>
+    <d/>
+  </ti>
+  <ti>
+    Indicates that this variable must be set by the developer.
+  </ti>
+</tr>
+<tr>
+  <ti>
+    <c>@DESCRIPTION:</c>
+  </ti>
+  <ti>
+    NO
+  </ti>
+  <ti>
+    Multiline freetext.
+  </ti>
+  <ti>
+    Long description for the function variable.
+  </ti>
+</tr>
+</table>
+
 </body>
 </section>
 
