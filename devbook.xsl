@@ -104,6 +104,10 @@
       <xsl:if test="@rowspan">
 	<xsl:attribute name="rowspan"><xsl:value-of select="@rowspan"/></xsl:attribute>
       </xsl:if>
+      <xsl:if test="@nowrap">
+	<!-- Disable word wrapping for this table item. Usage: <ti nowrap="nowrap"> -->
+	<xsl:attribute name="nowrap"><xsl:value-of select="@nowrap"/></xsl:attribute>
+      </xsl:if>
       <xsl:apply-templates/>
     </td>
   </xsl:template>
