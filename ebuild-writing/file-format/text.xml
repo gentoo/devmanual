@@ -76,7 +76,7 @@ what portage considers to be the 'lowest' version comes first.
     <ti>Normal release</ti>
   </tr>
   <tr>
-    <ti>_p</ti>
+    <ti><c>_p</c></ti>
     <ti>Patch release</ti>
   </tr>
 </table>
