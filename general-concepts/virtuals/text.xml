@@ -38,7 +38,7 @@ ebuild.
 
 <note>
 The so-called <e>old-style</e> or <c>PROVIDE</c> type virtuals have been banned
-from the Portage tree.
+from the Gentoo repository.
 </note>
 </body>
 
