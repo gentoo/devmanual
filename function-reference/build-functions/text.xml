@@ -49,6 +49,7 @@ during the unpack and compile stages.
     </ti>
     <ti>
       Wrapper for <c>emake install</c>, only to be used if <c>emake DESTDIR="${D}"</c> is unsuitable.
+      <b>Note</b>: Banned in EAPI 6.
     </ti>
   </tr>
 </table>

@@ -144,14 +144,6 @@ the first is the source name, the second the name to use when installing.
   </tr>
   <tr>
     <ti>
-      <c>dohard</c>
-    </ti>
-    <ti>
-      Create a hardlink to the first argument from the second argument
-    </ti>
-  </tr>
-  <tr>
-    <ti>
       <c>doheader</c>
     </ti>
     <ti>
@@ -164,6 +156,7 @@ the first is the source name, the second the name to use when installing.
     </ti>
     <ti>
       Installs HTML document files into <c>/usr/share/doc/${PF}/html</c>
+      <b>Note</b>: Deprecated in EAPI 6.
     </ti>
   </tr>
   <tr>
