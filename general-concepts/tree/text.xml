@@ -38,6 +38,21 @@ The basic layout of the portage tree is as follows:
   <li>Eclasses directory, <c>eclass/</c></li>
   <li>Licenses directory, <c>licenses/</c></li>
   <li>
+  Metadata directory, <c>metadata/</c>
+  <ul>
+    <li>
+    Various control files, for example <c>layout.conf</c>, <c>timestamp</c>
+    and <c>projects.xml</c>.
+    </li>
+    <li>
+    XML validation files in <c>metadata/dtd/</c> and <c>metadata/xml-schema/</c>.
+    </li>
+    <li>
+    News updates in <c>metadata/glsa/</c> and <c>metadata/news/</c>.
+    </li>
+  </ul>
+  </li>
+  <li>
   Profiles directory, <c>profiles/</c>
   <ul>
     <li>
