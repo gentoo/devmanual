@@ -168,8 +168,10 @@ The following variables may or must be defined by every ebuild.
     Package's homepage. Mandatory (except for virtuals). If you are
     unable to locate an official one, try to provide a link to
     <uri link="http://freshmeat.net">freshmeat.net</uri> or a similar
-    package tracking site. Never refer to a variable name in the
-    string; include only raw text.
+    package tracking site. If the homepage of the package is unavailable
+    and no new location can be found, please update it to
+    <c>https://wiki.gentoo.org/wiki/No_homepage</c>.
+    Never refer to a variable name in the string; include only raw text.
     </ti>
   </tr>
   <tr>
