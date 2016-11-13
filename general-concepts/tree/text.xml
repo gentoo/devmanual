@@ -38,6 +38,26 @@ The basic layout of the Gentoo repository is as follows:
   <li>Eclasses directory, <c>eclass/</c></li>
   <li>Licenses directory, <c>licenses/</c></li>
   <li>
+  Metadata directory, <c>metadata/</c>. Most of the listed contents
+  are not kept directly in the main git tree but instead
+  auto-generated or included from other repositories as part of the
+  <uri link="::general-concepts/git-to-rsync">Git to Rsync</uri>
+  process.
+  <ul>
+    <li>
+    Various control files, for example <c>layout.conf</c>, <c>timestamp</c>
+    and <c>projects.xml</c>. Only <c>layout.conf</c> exists in the main git tree.
+    </li>
+    <li>
+    XML validation files in <c>metadata/dtd/</c> and <c>metadata/xml-schema/</c>.
+    </li>
+    <li>
+    Security advisories in <c>metadata/glsa/</c> and news items in
+    <c>metadata/news/</c>
+    </li>
+  </ul>
+  </li>
+  <li>
   Profiles directory, <c>profiles/</c>
   <ul>
     <li>
