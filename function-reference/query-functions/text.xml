@@ -102,10 +102,13 @@ query variables and similar state.
   </tr>
   <tr>
     <ti>
-      <c>has_version pkg</c>
+      <c>has_version pkg[flag]</c>
     </ti>
     <ti>
-      True if <c>pkg</c> (can include version specifiers) is installed.
+      True if <c>pkg</c> (can include version specifiers and
+      <uri link="::general-concepts/dependencies#built with use dependencies"/>)
+      is installed. Example: <c>has_version
+      "=app-editors/nano-2.5.3[nls,spell]"</c>.
     </ti>
   </tr>
 </table>
