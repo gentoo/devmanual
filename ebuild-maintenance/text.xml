@@ -15,14 +15,14 @@ developers may not be familiar with.
 <body>
 
 <subsection>
-<title>What (not) to put in the Gentoo repository</title>
+<title>What (not) to put in the gentoo repository</title>
 <body>
 
 <p>
 Before writing a new ebuild, check
 <uri link="https://bugs.gentoo.org/">bugs.gentoo.org</uri>
 to see if an ebuild has already been written for the package, but has not yet
-been added to the Gentoo repository.  Go to <uri
+been added to the gentoo repository.  Go to <uri
 link="https://bugs.gentoo.org/">bugs.gentoo.org</uri>, choose query and select
 Advanced Search; as product select <e>Gentoo Linux</e>, as component select
 <e>ebuilds</e>.  In the search field put the name of the ebuild and as status
@@ -31,7 +31,7 @@ select all possible fields, then submit the query. For you lazy people, click
 </p>
 
 <p>
-In general, the Gentoo repository should only be used for storing
+In general, the gentoo repository should only be used for storing
 <path>.ebuild</path> files, as well as any relatively small companion
 files, such as patches or sample configuration files.  These types of
 files should be placed in the <path>/usr/portage/mycat/mypkg/files</path>
@@ -513,7 +513,7 @@ Date:   Tue Nov 3 20:26:52 2015 +0100
 <p>
 The process for changing the ebuild's SLOT is very similar to the previous process.
 Besides changing the SLOT in the ebuild file, you also need to create a new entry
-in <path>profiles/updates/</path> in the Gentoo repository in the following format:
+in <path>profiles/updates/</path> in the gentoo repository in the following format:
 </p>
 
 <pre caption="Adding an entry to updates">

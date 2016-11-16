@@ -359,7 +359,7 @@ RDEPEND="!crypt? ( net-misc/netkit-rsh )"
 This should <b>not</b> be used for disabling a certain <c>USE</c> flag on a given
 architecture. In order to do this, the architecture team should add the <c>USE</c>
 flag to their <c>use.mask</c> file in the <c>profiles/arch</c>
-directory of the Gentoo repository.
+directory of the gentoo repository.
 </p>
 
 <p>
