@@ -309,7 +309,7 @@ src_install() {
 <p>
 Note the <c>${FILESDIR}/${P}-destdir.patch</c> <d/> this refers to
 <c>detox-1.1.0-destdir.patch</c>, which lives in the <c>files/</c>
-subdirectory in the Portage tree. Larger patch files must go on your
+subdirectory in the gentoo repository. Larger patch files must go on your
 developer's space at <c>dev.gentoo.org</c> rather than in <c>files/</c> or
 mirrors <d/> see <uri link="::general-concepts/mirrors#Gentoo Mirrors"/> and <uri
 link="::ebuild-writing/functions/src_prepare/epatch/"/>.

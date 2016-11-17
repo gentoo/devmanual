@@ -40,7 +40,7 @@ override existing entries.
 <p>
 Be very careful when using eclasses in an overlay. Portage will not do cache
 updates when an overlay eclass is changed, nor will it do cache updates when a
-main Portage tree eclass which is used by an overlay ebuild changes. You may
+main gentoo repository eclass which is used by an overlay ebuild changes. You may
 also encounter bogus 'illegal inherit' notices when working with eclasses in
 an overlay (see <uri
 link="::appendices/common-problems/#QA Notice -- ECLASS foo inherited illegally"/>).
