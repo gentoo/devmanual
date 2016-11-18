@@ -6,7 +6,7 @@
 <body>
 <p>
 The <c>profiles/categories</c> file contains an asciibetically sorted list of all
-the valid categories in the portage tree. When adding a new category, remember
+the valid categories in the Gentoo repository. When adding a new category, remember
 to update and commit this file <e>before</e> making any related commits.
 </p>
 

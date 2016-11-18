@@ -7,7 +7,7 @@
 <p>
 The Package Manager Specification (PMS) is a standardization
 effort to ensure that the ebuild file format, the ebuild repository format
-(of which the portage tree is Gentoo's main incarnation) as well as behavior
+(of which the Gentoo repository is Gentoo's main incarnation) as well as behavior
 of the package managers interacting with these ebuilds is properly written
 down and agreed upon.
 </p>
