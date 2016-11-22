@@ -128,6 +128,13 @@ The policy for so-called <e>live</e> ebuilds
 is to use <c>9999</c> as the version (or as the last version component).
 </p>
 
+<p>
+The
+<uri link="::eclass-reference/versionator.eclass">
+versionator.eclass</uri> may be used to manipulate and extract ebuild
+version components.
+</p>
+
 </body>
 </section>
 
