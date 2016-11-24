@@ -105,9 +105,9 @@ query variables and similar state.
       <c>has_version pkg[flag]</c>
     </ti>
     <ti>
-      True if <c>pkg</c> (can include version specifiers) is installed. The use of <c>flag</c> is
-      optional and <c>flag</c> can be a list of multiple USE flags. Example:
-      <c>if has_version "=app-editors/nano-2.5.3"["nls,spell"] ; then</c>.
+      True if <c>pkg</c> (can include version specifiers and 
+      <uri link="::general-concepts/dependencies#built with use dependencies"/>) is installed. 
+      Example: <c>if has_version "=app-editors/nano-2.5.3[nls,spell]" ; then</c>.
     </ti>
   </tr>
 </table>
