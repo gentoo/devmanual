@@ -99,7 +99,8 @@ the first is the source name, the second the name to use when installing.
       <c>dobin</c>
     </ti>
     <ti>
-      Install a binary
+      Install a binary into <c>/usr/bin</c>, set the file mode to 0755
+      and set the ownership to superuser
     </ti>
   </tr>
   <tr>
@@ -139,7 +140,9 @@ the first is the source name, the second the name to use when installing.
       <c>doexe</c>
     </ti>
     <ti>
-      Install an executable
+      Install an executable into the location provided by <c>exeinto</c>,
+      by default with mode 0755 or with the install options set by
+      <c>exeopts</c>
     </ti>
   </tr>
   <tr>
