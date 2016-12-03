@@ -19,9 +19,39 @@ An ebuild should be named in the form <c>name-version.ebuild</c>.
 </p>
 
 <p>
-The name section should contain only lowercase non-accented letters, the digits
-0-9, hyphens, underscores and plus characters. Uppercase characters are strongly
-discouraged, but technically valid.
+The name section should mimic the identifier most frequently used by the user in order
+to run or consume the package.
+</p>
+
+<p>
+For example, <c>www-client/firefox</c>, <c>dev-lang/perl</c> and <c>sys-devel/gcc</c>
+all make sense to be written as lowercase, as they all ship executables in
+<c>/usr/bin</c>, which the user also calls them in lowercase.
+</p>
+
+<p>
+<c>media-libs/jpeg</c>, <c>media-libs/libpng</c> and <c>dev-libs/expat</c> all make sense
+to be written in lowercase, as they're all primarily referred to with <c>gcc -ljpeg</c>
+etc.
+</p>
+
+<p>
+For some programming languages, like Perl and Haskell, the primary interface is however
+case sensitive where the user is accustomed to regularly using a specific case in their
+code. A library that users primarily consume by <c>use Foo::Bar</c> ( and might be called
+<c>Foo-Bar</c> as an upstream tarball ) would be in a more expected place if it was
+instead called <c>dev-perl/Foo-Bar</c>
+</p>
+
+<p>
+Legal characters include:
+<ul>
+  <li>Upper and lower case non-accented letters</li>
+  <li>the digits 0-9</li>
+  <li>hyphens</li>
+  <li>underscores</li>
+  <li>plus characters</li>
+</ul>
 </p>
 
 <note>
