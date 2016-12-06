@@ -280,9 +280,8 @@ The following variables may or must be defined by every ebuild.
     <ti><c>HTML_DOCS</c></ti>
     <ti>
     An array or space-delimited list of documentation files for
-    the default src_install function to install using dodoc into
-    the <c>html/</c> subdirectory of docdir (Requires
-    <uri link="::ebuild-writing/eapi/#eapi=6">EAPI>=6</uri>.)
+    the <c>einstalldocs</c> function to install using dodoc -r. 
+    (Requires <uri link="::ebuild-writing/eapi/#eapi=6">EAPI>=6</uri>.)
     </ti>
   </tr>
 </table>
