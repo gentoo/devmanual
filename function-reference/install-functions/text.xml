@@ -125,7 +125,9 @@ the first is the source name, the second the name to use when installing.
       <c>dodoc</c>
     </ti>
     <ti>
-      Install a documentation file into <c>/usr/share/doc/${PF}</c>
+      Install a documentation file into <c>/usr/share/doc/${PF}</c>.
+      For EAPI 4 and above, the <c>-r</c> option allows directories to
+      be installed recursively.
     </ti>
   </tr>
   <tr>
