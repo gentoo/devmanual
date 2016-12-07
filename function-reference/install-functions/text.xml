@@ -130,6 +130,16 @@ the first is the source name, the second the name to use when installing.
   </tr>
   <tr>
     <ti>
+      <c>einstalldocs</c>
+    </ti>
+    <ti>
+      Installs the files specified by the <c>DOCS</c> and <c>HTML_DOCS</c>
+      variables into <c>/usr/share/doc/${PF}</c>. <b>Note</b>: Approved in
+      EAPI 6.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
       <c>doenvd</c>
     </ti>
     <ti>
