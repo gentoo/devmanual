@@ -173,7 +173,8 @@ the first is the source name, the second the name to use when installing.
     </ti>
     <ti>
       Installs HTML document files into <c>/usr/share/doc/${PF}/html</c>
-      <b>Note</b>: Deprecated in EAPI 6.
+      <b>Note</b>: Deprecated in EAPI 6, switch to <c>einstalldocs</c>
+      instead
     </ti>
   </tr>
   <tr>
