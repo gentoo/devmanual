@@ -940,6 +940,12 @@ src_install() {
 		</p>
 	</li>
 	<li>
+		<p><b><c>dohtml</c> deprecated</b></p>
+		<p>
+			The <c>dohtml</c> helper has been deprecated with <c>EAPI=6</c>.
+		</p>
+	</li>
+	<li>
 		<p><b><c>nonfatal die</c></b></p>
 		<p>
 			When <c>die</c> or <c>assert</c> are called under the <c>nonfatal</c> command and with the <c>-n</c> option, they will not abort the build process but return with an error.
