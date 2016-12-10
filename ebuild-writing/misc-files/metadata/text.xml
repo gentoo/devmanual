@@ -18,6 +18,12 @@ A metadata file follows the syntax defined in
 <uri link="https://wiki.gentoo.org/wiki/GLEP:68">GLEP 68</uri>.
 The character set <b>must</b> be UTF-8 as specified by
 <uri link="https://wiki.gentoo.org/wiki/GLEP:31">GLEP 31</uri>.
+Concerning indentation there is no strict rule governing the style and width.
+However the following minimal set of rules need to be followed:
+<ul>
+  <li>Indentation should be consistent, i.e. either spaces or tabs, but not both.</li>
+  <li>Keep the existing style when touching another developer's file.</li>
+</ul>
 </p>
 
 <p>
