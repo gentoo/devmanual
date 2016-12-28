@@ -36,10 +36,11 @@ the actual changes to the package have to be done manually.
   </tr>
   <tr>
     <ti>
-      <c>slotmove atom oldslot newslot</c>
+      <c>slotmove spec oldslot newslot</c>
     </ti>
     <ti>
-      Indicates that the atom specified has changed slots.
+      Indicates that the package matching dependency specification <c>spec</c>
+      has changed slots.
     </ti>
   </tr>
 </table>

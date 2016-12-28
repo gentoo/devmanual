@@ -96,8 +96,10 @@ query variables and similar state.
       <c>best_version pkg</c>
     </ti>
     <ti>
-      Echoes the highest versioned atom of <c>pkg</c> which is currently
-      installed.
+      Echoes category, name and version of the highest version of <c>pkg</c>
+      that is currently installed.
+      Example: <c>best_version app-editors/emacs:24</c> will output
+      <c>app-editors/emacs-24.5-r3</c>.
     </ti>
   </tr>
   <tr>

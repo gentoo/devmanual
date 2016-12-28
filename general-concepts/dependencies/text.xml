@@ -109,10 +109,10 @@ DEPEND="dev-lang/ruby
 </codesample>
 
 <p>
-Each atom is the full category and name of a package. Atoms are separated by
-arbitrary whitespace <d/> convention is to specify one atom per line for
-readability purposes. When specifying names, the category part should be treated
-as mandatory.
+Each <e>package dependency specification</e> is the full category and name of
+a package. Dependency specifications are separated by arbitrary whitespace <d/>
+convention is to have one specification per line for readability purposes.
+When specifying names, the category part should be treated as mandatory.
 </p>
 
 </body>

@@ -89,9 +89,9 @@ src_compile() {
 	<li>
 		<p><b>SLOT dependencies</b></p>
 		<p>
-		Any valid atom can be constrained to match a specific SLOT. This
-		is accomplished by appending a colon to the atom, followed by a
-		SLOT value.
+		Any valid package dependency specification can be constrained to match
+		a specific SLOT. This is accomplished by appending a colon to the
+		specification, followed by a SLOT value.
 		</p>
 		<p>
 		<b>SLOT dependency examples:</b>
@@ -166,34 +166,34 @@ doman foo.lang.1
 <body>
 <ul>
 	<li>
-		<p><b>Blocker Atoms</b></p>
+		<p><b>Blockers</b></p>
 		<p>
 		<ul>
 			<li>
 				<p><b>New Meaning for Old Syntax</b></p>
 				<p>
-				Blocker atoms which use the previously existing !atom syntax now
-				have a slightly different meaning. These blocker atoms indicate
-				that conflicting packages may be temporarily installed
-				simultaneously. When temporary simultaneous installation of
-				conflicting packages occurs, the installation of a newer package
-				may overwrite any colliding files that belong to an older package
-				which is explicitly blocked. When such file collisions occur, the
-				colliding files cease to belong to the older package, and they
-				remain installed after the older package is eventually
-				uninstalled. The older package is uninstalled only after any newer
-				blocking packages have been merged on top of it.
+				Blockers which use the previously existing <c>!</c> syntax
+				now have a slightly different meaning. These so-called
+				<e>weak blocks</e> indicate that conflicting packages may
+				be temporarily installed simultaneously. When temporary
+				simultaneous installation of conflicting packages occurs, the
+				installation of a newer package may overwrite any colliding
+				files that belong to an older package which is explicitly
+				blocked. When such file collisions occur, the colliding files
+				cease to belong to the older package, and they remain installed
+				after the older package is eventually uninstalled. The older
+				package is uninstalled only after any newer blocking packages
+				have been merged on top of it.
 			</p>
 			</li>
 			<li>
-				<p><b>New !!atom Syntax</b></p>
+				<p><b>New <c>!!</c> Operator</b></p>
 				<p>
-				A new !!atom syntax is now supported, for use in special cases for
-				which temporary simultaneous installation of conflicting packages
-				should not be allowed. If a given package happens to be blocked by
-				a mixture of atoms consisting of both the !atom and !!atom
-				syntaxes, the !!atom syntax takes precedence over the !atom
-				syntax.
+				A new <c>!!</c> operator for <e>strong blocks</e> is now
+				supported, for use in special cases for which temporary
+				simultaneous installation of conflicting packages should not be
+				allowed. If both weak and strong blocks match a given package,
+				the strong block takes precedence.
 				</p>
 			</li>
 		</ul>
@@ -731,7 +731,9 @@ REQUIRED_USE="|| ( foo bar baz )"
 RDEPEND="dev-libs/foo:0/3"
 		</codesample>
 		<p>
-		Dependency atoms can use <b>slot operators</b> to clarify what should happen if the slot and/or sub-slot of a runtime dependency changes:
+		Package dependency specifications can use <b>slot operators</b> to
+		clarify what should happen if the slot and/or sub-slot of a runtime
+		dependency changes:
 		</p>
 		<ul>
 			<li>
