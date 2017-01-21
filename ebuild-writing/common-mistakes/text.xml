@@ -440,8 +440,7 @@ link="::ebuild-maintenance#adding-a-new-ebuild">Adding new Ebuild</uri> tutorial
 <body>
 
 <p>
-Please please please do not attach ebuilds as tarballs. Attach patches
-separately as well so we can easily examine them.
+Please do not attach ebuilds as tarballs and attach patches separately as well.
 </p>
 
 </body>
