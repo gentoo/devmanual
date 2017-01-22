@@ -159,7 +159,7 @@ Finally the commit message should list auxiliary information such as
 people who are involved in authoring, suggesting, reviewing and
 testing the changes, and revelant bugs. Use RFC822/git style tags as
 explained in the
-<uri link="https://www.kernel.org/doc/Documentation/SubmittingPatches">
+<uri link="https://kernel.org/doc/html/latest/process/submitting-patches.html">
 Linux Kernel patch guideline</uri>. Additionally, the following tags
 are used in Gentoo:
 
