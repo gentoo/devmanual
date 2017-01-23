@@ -148,9 +148,10 @@ Removing "-Werror" from configure.ac can cause breakage in very rare cases where
 <body>
 
 <p>
-When you submit your ebuilds, the header should be <e>exactly</e> the same as
-the one in <path>/usr/portage/skel.ebuild</path>. Most importantly, do not
-modify it in any way and make sure that the <c>&#36;Id&#36;</c> line is intact.
+When you submit your ebuilds, the header must be <e>exactly</e> the same as
+the one in
+<uri link="https://gitweb.gentoo.org/repo/gentoo.git/tree/skel.ebuild">
+skel.ebuild</uri>.
 </p>
 
 <p>
@@ -345,7 +346,9 @@ SLOT="0"
 Please check if the HOMEPAGE variable is right and leads users to the right
 page if they want to find out more about the package. And make sure the
 DESCRIPTION is not overly long. Good descriptions will describe the main
-function of the package in a sentence.
+function of the package in a sentence. Set HOMEPAGE to
+<uri link="::ebuild-maintenance#Homepage unavailable">No_homepage wiki page</uri>,
+if there is none.
 </p>
 
 </body>
