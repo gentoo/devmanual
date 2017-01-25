@@ -47,7 +47,6 @@ Most developers prefer to set the EAPI version without quotes. However, the PMS 
 # &#36;Id&#36;
 
 EAPI=6
-inherit eutils
 
 </codesample>
 
