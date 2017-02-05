@@ -546,7 +546,7 @@
               </ul>
             </div>
             <div class="col-xs-10 col-sm-9 col-md-10">
-              <strong>Copyright (C) 2001-2016 Gentoo Foundation, Inc.</strong><br />
+              <strong>Copyright (C) 2001-2017 Gentoo Foundation, Inc.</strong><br />
               <small>
                 Gentoo is a trademark of the Gentoo Foundation, Inc.
                 The text of this document is distributed under the
