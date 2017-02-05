@@ -14,7 +14,7 @@ Here's an example, from <c>app-misc/hilite</c>:
 
 <codesample lang="ebuild">
 src_compile() {
-    $(tc-getCC) ${LDFLAGS} ${CFLAGS} -o ${PN} ${P}.c || die
+    $(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -o ${PN} ${P}.c || die
 }
 </codesample>
 
@@ -29,7 +29,7 @@ src_compile() {
     for x in asclock parser symbols config
     do
         $(tc-getCC) \
-            ${CPPFLAGS} ${CFLAGS} ${ASFLAGS} \
+            ${CFLAGS} ${CPPFLAGS} \
             -I/usr/include \
             -Dlinux \
             -D_POSIX_C_SOURCE=199309L \
