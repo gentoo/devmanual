@@ -143,18 +143,22 @@ version components.
 <body>
 
 <p>
-All ebuilds committed to the tree should have a three line header immediately at
+All ebuilds committed to the tree should have a two line header immediately at
 the start indicating copyright. This must be an exact copy of the contents of
-<c>$(portageq get_repo_path / gentoo)/header.txt</c>. Ensure that the
-<c>&#36;Id&#36;</c> line is not modified manually <d/> will be expanded
-on staging box. See <uri link="::general-concepts/git-to-rsync"/>.
+<c>$(portageq get_repo_path / gentoo)/header.txt</c>.
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# &#36;Id&#36;
 </codesample>
+
+<note>
+The header previously included a third line with a CVS <c>&#36;Id&#36;</c>
+or <c>&#36;Header&#36;</c> keyword. That line was abolished after conversion
+to Git by <uri link="https://bugs.gentoo.org/611234">decision of the Gentoo
+Council on 28 February 2017</uri> and <e>must not</e> be added any more.
+</note>
 
 </body>
 </section>

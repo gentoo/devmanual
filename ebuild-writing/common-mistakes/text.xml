@@ -155,21 +155,20 @@ skel.ebuild</uri>.
 </p>
 
 <p>
-The first three lines <e>must</e> look like this:
+The first two lines <e>must</e> look like this:
 </p>
 
 <pre caption="Valid Header">
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# &#36;Id&#36;
 </pre>
 
-<p>
-Only if you are submitting a patched or version bumped ebuild, should you not
-need to modify the <c>&#36;Id&#36;</c> line. But the line must be present.
-It will be expanded on the staging box automatically. So there is no need for you to manually modify it.
-See <uri link="::general-concepts/git-to-rsync"/>.
-</p>
+<note>
+The header previously included a third line with a CVS <c>&#36;Id&#36;</c>
+or <c>&#36;Header&#36;</c> keyword. That line was abolished after conversion
+to Git by <uri link="https://bugs.gentoo.org/611234">decision of the Gentoo
+Council on 28 February 2017</uri> and <e>must not</e> be added any more.
+</note>
 
 </body>
 </subsection>
