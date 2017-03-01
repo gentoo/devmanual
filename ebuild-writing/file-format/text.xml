@@ -144,8 +144,10 @@ version components.
 
 <p>
 All ebuilds committed to the tree should have a two line header immediately at
-the start indicating copyright. This must be an exact copy of the contents of
-<c>$(portageq get_repo_path / gentoo)/header.txt</c>.
+the start indicating copyright, followed by an empty line. This must be an
+exact copy of the contents of
+<c><uri link="https://gitweb.gentoo.org/repo/gentoo.git/tree/header.txt">
+header.txt</uri></c> in the top directory of the Gentoo repository.
 </p>
 
 <codesample lang="ebuild">
