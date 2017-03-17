@@ -54,9 +54,13 @@ pkg_nofetch() {
     einfo "Please download"
     einfo "  - ${P}-main.tar.bz2"
     einfo "  - ${P}-extras.tar.bz2"
-    einfo "from ${HOMEPAGE} and place them in ${DISTDIR}"
+    einfo "from ${HOMEPAGE} and place them in your DISTDIR directory."
 }
 </codesample>
+<note>
+The <c>DISTDIR</c> variable is not valid in <c>pkg_*</c> phases, so it must not
+be referenced.
+</note>
 </body>
 </section>
 
