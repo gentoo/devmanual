@@ -143,5 +143,6 @@ really should first examine the GuideXML guide in a reasonable amount of depth.
 </section>
 </chapter>
 
-</guide>
+<include href="devbook-guide/"/>
 
+</guide>
