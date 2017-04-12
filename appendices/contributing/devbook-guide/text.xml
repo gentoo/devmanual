@@ -413,29 +413,8 @@ Fill this section with the information about the use of
 </body>
 </section>
 <section>
-<title>&lt;mail&gt; and &lt;uri&gt;</title>
+<title>&lt;uri&gt;</title>
 <body>
-
-<p>
-We've taken a look at the <c>&lt;mail&gt;</c> tag earlier; it's used to link
-some text with a particular email address, and takes the form <c>&lt;mail
-link="foo.bar@example.com"&gt;Mr. Foo Bar&lt;/mail&gt;</c>. If you want to display the
-email address, you can use <c>&lt;mail&gt;foo.bar@example.com&lt;/mail&gt;</c>, this
-would be displayed as <mail>foo.bar@example.com</mail>.
-</p>
-
-<p>
-Shorter forms make it easier to use names and emails of Gentoo developers. Both
-<c>&lt;mail&gt;neysx&lt;/mail&gt;</c> and <c>&lt;mail link="neysx"/&gt;</c>
-would appear as <mail>neysx</mail>. If you want to use a Gentoo dev's email
-with a different content than his full name, use the second form with some
-content. For instance, use a dev's first name: <c>&lt;mail
-link="neysx"&gt;Xavier&lt;/mail&gt;</c> appears as <mail
-link="neysx">Xavier</mail>.
-<br/>
-This is particularly useful when you want to name a developer whose name
-contains "funny" characters that you can't type.
-</p>
 
 <p>
 The <c>&lt;uri&gt;</c> tag is used to point to files/locations on the Internet.
@@ -453,11 +432,6 @@ should be simply <c>&lt;uri link="/doc/en/index.xml"&gt;documentation main
 index&lt;/uri&gt;</c>. You can even omit <c>index.xml</c> when you link to a
 directory index, e.g. <c>&lt;uri link="/doc/en/"&gt;documentation main
 index&lt;/uri&gt;</c>. Leaving the trailing slash saves an extra HTTP request.
-</p>
-
-<p>
-You should not use a <c>&lt;uri&gt;</c> tag with a <c>link</c> attribute that
-starts with <c>mailto:</c>. In this case, use a <c>&lt;mail&gt;</c> tag.
 </p>
 
 <p>
