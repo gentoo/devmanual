@@ -305,32 +305,6 @@ exactly, making it well-suited for code excerpts.  You must name the
 </body>
 </section>
 <section>
-<title>Epigraphs</title>
-<body>
-
-<p by="Anonymous student">
-Delegates from the original 13 states formed the Contented Congress. Thomas
-Jefferson, a Virgin, and Benjamin Franklin were two singers of the Declaration
-of Independence. Franklin discovered electricity by rubbing two cats backwards
-and declared, "A horse divided against itself cannot stand." Franklin died in
-1790 and is still dead.
-</p>
-
-<p>
-Epigraphs are sometimes used at the beginning of chapters to illustrate what is
-to follow. It is simply a paragraph with a <c>by</c> attribute that contains
-the signature.
-</p>
-
-<pre caption="Short epigraph">
-&lt;p by="Anonymous student"&gt;
-Delegates from the original 13 states formed the...
-&lt;/p&gt;
-</pre>
-
-</body>
-</section>
-<section>
 <title>
   &lt;c&gt;, &lt;b&gt;, and &lt;e&gt;
 </title>
