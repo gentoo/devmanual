@@ -350,22 +350,9 @@ Delegates from the original 13 states formed the...
 </section>
 <section>
 <title>
-  &lt;path&gt;, &lt;c&gt;, &lt;b&gt;, &lt;e&gt;, &lt;sub&gt; and &lt;sup&gt;
+  &lt;c&gt;, &lt;b&gt;, and &lt;e&gt;
 </title>
 <body>
-
-<p>
-The <c>&lt;path&gt;</c>, <c>&lt;c&gt;</c>, <c>&lt;b&gt;</c>, <c>&lt;e&gt;</c>,
-<c>&lt;sub&gt;</c> and <c>&lt;sup&gt;</c> elements can be used inside any child
-<c>&lt;body&gt;</c> tag, except for <c>&lt;pre&gt;</c>.
-</p>
-
-<p>
-The <c>&lt;path&gt;</c> element is used to mark text that refers to an
-<e>on-disk file</e> -- either an <e>absolute or relative path</e>, or a 
-<e>simple filename</e>. This element is generally rendered with a mono spaced 
-font to offset it from the standard paragraph type.  
-</p>
 
 <p>
 The <c>&lt;c&gt;</c> element is used to mark up a <e>command</e> or <e>user
@@ -392,11 +379,6 @@ text.
 I <e>really</e> should use semicolons more often.  As you can see, this text is
 offset from the regular paragraph type for emphasis.  This helps to give your
 prose more <e>punch</e>!
-</p>
-
-<p>
-The <c>&lt;sub&gt;</c> and <c>&lt;sup&gt;</c> elements are used to specify
-<sub>subscript</sub> and <sup>superscript</sup>.
 </p>
 
 </body>
