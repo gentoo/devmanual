@@ -405,68 +405,10 @@ The <c>&lt;sub&gt;</c> and <c>&lt;sup&gt;</c> elements are used to specify
 <title>Code samples and colour-coding</title>
 <body>
 
-<p>
-To improve the readability of code samples, the following tags are allowed
-inside <c>&lt;pre&gt;</c> blocks:
-</p>
-
-<dl>
-  <dt><c>&lt;i&gt;</c></dt>
-  <dd>Distinguishes user input from displayed text</dd>
-  <dt><c>&lt;comment&gt;</c></dt>
-  <dd>Comments relevant to the action(s) that appear after the comment</dd>
-  <dt><c>&lt;keyword&gt;</c></dt>
-  <dd>Denotes a keyword in the language used in the code sample
-  </dd>
-  <dt><c>&lt;ident&gt;</c></dt>
-  <dd>Used for an identifier
-  </dd>
-  <dt><c>&lt;const&gt;</c></dt>
-  <dd>Used for a constant
-  </dd>
-  <dt><c>&lt;stmt&gt;</c></dt>
-  <dd>Used for a statement
-  </dd>
-  <dt><c>&lt;var&gt;</c></dt>
-  <dd>Used for a variable
-  </dd>
-</dl>
-
-<note>
-Remember that all leading and trailing spaces, and line breaks in
-<c>&lt;pre&gt;</c> blocks will appear in the displayed html page.
-</note>
-
-<p>
-Sample colour-coded <c>&lt;pre&gt;</c> block:
-</p>
-
-<pre caption="My first ebuild">
-<comment># Copyright 1999-2009 <b>Gentoo Foundation</b>
-# Distributed under the terms of the GNU General Public License v2
-# &#36;Header: $</comment>
-
-<ident>DESCRIPTION</ident>=<const>"Exuberant ctags generates tags files for quick source navigation"</const>
-<ident>HOMEPAGE</ident>=<const>"http://ctags.sourceforge.net"</const>
-<ident>SRC_URI</ident>=<const>"mirror://sourceforge/ctags/<var>${P}</var>.tar.gz"</const>
-
-<ident>LICENSE</ident>=<const>"GPL-2"</const>
-<ident>SLOT</ident>=<const>"0"</const>
-<ident>KEYWORDS</ident>=<const>"~mips ~sparc ~x86"</const>
-<ident>IUSE</ident>=<const>""</const>
-
-<stmt>src_compile()</stmt> {
-    <keyword>econf</keyword> --with-posix-regex
-    <keyword>emake</keyword> || <keyword>die</keyword> <const>"emake failed"</const>
-}
-
-<stmt>src_install()</stmt> {
-    <keyword>make</keyword> <ident>DESTDIR</ident>="<var>${D}</var>" install || <keyword>die</keyword> <const>"install failed"</const>
-
-    <keyword>dodoc</keyword> FAQ NEWS README
-    <keyword>dohtml</keyword> EXTENDING.html ctags.html
-}
-</pre>
+<todo>
+Fill this section with the information about the use of
+&lt;codesample/&gt;.
+</todo>
 
 </body>
 </section>
