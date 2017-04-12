@@ -695,53 +695,6 @@ More information can be found in the &lt;uri link="#foo"&gt;foo chapter&lt;/uri&
 </body>
 </section>
 <section>
-<title>Disclaimers and obsolete documents</title>
-<body>
-
-<p>
-A <c>disclaimer</c> attribute can be applied to guides and handbooks to display
-a predefined disclaimer at the top of the document. The available disclaimers
-are:
-</p>
-
-<ul>
-  <li>
-    <b>articles</b> is used for <uri link="/doc/en/articles/">republished
-    articles</uri>
-  </li>
-  <li>
-    <b>draft</b> is used to indicate a document is still being worked on and
-    should not be considered official
-  </li>
-  <li>
-    <b>oldbook</b> is used on old handbooks to indicate they are not maintained
-    anymore
-  </li>
-  <li><b>obsolete</b> is used to mark a document as obsolete.</li>
-</ul>
-
-<p>
-When marking a document as obsolete, you might want to add a link to a new
-version. The <c>redirect</c> attribute does just that. The user might be
-automatically redirected to the new page but you should not rely on that
-behaviour.
-</p>
-
-<pre caption="Disclaimer sample">
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE guide SYSTEM "/dtd/guide.dtd"&gt;
-&lt;!-- &#36;Header&#36; --&gt;
-
-&lt;guide disclaimer="obsolete" redirect="/doc/en/handbook/handbook-x86.xml"&gt;
-&lt;title>Gentoo x86 Installation Guide&lt;/title&gt;
-
-&lt;author title="Author"&gt;
-...
-</pre>
-
-</body>
-</section>
-<section>
 <title>FAQs</title>
 <body>
 
