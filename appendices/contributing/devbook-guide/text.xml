@@ -57,24 +57,6 @@ documents.
 
 </body>
 </section>
-<section>
-<title>Further Resources</title>
-<body>
-
-<p>
-If you are planning on contributing documentation to Gentoo, or you want to
-test GuideXML, please read our <uri
-link="/proj/en/gdp/doc/doc-tipsntricks.xml">Doc Tips 'n' Tricks</uri> guide
-which contains tips and tricks for documentation development.
-</p>
-
-<p>
-You may want to look at the <uri link="?passthru=1">XML source</uri> of this
-document while you read it.
-</p>
-
-</body>
-</section>
 </chapter>
 
 <chapter>
