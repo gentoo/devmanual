@@ -360,9 +360,8 @@ using the <c>app-portage/metagen</c> tool.
 </p>
 
 <p>
-Commits of package metadata files are handled by <c>repoman</c>. In
-order for metadata checks to be performed, <c>dev-libs/libxml2</c>
-must be installed on the system.
+Commits of package metadata files are handled by <c>repoman</c> as
+part of regular package maintenance.
 </p>
 
 <p>
