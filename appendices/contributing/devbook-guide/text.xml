@@ -485,30 +485,6 @@ to <uri link="#doc_chap2_pre2">code listing 2 in chapter 2</uri>, type
 
 </body>
 </section>
-<section>
-<title>FAQs</title>
-<body>
-
-<p>
-FAQ documents need to start with a list of questions with links to their
-answers. Creating such a list is both time-consuming and error-prone. The list
-can be created automatically if you use a <c>faqindex</c> element as the first
-chapter of your document. This element has the same structure as a
-<c>chapter</c> to allow some introductory text. The structure of the document
-is expected to be split into chapters (at least one chapter) containing
-sections, each section containing one question specified in its <c>title</c>
-element with the answer in its <c>body</c>. The FAQ index will appear as one
-section per chapter and one link per question.
-</p>
-
-<p>
-A quick look at a <uri link="/doc/en/faq.xml">FAQ</uri> and <uri
-link="/doc/en/faq.xml?passthru=1">its source</uri> should make the above
-obvious.
-</p>
-
-</body>
-</section>
 </chapter>
 
 <chapter id="codingstyle">
