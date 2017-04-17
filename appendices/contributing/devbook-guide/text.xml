@@ -483,22 +483,6 @@ to <uri link="#doc_chap2_pre2">code listing 2 in chapter 2</uri>, type
 <c>&lt;uri link="#doc_chap2_pre2"&gt;code listing 2.2&lt;/uri&gt;</c>.
 </p>
 
-<p>
-However, some guides change often and using such "counting" can lead to broken
-links. In order to cope with this, you can define a name for a
-<c>&lt;chapter&gt;</c>, <c>&lt;section&gt;</c> or a <c>&lt;tr&gt;</c> by using
-the <c>id</c> attribute, and then point to that attribute, like this:
-</p>
-
-<pre caption="Using the id attribute">
-&lt;chapter id="foo"&gt;
-&lt;title&gt;This is foo!&lt;/title&gt;
-...
-&lt;p&gt;
-More information can be found in the &lt;uri link="#foo"&gt;foo chapter&lt;/uri&gt;
-&lt;/p&gt;
-</pre>
-
 </body>
 </section>
 <section>
