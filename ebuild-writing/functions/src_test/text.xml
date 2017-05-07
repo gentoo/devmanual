@@ -59,10 +59,10 @@ src_test() {
 <body>
 <codesample lang="ebuild">
 src_test() {
-    cd "${S}"/src/testdir
+    cd "${S}"/src/testdir || die
 
     # Test 49 won't work inside a portage environment
-    sed -i -e 's~test49.out~~g' Makefile
+    sed -i -e 's~test49.out~~g' Makefile || die
 
     # Try to run the non-gui tests only
     make test-nongui \
