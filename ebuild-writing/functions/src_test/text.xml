@@ -65,8 +65,8 @@ src_test() {
     sed -i -e 's~test49.out~~g' Makefile || die
 
     # Try to run the non-gui tests only
-    make test-nongui \
-            || die "At least one test failed"
+    # pass -j1 if tests do not support being run in parallel
+    emake -j1 test-nongui
 }
 </codesample>
 </body>
@@ -95,12 +95,6 @@ Usually, removing the relevant test from the <c>Makefile</c>
 using <c>sed</c> or skipping a particular <c>make</c> target is
 sufficient.
 </p>
-
-<note>
-<c>emake</c> should not be used for <c>src_test</c> <d/> trying to
-parallelise tests unless the <c>Makefile</c> was specifically designed
-for this can cause all sorts of strange problems.
-</note>
 
 <p>
 Try to ensure that tests work properly for your ebuild. A good test
