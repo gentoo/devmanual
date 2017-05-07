@@ -113,9 +113,9 @@ setting <c>RESTRICT="test"</c> in the ebuild.
 
 <note>
 If upstream provide a test suite which doesn't work, consider talking
-to them about getting it fixed. A broken test suite is worse than no
-test suite at all, since we are unable to tell whether a test failure
-indicates a genuine fault.
+to them about getting it fixed. A broken test suite requires developers
+to investigate each test failure in order to determine whether it is
+genuine or indicates a broken test.
 </note>
 </body>
 </section>
