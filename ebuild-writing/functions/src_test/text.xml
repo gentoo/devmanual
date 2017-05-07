@@ -107,19 +107,8 @@ suite is extremely helpful for arch maintainers.
 <title>Skipping Tests</title>
 <body>
 <p>
-Sometimes it is necessary to skip tests entirely. This can be done
-using a dummy <c>src_test</c> function:
-</p>
-
-<codesample lang="ebuild">
-src_test() {
-    # Tests don't even remotely work inside portage
-    true
-}
-</codesample>
-
-<p>
-Another option would be to set <c>RESTRICT="test"</c> in the ebuild.
+Sometimes it is necessary to skip tests entirely. This can be done by
+setting <c>RESTRICT="test"</c> in the ebuild.
 </p>
 
 <note>
