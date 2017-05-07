@@ -82,7 +82,6 @@ portage environment. Reasons for such a failure could include:
 </p>
 
 <ul>
-  <li>Needing to use X.</li>
   <li>
     Needing to work with files which are disallowed by the sandbox.
   </li>
