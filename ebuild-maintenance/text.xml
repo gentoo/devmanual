@@ -582,9 +582,10 @@ from the tree:
 </p>
 
 <pre caption="Removing a package from git">
-<comment>#</comment> <keyword>cd</keyword> dev-util
-<comment>#</comment> <keyword>git</keyword> rm -rf pmk
-<comment>#</comment> <keyword>git</keyword> commit --gpg-sign</pre>
+# cd dev-util
+# git rm -rf pmk
+# git commit --gpg-sign
+</pre>
 
 <p>
 An example commit message is shown below:
