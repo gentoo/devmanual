@@ -28,13 +28,39 @@ revision.
 </ol>
 
 <p>
-Ebuilds should have their <c>-rX</c> incremented whenever a change is made which
-will make a substantial difference to what gets installed by the package <d/> by
-substantial, we generally mean "something for which many users would want to
-upgrade". This is usually for bugfixes.
-For any such revision bump, the new ebuild should be based on the
-previous revision to ensure that fixes aren't dropped accidentally.
+Developers are encouraged to use common sense when determining
+whether to introduce a new <c>-rX</c> revision. The following rule
+of thumb could be used as a guideline:
 </p>
+<ol>
+  <li>
+    If the change can cause the package to be broken to the point
+    of requiring users to revert to the previous version (in the case
+    of packages marked stable, every non-trivial change is classified
+    as such), then a new revision should be introduced and the old one
+    kept. If the package has stable keywords, the new revision should
+    be dropped to <c>~arch</c> (see
+    <uri link="::keywording#Keywording on Upgrades"/>).
+    For any such revision bump, the new ebuild should be based
+    on the previous revision to ensure that fixes aren't dropped
+    accidentally.
+  </li>
+
+  <li>
+    If the change makes a substantial difference to the user who already
+    installed the package (fixes runtime issues, changes installed files,
+    etc.) and it would not be propagated using other means, then
+    the ebuild should be renamed to a new revision. If the package has
+    stable keywords, they should be moved to the new revision without
+    dropping. To commit the ebuild, <c>repoman commit
+    --straight-to-stable</c> option should be used.
+  </li>
+
+  <li>
+    Otherwise, the change can be done in place in the current revision
+    of the ebuild.
+  </li>
+</ol>
 
 <p>
 Simple compile fixes do <b>not</b> warrant a revision bump; this is because they do
@@ -42,17 +68,6 @@ not affect the installed package for users who already managed to compile it.
 Small documentation fixes are also usually not grounds for a new revision.
 In particular, this applies if the package has a substantial compilation
 time; developers should use their best judgement in these circumstances.
-</p>
-
-<important>
-For ebuilds marked stable on at least one arch, only trivial edits can be made
-without a bump (e.g. typo fixes in elog messages). Even simple changes may
-result in a breakage. <b>Modifying stable ebuilds should be avoided.</b>
-</important>
-
-<p>
-When doing a revision bump, the usual rules about dropping to <c>~arch</c> apply.
-See <uri link="::keywording#Keywording on Upgrades"/>.
 </p>
 
 </body>
