@@ -13,6 +13,20 @@ An ebuild with no explicit revision number has the implicit <c>-r0</c>
 revision.
 </p>
 
+<p>Ebuild revisions usually serve two purposes:</p>
+<ol>
+  <li>
+    keeping an older copy of an ebuild around when doing a potentially
+    breaking change, and
+  </li>
+
+  <li>
+    propagating the rebuild of a package when performing a meaningful
+    change that would otherwise go unnoticed by users who have installed
+    the current version already.
+  </li>
+</ol>
+
 <p>
 Ebuilds should have their <c>-rX</c> incremented whenever a change is made which
 will make a substantial difference to what gets installed by the package <d/> by
