@@ -62,13 +62,50 @@ of thumb could be used as a guideline:
   </li>
 </ol>
 
-<p>
-Simple compile fixes do <b>not</b> warrant a revision bump; this is because they do
-not affect the installed package for users who already managed to compile it.
-Small documentation fixes are also usually not grounds for a new revision.
-In particular, this applies if the package has a substantial compilation
-time; developers should use their best judgement in these circumstances.
-</p>
+<p>Examples of changes that warrant a new revision are:</p>
+<ul>
+  <li>adding a patch to fix a runtime issue,</li>
+  <li>installing additional files that could be useful to the user,</li>
+  <li>adding a missing runtime dependency to one of the existing blocks,</li>
+  <li>
+    adding a missing build-time dependency that contributed to
+    a successfully yet incorrect build (e.g. missing some feature),
+  </li>
+  <li>
+    restricting a runtime dependency version, unless the <c>:=</c>
+    subslot operator is going to trigger a rebuild.
+  </li>
+</ul>
+
+<p>Examples of changes that can be done without a revision bump are:</p>
+<ul>
+  <li>
+    adding a patch to fix a build-time issue that prevented users from
+    building the package (since it does not affect users who already
+    managed to build it),
+  </li>
+  <li>adding a trivial documentation fix,</li>
+  <li>
+    installing an additional file of relatively little value (minor
+    documentation, editor syntax file, bash completion) compared
+    to the cost of rebuilding the package (especially if a new bump
+    is expected soon),
+  </li>
+  <li>
+    adding a missing build-time dependency that caused a build failure,
+  </li>
+  <li>
+    adding a new USE flag or removing an existing one (since change
+    in USE flags is going to trigger <c>--changed-use</c> rebuild),
+  </li>
+  <li>
+    a trivial stylistic / ebuild code change (as long as the new code
+    is equivalent to the old code),
+  </li>
+  <li>
+    a dependency change that is a result of a package move (slot move).
+  </li>
+</ul>
 
 </body>
 </chapter>
