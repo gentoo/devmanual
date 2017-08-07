@@ -588,5 +588,53 @@ when joining paths. For example: <c>${D%/}/</c>, <c>${ED%/}/</c>,
 </body>
 </section>
 
+<section>
+<title>Use of constant-value variables in ebuilds</title>
+<body>
+
+<p>
+Variables have significant value in ebuilds, making it possible to avoid
+unnecessary repetitions and make maintenance easier.  However,
+references to constant-value variables should be used with care as their
+excessive use can harm readability and increase maintenance burden (e.g.
+when renaming a package). In particular, using variables whose values
+have no direct correlation with the expected string should be avoided.
+</p>
+
+<p>The examples of beneficial constant-value variable references are:</p>
+<ul>
+  <li>
+    using <c>${PV}</c> and the variables derived from it (<c>${P}</c>,
+    <c>${MY_P}</c>…) in <c>SRC_URI</c> and <c>S</c> to avoid having
+    to update those variables for every version bump (assuming that
+    <c>${PV}</c> is used to indicate the upstream version);
+  </li>
+
+  <li>
+    using <c>${PF}</c> in <c>--docdir</c> path — this is a canonical
+    Gentoo path that is always required to match <c>${PF}</c>.
+  </li>
+</ul>
+
+<p>The examples of bad constant-value variable references are:</p>
+<ul>
+  <li>
+    using <c>${PN}</c> in <c>HOMEPAGE</c>, <c>EGIT_REPO_URI</c>
+    or the domain of <c>SRC_URI</c> — it breaks URL parsing in editors
+    and terminals, and makes it hard to copy the link for external use
+    (e.g. while reviewing via gitweb),
+  </li>
+
+  <li>
+    using <c>${PN}</c> (or other unnecessary helper variables)
+    excessively in <c>src_install()</c> — it impairs readability for
+    little benefit and causes a lot of trouble when the package needs to
+    be renamed.
+  </li>
+</ul>
+
+</body>
+</section>
+
 </chapter>
 </guide>
