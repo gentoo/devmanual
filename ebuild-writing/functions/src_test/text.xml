@@ -63,6 +63,107 @@ src_test() {
 </section>
 
 <section>
+<title>Tests that require network or service access</title>
+<body>
+<p>
+Sometimes test suites (and other build-time programs) attempt to use
+remote or local network, or production servers running on the host. All
+of these are strictly forbidden. Developers should either fix such tests
+to work in an isolated environment, or disable them completely unless
+explicitly allowed by the user. At the bare minimum, the tests must
+not fail with <c>FEATURES=network-sandbox</c> being enabled.
+</p>
+
+<p>
+Internet access within the build procedure is forbidden for
+the following reasons:
+</p>
+<ul>
+  <li>
+    the build may be running in an environment with no or restricted
+    Internet access, and this must not cause the tests (build) to fail;
+  </li>
+
+  <li>
+    the Internet connection may be unstable (e.g. poor reception)
+    in which case an interrupted connection or packet loss must not
+    cause the tests to fail or hang, and it should not cause unnecessary
+    delays;
+  </li>
+
+  <li>
+    the Internet connection may be running on a limited data plan
+    in which case the additional network use may cause additional
+    charges or other inconveniences to the user;
+  </li>
+
+  <li>
+    the remote network services used by the tests may become unavailable
+    temporarily or permanently, causing unexpected test failures;
+  </li>
+
+  <li>
+    accessing remote sites always poses a privacy issue, and possibly
+    a threat to security (e.g. through inadvertently exposing
+    information about the system).
+  </li>
+</ul>
+
+<p>
+Fixing tests that require Internet access usually requires cooperation
+with upstream, and porting the tests to use test techniques such as
+mocking or using replay data. For this reason, developers report
+the issue upstream and skip tests that require network access.
+It is recommended to explicitly leave a note as to why the tests are
+skipped, so that other developers can re-enable them locally to run
+a more complete test suite.
+</p>
+
+<p>
+Local server access within the build procedure is additionally
+forbidden for the following reasons:
+</p>
+<ul>
+  <li>
+    tests must run reliably independently of whether a particular
+    server is running throughout the build process or not,
+  </li>
+
+  <li>
+    using production services for running tests is extremely
+    <b>dangerous</b> as it may inadvertently expose bugs in those
+    services, causing instability, data loss or even exposing security
+    vulnerabilities.
+  </li>
+</ul>
+
+<p>
+Fixing tests that require access to local services is usually done
+via starting additional isolated instances of those services during
+the test phase. Those services must either be running on a UNIX
+socket or on the loopback interface, to reliably prevent remote access.
+</p>
+
+<p>
+For all networked services exposed during the test phase (either by
+the ebuild or the tests themselves), UNIX sockets are strongly preferred
+over IP sockets as they provide better means for unique naming
+and access control mechanisms. IP sockets can be subject to port
+collisions with other local services and they can be accessed by local
+system users who may exploit a vulnerability through the tests.
+</p>
+
+<p>
+Additional protection against those issues is provided through
+<c>FEATURES=network-sandbox</c>. However, this is only an optional
+Portage feature relying on specific Linux kernel namespace mechanisms
+and developers should not rely on it being enabled.
+</p>
+
+</body>
+</section>
+
+<section>
 <title>Tests that require X11</title>
 <body>
 <p>
