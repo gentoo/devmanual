@@ -31,23 +31,13 @@
 <section>
 <title>Default <c>src_test</c></title>
 <body>
-<p> From sys-apps/portage-2.1.2.9 </p>
+<p>The default test phase in EAPI 6 is equivalent to the following:</p>
 <codesample lang="ebuild">
 src_test() {
-	if emake -j1 check -n &amp;> /dev/null; then
-		vecho ">>> Test phase [check]: ${CATEGORY}/${PF}"
-		if ! emake -j1 check; then
-			hasq test $FEATURES &amp;&amp; die "Make check failed. See above for details."
-			hasq test $FEATURES || eerror "Make check failed. See above for details."
-		fi
-	elif emake -j1 test -n &amp;> /dev/null; then
-		vecho ">>> Test phase [test]: ${CATEGORY}/${PF}"
-		if ! emake -j1 test; then
-			hasq test $FEATURES &amp;&amp; die "Make test failed. See above for details."
-			hasq test $FEATURES || eerror "Make test failed. See above for details."
-		fi
-	else
-		vecho ">>> Test phase [none]: ${CATEGORY}/${PF}"
+	if emake check -n &amp;> /dev/null; then
+		emake check
+	elif emake test -n &amp;> /dev/null; then
+		emake test
 	fi
 }
 </codesample>
