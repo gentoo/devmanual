@@ -63,6 +63,50 @@ src_test() {
 </section>
 
 <section>
+<title>Tests that require X11</title>
+<body>
+<p>
+Some packages include tests (or other build-time applications) that
+attempt to use the user's X11 session and fail being unable to connect
+to it. Those tests need to be fixed to work independently of the X11
+server that might or might not be running when packages are being built.
+</p>
+
+<p>
+If the program in question does not strictly need X11 but merely
+attempts to take opportunity of the <c>DISPLAY</c> variable being set,
+the best solution is to simply unset this variable in the ebuild.
+</p>
+
+<codesample lang="ebuild">
+src_test() {
+	# tests attempt to connect to X11 and fail when it is set
+	# however, they work just fine without X11
+	unset DISPLAY
+
+	default
+}
+</codesample>
+
+<p>
+If the package actually requires a running X11 server to run
+the complete test suite, you can use the <c>virtualx</c> eclass to
+provide an isolated Xvfb environment for the tests to use. It provides
+a virtual X11 display that is not connected to any physical device
+and that programs can use reliably.
+</p>
+
+<codesample lang="ebuild">
+inherit virtualx
+
+src_test() {
+	virtx default
+}
+</codesample>
+</body>
+</section>
+
+<section>
 <title>Common <c>src_test</c> Tasks</title>
 <body>
 <p>
