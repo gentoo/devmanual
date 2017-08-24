@@ -247,7 +247,7 @@ setting <c>RESTRICT="test"</c> in the ebuild.
 </p>
 
 <note>
-If upstream provide a test suite which doesn't work, consider talking
+If upstream provides a test suite that doesn't work, consider talking
 to them about getting it fixed. A broken test suite requires developers
 to investigate each test failure in order to determine whether it is
 genuine or indicates a broken test.
