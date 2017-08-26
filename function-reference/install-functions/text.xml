@@ -257,7 +257,11 @@ the first is the source name, the second the name to use when installing.
       <c>dosym</c>
     </ti>
     <ti>
-      Create a symlink from the second parameter to the first parameter
+      Create a symlink to the target specified as the first parameter,
+      at the path specified by the second parameter. Note that
+      the target is interpreted <e>verbatim</e>; it needs to either
+      specify a relative path or an absolute path including
+      <c>${EPREFIX}</c>.
     </ti>
   </tr>
   <tr>
