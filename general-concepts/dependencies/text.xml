@@ -209,19 +209,35 @@ asterisk. Also note that when selecting all versions in a specific
 <body>
 
 <p>
-Sometimes two packages cannot be installed in parallel. This is handled by
-blockers. A softblocker is specified as follows:
+When two packages (package slots, versions) can not be installed
+simultaneously, blockers can be used to expose such a conflict
+to the package manager.
 </p>
+
+<p>
+There are two kinds of blockers: soft blockers and hard blockers.
+</p>
+
+<p>A soft blocker is defined using the following syntax:</p>
 
 <codesample lang="ebuild">
 RDEPEND="!app-misc/foo"
 </codesample>
 
 <p>
-Portage will try to resolve this conflict automatically if possible.
-Sometimes we need to use a hardblocker to ensure correct emerge order.
-Those cannot be resolved by Portage and must be taken care of by the user.
-A hardblocker is specified as follows:
+The package manager will try to resolve this conflict automatically.
+The package blocked by a soft blocker can be uninstalled <e>after</e>
+installing the package blocking it. However, it exempts the common
+files from file collision checks. Soft blockers are usually used
+to solve file collisions between packages and are meaningful only
+in <c>RDEPEND</c>.
+</p>
+
+<p>
+If it is strictly necessary to resolve the blocker before the package
+is built (installed) or if automatic resolution is undesired,
+a hard blocker must be used instead. Hard blockers are not resolved
+automatically, and are expressed using the following syntax:
 </p>
 
 <codesample lang="ebuild">
@@ -229,8 +245,7 @@ RDEPEND="!!app-misc/foo"
 </codesample>
 
 <p>
-Hardblockers always take precedence over softblockers and need at least EAPI=2.
-Also note that blockers are usually <e>runtime</e> rather than buildtime.
+Hard blocks require EAPI 2 or newer.
 </p>
 
 <p>
