@@ -215,6 +215,10 @@ to the package manager.
 </p>
 
 <p>
+The following description applies to all EAPIs starting with EAPI 2.
+</p>
+
+<p>
 There are two kinds of blockers: soft blockers and hard blockers.
 </p>
 
@@ -233,11 +237,17 @@ to solve file collisions between packages and are meaningful only
 in <c>RDEPEND</c>.
 </p>
 
+<warning>
+Soft blockers that are pure <c>DEPEND</c> <e>do not work correctly</e>.
+While Portage seemingly queues the package for removal, it <e>does not</e>
+exempt their contents from file collision checks. Always include your
+soft blockers in <c>RDEPEND</c>!
+</warning>
+
 <p>
 If it is strictly necessary to resolve the blocker before the package
-is built (installed) or if automatic resolution is undesired,
-a hard blocker must be used instead. Hard blockers are not resolved
-automatically, and are expressed using the following syntax:
+is built (installed), a hard blocker must be used instead. Hard blockers
+are expressed using the following syntax:
 </p>
 
 <codesample lang="ebuild">
@@ -251,10 +261,6 @@ is installed (but do not prevent building binary packages). Blockers
 defined purely in <c>DEPEND</c> are enforced only for building
 the package from source, and may not apply once the package is installed
 or when it is installed from a binary package.
-</p>
-
-<p>
-Hard blocks require EAPI 2 or newer.
 </p>
 
 <p>
