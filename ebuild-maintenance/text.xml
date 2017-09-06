@@ -161,17 +161,21 @@ testing the changes, and revelant bugs. Use RFC822/git style tags as
 explained in the
 <uri link="https://kernel.org/doc/html/latest/process/submitting-patches.html">
 Linux Kernel patch guideline</uri>. Additionally, the following tags
-are used in Gentoo:
+are optionally used in Gentoo:
 
 <ul>
-<li><c>Gentoo-Bug:</c> Use this to reference bugs in Gentoo Bugzilla
-by either the bug ID or the bugzilla URI. Multiple bugs can be
-referenced by inserting more tags of this type or separating bug IDs
-with a comma in the same tag. The bug IDs may include an optional '#'
-prefix. There is no consensus on referencing bugs in the summary line
-versus referencing with a tag in the message body. The developer has
-the option to choose either.
-</li>
+<li><c>Bug:</c> Use this to reference bugs <e>without</e> closing them.
+The value is a URL to the bug. If multiple bugs need to be referenced,
+each one should be listed in a separate <c>Bug</c> tag. If a bug
+on Gentoo Bugzilla, or an issue or a pull request on GitHub
+is referenced, a reference to the commit will be added
+automatically.</li>
+<li><c>Closes:</c> Use this to reference bugs and close them
+automatically. Alike <c>Bug:</c>, the value is a single URL to the bug,
+and multiple tags can be used to close multiple bugs. If a bug on Gentoo
+Bugzilla, or an issue or a pull request on a GitHub repository
+mirrored by Gentoo is referenced, it will be closed (as fixed)
+automatically with reference to the commit.</li>
 <li><c>Package-Manager:</c> This is automatically inserted by
 <c>repoman commit</c> and it specifies the version of
 <pkg>sys-apps/portage</pkg> on the system.</li>
@@ -179,6 +183,12 @@ the option to choose either.
 <c>repoman commit</c> and records the options passed to repoman (such
 as --force) for the commit.</li>
 </ul>
+</p>
+
+<p>
+Additionally, some developers prefer referencing bugs on the summary
+line using the <c>#nnnnnn</c> form. Developers are free to use either
+form, or both simultaneously to combine their advantages.
 </p>
 
 <p>
