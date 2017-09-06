@@ -245,6 +245,15 @@ RDEPEND="!!app-misc/foo"
 </codesample>
 
 <p>
+Hard blockers apply accordingly to the dependency type defining them.
+Blockers defined in <c>RDEPEND</c> are enforced as long as the package
+is installed (but do not prevent building binary packages). Blockers
+defined purely in <c>DEPEND</c> are enforced only for building
+the package from source, and may not apply once the package is installed
+or when it is installed from a binary package.
+</p>
+
+<p>
 Hard blocks require EAPI 2 or newer.
 </p>
 
