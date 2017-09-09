@@ -160,25 +160,12 @@ people who are involved in authoring, suggesting, reviewing and
 testing the changes, and revelant bugs. Use RFC822/git style tags as
 explained in the
 <uri link="https://kernel.org/doc/html/latest/process/submitting-patches.html">
-Linux Kernel patch guideline</uri>. Additionally, the following tags
-are used in Gentoo:
+Linux Kernel patch guideline</uri>.
+</p>
 
-<ul>
-<li><c>Gentoo-Bug:</c> Use this to reference bugs in Gentoo Bugzilla
-by either the bug ID or the bugzilla URI. Multiple bugs can be
-referenced by inserting more tags of this type or separating bug IDs
-with a comma in the same tag. The bug IDs may include an optional '#'
-prefix. There is no consensus on referencing bugs in the summary line
-versus referencing with a tag in the message body. The developer has
-the option to choose either.
-</li>
-<li><c>Package-Manager:</c> This is automatically inserted by
-<c>repoman commit</c> and it specifies the version of
-<pkg>sys-apps/portage</pkg> on the system.</li>
-<li><c>RepoMan-Options:</c> This is automatically inserted by
-<c>repoman commit</c> and records the options passed to repoman (such
-as --force) for the commit.</li>
-</ul>
+<p>
+There is no consensus on how bugs should be referenced in the commit
+messages. Developers are free to use whatever form they prefer.
 </p>
 
 <p>
@@ -200,8 +187,6 @@ app-misc/foo: version bump to 0.5
 
 This also adds a new USE flag 'bar' which controls the
 new bar functionality introduced with this version.
-
-Gentoo-Bug: 01234
 </pre>
 
 </body>
