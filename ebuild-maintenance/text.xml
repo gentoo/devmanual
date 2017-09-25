@@ -211,7 +211,8 @@ app-misc/foo: version bump to 0.5
 This also adds a new USE flag 'bar' which controls the
 new bar functionality introduced with this version.
 
-Gentoo-Bug: 01234
+Bug: https://bugs.gentoo.org/00000
+Closes: https://bugs.gentoo.org/00001
 </pre>
 
 </body>
