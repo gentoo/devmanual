@@ -12,7 +12,7 @@
 <p>
 The management structure of Gentoo, called the "metastructure", is
 defined in
-<uri link="https://wiki.gentoo.org/wiki/GLEP:39#Specification">
+<uri link="https://www.gentoo.org/glep/glep-0039.html#specification">
 GLEP 39</uri>. In Gentoo, a project is a group of developers working
 towards a common goal in various different areas. For example, the
 <uri link="https://wiki.gentoo.org/wiki/Project:Devmanual">

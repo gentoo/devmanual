@@ -31,7 +31,7 @@ PDF files rather than plain text <d/> this should only be done if we
 are legally required to do so.
 Finally you need to check if your license should be added to a license group
 as listed in $PORTDIR/profiles/license_groups. For more information see the
-<uri link="https://wiki.gentoo.org/wiki/GLEP:23">GLEP 23</uri>
+<uri link="https://www.gentoo.org/glep/glep-0023.html">GLEP 23</uri>.
 </p>
 
 <p>

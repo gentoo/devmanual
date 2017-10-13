@@ -15,9 +15,9 @@ package or category.
 
 <p>
 A metadata file follows the syntax defined in
-<uri link="https://wiki.gentoo.org/wiki/GLEP:68">GLEP 68</uri>.
+<uri link="https://www.gentoo.org/glep/glep-0068.html">GLEP 68</uri>.
 The character set <b>must</b> be UTF-8 as specified by
-<uri link="https://wiki.gentoo.org/wiki/GLEP:31">GLEP 31</uri>.
+<uri link="https://www.gentoo.org/glep/glep-0031.html">GLEP 31</uri>.
 </p>
 
 <p>
@@ -367,7 +367,7 @@ part of regular package maintenance.
 <p>
 Unless specified otherwise, the maintainer who is listed in the
 metadata first shall be the assignee for the bugs for that package as
-per <uri link="https://wiki.gentoo.org/wiki/GLEP:67#Bug_assignment">
+per <uri link="https://www.gentoo.org/glep/glep-0067.html#bug-assignment">
 GLEP 67</uri>.
 </p>
 
@@ -622,7 +622,7 @@ specified in the <c>&lt;subslots&gt;</c> tag.
 <p>
 Maintainer-needed, or orphaned, packages have no maintainers
 responsible for them. Per
-<uri link="https://wiki.gentoo.org/wiki/GLEP:67#Case_of_maintainer-needed_packages">
+<uri link="https://www.gentoo.org/glep/glep-0067.html#case-of-maintainer-needed-packages">
 GLEP 67</uri>, these packages must not contain any &lt;maintainer&gt;
 subtags under &lt;pkgmetadata&gt; in their <c>metadata.xml</c>. By
 convention, a comment line containing the string <c>maintainer-needed</c>
