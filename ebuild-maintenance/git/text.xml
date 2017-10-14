@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<guide self="ebuild-maintenance/git/">
+<chapter>
+<title>Git for Gentoo Developers</title>
+
+<body>
+<p>
+This guide covers git usage instructions and policies specific to Gentoo
+ebuild development. It assumes that the readers possess basic git
+knowledge. For a generic guide, please see the official
+<uri link="https://git-scm.com/book/">git book</uri>.
+</p>
+
+</body>
+</chapter>
+</guide>
