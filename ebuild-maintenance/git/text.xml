@@ -148,21 +148,45 @@ in the commit.
 </subsection>
 
 <subsection>
-<title>Git Commit Policy</title>
+<title>Atomic commits</title>
 <body>
 
-<ul>
-<li>Always test that <path>package.mask</path> is okay by doing
-<c>emerge --pretend mypkg</c> before you commit and check
-that it doesn't contain any conflicts.</li>
-<li>Always commit the updated <path>package.mask</path> before
-the updated package.</li>
-<li>Always do atomic commits; if you commit a package with a new license,
-or that is masked, then first commit the revised <path>package.mask</path> and/or license,
-then commit the ebuild, patches
-and <uri link="::ebuild-writing/misc-files/metadata">metadata.xml</uri> all in <b>one</b> go
-.</li>
-</ul>
+<p>
+Whenever possible, use atomic commits. Try to split your changes into logical
+commits, abiding by the following three rules as much as possible:
+</p>
+
+<ol>
+<li>
+Do not include multiple irrelevant changes in a single commit. However, make
+sure not to split relevant changes unnecessarily. For example, if a version bump
+requires changes in the ebuild, it is correct to perform them in a single
+commit. However, if you are fixing an additional bug that has been present
+in the previous version, the fix belongs in a separate commit.
+</li>
+
+<li>
+Split commits at logical unit boundaries. When updating multiple packages,
+preferably use a single commit for each package. Avoid combining changes
+to ebuilds, eclasses, licenses, profiles etc. in a single commit. However,
+do not split relevant or interdependent changes within a single package.
+</li>
+
+<li>
+Avoid creating commits introducing a temporary breakage. Unless impossible,
+add packages in dependency install order. Add licenses before the packages
+needing them. Commit <path>package.mask</path> and other profile changes before
+ebuilds relying on them. Usually it is also acceptable to include those changes
+along with the commit adding the package.
+</li>
+</ol>
+
+<p>
+Please note that revision bumps count as side effects of the changes requiring
+them and do not belong in separate commits. When doing multiple irrelevant
+changes that require a revision bump, it is only necessary to bump the revision
+in the first commit in the series introduced by a single push.
+</p>
 
 </body>
 </subsection>
