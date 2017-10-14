@@ -17,5 +17,6 @@ This section covers various tasks related to working with ebuilds.
 </section>
 </chapter>
 
+<include href="git/"/>
 <include href="maintenance-tasks/"/>
 </guide>
