@@ -5,11 +5,107 @@
 
 <body>
 <p>
-This guide covers git usage instructions and policies specific to Gentoo
-ebuild development. It assumes that the readers possess basic git
-knowledge. For a generic guide, please see the official
+This guide covers git usage instructions and policies specific to Gentoo ebuild
+development. It assumes that the readers possess basic git knowledge.
+For a generic guide, please see the official
 <uri link="https://git-scm.com/book/">git book</uri>.
 </p>
+
+
+<section>
+<title>Preparing a development checkout</title>
+<body>
+
+<subsection>
+<title>Cloning the gentoo.git repository</title>
+<body>
+
+<p>
+The ebuild development happens on the official git repository. You can push
+your changes only through the SSH protocol. Therefore, clone the repository
+using:
+</p>
+
+<pre>
+git clone git@git.gentoo.org:repo/gentoo.git
+</pre>
+
+<p>
+If you do not have SSH access to the Gentoo git service, you can use the anongit
+mirror for read-only access instead:
+</p>
+
+<pre>
+git clone https://anongit.gentoo.org/git/repo/gentoo.git
+</pre>
+
+<p>
+Normally git will fetch the complete history from the start of git repository
+(Aug 2015). This can require a significant amount of disk space. If you do not
+need the full history, you can use the <c>--depth</c> option to create a shallow
+clone, including only a subset containing the the newest commits. For example,
+<c>--depth=50</c> will include the 50 newest commits.
+</p>
+
+<p>
+Please note that git version 1.9 or newer is required to push when using
+a shallow clone.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Configuration specific to the Gentoo repository</title>
+<body>
+
+<p>
+To ensure that the Gentoo policies are followed, you should set the following
+configuration variables:
+</p>
+
+<pre caption="Configuring git for the Gentoo repository">
+git config --local user.name "${YOUR_FULL_NAME}"
+# use your @gentoo.org address even if you have a different default
+git config --local user.email "${YOUR_NICKNAME}@gentoo.org"
+
+# enable commit and push signing
+git config --local user.signingkey "0x${LONG_OPENPGP_KEY_ID}"
+git config --local commit.gpgsign 1
+git config --local push.gpgsign 1
+
+# prevent implicit merges on 'git pull'
+git config --local pull.ff only
+</pre>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Grafting converted CVS history into the clone</title>
+<body>
+
+<p>
+To include the converted CVS history in the git repository, you can
+graft it into the repository:
+</p>
+
+<pre caption="Grafting the history into git">
+git remote add history https://anongit.gentoo.org/git/repo/gentoo/historical.git/
+git fetch history
+git replace --graft 56bd759df1d0c750a065b8c845e93d5dfa6b549d history/master
+</pre>
+
+<p>
+Once this is done, git commands such as <c>git log</c> will include
+the historical commits after the initial git commit.
+</p>
+
+</body>
+</subsection>
+
+</body>
+</section>
 
 </body>
 </chapter>
