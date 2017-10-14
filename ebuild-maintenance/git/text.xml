@@ -107,6 +107,164 @@ the historical commits after the initial git commit.
 </body>
 </section>
 
+<section>
+<title>Committing to gentoo.git</title>
+<body>
+
+<subsection>
+<title>Git Commit Policy</title>
+<body>
+
+<ul>
+<li>Always run <c>repoman scan</c> before you commit.</li>
+<li>Please run <c>repoman full</c> before you commit.</li>
+<li>Always test that <path>package.mask</path> is okay by doing
+<c>emerge --pretend mypkg</c> before you commit and check
+that it doesn't contain any conflicts.</li>
+<li>Always commit the updated <path>package.mask</path> before
+the updated package.</li>
+<li>Always do atomic commits; if you commit a package with a new license,
+or that is masked, then first commit the revised <path>package.mask</path> and/or license,
+then commit the ebuild, patches
+and <uri link="::ebuild-writing/misc-files/metadata">metadata.xml</uri> all in <b>one</b> go
+.</li>
+<note> Although the set of changes in a single git commit is atomic, and
+combining <path>package.mask</path>/license changes with ebuild changes in a
+single commit wouldn't break atomicity, it is not currently possible to do so
+using <c>repoman commit</c>.</note>
+<!-- See: https://bugs.gentoo.org/show_bug.cgi?id=390651 -->
+</ul>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Git Commit Message Format</title>
+<body>
+
+<p>
+It is important to format the commit messages properly so that they
+communicate the changes to the reader in a clear and concise
+way. Additionally, consistency in message format allows for easier
+parsing by external tools. The first line of the commit message should
+contain a brief summary of the changes, followed by an empty new
+line. From the third line onward should be a detailed, multiline
+explanation of the changes introduced by the commit. At the very end,
+auxiliary information such as the bugs related to the commit,
+contributors, and reviewers should be listed using RFC822/git style
+tags. The length of the lines in the message should be 70-75
+characters at maximum.
+</p>
+
+<p>
+The summary line should start with referencing what is affected by the
+change followed by a colon ':' character. Use the rules in the
+following list to determine the proper format based on what has
+changed, substituting the package, category and eclass names
+appropriately:
+
+<ul>
+<li><c>${CATEGORY}/${PN}:</c>Single Package (Note that <c>repoman commit</c>
+automatically inserts this for you)</li>
+<li><c>${CATEGORY}:</c> Package Category</li>
+<li><c>profiles:</c> Profile Directory</li>
+<li><c>${ECLASS}.eclass:</c> Eclass Directotry</li>
+<li><c>licenses:</c> Licenses Directory</li>
+<li><c>metadata:</c> Metadata Directory</li>
+</ul>
+
+For packages where <c>${CATEGORY}/${PN}:</c> is long, the line length
+limit can be exceeded, if absolutely necessary, to ensure a more
+useful summary line. If a commit affects multiple directories, prepend
+the message with which reflects the intention of the change best. If
+there are any bugs on Gentoo Bugzilla associated with the commit, id
+of the bug can be appended to the summary line using the format
+<c>#BUG-ID</c>. If you are modifying keywords, clearly state what
+keywords are added/removed.
+
+<warning>
+By default, lines starting with <c>#</c> are considered to be comments
+by git and not included in the commit message. Make sure that a new
+line does not start with <c>#BUG-ID</c>. Optionally, git can be
+configured to use a different character for comments by changing the
+<c>commentchar</c> option.
+</warning>
+</p>
+
+<p>
+For non-trivial commits, the message should contain a detailed
+explanation of what the commit intends to change, why it is required,
+and how it is accomplished, along with any other supplementary
+information.
+</p>
+
+<p>
+Finally the commit message should list auxiliary information such as
+people who are involved in authoring, suggesting, reviewing and
+testing the changes, and revelant bugs. Use RFC822/git style tags as
+explained in the
+<uri link="https://kernel.org/doc/html/latest/process/submitting-patches.html">
+Linux Kernel patch guideline</uri>. Additionally, the following tags
+are optionally used in Gentoo:
+
+<ul>
+<li><c>Bug:</c> Use this to reference bugs <e>without</e> closing them.
+The value is a URL to the bug. If multiple bugs need to be referenced,
+each one should be listed in a separate <c>Bug</c> tag. If a bug
+on Gentoo Bugzilla, or an issue or a pull request on GitHub
+is referenced, a reference to the commit will be added
+automatically.</li>
+<li><c>Closes:</c> Use this to reference bugs and close them
+automatically. Alike <c>Bug:</c>, the value is a single URL to the bug,
+and multiple tags can be used to close multiple bugs. If a bug on Gentoo
+Bugzilla, or an issue or a pull request on a GitHub repository
+mirrored by Gentoo is referenced, it will be closed (as fixed)
+automatically with reference to the commit.</li>
+<li><c>Package-Manager:</c> This is automatically inserted by
+<c>repoman commit</c> and it specifies the version of
+<pkg>sys-apps/portage</pkg> on the system.</li>
+<li><c>RepoMan-Options:</c> This is automatically inserted by
+<c>repoman commit</c> and records the options passed to repoman (such
+as --force) for the commit.</li>
+</ul>
+</p>
+
+<p>
+Additionally, some developers prefer referencing bugs on the summary
+line using the <c>#nnnnnn</c> form. Developers are free to use either
+form, or both simultaneously to combine their advantages.
+</p>
+
+<p>
+When committing <uri link="::ebuild-writing/user-submitted">user
+contributions</uri>, make sure to credit them in your commit message
+with the user's full name and email address. Be aware and respectful
+of their privacy: some users prefer to be only known by a
+nickname. Take advantage of the tags such as <c>Suggested-By</c> or
+<c>Reported-By:</c>when entering such information to the commit
+message.
+</p>
+
+<p>
+An example commit message is shown below:
+</p>
+
+<pre caption="Example commit message">
+app-misc/foo: version bump to 0.5
+
+This also adds a new USE flag 'bar' which controls the
+new bar functionality introduced with this version.
+
+Bug: https://bugs.gentoo.org/00000
+Closes: https://bugs.gentoo.org/00001
+</pre>
+
+</body>
+</subsection>
+
+</body>
+</section>
+
 </body>
 </chapter>
 </guide>
