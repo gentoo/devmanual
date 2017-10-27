@@ -82,7 +82,7 @@ what portage considers to be the 'lowest' version comes first.
 </table>
 
 <p>
-Any of these suffixes may be followed by a non-zero positive integer.
+Any of these suffixes may be followed by an unsigned integer.
 </p>
 
 <p>
