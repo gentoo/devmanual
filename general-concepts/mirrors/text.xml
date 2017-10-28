@@ -124,5 +124,17 @@ Diagram showing the mirroring process.
 </body>
 </section>
 
+<section>
+  <title>Third-party mirrors</title>
+  <body>
+    <p>
+      Usage of third-party mirrors and the <c>mirror://</c>
+      pseudo-protocol is described in the <uri
+      link="::ebuild-writing/variables/#third-party-mirrors"><c>SRC_URI</c>
+      variable documentation</uri>.
+    </p>
+  </body>
+</section>
+
 </chapter>
 </guide>
