@@ -448,13 +448,15 @@ example http://download.example.org/ ftp://ftp.example.org/
 SRC_URI="mirror://example/${PN}/${P}.tar.gz"
 </codesample>
     <warning>
-      If the sources for a package are not mirror-restricted or
-      fetch-restricted, then there is little benefit to using this
-      feature: the sources will be <uri
+      If the sources for a package are neither mirror-restricted nor
+      fetch-restricted, then they will be <uri
       link="::general-concepts/mirrors">mirrored onto Gentoo
-      infrastructure</uri> anyway. In other words, the mere existence
-      of a third-party mirror list is not a good enough reason to use
-      it.
+      infrastructure</uri> automatically; in that case, there is
+      little benefit to using this feature. There is a maintenance
+      burden associated with using a third-party mirror list: it must
+      be updated when new mirrors are born and when old mirrors
+      die. Please consider that when deciding whether or not to use
+      this feature.
     </warning>
   </body>
 </subsection>
