@@ -154,6 +154,9 @@ div.figure, div.figure p {
 
 code, pre, tt {
     font-family: monospace;
+    tab-size: 4;
+    -o-tab-size: 4;
+    -moz-tab-size: 4;
 }
 
 blockquote.epigraph p {
