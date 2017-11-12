@@ -577,7 +577,7 @@ need to suffix them with <c>/</c> when joining paths.
 
 <note>
 Future EAPI may remove the trailing slash at the end per
-<uri link="https://bugs.gentoo.org/465772">Bug 465722</uri>.
+<uri link="https://bugs.gentoo.org/465772">Bug 465772</uri>.
 To ease the transition, and ensure maximum compatibility with both the
 current and the future EAPI, developers are encouraged to use the bash
 suffix removal for the trailing slash and add an explicit <c>/</c>
