@@ -104,6 +104,17 @@ Things that do <b>not</b> belong in the tree:
 </ul>
 
 <p>
+Naming rules for distfiles are more lenient, but for interoperability their
+filenames are restricted to the printable ASCII range excluding SPACE, i.e.,
+U+0021 to U+007e (see also
+<uri link="https://www.gentoo.org/glep/glep-0031.html#suitable-characters-for-file-and-directory-names">
+GLEP 31</uri>). Any characters that have a special meaning in Bash or in
+<c>SRC_URI</c> should also be avoided. If necessary, upstream files can be
+renamed using <uri link="::ebuild-writing/variables/#Renaming Sources">
+<c>-&gt;</c> syntax</uri>.
+</p>
+
+<p>
 Software-wise, in general all of the following should be met in order for a package to be included in the tree:
 </p>
 
