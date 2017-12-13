@@ -458,8 +458,8 @@ from the tree:
 </p>
 
 <pre caption="Removing a package from git">
-# cd dev-util
-# git rm -rf pmk
+# cd dev-qt
+# git rm -rf qtphonon
 # git commit --gpg-sign
 </pre>
 
@@ -468,13 +468,13 @@ An example commit message is shown below:
 </p>
 
 <pre caption="Package removal commit message">
-commit e0bbcf8291501dc7de6b4b120d4372061367dd7a
+commit b97eb6d43f45dfd5b739638928db22d3f3392685
 Author: Michael Palimaka &lt;kensington@gentoo.org&gt;
-Date:   Fri Jan 29 07:11:01 2016 +1100
+Date:   Tue Oct 3 21:43:03 2017 +1100
 
-  dev-util/pmk: remove last-rited package
+  dev-qt/qtphonon: remove last rited package
 
-  Gentoo-bug: 541522
+  Closes: https://bugs.gentoo.org/629144
 </pre>
 
 </body>
