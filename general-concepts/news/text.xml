@@ -33,7 +33,7 @@ man page.
     Write the news item, which is similar to a RFC-compliant email. Details
     concerning what is allowed can be found in the appropriate GLEP section.
     As a note: Exceptions depending on installed packages or activated
-    profiles is possible.
+    profiles are possible.
   </li>
   <li>
     Send the news item to the gentoo-dev mailing list and the Gentoo PR team
