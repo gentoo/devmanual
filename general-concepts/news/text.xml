@@ -24,10 +24,14 @@ man page.
 
 <ul>
   <li>
-    Choose a file name in the proper format: YYYY-MM-DD-name.lang.txt,
-    where the date is followed by a name (a-z, 0-9, + (plus), - (hyphen)
-    and _ (underscore)), the two-letter ISO language code (en for English
-    must be chosen as default) and the file extension txt.
+    Choose a filename in the proper format:
+    <c>YYYY-MM-DD-shortname.lang.txt</c>, i.e. the date, followed by a very
+    short name of at most 20 characters and consisting only of <c>a-z</c>,
+    <c>0-9</c>, <c>+</c> (plus), <c>-</c> (hyphen) and <c>_</c> (underscore).
+    This is followed by <c>lang</c> which is an
+    <uri link="https://tools.ietf.org/rfc/bcp/bcp47.txt">IETF language
+    tag</uri>. Always use <c>en</c> for English, unless you are translating
+    a news item. Finally, the filename ends with the extension <c>txt</c>.
   </li>
   <li>
     Write the news item, which is similar to a RFC-compliant email. Details
@@ -44,19 +48,11 @@ man page.
     importance and should be revoked (can be possible).
   </li>
   <li>
-    Upon acceptance, create a detached armored GnuPG signature with
-    gpg --local-user --detach-sign --armor YYYY-MM-DD-name.lang.txt
-  </li>
-  <li>
-    Verify that your signature is correct with
-    gpg --verify YYYY-MM-DD-name.lang.txt.asc YYYY-MM-DD-name.lang.txt
-  </li>
-  <li>
     Create a directory structure for your item in the gentoo-news repository
     (<c>git+ssh://git@git.gentoo.org/data/gentoo-news.git</c>):
-    YYYY/YYYY-MM-DD-name/.
+    <c>YYYY-MM-DD-shortname/</c>.
   </li>
-  <li>Add both the news file and the signature to that directory.</li>
+  <li>Add the news file to that directory.</li>
   <li>Commit and push your changes to the gentoo-news repository.</li>
 </ul>
 
