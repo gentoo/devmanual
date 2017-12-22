@@ -45,9 +45,9 @@ with a green asterisk.  On earlier versions, elog behaves just like einfo.
 
 <codesample lang="ebuild">
 pkg_postinst() {
-    elog "You will need to set up your /etc/foo/foo.conf file before"
-    elog "running foo for the first time. For details, please see the"
-    elog "foo.conf(5) manual page."
+	elog "You will need to set up your /etc/foo/foo.conf file before"
+	elog "running foo for the first time. For details, please see the"
+	elog "foo.conf(5) manual page."
 }
 </codesample>
 
@@ -61,8 +61,8 @@ logged by default.
 
 <codesample lang="ebuild">
 src_compile() {
-    einfo "Starting a silent compile that takes hours."
-    ./build
+	einfo "Starting a silent compile that takes hours."
+	./build
 }
 </codesample>
 
@@ -129,7 +129,7 @@ Here is an example of a bad message:
 <codesample lang="ebuild">
 i=10
 while ((i--)) ; do
-    ewarn "PLEASE UPDATE TO YOUR PACKAGE TO USE linux-info.eclass"
+	ewarn "PLEASE UPDATE TO YOUR PACKAGE TO USE linux-info.eclass"
 done
 </codesample>
 

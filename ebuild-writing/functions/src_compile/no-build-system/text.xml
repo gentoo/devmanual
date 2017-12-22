@@ -14,7 +14,7 @@ Here's an example, from <c>app-misc/hilite</c>:
 
 <codesample lang="ebuild">
 src_compile() {
-    $(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -o ${PN} ${P}.c || die
+	$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -o ${PN} ${P}.c || die
 }
 </codesample>
 
@@ -25,29 +25,29 @@ broken build system that doesn't actually work:
 
 <codesample lang="ebuild">
 src_compile() {
-    local x
-    for x in asclock parser symbols config
-    do
-        $(tc-getCC) \
-            ${CFLAGS} ${CPPFLAGS} \
-            -I/usr/include \
-            -Dlinux \
-            -D_POSIX_C_SOURCE=199309L \
-            -D_POSIX_SOURCE \
-            -D_XOPEN_SOURCE \
-            -D_BSD_SOURCE \
-            -D_SVID_SOURCE \
-            -DFUNCPROTO=15 \
-            -DNARROWPROTO \
-            -c -o ${x}.o ${x}.c || die "compile asclock failed"
-    done
-    $(tc-getCC) \
-        ${LDFLAGS} \
-        -o asclock \
-        asclock.o parser.o symbols.o config.o \
-        -L/usr/lib \
-        -L/usr/lib/X11 \
-        -lXpm -lXext -lX11 || die "link asclock failed"
+	local x
+	for x in asclock parser symbols config
+	do
+		$(tc-getCC) \
+			${CFLAGS} ${CPPFLAGS} \
+			-I/usr/include \
+			-Dlinux \
+			-D_POSIX_C_SOURCE=199309L \
+			-D_POSIX_SOURCE \
+			-D_XOPEN_SOURCE \
+			-D_BSD_SOURCE \
+			-D_SVID_SOURCE \
+			-DFUNCPROTO=15 \
+			-DNARROWPROTO \
+			-c -o ${x}.o ${x}.c || die "compile asclock failed"
+	done
+	$(tc-getCC) \
+		${LDFLAGS} \
+		-o asclock \
+		asclock.o parser.o symbols.o config.o \
+		-L/usr/lib \
+		-L/usr/lib/X11 \
+		-lXpm -lXext -lX11 || die "link asclock failed"
 }
 </codesample>
 

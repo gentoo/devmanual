@@ -137,7 +137,7 @@ and spaces in their names:
 
 <codesample lang="ebuild">
 for f in $(find "${S}" -type f) ; do
-    einfo "Doing unholy things to ${f}"
+	einfo "Doing unholy things to ${f}"
 done
 </codesample>
 
@@ -150,7 +150,7 @@ to <c>while</c> and <c>read</c> for changing the delimiter):
 
 <codesample lang="ebuild">
 while IFS="" read -d $'\0' -r f ; do
-    einfo "Calling down holy vengance upon ${f}"
+	einfo "Calling down holy vengance upon ${f}"
 done &lt; &lt;(find "${S}" -type f -print0)
 </codesample>
 

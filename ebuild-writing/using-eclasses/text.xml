@@ -48,7 +48,7 @@ SLOT="0"
 KEYWORDS="alpha ~amd64 ~x86 ~x86-fbsd"
 
 RDEPEND=">=sys-libs/ncurses-5.2
-    >=sys-libs/readline-4.1"
+	>=sys-libs/readline-4.1"
 DEPEND="${RDEPEND}"
 
 src_prepare() {

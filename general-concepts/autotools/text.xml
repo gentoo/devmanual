@@ -129,18 +129,18 @@ EAPI=5
 inherit autotools
 
 src_prepare() {
-    # Remove problematic LDFLAGS declaration
-    sed -i -e '/^LDFLAGS/d' src/Makefile.am || die
+	# Remove problematic LDFLAGS declaration
+	sed -i -e '/^LDFLAGS/d' src/Makefile.am || die
 
-    # Rerun autotools
-    einfo "Regenerating autotools files..."
-    WANT_AUTOCONF=2.5 eautoconf
-    WANT_AUTOMAKE=1.9 eautomake
+	# Rerun autotools
+	einfo "Regenerating autotools files..."
+	WANT_AUTOCONF=2.5 eautoconf
+	WANT_AUTOMAKE=1.9 eautomake
 }
 
 src_compile() {
-    econf $(use_enable nls)
-    emake
+	econf $(use_enable nls)
+	emake
 }
 </codesample>
 

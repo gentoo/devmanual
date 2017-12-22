@@ -34,13 +34,13 @@
 <codesample lang="ebuild">
 pkg_nofetch()
 {
-    [ -z "${SRC_URI}" ] &amp;&amp; return
+	[ -z "${SRC_URI}" ] &amp;&amp; return
 
-    echo "!!! The following are listed in SRC_URI for ${PN}:"
-    for MYFILE in `echo ${SRC_URI}`; do
-        echo "!!!   $MYFILE"
-    done
-    return
+	echo "!!! The following are listed in SRC_URI for ${PN}:"
+	for MYFILE in `echo ${SRC_URI}`; do
+		echo "!!!   $MYFILE"
+	done
+	return
 }
 </codesample>
 </body>
@@ -51,10 +51,10 @@ pkg_nofetch()
 <body>
 <codesample lang="ebuild">
 pkg_nofetch() {
-    einfo "Please download"
-    einfo "  - ${P}-main.tar.bz2"
-    einfo "  - ${P}-extras.tar.bz2"
-    einfo "from ${HOMEPAGE} and place them in your DISTDIR directory."
+	einfo "Please download"
+	einfo "  - ${P}-main.tar.bz2"
+	einfo "  - ${P}-extras.tar.bz2"
+	einfo "from ${HOMEPAGE} and place them in your DISTDIR directory."
 }
 </codesample>
 <note>

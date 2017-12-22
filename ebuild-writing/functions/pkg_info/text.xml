@@ -34,7 +34,7 @@
 <codesample lang="ebuild">
 pkg_info()
 {
-    return
+	return
 }
 </codesample>
 </body>

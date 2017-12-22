@@ -30,18 +30,18 @@ where appropriate, be used to generate these switches.
 
 <codesample lang="ebuild">
 src_configure() {
-    # We have optional perl, python and ruby support
-    econf \
-        $(use_enable perl ) \
-        $(use_enable python ) \
-        $(use_enable ruby )
+	# We have optional perl, python and ruby support
+	econf \
+		$(use_enable perl ) \
+		$(use_enable python ) \
+		$(use_enable ruby )
 }
 
 src_configure() {
-    # Our package optional IPv6 support which uses --with rather than
-    # --enable / --disable
+	# Our package optional IPv6 support which uses --with rather than
+	# --enable / --disable
 
-    econf $(use_with ipv6 )
+	econf $(use_with ipv6 )
 }
 </codesample>
 
@@ -54,17 +54,17 @@ argument forms:
 
 <codesample lang="ebuild">
 src_configure() {
-    # Our package has optional perl, python and ruby support
-    econf \
-        $(use_enable perl perlinterp ) \
-        $(use_enable python pythoninterp ) \
-        $(use_enable ruby rubyinterp )
+	# Our package has optional perl, python and ruby support
+	econf \
+		$(use_enable perl perlinterp ) \
+		$(use_enable python pythoninterp ) \
+		$(use_enable ruby rubyinterp )
 
-    # ...
+	# ...
 }
 
 src_configure() {
-    econf $(use_with X x11 )
+	econf $(use_with X x11 )
 }
 </codesample>
 

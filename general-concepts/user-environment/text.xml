@@ -30,10 +30,10 @@ The simplest way to unset all locale-related variables is:
 
 <codesample lang="ebuild">
 pkg_setup() {
-    # Unset all locale related variables, they can make the
-    # build fail.
+	# Unset all locale related variables, they can make the
+	# build fail.
 
-    eval unset ${!LC_*} LANG
+	eval unset ${!LC_*} LANG
 }
 </codesample>
 </body>

@@ -36,12 +36,12 @@
 <body>
 <codesample lang="ebuild">
 src_compile() {
-    if [ -x ./configure ]; then
-        econf
-    fi
-    if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ]; then
-        emake || die "emake failed"
-    fi
+	if [ -x ./configure ]; then
+		econf
+	fi
+	if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ]; then
+		emake || die "emake failed"
+	fi
 }
 </codesample>
 </body>
@@ -51,9 +51,9 @@ src_compile() {
 <body>
 <codesample lang="ebuild">
 src_compile() {
-    if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ]; then
-        emake || die "emake failed"
-    fi
+	if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ]; then
+		emake || die "emake failed"
+	fi
 }
 </codesample>
 </body>
@@ -69,14 +69,14 @@ src_compile() {
 <body>
 <codesample lang="ebuild">
 src_compile() {
-    use sparc &amp;&amp; filter-flags -fomit-frame-pointer
-    append-ldflags -Wl,-z,now
+	use sparc &amp;&amp; filter-flags -fomit-frame-pointer
+	append-ldflags -Wl,-z,now
 
-    econf \
-        $(use_enable ssl ) \
-        $(use_enable perl perlinterp )
+	econf \
+		$(use_enable ssl ) \
+		$(use_enable perl perlinterp )
 
-    emake || die "Make failed!"
+	emake || die "Make failed!"
 }
 </codesample>
 <note>

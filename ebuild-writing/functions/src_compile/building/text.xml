@@ -53,14 +53,14 @@ example, with <c>sed</c>) to use <c>${CFLAGS}</c> or <c>${LDFLAGS}</c> correctly
 inherit flag-o-matic toolchain-funcs
 
 src_compile() {
-    # -Os not happy
-    replace-flags -Os -O2
+	# -Os not happy
+	replace-flags -Os -O2
 
-    # We have a weird build.sh to work with which ignores our
-    # compiler preferences. yay!
-    sed -i -e "s:cc -O2:$(tc-getCC) ${CFLAGS} ${LDFLAGS}:" build.sh \
-        || die "sed fix failed. Uh-oh..."
-    ./build.sh || die "Build failed!"
+	# We have a weird build.sh to work with which ignores our
+	# compiler preferences. yay!
+	sed -i -e "s:cc -O2:$(tc-getCC) ${CFLAGS} ${LDFLAGS}:" build.sh \
+		|| die "sed fix failed. Uh-oh..."
+	./build.sh || die "Build failed!"
 }
 </codesample>
 

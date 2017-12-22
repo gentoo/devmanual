@@ -29,10 +29,10 @@ fails. The following is taken from <c>app-misc/detox</c>:
 
 <codesample lang="ebuild">
 src_unpack() {
-    unpack ${A}
-    cd "${S}"
-    epatch "${FILESDIR}/${P}-destdir.patch"
-    epatch "${FILESDIR}/${P}-parallel_build.patch"
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}/${P}-destdir.patch"
+	epatch "${FILESDIR}/${P}-parallel_build.patch"
 }
 </codesample>
 
@@ -49,10 +49,10 @@ be compressed). For example, from <c>app-admin/showconsole</c>:
 
 <codesample lang="ebuild">
 src_unpack() {
-    unpack ${A}
-    cd "${S}"
-    epatch "${WORKDIR}/${P}-suse-update.patch.bz2"
-    epatch "${FILESDIR}/${PV}-no-TIOCGDEV.patch"
+	unpack ${A}
+	cd "${S}"
+	epatch "${WORKDIR}/${P}-suse-update.patch.bz2"
+	epatch "${FILESDIR}/${PV}-no-TIOCGDEV.patch"
 }
 </codesample>
 <p>As stated before, if you are using EAPI >=2, you should apply the patches in the <uri link="::ebuild-writing/functions/src_prepare">src_prepare</uri> function</p>
@@ -85,10 +85,10 @@ A simple example:
 
 <codesample lang="ebuild">
 src_unpack() {
-    unpack ${A}
-    cd "${S}"
-    EPATCH_SOURCE="${WORKDIR}/patches" EPATCH_SUFFIX="patch" \
-        EPATCH_FORCE="yes" epatch
+	unpack ${A}
+	cd "${S}"
+	EPATCH_SOURCE="${WORKDIR}/patches" EPATCH_SUFFIX="patch" \
+		EPATCH_FORCE="yes" epatch
 }
 </codesample>
 

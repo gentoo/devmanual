@@ -38,7 +38,7 @@ following:
 <codesample lang="ebuild">
 src_install()
 {
-    return
+	return
 }
 </codesample>
 <p>
@@ -68,10 +68,10 @@ For EAPIs 6 and later, the default <c>src_install</c> function is the following:
 </p>
 <codesample lang="ebuild">
 src_install() {
-    if [[ -f Makefile ]] || [[ -f GNUmakefile ]] || [[ -f makefile ]] ; then
-        emake DESTDIR="${D}" install
-    fi
-    einstalldocs
+	if [[ -f Makefile ]] || [[ -f GNUmakefile ]] || [[ -f makefile ]] ; then
+		emake DESTDIR="${D}" install
+	fi
+	einstalldocs
 }
 </codesample>
 <important>The following examples assume EAPI 4 or later</important>
@@ -84,8 +84,8 @@ src_install() {
 
 <codesample lang="ebuild">
 src_install() {
-    emake DESTDIR="${D}" install
-    dodoc README CHANGES
+	emake DESTDIR="${D}" install
+	dodoc README CHANGES
 }
 </codesample>
 
@@ -102,7 +102,7 @@ install to a non-root location. If possible, this should be used:
 </p>
 
 <codesample lang="ebuild">
-    emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 </codesample>
 
 <note>
@@ -120,8 +120,8 @@ if you hit an error.
 </p>
 
 <codesample lang="ebuild">
-    einstall
-    dodoc README CHANGES
+	einstall
+	dodoc README CHANGES
 </codesample>
 
 <note>
@@ -146,8 +146,8 @@ compilation required) themes:
 </p>
 
 <codesample lang="ebuild">
-    dodir /usr/share/foo-styles/
-    cp -R "${S}/" "${D}/" || die "Install failed!"
+	dodir /usr/share/foo-styles/
+	cp -R "${S}/" "${D}/" || die "Install failed!"
 </codesample>
 
 <p>
@@ -158,52 +158,52 @@ upon the <c>sys-fs/udev</c> install:
 
 <codesample lang="ebuild">
 src_install() {
-    dobin udevinfo
-    dobin udevtest
-    into /
-    dosbin udev
-    dosbin udevd
-    dosbin udevsend
-    dosbin udevstart
-    dosbin extras/scsi_id/scsi_id
-    dosbin extras/volume_id/udev_volume_id
+	dobin udevinfo
+	dobin udevtest
+	into /
+	dosbin udev
+	dosbin udevd
+	dosbin udevsend
+	dosbin udevstart
+	dosbin extras/scsi_id/scsi_id
+	dosbin extras/volume_id/udev_volume_id
 
-    exeinto /etc/udev/scripts
-    doexe extras/ide-devfs.sh
-    doexe extras/scsi-devfs.sh
-    doexe extras/cdsymlinks.sh
-    doexe extras/dvb.sh
+	exeinto /etc/udev/scripts
+	doexe extras/ide-devfs.sh
+	doexe extras/scsi-devfs.sh
+	doexe extras/cdsymlinks.sh
+	doexe extras/dvb.sh
 
-    insinto /etc/udev
-    newins "${FILESDIR}/udev.conf.post_050" udev.conf
-    doins extras/cdsymlinks.conf
+	insinto /etc/udev
+	newins "${FILESDIR}/udev.conf.post_050" udev.conf
+	doins extras/cdsymlinks.conf
 
-    # For devfs style layout
-    insinto /etc/udev/rules.d/
-    newins etc/udev/gentoo/udev.rules 50-udev.rules
+	# For devfs style layout
+	insinto /etc/udev/rules.d/
+	newins etc/udev/gentoo/udev.rules 50-udev.rules
 
-    # scsi_id configuration
-    insinto /etc
-    doins extras/scsi_id/scsi_id.config
+	# scsi_id configuration
+	insinto /etc
+	doins extras/scsi_id/scsi_id.config
 
-    # set up symlinks in /etc/hotplug.d/default
-    dodir /etc/hotplug.d/default
-    dosym ../../../sbin/udevsend /etc/hotplug.d/default/10-udev.hotplug
+	# set up symlinks in /etc/hotplug.d/default
+	dodir /etc/hotplug.d/default
+	dosym ../../../sbin/udevsend /etc/hotplug.d/default/10-udev.hotplug
 
-    # set up the /etc/dev.d directory tree
-    dodir /etc/dev.d/default
-    dodir /etc/dev.d/net
-    exeinto /etc/dev.d/net
-    doexe etc/dev.d/net/hotplug.dev
+	# set up the /etc/dev.d directory tree
+	dodir /etc/dev.d/default
+	dodir /etc/dev.d/net
+	exeinto /etc/dev.d/net
+	doexe etc/dev.d/net/hotplug.dev
 
-    doman *.8
-    doman extras/scsi_id/scsi_id.8
+	doman *.8
+	doman extras/scsi_id/scsi_id.8
 
-    dodoc ChangeLog FAQ HOWTO-udev_for_dev README TODO
-    dodoc docs/{overview,udev-OLS2003.pdf,udev_vs_devfs,RFC-dev.d,libsysfs.txt}
-    dodoc docs/persistent_naming/* docs/writing_udev_rules/*
+	dodoc ChangeLog FAQ HOWTO-udev_for_dev README TODO
+	dodoc docs/{overview,udev-OLS2003.pdf,udev_vs_devfs,RFC-dev.d,libsysfs.txt}
+	dodoc docs/persistent_naming/* docs/writing_udev_rules/*
 
-    newdoc extras/volume_id/README README_volume_id
+	newdoc extras/volume_id/README README_volume_id
 }
 </codesample>
 

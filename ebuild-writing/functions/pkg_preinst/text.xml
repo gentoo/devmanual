@@ -34,7 +34,7 @@
 <codesample lang="ebuild">
 pkg_preinst()
 {
-    return
+	return
 }
 </codesample>
 </body>
@@ -45,8 +45,8 @@ pkg_preinst()
 <body>
 <codesample lang="ebuild">
 pkg_preinst() {
-    enewgroup foo
-    enewuser foo -1 /bin/false /dev/null foo
+	enewgroup foo
+	enewuser foo -1 /bin/false /dev/null foo
 }
 </codesample>
 </body>

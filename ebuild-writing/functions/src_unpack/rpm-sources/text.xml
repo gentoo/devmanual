@@ -25,10 +25,10 @@ manner such as:
 
 <codesample lang="ebuild">
 src_unpack () {
-    rpm_src_unpack ${A}
-    cd "${S}"
+	rpm_src_unpack ${A}
+	cd "${S}"
 
-    use ssl &amp;&amp; epatch "${FILESDIR}/${PV}/${P}-ssl.patch"
+	use ssl &amp;&amp; epatch "${FILESDIR}/${PV}/${P}-ssl.patch"
 }
 </codesample>
 
@@ -83,10 +83,10 @@ RESTRICT="mirror"
 S=${WORKDIR}/fetchmail-$(get_version_component_range 1-3)
 
 src_unpack () {
-    rpm_src_unpack ${A}
-    cd "${S}"
-    EPATCH_SOURCE="${WORKDIR}" EPATCH_SUFFIX="patch" \
-        EPATCH_FORCE="yes" epatch
+	rpm_src_unpack ${A}
+	cd "${S}"
+	EPATCH_SOURCE="${WORKDIR}" EPATCH_SUFFIX="patch" \
+		EPATCH_FORCE="yes" epatch
 }
 </codesample>
 

@@ -337,10 +337,10 @@ packages <d/> downloading sparc binaries on ppc would be a waste of bandwidth.
 
 <codesample lang="ebuild">
 SRC_URI="http://example.com/files/${P}-core.tar.bz2
-    x86?   ( http://example.com/files/${P}/${P}-sse-asm.tar.bz2 )
-    ppc?   ( http://example.com/files/${P}/${P}-vmx-asm.tar.bz2 )
-    sparc? ( http://example.com/files/${P}/${P}-vis-asm.tar.bz2 )
-    doc?   ( http://example.com/files/${P}/${P}-docs.tar.bz2 )"
+	x86?   ( http://example.com/files/${P}/${P}-sse-asm.tar.bz2 )
+	ppc?   ( http://example.com/files/${P}/${P}-vmx-asm.tar.bz2 )
+	sparc? ( http://example.com/files/${P}/${P}-vis-asm.tar.bz2 )
+	doc?   ( http://example.com/files/${P}/${P}-docs.tar.bz2 )"
 </codesample>
 
 <p>
@@ -351,13 +351,13 @@ generally to install <e>all</e> available components.
 
 <codesample lang="ebuild">
 SRC_URI="http://example.com/files/${P}-core.tar.bz2
-        examplecards_foo?  ( http://example.com/files/${P}-foo.tar.bz2 )
-        examplecards_bar?  ( http://example.com/files/${P}-bar.tar.bz2 )
-        examplecards_baz?  ( http://example.com/files/${P}-baz.tar.bz2 )
-        !examplecards_foo? ( !examplecards_bar? ( !examplecards_baz? (
-            http://example.com/files/${P}-foo.tar.bz2
-            http://example.com/files/${P}-bar.tar.bz2
-            http://example.com/files/${P}-baz.tar.bz2 ) ) )"
+	examplecards_foo?  ( http://example.com/files/${P}-foo.tar.bz2 )
+	examplecards_bar?  ( http://example.com/files/${P}-bar.tar.bz2 )
+	examplecards_baz?  ( http://example.com/files/${P}-baz.tar.bz2 )
+	!examplecards_foo? ( !examplecards_bar? ( !examplecards_baz? (
+		http://example.com/files/${P}-foo.tar.bz2
+		http://example.com/files/${P}-bar.tar.bz2
+		http://example.com/files/${P}-baz.tar.bz2 ) ) )"
 </codesample>
 
 </body>

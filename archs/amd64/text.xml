@@ -336,10 +336,10 @@ In most cases, it's sufficient to use the <c>$(get_libdir)</c> function from
 inherit multilib
 
 src_compile() {
-    econf \
-        --libdir=/usr/$(get_libdir)
+	econf \
+		--libdir=/usr/$(get_libdir)
 
-    emake || die
+	emake || die
 }
 
 src_install() {

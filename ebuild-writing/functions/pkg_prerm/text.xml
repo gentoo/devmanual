@@ -34,7 +34,7 @@
 <codesample lang="ebuild">
 pkg_prerm()
 {
-    return
+	return
 }
 </codesample>
 </body>
@@ -45,8 +45,8 @@ pkg_prerm()
 <body>
 <codesample lang="ebuild">
 pkg_prerm() {
-    # clean up temp files
-    [[ -d "${ROOT}/var/tmp/foo" ]] &amp;&amp; rm -rf "${ROOT}/var/tmp/foo"
+	# clean up temp files
+	[[ -d "${ROOT}/var/tmp/foo" ]] &amp;&amp; rm -rf "${ROOT}/var/tmp/foo"
 }
 </codesample>
 </body>

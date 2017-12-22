@@ -192,21 +192,21 @@ RDEPEND="fakemedia? ( >=media-libs/fakemedia-1-1 )"
 
 <codesample lang="ebuild">
 src_compile() {
-    local myconf
+	local myconf
 
-    if use ssl &amp;&amp; use gnutls ; then
-        myconf="${myconf} --enable-ssl --with-ssl=gnutls"
-    elif use ssl &amp;&amp; ! use gnutls ; then
-        myconf="${myconf} --enable-ssl --with-ssl=openssl"
-    else
-        myconf="${myconf} --disable-ssl"
-    fi
+	if use ssl &amp;&amp; use gnutls ; then
+		myconf="${myconf} --enable-ssl --with-ssl=gnutls"
+	elif use ssl &amp;&amp; ! use gnutls ; then
+		myconf="${myconf} --enable-ssl --with-ssl=openssl"
+	else
+	myconf="${myconf} --disable-ssl"
+	fi
 
-    econf \
-        # Other stuff
-        ${myconf}
+	econf \
+		# Other stuff
+		${myconf}
 
-    emake || die "make failed"
+	emake || die "make failed"
 }
 </codesample>
 

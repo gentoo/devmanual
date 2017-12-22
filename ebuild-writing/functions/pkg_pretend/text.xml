@@ -38,7 +38,7 @@
 <codesample lang="ebuild">
 pkg_pretend()
 {
-    return
+	return
 }
 </codesample>
 </body>

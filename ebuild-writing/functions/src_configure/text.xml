@@ -38,8 +38,8 @@
 <codesample lang="ebuild">
 src_configure() {
 	if [[ -x ${ECONF_SOURCE:-.}/configure ]] ; then
-        econf
-    fi
+		econf
+	fi
 }
 </codesample>
 </body>
@@ -50,12 +50,12 @@ src_configure() {
 <body>
 <codesample lang="ebuild">
 src_configure() {
-    use sparc &amp;&amp; filter-flags -fomit-frame-pointer
-    append-ldflags -Wl,-z,now
+	use sparc &amp;&amp; filter-flags -fomit-frame-pointer
+	append-ldflags -Wl,-z,now
 
-    econf \
-        $(use_enable ssl ) \
-        $(use_enable perl perlinterp )
+	econf \
+		$(use_enable ssl ) \
+		$(use_enable perl perlinterp )
 }
 </codesample>
 </body>

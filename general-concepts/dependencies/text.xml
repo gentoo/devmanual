@@ -104,8 +104,8 @@ A basic <c>DEPEND</c> specification might look like the following:
 
 <codesample lang="ebuild">
 DEPEND="dev-lang/ruby
-    dev-ruby/ruby-gtk2
-    dev-ruby/mysql-ruby"
+	dev-ruby/ruby-gtk2
+	dev-ruby/mysql-ruby"
 </codesample>
 
 <p>
@@ -308,7 +308,7 @@ the package name, where 'SLOT' is the <c>SLOT</c> of the package wanted:
 
 <codesample lang="ebuild">
 DEPEND="qt3? ( x11-libs/qt:3 )
-    gtk? ( x11-libs/gtk+:2 )
+	gtk? ( x11-libs/gtk+:2 )
 </codesample>
 
 <p>
@@ -317,7 +317,7 @@ To depend on a specific version or version-range within a SLOT we use:
 
 <codesample lang="ebuild">
 DEPEND="qt3? ( ~x11-libs/qt-3.3.8:3 )
-    gtk? ( >=x11-libs/gtk+-2.24.9:2 )
+	gtk? ( >=x11-libs/gtk+-2.24.9:2 )
 </codesample>
 
 <subsection>
@@ -353,7 +353,7 @@ For example:
 
 <codesample lang="ebuild">
 RDEPEND="media-libs/cogl:1.0=
-    gnutls? ( &gt;=net-libs/gnutls-2.8:= )"
+	gnutls? ( &gt;=net-libs/gnutls-2.8:= )"
 </codesample>
 
 </body>
@@ -372,8 +372,8 @@ To depend upon a certain package if and only if a given <c>USE</c> flag is set:
 
 <codesample lang="ebuild">
 DEPEND="perl? ( dev-lang/perl )
-    ruby? ( &gt;=dev-lang/ruby-1.8 )
-    python? ( dev-lang/python )"
+	ruby? ( &gt;=dev-lang/ruby-1.8 )
+	python? ( dev-lang/python )"
 </codesample>
 
 <p>
@@ -398,20 +398,20 @@ This can be nested:
 
 <codesample lang="ebuild">
 DEPEND="!build? (
-    gcj? (
-        gtk? (
-            x11-libs/libXt
-            x11-libs/libX11
-            x11-libs/libXtst
-            x11-proto/xproto
-            x11-proto/xextproto
-            >=x11-libs/gtk+-2.2
-            x11-libs/pango
-        )
-        >=media-libs/libart_lgpl-2.1
-    )
-    >=sys-libs/ncurses-5.2-r2
-    nls? ( sys-devel/gettext )
+	gcj? (
+		gtk? (
+			x11-libs/libXt
+			x11-libs/libX11
+			x11-libs/libXtst
+			x11-proto/xproto
+			x11-proto/xextproto
+			>=x11-libs/gtk+-2.2
+			x11-libs/pango
+		)
+		>=media-libs/libart_lgpl-2.1
+	)
+	>=sys-libs/ncurses-5.2-r2
+	nls? ( sys-devel/gettext )
 )"
 </codesample>
 
@@ -564,7 +564,7 @@ following, which should be used instead:
 
 <codesample lang="ebuild">
 DEPEND="use-flag?  ( app-misc/foo )
-    !use-flag? ( app-misc/bar )"
+	!use-flag? ( app-misc/bar )"
 </codesample>
 
 <p>

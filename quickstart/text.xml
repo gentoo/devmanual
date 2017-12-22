@@ -48,13 +48,13 @@ SLOT="0"
 KEYWORDS="~mips ~sparc ~x86"
 
 src_configure() {
-    econf --with-posix-regex
+	econf --with-posix-regex
 }
 
 src_install() {
-    emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 
-    dodoc FAQ NEWS README
+	dodoc FAQ NEWS README
 }
 </codesample>
 </body>
@@ -219,16 +219,16 @@ KEYWORDS="~hppa ~mips sparc x86"
 
 RDEPEND="dev-libs/popt"
 DEPEND="${RDEPEND}
-    sys-devel/flex
-    sys-devel/bison"
+	sys-devel/flex
+	sys-devel/bison"
 
 src_configure() {
-    econf --with-popt
+	econf --with-popt
 }
 
 src_install() {
-    emake DESTDIR="${D}" install
-    dodoc README CHANGES
+	emake DESTDIR="${D}" install
+	dodoc README CHANGES
 }
 </codesample>
 
@@ -285,21 +285,21 @@ KEYWORDS="~hppa ~mips ~sparc ~x86"
 
 RDEPEND="dev-libs/popt"
 DEPEND="${RDEPEND}
-    sys-devel/flex
-    sys-devel/bison"
+	sys-devel/flex
+	sys-devel/bison"
 
 src_prepare() {
-    epatch "${FILESDIR}"/${P}-destdir.patch \
-        "${FILESDIR}"/${P}-parallel_build.patch
+	epatch "${FILESDIR}"/${P}-destdir.patch \
+		"${FILESDIR}"/${P}-parallel_build.patch
 }
 
 src_configure() {
-    econf --with-popt
+	econf --with-popt
 }
 
 src_install() {
-    emake DESTDIR="${D}" install
-    dodoc README CHANGES
+	emake DESTDIR="${D}" install
+	dodoc README CHANGES
 }
 </codesample>
 
@@ -342,11 +342,11 @@ IUSE="nls"
 DEPEND="!sys-libs/glibc"
 
 src_configure() {
-    econf $(use_enable nls)
+	econf $(use_enable nls)
 }
 
 src_install() {
-    emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 }
 </codesample>
 
@@ -385,42 +385,42 @@ KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="crypt imlib ipv6 ldap nls pda ssl xface"
 
 RDEPEND="=x11-libs/gtk+-2*
-    crypt? ( >=app-crypt/gpgme-0.4.5 )
-    imlib? ( media-libs/imlib2 )
-    ldap? ( >=net-nds/openldap-2.0.11 )
-    pda? ( app-pda/jpilot )
-    ssl? ( dev-libs/openssl )
-    xface? ( >=media-libs/compface-1.4 )
-    app-misc/mime-types
-    x11-misc/shared-mime-info"
+	crypt? ( >=app-crypt/gpgme-0.4.5 )
+	imlib? ( media-libs/imlib2 )
+	ldap? ( >=net-nds/openldap-2.0.11 )
+	pda? ( app-pda/jpilot )
+	ssl? ( dev-libs/openssl )
+	xface? ( >=media-libs/compface-1.4 )
+	app-misc/mime-types
+	x11-misc/shared-mime-info"
 DEPEND="${RDEPEND}
-    dev-util/pkgconfig
-    nls? ( >=sys-devel/gettext-0.12.1 )"
+	dev-util/pkgconfig
+	nls? ( >=sys-devel/gettext-0.12.1 )"
 
 src_prepare() {
-    epatch "${FILESDIR}"/${PN}-namespace.diff \
-        "${FILESDIR}"/${PN}-procmime.diff
+	epatch "${FILESDIR}"/${PN}-namespace.diff \
+		"${FILESDIR}"/${PN}-procmime.diff
 }
 
 src_configure() {
-    econf \
-        $(use_enable nls) \
-        $(use_enable ssl) \
-        $(use_enable crypt gpgme) \
-        $(use_enable pda jpilot) \
-        $(use_enable ldap) \
-        $(use_enable ipv6) \
-        $(use_enable imlib) \
-        $(use_enable xface compface)
+	econf \
+		$(use_enable nls) \
+		$(use_enable ssl) \
+		$(use_enable crypt gpgme) \
+		$(use_enable pda jpilot) \
+		$(use_enable ldap) \
+		$(use_enable ipv6) \
+		$(use_enable imlib) \
+		$(use_enable xface compface)
 }
 
 src_install() {
-    emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 
-    doicon sylpheed.png
-    domenu sylpheed.desktop
+	doicon sylpheed.png
+	domenu sylpheed.desktop
 
-    dodoc [A-Z][A-Z]* ChangeLog*
+	dodoc [A-Z][A-Z]* ChangeLog*
 }
 </codesample>
 

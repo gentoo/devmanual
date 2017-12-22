@@ -49,14 +49,14 @@ src_test() {
 <body>
 <codesample lang="ebuild">
 src_test() {
-    cd "${S}"/src/testdir || die
+	cd "${S}"/src/testdir || die
 
-    # Test 49 won't work inside a portage environment
-    sed -i -e 's~test49.out~~g' Makefile || die
+	# Test 49 won't work inside a portage environment
+	sed -i -e 's~test49.out~~g' Makefile || die
 
-    # Try to run the non-gui tests only
-    # pass -j1 if tests do not support being run in parallel
-    emake -j1 test-nongui
+	# Try to run the non-gui tests only
+	# pass -j1 if tests do not support being run in parallel
+	emake -j1 test-nongui
 }
 </codesample>
 </body>

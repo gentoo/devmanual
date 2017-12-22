@@ -18,9 +18,9 @@ So, the following will not work:
 <codesample lang="ebuild">
 # DO NOT DO THIS!
 if ! has_version "x11-libs/gtk+" ; then
-    DEPEND="${DEPEND}
-            gtk?  ( >=x11-libs/gtk+-2 )
-            !gtk? ( =x11-libs/gtk+-1.2* )"
+	DEPEND="${DEPEND}
+		gtk?  ( >=x11-libs/gtk+-2 )
+		!gtk? ( =x11-libs/gtk+-1.2* )"
 fi
 </codesample>
 
@@ -33,17 +33,17 @@ However, this is legal, since <c>versionator.eclass</c> works upon <c>PV</c>, an
 inherit versionator
 
 if [[ $(get_major_version) -ge 7 ]] ; then
-    IUSE="${IUSE} tcltk mzscheme"
-    DEPEND="${DEPEND}
-        tcltk?    ( dev-lang/tcl )
-        mzscheme? ( dev-lisp/mzscheme )"
-    RDEPEND="${RDEPEND}
-        tcltk?    ( dev-lang/tcl )
-        mzscheme? ( dev-lisp/mzscheme )"
+	IUSE="${IUSE} tcltk mzscheme"
+	DEPEND="${DEPEND}
+		tcltk?    ( dev-lang/tcl )
+		mzscheme? ( dev-lisp/mzscheme )"
+	RDEPEND="${RDEPEND}
+		tcltk?    ( dev-lang/tcl )
+		mzscheme? ( dev-lisp/mzscheme )"
 
-    if [[ "${MY_PN}" != "vim-core" ]] ; then
-        RDEPEND="${RDEPEND} !&lt;app-vim/align-30-r1"
-    fi
+	if [[ "${MY_PN}" != "vim-core" ]] ; then
+		RDEPEND="${RDEPEND} !&lt;app-vim/align-30-r1"
+	fi
 fi
 </codesample>
 </body>
@@ -65,7 +65,7 @@ do:
 
 <codesample lang="ebuild">
 if [[ "${PN##*-}" == "cvs" ]] ; then
-    inherit cvs
+	inherit cvs
 fi
 </codesample>
 

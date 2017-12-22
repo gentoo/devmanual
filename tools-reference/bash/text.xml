@@ -23,7 +23,7 @@ The basic conditional operator is the <c>if</c> statement:
 
 <codesample lang="ebuild">
 if something ; then
-    do_stuff
+	do_stuff
 fi
 </codesample>
 
@@ -40,13 +40,13 @@ Multiple pronged selection can be done using <c>else</c> and <c>elif</c>:
 
 <codesample lang="ebuild">
 if something ; then
-    do_stuff
+	do_stuff
 elif something_else ; then
-    do_other_stuff
+	do_other_stuff
 elif full_moon ; then
-    howl
+	howl
 else
-    turn_into_a_newt
+	turn_into_a_newt
 fi
 </codesample>
 
@@ -57,10 +57,10 @@ following will <b>not</b> work:
 
 <codesample lang="ebuild">
 if some_stuff ; then
-    # A statement is required here. a blank or a comment
-    # isn't enough!
+	# A statement is required here. a blank or a comment
+	# isn't enough!
 else
-    einfo "Not some stuff"
+	einfo "Not some stuff"
 fi
 </codesample>
 
@@ -71,10 +71,10 @@ If you really don't want to restructure the block, you can use a single colon
 
 <codesample lang="ebuild">
 if some_stuff ; then
-    # Do nothing
-    :
+	# Do nothing
+	:
 else
-    einfo "Not some stuff"
+	einfo "Not some stuff"
 fi
 </codesample>
 
@@ -93,17 +93,17 @@ needed.
 <codesample lang="ebuild">
 # is $foo zero length?
 if [[ -z "${foo}" ]] ; then
-    die "Please set foo"
+	die "Please set foo"
 fi
 
 # is $foo equal to "moo"?
 if [[ "${foo}" == "moo" ]] ; then
-    einfo "Hello Larry"
+	einfo "Hello Larry"
 fi
 
 # does "${ROOT}/etc/deleteme" exist?
 if [[ -f "${ROOT}/etc/deleteme" ]] ; then
-    einfo "Please delete ${ROOT}/etc/readme manually!"
+	einfo "Please delete ${ROOT}/etc/readme manually!"
 fi
 </codesample>
 
@@ -632,7 +632,7 @@ task upon multiple items.
 
 <codesample lang="ebuild">
 for myvar in "the first" "the second" "and the third" ; do
-    einfo "This is ${myvar}"
+	einfo "This is ${myvar}"
 done
 </codesample>
 
@@ -643,7 +643,7 @@ event a given number of times.
 
 <codesample lang="ebuild">
 for (( i = 1 ; i &lt;= 10 ; i++ )) ; do
-    einfo "i is ${i}"
+	einfo "i is ${i}"
 done
 </codesample>
 
@@ -654,7 +654,7 @@ ebuilds.
 
 <codesample lang="ebuild">
 while hungry ; do
-    eat_cookies
+	eat_cookies
 done
 </codesample>
 
@@ -664,7 +664,7 @@ This is most commonly used to iterate over lines in a file:
 
 <codesample lang="ebuild">
 while read myline ; do
-    einfo "It says ${myline}"
+	einfo "It says ${myline}"
 done &lt; some_file
 </codesample>
 

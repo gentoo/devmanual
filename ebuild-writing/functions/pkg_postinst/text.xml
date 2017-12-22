@@ -34,7 +34,7 @@
 <codesample lang="ebuild">
 pkg_postinst()
 {
-    return
+	return
 }
 </codesample>
 </body>
@@ -45,14 +45,14 @@ pkg_postinst()
 <body>
 <codesample lang="ebuild">
 pkg_postinst() {
-    if $OLD_FLUXBOX_VERSION ; then
-        ewarn "You must restart fluxbox before using the [include] /directory/"
-        ewarn "feature if you are upgrading from an older fluxbox!"
-        ewarn " "
-    fi
-    elog "If you experience font problems, or if fluxbox takes a very"
-    elog "long time to start up, please try the 'disablexmb' USE flag."
-    elog "If that fails, please report bugs upstream."
+	if $OLD_FLUXBOX_VERSION ; then
+		ewarn "You must restart fluxbox before using the [include] /directory/"
+		ewarn "feature if you are upgrading from an older fluxbox!"
+		ewarn " "
+	fi
+	elog "If you experience font problems, or if fluxbox takes a very"
+	elog "long time to start up, please try the 'disablexmb' USE flag."
+	elog "If that fails, please report bugs upstream."
 }
 </codesample>
 </body>

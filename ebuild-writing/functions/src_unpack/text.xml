@@ -33,9 +33,9 @@
 <body>
 <codesample lang="ebuild">
 src_unpack() {
-    if [ "${A}" != "" ]; then
-        unpack ${A}
-    fi
+	if [ "${A}" != "" ]; then
+		unpack ${A}
+	fi
 }
 </codesample>
 </body>
@@ -46,13 +46,13 @@ src_unpack() {
 <body>
 <codesample lang="ebuild">
 src_unpack() {
-    unpack ${A}
-    cd "${S}"
+	unpack ${A}
+	cd "${S}"
 
-    epatch "${FILESDIR}/${PV}/${P}-fix-bogosity.patch"
-    use pam &amp;&amp; epatch "${FILESDIR}/${PV}/${P}-pam.patch"
+	epatch "${FILESDIR}/${PV}/${P}-fix-bogosity.patch"
+	use pam &amp;&amp; epatch "${FILESDIR}/${PV}/${P}-pam.patch"
 
-    sed -i -e 's/"ispell"/"aspell"/' src/defaults.h || die "Sed failed!"
+	sed -i -e 's/"ispell"/"aspell"/' src/defaults.h || die "Sed failed!"
 }
 </codesample>
 <note>

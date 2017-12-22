@@ -69,9 +69,9 @@ remove.
 </p>
 
 <codesample lang="ebuild">
-    # -fomit-frame-pointer leads to nasty broken code on sparc thanks to a
-    # rather icky asm function
-    use sparc &amp;&amp; filter-flags -fomit-frame-pointer
+	# -fomit-frame-pointer leads to nasty broken code on sparc thanks to a
+	# rather icky asm function
+	use sparc &amp;&amp; filter-flags -fomit-frame-pointer
 </codesample>
 
 <p>
@@ -86,8 +86,8 @@ conservative set of flags.
 </p>
 
 <codesample lang="ebuild">
-    # Our app hates screwy flags
-    strip-flags
+	# Our app hates screwy flags
+	strip-flags
 </codesample>
 
 </body>
@@ -104,8 +104,8 @@ is most commonly used to replace <c>-Os</c> with <c>-O2</c>
 </p>
 
 <codesample lang="ebuild">
-    # Seems to have issues with -Os, switch to -O2
-    replace-flags -Os -O2
+	# Seems to have issues with -Os, switch to -O2
+	replace-flags -Os -O2
 </codesample>
 
 <p>
@@ -116,8 +116,8 @@ the flags to be replaced.
 </p>
 
 <codesample lang="ebuild">
-    # Can't use ultrasparc or ultrasparc3 code, drop to v9
-    replace-cpu-flags ultrasparc ultrasparc3 v9
+	# Can't use ultrasparc or ultrasparc3 code, drop to v9
+	replace-cpu-flags ultrasparc ultrasparc3 v9
 </codesample>
 
 </body>
@@ -133,11 +133,11 @@ functions can be used here.
 </p>
 
 <codesample lang="ebuild">
-    # If we're using selinux, we need to add a -D
-    use selinux &amp;&amp; append-flags "-DWITH_SELINUX"
+	# If we're using selinux, we need to add a -D
+	use selinux &amp;&amp; append-flags "-DWITH_SELINUX"
 
-    # Secure linking needed, since we're setuid root
-    append-ldflags -Wl,-z,now
+	# Secure linking needed, since we're setuid root
+	append-ldflags -Wl,-z,now
 </codesample>
 
 <p>

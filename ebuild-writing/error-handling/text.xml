@@ -87,7 +87,7 @@ The correct way to rewrite this is to use an <c>if</c> block:
 
 <codesample lang="ebuild">
 if [[ -f foorc ]] ; then
-    update_foorc || die "Couldn't update foorc!"
+	update_foorc || die "Couldn't update foorc!"
 fi
 </codesample>
 

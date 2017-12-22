@@ -15,7 +15,7 @@ doing this is via <c>sed</c>:
 # This plugin is mapped to the 'h' key by default, which conflicts with some
 # other mappings. Change it to use 'H' instead.
 sed -i 's/\(noremap &lt;buffer&gt; \)h/\1H/' info.vim \
-    || die 'sed failed'
+	|| die 'sed failed'
 </codesample>
 
 <p>
@@ -30,9 +30,9 @@ be set to <c>r0</c> if we don't have a <c>-r</c> component in our version.
 # for the line in version.h.in which contains "__fluxbox_version" and append
 # our content to it.
 if [[ "${PR}" == "r0" ]] ; then
-    suffix="gentoo"
+	suffix="gentoo"
 else
-    suffix="gentoo-${PR}"
+	suffix="gentoo-${PR}"
 fi
 sed -i \
     -e "s~\(__fluxbox_version .@VERSION@\)~\1-${suffix}~" \
@@ -50,11 +50,11 @@ from the plugin files and convert it to Vim help format.
 # problems for us during the unmerge. Fortunately, sed can fix this
 # for us. First, we extract the documentation:
 sed -e '1,/^" HelpExtractorDoc:$/d' \
-    "${S}"/plugin/ZoomWin.vim > ${S}/doc/ZoomWin.txt \
-    || die "help extraction failed"
+	"${S}"/plugin/ZoomWin.vim > ${S}/doc/ZoomWin.txt \
+	|| die "help extraction failed"
 # Then we remove the help extraction code from the plugin file:
 sed -i -e '/^" HelpExtractor:$/,$d' "${S}"/plugin/ZoomWin.vim \
-    || die "help extract remove failed"
+	|| die "help extract remove failed"
 </codesample>
 
 <p>
@@ -77,11 +77,11 @@ The basic form of a call is:
 
 <codesample lang="ebuild">
 sed [ option flags ] \
-    -e 'first command' \
-    -e 'second command' \
-    -e 'and so on' \
-    input-file > output-file \
-    || die "Oops, sed didn't work!"
+	-e 'first command' \
+	-e 'second command' \
+	-e 'and so on' \
+	input-file > output-file \
+	|| die "Oops, sed didn't work!"
 </codesample>
 
 <p>
@@ -114,7 +114,7 @@ with <c>"different content"</c>. This is done as follows:
 # replace all instances of "some text" with "different content" in
 # somefile.txt
 sed -i -e 's/some text/different content/g' somefile.txt || \
-    die "Sed broke!"
+	die "Sed broke!"
 </codesample>
 
 <note>
@@ -136,7 +136,7 @@ are allowed, although backslash and any form of brackets should be avoided.
 <codesample lang="ebuild">
 # replace all instances of "/usr/local" with "/usr"
 sed -i -e 's~/usr/local~/usr~g' somefile.txt || \
-    die "sed broke"
+	die "sed broke"
 </codesample>
 
 <p>
