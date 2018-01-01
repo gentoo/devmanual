@@ -612,7 +612,7 @@ a single function, <c>domacosapp</c>.
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: macosapp.eclass
@@ -699,7 +699,7 @@ something like the following:
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: jmake.eclass
@@ -760,7 +760,7 @@ for an eclass to invoke die from the global scope.  For example:
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: eapi-die.eclass
