@@ -42,5 +42,33 @@ from the Gentoo repository.
 </note>
 </body>
 
+<section>
+<title>KEYWORDS in virtual packages</title>
+
+<body>
+<p>
+Since virtual packages do not install any files, they do not follow the regular
+arch testing procedure. Instead, the developer can immediately set
+the <c>KEYWORDS</c> of a virtual to the union of <c>KEYWORDS</c> of its
+providers. In particular, if a new virtual is created for a stable package,
+the virtual is committed straight to stable.
+</p>
+
+<p>
+For example, if you have two packages: <c>dev-libs/liblinux</c> with
+<c>KEYWORDS="amd64 ~x86"</c> and <c>dev-libs/libbsd</c> with
+<c>KEYWORDS="~amd64-fbsd ~x86-fbsd"</c>, the resulting virtual will
+have:
+</p>
+
+<codesample lang="ebuild">
+KEYWORDS="amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
+
+RDEPEND="|| ( dev-libs/liblinux dev-libs/libbsd )"
+</codesample>
+</body>
+
+</section>
+
 </chapter>
 </guide>
