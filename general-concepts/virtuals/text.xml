@@ -70,5 +70,85 @@ RDEPEND="|| ( dev-libs/liblinux dev-libs/libbsd )"
 
 </section>
 
+<section>
+<title>Virtuals and subslots</title>
+
+<body>
+<warning>
+This section is only applicable if virtual providers include versions that
+are ABI-compatible with one another (and use matching SONAMEs) and/or
+the incompatible providers are being obsoleted.
+</warning>
+
+<p>
+Like regular packages, virtuals can define subslots that can be used
+to trigger rebuilds of their reverse dependencies. For this to work, a new
+version of the virtual is created for each subslot of the providers,
+where each version contains dependencies on a specific subslot.
+</p>
+
+<p>
+For example, a virtual for different packages providing ABI-compatible
+<c>libfoo.so.1</c> libraries could look like the following:
+</p>
+
+<codesample lang="ebuild">
+EAPI=6
+
+DESCRIPTION="Virtual for libfoo.so.1"
+SLOT="0/1"
+
+RDEPEND="
+    || (
+        dev-libs/libfoo:0/1
+        dev-libs/libfoo-alternate:0/1
+        dev-libs/bigpack:0/libfoo-1+libbar-0
+        dev-libs/bigpack:0/libfoo-1+libbar-1
+    )
+"
+</codesample>
+
+<p>
+Virtuals can also be used when one of the providers is being obsoleted in favor
+of another that breaks ABI compatibility while remaining API-compatible. In this
+case, multiple versions of the virtual are created, each specifying a single
+provider and a unique subslot.
+</p>
+
+<p>
+For example, if <c>dev-libs/libfoo</c> (<c>libfoo.so.0</c>) is being replaced
+by <c>dev-libs/newfoo</c> (<c>libfoo.so.1</c>), <c>virtual/libfoo-0.ebuild</c>
+would contain:
+</p>
+
+<codesample lang="ebuild">
+EAPI=6
+
+DESCRIPTION="Virtual for libfoo.so.0"
+SLOT="0/0"
+RDEPEND="dev-libs/libfoo:0/0"
+</codesample>
+
+<p>
+while <c>virtual/libfoo-1.ebuild</c> would contain:
+</p>
+
+<codesample lang="ebuild">
+EAPI=6
+
+DESCRIPTION="Virtual for libfoo.so.1"
+SLOT="0/1"
+RDEPEND="dev-libs/newfoo:0/1"
+</codesample>
+
+<note>
+In this case, the package manager will naturally want to upgrade
+to <c>dev-libs/newfoo</c> whenever possible. Therefore, this solution
+is not viable if clean choice between the two providers is desired.
+</note>
+
+</body>
+</section>
+
 </chapter>
 </guide>
