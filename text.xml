@@ -42,6 +42,7 @@ section lists specific contributions to this manual.
 <include href="ebuild-writing/"/>
 <include href="ebuild-maintenance/" />
 <include href="eclass-writing/"/>
+<include href="metadata/"/>
 <include href="profiles/"/>
 <include href="keywording/"/>
 <include href="tasks-reference/"/>

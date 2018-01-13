@@ -4,9 +4,14 @@
 <title>Profiles</title>
 
 <body>
+<warning>
+This section is currently in process of being corrected and split between
+profile files and repository metadata. Treat its contents with caution.
+</warning>
+
 <p>
-This section provides details on the <c>profiles/</c> directory. All of these files
-are also documented in <c>man portage</c>.
+This section provides details on the profile directory format. For other files
+in the <c>profiles/</c> directory, please see <uri link="::metadata"/>.
 </p>
 </body>
 

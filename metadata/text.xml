@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<guide self="metadata/">
+<chapter>
+<title>Repository metadata</title>
+
+<body>
+<p>
+This section describes various metadata files used to control the repository.
+For historical reasons, those files are scattered between the <c>metadata/</c>
+and <c>profiles/</c> directories.
+</p>
+</body>
+
+<section>
+<title>profiles/eapi</title>
+
+<body>
+<p>
+This file specifies the EAPI version of the repository metadata, in particular
+the <c>profiles/</c> directory. If you are using newer EAPI extensions to some
+of the files listed below, this file must specify the appropriate EAPI used.
+</p>
+
+<p>
+If the file is not present, EAPI 0 is assumed.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>profiles/repo_name</title>
+
+<body>
+<p>
+This file specifies the name of the repository. It must be present in every
+repository, and it must be unique within the system. Furthermore, if you plan
+to publish your repository, you should aim for a name unique within
+the complete <uri link="https://repos.gentoo.org/">Gentoo repository list</uri>.
+</p>
+
+<p>
+For example, the main Gentoo repository is named <c>gentoo</c>.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>metadata/layout.conf</title>
+
+<body>
+<p>
+This file specifies additional parameters of the repository layout. It is
+commonly present in Gentoo repositories to request inheritance from the Gentoo
+repository:
+</p>
+
+<codesample>
+# inherit eclasses, etc. from Gentoo
+masters = gentoo
+</codesample>
+
+<p>
+The file can also be used to control Manifest format, cache format, allowed
+EAPIs and many more. The detailed option list can be found in <c>portage(5)</c>
+manpage.
+</p>
+
+</body>
+</section>
+
+</chapter>
+</guide>
