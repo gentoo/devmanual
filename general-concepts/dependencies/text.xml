@@ -73,21 +73,24 @@ where this will create circular dependency chains.
 
 <p>
 All packages have an implicit compile-time and runtime dependency upon the
-entire <c>system</c> target. It is therefore not necessary, nor advisable, to
+entire <c>@system</c> set. It is therefore not necessary, nor
+advisable, to
 specify dependencies upon toolchain packages like <c>gcc</c>, <c>libc</c> and
 so on, except where specific versions or packages (for example, <c>glibc</c>
 over <c>uclibc</c>) are required.  Note that this rule also needs consideration
 for packages like <c>flex</c>, <c>zlib</c> and <c>libtool</c>, which aren't in
-the <c>system</c> target for every profile.  For example, the embedded profile
-doesn't have <c>zlib</c> in <c>system</c> target, the <c>libtool</c> ABI might
+the <c>@system</c> set for every profile. For example, the embedded
+profile doesn't have <c>zlib</c> in <c>@system</c>, the <c>libtool</c>
+ABI might
 change and break building order and <c>flex</c> might get removed from the
-<c>system</c> target in future.
+<c>@system</c> set in future.
 </p>
 
 <p>
-However, packages which are included in the <c>system</c> target, or are
-dependencies of <c>system</c> target packages, should generally include a complete
-dependency list (excluding bootstrap packages). This makes <c>emerge -e system</c>
+However, packages which are included in the <c>@system</c> set, or are
+dependencies of <c>@system</c> set packages, should generally include
+a complete dependency list (excluding bootstrap packages). This makes
+<c>emerge -e @system</c>
 possible when installing from a stage 1 or stage 2 tarball.
 </p>
 

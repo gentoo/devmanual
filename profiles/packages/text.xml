@@ -6,7 +6,7 @@
 
 <p>
 The <c>packages</c> file in <c>profiles/</c> controls the packages pulled in by the
-<c>system</c> target. The <c>base/packages</c> file must not be modified without
+<c>@system</c> set. The <c>base/packages</c> file must not be modified without
 discussion on the <c>gentoo-dev</c> list; subprofile overrides are up to the
 relevant arch teams.
 </p>
