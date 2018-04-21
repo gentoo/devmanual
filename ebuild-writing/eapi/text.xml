@@ -228,7 +228,7 @@ doman foo.lang.1
 		</p>
 		<p>Example:</p>
 		<codesample lang="ebuild">
-SRC_URI="http://dl.google.com/earth/client/GE4/release_4_3/GoogleEarthLinux.bin
+SRC_URI="https://dl.google.com/earth/client/GE4/release_4_3/GoogleEarthLinux.bin
                         -&gt; GoogleEarthLinux-${PV}.bin"
 		</codesample>
 	</li>

@@ -60,9 +60,9 @@ inherit eutils versionator rpm
 MY_PV=$(replace_version_separator 3 '-')
 MY_P=fetchmail-${MY_PV}
 
-SRC_URI="http://suse.osuosl.org/suse/i386/9.2/suse/src/${MY_P}.src.rpm"
+SRC_URI="https://suse.osuosl.org/suse/i386/9.2/suse/src/${MY_P}.src.rpm"
 DESCRIPTION="SuSE 9.2 Fetchmail Source Package"
-HOMEPAGE="http://www.suse.com"
+HOMEPAGE="https://www.suse.com"
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"

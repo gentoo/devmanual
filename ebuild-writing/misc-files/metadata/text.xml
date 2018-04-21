@@ -263,7 +263,7 @@ There are also some attributes that can be used with these tags:
     <e>least</e> an english description.  If an additional description in
     another language is given, this attribute is used to specify the language
     used.  The format is the two-character language code as defined by the <uri
-    link="http://www.w3.org/WAI/ER/IG/ert/iso639.htm#2letter">ISO-639-1</uri>
+    link="https://www.w3.org/WAI/ER/IG/ert/iso639.htm#2letter">ISO-639-1</uri>
     norm.
   </ti>
 </tr>

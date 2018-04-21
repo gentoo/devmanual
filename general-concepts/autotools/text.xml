@@ -653,7 +653,8 @@ For more details on autotools:
     The book "GNU Autoconf, Automake and Libtool" by Gary V. Vaughan, Ben
     Elliston, Tom Tromey  and Ian Lance Taylor   (often called "The Autobook")
     provides a good but somewhat outdated description of autotools. It is
-    <uri link="http://sources.redhat.com/autobook/">freely available online</uri>.
+    <uri link="https://sources.redhat.com/autobook/">freely available
+    online</uri>.
   </li>
   <li>
     The GNU documentation for the various autotools components is of varying
