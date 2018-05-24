@@ -675,6 +675,9 @@ For more details on autotools:
     <li>
       <uri link="https://www.gnu.org/software/m4/manual/m4.html">GNU m4 Manual</uri>
     </li>
+    <li>
+      <uri link="https://www.makefile.am/">Autotools Mythbuster</uri>
+    </li>
   </ul>
   <li>
     There are some good overview lectures available online. <uri
