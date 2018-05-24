@@ -153,8 +153,7 @@ this <d/> see <uri link="::general-concepts/install-destinations"/> and
 <note>
 The canonical install method is <c>emake DESTDIR=&quot;${D}&quot;
 install</c>. This will work with any properly written standard
-<c>Makefile</c>. If this gives sandbox errors, try <c>einstall</c>
-instead. If this still fails, see <uri
+<c>Makefile</c>. If this gives sandbox errors, see <uri
 link="::ebuild-writing/functions/src_install/"/> for how to do manual
 installs.
 </note>
