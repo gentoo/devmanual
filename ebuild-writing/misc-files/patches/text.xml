@@ -37,6 +37,13 @@ here. Mirrored patches are often compressed with <c>xz</c> or
 Patches included in <c>${FILESDIR}</c> should never be compressed.
 </note>
 
+<warning>
+Starting from EAPI=6 a strip patch level was limited to the <c>-p1</c>.
+Although it can be overridden with a <c>eapply -p&lt;strip_level&gt;</c>
+command, it is higly recommended to adapt the patch itself to work
+with the <c>-p1</c> default.
+</warning>
+
 <p>
 If a package requires many patches, even if they are individually
 small, it is often best to create a patch tarball to avoid cluttering
