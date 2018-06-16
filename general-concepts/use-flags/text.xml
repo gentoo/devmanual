@@ -240,10 +240,10 @@ src_compile() {
 <body>
 
 <p>
-	The <c>VIDEO_CARDS</c>, <c>INPUT_DEVICES</c> and <c>LINGUAS</c> variables
+	The <c>VIDEO_CARDS</c>, <c>INPUT_DEVICES</c> and <c>L10N</c> variables
 	are automatically expanded into USE flags. These are known as
-	<c>USE_EXPAND</c> variables. If the user has <c>LINGUAS="en fr"</c> in
-	<c>make.conf</c>, for example, then <c>USE="linguas_en linguas_fr"</c> will
+	<c>USE_EXPAND</c> variables. If the user has <c>L10N="en fr"</c> in
+	<c>make.conf</c>, for example, then <c>USE="l10n_en l10n_fr"</c> will
 	automatically be set by Portage.
 </p>
 
