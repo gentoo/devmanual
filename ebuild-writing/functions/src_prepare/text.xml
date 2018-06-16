@@ -48,8 +48,10 @@ src_prepare() {
 <body>
 <codesample lang="ebuild">
 src_prepare() {
-	epatch "${FILESDIR}/${PV}/${P}-fix-bogosity.patch"
-	use pam &amp;&amp; epatch "${FILESDIR}/${PV}/${P}-pam.patch"
+	eapply "${FILESDIR}/${PV}/${P}-fix-bogosity.patch"
+	eapply "${FILESDIR}/${PV}/${P}-pam.patch"
+
+	eapply_user
 
 	sed -i -e 's/"ispell"/"aspell"/' src/defaults.h || die "Sed failed!"
 }
