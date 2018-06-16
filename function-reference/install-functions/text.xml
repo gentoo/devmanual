@@ -89,6 +89,7 @@ the first is the source name, the second the name to use when installing.
   <tr>
     <ti>
       <c>libopts</c>
+      <b>Note:</b> Banned in EAPI=7
     </ti>
     <ti>
       Specify arguments passed to <c>install</c> for libraries
@@ -207,6 +208,7 @@ the first is the source name, the second the name to use when installing.
   <tr>
     <ti>
       <c>dolib</c>
+      <b>Note:</b> Banned in EAPI=7
     </ti>
     <ti>
       Install a library file
