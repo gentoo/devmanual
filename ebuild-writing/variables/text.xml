@@ -370,23 +370,6 @@ SRC_URI="https://example.com/files/${P}-core.tar.bz2
 	doc?   ( https://example.com/files/${P}/${P}-docs.tar.bz2 )"
 </codesample>
 
-<p>
-If a <c>USE_EXPAND</c> variable is used to control whether certain optional
-components are installed, the correct thing to do if the variable is unset is
-generally to install <e>all</e> available components.
-</p>
-
-<codesample lang="ebuild">
-SRC_URI="https://example.com/files/${P}-core.tar.bz2
-	examplecards_foo?  ( https://example.com/files/${P}-foo.tar.bz2 )
-	examplecards_bar?  ( https://example.com/files/${P}-bar.tar.bz2 )
-	examplecards_baz?  ( https://example.com/files/${P}-baz.tar.bz2 )
-	!examplecards_foo? ( !examplecards_bar? ( !examplecards_baz? (
-		https://example.com/files/${P}-foo.tar.bz2
-		https://example.com/files/${P}-bar.tar.bz2
-		https://example.com/files/${P}-baz.tar.bz2 ) ) )"
-</codesample>
-
 </body>
 </subsection>
 
