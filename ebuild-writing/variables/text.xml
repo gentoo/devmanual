@@ -411,6 +411,19 @@ Here we download a file from upstream which has a plain name like
 SRC_URI="https://example.com/files/${PV}.tar.gz -> ${P}.tar.gz"
 </codesample>
 
+<p>
+Commonly tarballs contain a single top-level directory with all the sources.
+Whenever that is the case and the directory name is unique enough, it is
+preferable to name the tarball after that directory to ease extracting
+manually.  This is the case commonly when fetching git snapshots.
+</p>
+
+<codesample lang="ebuild">
+EGIT_COMMIT=c4df53132e81e885635da2f326bb9b6afde78964
+SRC_URI="https://example.com/foo/archive/${EGIT_COMMIT}.tar.gz -> ${PN}-${EGIT_COMMIT}.tar.gz"
+S=${WORKDIR}/${PN}-${EGIT_COMMIT}
+</codesample>
+
 </body>
 </subsection>
 
