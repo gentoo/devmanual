@@ -112,7 +112,7 @@
       <!-- Default keywords -->
       <xsl:when test="$data = 'use' or $data = 'has_version' or $data = 'best_version' or $data = 'use_with' or $data = 'use_enable' or
 		      $data = 'check_KV' or $data = 'keepdir' or $data = 'econf' or $data = 'die' or $data = 'einstall' or $data = 'einfo' or 
-		      $data = 'elog' or
+		      $data = 'elog' or $data = 'eapply' or
 		      $data = 'ewarn' or $data = 'eerror' or $data = 'diropts' or $data = 'dobin' or $data = 'docinto' or $data = 'dodoc' or
 		      $data = 'doexe' or $data = 'dohard' or $data = 'dohtml' or $data = 'doinfo' or $data = 'doins' or $data = 'dolib' or
 		      $data = 'dolib$dataa' or $data = 'dolib$dataso' or $data = 'doman' or $data = 'dosbin' or $data = 'dosym' or $data = 'emake' or
