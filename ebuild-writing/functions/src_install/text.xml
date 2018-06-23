@@ -93,48 +93,6 @@ src_install() {
 </section>
 
 <section>
-<title>Easy Installs</title>
-<body>
-<p>
-Often, especially with autotools-powered packages, there is a <c>Makefile</c>
-<c>install</c> target which will honour the <c>DESTDIR</c> variable to tell it to
-install to a non-root location. If possible, this should be used:
-</p>
-
-<codesample lang="ebuild">
-	emake DESTDIR="${D}" install
-</codesample>
-
-<note>
-<c>emake</c> should be used to parallelise here. Some installs are
-not designed to be parallelised, use <c>emake -j1</c> or <c>make</c>
-if you hit an error.
-</note>
-
-<p>
-  Sometimes this will end up installing a few things into strange
-  places. If and only if this is the case, the <c>einstall</c>
-  function can be used. It is usually necessary to include additional
-  <c>dodoc</c> statements for the <c>README</c>, <c>ChangeLog</c>, etc
-  in these cases:
-</p>
-
-<codesample lang="ebuild">
-	einstall
-	dodoc README CHANGES
-</codesample>
-
-<note>
-There is no need to <c>dodoc</c> <c>COPYING</c>! The license belongs
-to <c>${PORTDIR}/licenses</c>. Sometimes though, you might want to
-install <c>COPYING</c> regardless, if it explains how different
-licenses are applied to different parts of the application, for
-example.
-</note>
-</body>
-</section>
-
-<section>
 <title>Trivial Installs</title>
 <body>
 
