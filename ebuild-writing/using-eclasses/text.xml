@@ -28,47 +28,47 @@ link="::general-concepts/portage-cache"/>).
 <p>
 After inheriting an eclass, its provided functions can be used as
 normal. Here's an example ebuild, <c>foomatic-0.1-r2.ebuild</c>, which
-uses four eclasses:
+uses three eclasses:
 </p>
 
 <codesample lang="ebuild">
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=7
 
-inherit eutils bash-completion flag-o-matic autotools
+inherit autotools bash-completion-r1 flag-o-matic
 
 DESCRIPTION="Tool for foo"
-HOMEPAGE="http://foomatic.sf.net"
+HOMEPAGE="https://foomatic.sf.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha ~amd64 ~x86 ~x86-fbsd"
 
-RDEPEND=">=sys-libs/ncurses-5.2
-	>=sys-libs/readline-4.1"
+RDEPEND="sys-libs/ncurses:0=
+	>=sys-libs/readline:0="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-gentoo.patch"
+	eapply "${FILESDIR}/${P}-gentoo.patch"
+	eapply_user
 	eautoreconf
 }
 
 src_configure() {
-	econf --sysconfdir=/etc/devtodo
+	econf --sysconfdir="${EPREFIX}"/etc/devtodo
 }
 
 src_compile() {
 	replace-flags -O? -O1
-	emake || die "emake failed"
+	default
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc AUTHORS ChangeLog README TODO || die "dodoc failed"
-	dobashcompletion "${FILESDIR}/${PN}.bash-completion" ${PN}
+	default
+	dobashcomp "${FILESDIR}/${PN}.bash-completion" ${PN}
 }
 
 </codesample>
@@ -78,11 +78,11 @@ Note the <c>inherit</c> immediately after the header.
 </p>
 
 <p>
-The <c>eutils</c> eclass (see <uri link="::eclass-reference/eutils.eclass/">eutils.eclass</uri>) is needed to get the
-<c>epatch</c> function.  The <c>flag-o-matic</c> eclass (see <uri
+The <c>autotools</c> eclass (see <uri link="::eclass-reference/autotools.eclass/">autotools.eclass</uri>) is needed to get the
+<c>eautoreconf</c> function.  The <c>flag-o-matic</c> eclass (see <uri
 link="::eclass-reference/flag-o-matic.eclass/">flag-o-matic.eclass</uri>) is needed for <c>replace-flags</c>, and
-the <c>bash-completion</c> eclass (<uri link="::eclass-reference/bash-completion.eclass/">bash-completion.eclass</uri>) is used
-to handle the bash completion file via <c>dobashcompletion</c> and <c>bash-completion_pkg_postinst</c>.
+the <c>bash-completion-r1</c> eclass (<uri link="::eclass-reference/bash-completion-r1.eclass/">bash-completion-r1.eclass</uri>) is used
+to handle the bash completion file via <c>dobashcomp</c>.
 </p>
 
 </body>
