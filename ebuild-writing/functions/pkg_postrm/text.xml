@@ -45,7 +45,8 @@ pkg_postrm()
 <body>
 <codesample lang="ebuild">
 pkg_postrm() {
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 </codesample>
 </body>
