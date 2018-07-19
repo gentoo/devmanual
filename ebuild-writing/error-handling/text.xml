@@ -69,7 +69,7 @@ It's best to use <c>|| die</c> too often than too little.
 <body>
 
 <warning>
-<c>die</c> <b>will not work in a subshell</b>.
+<c>die</c> <b>will not work in a subshell unless you are using EAPI=7 and onwards</b>.
 </warning>
 
 <p>
