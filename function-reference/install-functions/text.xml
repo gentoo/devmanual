@@ -5,9 +5,8 @@
 <body>
 
 <p>
-The following functions, which are all provided by <c>ebuild.sh</c> and the standard
-library, handle various install-related tasks. <c>${D}</c> is automatically handled
-for all of these functions.
+The following functions are provided by the package manager to handle various
+install-related tasks. <c>${ED}</c> is prepended automatically to the install location.
 </p>
 
 <p>
@@ -271,7 +270,7 @@ the first is the source name, the second the name to use when installing.
       <c>fowners</c>
     </ti>
     <ti>
-      Call <c>chown</c> on the specified files in <c>${D}</c>
+      Call <c>chown</c> on the specified files in <c>${ED}</c>
     </ti>
   </tr>
   <tr>
@@ -279,7 +278,7 @@ the first is the source name, the second the name to use when installing.
       <c>fperms</c>
     </ti>
     <ti>
-      Call <c>chmod</c> on the specified files in <c>${D}</c>
+      Call <c>chmod</c> on the specified files in <c>${ED}</c>
     </ti>
   </tr>
   <tr>
