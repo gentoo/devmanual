@@ -29,7 +29,7 @@ A sample <c>KEYWORDS</c> entry might look like:
 </p>
 
 <codesample lang="ebuild">
-KEYWORDS="x86 sparc ~mips ~ppc ~ppc-macos -ia64"
+KEYWORDS="-ia64 ~mips ~ppc sparc x86 ~ppc-macos"
 </codesample>
 
 <p>
@@ -82,15 +82,15 @@ The different levels of keyword are:
 <p>
 The <c>-*</c> keyword is special. It is used to indicate package versions which are
 not worth trying to test on unlisted archs. For example, a binary-only package
-which is only supported upstream on <c>x86</c> and <c>ppc</c> might use:
+which is only supported upstream on <c>ppc</c> and <c>x86</c> might use:
 </p>
 
 <codesample lang="ebuild">
-KEYWORDS="-* x86 ppc"
+KEYWORDS="-* ppc x86"
 </codesample>
 
 <p>
-This is different in implication from <c>"x86 ppc"</c> <d /> the former implies that
+This is different in implication from <c>"ppc x86"</c> <d /> the former implies that
 it will not work on other archs, whereas the latter implies that it has not been
 tested.
 </p>
