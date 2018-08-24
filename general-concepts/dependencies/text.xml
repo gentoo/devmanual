@@ -578,6 +578,44 @@ valid.
 </body>
 </section>
 
+<section>
+<title>Test Dependencies</title>
+<body>
+
+<p>
+Packages often have optional dependencies that are needed only when running
+tests. These should be specified in DEPEND behind a USE flag. Often, the
+'test' USE flag is used for this purpose.
+</p>
+
+<p>
+Since testing will likely fail when test dependencies are not installed, the
+test phase should be disabled in this case. This may be accomplished via USE
+conditionals in the RESTRICT variable.
+</p>
+
+<p>
+If other optional features must be enabled/disabled when testing, REQUIRED_USE
+may be set to express this.
+</p>
+
+<codesample lang="ebuild">
+# Define some USE flags
+IUSE="debug test"
+
+# Require debug support when tests are enabled
+REQUIRED_USE="test? ( debug )"
+
+# Disable test phase when test USE flag is disabled
+RESTRICT="!test? ( test )"
+
+# Running tests requires 'foo' to be installed
+DEPEND="test? ( dev-util/foo )"
+</codesample>
+
+</body>
+</section>
+
 </body>
 </chapter>
 </guide>
