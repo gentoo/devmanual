@@ -483,14 +483,18 @@ conventions. Using capital letters in names or differences in how underscores an
 are used in versions are particularly common. For example, what Gentoo calls <c>foo-1.2.3b</c> may be
 expecting a tarball named <c>Foo-1.2-3b.tar.bz2</c>. Rather than hard coding the package string,
 it is preferable to make <c>MY_PN</c>, <c>MY_PV</c> and <c>MY_P</c> variables and use those to define the
-upstream naming. The easy way of redefining the version, which should be used unless you are sure
-you know what you are doing, is to use the <c>versionator</c> eclass:
+upstream naming.
+EAPI=7 debuted a new set of functions, ver_cut, ver_rs and ver_test.
+These were backported into older EAPIs with the <c>eapi7-ver</c> eclass.
+The easy way of redefining the version, which should be used unless you are sure
+you know what you are doing, is to use these functions:
 </p>
 
 <codesample lang="ebuild">
-inherit versionator
+inherit eapi7-ver
 MY_PN="Foo"
-MY_PV=$(replace_version_separator 2 '-')
+# Replace the second period separator in PV with -
+MY_PV=$(ver_rs 2 '-')
 MY_P="${MY_PN}-${MY_PV}"
 </codesample>
 
@@ -501,7 +505,7 @@ switches to a format like <c>Foo-1.3-4.5.tar.bz2</c> (yes, this really happens).
 
 <p>
 It is also possible to use bash substitution to achieve the same effect (this is
-how versionator works internally), but this is complicated, error prone and hard
+how eapi7-ver works internally), but this is complicated, error prone and hard
 to read.
 </p>
 
@@ -513,8 +517,8 @@ highly discouraged.
 </p>
 
 <p>
-The <c>versionator</c> eclass can also be used to extract particular components
-from a version string. See <c>man versionator.eclass</c> and the eclass source code
+The ver_ functions are used extract particular components
+from a version string. See <c>man eapi7-ver.eclass</c> and the eclass source code
 for further documentation and examples. A brief summary of the functions
 follows.
 </p>
@@ -525,39 +529,35 @@ follows.
     <th>Purpose</th>
   </tr>
   <tr>
-    <ti><c>get_all_version_components</c></ti>
-    <ti>Split up a version string into its component parts.</ti>
-  </tr>
-  <tr>
-    <ti><c>get_version_components</c></ti>
+    <ti><c>ver_rs [range] ' '</c></ti>
     <ti>Get important version components, excluding '.', '-' and '_'.</ti>
   </tr>
   <tr>
-    <ti><c>get_major_version</c></ti>
+    <ti><c>ver_cut 1</c></ti>
     <ti>Get the major version.</ti>
   </tr>
   <tr>
-    <ti><c>get_version_component_range</c></ti>
+    <ti><c>ver_cut [range]</c></ti>
     <ti>Extract a range of subparts from a version string.</ti>
   </tr>
   <tr>
-    <ti><c>get_after_major_version</c></ti>
+    <ti><c>ver_cut 2-</c></ti>
     <ti>Get everything after the major version.</ti>
   </tr>
   <tr>
-    <ti><c>replace_version_separator</c></ti>
+    <ti><c>ver_rs [range] [char]</c></ti>
     <ti>Replace a particular version separator.</ti>
   </tr>
   <tr>
-    <ti><c>replace_all_version_separators</c></ti>
+    <ti><c>ver_rs 1- [char]</c></ti>
     <ti>Replace all version separators.</ti>
   </tr>
   <tr>
-    <ti><c>delete_version_separator</c></ti>
+    <ti><c>ver_rs [range] ''</c></ti>
     <ti>Delete a version separator.</ti>
   </tr>
   <tr>
-    <ti><c>delete_all_version_separators</c></ti>
+    <ti><c>ver_rs 1- ''</c></ti>
     <ti>Delete all version separators.</ti>
   </tr>
 </table>
