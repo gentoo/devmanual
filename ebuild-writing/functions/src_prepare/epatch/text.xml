@@ -1,14 +1,37 @@
 <?xml version="1.0"?>
 <guide self="ebuild-writing/functions/src_prepare/epatch/">
 <chapter>
-<title>Patching with epatch</title>
+<title>Patching with epatch and eapply</title>
 
 <body>
 <p>
 The canonical way of applying patches in ebuilds is to
-use <c>epatch</c> (from <c>eutils.eclass</c>, which you must make sure
+use <c>epatch</c> (from <c>epatch.eclass</c>, which you must make sure
 to inherit!) inside <c>src_prepare</c>. This function automatically
-handles <c>-p</c> levels, <c>gunzip</c> and so on as necessary. Also note that olds ebuild may still use src_unpack to apply patches. This is because those ebuilds are based in EAPI=1. You are advised to use EAPI=2 and apply your patches in src_prepare function instead.
+handles <c>-p</c> levels, <c>gunzip</c> and so on as necessary.
+<br>
+Also note that olds ebuild may still use src_unpack to apply patches.
+This is because those ebuilds are based in EAPI=1.
+You are advised to use the latest and apply your patches in src_prepare function instead.
+<br>
+Starting with EAPI=7, this function is banned and eapply must be used.
+</p>
+
+<p>
+Beginning with EAPI=6, a new function eapply was added to apply patches
+without the need for an eclass.
+This function differs from epatch in several ways:
+<ul>
+<li>eapply will not unpack patches for you.</li>
+<li>
+The default patch level is -p1.
+Other patch levels must be specified manually or the command will fail.
+</li>
+<li>
+When specifying a directory, at least file name ending in .patch or .diff
+must exist or the command fails.  Other files are ignored.
+</li>
+</ul>
 </p>
 
 <p>
@@ -16,6 +39,40 @@ Note that distributing modified tarballs rather than a vanilla tarball
 and patches is <e>highly</e> discouraged.
 </p>
 </body>
+
+<section>
+<title>Basic <c>eapply</c></title>
+<body>
+<p>
+The default src_prepare function will look for a global PATCHES array to apply
+a list of patches for you.
+</p>
+<codesample lang="ebuild">
+PATCHES=(
+	"${FILESDIR}/${P}-destdir.patch"
+	"${FILESDIR}/${P}-parallel_build.patch"
+)
+</codesample>
+</body>
+</section>
+
+<section>
+<title>Advanced <c>eapply</c></title>
+<body>
+<p>
+This example shows how different patch levels can be applied:
+</p>
+
+<codesample lang="ebuild">
+src_prepare() {
+	eapply -p2 "${WORKDIR}/${P}-suse-update.patch.bz2"
+	eapply -p0 "${FILESDIR}/${PV}-no-TIOCGDEV.patch"
+	eapply "${FILESDIR}/${PV}-gcc-6.patch"
+	eapply_user
+}
+</codesample>
+</body>
+</section>
 
 <section>
 <title>Basic <c>epatch</c></title>
