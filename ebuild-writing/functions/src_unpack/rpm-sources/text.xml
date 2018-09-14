@@ -19,7 +19,7 @@ that will unpack the RPM files.
 </p>
 
 <p>
-If you do need to apply patches then override <c>src_unpack</c> in a
+If you do need to call additional unpack functions then override <c>src_unpack</c> in a
 manner such as:
 </p>
 
@@ -55,9 +55,11 @@ patches. The filename should be <c>suse-fetchmail-6.2.5.54.1.ebuild</c>.
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit eutils versionator rpm
+EAPI="6"
 
-MY_PV=$(replace_version_separator 3 '-')
+inherit eapi7-ver rpm
+
+MY_PV=$(ver_rs 3 '-')
 MY_P=fetchmail-${MY_PV}
 
 SRC_URI="https://suse.osuosl.org/suse/i386/9.2/suse/src/${MY_P}.src.rpm"
@@ -80,13 +82,17 @@ RESTRICT="mirror"
 
 #USE_RPMOFFSET_ONLY=1
 
-S=${WORKDIR}/fetchmail-$(get_version_component_range 1-3)
+S=${WORKDIR}/fetchmail-$(ver_cut 1-3)
 
 src_unpack () {
-	rpm_src_unpack ${A}
-	cd "${S}"
-	EPATCH_SOURCE="${WORKDIR}" EPATCH_SUFFIX="patch" \
-		EPATCH_FORCE="yes" epatch
+    rpm_src_unpack ${A}
+}
+
+src_prepare () {
+    for i in "${WORKDIR}"/*.patch ; do
+        eapply "${i}"
+    done
+    eapply_user
 }
 </codesample>
 
