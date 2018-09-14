@@ -216,8 +216,8 @@ The following variables may or must be defined by every ebuild.
     <ti><c>REQUIRED_USE</c></ti>
     <ti>
     A list of assertions that must be met by the configuration of
-    <c>USE</c> flags to be valid for this ebuild. (Requires
-    <uri link="::ebuild-writing/eapi/#eapi=4">EAPI>=4</uri>.)
+    <c>USE</c> flags to be valid for this ebuild. (Requires EAPI>=4.)
+    See <uri link="::ebuild-writing/variables#REQUIRED_USE"/>.
     </ti>
   </tr>
   <tr>
@@ -633,6 +633,73 @@ have no direct correlation with the expected string should be avoided.
   </li>
 </ul>
 
+</body>
+</section>
+
+<section>
+<title>REQUIRED_USE</title>
+<body>
+<p>
+The <c>REQUIRED_USE</c> variable contains a list of assertions that must be
+met by the configuration of USE flags to be valid for this ebuild. In order
+to be matched, a USE flag in a terminal element must be enabled
+(or disabled if it has an exclamation mark prefix).
+</p>
+
+<p>
+Essentially, <c>REQUIRED_USE</c> is an analogue of <c>DEPEND</c> style syntax.
+For example, to state that some combination is forbidden, i.e. &quot;if foo is set, bar must be unset&quot;:
+</p>
+
+<codesample lang="ebuild">
+REQUIRED_USE="foo? ( !bar )"
+</codesample>
+<p>
+To state "if foo is set, then at least one of bar, baz, and quux must be activated":
+</p>
+<codesample lang="ebuild">
+REQUIRED_USE="foo? ( || ( bar baz quux ) )"
+</codesample>
+<p>
+To state "exactly one of foo, bar, or baz must be set, but not several":
+</p>
+<codesample lang="ebuild">
+REQUIRED_USE="^^ ( foo bar baz )"
+</codesample>
+<p>
+Note that the last relationship is that of an Exclusive OR (XOR).
+While an XOR could be formed from usual DEPEND syntax,
+a specific ^^ operator has been added for this case.
+</p>
+<p>
+Finally, to state "at least one of foo, bar, or baz must be set":
+</p>
+<codesample lang="ebuild">
+REQUIRED_USE="|| ( foo bar baz )"
+</codesample>
+<important>
+See section <uri link="::general-concepts/use-flags/#conflicting-use-flags" />
+for when (and when not) to use <c>REQUIRED_USE</c>.
+</important>
+
+<subsection>
+<title>EAPI 5</title>
+<body>
+<p>
+EAPI 5 added an additional case to simplify conflicting USE flags.
+</p>
+<p>
+To state "zero or one of foo, bar, or baz must be set, but not several":
+</p>
+<codesample lang="ebuild">
+REQUIRED_USE="?? ( foo bar baz )"
+</codesample>
+<p>In the previous EAPI, this would be the same as:</p>
+<codesample lang="ebuild">
+REQUIRED_USE="foo? ( !bar !baz ) bar? ( !foo !baz ) baz? ( !foo !bar )"
+</codesample>
+</body>
+</subsection>
 </body>
 </section>
 
