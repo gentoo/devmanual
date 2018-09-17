@@ -93,18 +93,22 @@ query variables and similar state.
   </tr>
   <tr>
     <ti>
-      <c>best_version pkg</c>
+      <c>best_version [option] pkg</c>
     </ti>
     <ti>
       Echoes category, name and version of the highest version of <c>pkg</c>
       that is currently installed.
       Example: <c>best_version app-editors/emacs:24</c> will output
       <c>app-editors/emacs-24.5-r3</c>.
+      (EAPI=7) An option may also be specified to query certain types of dependencies.
+      <c>-b</c> for <c>BDEPEND</c>
+      <c>-d</c> for <c>DEPEND</c>
+      <c>-r</c> (default) for <c>RDEPEND</c>
     </ti>
   </tr>
   <tr>
     <ti>
-      <c>has_version pkg[flag]</c>
+      <c>has_version [option] pkg[flag]</c>
     </ti>
     <ti>
       True if <c>pkg</c> (can include
@@ -113,6 +117,10 @@ query variables and similar state.
       <uri link="::general-concepts/dependencies#built with use dependencies"/>)
       is installed. Example: <c>has_version
       "=app-editors/nano-2.5.3[nls,spell]"</c>.
+      (EAPI=7) An option may also be specified to query certain types of dependencies.
+      <c>-b</c> for <c>BDEPEND</c>
+      <c>-d</c> for <c>DEPEND</c>
+      <c>-r</c> (default) for <c>RDEPEND</c>
     </ti>
   </tr>
 </table>
