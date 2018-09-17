@@ -74,46 +74,13 @@ displaying informational messages.
       Display the end of an action block.
     </ti>
   </tr>
-</table>
-
-<p>
-	The following are available from <c>eutils.eclass</c> . ebeep and epause
-	are deprecated in EAPIS 0, 1 and 2 in favor of GLEP 42 news items and
-	package manager message logging functionality.
-</p>
-
-<table>
-  <tr>
-    <th>
-      Function
-    </th>
-    <th>
-      Details
-    </th>
-  </tr>
-  <tr>
-    <ti>
-      <c>epause</c>
-    </ti>
-    <ti>
-      Pause for the specified number (must be a positive integer) of seconds.
-      Defaults to a sane value.
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>ebeep</c>
-    </ti>
-    <ti>
-      Beep the specified number (must be a positive integer) of times. Defaults to a sane value.
-    </ti>
-  </tr>
   <tr>
     <ti>
       <c>eqawarn</c>
     </ti>
     <ti>
       Used by eclass authors to notify ebuild writers that they are using deprecated functionality.
+      Before EAPI=7, the eutils eclass must be inherited.
     </ti>
   </tr>
 </table>
