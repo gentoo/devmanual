@@ -242,7 +242,8 @@ the first is the source name, the second the name to use when installing.
       <c>domo</c>
     </ti>
     <ti>
-      Install a Gettext <c>.mo</c> file
+      Install a Gettext <c>.mo</c> file<br>
+      (EAPI=7) No longer looks at the value of <c>into</c>
     </ti>
   </tr>
   <tr>
@@ -385,6 +386,17 @@ the first is the source name, the second the name to use when installing.
     </ti>
     <ti>
       Install an <c>sbin</c> file using the second argument as the name
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>dostrip</c>
+    </ti>
+    <ti>
+      Introduced with EAPI=7, controls the stripping of executables.
+      Normally executed to exclude from stripping.
+      Eg. <c>dostrip -x /path/to/important.so</c>.  May also be used to include binaries
+      to strip when <c>RESTRICT=strip</c> without the -x option.
     </ti>
   </tr>
 </table>
