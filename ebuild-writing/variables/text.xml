@@ -128,7 +128,27 @@ for these variables when writing ebuilds.
   <tr>
     <ti><c>EROOT</c></ti>
     <ti>
-      Shorthand for <c>${ROOT%/}${EPREFIX}/</c>.
+      </c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>SYSROOT</c></ti>
+    <ti>
+      (EAPI=7) The absolute path to the root directory containing build dependencies
+		satisfied by <c>DEPEND</c>
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>ESYSROOT</c></ti>
+    <ti>
+      (EAPI=7) Shorthand for <c>${SYSROOT%/}${EPREFIX}/</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>BROOT</c></ti>
+    <ti>
+      (EAPI=7) The absolute path to the root directory containing build dependencies
+		satisfied by <c>BDEPEND</c>, typically executable build tools.
     </ti>
   </tr>
 </table>
@@ -232,6 +252,14 @@ The following variables may or must be defined by every ebuild.
     <ti><c>DEPEND</c></ti>
     <ti>
     A list of the package's build dependencies.  See
+    <uri link="::general-concepts/dependencies"/>.
+    Starting with EAPI-7, applies to CHOST only.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>DEPEND</c></ti>
+    <ti>
+    (EAPI=7) A list of the package's CBUILD build dependencies.  See
     <uri link="::general-concepts/dependencies"/>.
     </ti>
   </tr>
