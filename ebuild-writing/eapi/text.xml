@@ -1051,7 +1051,7 @@ src_install() {
 <body>
 <ul>
 	<li>
-		<p><b>Empty groupings are banned</b><p>
+		<p><b>Empty groupings are banned</b></p>
 		<p>Groupings which are empty, such as <c>DEPEND="|| ( ${empty_var} )"</c> will now generate an error.
 		Furthermore, conditions within groupings are more strictly enforced.
 		Eg. <c>REQUIRED_USE="|| ( foo? ( bar ) baz? ( zoinks )"</c> would previously work with <c>USE="-a -b"<c> now requires
@@ -1094,24 +1094,24 @@ src_install() {
 			<c>has_version</c> and <c>best_version</c> now support an optional switch
 			to determine which type of dependencies to check.
 		</p>
-			<ul>
-				<li><p><c>-r</c> (the default) will check runtime dependencies (RDEPEND)</p></li>
-				<li><p><c>-d</c> will check target build-time dependencies (DEPEND)</p></li>
-				<li><p><c>-b</c> will check host build-time dependencies (BDEPEND)</p></li>
-			</ul>
+		<ul>
+			<li><p><c>-r</c> (the default) will check runtime dependencies (RDEPEND)</p></li>
+			<li><p><c>-d</c> will check CHOST build-time dependencies (DEPEND)</p></li>
+			<li><p><c>-b</c> will check CBUILD build-time dependencies (BDEPEND)</p></li>
+		</ul>
 	</li>
 	<li>
 		<p><b>Version manipulation and comparision commands</b></p>
 		<p>
 			EAPI=7 introduced three commands for common version number operations.
 		</p>
-			<ul>
-				<li><p><c>ver_cut</c> obtains substrings of a version string</p></li>
-				<li><p><c>ver_rs</c> replaces separators in a version string</p></li>
-				<li><p><c>ver_test</c> compares two versions</p></li>
-			</ul>
+		<ul>
+			<li><p><c>ver_cut</c> obtains substrings of a version string</p></li>
+			<li><p><c>ver_rs</c> replaces separators in a version string</p></li>
+			<li><p><c>ver_test</c> compares two versions</p></li>
+		</ul>
 		<p>See <uri link="::ebuild-writing/variables#Version%20and%20Name%20Formatting%20Issues"/>
-		for examples of common uses or 
+		for examples of common uses or
 		<uri link="https://dev.gentoo.org/~mgorny/articles/the-ultimate-guide-to-eapi-7.html#version-manipulation-and-comparison-commands">
 		an in-depth look</uri></p>
 	</li>

@@ -28,7 +28,7 @@ The default patch level is -p1.
 Other patch levels must be specified manually or the command will fail.
 </li>
 <li>
-When specifying a directory, at least file name ending in .patch or .diff
+When specifying a directory, at least one file with a name ending in .patch or .diff
 must exist or the command fails.  Other files are ignored.
 </li>
 </ul>

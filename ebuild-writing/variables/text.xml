@@ -128,7 +128,7 @@ for these variables when writing ebuilds.
   <tr>
     <ti><c>EROOT</c></ti>
     <ti>
-      </c>.
+      Shorthand for <c>${ROOT%/}${EPREFIX}/</c>.
     </ti>
   </tr>
   <tr>
