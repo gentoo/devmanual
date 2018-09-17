@@ -6,8 +6,8 @@
 <body>
 <p>
 Portage can look in multiple places for packages by using an overlay. The
-locations of overlays are controlled by the <c>PORTDIR_OVERLAY</c> variable, which
-should contain a space-separated list of paths.
+locations of overlays are controlled by the <c>location</c> variable
+in one or more repos.conf files.
 </p>
 
 <p>
