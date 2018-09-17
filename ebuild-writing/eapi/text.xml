@@ -976,6 +976,190 @@ src_install() {
 </body>
 </section>
 
+<section>
+<title>EAPI=7</title>
+<body>
+<subsection>
+<title>Terminology</title>
+<body>
+<p>Documents may use the following terms to better describe dependency and installation targets.</p>
+<ul>
+	<li>
+		<p><b><c>CHOST</c></b></p>
+		<p>The system that will be running the installed package.</p>
+	</li>
+	<li>
+		<p><b><c>CBUILD</c></b></p>
+		<p>The system used to build packages. When not cross-compiling, CBUILD == CHOST.</p>
+	</li>
+	<li>
+		<p><b><c>CTARGET</c></b></p>
+		<p>Used in certain cross-compliations, often empty value.</p>
+	</li>
+</ul>
+</body>
+</subsection>
+<subsection>
+<title>Variables</title>
+<body>
+<ul>
+	<li>
+		<p><b><c>PORTDIR</c> and <c>ECLASSDIR</c> are removed</b></p>
+		<p><c>PORTDIR</c> and <c>ECLASSDIR</c> are no longer defined and cannot be used
+		in ebuilds to access these directories.</p>
+	</li>
+	<li>
+		<p><b><c>DESTTREE</c> and <c>INSDESTTREE</c> are removed</b></p>
+		<p>The unintended exported variables <c>PORTDIR</c> and <c>ECLASSDIR</c>
+		cannot be used in ebuilds to manipulate installation paths.
+		Use <c>into</c> or <c>insinto</c>, respectively, instead.</p>
+	</li>
+	<li>
+		<p><b><c>D</c>, <c>ED</c>, <c>ROOT</c>, and <c>EROOT</c> modified</b></p>
+		<p>These variables no longer contain a trailing slash with <c>EAPI=7</c>.</p>
+	</li>
+	<li>
+		<p><b><c>BDEPEND</c> addded</b></p>
+		<p>
+			Previously, all build-time tools and libraries went into the <c>DEPEND</c>.
+			Now, built-time dependencies are split into <c>DEPEND</c> and <c>BDEPEND</c>.
+			The difference is simply that <c>BDEPEND</c> are dependencies to be executed on the CBUILD.
+			<c>DEPEND</c> remains for other dependencies, such as libraries, for the CHOST.
+			This improves the cross-compliation support.
+		</p>
+	</li>
+	<li>
+		<p><b><c>BROOT</c> added</b></p>
+		<p><c>BROOT</c> is the absolute path to the root directory, including any prefix, containing build
+		dependencies satisfied by BDEPEND, typically executable build tools.</p>
+	</li>
+	<li>
+		<p><b><c>SYSROOT</c> and <c>ESYSROOT</c> added</b></p>
+		<p><c>SYSROOT</c> is the location of where dependencies in <c>DEPEND</c> are installed.
+		<c>ESYSROOT</c> is <c>SYSROOT</c> with <c>EPREFIX</c> appended.
+		</p>
+	</li>
+	<li>
+		<p><b><c>ENV_UNSET</c> added</b></p>
+		<p>A whitespace delimited list of variables to be removed from the build environment.</p>
+	</li>
+</ul>
+</body>
+</subsection>
+<subsection>
+<title>Metadata</title>
+<body>
+<ul>
+	<li>
+		<p><b>Empty groupings are banned</b><p>
+		<p>Groupings which are empty, such as <c>DEPEND="|| ( ${empty_var} )"</c> will now generate an error.
+		Furthermore, conditions within groupings are more strictly enforced.
+		Eg. <c>REQUIRED_USE="|| ( foo? ( bar ) baz? ( zoinks )"</c> would previously work with <c>USE="-a -b"<c> now requires
+		either <c>USE="foo bar"</c> or <c>USE="baz zoinks"</c>.
+		</p>
+	</li>
+</ul>
+</body>
+</subsection>
+<subsection>
+<title>Profiles</title>
+<body>
+<ul>
+	<li>
+		<p><b><c>package.provided</c> banned</b><p>
+		<p>Profiles may no longer contain a <c>package.provided</c> file with <c>EAPI=7</c>.</p>
+	</li>
+</ul>
+</body>
+</subsection>
+<subsection>
+<title>Helpers</title>
+<body>
+<ul>
+	<li>
+		<p><b><c>dohtml</c> banned</b></p>
+		<p>
+			The <c>dohtml</c> helper has been banned with <c>EAPI=7</c>.
+		</p>
+	</li>
+	<li>
+		<p><b><c>dolib</c> and <c>libopts</c> banned</b></p>
+		<p>
+			The <c>dolib</c> helper and the associated <c>libopts</c> have been banned with <c>EAPI=7</c>.
+		</p>
+	</li>
+	<li>
+		<p><b><c>has_version</c> and <c>best_version</c> changes</b></p>
+		<p>
+			<c>has_version</c> and <c>best_version</c> now support an optional switch
+			to determine which type of dependencies to check.
+		</p>
+			<ul>
+				<li><p><c>-r</c> (the default) will check runtime dependencies (RDEPEND)</p></li>
+				<li><p><c>-d</c> will check target build-time dependencies (DEPEND)</p></li>
+				<li><p><c>-b</c> will check host build-time dependencies (BDEPEND)</p></li>
+			</ul>
+	</li>
+	<li>
+		<p><b>Version manipulation and comparision commands</b></p>
+		<p>
+			EAPI=7 introduced three commands for common version number operations.
+		</p>
+			<ul>
+				<li><p><c>ver_cut</c> obtains substrings of a version string</p></li>
+				<li><p><c>ver_rs</c> replaces separators in a version string</p></li>
+				<li><p><c>ver_test</c> compares two versions</p></li>
+			</ul>
+		<p>See <uri link="::ebuild-writing/variables#Version%20and%20Name%20Formatting%20Issues"/>
+		for examples of common uses or 
+		<uri link="https://dev.gentoo.org/~mgorny/articles/the-ultimate-guide-to-eapi-7.html#version-manipulation-and-comparison-commands">
+		an in-depth look</uri></p>
+	</li>
+	<li>
+		<p><b>New function <c>eqawarn</c></b></p>
+		<p>
+			The <c>eqawarn</c> helper has been added with <c>EAPI=7</c>.
+			This function is to alert developers to a deprecated feature.
+			Previously, this was contained in <c>eutils</c> eclass which is no longer necessary.
+		</p>
+	</li>
+	<li>
+		<p><b>New function <c>dostrip</c></b></p>
+		<p>
+			The <c>dostrip</c> helper has been added with <c>EAPI=7</c>.
+			This function controls whether or not to strip a binary.<br>
+			<c>dostrip -x [file]</c> will exclude a binary from being stripped.<br>
+			Conversely, when combined with RESTRICT=strip, <c>dostrip [file]</c> selects a binary
+			file to be stripped.
+		</p>
+	</li>
+	<li>
+		<p><b><c>die</c> and <c>assert</c> changes</b></p>
+		<p>These commands are now safe to use in a subshell and act as if they were called in the main process.</p>
+	</li>
+	<li>
+		<p><b><c>nonfatal</c> changes</b></p>
+		<p>The <c>nonfatal</c> command now works for shell functions and subprocesses.</p>
+	</li>
+	<li>
+		<p><b><c>domo</c> behaviour changed</b></p>
+		<p><c>domo</c> (for localizations) now ignores the <c>into</c> directives.
+		This follows similar commands like <c>doinfo</c> and <c>doman</c>.</p>
+	</li>
+	<li>
+		<p><b><c>econf</c> changes</b></p>
+		<p>The cross-compilation options <c>--build</c> and <c>--target</c> options
+		to specify <c>CBUILD</c> and <c>CTARGET</c> respectively have been added and are retro-active to all EAPIs.
+		In addition, if the build supports <c>--with-sysroot</c>, the correct value will be passed
+		such that normal and cross-compliations succeed.
+		</p>
+	</li>
+</ul>
+</body>
+</subsection>
+</body>
+</section>
+
 </body>
 </chapter>
 </guide>
