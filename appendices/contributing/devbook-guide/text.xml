@@ -4,13 +4,6 @@
 <chapter>
 <title>Gentoo GuideXML Guide</title>
 
-<abstract>
-This guide shows you how to compose web documentation using the new lightweight
-Gentoo GuideXML syntax.  This syntax is the official format for Gentoo 
-documentation, and this document itself was created using GuideXML.  This guide
-assumes a basic working knowledge of XML and HTML.
-</abstract>
-
 <section>
 <title>GuideXML basics</title>
 <subsection>
