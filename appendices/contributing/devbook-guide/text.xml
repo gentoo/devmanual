@@ -3,25 +3,6 @@
 <guide self="appendices/contributing/devbook-guide/">
 <title>Gentoo GuideXML Guide</title>
 
-<author title="Author">
-  <mail link="neysx"/>
-</author>
-<author title="Author">
-  <mail link="drobbins@gentoo.org">Daniel Robbins</mail>
-</author>
-<author title="Author"><!-- zhen@gentoo.org -->
-  John P. Davis
-</author>
-<author title="Editor">
-  <mail link="peesh@gentoo.org">Jorge Paulo</mail>
-</author>
-<author title="Editor">
-  <mail link="swift@gentoo.org">Sven Vermeulen</mail>
-</author>
-<author title="Editor">
-  <mail link="nightmorph"/>
-</author>
-
 <abstract>
 This guide shows you how to compose web documentation using the new lightweight
 Gentoo GuideXML syntax.  This syntax is the official format for Gentoo 
