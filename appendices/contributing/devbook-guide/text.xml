@@ -38,7 +38,7 @@ Let's start learning the GuideXML syntax.  We'll start with the the initial
 tags used in a GuideXML document:
 </p>
 
-<pre caption="The initial part of a guide XML document">
+<codesample lang="sgml"><!-- The initial part of a guide XML document -->
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE guide SYSTEM "/dtd/guide.dtd"&gt;
 &lt;!-- &#36;Header&#36; --&gt;
@@ -63,7 +63,7 @@ using GuideXML.</i>
 
 &lt;version&gt;<i>1</i>&lt;/version&gt;
 &lt;date&gt;<i>2011-11-29</i>&lt;/date&gt;
-</pre>
+</codesample>
 
 <p>
 On the first lines, we see the requisite tag that identifies this as an XML
@@ -135,7 +135,7 @@ link="#doc_chap2_pre1">previous excerpt</uri> and append a
 guide document:
 </p>
 
-<pre caption="Minimal guide example">
+<codesample lang="sgml"><!-- Minimal guide example -->
 &lt;chapter&gt;
 &lt;title&gt;<i>This is my chapter</i>&lt;/title&gt;
 &lt;section&gt;
@@ -149,7 +149,7 @@ guide document:
 &lt;/body&gt;
 &lt;/section&gt;
 &lt;/chapter&gt;
-</pre>
+</codesample>
 
 <p>
 Above, I set the chapter title by adding a child <c>&lt;title&gt;</c>
@@ -180,7 +180,7 @@ Now, it's time to learn how to mark up actual content.  Here's the XML code for
 an example <c>&lt;body&gt;</c> element:
 </p>
 
-<pre caption="Example of a body element">
+<codesample lang="sgml"><!-- Example of a body element -->
 &lt;p&gt;
 This is a paragraph.  &lt;path&gt;/etc/passwd&lt;/path&gt; is a file.
 &lt;uri&gt;http://forums.gentoo.org&lt;/uri&gt; is my favorite website.
@@ -206,7 +206,7 @@ This is a warning.
 &lt;impo&gt;
 This is important.
 &lt;/impo&gt;
-</pre>
+</codesample>
 
 <p>
 Now, here's how the <c>&lt;body&gt;</c> element above is rendered:
@@ -218,13 +218,13 @@ This is a paragraph.  <path>/etc/passwd</path> is a file.
 Type <c>ls</c> if you feel like it.  I <e>really</e> want to go to sleep now.
 </p>
 
-<pre caption="Code Sample">
+<codesample lang="sgml"><!-- Code Sample -->
 This is text output or code.
 # <i>this is user input</i>
 
 Make HTML/XML easier to read by using selective emphasis:
 &lt;foo&gt;<i>bar</i>&lt;/foo&gt;
-</pre>
+</codesample>
 
 <note>
 This is a note.
@@ -259,12 +259,12 @@ exactly, making it well-suited for code excerpts.  You must name the
 <c>&lt;pre&gt;</c> tag with a <c>caption</c> attribute:
 </p>
 
-<pre caption="Named &lt;pre&gt;">
+<codesample lang="sgml"><!-- Named &lt;pre&gt; -->
 &lt;pre caption="Output of uptime"&gt;
 # &lt;i&gt;uptime&lt;/i&gt;
 16:50:47 up 164 days,  2:06,  5 users,  load average: 0.23, 0.20, 0.25
 &lt;/pre&gt;
-</pre>
+</codesample>
 
 </body>
 </subsection>
@@ -522,7 +522,7 @@ the content.
 An example for indentation is:
 </p>
 
-<pre caption="Indentation Example">
+<codesample lang="sgml"><!-- Indentation Example -->
 &lt;table&gt;
 &lt;tr&gt;
   &lt;th&gt;Foo&lt;/th&gt;
@@ -541,17 +541,17 @@ An example for indentation is:
   &lt;li&gt;First option&lt;/li&gt;
   &lt;li&gt;Second option&lt;/li&gt;
 &lt;/ul&gt;
-</pre>
+</codesample>
 
 <p>
 <b>Attributes</b> may not have spaces in between the attribute, the "=" mark,
 and the attribute value. As an example:
 </p>
 
-<pre caption="Attributes">
+<codesample lang="sgml"><!-- Attributes -->
 Wrong  :     &lt;pre caption = "Attributes"&gt;
 Correct:     &lt;pre caption="Attributes"&gt;
-</pre>
+</codesample>
 
 </body>
 </subsection>
@@ -571,12 +571,12 @@ Every sentence, including those inside tables and listings, should start
 with a capital letter.
 </p>
 
-<pre caption="Periods and capital letters">
+<codesample lang="sgml"><!-- Periods and capital letters -->
 &lt;ul&gt;
   &lt;li&gt;No period&lt;/li&gt;
   &lt;li&gt;With period. Multiple sentences, remember?&lt;/li&gt;
 &lt;/ul&gt;
-</pre>
+</codesample>
 
 <p>
 Code Listings should <e>always</e> have a <c>caption</c>.
