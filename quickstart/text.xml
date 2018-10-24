@@ -260,9 +260,9 @@ compile-time dependencies, and the <c>RDEPEND</c> lists runtime dependencies. Se
 <p>
 Often we need to apply patches. This is done in the <c>src_prepare</c>
 function using the <c>epatch</c> helper function. To use <c>epatch</c>
-one must first tell Portage that the <c>eutils</c> eclass (an eclass is
+one must first tell Portage that the <c>epatch</c> eclass (an eclass is
 like a library) is required <d/>
-this is done via <c>inherit eutils</c> at the top of the ebuild. Here's
+this is done via <c>inherit epatch</c> at the top of the ebuild. Here's
 <c>app-misc/detox/detox-1.1.0.ebuild</c>:
 </p>
 
@@ -272,7 +272,7 @@ this is done via <c>inherit eutils</c> at the top of the ebuild. Here's
 
 EAPI=5
 
-inherit eutils
+inherit epatch
 
 DESCRIPTION="detox safely removes spaces and strange characters from filenames"
 HOMEPAGE="http://detox.sourceforge.net/"
@@ -372,7 +372,7 @@ Another more complicated example, this time based upon
 
 EAPI=5
 
-inherit eutils
+inherit epatch desktop
 
 DESCRIPTION="A lightweight email client and newsreader"
 HOMEPAGE="https://sylpheed.good-day.net/"
