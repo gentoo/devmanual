@@ -257,7 +257,7 @@ The following variables may or must be defined by every ebuild.
     </ti>
   </tr>
   <tr>
-    <ti><c>DEPEND</c></ti>
+    <ti><c>BDEPEND</c></ti>
     <ti>
     (EAPI=7) A list of the package's CBUILD build dependencies.  See
     <uri link="::general-concepts/dependencies"/>.

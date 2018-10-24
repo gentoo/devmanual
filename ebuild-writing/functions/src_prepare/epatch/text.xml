@@ -14,15 +14,15 @@ Also note that old ebuilds may still use src_unpack to apply patches.
 This is because those ebuilds are based in EAPI=1.
 You are advised to use the latest and apply your patches in src_prepare function instead.
 <br />
-Starting with EAPI=7, this function is banned and eapply must be used.
+Starting with EAPI=7, this function is banned and <c>eapply</c> must be used.
 </p>
 
 <p>
-Beginning with EAPI=6, a new function eapply was added to apply patches
+Beginning with EAPI=6, a new function <c>eapply</c> was added to apply patches
 without the need for an eclass.
 This function differs from epatch in several ways:
 <ul>
-<li>eapply will not unpack patches for you.</li>
+<li><c>eapply</c> will not unpack patches for you.</li>
 <li>
 The default patch level is -p1.
 Other patch levels must be specified manually or the command will fail.
