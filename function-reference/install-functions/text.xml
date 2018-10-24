@@ -243,7 +243,7 @@ the first is the source name, the second the name to use when installing.
       <c>domo</c>
     </ti>
     <ti>
-      Install a Gettext <c>.mo</c> file<br>
+      Install a Gettext <c>.mo</c> file<br />
       (EAPI=7) No longer looks at the value of <c>into</c>
     </ti>
   </tr>

@@ -46,9 +46,9 @@ Beginning with EAPI=6, the src_prepare function gained a new default implementat
 <codesample lang="ebuild">
 src_prepare() {
     if declare -p PATCHES | grep -q "^declare -a "; then
-        [[ -n ${PATCHES[@]} ]] && eapply "${PATCHES[@]}"
+        [[ -n ${PATCHES[@]} ]] &amp;&amp; eapply "${PATCHES[@]}"
     else
-        [[ -n ${PATCHES} ]] && eapply ${PATCHES}
+        [[ -n ${PATCHES} ]] &amp;&amp; eapply ${PATCHES}
     fi
     eapply_user
 }

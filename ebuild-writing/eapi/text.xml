@@ -1054,7 +1054,7 @@ src_install() {
 		<p><b>Empty groupings are banned</b></p>
 		<p>Groupings which are empty, such as <c>DEPEND="|| ( ${empty_var} )"</c> will now generate an error.
 		Furthermore, conditions within groupings are more strictly enforced.
-		Eg. <c>REQUIRED_USE="|| ( foo? ( bar ) baz? ( zoinks )"</c> would previously work with <c>USE="-a -b"<c> now requires
+		Eg. <c>REQUIRED_USE="|| ( foo? ( bar ) baz? ( zoinks )"</c> would previously work with <c>USE="-a -b"</c> now requires
 		either <c>USE="foo bar"</c> or <c>USE="baz zoinks"</c>.
 		</p>
 	</li>
@@ -1066,7 +1066,7 @@ src_install() {
 <body>
 <ul>
 	<li>
-		<p><b><c>package.provided</c> banned</b><p>
+		<p><b><c>package.provided</c> banned</b></p>
 		<p>Profiles may no longer contain a <c>package.provided</c> file with <c>EAPI=7</c>.</p>
 	</li>
 </ul>
@@ -1127,8 +1127,8 @@ src_install() {
 		<p><b>New function <c>dostrip</c></b></p>
 		<p>
 			The <c>dostrip</c> helper has been added with <c>EAPI=7</c>.
-			This function controls whether or not to strip a binary.<br>
-			<c>dostrip -x [file]</c> will exclude a binary from being stripped.<br>
+			This function controls whether or not to strip a binary.<br />
+			<c>dostrip -x [file]</c> will exclude a binary from being stripped.<br />
 			Conversely, when combined with RESTRICT=strip, <c>dostrip [file]</c> selects a binary
 			file to be stripped.
 		</p>
