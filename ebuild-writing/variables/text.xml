@@ -540,7 +540,7 @@ to read.
 <p>
 Some ebuilds use calls to <c>sed</c>, <c>awk</c> and / or <c>cut</c> to do this. This
 must <e>not</e> be done for any new code, and should be fixed to use either
-versionator or bash substitution where possible. Global scope non-bash code is
+eapi7-ver or bash substitution where possible. Global scope non-bash code is
 highly discouraged.
 </p>
 

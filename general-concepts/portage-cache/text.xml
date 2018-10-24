@@ -25,14 +25,14 @@ fi
 </codesample>
 
 <p>
-However, this is legal, since <c>versionator.eclass</c> works upon <c>PV</c>, and
+However, this is legal, since <c>eapi7-ver.eclass</c> works upon <c>PV</c>, and
 <c>PV</c> and <c>PN</c> are both static:
 </p>
 
 <codesample lang="ebuild">
-inherit versionator
+inherit eapi7-ver
 
-if [[ $(get_major_version) -ge 7 ]] ; then
+if ver_test -ge 7.0 ; then
 	IUSE="${IUSE} tcltk mzscheme"
 	DEPEND="${DEPEND}
 		tcltk?    ( dev-lang/tcl )

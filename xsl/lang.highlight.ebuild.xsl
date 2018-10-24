@@ -331,6 +331,11 @@
 	<span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 
+      <!-- eapi7-ver -->
+      <xsl:when test="$data = 'ver_rs' or $data = 'ver_cut' or $data = 'ver_test'">
+	<span class="Statement"><xsl:value-of select="$data"/></span>
+      </xsl:when>
+
       <!-- No match return -->
       <xsl:otherwise>
         <xsl:value-of select="$data"/>
@@ -412,3 +417,4 @@
   </xsl:template>
 
 </xsl:stylesheet>
+

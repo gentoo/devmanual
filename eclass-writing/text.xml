@@ -26,7 +26,7 @@ Roughly speaking, there are three kinds of eclass:
 <ul>
   <li>
     Those which provide common functions which are used by many ebuilds (for
-    example, <c>eutils</c>, <c>versionator</c>, <c>cvs</c>, <c>bash-completion</c>)
+    example, <c>eutils</c>, <c>eapi7-ver</c>, <c>cvs</c>, <c>bash-completion</c>)
   </li>
   <li>
     Those which provide a basic build system for many similar packages (for
