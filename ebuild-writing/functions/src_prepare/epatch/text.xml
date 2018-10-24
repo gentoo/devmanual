@@ -9,11 +9,11 @@ The canonical way of applying patches in ebuilds is to
 use <c>epatch</c> (from <c>epatch.eclass</c>, which you must make sure
 to inherit!) inside <c>src_prepare</c>. This function automatically
 handles <c>-p</c> levels, <c>gunzip</c> and so on as necessary.
-<br>
+<br />
 Also note that olds ebuild may still use src_unpack to apply patches.
 This is because those ebuilds are based in EAPI=1.
 You are advised to use the latest and apply your patches in src_prepare function instead.
-<br>
+<br />
 Starting with EAPI=7, this function is banned and eapply must be used.
 </p>
 
