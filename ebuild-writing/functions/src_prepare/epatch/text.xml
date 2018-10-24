@@ -10,7 +10,7 @@ use <c>epatch</c> (from <c>epatch.eclass</c>, which you must make sure
 to inherit!) inside <c>src_prepare</c>. This function automatically
 handles <c>-p</c> levels, <c>gunzip</c> and so on as necessary.
 <br />
-Also note that olds ebuild may still use src_unpack to apply patches.
+Also note that old ebuilds may still use src_unpack to apply patches.
 This is because those ebuilds are based in EAPI=1.
 You are advised to use the latest and apply your patches in src_prepare function instead.
 <br />
