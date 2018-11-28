@@ -11,6 +11,26 @@ match files existing in the repository's <c>licenses/</c> directory.
 </p>
 
 <p>
+The value of this variable should include all licenses pertaining
+to the files installed by the package. If some parts of the package
+are installed only conditionally, or their license depends on the USE
+flag combination, you can use USE conditionals in <c>LICENSE</c>:
+</p>
+
+<codesample lang="ebuild">
+LICENSE="LGPL-2.1+ tools? ( GPL-2+ )"
+</codesample>
+
+<p>
+If the package sources include additional files that are not installed,
+their license should not be listed. However, if those files are used
+at build time, then the license must not impose any restrictions that
+could prevent users from building the software. Please also note
+that some licenses may impose additional restrictons, e.g. fetch
+and/or mirroring restriction.
+</p>
+
+<p>
 If the application is multi-license (either of several licenses can
 be used) then use the following syntax:
 </p>
