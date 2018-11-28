@@ -43,6 +43,12 @@ LICENSE="|| ( foo bar )"
 <title>Determining the correct license</title>
 <body>
 
+<warning>
+Do not trust the license indicated by GitHub or other sites that use
+automation to guess the license! The information presented may be
+incomplete and/or incorrect.
+</warning>
+
 <p>
 To establish the correct value of <c>LICENSE</c>, you need to trace
 the licenses of all installed files. Normally, the licenses of output
