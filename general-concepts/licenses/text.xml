@@ -40,6 +40,53 @@ LICENSE="|| ( foo bar )"
 </codesample>
 
 <subsection>
+<title>Determining the correct license</title>
+<body>
+
+<p>
+To establish the correct value of <c>LICENSE</c>, you need to trace
+the licenses of all installed files. Normally, the licenses of output
+files (compiled executables, generated files) are implied
+by the licenses of the relevant input files.
+</p>
+
+<p>
+When looking for license information, the following should be
+considered:
+</p>
+
+<ol>
+	<li>
+		<c>COPYING*</c> and <c>LICENSE*</c> files distributed with
+		the package
+	</li>
+	<li>
+		explicit statements in documentation
+	</li>
+	<li>
+		explicit license notices in source and data files
+	</li>
+</ol>
+
+<p>
+The latter (more specific) options take precedence over the former.
+In particular, <c>COPYING*</c> files are frequently included as hardcopies
+of applicable licenses but the exact application of licenses and their
+versions are specified elsewhere.
+</p>
+
+<p>
+Please watch for license conflicts. If the license indicated
+by the package is incompatible with the licenses used by its sources
+(e.g. BSD/MIT package including GPL sources), please contact
+the licenses team for guidance. Do not add packages that seem
+to include license term violations.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
 <title>Adding New Licenses</title>
 <body>
 
