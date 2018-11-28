@@ -6,8 +6,8 @@
 <body>
 <p>
 All ebuilds must specify a <c>LICENSE</c> (note the American English
-spelling) variable. The value of this variable must be the name of a
-file in the Gentoo repository's <c>licenses/</c> directory.
+spelling) variable. The license names listed in this variable must
+match files existing in the repository's <c>licenses/</c> directory.
 </p>
 
 <p>
