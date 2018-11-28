@@ -87,6 +87,34 @@ to include license term violations.
 </subsection>
 
 <subsection>
+<title>GPL-x vs GPL-x+</title>
+<body>
+
+<p>
+FSF licenses (GPL, LGPL, AGPL, FDL) occur in two variants: the 'vN only'
+and 'vN or later' variants. In Gentoo, the licenses of the latter variants
+are denoted by appending
+a plus sign (+) to their respective license notations of the former variant,
+e.g. <c>GPL-2+</c> and <c>GPL-2</c>.
+</p>
+
+<p>
+Determining the correct variant usually requires looking for copyright
+notices in the code. For example, the following copyright notice
+indicates <c>GPL-2+</c> license:
+</p>
+
+<pre>
+ * This program is free software; you can redistribute it and/or 
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of 
+ * the License, or (at your option) any later version.
+</pre>
+
+</body>
+</subsection>
+
+<subsection>
 <title>Adding New Licenses</title>
 <body>
 
