@@ -46,7 +46,7 @@ For EAPIs 4 and later, the default <c>src_install</c> function is the following:
 </p>
 <codesample lang="ebuild">
 src_install() {
-	if [[ -f Makefile ]] || [[ -f GNUmakefile]] || [[ -f makefile ]] ; then
+	if [[ -f Makefile ]] || [[ -f GNUmakefile ]] || [[ -f makefile ]] ; then
 		emake DESTDIR="${D}" install
 	fi
 
