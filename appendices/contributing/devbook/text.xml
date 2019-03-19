@@ -1,0 +1,1213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<guide self="appendices/contributing/devbook/">
+<title>Gentoo GuideXML Guide</title>
+
+<author title="Author">
+  <mail link="neysx"/>
+</author>
+<author title="Author">
+  <mail link="drobbins@gentoo.org">Daniel Robbins</mail>
+</author>
+<author title="Author"><!-- zhen@gentoo.org -->
+  John P. Davis
+</author>
+<author title="Editor">
+  <mail link="peesh@gentoo.org">Jorge Paulo</mail>
+</author>
+<author title="Editor">
+  <mail link="swift@gentoo.org">Sven Vermeulen</mail>
+</author>
+<author title="Editor">
+  <mail link="nightmorph"/>
+</author>
+
+<abstract>
+This guide shows you how to compose web documentation using the new lightweight
+Gentoo GuideXML syntax.  This syntax is the official format for Gentoo 
+documentation, and this document itself was created using GuideXML.  This guide
+assumes a basic working knowledge of XML and HTML.
+</abstract>
+
+<!-- The content of this document is licensed under the CC-BY-SA license -->
+<!-- See https://creativecommons.org/licenses/by-sa/2.5 -->
+<license/>
+
+<version>13</version>
+<date>2012-10-07</date>
+
+<chapter>
+<title>GuideXML basics</title>
+<section>
+<title>GuideXML design goals</title>
+<body>
+
+<p>
+The guideXML syntax is lightweight yet expressive, so that it is easy to
+learn yet also provides all the features we need for the creation of web
+documentation.  The number of tags is kept to a minimum -- just those we need.
+This makes it easy to transform guide into other formats, such as DocBook
+XML/SGML or web-ready HTML.
+</p>
+
+<p>
+The goal is to make it easy to <e>create</e> and <e>transform</e> guideXML
+documents.
+</p>
+
+</body>
+</section>
+<section>
+<title>Further Resources</title>
+<body>
+
+<p>
+You may want to look at the <uri link="text.xml">XML source</uri> of this
+document while you read it.
+</p>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>GuideXML</title>
+<section>
+<title>Basic structure</title>
+<body>
+
+<p>
+Let's start learning the GuideXML syntax.  We'll start with the the initial 
+tags used in a GuideXML document:
+</p>
+
+<pre caption="The initial part of a guide XML document">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE guide SYSTEM "/dtd/guide.dtd"&gt;
+&lt;!-- &#36;Header&#36; --&gt;
+
+&lt;guide lang="<i>en</i>"&gt;
+&lt;title&gt;<i>Gentoo Documentation Guide</i>&lt;/title&gt;
+
+&lt;author title="<i>Author</i>"&gt;
+  &lt;mail link="<i>yourname@gentoo.org</i>"&gt;<i>Your Name</i>&lt;/mail&gt;
+&lt;/author&gt;
+
+&lt;abstract&gt;
+<i>This guide shows you how to compose web documentation using
+our new lightweight Gentoo GuideXML syntax.  This syntax is the official
+format for Gentoo web documentation, and this document itself was created
+using GuideXML.</i>
+&lt;/abstract&gt;
+
+&lt;!-- The content of this document is licensed under the CC-BY-SA license --&gt;
+&lt;!-- See https://creativecommons.org/licenses/by-sa/3.0 --&gt;
+&lt;license version="3.0"/&gt;
+
+&lt;version&gt;<i>1</i>&lt;/version&gt;
+&lt;date&gt;<i>2011-11-29</i>&lt;/date&gt;
+</pre>
+
+<p>
+On the first lines, we see the requisite tag that identifies this as an XML
+document and specifies its DTD. The <c>&lt;!-- &#36;Header&#36; --&gt;</c> line
+will be automatically modified by the CVS server and helps to track revisions.
+Next, there's a <c>&lt;guide&gt;</c> tag -- the entire guide document is
+enclosed within a <c>&lt;guide&gt; &lt;/guide&gt;</c> pair.
+<br/>
+The <c>lang</c> attribute should be used to specify the language code of your
+document. It is used to format the date and insert strings like "<e>Note</e>",
+"<e>Content</e>", etc. in the specified language. The default is English.
+</p>
+
+<p>
+Next, there's a <c>&lt;title&gt;</c> tag, used to set the title for the entire
+guide document.
+</p>
+
+<p>
+Then, we come to the <c>&lt;author&gt;</c> tags, which contain information
+about the various authors of the document.  Each <c>&lt;author&gt;</c> tag
+allows for an optional <c>title</c> element, used to specify the author's
+relationship to the document (author, co-author, editor, etc.).  In this
+particular example, the authors' names are enclosed in another tag -- a
+<c>&lt;mail&gt;</c> tag, used to specify an email address for this particular
+person. The <c>&lt;mail&gt;</c> tag is optional and can be omitted, and at
+least one <c>&lt;author&gt;</c> element is required per guide document.
+</p>
+
+<p>
+Next, we come to the <c>&lt;abstract&gt;</c>, <c>&lt;version&gt;</c> and
+<c>&lt;date&gt;</c> tags, used to specify a summary of the document, the
+current version number, and the current version date (in YYYY-MM-DD format)
+respectively. Dates that are invalid or not in the YYYY-MM-DD format will
+appear verbatim in the rendered document.
+</p>
+
+<p>
+This sums up the tags that should appear at the beginning of a guide document.
+Besides the <c>&lt;title&gt;</c> and <c>&lt;mail&gt;</c> tags, these tags
+shouldn't appear anywhere else except immediately inside the
+<c>&lt;guide&gt;</c> tag, and for consistency it's recommended (but not
+required) that these tags appear before the content of the document.  
+</p>
+
+<p>
+Finally we have the <c>&lt;license version="3.0"/&gt;</c> tag, used to publish
+the document under the <uri link="https://creativecommons.org/licenses/by-sa/3.0/">Creative
+Commons - Attribution / Share Alike</uri> license as required by the <uri
+link="/proj/en/gdp/doc/doc-policy.xml">Documentation Policy</uri>. Historically,
+the tag <c>&lt;license /&gt;</c> was used, which denoted the 2.5 version of the
+license. This is still accepted/allowed.
+</p>
+
+</body>
+</section>
+<section>
+<title>Chapters and sections</title>
+<body>
+
+<p>
+Once the initial tags have been specified, you're ready to start adding the
+structural elements of the document.  Guide documents are divided into
+chapters, and each chapter can hold one or more sections.  Every chapter and
+section has a title.  Here's an example chapter with a single section,
+consisting of a paragraph.  If you append this XML to the XML in the <uri
+link="#doc_chap2_pre1">previous excerpt</uri> and append a
+<c>&lt;/guide&gt;</c> to the end of the file, you'll have a valid (if minimal)
+guide document:
+</p>
+
+<pre caption="Minimal guide example">
+&lt;chapter&gt;
+&lt;title&gt;<i>This is my chapter</i>&lt;/title&gt;
+&lt;section&gt;
+&lt;title&gt;<i>This is section one of my chapter</i>&lt;/title&gt;
+&lt;body&gt;
+
+&lt;p&gt;
+<i>This is the actual text content of my section.</i>
+&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/section&gt;
+&lt;/chapter&gt;
+</pre>
+
+<p>
+Above, I set the chapter title by adding a child <c>&lt;title&gt;</c>
+element to the <c>&lt;chapter&gt;</c> element.  Then, I created a section by
+adding a <c>&lt;section&gt;</c> element.  If you look inside the
+<c>&lt;section&gt;</c> element, you'll see that it has two child elements -- a
+<c>&lt;title&gt;</c> and a <c>&lt;body&gt;</c>.  While the <c>&lt;title&gt;</c>
+is nothing new, the <c>&lt;body&gt;</c> is -- it contains the actual text
+content of this particular section.  We'll look at the tags that are allowed
+inside a <c>&lt;body&gt;</c> element in a bit. 
+</p>
+
+<note>
+A <c>&lt;guide&gt;</c> element must contain at least one <c>&lt;chapter&gt;</c>
+elements, a <c>&lt;chapter&gt;</c> must contain at least one
+<c>&lt;section&gt;</c> elements and a <c>&lt;section&gt;</c> element must
+contain at least one <c>&lt;body&gt;</c> element.  
+</note>
+
+</body>
+</section>
+<section>
+<title>An example &lt;body&gt;</title>
+<body>
+
+<p>
+Now, it's time to learn how to mark up actual content.  Here's the XML code for
+an example <c>&lt;body&gt;</c> element:
+</p>
+
+<pre caption="Example of a body element">
+&lt;p&gt;
+This is a paragraph.  &lt;path&gt;/etc/passwd&lt;/path&gt; is a file.
+&lt;uri&gt;https://forums.gentoo.org&lt;/uri&gt; is my favorite website.
+Type &lt;c&gt;ls&lt;/c&gt; if you feel like it.  I &lt;e&gt;really&lt;/e&gt; want to go to sleep now.
+&lt;/p&gt;
+
+&lt;pre caption="Code Sample"&gt;
+This is text output or code.
+# &lt;i&gt;this is user input&lt;/i&gt;
+
+Make HTML/XML easier to read by using selective emphasis:
+&lt;foo&gt;&lt;i&gt;bar&lt;/i&gt;&lt;/foo&gt;
+
+&lt;comment&gt;(This is how to insert a comment into a code block)&lt;/comment&gt;
+&lt;/pre&gt;
+
+&lt;note&gt;
+This is a note.
+&lt;/note&gt;
+
+&lt;warn&gt;
+This is a warning.
+&lt;/warn&gt;
+
+&lt;impo&gt;
+This is important.
+&lt;/impo&gt;
+</pre>
+
+<p>
+Now, here's how the <c>&lt;body&gt;</c> element above is rendered:
+</p>
+
+<p>
+This is a paragraph.  <path>/etc/passwd</path> is a file.
+<uri>https://forums.gentoo.org</uri> is my favorite web site.
+Type <c>ls</c> if you feel like it.  I <e>really</e> want to go to sleep now.
+</p>
+
+<pre caption="Code Sample">
+This is text output or code.
+# <i>this is user input</i>
+
+Make HTML/XML easier to read by using selective emphasis:
+&lt;foo&gt;<i>bar</i>&lt;/foo&gt;
+
+<comment>(This is how to insert a comment into a code block)</comment>
+</pre>
+
+<note>
+This is a note.
+</note>
+
+<warn>
+This is a warning.
+</warn>
+
+<impo>
+This is important.
+</impo>
+
+</body>
+</section>
+<section>
+<title>The &lt;body&gt; tags</title>
+<body>
+
+<p>
+We introduced a lot of new tags in the previous section -- here's what you need
+to know. The <c>&lt;p&gt;</c> (paragraph), <c>&lt;pre&gt;</c> (code block),
+<c>&lt;note&gt;</c>, <c>&lt;warn&gt;</c> (warning) and <c>&lt;impo&gt;</c>
+(important) tags all can contain one or more lines of text. Besides the
+<c>&lt;table&gt;</c>, <c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c> and
+<c>&lt;dl&gt;</c> elements (which we'll cover in just a bit), these are the
+only tags that should appear immediately inside a <c>&lt;body&gt;</c> element.
+Another thing -- these tags <e>should not</e> be stacked -- in other words,
+don't put a <c>&lt;note&gt;</c> element inside a <c>&lt;p&gt;</c> element. As
+you might guess, the <c>&lt;pre&gt;</c> element preserves its whitespace
+exactly, making it well-suited for code excerpts.  You must name the
+<c>&lt;pre&gt;</c> tag with a <c>caption</c> attribute:
+</p>
+
+<pre caption="Named &lt;pre&gt;">
+&lt;pre caption="Output of uptime"&gt;
+# &lt;i&gt;uptime&lt;/i&gt;
+16:50:47 up 164 days,  2:06,  5 users,  load average: 0.23, 0.20, 0.25
+&lt;/pre&gt;
+</pre>
+
+</body>
+</section>
+<section>
+<title>Epigraphs</title>
+<body>
+
+<p by="Anonymous student">
+Delegates from the original 13 states formed the Contented Congress. Thomas
+Jefferson, a Virgin, and Benjamin Franklin were two singers of the Declaration
+of Independence. Franklin discovered electricity by rubbing two cats backwards
+and declared, "A horse divided against itself cannot stand." Franklin died in
+1790 and is still dead.
+</p>
+
+<p>
+Epigraphs are sometimes used at the beginning of chapters to illustrate what is
+to follow. It is simply a paragraph with a <c>by</c> attribute that contains
+the signature.
+</p>
+
+<pre caption="Short epigraph">
+&lt;p by="Anonymous student"&gt;
+Delegates from the original 13 states formed the...
+&lt;/p&gt;
+</pre>
+
+</body>
+</section>
+<section>
+<title>
+  &lt;path&gt;, &lt;c&gt;, &lt;b&gt;, &lt;e&gt;, &lt;sub&gt; and &lt;sup&gt;
+</title>
+<body>
+
+<p>
+The <c>&lt;path&gt;</c>, <c>&lt;c&gt;</c>, <c>&lt;b&gt;</c>, <c>&lt;e&gt;</c>,
+<c>&lt;sub&gt;</c> and <c>&lt;sup&gt;</c> elements can be used inside any child
+<c>&lt;body&gt;</c> tag, except for <c>&lt;pre&gt;</c>.
+</p>
+
+<p>
+The <c>&lt;path&gt;</c> element is used to mark text that refers to an
+<e>on-disk file</e> -- either an <e>absolute or relative path</e>, or a 
+<e>simple filename</e>. This element is generally rendered with a mono spaced 
+font to offset it from the standard paragraph type.  
+</p>
+
+<p>
+The <c>&lt;c&gt;</c> element is used to mark up a <e>command</e> or <e>user
+input</e>.  Think of <c>&lt;c&gt;</c> as a way to alert the reader to something
+that they can type in that will perform some kind of action.  For example, all
+the XML tags displayed in this document are enclosed in a <c>&lt;c&gt;</c>
+element because they represent something that the user could type in that is
+not a path.  By using <c>&lt;c&gt;</c> elements, you'll help your readers
+quickly identify commands that they need to type in.  Also, because
+<c>&lt;c&gt;</c> elements are already offset from regular text, <e>it is rarely
+necessary to surround user input with double-quotes</e>. For example, don't
+refer to a "<c>&lt;c&gt;</c>" element like I did in this sentence.  Avoiding
+the use of unnecessary double-quotes makes a document more readable -- and 
+adorable!
+</p>
+
+<p>
+As you might have guessed, <c>&lt;b&gt;</c> is used to <b>boldface</b> some
+text.
+</p>
+
+<p>
+<c>&lt;e&gt;</c> is used to apply emphasis to a word or phrase; for example:
+I <e>really</e> should use semicolons more often.  As you can see, this text is
+offset from the regular paragraph type for emphasis.  This helps to give your
+prose more <e>punch</e>!
+</p>
+
+<p>
+The <c>&lt;sub&gt;</c> and <c>&lt;sup&gt;</c> elements are used to specify
+<sub>subscript</sub> and <sup>superscript</sup>.
+</p>
+
+</body>
+</section>
+<section>
+<title>Code samples and colour-coding</title>
+<body>
+
+<p>
+To improve the readability of code samples, the following tags are allowed
+inside <c>&lt;pre&gt;</c> blocks:
+</p>
+
+<dl>
+  <dt><c>&lt;i&gt;</c></dt>
+  <dd>Distinguishes user input from displayed text</dd>
+  <dt><c>&lt;comment&gt;</c></dt>
+  <dd>Comments relevant to the action(s) that appear after the comment</dd>
+  <dt><c>&lt;keyword&gt;</c></dt>
+  <dd>Denotes a keyword in the language used in the code sample
+  </dd>
+  <dt><c>&lt;ident&gt;</c></dt>
+  <dd>Used for an identifier
+  </dd>
+  <dt><c>&lt;const&gt;</c></dt>
+  <dd>Used for a constant
+  </dd>
+  <dt><c>&lt;stmt&gt;</c></dt>
+  <dd>Used for a statement
+  </dd>
+  <dt><c>&lt;var&gt;</c></dt>
+  <dd>Used for a variable
+  </dd>
+</dl>
+
+<note>
+Remember that all leading and trailing spaces, and line breaks in
+<c>&lt;pre&gt;</c> blocks will appear in the displayed html page.
+</note>
+
+<p>
+Sample colour-coded <c>&lt;pre&gt;</c> block:
+</p>
+
+<pre caption="My first ebuild">
+<comment># Copyright 1999-2009 <b>Gentoo Foundation</b>
+# Distributed under the terms of the GNU General Public License v2
+# &#36;Header: $</comment>
+
+<ident>DESCRIPTION</ident>=<const>"Exuberant ctags generates tags files for quick source navigation"</const>
+<ident>HOMEPAGE</ident>=<const>"https://ctags.sourceforge.net"</const>
+<ident>SRC_URI</ident>=<const>"mirror://sourceforge/ctags/<var>${P}</var>.tar.gz"</const>
+
+<ident>LICENSE</ident>=<const>"GPL-2"</const>
+<ident>SLOT</ident>=<const>"0"</const>
+<ident>KEYWORDS</ident>=<const>"~mips ~sparc ~x86"</const>
+<ident>IUSE</ident>=<const>""</const>
+
+<stmt>src_compile()</stmt> {
+    <keyword>econf</keyword> --with-posix-regex
+    <keyword>emake</keyword> || <keyword>die</keyword> <const>"emake failed"</const>
+}
+
+<stmt>src_install()</stmt> {
+    <keyword>make</keyword> <ident>DESTDIR</ident>="<var>${D}</var>" install || <keyword>die</keyword> <const>"install failed"</const>
+
+    <keyword>dodoc</keyword> FAQ NEWS README
+    <keyword>dohtml</keyword> EXTENDING.html ctags.html
+}
+</pre>
+
+</body>
+</section>
+<section>
+<title>&lt;mail&gt; and &lt;uri&gt;</title>
+<body>
+
+<p>
+We've taken a look at the <c>&lt;mail&gt;</c> tag earlier; it's used to link
+some text with a particular email address, and takes the form <c>&lt;mail
+link="foo.bar@example.com"&gt;Mr. Foo Bar&lt;/mail&gt;</c>. If you want to display the
+email address, you can use <c>&lt;mail&gt;foo.bar@example.com&lt;/mail&gt;</c>, this
+would be displayed as <mail>foo.bar@example.com</mail>.
+</p>
+
+<p>
+Shorter forms make it easier to use names and emails of Gentoo developers. Both
+<c>&lt;mail&gt;neysx&lt;/mail&gt;</c> and <c>&lt;mail link="neysx"/&gt;</c>
+would appear as <mail>neysx</mail>. If you want to use a Gentoo dev's email
+with a different content than his full name, use the second form with some
+content. For instance, use a dev's first name: <c>&lt;mail
+link="neysx"&gt;Xavier&lt;/mail&gt;</c> appears as <mail
+link="neysx">Xavier</mail>.
+<br/>
+This is particularly useful when you want to name a developer whose name
+contains "funny" characters that you can't type.
+</p>
+
+<p>
+The <c>&lt;uri&gt;</c> tag is used to point to files/locations on the Internet.
+It has two forms -- the first can be used when you want to have the actual URI
+displayed in the body text, such as this link to
+<uri>https://forums.gentoo.org/</uri>.  To create this link, I typed
+<c>&lt;uri&gt;https://forums.gentoo.org/&lt;/uri&gt;</c>.  The alternate form is
+when you want to associate a URI with some other text -- for example, <uri
+link="https://forums.gentoo.org/">the Gentoo Forums</uri>.  To create
+<e>this</e> link, I typed <c>&lt;uri link="https://forums.gentoo.org/"&gt;the
+Gentoo Forums&lt;/uri&gt;</c>. You don't need to write
+<c>https://www.gentoo.org/</c> to link to other parts of the Gentoo web site.
+For instance, a link to the <uri link="/get-started/about/">about page</uri>
+should be simply <c>&lt;uri link="/get-started/about/"&gt;documentation main
+index&lt;/uri&gt;</c>. Leaving the trailing slash saves an extra HTTP request.
+</p>
+
+<p>
+You should not use a <c>&lt;uri&gt;</c> tag with a <c>link</c> attribute that
+starts with <c>mailto:</c>. In this case, use a <c>&lt;mail&gt;</c> tag.
+</p>
+
+<p>
+Please avoid the <uri link="https://en.wikipedia.org/wiki/Click_here">click here
+syndrome</uri> as recommended by the <uri
+link="https://www.w3.org/QA/Tips/noClickHere">W3C</uri>.
+</p>
+
+</body>
+</section>
+<section>
+<title>Figures</title>
+<body>
+
+<p>
+Here's how to insert a figure into a document -- <c>&lt;figure
+link="mygfx.png" short="my picture" caption="my favorite picture of all
+time"/&gt;</c>.  The <c>link</c> attribute points to the actual graphic image,
+the <c>short</c> attribute specifies a short description (currently used for
+the image's HTML <c>alt</c> attribute), and a caption.  Not too difficult
+:)  We also support the standard HTML-style &lt;img src="foo.gif"/&gt; tag
+for adding images without captions, borders, etc.
+</p>
+
+</body>
+</section>
+<section>
+<title>Tables</title>
+<body>
+
+<p>
+GuideXML supports a simplified table syntax similar to that of HTML. To start a
+table, use a <c>&lt;table&gt;</c> tag. Start a row with a <c>&lt;tr&gt;</c>
+tag. However, for inserting actual table data, we <e>don't</e> support the HTML
+&lt;td&gt; tag; instead, use the <c>&lt;th&gt;</c> if you are inserting a
+header, and <c>&lt;ti&gt;</c> if you are inserting a normal informational
+block. You can use a <c>&lt;th&gt;</c> anywhere you can use a <c>&lt;ti&gt;</c>
+-- there's no requirement that <c>&lt;th&gt;</c> elements appear only in the
+first row.
+</p>
+
+<p>
+Besides, both table headers (<c>&lt;th&gt;</c>) and table items
+(<c>&lt;ti&gt;</c>) accept the <c>colspan</c> and <c>rowspan</c> attributes to
+span their content across rows, columns or both.
+</p>
+
+<p>
+Furthermore, table cells (<c>&lt;ti&gt;</c> &amp; <c>&lt;th&gt;</c>) can be
+right-aligned, left-aligned or centered with the <c>align</c> attribute.
+</p>
+
+<table>
+  <tr>
+    <th align="center" colspan="4">This title spans 4 columns</th>
+  </tr>
+  <tr>
+    <th rowspan="6">This title spans 6 rows</th>
+    <ti>Item A1</ti>
+    <ti>Item A2</ti>
+    <ti>Item A3</ti>
+  </tr>
+  <tr>
+    <ti align="center">Item B1</ti>
+    <th colspan="2" rowspan="2" align="right">Blocky 2x2 title</th>
+  </tr>
+  <tr>
+    <ti align="right">Item C1</ti>
+  </tr>
+  <tr>
+    <ti colspan="3" align="center">Item D1..D3</ti>
+  </tr>
+  <tr>
+    <ti rowspan="2">Item E1..F1</ti>
+    <ti colspan="2" align="right">Item E2..E3</ti>
+  </tr>
+  <tr>
+    <ti colspan="2" align="right">Item F2..F3</ti>
+  </tr>
+</table>
+
+</body>
+</section>
+<section>
+<title>Lists</title>
+<body>
+
+<p>
+To create ordered or unordered lists, simply use the XHTML-style
+<c>&lt;ol&gt;</c>, <c>&lt;ul&gt;</c> and <c>&lt;li&gt;</c> tags. Lists may only
+appear inside the <c>&lt;body&gt;</c> and <c>&lt;li&gt;</c> tags which means
+that you can have lists inside lists. Don't forget that you are writing XML and
+that you must close all tags including list items unlike in HTML.
+</p>
+
+<p>
+Definition lists (<c>&lt;dl&gt;</c>) are also supported. Please note that
+neither the definition term tag (<c>&lt;dt&gt;</c>) nor the definition data tag
+(<c>&lt;dd&gt;</c>) accept any other block level tag such as paragraphs or
+admonitions. A definition list comprises:
+</p>
+
+<dl>
+  <dt><c>&lt;dl&gt;</c></dt>
+  <dd>A <b>D</b>efinition <b>L</b>ist Tag containing</dd>
+  <dt><c>&lt;dt&gt;</c></dt>
+  <dd>Pairs of <b>D</b>efinition <b>T</b>erm Tags</dd>
+  <dt><c>&lt;dd&gt;</c></dt>
+  <dd>and <b>D</b>efinition <b>D</b>ata Tags</dd>
+</dl>
+
+<p>
+The following list copied from <uri
+link="https://www.w3.org/TR/REC-html40/struct/lists.html">w3.org</uri> shows
+that a definition list can contain ordered and unordered lists. It may not
+contain another definition list though.
+</p>
+
+<dl>
+  <dt><b>The ingredients:</b></dt>
+  <dd>
+    <ul>
+      <li>100 g. flour</li>
+      <li>10 g. sugar</li>
+      <li>1 cup water</li>
+      <li>2 eggs</li>
+      <li>salt, pepper</li>
+    </ul>
+  </dd>
+  <dt><b>The procedure:</b></dt>
+  <dd>
+    <ol>
+      <li>Mix dry ingredients thoroughly</li>
+      <li>Pour in wet ingredients</li>
+      <li>Mix for 10 minutes</li>
+      <li>Bake for one hour at 300 degrees</li>
+    </ol>
+  </dd>
+  <dt><b>Notes:</b></dt>
+  <dd>The recipe may be improved by adding raisins</dd>
+</dl>
+
+</body>
+</section>
+<section>
+<title>Intra-document references</title>
+<body>
+
+<p>
+GuideXML makes it really easy to reference other parts of the document using
+hyperlinks.  You can create a link pointing to <uri link="#doc_chap1">Chapter
+One</uri> by typing <c>&lt;uri link="#doc_chap1"&gt;Chapter
+One&lt;/uri&gt;</c>.  To point to <uri link="#doc_chap1_sect2">section two of
+Chapter One</uri>, type <c>&lt;uri link="#doc_chap1_sect2"&gt;section two of
+Chapter One&lt;/uri&gt;</c>.  To refer to figure 3 in chapter 1, type
+<c>&lt;uri link="#doc_chap1_fig3"&gt;figure 1.3&lt;/uri&gt;</c>.  Or, to refer
+to <uri link="#doc_chap2_pre2">code listing 2 in chapter 2</uri>, type
+<c>&lt;uri link="#doc_chap2_pre2"&gt;code listing 2.2&lt;/uri&gt;</c>.
+</p>
+
+<p>
+However, some guides change often and using such "counting" can lead to broken
+links. In order to cope with this, you can define a name for a
+<c>&lt;chapter&gt;</c>, <c>&lt;section&gt;</c> or a <c>&lt;tr&gt;</c> by using
+the <c>id</c> attribute, and then point to that attribute, like this:
+</p>
+
+<pre caption="Using the id attribute">
+&lt;chapter id="foo"&gt;
+&lt;title&gt;This is foo!&lt;/title&gt;
+...
+&lt;p&gt;
+More information can be found in the &lt;uri link="#foo"&gt;foo chapter&lt;/uri&gt;
+&lt;/p&gt;
+</pre>
+
+</body>
+</section>
+<section>
+<title>Disclaimers and obsolete documents</title>
+<body>
+
+<p>
+A <c>disclaimer</c> attribute can be applied to guides and handbooks to display
+a predefined disclaimer at the top of the document. The available disclaimers
+are:
+</p>
+
+<ul>
+  <li>
+    <b>articles</b> is used for <uri link="/doc/en/articles/">republished
+    articles</uri>
+  </li>
+  <li>
+    <b>draft</b> is used to indicate a document is still being worked on and
+    should not be considered official
+  </li>
+  <li>
+    <b>oldbook</b> is used on old handbooks to indicate they are not maintained
+    anymore
+  </li>
+  <li><b>obsolete</b> is used to mark a document as obsolete.</li>
+</ul>
+
+<p>
+When marking a document as obsolete, you might want to add a link to a new
+version. The <c>redirect</c> attribute does just that. The user might be
+automatically redirected to the new page but you should not rely on that
+behaviour.
+</p>
+
+<pre caption="Disclaimer sample">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE guide SYSTEM "/dtd/guide.dtd"&gt;
+&lt;!-- &#36;Header&#36; --&gt;
+
+&lt;guide disclaimer="obsolete" redirect="https://wiki.gentoo.org/wiki/Handbook:X86"&gt;
+&lt;title>Gentoo x86 Installation Guide&lt;/title&gt;
+
+&lt;author title="Author"&gt;
+...
+</pre>
+
+</body>
+</section>
+<section>
+<title>FAQs</title>
+<body>
+
+<p>
+FAQ documents need to start with a list of questions with links to their
+answers. Creating such a list is both time-consuming and error-prone. The list
+can be created automatically if you use a <c>faqindex</c> element as the first
+chapter of your document. This element has the same structure as a
+<c>chapter</c> to allow some introductory text. The structure of the document
+is expected to be split into chapters (at least one chapter) containing
+sections, each section containing one question specified in its <c>title</c>
+element with the answer in its <c>body</c>. The FAQ index will appear as one
+section per chapter and one link per question.
+</p>
+
+<p>
+A quick look at a <uri link="/doc/en/faq.xml">FAQ</uri> and <uri
+link="/doc/en/faq.xml?passthru=1">its source</uri> should make the above
+obvious.
+</p>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Handbook Format</title>
+<section>
+<title>Guide vs Book</title>
+<body>
+
+<p>
+For high-volume documentation, a 
+broader format was needed. We designed a GuideXML-compatible enhancement that
+allows us to write modular and multi-page documentation.
+</p>
+
+</body>
+</section>
+<section>
+<title>Main File</title>
+<body>
+
+<p>
+The first change is the need for a "master" document. This document contains no
+real content, but links to the individual documentation modules. The syntax
+doesn't differ much from GuideXML:
+</p>
+
+<pre caption="Example book usage">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;!DOCTYPE book SYSTEM "/dtd/book.dtd"&gt;
+&lt;!-- &#36;Header&#36; --&gt;
+
+&lt;<i>book</i>&gt;
+&lt;title&gt;Example Book Usage&lt;/title&gt;
+
+&lt;author...&gt;
+  ...
+&lt;/author&gt;
+
+&lt;abstract&gt;
+  ...
+&lt;/abstract&gt;
+
+&lt;!-- The content of this document is licensed under the CC-BY-SA license --&gt;
+&lt;!-- See https://creativecommons.org/licenses/by-sa/3.0 --&gt;
+&lt;license version="3.0"/&gt;
+
+&lt;version&gt;...&lt;/version&gt;
+&lt;date&gt;...&lt;/date&gt;
+</pre>
+
+<p>
+So far no real differences (except for the <c>&lt;book&gt;</c> instead of
+<c>&lt;guide&gt;</c> tag). Instead of starting with the individual
+<c>&lt;chapter&gt;</c>s, you define a <c>&lt;part&gt;</c>, which is the
+equivalent of a separate part in a book:
+</p>
+
+<pre caption="Defining a part">
+&lt;part&gt;
+&lt;title&gt;Part One&lt;/title&gt;
+&lt;abstract&gt;
+  ...
+&lt;/abstract&gt;
+
+<comment>(Defining the several chapters)</comment>
+&lt;/part&gt;
+</pre>
+
+<p>
+Each part is accompanied by a <c>&lt;title&gt;</c> and an 
+<c>&lt;abstract&gt;</c> which gives a small introduction to the part.
+</p>
+
+<p>
+Inside each part, you define the individual <c>&lt;chapter&gt;</c>s. Each
+chapter <e>must</e> be a separate document. As a result it is no surprise that
+a special tag (<c>&lt;include&gt;</c>) is added to allow including the separate
+document.
+</p>
+
+<pre caption="Defining a chapter">
+&lt;chapter&gt;
+&lt;title&gt;Chapter One&lt;/title&gt;
+
+  &lt;include href="path/to/chapter-one.xml"/&gt;
+
+&lt;/chapter&gt;
+</pre>
+
+</body>
+</section>
+<section>
+<title>Designing the Individual Chapters</title>
+<body>
+
+<p>
+The content of an individual chapter is structured as follows:
+</p>
+
+<pre caption="Chapter Syntax">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;!DOCTYPE sections SYSTEM "/dtd/book.dtd"&gt;
+&lt;!-- &#36;Header&#36; --&gt;
+
+&lt;!--  The content of this document is licensed under the CC-BY-SA license --&gt;
+&lt;!--  See https://creativecommons.org/licenses/by-sa/3.0 --&gt;
+
+&lt;sections&gt;
+
+&lt;abstract&gt;
+  This is a small explanation on chapter one.
+&lt;/abstract&gt;
+
+&lt;version&gt;...&lt;/version&gt;
+&lt;date&gt;...&lt;/date&gt;
+
+<comment>(Define the several &lt;section&gt; and &lt;subsection&gt;)</comment>
+
+&lt;/sections&gt;
+</pre>
+
+<p>
+Inside each chapter you can define <c>&lt;section&gt;</c>s (equivalent of
+<c>&lt;chapter&gt;</c> in a Guide) and <c>&lt;subsection&gt;</c>s (equivalent
+of <c>&lt;section&gt;</c> in a Guide).
+</p>
+
+<p>
+Each individual chapter should have its own date and version elements. The
+latest date of all chapters and master document will be displayed when a user
+browses through all parts of the book.
+</p>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Advanced Handbook Features</title>
+<section>
+<title>Global Values</title>
+<body>
+
+<p>
+Sometimes, the same values are repeated many times in several parts of a
+handbook. Global search and replace operations tend to forget some or introduce
+unwanted changes. Besides, it can be useful to define different values to be
+used in shared chapters depending on which handbook includes the chapter.
+</p>
+
+<p>
+Global values can be defined in a handbook master file and used in all included
+chapters.
+</p>
+
+<p>
+To define global values, add a <c>&lt;values&gt;</c> element to the handbook
+master file. Each value is then defined in a <c>&lt;key&gt;</c> element whose
+<c>id</c> attribute identifies the value, i.e. it is the name of your variable.
+The content of the <c>&lt;key&gt;</c> is its value.
+</p>
+
+<p>
+The following example defines three values in a handbook master file:
+</p>
+
+<pre caption="Define values in a handbook">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;!DOCTYPE book SYSTEM "/dtd/book.dtd"&gt;
+&lt;!-- &#36;Header&#36; --&gt;
+
+&lt;book&gt;
+&lt;title&gt;Example Book Usage&lt;/title&gt;
+
+<i>&lt;values>
+ &lt;key id="arch"&gt;x86&lt;/key&gt;
+ &lt;key id="min-cd-name"&gt;install-x86-minimal-2007.0-r1.iso&lt;/key&gt;
+ &lt;key id="min-cd-size"&gt;57&lt;/key&gt;
+&lt;/values&gt;</i>
+
+&lt;author...&gt;
+  ...
+&lt;/author&gt;
+
+...
+</pre>
+
+<p>
+The defined values can then be used throughout the handbook with the in-line
+<c>&lt;keyval id="key_id"/&gt;</c> element. Specify the name of the key in its
+<c>id</c> attribute, e.g. &lt;keyval id="min-cd-name"/&gt; would be replaced by
+"install-x86-minimal-2007.0-r1.iso" in our example.
+</p>
+
+<pre caption="Using defined values">
+&lt;p&gt;
+The Minimal Installation CD is called &lt;c&gt;<i>&lt;keyval id="min-cd-name"/&gt;</i>&lt;/c&gt;
+and takes up only <i>&lt;keyval id="min-cd-size"/&gt;</i> MB of diskspace. You can use this
+Installation CD to install Gentoo, but &lt;e&gt;only&lt;/e&gt; with a working Internet
+connection.
+&lt;/p&gt;
+</pre>
+
+<p>
+To make life easier on our translators, only use actual values, i.e. content
+that does not need to be translated. For instance, we defined the
+<c>min-cd-size</c> value to <c>57</c> and not <c>57 MB</c>.
+</p>
+
+</body>
+</section>
+<section>
+<title>Conditional Elements</title>
+<body>
+
+<p>
+Chapters that are shared by several handbooks such as our <uri
+link="/doc/en/handbook/">Installation Handbooks</uri> often have small
+differences depending on which handbook includes them. Instead of adding
+content that is irrelevant to some handbooks, authors can add a condition to
+the following elements: <c>&lt;section&gt;</c>, <c>&lt;subsection&gt;</c>,
+<c>&lt;body&gt;</c>, <c>&lt;note&gt;</c>, <c>&lt;impo&gt;</c>,
+<c>&lt;warn&gt;</c>, <c>&lt;pre&gt;</c>, <c>&lt;p&gt;</c>,
+<c>&lt;table&gt;</c>, <c>&lt;tr&gt;</c>, <c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c>
+and <c>&lt;li&gt;</c>.
+</p>
+
+<p>
+The condition must be an <uri
+link="https://en.wikipedia.org/wiki/XPath">XPATH</uri> expression that will be
+evaluated when transforming the XML. If it evaluates to <c>true</c>, the
+element is processed, if not, it is ignored. The condition is specified in a
+<c>test</c> attribute.
+</p>
+
+<p>
+The following example uses the <c>arch</c> value that is defined in each
+handbook master file to condition some content:
+</p>
+
+<pre caption="Using conditional elements">
+&lt;body test="contains('AMD64 x86',func:keyval('arch'))"&gt;
+
+&lt;p&gt;
+This paragraph applies to both x86 and AMD64 architectures.
+&lt;/p&gt;
+
+&lt;p test="func:keyval('arch')='x86'"&gt;
+This paragraph only applies to the x86 architecture.
+&lt;/p&gt;
+
+&lt;p test="func:keyval('arch')='AMD64'"&gt;
+This paragraph only applies to the AMD64 architecture.
+&lt;/p&gt;
+
+&lt;p test="func:keyval('arch')='PPC'"&gt;
+This paragraph will never be seen!
+The whole body is skipped because of the first condition.
+&lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;body test="contains('AMD64 PPC64',func:keyval('arch'))"&gt;
+
+&lt;p&gt;
+This paragraph applies to the AMD64, PPC64 <comment>and PPC</comment> architectures because
+the 'AMD64 PPC64' string does contain 'PPC'.
+&lt;/p&gt;
+
+&lt;note test="func:keyval('arch')='AMD64' or func:keyval('arch')='PPC64'"&gt;
+This note only applies to the AMD64 and PPC64 architectures.
+&lt;/note&gt;
+
+&lt;/body&gt;
+</pre>
+
+</body>
+</section>
+</chapter>
+
+<chapter id="codingstyle">
+<title>Coding Style</title>
+<section>
+<title>Introduction</title>
+<body>
+
+<p>
+Since all Gentoo Documentation is a joint effort and several people will
+most likely change existing documentation, a coding style is needed.
+A coding style contains two sections. The first one is regarding
+internal coding - how the XML-tags are placed. The second one is
+regarding the content - how not to confuse the reader.
+</p>
+
+<p>
+Both sections are described next.
+</p>
+
+</body>
+</section>
+<section>
+<title>Internal Coding Style</title>
+<body>
+
+<p>
+<b>Newlines</b> must be placed immediately after <e>every</e>
+GuideXML-tag (both opening as closing), except for:
+<c>&lt;version&gt;</c>, <c>&lt;date&gt;</c>, <c>&lt;title&gt;</c>, 
+<c>&lt;th&gt;</c>, <c>&lt;ti&gt;</c>,
+<c>&lt;li&gt;</c>, <c>&lt;i&gt;</c>, <c>&lt;e&gt;</c>,
+<c>&lt;uri&gt;</c>, <c>&lt;path&gt;</c>, <c>&lt;b&gt;</c>, <c>&lt;c&gt;</c>, 
+<c>&lt;comment&gt;</c>, <c>&lt;mail&gt;</c>.
+</p>
+
+<p>
+<b>Blank lines</b> must be placed immediately after <e>every</e>
+<c>&lt;body&gt;</c> (opening tag only) and before <e>every</e>
+<c>&lt;chapter&gt;</c>, <c>&lt;p&gt;</c>, <c>&lt;table&gt;</c>, 
+<c>&lt;author&gt;</c> (set), <c>&lt;pre&gt;</c>, <c>&lt;ul&gt;</c>, 
+<c>&lt;ol&gt;</c>, <c>&lt;warn&gt;</c>, <c>&lt;note&gt;</c> and 
+<c>&lt;impo&gt;</c> (opening tags only).
+</p>
+
+<p>
+<b>Word-wrapping</b> must be applied at 80 characters except inside
+<c>&lt;pre&gt;</c>. You may only deviate from this rule when there is no other
+choice (for instance when a URL exceeds the maximum amount of characters).  The
+editor must then wrap whenever the first whitespace occurs. You should try to
+keep the <e>rendered</e> content of <c>&lt;pre&gt;</c> elements within 80
+columns to help console users.
+</p>
+
+<p>
+<b>Indentation</b> may not be used, except with the XML-constructs of which the
+parent XML-tags are <c>&lt;tr&gt;</c> (from <c>&lt;table&gt;</c>),
+<c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c>, <c>&lt;dl&gt;</c>, and
+<c>&lt;author&gt;</c>. If indentation is used, it <e>must</e> be two spaces for
+each indentation. That means <e>no tabs</e> and <e>not</e> more spaces.
+Besides, tabs are not allowed in GuideXML documents.
+</p>
+
+<p>
+In case word-wrapping happens in <c>&lt;ti&gt;</c>, <c>&lt;th&gt;</c>,
+<c>&lt;li&gt;</c> or <c>&lt;dd&gt;</c> constructs, indentation must be used for
+the content.
+</p>
+
+<p>
+An example for indentation is:
+</p>
+
+<pre caption="Indentation Example">
+&lt;table&gt;
+&lt;tr&gt;
+  &lt;th&gt;Foo&lt;/th&gt;
+  &lt;th&gt;Bar&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;ti&gt;This is an example for indentation&lt;/ti&gt;
+  &lt;ti&gt;
+    In case text cannot be shown within an 80-character wide line, you
+    must use indentation if the parent tag allows it
+  &lt;/ti&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First option&lt;/li&gt;
+  &lt;li&gt;Second option&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<p>
+<b>Attributes</b> may not have spaces in between the attribute, the "=" mark,
+and the attribute value. As an example:
+</p>
+
+<pre caption="Attributes">
+<comment>Wrong  :</comment>     &lt;pre caption = "Attributes"&gt;
+<comment>Correct:</comment>     &lt;pre caption="Attributes"&gt;
+</pre>
+
+</body>
+</section>
+<section>
+<title>External Coding Style</title>
+<body>
+
+<p>
+Inside tables (<c>&lt;table&gt;</c>) and listings (<c>&lt;ul&gt;</c>,
+<c>&lt;ol&gt;</c>) and <c>&lt;dl&gt;</c>, periods (".") should not be used
+unless multiple sentences are used. In that case, every sentence should end
+with a period (or other reading marks).
+</p>
+
+<p>
+Every sentence, including those inside tables and listings, should start
+with a capital letter.
+</p>
+
+<pre caption="Periods and capital letters">
+&lt;ul&gt;
+  &lt;li&gt;No period&lt;/li&gt;
+  &lt;li&gt;With period. Multiple sentences, remember?&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+<p>
+Code Listings should <e>always</e> have a <c>caption</c>.
+</p>
+
+<p>
+Try to use <c>&lt;uri&gt;</c> with the <c>link</c> attribute as much as
+possible. In other words, the <uri link="https://forums.gentoo.org">Gentoo
+Forums</uri> is preferred over <uri>https://forums.gentoo.org</uri>.
+</p>
+
+<p>
+When you comment something inside a <c>&lt;pre&gt;</c> construct, use
+<c>&lt;comment&gt;</c> and parentheses or the comment marker for the language
+that is being used (<c>#</c> for bash scripts and many other things, <c>//</c>
+for C code, etc.) Also place the comment <e>before</e> the subject of the
+comment.
+</p>
+
+<pre caption="Comment example">
+<comment>(Substitute "john" with your user name)</comment>
+# <i>id john</i>
+</pre>
+
+</body>
+</section>
+</chapter>
+
+<chapter>
+<title>Resources</title>
+<section>
+<title>Start writing</title>
+<body>
+
+<p>
+GuideXML has been specially designed to be "lean and mean" so that developers
+can spend more time writing documentation and less time learning the actual XML
+syntax.  Hopefully, this will allow developers who aren't unusually "doc-savvy"
+to start writing quality Gentoo documentation.  You might be interested in our
+<uri link="/proj/en/gdp/doc/doc-tipsntricks.xml">Documentation Development Tips
+&amp; Tricks</uri>. If you'd like to help (or have any questions about
+GuideXML), please post a message to the <uri
+link="/main/en/lists.xml">gentoo-doc mailing list</uri> stating what you'd like
+to tackle. Have fun!
+</p>
+
+</body>
+</section>
+</chapter>
+</guide>
