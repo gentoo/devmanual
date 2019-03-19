@@ -58,7 +58,7 @@ using GuideXML.</i>
 &lt;/abstract&gt;
 
 &lt;!-- The content of this document is licensed under the CC-BY-SA license --&gt;
-&lt;!-- See http://creativecommons.org/licenses/by-sa/3.0 --&gt;
+&lt;!-- See https://creativecommons.org/licenses/by-sa/3.0 --&gt;
 &lt;license version="3.0"/&gt;
 
 &lt;version&gt;<i>1</i>&lt;/version&gt;
@@ -111,7 +111,7 @@ required) that these tags appear before the content of the document.
 
 <p>
 Finally we have the <c>&lt;license version="3.0"/&gt;</c> tag, used to publish
-the document under the <uri link="http://creativecommons.org/licenses/by-sa/3.0/">Creative
+the document under the <uri link="https://creativecommons.org/licenses/by-sa/3.0/">Creative
 Commons - Attribution / Share Alike</uri> license as required by the <uri
 link="/proj/en/gdp/doc/doc-policy.xml">Documentation Policy</uri>. Historically,
 the tag <c>&lt;license /&gt;</c> was used, which denoted the 2.5 version of the
@@ -183,7 +183,7 @@ an example <c>&lt;body&gt;</c> element:
 <codesample lang="sgml"><!-- Example of a body element -->
 &lt;p&gt;
 This is a paragraph.  &lt;path&gt;/etc/passwd&lt;/path&gt; is a file.
-&lt;uri&gt;http://forums.gentoo.org&lt;/uri&gt; is my favorite website.
+&lt;uri&gt;https://forums.gentoo.org&lt;/uri&gt; is my favorite website.
 Type &lt;c&gt;ls&lt;/c&gt; if you feel like it.  I &lt;e&gt;really&lt;/e&gt; want to go to sleep now.
 &lt;/p&gt;
 
@@ -214,7 +214,7 @@ Now, here's how the <c>&lt;body&gt;</c> element above is rendered:
 
 <p>
 This is a paragraph.  <path>/etc/passwd</path> is a file.
-<uri>http://forums.gentoo.org</uri> is my favorite web site.
+<uri>https://forums.gentoo.org</uri> is my favorite web site.
 Type <c>ls</c> if you feel like it.  I <e>really</e> want to go to sleep now.
 </p>
 
@@ -322,13 +322,13 @@ Fill this section with the information about the use of
 The <c>&lt;uri&gt;</c> tag is used to point to files/locations on the Internet.
 It has two forms -- the first can be used when you want to have the actual URI
 displayed in the body text, such as this link to
-<uri>http://forums.gentoo.org/</uri>.  To create this link, I typed
-<c>&lt;uri&gt;http://forums.gentoo.org/&lt;/uri&gt;</c>.  The alternate form is
+<uri>https://forums.gentoo.org/</uri>.  To create this link, I typed
+<c>&lt;uri&gt;https://forums.gentoo.org/&lt;/uri&gt;</c>.  The alternate form is
 when you want to associate a URI with some other text -- for example, <uri
-link="http://forums.gentoo.org/">the Gentoo Forums</uri>.  To create
-<e>this</e> link, I typed <c>&lt;uri link="http://forums.gentoo.org/"&gt;the
+link="https://forums.gentoo.org/">the Gentoo Forums</uri>.  To create
+<e>this</e> link, I typed <c>&lt;uri link="https://forums.gentoo.org/"&gt;the
 Gentoo Forums&lt;/uri&gt;</c>. You don't need to write
-<c>http://www.gentoo.org/</c> to link to other parts of the Gentoo web site.
+<c>https://www.gentoo.org/</c> to link to other parts of the Gentoo web site.
 For instance, a link to the <uri link="/doc/en/">documentation main index</uri>
 should be simply <c>&lt;uri link="/doc/en/index.xml"&gt;documentation main
 index&lt;/uri&gt;</c>. You can even omit <c>index.xml</c> when you link to a
@@ -337,9 +337,9 @@ index&lt;/uri&gt;</c>. Leaving the trailing slash saves an extra HTTP request.
 </p>
 
 <p>
-Please avoid the <uri link="http://en.wikipedia.org/wiki/Click_here">click here
+Please avoid the <uri link="https://en.wikipedia.org/wiki/Click_here">click here
 syndrome</uri> as recommended by the <uri
-link="http://www.w3.org/QA/Tips/noClickHere">W3C</uri>.
+link="https://www.w3.org/QA/Tips/noClickHere">W3C</uri>.
 </p>
 
 </body>
@@ -584,8 +584,8 @@ Code Listings should <e>always</e> have a <c>caption</c>.
 
 <p>
 Try to use <c>&lt;uri&gt;</c> with the <c>link</c> attribute as much as
-possible. In other words, the <uri link="http://forums.gentoo.org">Gentoo
-Forums</uri> is preferred over <uri>http://forums.gentoo.org</uri>.
+possible. In other words, the <uri link="https://forums.gentoo.org">Gentoo
+Forums</uri> is preferred over <uri>https://forums.gentoo.org</uri>.
 </p>
 
 </body>
