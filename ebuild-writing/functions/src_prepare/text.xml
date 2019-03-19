@@ -53,6 +53,10 @@ src_prepare() {
     eapply_user
 }
 </codesample>
+<note>
+With EAPI=6, you must call <c>eapply_user</c> or <c>default</c> if you define
+<c>src_prepare</c>!
+</note>
 </body>
 </section>
 
