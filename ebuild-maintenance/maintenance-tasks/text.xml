@@ -55,8 +55,7 @@ set of default settings that will satisfy the majority of systems and
 users that will use your package.  If your package is broken, and you are
 not sure how to get it to work, check some other distributions that have
 done their own versions of the package.  You can check
-<uri link="http://cvs.mandriva.com/cgi-bin/viewvc.cgi/SPECS/">Mandriva</uri>
-or <uri link="https://www.debian.org/distrib/packages">Debian</uri> or
+<uri link="https://www.debian.org/distrib/packages">Debian</uri> or
 <uri link="https://pkgs.fedoraproject.org/cgit/rpms/">Fedora</uri> for some
 examples.
 </p>

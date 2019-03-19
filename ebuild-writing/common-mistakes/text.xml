@@ -207,7 +207,7 @@ dev-python/pyopenal fetches a tarball called PyOpenAL, so we redefine it like:
 
 <pre caption="Example versioning redefinition">
 MY_P=${P/pyopenal/PyOpenAL}
-SRC_URI="http://oomadness.tuxfamily.org/downloads/${MY_P}.tar.gz"
+SRC_URI="http://download.gna.org/pyopenal/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 </pre>
 
