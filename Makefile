@@ -5,8 +5,8 @@ image_files := $(shell find -name "*.svg" | sed -e "s/svg$$/png/")
 all: prereq $(text_files) $(image_files)
 
 prereq:
-	@type -p convert &>/dev/null || { echo "media-gfx/imagemagick with corefonts, svg and truetype required" >&2; exit 1; }; \
-		type -p xsltproc &>/dev/null || { echo "dev-libs/libxslt is required" >&2; exit 1; }
+	@type convert >/dev/null 2>&1 || { echo "media-gfx/imagemagick with corefonts, svg and truetype required" >&2; exit 1; }; \
+		type xsltproc >/dev/null 2>&1 || { echo "dev-libs/libxslt is required" >&2; exit 1; }
 
 %.png : %.svg
 	convert $< $@
