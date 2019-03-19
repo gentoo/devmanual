@@ -77,6 +77,15 @@ Misc
 <author name="Markos Chandras" email="hwoarang@gentoo.org">
   Misc
 </author>
+<author name="Xavier Neys" email="neysx@gentoo.org">
+  <uri link="::appendices/contributing/devbook-guide/">GuideXML guide</uri>
+</author>
+<author name="Daniel Robbins" email="drobbins@gentoo.org">
+  <uri link="::appendices/contributing/devbook-guide/">GuideXML guide</uri>
+</author>
+<author name="John P. Davis" email="zhen@gentoo.org">
+  <uri link="::appendices/contributing/devbook-guide/">GuideXML guide</uri>
+</author>
 
 </authors>
 
