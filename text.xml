@@ -46,7 +46,7 @@ section lists specific contributions to this manual.
 <include href="keywording/"/>
 <include href="tasks-reference/"/>
 <include href="function-reference/"/>
-<!-- <include href="eclass-reference/"/> -->
+<include href="eclass-reference/"/>
 <include href="tools-reference/"/>
 <include href="hosted-projects/"/>
 <include href="archs/"/>
