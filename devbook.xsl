@@ -205,6 +205,14 @@
     <ul><xsl:apply-templates/></ul>
   </xsl:template>
 
+  <xsl:template match="list-group-d">
+    <div class="list-group"><xsl:apply-templates><xsl:with-param name="class">list-group-item</xsl:with-param></xsl:apply-templates></div>
+  </xsl:template>
+
+  <xsl:template match="list-group-u">
+    <ul class="list-group"><xsl:apply-templates><xsl:with-param name="class">list-group-item</xsl:with-param></xsl:apply-templates></ul>
+  </xsl:template>
+
   <!-- Definition Lists -->
   <xsl:template match="dl">
     <dl><xsl:apply-templates/></dl>
@@ -279,6 +287,7 @@
   </xsl:template>
 
   <xsl:template match="uri">
+    <xsl:param name="class" />
     <xsl:choose>
       <xsl:when test="starts-with(@link, '::')">
       <!-- Ideally we would work out how many levels to nest down to save a few bytes but
@@ -292,7 +301,7 @@
 	</xsl:variable>
         <xsl:choose>
           <xsl:when test="contains(@link, '##')">
-            <a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'), '/index.html#', substring-after(@link, '##'))}"><xsl:value-of select="."/></a>
+            <a class="{$class}" href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'), '/index.html#', substring-after(@link, '##'))}"><xsl:value-of select="."/></a>
           </xsl:when>
           <xsl:when test="contains(@link, '#')">
             <xsl:variable name="anchor">
@@ -305,10 +314,10 @@
             </xsl:variable>
             <xsl:choose>
               <xsl:when test=". != ''">
-                <a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '#'), '::'), $slash, 'index.html#', $anchor)}"><xsl:value-of select="."/></a>
+                <a class="{$class}" href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '#'), '::'), $slash, 'index.html#', $anchor)}"><xsl:value-of select="."/></a>
               </xsl:when>
               <xsl:otherwise>
-                <a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '#'), '::'), $slash, 'index.html#', $anchor)}"><xsl:value-of select="substring-after(@link, '#')"/></a>
+                <a class="{$class}" href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '#'), '::'), $slash, 'index.html#', $anchor)}"><xsl:value-of select="substring-after(@link, '#')"/></a>
               </xsl:otherwise>
             </xsl:choose>
           </xsl:when>
@@ -318,17 +327,17 @@
             </xsl:variable>
             <xsl:choose>
               <xsl:when test=". != ''">
-                <a href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), $slash, 'index.html')}"><xsl:value-of select="."/></a>
+                <a class="{$class}" href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), $slash, 'index.html')}"><xsl:value-of select="."/></a>
               </xsl:when>
               <xsl:otherwise>
-                <a href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), $slash, 'index.html')}"><xsl:value-of select="document(concat(/guide/@self, $relative_path_depth_recursion, substring-after(@link, '::'), '/text.xml'))/guide/chapter[1]/title"/></a>
+                <a class="{$class}" href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), $slash, 'index.html')}"><xsl:value-of select="document(concat(/guide/@self, $relative_path_depth_recursion, substring-after(@link, '::'), '/text.xml'))/guide/chapter[1]/title"/></a>
               </xsl:otherwise>
             </xsl:choose>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
       <xsl:otherwise>
-        <a href="{@link}"><xsl:value-of select="."/></a>
+        <a class="{$class}" href="{@link}"><xsl:value-of select="."/></a>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>

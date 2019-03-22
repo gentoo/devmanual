@@ -119,16 +119,16 @@ installed by emerging <code class="docutils literal"><span class="pre">app-porta
 <section>
 <title>Contents</title>
 <body>
-<ul>
+<list-group-d>
 EOF
 
 for i in $(find $OUTPUTDIR/ -maxdepth 1 -mindepth 1 -type d | sort); do
-	echo "<li><uri link=\"::eclass-reference/$(basename $i)/index.html\">$(basename $i) Reference</uri></li>" >> ${OUTPUTDIR}/text.xml
+	echo "<uri link=\"$(basename $i)/index.html\">$(basename $i) Reference</uri>" >> ${OUTPUTDIR}/text.xml
 done
 
 cat << EOF >> ${OUTPUTDIR}/text.xml
 
-</ul></body>
+</list-group-d></body>
 </section>
 </chapter>
 </guide>
