@@ -47,7 +47,7 @@ for i in $(/usr/bin/qlist eclass-manpages) /usr/share/man/man5/ebuild.5.bz2; do
 <!DOCTYPE html><html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Gentoo Development Guide: $BASENAME</title>
+	<title>$BASENAME - Gentoo Development Guide</title>
 	<link rel="stylesheet" href="../../devmanual.css" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="The Gentoo Devmanual is a technical manual which covers topics such as writing ebuilds and eclasses, and policies that developers should be abiding by.">
