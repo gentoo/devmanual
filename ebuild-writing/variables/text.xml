@@ -241,6 +241,13 @@ The following variables may or must be defined by every ebuild.
     </ti>
   </tr>
   <tr>
+    <ti><c>PROPERTIES</c></ti>
+    <ti>
+    A space-delimited list of properties, with conditional syntax support.
+    <c>interactive</c> is the only valid value for now.
+    </ti>
+  </tr>
+  <tr>
     <ti><c>RESTRICT</c></ti>
     <ti>
     A space-delimited list of portage features to restrict.
@@ -285,14 +292,6 @@ The following variables may or must be defined by every ebuild.
     <c>src_compile</c> and <c>src_install</c>. Default:
     <c>"${WORKDIR}/${P}"</c>. Ebuilds should <b>not</b> provide a
     value for this variable if it is the same as the default value.
-    </ti>
-  </tr>
-  <tr>
-    <ti><c>PROPERTIES</c></ti>
-    <ti>
-    A space-delimited list of properties, with conditional
-    syntax support. <c>interactive</c> is the only valid value
-    for now.
     </ti>
   </tr>
   <tr>
