@@ -536,7 +536,45 @@
             </div>
           </div>
         </nav>
+        <nav class="navbar navbar-grey navbar-stick" id="devmanual-actions" role="navigation">
+          <div class="container">
+            <div class="row">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gw-toolbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="collapse navbar-collapse" id="gw-toolbar">
+              <div class="input-group">
+                <input type="search" name="search" placeholder="Search" title="Search Gentoo Developer Manual [f]" accesskey="f" id="searchInput" class="form-control"/>
+                <div class="input-group-btn">
+                  <input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton btn btn-default" onclick="search()"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
       </header>
+      <div id="searchResults" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">x</button>
+              <h4 class="modal-title">Search Results</h4>
+            </div>
+            <div class="modal-body">
+              <p>No results found.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="container">
         <div class="row">
           <div class="col-md010">
@@ -583,6 +621,16 @@
       </footer>
       <script src="https://assets.gentoo.org/tyrian/jquery.min.js"></script>
       <script src="https://assets.gentoo.org/tyrian/bootstrap.min.js"></script>
+      <script src="https://unpkg.com/lunr/lunr.js"></script>
+      <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
+      <xsl:variable name="relative_path_depth_recursion">
+          <xsl:call-template name="str:repeatString">
+            <xsl:with-param name="count" select="$relative_path_depth"/>
+            <xsl:with-param name="append">../</xsl:with-param>
+          </xsl:call-template>
+      </xsl:variable>
+      <script src="{$relative_path_depth_recursion}documents.js"></script>
+      <script src="{$relative_path_depth_recursion}search.js"></script>
     </body>
     </html>
   </xsl:template>
