@@ -19,6 +19,10 @@ prereq:
 	{ echo "dev-libs/libxml2 is required" >&2;\
 	  exit 1; }
 
+index:
+	@echo -n "var documents = " > documents.js
+	@./search_index.py text.xml >> documents.js
+
 %.png : %.svg
 	convert $< $@
 
@@ -42,6 +46,6 @@ validate: prereq
 	  && echo "xmllint validation successful"
 
 clean:
-	rm -f $(HTMLS) $(IMAGES)
+	rm -f $(HTMLS) $(IMAGES) documents.js
 
 .PHONY: all prereq validate clean
