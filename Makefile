@@ -8,12 +8,17 @@ prereq:
 	@type convert >/dev/null 2>&1 || { echo "media-gfx/imagemagick with corefonts, svg and truetype required" >&2; exit 1; }; \
 		type xsltproc >/dev/null 2>&1 || { echo "dev-libs/libxslt is required" >&2; exit 1; }
 
+index:
+	@echo -n "var documents = " > documents.js
+	@./search_index.py text.xml >> documents.js
+
 %.png : %.svg
 	convert $< $@
 
 clean:
 	@find . -name "*.png" -a \! -path "./icons/*" -exec rm -v {} +
 	@find . -name "index.html" -exec rm -v {} +
+	@rm documents.js
 
 # Given a directory with text.xml in it, return its immediate children as prerequisites
 # Hypothetical example:
