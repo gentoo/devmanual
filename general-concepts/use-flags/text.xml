@@ -27,6 +27,23 @@ dependency is not detected by the package manager tools and can easily
 break, among other issues.
 </p>
 
+<note>
+The status of USE flags is saved in the VDB, and their value in
+<c>pkg_prerm</c> and <c>pkg_postrm</c> is taken from there. This means that
+setting or unsetting a USE flag between merge and unmerge has no effect.
+</note>
+</body>
+
+<section>
+<title>When not to use USE flags?</title>
+<body>
+<p>
+While <c>USE</c> flags are generally considered beneficial to users, there
+are valid use cases for avoiding them. When writing ebuilds, consider whether
+to add flags for particular conditional features, or explore one
+of the alternative solutions described below.
+</p>
+
 <p>
 The usage of a <c>USE</c> flag should not control runtime dependencies when
 the package does not link to it. Doing so will create extra
@@ -35,12 +52,26 @@ change on disk. This should be avoided and instead can be conveyed to the
 user via post install messages if needed.
 </p>
 
-<note>
-The status of USE flags is saved in the VDB, and their value in
-<c>pkg_prerm</c> and <c>pkg_postrm</c> is taken from there. This means that
-setting or unsetting a USE flag between merge and unmerge has no effect.
-</note>
+<p>
+<c>USE</c> flags must not be used to control installing files that are small,
+non-intrusive, do not introduce additional build-time dependencies or cause
+a significant increase in build time. Examples of such files are bash completion
+files, init.d scripts, logrotate configuration files, systemd service files.
+The rationale is the same as above. Instead, those files must be installed
+unconditionally.
+</p>
+
+<p>
+A similar case can be made for packages having multiple conditional programs
+or modules. Whenever this results in a large number of <c>USE</c> flags that
+would force the user to spend a lot of time choosing compatible flags
+and possibly rebuilding after incomplete choices, consider reducing the use
+of flags to those programs or modules that have external dependencies
+and/or long build times. The rest of them should be built unconditionally
+instead, or controlled by a flag such as <c>minimal</c>.
+</p>
 </body>
+</section>
 
 <section>
 <title><c>noblah</c> USE Flags</title>
