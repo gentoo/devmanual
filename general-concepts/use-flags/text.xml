@@ -70,6 +70,42 @@ of flags to those programs or modules that have external dependencies
 and/or long build times. The rest of them should be built unconditionally
 instead, or controlled by a flag such as <c>minimal</c>.
 </p>
+
+<p>
+You should not introduce USE flags that merely manipulate <c>CFLAGS</c>,
+<c>FEATURES</c> or similar variables configured directly by the user. Instead,
+packages should avoid manipulating them at all, and let users set them directly.
+Common mistakes include:
+</p>
+
+<ol>
+	<li>
+	Using <c>debug</c> USE flag to force <c>-O0 -g</c> and disable
+	stripping. The correct purpose of <c>debug</c> flag is to control additional
+	debug code paths. The use of correct flags and features to preserve
+	debugging information is user's responsibility.
+	</li>
+
+	<li>
+	Introducing <c>lto</c> flag to force <c>-flto</c>. This is something user
+	should set directly in flag varibles.
+	</li>
+
+	<li>
+	Using <c>CPU_FLAGS_*</c> to control <c>-m*</c> options. Those flags are
+	intended to control code paths explicitly requiring specific CPU extensions,
+	e.g. separate assembly. Compiler-generated assembly should respect user's
+	<c>-march</c> choice.
+	</li>
+</ol>
+
+<p>
+There might be corner cases where these rules do not apply. For example, a few
+upstreams require users to use specific <c>CFLAGS</c> and reject bug reports
+against builds using other values. In this case, it is customary to strip flags
+by default and provide <c>custom-cflags</c> flag to allow users to force their
+preferred flags.
+</p>
 </body>
 </section>
 
