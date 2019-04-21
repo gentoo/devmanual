@@ -5,40 +5,40 @@
 
 <body>
 <p>
-	<c>USE</c> flags are to control optional dependencies and settings which
-	the user may reasonably want to select. For example, <c>app-editors/vim</c>
-	can optionally build with support for the <c>ruby</c> interpreter, and it
-	needs <c>dev-lang/ruby</c> installed to do this <d/> we use the ruby
-	<c>USE</c> flag to provide this option. On the other hand,
-	<c>app-text/glark</c> requires <c>ruby</c> no matter what, so no <c>USE</c>
-	flag is used there.
+<c>USE</c> flags are to control optional dependencies and settings which
+the user may reasonably want to select. For example, <c>app-editors/vim</c>
+can optionally build with support for the <c>ruby</c> interpreter, and it
+needs <c>dev-lang/ruby</c> installed to do this <d/> we use the ruby
+<c>USE</c> flag to provide this option. On the other hand,
+<c>app-text/glark</c> requires <c>ruby</c> no matter what, so no <c>USE</c>
+flag is used there.
 </p>
 
 <p>
-	No combination of <c>USE</c> flags should cause a package to fail to build
-	because users can set any combination of flags.
+No combination of <c>USE</c> flags should cause a package to fail to build
+because users can set any combination of flags.
 </p>
 
 <p>
-	Packages should not configure and link based upon what is available at
-	compile time <d/> any autodetection must be overridden. This is commonly
-	referred to as the dependency being "automagic" - This is bad because the
-	dependency is not detected by the package manager tools and can easily
-	break, among other issues.
+Packages should not configure and link based upon what is available at
+compile time <d/> any autodetection must be overridden. This is commonly
+referred to as the dependency being "automagic" - This is bad because the
+dependency is not detected by the package manager tools and can easily
+break, among other issues.
 </p>
 
 <p>
-	The usage of a <c>USE</c> flag should not control runtime dependencies when
-	the package does not link to it. Doing so will create extra
-	configuration for the package and re-compilation for no underlying file
-	change on disk. This should be avoided and instead can be conveyed to the
-	user via post install messages if needed.
+The usage of a <c>USE</c> flag should not control runtime dependencies when
+the package does not link to it. Doing so will create extra
+configuration for the package and re-compilation for no underlying file
+change on disk. This should be avoided and instead can be conveyed to the
+user via post install messages if needed.
 </p>
 
 <note>
-	The status of USE flags is saved in the VDB, and their value in
-	<c>pkg_prerm</c> and <c>pkg_postrm</c> is taken from there. This means that
-	setting or unsetting a USE flag between merge and unmerge has no effect.
+The status of USE flags is saved in the VDB, and their value in
+<c>pkg_prerm</c> and <c>pkg_postrm</c> is taken from there. This means that
+setting or unsetting a USE flag between merge and unmerge has no effect.
 </note>
 </body>
 
@@ -46,20 +46,20 @@
 <title><c>noblah</c> USE Flags</title>
 <body>
 <p>
-	Avoid <c>noblah</c> style <c>USE</c> flags. These break <c>use.mask</c> and
-	cause all sorts of complications for arch developers. Here's why:
+Avoid <c>noblah</c> style <c>USE</c> flags. These break <c>use.mask</c> and
+cause all sorts of complications for arch developers. Here's why:
 </p>
 
 <p>
-	Consider a hypothetical package named 'vplayer', which plays videos. This
-	package has optional support, via <c>USE</c> flags, for various sound and
-	video output methods, various video codecs and so on.
+Consider a hypothetical package named 'vplayer', which plays videos. This
+package has optional support, via <c>USE</c> flags, for various sound and
+video output methods, various video codecs and so on.
 </p>
 
 <p>
-	One of vplayer's optional features is support for the 'fakemedia' codec,
-	which is unfortunately only available as a dodgy x86 binary. We <e>could</e>
-	handle this by doing something like:
+One of vplayer's optional features is support for the 'fakemedia' codec,
+which is unfortunately only available as a dodgy x86 binary. We <e>could</e>
+handle this by doing something like:
 </p>
 
 <codesample lang="ebuild">
@@ -67,15 +67,15 @@ RDEPEND="x86? ( fakemedia? ( >=media-libs/fakemedia-1.1 ) )"
 </codesample>
 
 <p>
-	Except this is pretty nasty <d/> what happens when an AMD64 binary is made
-	as well? Also, users on other archs will see fakemedia listed in
-	<c>emerge -pv</c> output, even though it is not actually available.
+Except this is pretty nasty <d/> what happens when an AMD64 binary is made
+as well? Also, users on other archs will see fakemedia listed in
+<c>emerge -pv</c> output, even though it is not actually available.
 </p>
 
 <p>
-	Similarly, say vplayer supports output via the ALSA codec as one option.
-	However, ALSA isn't (or wasn't when this example was written) available on
-	SPARC or Alpha. So we could do:
+Similarly, say vplayer supports output via the ALSA codec as one option.
+However, ALSA isn't (or wasn't when this example was written) available on
+SPARC or Alpha. So we could do:
 </p>
 
 <codesample lang="ebuild">
@@ -83,18 +83,18 @@ DEPEND="!sparc? ( !alpha? ( alsa? ( media-libs/alsa-lib ) ) )"
 </codesample>
 
 <p>
-	Again, it's messy, and ALSA still shows up in the <c>emerge -p</c> output.
-	Also, once ALSA starts working on SPARC, every ebuild that does this would
-	have to be manually edited.
+Again, it's messy, and ALSA still shows up in the <c>emerge -p</c> output.
+Also, once ALSA starts working on SPARC, every ebuild that does this would
+have to be manually edited.
 </p>
 
 <p>
-	The solution is <c>use.mask</c>, which is documented in
-	<uri link="::profiles/use.mask/"/>. Each profile can have a <c>use.mask</c>
-	file which can be used to forcibly disable certain USE flags on a given
-	arch (or subarch, or subprofile). So, if the <c>fakemedia</c> USE flag was
-	use.masked on every non-x86 profile, the following would be totally legal
-	and wouldn't break anything:
+The solution is <c>use.mask</c>, which is documented in
+<uri link="::profiles/use.mask/"/>. Each profile can have a <c>use.mask</c>
+file which can be used to forcibly disable certain USE flags on a given
+arch (or subarch, or subprofile). So, if the <c>fakemedia</c> USE flag was
+use.masked on every non-x86 profile, the following would be totally legal
+and wouldn't break anything:
 </p>
 
 <codesample lang="ebuild">
@@ -102,16 +102,16 @@ RDEPEND="fakemedia? ( >=media-libs/fakemedia-1-1 )"
 </codesample>
 
 <p>
-	Users of non-x86 would see the following when doing
-	<c>emerge -pv vplayer</c>:
+Users of non-x86 would see the following when doing
+<c>emerge -pv vplayer</c>:
 </p>
 
 <pre>
-	[ebuild   R   ] media-video/vplayer-1.2 alsa -blah (-fakemedia) xyz
+[ebuild   R   ] media-video/vplayer-1.2 alsa -blah (-fakemedia) xyz
 </pre>
 
 <p>
-	To get a flag added to <c>use.mask</c>, ask the relevant arch team.
+To get a flag added to <c>use.mask</c>, ask the relevant arch team.
 </p>
 
 </body>
@@ -122,28 +122,28 @@ RDEPEND="fakemedia? ( >=media-libs/fakemedia-1-1 )"
 <body>
 
 <p>
-	USE flags are categorised as either local or global. A global USE flag must
-	satisfy several criteria:
+USE flags are categorised as either local or global. A global USE flag must
+satisfy several criteria:
 </p>
 
 <ul>
 	<li>It is used by many different packages, at least 5 seems to be agreed
 		upon.</li>
-  <li>It has a general non-specific purpose.</li>
+	<li>It has a general non-specific purpose.</li>
 </ul>
 
 <p>
-	The second point is important. If the effect of the USE flag upon
-	<c>pkg-one</c> is substantially different from the effect it has upon
-	<c>pkg-two</c>, then the flag is not a suitable candidate for being made a
-	global flag. In particular, note that if <c>client</c> and <c>server</c>
-	USE flags are ever introduced, they can not be global USE flags for this
-	reason.
+The second point is important. If the effect of the USE flag upon
+<c>pkg-one</c> is substantially different from the effect it has upon
+<c>pkg-two</c>, then the flag is not a suitable candidate for being made a
+global flag. In particular, note that if <c>client</c> and <c>server</c>
+USE flags are ever introduced, they can not be global USE flags for this
+reason.
 </p>
 
 <p>
-	Before introducing a new global USE flag, it must be discussed on the
-	gentoo-dev mailing list.
+Before introducing a new global USE flag, it must be discussed on the
+gentoo-dev mailing list.
 </p>
 
 </body>
@@ -153,23 +153,23 @@ RDEPEND="fakemedia? ( >=media-libs/fakemedia-1-1 )"
 <title>USE Flag Descriptions</title>
 <body>
 <p>
-	All USE flags must be described in either <c>use.desc</c> in the
-	<c>profiles/</c> directory or <c>metadata.xml</c> in the package's
-	directory. See <c>man portage</c> or the comments in these files for an
-	explanation of the format. Remember to keep these files sorted. The file
-	<c>use.local.desc</c> is automatically generated from entries in the
-	package's <c>metadata.xml</c> and may be used by tools that parse the tree.
-	Since <c>use.local.desc</c> is automatically generated it must never be
-	manually editted in the tree.
-	See <uri link="https://www.gentoo.org/glep/glep-0056.html">GLEP 56</uri>
-	for more info.
+All USE flags must be described in either <c>use.desc</c> in the
+<c>profiles/</c> directory or <c>metadata.xml</c> in the package's
+directory. See <c>man portage</c> or the comments in these files for an
+explanation of the format. Remember to keep these files sorted. The file
+<c>use.local.desc</c> is automatically generated from entries in the
+package's <c>metadata.xml</c> and may be used by tools that parse the tree.
+Since <c>use.local.desc</c> is automatically generated it must never be
+manually editted in the tree.
+See <uri link="https://www.gentoo.org/glep/glep-0056.html">GLEP 56</uri>
+for more info.
 </p>
 <p>
-	The exceptions to this are <c>USE_EXPAND</c> flags, which must be
-	documented in the <c>profiles/desc/</c> directory. One file per
-	<c>USE_EXPAND</c> variable is required, which must contain descriptions of
-	the possible values this variable can take. See the comments in these files
-	for the format, and remember to keep them sorted.
+The exceptions to this are <c>USE_EXPAND</c> flags, which must be
+documented in the <c>profiles/desc/</c> directory. One file per
+<c>USE_EXPAND</c> variable is required, which must contain descriptions of
+the possible values this variable can take. See the comments in these files
+for the format, and remember to keep them sorted.
 </p>
 </body>
 </section>
@@ -178,16 +178,16 @@ RDEPEND="fakemedia? ( >=media-libs/fakemedia-1-1 )"
 <title>Conflicting USE Flags</title>
 <body>
 <p>
-	Occasionally, ebuilds will have conflicting USE flags for functionality.
-	Checking for them and returning an error is <e>not</e> a viable solution.
-	Instead, you must pick one of the USE flags in conflict to favour and should
-	alert the user that a particular flag is being used instead.
+Occasionally, ebuilds will have conflicting USE flags for functionality.
+Checking for them and returning an error is <e>not</e> a viable solution.
+Instead, you must pick one of the USE flags in conflict to favour and should
+alert the user that a particular flag is being used instead.
 </p>
 
 <p>
-	One example comes from the <c>mail-mta/msmtp</c> ebuilds. The package can
-	use either SSL with GnuTLS, SSL with OpenSSL, or no SSL at all. Because
-	GnuTLS is more featureful than OpenSSL, it is favoured:
+One example comes from the <c>mail-mta/msmtp</c> ebuilds. The package can
+use either SSL with GnuTLS, SSL with OpenSSL, or no SSL at all. Because
+GnuTLS is more featureful than OpenSSL, it is favoured:
 </p>
 
 <codesample lang="ebuild">
@@ -211,26 +211,26 @@ src_compile() {
 </codesample>
 
 <p>
-	In some exceptional cases, above policy would break reverse USE
-	dependencies. To avoid this, the ebuild can specify allowed USE flag
-	combinations with <c>REQUIRED_USE</c> (available in EAPI 4). See section
-	<uri link="::ebuild-writing/eapi/#eapi=4" /> for a description
-	of its syntax.
+In some exceptional cases, above policy would break reverse USE
+dependencies. To avoid this, the ebuild can specify allowed USE flag
+combinations with <c>REQUIRED_USE</c> (available in EAPI 4). See section
+<uri link="::ebuild-writing/eapi/#eapi=4" /> for a description
+of its syntax.
 </p>
 
 <p>
-	For example, if a package <c>dev-libs/foo</c> can be built with either
-	<c>USE="a"</c> or <c>USE="b"</c> but not with both, then preferring one of
-	the flags would break packages that depend on either <c>dev-libs/foo[a]</c>
-	or <c>dev-libs/foo[b]</c>. Therefore, the ebuild should specify
-	<c>REQUIRED_USE="a? ( !b )"</c> in this case.
+For example, if a package <c>dev-libs/foo</c> can be built with either
+<c>USE="a"</c> or <c>USE="b"</c> but not with both, then preferring one of
+the flags would break packages that depend on either <c>dev-libs/foo[a]</c>
+or <c>dev-libs/foo[b]</c>. Therefore, the ebuild should specify
+<c>REQUIRED_USE="a? ( !b )"</c> in this case.
 </p>
 
 <note>
-	In order to avoid forcing users to micro-manage flags too much,
-	<c>REQUIRED_USE</c> should be used sparingly. Follow the normal policy
-	whenever it is possible to do a build that will presumably suit the user's
-	needs.
+In order to avoid forcing users to micro-manage flags too much,
+<c>REQUIRED_USE</c> should be used sparingly. Follow the normal policy
+whenever it is possible to do a build that will presumably suit the user's
+needs.
 </note>
 </body>
 </section>
@@ -240,32 +240,32 @@ src_compile() {
 <body>
 
 <p>
-	The <c>VIDEO_CARDS</c>, <c>INPUT_DEVICES</c> and <c>L10N</c> variables
-	are automatically expanded into USE flags. These are known as
-	<c>USE_EXPAND</c> variables. If the user has <c>L10N="en fr"</c> in
-	<c>make.conf</c>, for example, then <c>USE="l10n_en l10n_fr"</c> will
-	automatically be set by Portage.
+The <c>VIDEO_CARDS</c>, <c>INPUT_DEVICES</c> and <c>L10N</c> variables
+are automatically expanded into USE flags. These are known as
+<c>USE_EXPAND</c> variables. If the user has <c>L10N="en fr"</c> in
+<c>make.conf</c>, for example, then <c>USE="l10n_en l10n_fr"</c> will
+automatically be set by Portage.
 </p>
 
 <p>
-	The <c>USE_EXPAND</c> list is set in <c>profiles/base/make.defaults</c> as of
-	Portage 2.0.51.20. This must not be modified without discussion on the
-	gentoo-dev list, and it must not be modified in any subprofile.
+The <c>USE_EXPAND</c> list is set in <c>profiles/base/make.defaults</c> as of
+Portage 2.0.51.20. This must not be modified without discussion on the
+gentoo-dev list, and it must not be modified in any subprofile.
 </p>
 
 <p>
-	The current architecture (e.g. <c>x86</c>, <c>sparc</c>, <c>ppc-macos</c>)
-	will automatically be set as a USE flag as well. See
-	<c>profiles/arch.list</c> for a full list of valid architecture keywords,
-	and <uri link="https://www.gentoo.org/glep/glep-0022.html">GLEP 22</uri>
-	for an explanation of the format.
+The current architecture (e.g. <c>x86</c>, <c>sparc</c>, <c>ppc-macos</c>)
+will automatically be set as a USE flag as well. See
+<c>profiles/arch.list</c> for a full list of valid architecture keywords,
+and <uri link="https://www.gentoo.org/glep/glep-0022.html">GLEP 22</uri>
+for an explanation of the format.
 </p>
 
 <warning>
-	It is a common misconception that the architecture variable is somehow
-	related to <c>ACCEPT_KEYWORDS</c>. It isn't. Accepting <c>x86</c> keywords
-	on <c>sparc</c>, for example, won't set <c>USE="x86"</c>. Similarly, there
-	are no <c>~arch</c> USE flags, so don't try <c>if use ~x86</c>.
+It is a common misconception that the architecture variable is somehow
+related to <c>ACCEPT_KEYWORDS</c>. It isn't. Accepting <c>x86</c> keywords
+on <c>sparc</c>, for example, won't set <c>USE="x86"</c>. Similarly, there
+are no <c>~arch</c> USE flags, so don't try <c>if use ~x86</c>.
 </warning>
 
 </body>
