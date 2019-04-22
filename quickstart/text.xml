@@ -398,15 +398,18 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable nls) \
-		$(use_enable ssl) \
-		$(use_enable crypt gpgme) \
-		$(use_enable pda jpilot) \
-		$(use_enable ldap) \
-		$(use_enable ipv6) \
-		$(use_enable imlib) \
+	local myconf=(
+		$(use_enable nls)
+		$(use_enable ssl)
+		$(use_enable crypt gpgme)
+		$(use_enable pda jpilot)
+		$(use_enable ldap)
+		$(use_enable ipv6)
+		$(use_enable imlib)
 		$(use_enable xface compface)
+	)
+
+	econf "${myconf[@]}"
 }
 
 src_install() {
