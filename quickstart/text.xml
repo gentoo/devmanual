@@ -43,7 +43,7 @@ DESCRIPTION="Exuberant ctags generates tags files for quick source navigation"
 HOMEPAGE="http://ctags.sourceforge.net"
 SRC_URI="mirror://sourceforge/ctags/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~mips ~sparc ~x86"
 
@@ -111,7 +111,8 @@ name and version <d/> in this case, it would be <c>ctags-5.5.4</c>.
 </p>
 
 <p>
-The <c>LICENSE</c> is <c>GPL-2</c> (the GNU General Public License version 2).
+The <c>LICENSE</c> is <c>GPL-2+</c> (the GNU General Public License version 2
+or (at your option) any later version).
 </p>
 
 <p>
@@ -333,7 +334,7 @@ DESCRIPTION="GNU charset conversion library for libc which doesn't implement it"
 HOMEPAGE="https://www.gnu.org/software/libiconv/"
 SRC_URI="ftp://ftp.gnu.org/pub/gnu/libiconv/${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2+ GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="nls"
@@ -378,7 +379,7 @@ DESCRIPTION="A lightweight email client and newsreader"
 HOMEPAGE="https://sylpheed.good-day.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="crypt imlib ipv6 ldap nls pda ssl xface"
