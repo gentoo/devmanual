@@ -225,11 +225,6 @@ DEPEND="${RDEPEND}
 src_configure() {
 	econf --with-popt
 }
-
-src_install() {
-	emake DESTDIR="${D}" install
-	dodoc README CHANGES
-}
 </codesample>
 
 <p>
@@ -241,7 +236,9 @@ variables <d/> see
 </p>
 
 <p>
-Again, we define <c>src_configure</c> and <c>src_install</c> functions.
+We define <c>src_configure</c> only.  <c>src_install</c> does not need to
+be defined since the default implementation calling <c>emake install</c>
+and installing common documentation files works correctly for the package.
 </p>
 
 <p>
@@ -291,11 +288,6 @@ src_prepare() {
 src_configure() {
 	econf --with-popt
 }
-
-src_install() {
-	emake DESTDIR="${D}" install
-	dodoc README CHANGES
-}
 </codesample>
 
 <p>
@@ -338,10 +330,6 @@ DEPEND="!sys-libs/glibc"
 
 src_configure() {
 	econf $(use_enable nls)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install
 }
 </codesample>
 
