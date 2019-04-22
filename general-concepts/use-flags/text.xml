@@ -27,6 +27,16 @@ dependency is not detected by the package manager tools and can easily
 break, among other issues.
 </p>
 
+<p>
+Automagic dependencies are preferably fixed by preparing a build system patch
+adding appropriate options to control the dependency in question, and submitting
+this patch upstream for the benefit of all users. To avoid carrying additional
+patches downstream, automagic dependencies can usually be worked around using
+special build system options (e.g. cache variables in autotools) or through
+depending on the relevant packages unconditionally (i.e. forcing the check
+to always succeed).
+</p>
+
 <note>
 The status of USE flags is saved in the VDB, and their value in
 <c>pkg_prerm</c> and <c>pkg_postrm</c> is taken from there. This means that
