@@ -260,20 +260,15 @@ compile-time dependencies, and the <c>RDEPEND</c> lists runtime dependencies. Se
 <body>
 <p>
 Often we need to apply patches. This is done in the <c>src_prepare</c>
-function using the <c>epatch</c> helper function. To use <c>epatch</c>
-one must first tell Portage that the <c>epatch</c> eclass (an eclass is
-like a library) is required <d/>
-this is done via <c>inherit epatch</c> at the top of the ebuild. Here's
-<c>app-misc/detox/detox-1.1.0.ebuild</c>:
+function using the <c>eapply</c> helper function. To use <c>eapply</c>
+one must use EAPI 7. Here's <c>app-misc/detox/detox-1.1.0.ebuild</c>:
 </p>
 
 <codesample lang="ebuild">
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit epatch
+EAPI=7
 
 DESCRIPTION="detox safely removes spaces and strange characters from filenames"
 HOMEPAGE="http://detox.sourceforge.net/"
@@ -289,7 +284,7 @@ DEPEND="${RDEPEND}
 	sys-devel/bison"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-destdir.patch \
+	eapply "${FILESDIR}"/${P}-destdir.patch \
 		"${FILESDIR}"/${P}-parallel_build.patch
 }
 
@@ -371,9 +366,9 @@ Another more complicated example, this time based upon
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit epatch desktop
+inherit desktop
 
 DESCRIPTION="A lightweight email client and newsreader"
 HOMEPAGE="https://sylpheed.good-day.net/"
@@ -398,7 +393,7 @@ DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.12.1 )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-namespace.diff \
+	eapply "${FILESDIR}"/${PN}-namespace.diff \
 		"${FILESDIR}"/${PN}-procmime.diff
 }
 
