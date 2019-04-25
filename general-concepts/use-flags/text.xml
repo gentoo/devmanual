@@ -38,8 +38,8 @@ to always succeed).
 </p>
 
 <note>
-The status of USE flags is saved in the VDB, and their value in
-<c>pkg_prerm</c> and <c>pkg_postrm</c> is taken from there. This means that
+The states of USE flags are saved in the VDB, and their values in
+<c>pkg_prerm</c> and <c>pkg_postrm</c> are taken from there. This means that
 setting or unsetting a USE flag between merge and unmerge has no effect.
 </note>
 </body>
