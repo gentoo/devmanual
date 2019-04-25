@@ -22,7 +22,6 @@ are also documented in <c>man portage</c>.
 <include href="info_files/"/>
 <include href="package.mask/"/>
 <include href="packages/"/>
-<include href="profiles.desc/"/>
 <include href="updates/"/>
 <include href="use.desc/"/>
 <include href="use.mask/"/>

@@ -24,7 +24,6 @@ writing ebuilds or working with the Gentoo repository.
 <include href="git-to-rsync/"/>
 <include href="dependencies/"/>
 <include href="manifest/"/>
-<include href="distributed-building/"/>
 <include href="ebuild-revisions/"/>
 <include href="emerge-and-ebuild/"/>
 <include href="features/"/>
@@ -32,13 +31,11 @@ writing ebuilds or working with the Gentoo repository.
 <include href="herds-and-projects/"/>
 <include href="install-destinations/"/>
 <include href="licenses/"/>
-<include href="linguas/"/>
 <include href="mirrors/"/>
 <include href="news/"/>
 <include href="overlay/"/>
 <include href="pic/"/>
 <include href="portage-cache/"/>
-<include href="privileges/"/>
 <include href="sandbox/"/>
 <include href="slotting/"/>
 <include href="tree/"/>

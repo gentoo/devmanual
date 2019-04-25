@@ -95,8 +95,6 @@ The following subsections cover different topics which often occur when writing
 
 <include href="cvs-sources/"/>
 <include href="svn-sources/"/>
-<include href="tla-sources/"/>
 <include href="rpm-sources/"/>
-<include href="deb-sources/"/>
 <include href="other-formats/"/>
 </guide>
