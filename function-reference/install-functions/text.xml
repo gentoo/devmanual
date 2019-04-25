@@ -117,7 +117,9 @@ the first is the source name, the second the name to use when installing.
       <c>dodir</c>
     </ti>
     <ti>
-      Install a directory
+      Install a directory that will be non-empty when the package is
+      merged. For directories that will be empty, please use
+      <c>keepdir</c> instead.
     </ti>
   </tr>
   <tr>
@@ -288,9 +290,15 @@ the first is the source name, the second the name to use when installing.
       <c>keepdir</c>
     </ti>
     <ti>
-      Create a directory which will be preserved by the package
-      manager (This is typically accomplished by inserting an empty
-      <c>.keep_${CATEGORY}_${PN}-${SLOT%/*}</c> file in the directory)
+      Install a directory that will be empty when the package is
+      merged. This is like <c>dodir</c>, but for empty directories
+      instead. <uri
+      link="https://projects.gentoo.org/pms/7/pms.html#x1-14200013.2.2">The
+      handling of empty directories is undefined by the package
+      manager specification</uri>, and the <c>keepdir</c> function
+      exists to ensure that the (otherwise empty) directory is
+      tracked. This is accomplished by installing a hidden file
+      prefixed with <c>.keep</c> to the directory in question.
     </ti>
   </tr>
   <tr>
