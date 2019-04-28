@@ -282,7 +282,7 @@
     <xsl:param name="data"/>
     <xsl:variable name="lcletters">abcdefghijklmnopqrstuvwxyz--</xsl:variable>
     <xsl:variable name="ucletters">ABCDEFGHIJKLMNOPQRSTUVWXYZ<xsl:text> </xsl:text>,</xsl:variable>
-    <xsl:value-of select="translate($data,$ucletters,$lcletters)"/>
+    <xsl:value-of select="translate(normalize-space($data),$ucletters,$lcletters)"/>
   </xsl:template>
 
   <xsl:template match="uri">
