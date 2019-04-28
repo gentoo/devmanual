@@ -49,7 +49,17 @@ validate: prereq
 	@xmllint --noout --dtdvalid devbook.dtd $(XMLS) \
 	  && echo "xmllint validation successful"
 
+# Run app-text/tidy-html5 on the output to detect mistakes.
+# We have to loop through them because otherwise tidy won't
+# tell you which file contains a mistake.
+tidy: $(HTMLS)
+	@for f in $(HTMLS); do \
+	  output=$$(tidy -q -errors --drop-empty-elements no $${f} 2>&1) \
+	  || { status=$$?; echo "Failed on $${f}:"; echo "$${output}"; }; \
+	done; \
+	exit $${status}
+
 clean:
 	rm -f $(HTMLS) $(IMAGES) _documents.js documents.js
 
-.PHONY: all prereq validate clean
+.PHONY: all prereq validate tidy clean
