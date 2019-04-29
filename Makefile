@@ -1,40 +1,40 @@
-ALL_DIRS := $(shell find -name "text.xml" -exec dirname {} +)
-text_files := $(addsuffix /index.html,$(ALL_DIRS))
-image_files := $(shell find -name "*.svg" | sed -e "s/svg$$/png/")
+# These "find" commands match text.xml and *.svg files, respectively,
+# but only after excluding the .git directory from the search for
+# performance and overall sanity reasons.
+HTMLS := $(subst text.xml,index.html,\
+  $(shell find ./ -name .git -prune -o \( -type f -name 'text.xml' -print \)))
+IMAGES := $(patsubst %.svg,%.png,\
+  $(shell find ./ -name .git -prune -o \( -type f -name '*.svg' -print \)))
 
-all: prereq $(text_files) $(image_files)
+all: prereq $(HTMLS) $(IMAGES)
 
 prereq:
-	@type convert >/dev/null 2>&1 || { echo "media-gfx/imagemagick with corefonts, svg and truetype required" >&2; exit 1; }; \
-		type xsltproc >/dev/null 2>&1 || { echo "dev-libs/libxslt is required" >&2; exit 1; }
+	@type convert >/dev/null 2>&1 || \
+	{ echo "media-gfx/imagemagick[corefonts,svg,truetype] required" >&2;\
+          exit 1; }
+	@type xsltproc >/dev/null 2>&1 || \
+	{ echo "dev-libs/libxslt is required" >&2;\
+	  exit 1; }
 
 %.png : %.svg
 	convert $< $@
 
+# Secondary expansion allows us to use the automatic variable $@ in
+# the prerequisites. When it is used (and we have no idea when that
+# is, so we assume always) our <include href="foo"> tag induces a
+# dependency on the output of all subdirectories of the current
+# directories. This wacky rule finds all of those subdirectories by
+# looking for text.xml in them, and then replaces "text.xml" in the
+# path with "index.html".
+#
+# We use the pattern %.html rather than the more-sensible %index.html
+# because the latter doesn't match our top-level index.html target.
+#
+.SECONDEXPANSION:
+%.html: $$(dir $$@)text.xml devbook.xsl xsl/*.xsl $$(subst text.xml,index.html,$$(wildcard $$(dir $$@)*/text.xml))
+	xsltproc devbook.xsl $< > $@
+
 clean:
-	@find . -name "*.png" -exec rm -v {} +
-	@find . -name "index.html" -exec rm -v {} +
-
-# Given a directory with text.xml in it, return its immediate children as prerequisites
-# Hypothetical example:
-# INPUT:  "./archs" "./archs/amd64 ./archs/x86 ./ebuild-writing ./appendices"
-# OUTPUT: ./archs/amd64/index.html ./archs/amd64/index.html
-define get_prerequisites =
-$(addsuffix /index.html,$(foreach subdir,$(2),$(if $(subst $(1)/,,$(dir $(subdir))),,$(subdir))))
-endef
-
-# Given a directory with text.xml in it, genereate a complete build rule with prerequisites
-# Hypothetical example:
-# INPUT:  "./archs" "./archs/amd64 ./archs/x86 ./ebuild-writing ./appendices"
-# OUTPUT  ./archs/index.html: ./archs/text.xml devbook.xsl ./archs/amd64/index.html ./archs/x86/index.html
-#                 xsltproc devbook.xsl ./archs/text.xml > ./archs/index.html
-define generate_rule =
-$(1)/index.html: $(1)/text.xml devbook.xsl $(call get_prerequisites,$(1),$(2))
-	xsltproc devbook.xsl $$< > $$@
-endef
-
-# This generates individual build rules for all the text files by
-# iterating over all the directories in the file system tree
-$(foreach dir,$(ALL_DIRS),$(eval $(call generate_rule,$(dir),$(filter-out $(dir),$(ALL_DIRS)))))
+	rm -f $(HTMLS) $(IMAGES)
 
 .PHONY: all prereq clean
