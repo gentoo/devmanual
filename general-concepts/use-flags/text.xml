@@ -283,7 +283,7 @@ src_compile() {
 		# Other stuff
 		${myconf}
 
-	emake || die "make failed"
+	emake
 }
 </codesample>
 
