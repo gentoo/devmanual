@@ -34,11 +34,10 @@ select all possible fields, then submit the query. For you lazy people, click
 In general, the Gentoo repository should only be used for storing
 <path>.ebuild</path> files, as well as any relatively small companion
 files, such as patches or sample configuration files. These types of
-files should be placed in the
-<path>/usr/portage/mycat/mypkg/files</path> directory to keep the main
-<path>mycat/mypkg</path> directory uncluttered. Exceptions to this
-rule are for larger patch files (we recommend this for patches above
-20KB) which should be distributed as tarballs via the
+files should be placed in the <path>mycat/mypkg/files</path> directory
+to keep the main <path>mycat/mypkg</path> directory uncluttered.
+Exceptions to this rule are for larger patch files (we recommend this
+for patches above 20KB) which should be distributed as tarballs via the
 <uri link="::general-concepts/mirrors/#suitable-download-hosts">Gentoo
 mirror system</uri> so that people do not waste excessive amounts of
 bandwidth and hard drive space. Also, you should not add binary
