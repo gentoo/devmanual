@@ -5,82 +5,141 @@
 
 <body>
 <p>
-If your ebuild requires a user or group to be added for a daemon, for example,
-this should be performed via the functions available in <c>user.eclass</c>.
-Regardless of whether you are adding a group or a user, this should be performed
-in the <c>pkg_setup</c> phase function. <c>pkg_setup</c> is called
-before the compile process, with
-<uri link="::general-concepts/sandbox">sandbox</uri>
-disabled, so a build that requires the user to exist will
-have it, and is also called for both binary and source packages. You may also
-use the <c>pkg_preinst</c> or <c>pkg_postinst</c> functions for user creation, if
-the user is not required during or before <c>src_install</c>.
+Creating users and groups is governed by <uri
+link="https://gentoo.org/glep/glep-0081.html">GLEP 81</uri>.  It is implemented
+via <c>acct-user</c> and <c>acct-group</c> eclasses.
+</p>
+
+<p>
+New users and groups are created as packages respectively in <c>acct-user</c>
+and <c>acct-group</c> categories.  First, choose UIDs/GIDs that are not used by
+any other package.  You should consult the <uri
+link="https://wiki.gentoo.org/wiki/Project:Quality_Assurance/UID_GID_Assignment">
+UID/GID assignment list</uri> maintained by the QA project, and possibly the
+UID/GID registries maintained by other distributions that are linked on the
+same page.  Afterwards, send the proposed ebuilds to the <c>gentoo-dev</c>
+mailing list for review.  The naming conventions for user and group ebuilds are
+explained in the following sections. Finally, after getting positive reviews,
+commit the new user and group packages.
+</p>
+
+<p>
+The historical way of using <c>user.eclass</c> directly is now deprecated
+and must not be used for new packages.
 </p>
 </body>
 
 <section>
-<title>Adding Groups</title>
+<title>Group ebuilds</title>
 <body>
 
 <p>
-To add a group, use the <c>enewgroup</c> function:
+Group ebuilds are placed in <c>acct-group</c> category, with the package name
+matching the group name.  The following can be used as a template for writing
+group ebuilds:
 </p>
 
 <pre>
-enewgroup &lt;name&gt; [gid]
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=7
+
+inherit acct-group
+
+DESCRIPTION="Meaningful description of the group"
+ACCT_GROUP_ID=123
 </pre>
 
 <p>
-By default the next available group ID is selected. To set a specfic group ID,
-pass it an extra argument to <c>enewgroup</c>.
+<c>ACCT_GROUP_ID</c> must be set to the requested GID.
 </p>
-
-<note>
-Group IDs should rarely be hardcoded. If this is the case, you should
-probably check first on gentoo-dev.
-</note>
 
 </body>
 </section>
 
 <section>
-<title>Adding Users</title>
+<title>User ebuilds</title>
 <body>
 
 <p>
-To add a user, use the <c>enewuser</c> function:
+User ebuilds are placed in <c>acct-user</c> category, with the package name
+matching the user name.  The following can be used as a template for writing
+user ebuilds:
 </p>
 
 <pre>
-enewuser &lt;user&gt; [uid] [shell] [homedir] [groups]
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=7
+
+inherit acct-user
+
+DESCRIPTION="Meaningful description of the user"
+ACCT_USER_ID=123
+ACCT_USER_SHELL=/usr/bin/foo
+ACCT_USER_HOME=/var/lib/foo
+ACCT_USER_HOME_OWNER=foo:bar
+ACCT_USER_HOME_PERMS=0775
+ACCT_USER_GROUPS=( foo bar baz )
+
+acct-user_add_deps
 </pre>
 
 <p>
-By default, both <c>enewuser</c> and <c>enewgroup</c> allocate the next available user
-ID or group ID to the new user or group - if not, you explicitly have to specify
-one.
+<c>ACCT_USER_ID</c> must be set to the requested GID.  <c>ACCT_USER_GROUPS</c>
+should list all the groups user belongs to, the primary group first.  All
+the other keys are optional.
 </p>
 
 <p>
-Arguments for <c>enewuser</c> must be passed in the order as shown above: if you do
-not want to specify a fixed user ID however but do want to set a specific shell,
-for example, use <c>-1</c> for the <c>uid</c> parameter. The same applies for any other
-parameter where you want to keep the default setting.
+<c>ACCT_USER_SHELL</c> can be used to set the shell for the user.  If unset,
+the best system equivalent of nologin is used.  <c>ACCT_USER_HOME</c> specifies
+the home directory, with <c>/dev/null</c> being the default.
+<c>ACCT_USER_HOME_OWNER</c> can be used to override the ownership of the home
+directory, and <c>ACCT_USER_HOME_PERMS</c> to override the default permissions.
+The defaults are the user and primary group for the owner, and 0755 for the
+permissions.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Utilizing users and groups in packages</title>
+<body>
+
+<p>
+In order to make your package install specific users and groups, specify them
+as dependencies.  Accounts needed at build time must be included
+in <c>DEPEND</c>, and accounts needed at runtime must be included
+in <c>RDEPEND</c>.
 </p>
 
 <p>
-Groups for the <c>groups</c> argument should be separated by a comma (<c>,</c>) and
-wrapped correctly, for example:
+For example, an ebuild requiring the user and group <c>foo</c> at runtime would
+specify:
 </p>
 
 <pre>
-enewuser frozd -1 -1 -1 "backup,frozd"
+RDEPEND="
+    acct-user/foo
+    acct-group/foo"
 </pre>
 
-<note>
-User IDs should rarely be hardcoded. If this is the case, you should
-probably check first on gentoo-dev.
-</note>
+<p>
+This would also be sufficient if ownership of installed files were set
+in <c>pkg_preinst</c>.  However, if the ebuild needs the user and group
+to be present at build-time already, it would specify:
+</p>
+
+<pre>
+RDEPEND="
+    acct-user/foo
+    acct-group/foo"
+DEPEND="${RDEPEND}"
+</pre>
 
 </body>
 </section>
