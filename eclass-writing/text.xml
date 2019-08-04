@@ -53,12 +53,17 @@ does not require a new eclass will be suggested.
 </p>
 
 <p>
-Before updating <c>eutils</c> or a similar widely used eclass, it is best to email
-the gentoo-dev list. It may be that your proposed change is broken in a way you
-had not anticipated, or that there is an existing function which performs the
-same purpose, or that your function may be better off in its own eclass. If you
-don't email gentoo-dev first, and end up breaking something, expect to be in a
-lot of trouble.
+Before updating any eclass, email patches to the gentoo-dev list. It may be that
+your proposed change is broken in a way you had not anticipated, or that there
+is an existing function which performs the same purpose, or that your function
+may be better off in its own eclass. If you don't email gentoo-dev first,
+and end up breaking something, expect to be in a lot of trouble.
+</p>
+
+<p>
+The exceptions to this rule are per-package eclasses. For example,
+the <c>apache-2</c> eclass is only used by the <c>www-servers/apache</c>
+package, and thus does not typically require changes to be emailed for review.
 </p>
 
 <p>
@@ -71,11 +76,6 @@ a patch included.
 <p>
 If there is an existing maintainer for an eclass (this is usually the case), you
 <b>must</b> talk to the maintainer before committing any changes.
-</p>
-
-<p>
-It is not usually necessary to email the gentoo-dev list before making changes
-to a non-general eclass which you maintain. Use common sense here.
 </p>
 
 <warning>
