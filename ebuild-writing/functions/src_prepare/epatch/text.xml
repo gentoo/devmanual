@@ -65,7 +65,7 @@ This example shows how different patch levels can be applied:
 
 <codesample lang="ebuild">
 src_prepare() {
-	eapply -p2 "${WORKDIR}/${P}-suse-update.patch.bz2"
+	eapply -p2 "${WORKDIR}/${P}-suse-update.patch"
 	eapply -p0 "${FILESDIR}/${PV}-no-TIOCGDEV.patch"
 	eapply "${FILESDIR}/${PV}-gcc-6.patch"
 	eapply_user
