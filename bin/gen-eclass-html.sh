@@ -36,7 +36,7 @@ IFS='' read -r -d '' FOOTER << 'EOF'
 EOF
 
 # We also need the ebuild man page
-for i in $(/usr/bin/qlist eclass-manpages) /usr/share/man/man5/ebuild.5.bz2; do
+for i in $(/usr/bin/qlist eclass-manpages | grep man5) /usr/share/man/man5/ebuild.5.bz2; do
 	BASENAME="$(basename $i .5.bz2)"
 	DIRNAME="${OUTPUTDIR}/${BASENAME}"
 	TMP="${DIRNAME}/index.html.tmp"
