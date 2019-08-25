@@ -38,6 +38,7 @@ EOF
 # We also need the ebuild man page
 for i in $(/usr/bin/qlist eclass-manpages) /usr/share/man/man5/ebuild.5.bz2; do
 	BASENAME="$(basename $i .5.bz2)"
+	[[ ${BASENAME} != "${i}" ]] || continue
 	DIRNAME="${OUTPUTDIR}/${BASENAME}"
 	TMP="${DIRNAME}/index.html.tmp"
 	FINAL="${DIRNAME}/index.html"
