@@ -67,10 +67,8 @@ package, and thus does not typically require changes to be emailed for review.
 </p>
 
 <p>
-When removing a function or changing the API of an eclass, make
-sure that it doesn't break any ebuilds in the tree, and post a
-notice to gentoo-dev at least 30 days in advance, preferably with
-a patch included.
+When removing a function or changing the API of an eclass, make sure that
+it doesn't break any ebuilds in the Gentoo repository.
 </p>
 
 <p>
