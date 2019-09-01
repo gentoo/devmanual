@@ -82,11 +82,34 @@ versions are specified elsewhere.
 </p>
 
 <p>
-Please watch for license conflicts. If the license indicated
-by the package is incompatible with the licenses used by its sources
-(e.g. BSD/MIT package including GPL sources), please contact
-the licenses team for guidance. Do not add packages that seem
-to include license term violations.
+If an installed file is built from sources using different licenses, all those
+licenses must be compatible. The effective license for the file will be the most
+restrictive of input licenses. For example:
+</p>
+
+<ol>
+  <li>
+    If a program includes code that is partially covered by GPL-2
+    and partially by the 3-clause BSD license, the license for
+    the resulting executable will be GPL-2 since it is more restrictive
+    than the other one.
+  </li>
+  <li>
+    If a program includes code that is partially covered by GPL-2+
+    and partially by GPL-3[+], the latter license will be effective
+    since it is the subset of both terms.
+  </li>
+  <li>
+    If a program includes code that is partially covered by GPL-2+
+    and partially by GPL-2, GPL-2 will be the effective subset.
+  </li>
+</ol>
+
+<p>
+Please watch out for license conflicts. If the package combines incompatible
+licenses (e.g. GPL-2 and GPL-3 code without 'or newer' clauses), please contact
+the licenses team for guidance. Do not add packages that seem to include
+license term violations.
 </p>
 
 </body>
