@@ -103,6 +103,175 @@ The defaults are the user and primary group for the owner, and 0755 for the
 permissions.
 </p>
 
+<important>
+Whenever possible, the default shell and home directory should be
+used. The rationale for this is explained below.
+</important>
+
+<p>
+You should embark upon a GLEP81 migration like an EAPI
+update. Rather than simply copy your user's settings into an
+<c>acct-user</c> package, you should take the opportunity to
+re-evaluate your user's name, shell, home directory, and its
+permissions. Our GLEP 81 implementation will reveal many user
+management issues that were allowed to fester in the past.
+</p>
+
+<subsection>
+<title>Choosing a shell</title>
+<body>
+<p>
+In most cases, the default shell (that is, no shell) should be
+used. Services can still be started as a user who has no shell, and
+daemons are able to drop privileges to a user who has no shell. If
+necessary, the administrator can override a user's default shell with
+<c>su -s &lt;shell&gt; &lt;username&gt;</c>. This is sufficient for
+testing, management of SSH credentials, and for initial configuration
+in an ebuild's <c>pkg_config</c> phase.
+</p>
+<p>
+An obvious exception to this rule is if a human being will need to log
+into the account interactively, as is the case with the <c>root</c>
+user. Other exceptions certainly exist, but should be evaluated
+case-by-case. In other words, if you haven't checked, don't set your
+user's shell to <c>/bin/bash</c> because you think he <e>might</e>
+need it.
+</p>
+<p>
+The goal here is twofold. First, the principle of least privilege says
+that if a user doesn't need a real shell, he shouldn't have one. And
+along those same lines, not having a shell gives the system
+administrator some peace of mind: he doesn't have to be as concerned
+with whether or not that user has a password (and how strong it is),
+or whether or not its filesystem permissions are all set correctly, or
+whether or not it can log in via SSH, et cetera.
+</p>
+</body>
+</subsection>
+
+<subsection>
+<title>Choosing a home directory</title>
+<body>
+<p>
+In most cases, the default home directory (that is, no home directory)
+should be used. GLEP81 changed two aspects of user management with
+respect to home directories:
+</p>
+
+<ol>
+  <li>
+    Creating a user can now modify the permissions on an existing
+    directory. Should the need arise, this is necessary for a new
+    version of an <c>acct-user</c> package to be able to fix the
+    ownership and permissions of its home directory.
+  </li>
+  <li>
+    All user data aside from the username became non-local to ebuilds
+    that depend on that user. This is merely a side-effect of moving
+    the user creation out of the client package, and into a separate
+    <c>acct-user</c> package.
+  </li>
+</ol>
+
+<p>
+The first item means that you should be conservative when choosing a
+home directory. If at all possible, avoid choosing a home directory
+that is used by another package. In particular, no two
+<c>acct-user</c> packages should use the same home directory. At best,
+the ownership and permissions on a shared home directory would need to
+be kept synchronized between all packages that share it. At worst, one
+package goes out-of-sync and introduces a security hole for the others
+who no longer have the expected permissions.
+</p>
+<p>
+The second item means that if your package requires a user, you can
+no longer be sure of that user's home directory or its ownership and
+permissions. If your package requires a directory to be owned and
+writable by some user, then your package's ebuild should create that
+directory and ensure that it is writable by the user. In other
+words, you should not rely on the directory being created
+"transitively" by a dependency, even if that dependency is an
+<c>acct-user</c> package.
+</p>
+<p>
+In summary,
+</p>
+<ul>
+  <li>
+    Avoid using an <c>ACCT_USER_HOME</c> that belongs to another
+    package.
+  </li>
+  <li>
+    No two acct-user packages should define the same
+    <c>ACCT_USER_HOME</c>.
+  </li>
+
+  <li>
+    If for example your package's configuration needs &lt;username&gt;
+    to be able to write to <c>/var/lib/&lt;username&gt;</c>, then your
+    package's ebuild should create that directory and set its
+    ownership and permissions. Barring any other considerations, the
+    corresponding <c>acct-user</c> package should leave
+    <c>ACCT_USER_HOME</c> at its default (empty) value; setting
+    <c>ACCT_USER_HOME=/var/lib/&lt;username&gt;</c> creates
+    unnecessary duplication and risks desynchronizing the permissions.
+  </li>
+</ul>
+</body>
+</subsection>
+
+<subsection>
+<title>Choosing home directory ownership</title>
+<body>
+<p>
+In most cases, the default home directory ownership is correct.  If a
+non-default home directory is needed at all, then it should be
+writable by its user and giving ownership of it to someone else would
+prevent that. Being unwritable indicates that a shared and potentially
+sensitive location was chosen. Moreover, the fact that the home
+directory is not writable suggests that the default home directory
+(which is also not writable) would suffice instead; the home directory
+guidelines explain why the default is preferable in that case. For
+example, setting <c>ACCT_USER_HOME_OWNER="root:root"</c> is suspicious
+because it appears intended to "undo" the ownership changed by your
+user package, and that would only be necessary if the path in question
+is used by some other package.
+</p>
+</body>
+</subsection>
+
+<subsection>
+<title>Choosing home directory permissions</title>
+<body>
+<p>
+In many cases, the default home directory permissions (0755) will
+suffice. But, if your package will work with mode 0700 or 0750, then
+those are preferable. This is the principle of least privilege
+again. If your package works with a non-writable home directory, then
+you should probably be using the default of <e>no</e> home directory!
+</p>
+<warning>
+The world-writable bit should never be set in
+<c>ACCT_USER_HOME_PERMS</c>. This should never be necessary, and is
+usually exploitable.
+</warning>
+</body>
+</subsection>
+
+<p>
+These suggestions are not rules and are not written in stone, except
+perhaps for the world-writable warning. There are packages in the tree
+that <c>chroot()</c> to <c>$HOME</c>, and require that directory to be
+owned by <c>root:root</c> for security reasons. In cases like that,
+it's impossible to avoid implicitly tying the user to the package that
+needs it via the home directory, and the best you can do is attempt to
+ensure that the users and paths are unique so that no conflicts arise.
+</p>
+
+<p>
+Unless your package is exceptional, though, following these guidelines
+will minimize the potential for problems down the road.
+</p>
 </body>
 </section>
 
