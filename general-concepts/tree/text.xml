@@ -76,14 +76,6 @@ The basic layout of the Gentoo repository is as follows:
   </ul>
   </li>
   <li>Scripts directory, <c>scripts/</c></li>
-  <li>
-  Distfiles directory, <c>distfiles/</c>. This is not included in the main
-  git tree, but it will be found on most user systems.
-  </li>
-  <li>
-  Packages directory, <c>packages</c>. Again, this is found on user systems but not
-  in the main git tree.
-  </li>
 </ul>
 </body>
 
