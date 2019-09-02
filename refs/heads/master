@@ -1,17 +1,17 @@
 certificate version 0.1
-pusher 0x604B9FFDB7C65507 1567180305 -0400
+pusher Ulrich Müller <ulm@gentoo.org> 1567433466 +0200
 pushee git+ssh://git.gentoo.org/proj/devmanual.git
-nonce 1567180305-22de5dcc503870476ed2b1d75959c3eb4a8597f0
+nonce 1567433466-e3caa580e3ad9e88c0aa6b72be2d58a251c3be31
 
-9df1efd58647227d1371a4089b6ebdee599fdf4d 56a559843cb4af1c10b1df1b2f3b7c8bfe95bcb5 refs/heads/master
+56a559843cb4af1c10b1df1b2f3b7c8bfe95bcb5 3b6603d6c6e7918e6ad7e74ea7fe38fb422f49cb refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEED14mDxorHtjk0V2IYEuf/bfGVQcFAl1pRhEACgkQYEuf/bfG
-VQcXsAf/ahxFBWlyJ1hy0AuENpFuGXo7r2vTa/AaLgFfitFCi4hYzmdtxW/l8FFC
-vZDfECpzV4hsZrAfT16LLFdaB2dbVO89uqUdMlVwcpgur9HSnr2U74xRONdesHar
-0+LHpBXOED+LEPwrF7eGZXAKBI6FsFGk+18REiZ/VYfd0/joCqFWLAKVWqhAQfCH
-p2AGGvRAi88cwT6ZvbVXXpAq4T7JuwFlpvgJXJmGaZ/lRdhGUPRRC3pGNwXFaXzr
-HzONsjQJFK5zlzx/bieoTrFjXYgw7RiqMjVUV3AgQgKyO6VpybdS27Btk8KK7bgh
-mh1R5PC0t5+aH7ibVlOR2qwAK4Mwug==
-=8y9Y
+iQFDBAABCAAtFiEEtDnZ1O9xIP68rzDbUYgzUIhBXi4FAl1tIvoPHHVsbUBnZW50
+b28ub3JnAAoJEFGIM1CIQV4uWr0H/0LVukTvuE+8BpT9U19fzXB/bbm1jsWNeCdl
+CjI9m72UC1gKmMWkcyx+CCzv7qBgs4ETrSdKHBLtouXRtmUeB0/Dn7SABuswEx6T
+zpme+kIj3bImjbhu0shBeUDWJlMoWvV13Z2awQjJP/J7tPWw2andJQ4wZr4T5JML
+QnmymG+nwkPk0jBjjR/O1gsO+RAEKGm7OOBtiNMjZ+N/TiWqk2Nm9ib3+4nCk13F
+NwzzcssC/yVo0pY+IFPmF+ILclqRmdjGRxESZZRUoFsqfKhVk7hiyqeAlLu6YroZ
+fnDwD6ygOHWypWf0SvtQU2dQeGCE7qg8R8662uIb8gHmgU9TTh0=
+=ugS1
 -----END PGP SIGNATURE-----
