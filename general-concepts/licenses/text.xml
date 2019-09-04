@@ -167,6 +167,32 @@ you are unsure as to the meaning of any part of it.
 
 </body>
 </section>
+
+<section>
+<title>Further reading</title>
+<body>
+
+<p>
+The following resources are recommended as source of more information
+on copyright and licensing:
+</p>
+
+<ul>
+  <li>
+    <uri link="https://dwheeler.com/essays/floss-license-slide.html">
+      David A. Wheeler, The Free-Libre / Open Source Software (FLOSS)
+      License Slide
+    </uri>
+  </li>
+  <li>
+    <uri link="https://www.gnu.org/licenses/license-compatibility.en.html">
+      Richard Stallman, License Compatibility and Relicensing
+    </uri>
+  </li>
+</ul>
+
+</body>
+</section>
 </body>
 
 </chapter>
