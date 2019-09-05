@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/package-maintainers/">
+<chapter>
+<title>Package Maintainers</title>
+<body>
+
+<p>
+Package maintainers are responsible for ebuild maintenance tasks <d/>
+bumping ebuilds to new upstream releases, updating them as necessary
+with regards to policies, replying to bugs, etc. The maintainers
+of a package are listed in the package's <uri
+link="::ebuild-writing/misc-files/metadata/">metadata.xml</uri> file.
+When assigning bugs, the first maintainer listed becomes the bug's
+assignee and the remaining maintainers are added to CC, unless stated
+otherwise in the metadata.
+</p>
+
+<section>
+<title>Maintainer authority</title>
+<body>
+
+<p>
+Package maintainers have authority over their maintained packages.
+Unless specified otherwise, you should request maintainers' approval
+before committing to their packages. Try filing a bug, catching them
+on IRC or sending a mail first. The exceptions to this rule are trivial
+changes implied by your own actions, e.g. dependency updates as a result
+of package moves.
+</p>
+
+<p>
+In case of maintainer inactivity, it is a good idea to consult other
+developers on how to handle the situation, especially if it is
+a critical issue that needs to be handled ASAP. A customary tool
+of maintainer timeout may be used in this case. This timeout can be
+invoked if none of the package's maintainers reply to a patch within
+2<d/>4 weeks of it being attached or linked to a correctly assigned bug,
+or being sent to the maintainer.
+</p>
+
+<important>
+Common sense dictates to us that toolchain/base-system/core packages
+and eclasses or anything else which is delicate (e.g. glibc) or widely
+used (e.g. GTK+) should usually be left to their maintainers.
+If in doubt, don't touch it.
+</important>
+
+<p>
+Respect developers' coding preferences. Unnecessarily changing
+the syntax of an ebuild can cause complications for others. Syntax
+changes should only be done if there is a real benefit, such as faster
+compilation, improved information for the end user, or compliance
+with Gentoo policies.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Adding and removing maintainers</title>
+<body>
+
+<p>
+All packages newly added to the Gentoo repository must have at least
+one maintainer specified. New maintainers can only be added with their
+consent. In particular, it is not acceptable to add generic projects
+(such as the Python project) as package maintainers without the approval
+of their members or against their explicit policy.
+</p>
+
+<p>
+Maintainers without commit access are called proxied maintainers. Their
+changes must be pushed by a Gentoo developer, who acts as their proxy.
+All packages maintained by proxied maintainers must explicitly list
+their proxy developer or project in <c>metadata.xml</c>.
+</p>
+
+<p>
+When adding new maintainers or removing old maintainers, please remember
+to reassign bugs. The last maintainer to resign from maintaining
+the package must place a <c>&lt;!-- maintainer-needed --&gt;</c> comment
+in <c>metadata.xml</c>, in order simplify finding unmaintained packages.
+It is also required to send an 'up for grabs' email to the
+<c>gentoo-dev-announce</c> and <c>gentoo-dev</c> mailing lists,
+providing a list of newly-unmaintained packages.
+</p>
+
+</body>
+</section>
+
+</body>
+</chapter>
+</guide>
