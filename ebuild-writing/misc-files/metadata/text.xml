@@ -333,7 +333,7 @@ There are also some attributes that can be used with these tags:
     Defines the type of the maintainer for a package. There are only
     two valid values: <c>"person"</c> and <c>"project"</c>. The latter
     denotes an official
-    <uri link="::general-concepts/herds-and-projects">
+    <uri link="::general-concepts/projects">
     Gentoo project</uri>.
   </ti>
 </tr>

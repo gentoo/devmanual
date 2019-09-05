@@ -1,11 +1,6 @@
 <?xml version="1.0"?>
-<guide self="general-concepts/herds-and-projects/">
+<guide self="general-concepts/projects/">
 <chapter>
-<title>Projects and Herds</title>
-
-<body>
-
-<section>
 <title>Projects</title>
 <body>
 
@@ -33,7 +28,7 @@ api.gentoo.org</uri> or on the
 <uri link="https://wiki.gentoo.org/wiki/Project:Gentoo">wiki</uri>.
 </p>
 
-<subsection>
+<section>
 <title>Starting New Projects</title>
 <body>
 
@@ -61,8 +56,9 @@ project with the same goals.
 </p>
 
 </body>
-</subsection>
-<subsection>
+</section>
+
+<section>
 <title>Joining and Leaving a Project</title>
 <body>
 
@@ -85,47 +81,8 @@ the project's email address <c>devmanual@gentoo.org</c>.
 </p>
 
 </body>
-</subsection>
-
-</body>
-</section>
-
-<section>
-<title>Herds</title>
-<body>
-
-<warning>
-Herds have been declared obsolete as per the Gentoo Council's <uri
-link="https://projects.gentoo.org/council/meeting-logs/20160110-summary.txt">
-decision on January 10, 2016</uri>. The following section is preserved
-for historical purposes.
-</warning>
-
-<p>
-A <e>herd</e> is a collection of packages with an associated set of maintainers.
-It can happen for example because of retirement that a herd has no developers
-but this should be avoided if at all possible. A herd has an associated email
-address which can be used for bugzilla assignments. This email address is
-<b>not</b> always <c>herdname@gentoo.org</c> <d/> for example, because of the
-way Gentoo's email aliases are set up, the <c>cron</c> herd use
-<c>cron-bugs@gentoo.org</c> (aliases cannot match system usernames).
-</p>
-
-<p>
-A <e>project</e> is a group formed for handling a particular general area. A project
-may have herds associated with it.
-</p>
-
-<p>
-Sometimes herd and project names overlap <d/> for example, the <c>sparc</c> project
-has an associated <c>sparc</c> herd which maintains sparc-specific packages (such
-as the <c>silo</c> bootloader). This is <e>not</e> always the case.
-</p>
-
-</body>
 </section>
 
 </body>
 </chapter>
 </guide>
-

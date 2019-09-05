@@ -28,7 +28,6 @@ writing ebuilds or working with the Gentoo repository.
 <include href="emerge-and-ebuild/"/>
 <include href="features/"/>
 <include href="filesystem/"/>
-<include href="herds-and-projects/"/>
 <include href="install-destinations/"/>
 <include href="licenses/"/>
 <include href="mirrors/"/>
@@ -36,6 +35,7 @@ writing ebuilds or working with the Gentoo repository.
 <include href="overlay/"/>
 <include href="pic/"/>
 <include href="portage-cache/"/>
+<include href="projects/"/>
 <include href="sandbox/"/>
 <include href="slotting/"/>
 <include href="tree/"/>
