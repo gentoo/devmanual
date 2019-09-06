@@ -46,9 +46,9 @@ Roughly speaking, there are three kinds of eclass:
 <body>
 
 <p>
-Before committing a new eclass to the tree, it should be emailed to the
-gentoo-dev mailing list with a justification and a proposed implementation. Do
-not skip this step <d/> sometimes a better implementation or an alternative which
+Before committing a new eclass to the tree, it must be emailed to the gentoo-dev
+mailing list with a justification and a proposed implementation. Do not skip
+this step <d/> sometimes a better implementation or an alternative which
 does not require a new eclass will be suggested.
 </p>
 
@@ -61,7 +61,7 @@ and end up breaking something, expect to be in a lot of trouble.
 </p>
 
 <p>
-The exceptions to this rule are per-package eclasses. For example,
+The exceptions to this rule are updates to per-package eclasses. For example,
 the <c>apache-2</c> eclass is only used by the <c>www-servers/apache</c>
 package, and thus does not typically require changes to be emailed for review.
 </p>
