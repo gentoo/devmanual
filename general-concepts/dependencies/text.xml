@@ -195,7 +195,7 @@ the asterisk postfix. This is most commonly seen in situations like:
 </p>
 
 <codesample lang="ebuild">
-DEPEND="gtk? ( =x11-libs/gtk+-1.2* )"
+DEPEND="gtk? ( =x11-libs/gtk+-2* )"
 </codesample>
 
 <p>
