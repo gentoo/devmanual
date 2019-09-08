@@ -39,7 +39,7 @@ be used) then use the following syntax:
 LICENSE="|| ( foo bar )"
 </codesample>
 
-<subsection>
+<section>
 <title>Determining the correct license</title>
 <body>
 
@@ -90,9 +90,9 @@ to include license term violations.
 </p>
 
 </body>
-</subsection>
+</section>
 
-<subsection>
+<section>
 <title>GPL-x vs GPL-x+</title>
 <body>
 
@@ -118,9 +118,9 @@ indicates <c>GPL-2+</c> license:
 </pre>
 
 </body>
-</subsection>
+</section>
 
-<subsection>
+<section>
 <title>Adding New Licenses</title>
 <body>
 
@@ -143,7 +143,7 @@ you are unsure as to the meaning of any part of it.
 </p>
 
 </body>
-</subsection>
+</section>
 </body>
 
 </chapter>
