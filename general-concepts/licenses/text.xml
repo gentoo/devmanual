@@ -25,9 +25,7 @@ LICENSE="LGPL-2.1+ tools? ( GPL-2+ )"
 If the package sources include additional files that are not installed,
 their license should not be listed. However, if those files are used
 at build time, then the license must not impose any restrictions that
-could prevent users from building the software. Please also note
-that some licenses may impose additional restrictons, e.g. fetch
-and/or mirroring restriction.
+could prevent users from building the software.
 </p>
 
 <p>
@@ -38,6 +36,16 @@ be used) then use the following syntax:
 <codesample lang="ebuild">
 LICENSE="|| ( foo bar )"
 </codesample>
+
+<p>
+If the license of a package does not explicitly permit redistributing
+distfiles found in <c>SRC_URI</c>, the corresponding ebuilds must have
+<c>RESTRICT=mirror</c>. If the license does not permit distributing
+Gentoo binary packages built from the source, the ebuilds should have
+<c>RESTRICT=bindist</c>. Some EULAs may also require the user to fetch
+distfiles manually, in which case <c>RESTRICT=fetch</c> is necessary.
+Note that <c>RESTRICT=fetch</c> implies <c>RESTRICT=mirror</c>.
+</p>
 
 <section>
 <title>Determining the correct license</title>
@@ -79,6 +87,14 @@ The latter (more specific) options take precedence over the former.
 In particular, <c>COPYING*</c> files are frequently included as hardcopies
 of applicable licenses but the exact application of licenses and their
 versions are specified elsewhere.
+</p>
+
+<p>
+If the package does not indicate any license, then you should contact
+the author for clarification. Adding packages with no explicit license
+statement is strongly discouraged. If they are present already, they
+ought to have <c>all-rights-reserved</c> license,
+and <c>RESTRICT="bindist mirror"</c>.
 </p>
 
 <p>
