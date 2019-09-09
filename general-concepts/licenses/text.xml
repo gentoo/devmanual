@@ -127,13 +127,64 @@ ought to have <c>all-rights-reserved</c> license,
 and <c>RESTRICT="bindist mirror"</c>.
 </p>
 
+</body>
+</section>
+
+<section>
+<title>Detecting upstream license problems</title>
+<body>
+
 <p>
-Please watch for license conflicts. If the license indicated
-by the package is incompatible with the licenses used by its sources
-(e.g. BSD/MIT package including GPL sources), please contact
-the licenses team for guidance. Do not add packages that seem
-to include license term violations.
+Please watch out for upstream licensing problems and report them
+upstream.
+You may ask the Gentoo licenses team for guidance. In general, it is
+preferable to wait for upstream to resolve the issue and release a new
+version. Do not add packages that seem to include license term
+violations!
 </p>
+
+<p>
+Common license problems include but are not limited to:
+</p>
+
+<ol>
+  <li>
+    <p>
+      Including third party code without appropriate copyright notices.
+      Practically all licenses (with notable exception of public
+      domain-alike) require attribution, and some require copying
+      original copyright notices verbatim.
+    </p>
+  </li>
+  <li>
+    <p>
+      Combining incompatible licenses. When you are combining multiple
+      files using different licenses into a single executable, those
+      licenses need to be compatible. For example, it is not possible
+      to combine proprietary code with copyleft licenses (e.g. GPL).
+      It is also incorrect to combine GPL-2 (only) and GPL-3 code.
+    </p>
+  </li>
+  <li>
+    <p>
+      Dynamically linking incompatible executables. Arguably, some
+      licenses also apply restriction on dynamic linking between
+      executables and shared libraries. For example, normally you can't
+      link GPL executables with OpenSSL. The same restriction does not
+      apply to LGPL, and some projects are adding specific linking
+      exceptions to their GPL usage.
+    </p>
+  </li>
+  <li>
+    <p>
+      Wrong or incomplete license information about a project. Upstream
+      may indicate the wrong effective license for a project (e.g.
+      in README. For example, upstream may indicate that the project
+      is licensed as GPL-2+ while some of the source code files use
+      GPL-3+ license.
+    </p>
+  </li>
+</ol>
 
 </body>
 </section>
