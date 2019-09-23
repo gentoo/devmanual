@@ -37,15 +37,44 @@ be used) then use the following syntax:
 LICENSE="|| ( foo bar )"
 </codesample>
 
+<section>
+<title>License-implied restrictions</title>
+<body>
+
 <p>
-If the license of a package does not explicitly permit redistributing
-distfiles found in <c>SRC_URI</c>, the corresponding ebuilds must have
-<c>RESTRICT=mirror</c>. If the license does not permit distributing
-Gentoo binary packages built from the source, the ebuilds should have
-<c>RESTRICT=bindist</c>. Some EULAs may also require the user to fetch
-distfiles manually, in which case <c>RESTRICT=fetch</c> is necessary.
-Note that <c>RESTRICT=fetch</c> implies <c>RESTRICT=mirror</c>.
+Non-free licenses may impose additional restrictions that need to be stated
+in the ebuild. In order to identify such restrictions correctly, it is necessary
+to analyze relevant license(s) and determine applicable clauses based
+on the files contained in upstream packages. Note that upstreams may use
+the same license for multiple products, with some restrictions not being
+applicable to the ebuild in question.
 </p>
+
+<p>
+If the license of a package does not explicitly permit redistributing distfiles
+found in <c>SRC_URI</c>, the corresponding ebuilds must have
+<c>RESTRICT=mirror</c> to prevent the affected files from being copied to Gentoo
+mirrors. In some cases, the license permits redistributing unmodified original
+archives only <d/> in that case, <c>SRC_URI</c> must not contain modified
+or repackaged upstream archives, and all changes must be applied via patching
+in appropriate ebuild phases.
+</p>
+
+<p>
+If the license does not permit distributing Gentoo binary packages built using
+the ebuild, with or without source modifications, it must have
+<c>RESTRICT=bindist</c>. This is also the case if restrictions are set based
+on the cost of redistribution (e.g. the license prohibits selling the product).
+</p>
+
+<p>
+Some EULAs may also require the user to fetch distfiles manually, in which case
+<c>RESTRICT=fetch</c> is necessary. Note that <c>RESTRICT=fetch</c> implies
+<c>RESTRICT=mirror</c>.
+</p>
+
+</body>
+</section>
 
 <section>
 <title>Determining the correct license</title>
