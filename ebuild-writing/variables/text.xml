@@ -435,15 +435,28 @@ that can afterwards be referenced through a <c>mirror://</c> URL:
 SRC_URI="mirror://example/${PN}/${P}.tar.gz"
 </codesample>
 
-<warning>
-If the sources for a package are neither mirror-restricted nor
-fetch-restricted, then they will be <uri
-link="::general-concepts/mirrors">mirrored onto Gentoo infrastructure</uri>
-automatically; in that case, there is little benefit to using this feature.
-There is a maintenance burden associated with using a third-party mirror list:
-it must be updated when new mirrors are born and when old mirrors die. Please
-consider that when deciding whether or not to use this feature.
-</warning>
+<p>
+There are two valid cases for using <c>thirdpartymirrors</c>:
+</p>
+
+<ol>
+  <li>
+    providing multiple download locations for mirror- or fetch-restricted
+    packages,
+  </li>
+
+  <li>
+    dealing with upstreams that distribute their distfiles via a network
+    of mirrors without a primary download location or a bouncer service.
+  </li>
+</ol>
+
+<p>
+In any other case, the primary location must be used instead. The distfiles
+will be <uri link="::general-concepts/mirrors">mirrored onto Gentoo
+infrastructure</uri>; in that case, the benefit to using third-party mirror
+list does not outweigh the burden of maintaining it.
+</p>
 
 </body>
 </subsection>
