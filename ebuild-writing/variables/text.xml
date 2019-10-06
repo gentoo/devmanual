@@ -404,7 +404,8 @@ SRC_URI="https://example.com/files/${PV}.tar.gz -> ${P}.tar.gz"
 
 <p>
 If the items in <c>SRC_URI</c> are available on multiple third-party mirrors,
-then you don't have to list each mirror in your ebuild.
+and the same set of mirrors is shared across multiple ebuilds, then you
+don't have to repeatedly list each of them in every ebuild.
 The <c>profiles/thirdpartymirrors</c> file in the <c>::gentoo</c> repository
 contains named groups of mirrors, accessible through the <c>mirror://</c>
 pseudo-protocol.
