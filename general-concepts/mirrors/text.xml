@@ -72,8 +72,8 @@ you need to also bump the ebuild's revision.
 
 <p>
 More general information about the internals of mirroring can be found on <uri
-link="https://www.gentoo.org/proj/en/infrastructure/mirrors/overview-distfile.xml">infrastructure's
-pages</uri>.
+link="https://wiki.gentoo.org/wiki/Project:Infrastructure/Mirrors/Distfile_Mirroring_System">
+Infrastructure project's Distfile Mirroring System page</uri>.
 </p>
 </body>
 </subsection>
