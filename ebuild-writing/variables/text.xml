@@ -399,22 +399,25 @@ SRC_URI="https://example.com/files/${PV}.tar.gz -> ${P}.tar.gz"
 
 
 <subsection>
-  <title>Third-party mirrors</title>
-  <body>
-    <p>
-      If the items in <c>SRC_URI</c> are available on multiple
-      third-party mirrors, then you don't have to list each mirror in
-      your ebuild. The <c>profiles/thirdpartymirrors</c> file in the
-      <c>::gentoo</c> repository contains named groups of mirrors,
-      accessible through the <c>mirror://</c> pseudo-protocol.
-    </p>
-    <p>
-      As of EAPI 7, the format of <uri
-      link="https://projects.gentoo.org/pms/7/pms.html#x1-340004.4.2">the
-      thirdpartymirrors file</uri> is described in section 4.4.2 of
-      the Package Manager Specification (PMS). One might define a set
-      of &quot;example&quot; mirrors,
-    </p>
+<title>Third-party mirrors</title>
+<body>
+
+<p>
+If the items in <c>SRC_URI</c> are available on multiple third-party mirrors,
+then you don't have to list each mirror in your ebuild.
+The <c>profiles/thirdpartymirrors</c> file in the <c>::gentoo</c> repository
+contains named groups of mirrors, accessible through the <c>mirror://</c>
+pseudo-protocol.
+</p>
+
+<p>
+As of EAPI 7, the format of <uri
+link="https://projects.gentoo.org/pms/7/pms.html#x1-340004.4.2">the
+thirdpartymirrors file</uri> is described in section 4.4.2 of the Package
+Manager Specification (PMS). One might define a set of &quot;example&quot;
+mirrors,
+</p>
+
 <!--
   The following isn't ebuild code, but lang="ebuild" works, and no
   other language choice would be accurate either.
@@ -422,25 +425,26 @@ SRC_URI="https://example.com/files/${PV}.tar.gz -> ${P}.tar.gz"
 <codesample lang="ebuild">
 example https://download.example.com https://mirror1.example.org/example
 </codesample>
-    <p>
-      that can afterwards be referenced through a <c>mirror://</c>
-      URL:
-    </p>
+
+<p>
+that can afterwards be referenced through a <c>mirror://</c> URL:
+</p>
+
 <codesample lang="ebuild">
 SRC_URI="mirror://example/${PN}/${P}.tar.gz"
 </codesample>
-    <warning>
-      If the sources for a package are neither mirror-restricted nor
-      fetch-restricted, then they will be <uri
-      link="::general-concepts/mirrors">mirrored onto Gentoo
-      infrastructure</uri> automatically; in that case, there is
-      little benefit to using this feature. There is a maintenance
-      burden associated with using a third-party mirror list: it must
-      be updated when new mirrors are born and when old mirrors
-      die. Please consider that when deciding whether or not to use
-      this feature.
-    </warning>
-  </body>
+
+<warning>
+If the sources for a package are neither mirror-restricted nor
+fetch-restricted, then they will be <uri
+link="::general-concepts/mirrors">mirrored onto Gentoo infrastructure</uri>
+automatically; in that case, there is little benefit to using this feature.
+There is a maintenance burden associated with using a third-party mirror list:
+it must be updated when new mirrors are born and when old mirrors die. Please
+consider that when deciding whether or not to use this feature.
+</warning>
+
+</body>
 </subsection>
 </section>
 
