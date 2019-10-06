@@ -50,16 +50,24 @@ found. This should only be used if a license requires it.
 <title>Replacing Automatically Mirrored Files</title>
 <body>
 <p>
-On rare occasions you may need to replace a file that is already mirrored.  In this case proceed as
-follows:
-<ol>
-  <li>Put a copy of the new distfile on dev.gentoo.org into /space/distfiles-local</li>
-  <li>commit the new manifest to the git tree</li>
-  <li>wait</li>
-</ol>
-After a few hours a cron job on dev.gentoo.org will fetch the file and replace the version on the
-mirrors.  The file will be automatically removed from /space/distfiles-local after approximately two
-weeks.
+On rare occasions you may need to replace a file that is already mirrored.
+This is usually the case when upstream remakes a release package. If this
+is necessary, please use <c>SRC_URI</c> arrow to rename the file. For example:
+</p>
+
+<codesample lang="ebuild">
+# upstream updated the distfile in place, so make it .r1
+SRC_URI="https://example.com/badupstream/${P}.tar.gz -> ${P}.r1.tar.gz"
+</codesample>
+
+<p>
+Since Gentoo mirrors operate using local distfile names, they will automatically
+fetch and start distributing the new version.
+</p>
+
+<p>
+Please note that if upstream made any changes affecting the built package,
+you need to also bump the ebuild's revision.
 </p>
 
 <p>
