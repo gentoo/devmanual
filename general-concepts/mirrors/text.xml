@@ -33,9 +33,8 @@ certain files; files will still be downloaded from the original locations.
 
 <p>
 The <c>RESTRICT="primaryuri"</c> setting causes Portage to try
-original locations <e>first</e>, and then fall back to mirrors if necessary <d/> this
-is sometimes useful if approximate download counts are needed, or if upstream
-have a reliable mirror setup.
+original locations <e>first</e>, and then fall back to mirrors if necessary.
+This should not be used in new ebuilds.
 </p>
 
 <p>
