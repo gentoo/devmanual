@@ -420,7 +420,7 @@ SRC_URI="https://example.com/files/${PV}.tar.gz -> ${P}.tar.gz"
   other language choice would be accurate either.
 -->
 <codesample lang="ebuild">
-example http://download.example.org/ ftp://ftp.example.org/
+example https://download.example.com https://mirror1.example.org/example
 </codesample>
     <p>
       that can afterwards be referenced through a <c>mirror://</c>
