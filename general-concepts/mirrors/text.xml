@@ -56,8 +56,8 @@ is necessary, please use <c>SRC_URI</c> arrow to rename the file. For example:
 </p>
 
 <codesample lang="ebuild">
-# upstream updated the distfile in place, so make it .r1
-SRC_URI="https://example.com/badupstream/${P}.tar.gz -> ${P}.r1.tar.gz"
+# upstream updated the distfile in place, so suffix it with _YYYYMMDD
+SRC_URI="https://example.com/badupstream/${P}.tar.gz -> ${P}_20191016.tar.gz"
 </codesample>
 
 <p>
