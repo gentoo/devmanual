@@ -414,9 +414,6 @@ pseudo-protocol.
 </p>
 
 <p>
-As of EAPI 7, the format of <uri
-link="https://projects.gentoo.org/pms/7/pms.html#x1-340004.4.2">the
-thirdpartymirrors file</uri> is described in section 4.4.2 of the Package
 One might define a set of &quot;example&quot;
 mirrors,
 </p>
