@@ -407,7 +407,9 @@ If the items in <c>SRC_URI</c> are available on multiple third-party mirrors,
 and the same set of mirrors is shared across multiple ebuilds, then you
 don't have to repeatedly list each of them in every ebuild.
 The <c>profiles/thirdpartymirrors</c> file in the <c>::gentoo</c> repository
-contains named groups of mirrors, in the format specified by the Package Manager Specification (PMS), accessible through the <c>mirror://</c>
+contains named groups of mirrors, in the format specified by the
+Package Manager Specification (PMS), accessible through the
+<c>mirror://</c>
 pseudo-protocol.
 </p>
 
