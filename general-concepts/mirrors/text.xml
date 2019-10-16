@@ -106,6 +106,10 @@ a distfile mirrored this way is as follows:
 SRC_URI="https://dev.gentoo.org/~myname/distfiles/${P}.tar.gz"
 </codesample>
 
+<p>
+where <c>myname</c> refers to the username of the developer.
+</p>
+
 </body>
 </subsection>
 </section>
