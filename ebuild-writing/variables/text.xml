@@ -430,7 +430,7 @@ example https://download.example.com https://mirror1.example.org/example
 </codesample>
 
 <p>
-that can afterwards be referenced through a <c>mirror://</c> URL:
+that can afterwards be referenced through a <c>mirror://</c> URI:
 </p>
 
 <codesample lang="ebuild">
