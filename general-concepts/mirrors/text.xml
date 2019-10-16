@@ -66,8 +66,13 @@ fetch and start distributing the new version.
 </p>
 
 <p>
-Please note that if upstream made any changes affecting the built package,
-you need to also bump the ebuild's revision.
+Please note that if upstream made any changes affecting the built
+package, you need to also bump the ebuild's revision. Finally,
+remember to remove the ebuilds that are associated with the old
+distfile, or regenerate their checksums in <c>Manifest</c>, if there
+are any. This is necessary because these ebuilds will cause checksum
+mismatch errors as the checksum recorded in the Manifest file no
+longer matches the computed checksum of the fetched distfile.
 </p>
 
 <p>
