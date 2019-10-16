@@ -98,8 +98,8 @@ requirement of the license.
 
 <p>
 When you upload the file to <c>dev.gentoo.org:~/public_html</c>, you must ensure that it, and its
-parent directories, are world-readable.  An example <c>SRC_URI</c> referencing
-a distfile mirrored this way follows:
+parent directories, are world-readable. An example <c>SRC_URI</c> referencing
+a distfile mirrored this way is as follows:
 </p>
 
 <codesample lang="ebuild">
