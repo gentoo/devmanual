@@ -141,7 +141,11 @@ rebase</c>.</li>
 Whenever repoman is not used to commit, you need to manually verify all
 packages affected by the commit using <c>repoman full</c>. Since repoman
 is not aware of staged changes, please make sure that all files are included
-in the commit.
+in the commit. Also when not using repoman, you must perform a manual sign-off
+to the <uri link="https://www.gentoo.org/glep/glep-0076.html#certificate-of-origin">
+Certificate of Origin</uri> using the <c>-s</c> or <c>--signoff</c> option
+with your git commit commands. Make sure you have read and understand the
+actual Certificate.
 </p>
 
 </body>
@@ -205,8 +209,9 @@ line. From the third line onward should be a detailed, multiline
 explanation of the changes introduced by the commit. At the very end,
 auxiliary information such as the bugs related to the commit,
 contributors, and reviewers should be listed using RFC822/git style
-tags. The length of the lines in the message should be 70-75
-characters at maximum.
+tags. The sign-off agreement will be added there as well when applied
+with the commit action. The length of the lines in the message should
+be 70-75 characters at maximum.
 </p>
 
 <p>
@@ -310,6 +315,7 @@ new bar functionality introduced with this version.
 
 Bug: https://bugs.gentoo.org/00000
 Closes: https://bugs.gentoo.org/00001
+Signed-off-by: Alice Bar &lt;a.bar@example.org&gt;
 </pre>
 
 </body>
