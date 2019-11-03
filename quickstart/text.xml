@@ -40,7 +40,7 @@ can see real ebuilds in the main tree).
 EAPI=6
 
 DESCRIPTION="Exuberant ctags generates tags files for quick source navigation"
-HOMEPAGE="http://ctags.sourceforge.net"
+HOMEPAGE="https://ctags.io/ https://github.com/universal-ctags/ctags"
 SRC_URI="mirror://sourceforge/ctags/${P}.tar.gz"
 
 LICENSE="GPL-2+"
