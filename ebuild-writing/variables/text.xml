@@ -185,11 +185,12 @@ The following variables may or must be defined by every ebuild.
   <tr>
     <ti><c>HOMEPAGE</c></ti>
     <ti>
-    Package's homepage. Mandatory (except for virtuals). If you are
-    unable to locate an official one, try to provide a link to
-    <uri link="http://freshmeat.net">freshmeat.net</uri> or a similar
-    package tracking site. If the homepage of the package is unavailable
-    and no new location can be found, please update it to
+    Package's homepage(s). Mandatory (except for virtuals), accepts
+    multiple values. In some contexts, it is customary to provide
+    package tracker and/or code hosting links besides the main homepage
+    (e.g. PyPI link for Python packages, GitHub link when code can't
+    easily be found on homepage) for convenience. If no homepage for
+    the package is available, please set it to
     <c>https://wiki.gentoo.org/wiki/No_homepage</c>.
     Never refer to a variable name in the string; include only raw text.
     </ti>
