@@ -700,6 +700,11 @@ have no direct correlation with the expected string should be avoided.
   </li>
 
   <li>
+    using <c>${HOMEPAGE}</c> in <c>SRC_URI</c> — it breaks when homepage
+    changes or additional entry is added,
+  </li>
+
+  <li>
     using <c>${PN}</c> (or other unnecessary helper variables)
     excessively in <c>src_install()</c> — it impairs readability for
     little benefit and causes a lot of trouble when the package needs to
