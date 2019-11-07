@@ -35,13 +35,28 @@ IFS='' read -r -d '' FOOTER << 'EOF'
 </html>
 EOF
 
+guesscompress() {
+	case "$1" in
+		*.gz|*.z)	echo "gunzip -c" ;;
+		*.bz2|*.bz)	echo "bunzip2 -c" ;;
+		*.lz)		echo "lzip -dc" ;;
+		*.lzma)		echo "unlzma -c" ;;
+		*.lzo)		echo "lzop -dc" ;;
+		*.xz)		echo "xzdec" ;;
+		*.zst)		echo "zstd -dc" ;;
+		*)		echo "cat" ;;
+	esac
+}
+
 # We also need the ebuild man page
-for i in $(/usr/bin/qlist eclass-manpages) /usr/share/man/man5/ebuild.5.bz2; do
-	BASENAME="$(basename $i .5.bz2)"
-	[[ ${BASENAME} != "${i##*/}" ]] || continue
+for i in $(/usr/bin/qlist eclass-manpages) /usr/share/man/man5/ebuild.5*; do
+	FILEBASE=${i##*/}
+	BASENAME="${FILEBASE%.5*}"
+	[[ ${BASENAME} != "${FILEBASE}" ]] || continue
 	DIRNAME="${OUTPUTDIR}/${BASENAME}"
 	TMP="${DIRNAME}/index.html.tmp"
 	FINAL="${DIRNAME}/index.html"
+	DECOMPRESS=$(guesscompress "${i}")
 	[[ -d ${DIRNAME} ]] || mkdir -p ${DIRNAME}
 	# rebuild the man page each time
 	cat << EOF > ${FINAL}
@@ -89,7 +104,7 @@ for i in $(/usr/bin/qlist eclass-manpages) /usr/share/man/man5/ebuild.5.bz2; do
 	<div class="container">
 EOF
     # generate html pages and fix hyperlinks for eclass and ebuild man pages
-    /bin/bunzip2 -c $i | /usr/bin/man2html -r - | \
+    $DECOMPRESS "$i" | /usr/bin/man2html -r - | \
     sed -e "/<A HREF=/s:=.*man.*/\(.*eclass\).*html\">:=../\1/index.html>:" \
     -e "/<\/BODY>/d" -e "/<\/HTML>/d"  \
     -e "/<A HREF=/s:=.*man.*/\(.*ebuild\).*html\">:=../\1/\index.html>:" >> ${TMP}
