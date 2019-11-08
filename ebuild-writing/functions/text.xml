@@ -5,17 +5,28 @@
 
 <body>
 <p>
-When installing packages from source, the function call order is <c>pkg_setup</c>,
+When installing packages from source, the function call order is
+<c>pkg_pretend</c> (for EAPI=4 and later), <c>pkg_setup</c>,
 <c>src_unpack</c>, <c>src_prepare</c>, <c>src_configure</c>, <c>src_compile</c>,
 <c>src_test</c> (optional, <c>FEATURES="test"</c>),
 <c>src_install</c>, <c>pkg_preinst</c>, <c>pkg_postinst</c>. When installing packages
-from a binary, the function call order is <c>pkg_setup</c>, <c>pkg_preinst</c>,
-<c>pkg_postinst</c>.
+from a binary, the function call order is <c>pkg_pretend</c>,
+<c>pkg_setup</c>, <c>pkg_preinst</c>, <c>pkg_postinst</c>.
 As some phases haven't been introduced from the beginning, you can have a look at
 <uri link="::ebuild-writing/eapi"/> for an overview, what have been introduced in which EAPI.
 </p>
 
 <figure short="How the ebuild functions are processed" link="diagram.png"/>
+
+<p>
+The <c>pkg_pretend</c> function is to be used for performing various
+early sanity checks, such as ensuring that certain kernel options are
+enabled. It is important to keep in mind that <c>pkg_pretend</c> runs
+separately from the rest of the phase function sequence. Consequently,
+there is no environment saving or propagation to the next
+phase. Moreover, ebuild dependencies are not guaranteed to be
+satisfied at this phase.
+</p>
 
 <p>
 The <c>pkg_prerm</c> and <c>pkg_postrm</c> functions are called when uninstalling a
