@@ -1,318 +1,416 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.0"
-   width="1100"
-   height="80"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:export-ydpi="96"
+   inkscape:export-xdpi="96"
+   inkscape:version="1.0beta1 (fe3e306978, 2019-09-17)"
+   sodipodi:docname="diagram.svg"
+   id="svg2503"
    viewBox="-130 100 1100 80"
-   id="svg2503">
+   height="80"
+   width="1100"
+   version="1.0">
+  <metadata
+     id="metadata55">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:current-layer="svg2503"
+     inkscape:window-maximized="0"
+     inkscape:window-y="29"
+     inkscape:window-x="0"
+     inkscape:cy="-42.598355"
+     inkscape:cx="920.06029"
+     inkscape:zoom="3.7798071"
+     showgrid="false"
+     id="namedview53"
+     inkscape:window-height="1423"
+     inkscape:window-width="1929"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     inkscape:document-rotation="0"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
   <defs
      id="defs2577" />
   <desc
      id="desc2505">Ebuild Function Order</desc>
   <rect
-     width="1100"
-     height="1000"
-     x="-135"
-     y="-10"
+     style="fill:#eeeeee;stroke-width:0.293003"
      id="background"
-     style="fill:#eeeeee" />
-  <line
-     style="stroke:#000000;stroke-width:2.19613099"
-     id="line2593"
-     y2="125"
-     x2="372.11496"
-     y1="125"
-     x1="323.88504" />
+     y="96.698219"
+     x="-129.33987"
+     height="85.745827"
+     width="1101.323" />
   <rect
-     width="80"
-     height="30"
-     x="-115"
-     y="110"
+     style="opacity:1;fill:#ccccff;stroke:#000000;stroke-width:2;stop-opacity:1"
      id="rect2508"
-     style="fill:#ccccff;stroke:#000000;stroke-width:2" />
+     y="115.12637"
+     x="-7.6246438"
+     height="30"
+     width="80" />
   <text
-     x="-75.000008"
-     y="130"
+     style="text-anchor:middle;opacity:1;stop-opacity:1"
      id="text2510"
-     style="text-anchor:middle">pkg_setup</text>
-  <g
-     transform="translate(-125,0)"
-     id="g2599">
-    <line
-       id="line2512"
-       y2="125"
-       x2="130"
-       y1="125"
-       x1="90"
-       style="stroke:#000000;stroke-width:2" />
-    <line
-       id="line2514"
-       y2="120"
-       x2="122"
-       y1="125"
-       x1="130"
-       style="stroke:#000000;stroke-width:2" />
-    <line
-       id="line2516"
-       y2="130"
-       x2="122"
-       y1="125"
-       x1="130"
-       style="stroke:#000000;stroke-width:2" />
-  </g>
+     y="135.12637"
+     x="32.375347">pkg_setup</text>
   <rect
-     width="80"
-     height="30"
-     x="4.9999924"
-     y="110"
+     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1"
      id="rect2518"
-     style="fill:#ffffff;stroke:#000000;stroke-width:2" />
+     y="115.12637"
+     x="109.90766"
+     height="30"
+     width="80" />
   <text
-     x="44.999992"
-     y="130"
+     style="text-anchor:middle;opacity:1;stop-opacity:1"
      id="text2520"
-     style="text-anchor:middle">src_unpack</text>
-  <line
-     x1="373"
-     y1="125"
-     x2="365"
-     y2="120"
-     id="line2524"
-     style="stroke:#000000;stroke-width:2" />
-  <line
-     x1="373"
-     y1="125"
-     x2="365"
-     y2="130"
-     id="line2526"
-     style="stroke:#000000;stroke-width:2" />
+     y="135.12637"
+     x="149.90767">src_unpack</text>
   <rect
-     width="80"
-     height="30"
-     x="373"
-     y="110"
+     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1"
      id="rect2528"
-     style="fill:#ffffff;stroke:#000000;stroke-width:2" />
+     y="115.12637"
+     x="428.4689"
+     height="30"
+     width="80" />
   <text
-     x="413"
-     y="130"
+     style="text-anchor:middle;opacity:1;stop-opacity:1"
      id="text2530"
-     style="text-anchor:middle">src_compile</text>
-  <line
-     x1="453"
-     y1="125"
-     x2="493"
-     y2="125"
-     id="line2532"
-     style="stroke:#000000;stroke-width:2" />
-  <line
-     x1="493"
-     y1="125"
-     x2="485"
-     y2="120"
-     id="line2534"
-     style="stroke:#000000;stroke-width:2" />
-  <line
-     x1="493"
-     y1="125"
-     x2="485"
-     y2="130"
-     id="line2536"
-     style="stroke:#000000;stroke-width:2" />
+     y="135.12637"
+     x="468.4689">src_compile</text>
   <path
-     d="M 453,125 C 466.33333,125 473,129 473,137 C 473,145.66667 479.66667,150 493,150 L 573,150 C 586.33333,150 593,145.66667 593,137 C 593,129 599.66667,125 613,125"
+     inkscape:connector-curvature="0"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
      id="path2538"
-     style="fill:none;stroke:#000000;stroke-width:2" />
+     d="m 509.22566,130.12637 c 11.55683,0 17.33525,4 17.33525,12 0,8.66667 5.77842,13 17.33525,13 h 69.34101 c 11.55683,0 17.33525,-4.33333 17.33525,-13 0,-8 5.77842,-12 17.33525,-12" />
   <rect
-     width="80"
-     height="30"
-     x="493"
-     y="110"
+     style="opacity:1;fill:#ccffcc;stroke:#000000;stroke-width:2;stop-opacity:1"
      id="rect2540"
-     style="fill:#ccffcc;stroke:#000000;stroke-width:2" />
+     y="115.12637"
+     x="538.37067"
+     height="30"
+     width="80" />
   <text
-     x="532.99994"
-     y="130"
+     style="text-anchor:middle;opacity:1;stop-opacity:1"
      id="text2542"
-     style="text-anchor:middle">src_test</text>
-  <line
-     x1="572.99994"
-     y1="125"
-     x2="612.99994"
-     y2="125"
-     id="line2544"
-     style="stroke:#000000;stroke-width:2" />
-  <line
-     x1="612.99994"
-     y1="125"
-     x2="604.99994"
-     y2="120"
-     id="line2546"
-     style="stroke:#000000;stroke-width:2" />
-  <line
-     x1="612.99994"
-     y1="125"
-     x2="604.99994"
-     y2="130"
-     id="line2548"
-     style="stroke:#000000;stroke-width:2" />
-  <rect
-     width="80"
-     height="30"
-     x="612.99994"
-     y="110"
-     id="rect2550"
-     style="fill:#ffffff;stroke:#000000;stroke-width:2" />
-  <text
-     x="652.99994"
-     y="130"
-     id="text2552"
-     style="text-anchor:middle">src_install</text>
-  <line
-     x1="692.99994"
-     y1="125"
-     x2="732.99994"
-     y2="125"
-     id="line2554"
-     style="stroke:#000000;stroke-width:2" />
-  <line
-     x1="732.99994"
-     y1="125"
-     x2="724.99994"
-     y2="120"
-     id="line2556"
-     style="stroke:#000000;stroke-width:2" />
-  <line
-     x1="732.99994"
-     y1="125"
-     x2="724.99994"
-     y2="130"
-     id="line2558"
-     style="stroke:#000000;stroke-width:2" />
-  <rect
-     width="80"
-     height="30"
-     x="732.99994"
-     y="110"
-     id="rect2560"
-     style="fill:#ccccff;stroke:#000000;stroke-width:2" />
-  <text
-     x="772.99994"
-     y="130"
-     id="text2562"
-     style="text-anchor:middle">pkg_preinst</text>
-  <line
-     x1="812.99994"
-     y1="125"
-     x2="852.99994"
-     y2="125"
-     id="line2564"
-     style="stroke:#000000;stroke-width:2" />
-  <line
-     x1="852.99994"
-     y1="125"
-     x2="844.99994"
-     y2="120"
-     id="line2566"
-     style="stroke:#000000;stroke-width:2" />
-  <line
-     x1="852.99994"
-     y1="125"
-     x2="844.99994"
-     y2="130"
-     id="line2568"
-     style="stroke:#000000;stroke-width:2" />
-  <rect
-     width="80"
-     height="30"
-     x="852.99994"
-     y="110"
-     id="rect2570"
-     style="fill:#ccccff;stroke:#000000;stroke-width:2" />
-  <text
-     x="892.99994"
-     y="130"
-     id="text2572"
-     style="text-anchor:middle">pkg_postinst</text>
-  <path
-     d="M -34.79404,125.20597 C -15.171638,125.20597 -5.3604277,130.80594 -5.3604277,142.00588 C -5.3604277,153.86465 4.4507723,159.79403 24.073182,159.79403 L 671.61258,159.79403 C 691.23498,159.79403 701.04619,153.86465 701.04619,142.00588 C 701.04619,130.80594 710.85739,125.20597 730.4798,125.20597"
-     id="path2574"
-     style="fill:none;stroke:#000000;stroke-width:2.41193652" />
-  <rect
-     width="80"
-     height="30"
-     x="245"
-     y="110"
-     id="rect2583"
-     style="fill:#ffffff;stroke:#000000;stroke-width:2" />
-  <text
-     x="286.13922"
-     y="129.99992"
-     id="text2585"
-     style="text-anchor:middle">src_configure</text>
-  <rect
-     width="80"
-     height="30"
-     x="125"
-     y="110"
-     id="rect2587"
-     style="fill:#ffffff;stroke:#000000;stroke-width:2" />
-  <text
-     x="167.51736"
-     y="129.99992"
-     id="text2589"
-     style="text-anchor:middle">src_prepare</text>
+     y="135.12637"
+     x="578.37061">src_test</text>
   <g
-     transform="translate(-5.0000077,0)"
-     id="g2604">
+     id="g915">
     <line
-       x1="90"
-       y1="125"
-       x2="130"
-       y2="125"
-       id="line2606"
-       style="stroke:#000000;stroke-width:2" />
+       x1="619.22565"
+       y1="130.12637"
+       x2="647.90759"
+       y2="130.12637"
+       id="line2544"
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
     <line
-       x1="130"
-       y1="125"
-       x2="122"
-       y2="120"
-       id="line2608"
-       style="stroke:#000000;stroke-width:2" />
+       x1="647.90759"
+       y1="130.12637"
+       x2="639.90759"
+       y2="125.12637"
+       id="line2546"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
     <line
-       x1="130"
-       y1="125"
-       x2="122"
-       y2="130"
-       id="line2610"
-       style="stroke:#000000;stroke-width:2" />
+       x1="647.90759"
+       y1="130.12637"
+       x2="639.90759"
+       y2="135.12637"
+       id="line2548"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
+  </g>
+  <rect
+     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1"
+     id="rect2550"
+     y="115.12637"
+     x="649.09814"
+     height="30"
+     width="80" />
+  <text
+     style="text-anchor:middle;opacity:1;stop-opacity:1"
+     id="text2552"
+     y="135.12637"
+     x="687.09814">src_install</text>
+  <g
+     id="g920">
+    <line
+       x1="729.9978"
+       y1="130.12637"
+       x2="767.09814"
+       y2="130.12637"
+       id="line2554"
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
+    <line
+       x1="767.09814"
+       y1="130.12637"
+       x2="759.09814"
+       y2="125.12637"
+       id="line2556"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
+    <line
+       x1="767.09814"
+       y1="130.12637"
+       x2="759.09814"
+       y2="135.12637"
+       id="line2558"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
+  </g>
+  <rect
+     style="opacity:1;fill:#ccccff;stroke:#000000;stroke-width:2;stop-opacity:1"
+     id="rect2560"
+     y="115.12637"
+     x="767.90759"
+     height="30"
+     width="80" />
+  <text
+     style="text-anchor:middle;opacity:1;stop-opacity:1"
+     id="text2562"
+     y="135.12637"
+     x="807.90759">pkg_preinst</text>
+  <g
+     id="g925">
+    <line
+       x1="848.47461"
+       y1="130.12637"
+       x2="873.90759"
+       y2="130.12637"
+       id="line2564"
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
+    <line
+       x1="873.90759"
+       y1="130.12637"
+       x2="865.90759"
+       y2="125.12637"
+       id="line2566"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
+    <line
+       x1="873.90759"
+       y1="130.12637"
+       x2="865.90759"
+       y2="135.12637"
+       id="line2568"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
+  </g>
+  <rect
+     style="opacity:1;fill:#ccccff;stroke:#000000;stroke-width:2;stop-opacity:1"
+     id="rect2570"
+     y="115.12637"
+     x="873.90759"
+     height="30"
+     width="80" />
+  <text
+     style="text-anchor:middle;opacity:1;stop-opacity:1"
+     id="text2572"
+     y="135.12637"
+     x="913.90759">pkg_postinst</text>
+  <path
+     inkscape:connector-curvature="0"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
+     id="path2574"
+     d="m 71.583477,130.33234 c 17.871085,0 26.806636,5.59997 26.806636,16.79991 0,11.85877 8.935547,17.78815 26.806617,17.78815 h 589.74589 c 17.87109,0 26.80666,-5.92938 26.80666,-17.78815 0,-11.19994 8.93553,-16.79991 26.80662,-16.79991" />
+  <rect
+     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1"
+     id="rect2583"
+     y="115.12637"
+     x="322.2374"
+     height="30"
+     width="80" />
+  <text
+     style="text-anchor:middle;opacity:1;stop-opacity:1"
+     id="text2585"
+     y="135.1263"
+     x="363.37662">src_configure</text>
+  <rect
+     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1"
+     id="rect2587"
+     y="115.12637"
+     x="215.93536"
+     height="30"
+     width="80" />
+  <text
+     style="text-anchor:middle;opacity:1;stop-opacity:1"
+     id="text2589"
+     y="135.1263"
+     x="258.45276">src_prepare</text>
+  <rect
+     width="80"
+     height="30"
+     x="-113.90761"
+     y="115.0796"
+     id="rect880"
+     style="opacity:1;fill:#ccccff;stroke:#000000;stroke-width:2;stop-opacity:1" />
+  <text
+     x="-73.904678"
+     y="133.18214"
+     id="text890"
+     style="text-anchor:middle;opacity:1;stop-opacity:1">pkg_pretend</text>
+  <g
+     id="g910">
+    <line
+       x1="537.90765"
+       y1="130.12637"
+       x2="529.90765"
+       y2="125.12637"
+       id="line2534"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
+    <line
+       x1="537.90765"
+       y1="130.12637"
+       x2="529.90765"
+       y2="135.12637"
+       id="line2536"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
+       id="line890"
+       y2="130.12637"
+       x2="537.90759"
+       y1="130.12637"
+       x1="512.47461" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
+       id="line894"
+       y2="130.12637"
+       x2="537.90759"
+       y1="130.12637"
+       x1="509.22568" />
   </g>
   <g
-     transform="translate(115,0)"
-     id="g2612">
+     id="g904">
     <line
-       style="stroke:#000000;stroke-width:2"
-       id="line2614"
-       y2="125"
-       x2="130"
-       y1="125"
-       x1="90" />
+       x1="428.4689"
+       y1="130.12637"
+       x2="420.4689"
+       y2="125.12637"
+       id="line2524"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
     <line
-       style="stroke:#000000;stroke-width:2"
+       x1="428.4689"
+       y1="130.12637"
+       x2="420.4689"
+       y2="135.12637"
+       id="line2526"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
+       id="line902"
+       y2="130.12637"
+       x2="428.4689"
+       y1="130.12637"
+       x1="403.03592" />
+  </g>
+  <g
+     id="g899">
+    <line
+       x1="322.2374"
+       y1="130.12637"
+       x2="314.2374"
+       y2="125.12637"
        id="line2616"
-       y2="120"
-       x2="122"
-       y1="125"
-       x1="130" />
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
     <line
-       style="stroke:#000000;stroke-width:2"
+       x1="322.2374"
+       y1="130.12637"
+       x2="314.2374"
+       y2="135.12637"
        id="line2618"
-       y2="130"
-       x2="122"
-       y1="125"
-       x1="130" />
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
+    <line
+       x1="296.80441"
+       y1="130.12637"
+       x2="322.2374"
+       y2="130.12637"
+       id="line904"
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
+  </g>
+  <g
+     id="g894">
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
+       id="line2608"
+       y2="125.12637"
+       x2="207.93535"
+       y1="130.12637"
+       x1="215.93535" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
+       id="line2610"
+       y2="135.12637"
+       x2="207.93535"
+       y1="130.12637"
+       x1="215.93535" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
+       id="line906"
+       y2="130.12637"
+       x2="215.93535"
+       y1="130.12637"
+       x1="190.50237" />
+  </g>
+  <g
+     id="g884">
+    <line
+       x1="-7.6246533"
+       y1="130.12637"
+       x2="-15.624653"
+       y2="125.12637"
+       id="line884"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
+    <line
+       x1="-7.6246533"
+       y1="130.12637"
+       x2="-15.624653"
+       y2="135.12637"
+       id="line886"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
+    <line
+       x1="-33.057636"
+       y1="130.12637"
+       x2="-7.6246533"
+       y2="130.12637"
+       id="line916"
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
+  </g>
+  <g
+     id="g889">
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
+       x1="109.90767"
+       y1="130.12637"
+       x2="101.90767"
+       y2="125.12637"
+       id="line2514" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
+       x1="109.90767"
+       y1="130.12637"
+       x2="101.90767"
+       y2="135.12637"
+       id="line2516" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
+       id="line920"
+       y2="130.12637"
+       x2="109.90767"
+       y1="130.12637"
+       x1="72.807327" />
   </g>
 </svg>
