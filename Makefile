@@ -12,7 +12,7 @@ prereq:
 	convert $< $@
 
 clean:
-	@find . -name "*.png" -a \! -path "./icons/*" -exec rm -v {} +
+	@find . -name "*.png" -exec rm -v {} +
 	@find . -name "index.html" -exec rm -v {} +
 
 # Given a directory with text.xml in it, return its immediate children as prerequisites
