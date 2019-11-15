@@ -20,8 +20,7 @@ prereq:
 	  exit 1; }
 
 index:
-	@echo -n "var documents = " > documents.js
-	@./search_index.py text.xml >> documents.js
+	@./search_index.py text.xml > documents.js
 
 %.png : %.svg
 	convert $< $@
