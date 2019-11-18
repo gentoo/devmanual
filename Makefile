@@ -6,7 +6,7 @@ all: prereq $(text_files) $(image_files)
 
 prereq:
 	@type convert >/dev/null 2>&1 || { echo "media-gfx/imagemagick with corefonts, svg and truetype required" >&2; exit 1; }; \
-		type xsltproc >/dev/null 2>&1 || { echo "dev-libs/libxslt is required" >&2; exit 1; }
+		type xsltproc >/dev/null 2>&1 || { echo "dev-libs/libxslt with python is required" >&2; exit 1; }
 
 index:
 	@./search_index.py text.xml > documents.js
