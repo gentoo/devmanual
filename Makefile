@@ -13,7 +13,7 @@ prereq:
 	{ echo "media-gfx/imagemagick[corefonts,svg,truetype] required" >&2;\
           exit 1; }
 	@type xsltproc >/dev/null 2>&1 || \
-	{ echo "dev-libs/libxslt is required" >&2;\
+	{ echo "dev-libs/libxslt is with python required" >&2;\
 	  exit 1; }
 	@type xmllint >/dev/null 2>&1 || \
 	{ echo "dev-libs/libxml2 is required" >&2;\
