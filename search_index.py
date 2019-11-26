@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# GPL-2.0-or-later
 import json
 import os
 import sys
