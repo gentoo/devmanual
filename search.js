@@ -1,3 +1,4 @@
+// GPL-2.0-or-later
 "use strict";
 
 var search_index = lunr(function () {
