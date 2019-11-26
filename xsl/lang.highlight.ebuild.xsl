@@ -112,7 +112,7 @@
       <!-- Default keywords -->
       <xsl:when test="$data = 'use' or $data = 'has_version' or $data = 'best_version' or $data = 'use_with' or $data = 'use_enable' or
 		      $data = 'check_KV' or $data = 'keepdir' or $data = 'econf' or $data = 'die' or $data = 'einstall' or $data = 'einfo' or 
-		      $data = 'elog' or $data = 'eapply' or
+		      $data = 'elog' or
 		      $data = 'ewarn' or $data = 'eerror' or $data = 'diropts' or $data = 'dobin' or $data = 'docinto' or $data = 'dodoc' or
 		      $data = 'doexe' or $data = 'dohard' or $data = 'dohtml' or $data = 'doinfo' or $data = 'doins' or $data = 'dolib' or
 		      $data = 'dolib$dataa' or $data = 'dolib$dataso' or $data = 'doman' or $data = 'dosbin' or $data = 'dosym' or $data = 'emake' or
@@ -126,6 +126,26 @@
 	<span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 
+      <!-- PMS keywords for EAPI4 -->
+      <xsl:when test="$data = 'docompress' or $data = 'nonfatal'">
+	<span class="Statement"><xsl:value-of select="$data"/></span>
+      </xsl:when>
+
+      <!-- PMS keywords for EAPI5 -->
+      <xsl:when test="$data = 'doheader' or $data = 'newheader' or $data = 'usex'">
+	<span class="Statement"><xsl:value-of select="$data"/></span>
+      </xsl:when>
+
+      <!-- PMS keywords for EAPI6 -->
+      <xsl:when test="$data = 'eapply' or $data = 'eapply_user' or $data = 'einstalldocs' or $data = 'get_libdir' or $data = 'in_iuse'">
+	<span class="Statement"><xsl:value-of select="$data"/></span>
+      </xsl:when>
+
+      <!-- PMS keywords for EAPI7 -->
+      <xsl:when test="$data = 'dostrip' or $data = 'eqawarn' or $data = 'ver_cut' or $data = 'ver_rs' or $data = 'ver_test'">
+	<span class="Statement"><xsl:value-of select="$data"/></span>
+      </xsl:when>
+
       <!-- Sandbox -->
       <xsl:when test="$data = 'addread' or $data = 'addwrite' or $data = 'adddeny' or $data = 'addpredict'">
 	<span class="Statement"><xsl:value-of select="$data"/></span>
@@ -135,6 +155,13 @@
       <xsl:when test="$data = 'pkg_nofetch' or $data = 'pkg_setup' or $data = 'src_unpack' or $data = 'src_compile' or $data = 'src_test' or
 		      $data = 'src_install' or $data = 'pkg_preinst' or $data = 'pkg_postinst' or $data = 'pkg_prerm' or $data = 'pkg_postrm' or
 		      $data = 'pkg_config'">
+	<span class="Statement"><xsl:value-of select="$data"/></span>
+      </xsl:when>
+
+      <!-- Default keywords phase functions -->
+      <xsl:when test="$data = 'default' or $data = 'default_pkg_nofetch' or $data = 'default_src_unpack' or
+		      $data = 'default_src_prepare' or $data = 'default_src_configure' or $data = 'default_src_compile' or
+		      $data = 'default_src_test' or $data = 'default_src_install'">
 	<span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 
