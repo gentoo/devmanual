@@ -621,7 +621,7 @@
       </footer>
       <script src="https://assets.gentoo.org/tyrian/jquery.min.js"></script>
       <script src="https://assets.gentoo.org/tyrian/bootstrap.min.js"></script>
-      <script src="https://unpkg.com/lunr/lunr.js"></script>
+      <script src="https://assets.gentoo.org/lunr/lunr.min.js"></script>
       <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
       <xsl:variable name="relative_path_depth_recursion">
           <xsl:call-template name="str:repeatString">
