@@ -283,6 +283,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-destdir.patch \
 		"${FILESDIR}"/${P}-parallel_build.patch
+	eapply_user
 }
 
 src_configure() {
@@ -297,6 +298,11 @@ subdirectory in the Gentoo repository. Larger patch files must go on your
 developer's space at <c>dev.gentoo.org</c> rather than in <c>files/</c> or
 mirrors <d/> see <uri link="::general-concepts/mirrors#Gentoo Mirrors"/> and <uri
 link="::ebuild-writing/functions/src_prepare/epatch/"/>.
+</p>
+
+<p>
+When the <c>src_prepare</c> phase is overridden, it must be ensured
+that <c>eapply_user</c> is called.
 </p>
 
 </body>
@@ -383,6 +389,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-namespace.diff \
 		"${FILESDIR}"/${PN}-procmime.diff
+	eapply_user
 }
 
 src_configure() {
