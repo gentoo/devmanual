@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# Copyright 2019 Gentoo Authors
 # GPL-2.0-or-later
 import json
 import os
