@@ -1,4 +1,7 @@
-// GPL-2.0-or-later
+/*
+ * Copyright 2019 Gentoo Authors
+ * GPL-2.0-or-later
+ */
 "use strict";
 
 var search_index = lunr(function () {
