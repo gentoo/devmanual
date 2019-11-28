@@ -1,6 +1,6 @@
 /*
  * Copyright 2019 Gentoo Authors
- * GPL-2.0-or-later
+ * Distributed under the terms of the GNU GPL version 2 or later
  */
 "use strict";
 
