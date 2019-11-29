@@ -645,7 +645,7 @@ follows.
 
 <p>
 The following variables never end with a trailing slash in EAPI 7:
-<c>D</c>, <c>ED</c>, <c>ROOT</c>, <c>EROOT</c>. Conversely, in EAPIS
+<c>D</c>, <c>ED</c>, <c>ROOT</c>, <c>EROOT</c>. Conversely, in EAPIs
 preceeding EAPI 7, these variables are guaranteed to end with a
 trailing slash. When working with EAPIs prior to EAPI 7, developers
 are encouraged to use the bash suffix removal for the trailing slash
