@@ -591,27 +591,5 @@ Forums</uri> is preferred over <uri>https://forums.gentoo.org</uri>.
 </body>
 </subsection>
 </section>
-
-<section>
-<title>Resources</title>
-<subsection>
-<title>Start writing</title>
-<body>
-
-<p>
-GuideXML has been specially designed to be "lean and mean" so that developers
-can spend more time writing documentation and less time learning the actual XML
-syntax.  Hopefully, this will allow developers who aren't unusually "doc-savvy"
-to start writing quality Gentoo documentation.  You might be interested in our
-<uri link="/proj/en/gdp/doc/doc-tipsntricks.xml">Documentation Development Tips
-&amp; Tricks</uri>. If you'd like to help (or have any questions about
-GuideXML), please post a message to the <uri
-link="/main/en/lists.xml">gentoo-doc mailing list</uri> stating what you'd like
-to tackle. Have fun!
-</p>
-
-</body>
-</subsection>
-</section>
 </chapter>
 </guide>
