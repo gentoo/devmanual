@@ -279,7 +279,7 @@ mirrored by Gentoo is referenced, it will be closed (as fixed)
 automatically with reference to the commit.</li>
 <li><c>Package-Manager:</c> This is automatically inserted by
 <c>repoman commit</c> and it specifies the version of
-<pkg>sys-apps/portage</pkg> on the system.</li>
+<c>sys-apps/portage</c> on the system.</li>
 <li><c>RepoMan-Options:</c> This is automatically inserted by
 <c>repoman commit</c> and records the options passed to repoman (such
 as --force) for the commit.</li>

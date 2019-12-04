@@ -49,71 +49,69 @@ metadata.xml:
 </tr>
 <tr>
   <ti>
-    <brite>&lt;catmetadata&gt;</brite>
+    <c>&lt;catmetadata&gt;</c>
   </ti>
   <ti>
     This is the root element of the <path>metadata.xml</path> file for
     categories. It has no attributes. It contains a number of
-    <brite>&lt;longdescription&gt;</brite> tags, each for a different
-    language.
+    <c>&lt;longdescription&gt;</c> tags, each for a different language.
   </ti>
 </tr>
 <tr>
   <ti>
-    <brite>&lt;pkgmetadata&gt;</brite>
+    <c>&lt;pkgmetadata&gt;</c>
   </ti>
   <ti>
     This is the root element of the <path>metadata.xml</path> file for
     packages. It has no attributes. The following subtags are
     allowed:
-    <brite>&lt;longdescription&gt;</brite>,
-    <brite>&lt;maintainer&gt;</brite>,
-    <brite>&lt;slots&gt;</brite>,
-    <brite>&lt;use&gt;</brite>, and
-    <brite>&lt;upstream&gt;</brite>.
+    <c>&lt;longdescription&gt;</c>,
+    <c>&lt;maintainer&gt;</c>,
+    <c>&lt;slots&gt;</c>,
+    <c>&lt;use&gt;</c>, and
+    <c>&lt;upstream&gt;</c>.
     While all the subtags are optional, &lt;upstream&gt; may
     appear at most once.
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;longdescription&gt;</brite></ti>
+  <ti><c>&lt;longdescription&gt;</c></ti>
   <ti>
     This tag contains a description for a category or a package. For
     packages, it is used to augment the
     <uri link="::ebuild-writing/variables#ebuild-defined-variables">
     DESCRIPTION</uri> field in the ebuilds themselves. This tag has
-    two optional subtags: <brite>&lt;pkg&gt;</brite> and
-    <brite>&lt;cat&gt;</brite>.
+    two optional subtags: <c>&lt;pkg&gt;</c> and <c>&lt;cat&gt;</c>.
   </ti>
 </tr>
 <tr>
   <ti>
-    <brite>&lt;maintainer&gt;</brite>
+    <c>&lt;maintainer&gt;</c>
   </ti>
   <ti>
     This tag specifies the persons and/or projects responsible for
     the maintenance of a package. The <c>type</c> attribute must
-    be specified and can be either <c>"person"</c> or
-    <c>"project"</c>. There is one required subtag:
-    <brite>&lt;email&gt;</brite>. It has two optional subtags:
-    <brite>&lt;name&gt;</brite> and
-    <brite>&lt;description&gt;</brite>.
+    be specified and can be either <c>"person"</c> or <c>"project"</c>.
+    There is one required subtag:
+    <c>&lt;email&gt;</c>. It has two optional subtags:
+    <c>&lt;name&gt;</c> and
+    <c>&lt;description&gt;</c>.
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;email&gt;</brite></ti>
+  <ti><c>&lt;email&gt;</c></ti>
   <ti>
     This contains the e-mail address of the maintainer. It is required.
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;name&gt;</brite></ti>
+  <ti><c>&lt;name&gt;</c></ti>
   <ti>
     This contains freetext with the name of the maintainer. It is optional.
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;description&gt;</brite></ti>
+  <ti><c>&lt;description&gt;</c></ti>
   <ti>
     The description tag contains a description of the maintainership, or for 
     example a remark that someone interested can take over the maintainership. 
@@ -121,7 +119,7 @@ metadata.xml:
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;slots&gt;</brite></ti>
+  <ti><c>&lt;slots&gt;</c></ti>
   <ti>
     This tag describes the
     <uri link="::general-concepts/slotting">slots</uri> of a package.
@@ -129,40 +127,40 @@ metadata.xml:
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;slot&gt;</brite></ti>
+  <ti><c>&lt;slot&gt;</c></ti>
   <ti>
     This contains information for a particular slot. The <c>name</c>
     attribute is mandatory and specifies the name of the slot.
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;subslots&gt;</brite></ti>
+  <ti><c>&lt;subslots&gt;</c></ti>
   <ti>
     Describes the meaning of subslots for the whole package. This
     tag may appear at most once.
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;use&gt;</brite></ti>
+  <ti><c>&lt;use&gt;</c></ti>
   <ti>
     This tag contains descriptions of <uri
     link="::ebuild-writing/variables#iuse">USE flags</uri>.
     This tag is optional and, if specified, has one required subtag:
-    <brite>&lt;flag&gt;</brite>.
+    <c>&lt;flag&gt;</c>.
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;flag&gt;</brite></ti>
+  <ti><c>&lt;flag&gt;</c></ti>
   <ti>
     This tag contains a description of how the named USE flag affects this
-    package. It is required if the <brite>&lt;use&gt;</brite> tag is specified.
+    package. It is required if the <c>&lt;use&gt;</c> tag is specified.
     It also requires the USE flag to be named in the <c>name</c> attribute.
-    This tag has two optional subtags: <brite>&lt;pkg&gt;</brite> and
-    <brite>&lt;cat&gt;</brite>.
+    This tag has two optional subtags: <c>&lt;pkg&gt;</c> and
+    <c>&lt;cat&gt;</c>.
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;upstream&gt;</brite></ti>
+  <ti><c>&lt;upstream&gt;</c></ti>
   <ti>
     This tag contains information about the upstream developers/project.
     It supports multiple optional subtags: &lt;maintainer&gt;,
@@ -171,7 +169,7 @@ metadata.xml:
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;maintainer&gt;</brite></ti>
+  <ti><c>&lt;maintainer&gt;</c></ti>
   <ti>
     Provides information about the upstream maintainer. It requires a
     &lt;name&gt; subtag to be specified, supports an optional
@@ -179,20 +177,20 @@ metadata.xml:
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;name&gt;</brite></ti>
+  <ti><c>&lt;name&gt;</c></ti>
   <ti>
     The name of an upstream maintainer should contain a block of text with upstream's name.
     This element is mandatory for an upstream maintainer and must appear exactly once.
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;email&gt;</brite></ti>
+  <ti><c>&lt;email&gt;</c></ti>
   <ti>
     The email address of an upstream maintainer. May appear only once.
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;changelog&gt;</brite></ti>
+  <ti><c>&lt;changelog&gt;</c></ti>
   <ti>
     Should contain a URL where the location of the upstream changelog can be found.
     The URL must be version independent and must point to a changelog which is only
@@ -202,7 +200,7 @@ metadata.xml:
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;doc&gt;</brite></ti>
+  <ti><c>&lt;doc&gt;</c></ti>
   <ti>
     Should contain a URL where the location of the upstream documentation can be
     found. The link must not point to any third party documentation and must be
@@ -212,14 +210,14 @@ metadata.xml:
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;bugs-to&gt;</brite></ti>
+  <ti><c>&lt;bugs-to&gt;</c></ti>
   <ti>
     Should contain a place where bugs can be filed, a URL or an e-mail address prefixed
     with <c>mailto:</c>. May appear at most once.
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;remote-id&gt;</brite></ti>
+  <ti><c>&lt;remote-id&gt;</c></ti>
   <ti>
     Should specify a type of package identification tracker and the identification that
     corresponds to the package in question. remote-id should make it easier to index
@@ -229,13 +227,13 @@ metadata.xml:
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;pkg&gt;</brite></ti>
+  <ti><c>&lt;pkg&gt;</c></ti>
   <ti>
     This tag contains a valid qualified package name.
   </ti>
 </tr>
 <tr>
-  <ti><brite>&lt;cat&gt;</brite></ti>
+  <ti><c>&lt;cat&gt;</c></ti>
   <ti>
     This tag contains a valid category name as defined in
     <path>profiles/categories</path>.
@@ -256,9 +254,8 @@ There are also some attributes that can be used with these tags:
 <tr>
   <ti>lang</ti>
   <ti>
-    <brite>&lt;description&gt;</brite>, <brite>&lt;longdescription&gt;</brite>,
-    <brite>&lt;slots&gt;</brite>,
-    <brite>&lt;use&gt;</brite>, <brite>&lt;doc&gt;</brite>
+    <c>&lt;description&gt;</c>, <c>&lt;longdescription&gt;</c>,
+    <c>&lt;slots&gt;</c>, <c>&lt;use&gt;</c>, <c>&lt;doc&gt;</c>
   </ti>
   <ti>
     In every case where a description is required, there must be at
@@ -272,8 +269,8 @@ There are also some attributes that can be used with these tags:
 <tr>
   <ti>restrict</ti>
   <ti>
-    <brite>&lt;maintainer&gt;</brite>,
-    <brite>&lt;longdescription&gt;</brite>, <brite>&lt;flag&gt;</brite>
+    <c>&lt;maintainer&gt;</c>,
+    <c>&lt;longdescription&gt;</c>, <c>&lt;flag&gt;</c>
   </ti>
   <ti>
     The restrict attribute allows one to restrict the application of
@@ -289,7 +286,7 @@ There are also some attributes that can be used with these tags:
 <tr>
   <ti>name</ti>
   <ti>
-    <brite>&lt;flag&gt;</brite>, <brite>&lt;slot&gt;</brite>
+    <c>&lt;flag&gt;</c>, <c>&lt;slot&gt;</c>
   </ti>
   <ti>
     When this attribute is required on the &lt;flag&gt; tag, it
@@ -304,7 +301,7 @@ There are also some attributes that can be used with these tags:
 <tr>
   <ti>status</ti>
   <ti>
-    <brite>&lt;maintainer&gt;</brite>
+    <c>&lt;maintainer&gt;</c>
   </ti>
   <ti>
     The upstream maintainer element has a status attribute, which is
@@ -318,7 +315,7 @@ There are also some attributes that can be used with these tags:
 <tr>
   <ti>type</ti>
   <ti>
-    <brite>&lt;remote-id&gt;</brite>
+    <c>&lt;remote-id&gt;</c>
   </ti>
   <ti>
     A string identifying the type of upstream source. A list of valid strings are kept in
@@ -329,7 +326,7 @@ There are also some attributes that can be used with these tags:
 <tr>
   <ti>type</ti>
   <ti>
-    <brite>&lt;maintainer&gt;</brite>
+    <c>&lt;maintainer&gt;</c>
   </ti>
   <ti>
     Defines the type of the maintainer for a package. There are only

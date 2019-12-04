@@ -149,18 +149,16 @@ looking for is not listed then please consult the relevant lead.
 </p>
 
 <p>
-You should <e>never</e> stabilize packages on
-architectures for which you cannot test and instead you should file a bug to
-the relevant architecture team, such as <mail link="sparc@gentoo.org">
-sparc@gentoo.org</mail> asking them to stabilize the
-ebuild. Alternatively, you may be able to find Gentoo developers on
-IRC who could help you with your request.
+You should <e>never</e> stabilize packages on architectures for which you
+cannot test and instead you should file a bug to the relevant architecture
+team, such as <c>sparc@gentoo.org</c> asking them to stabilize the ebuild.
+Alternatively, you may be able to find Gentoo developers on IRC who could help
+you with your request.
 </p>
 
 <p>
-It is best to not use <mail link="arch-maintainers@gentoo.org">
-arch-maintainers@gentoo.org</mail>, adding architecture teams onto a
-bug's CC list individually instead. That way teams can remove
+It is best to not use <c>arch-maintainers@gentoo.org</c>, adding architecture
+teams onto a bug's CC list individually instead. That way teams can remove
 themselves from the list when they are done, giving a clear indication
 of which teams still have to stabilize a package.
 </p>
