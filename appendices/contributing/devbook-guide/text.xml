@@ -199,13 +199,13 @@ Make HTML/XML easier to read by using selective emphasis:
 This is a note.
 &lt;/note&gt;
 
-&lt;warn&gt;
+&lt;warning&gt;
 This is a warning.
-&lt;/warn&gt;
+&lt;/warning&gt;
 
-&lt;impo&gt;
+&lt;important&gt;
 This is important.
-&lt;/impo&gt;
+&lt;/important&gt;
 </codesample>
 
 <p>
@@ -230,13 +230,13 @@ Make HTML/XML easier to read by using selective emphasis:
 This is a note.
 </note>
 
-<warn>
+<warning>
 This is a warning.
-</warn>
+</warning>
 
-<impo>
+<important>
 This is important.
-</impo>
+</important>
 
 </body>
 </subsection>
@@ -247,10 +247,10 @@ This is important.
 <p>
 We introduced a lot of new tags in the previous section -- here's what you need
 to know. The <c>&lt;p&gt;</c> (paragraph), <c>&lt;pre&gt;</c> (code block),
-<c>&lt;note&gt;</c>, <c>&lt;warn&gt;</c> (warning) and <c>&lt;impo&gt;</c>
-(important) tags all can contain one or more lines of text. Besides the
-<c>&lt;table&gt;</c>, <c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c> and
-<c>&lt;dl&gt;</c> elements (which we'll cover in just a bit), these are the
+<c>&lt;note&gt;</c>, <c>&lt;warning&gt;</c> (warning) and
+<c>&lt;important&gt;</c> (important) tags all can contain one or more lines of
+text. Besides the <c>&lt;table&gt;</c>, <c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c>
+and <c>&lt;dl&gt;</c> elements (which we'll cover in just a bit), these are the
 only tags that should appear immediately inside a <c>&lt;body&gt;</c> element.
 Another thing -- these tags <e>should not</e> be stacked -- in other words,
 don't put a <c>&lt;note&gt;</c> element inside a <c>&lt;p&gt;</c> element. As
@@ -490,8 +490,8 @@ GuideXML-tag (both opening as closing), except for:
 <c>&lt;body&gt;</c> (opening tag only) and before <e>every</e>
 <c>&lt;chapter&gt;</c>, <c>&lt;p&gt;</c>, <c>&lt;table&gt;</c>, 
 <c>&lt;author&gt;</c> (set), <c>&lt;pre&gt;</c>, <c>&lt;ul&gt;</c>, 
-<c>&lt;ol&gt;</c>, <c>&lt;warn&gt;</c>, <c>&lt;note&gt;</c> and 
-<c>&lt;impo&gt;</c> (opening tags only).
+<c>&lt;ol&gt;</c>, <c>&lt;warning&gt;</c>, <c>&lt;note&gt;</c> and
+<c>&lt;important&gt;</c> (opening tags only).
 </p>
 
 <p>
