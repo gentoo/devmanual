@@ -189,7 +189,7 @@ This is a paragraph.  &lt;path&gt;/etc/passwd&lt;/path&gt; is a file.
 Type &lt;c&gt;ls&lt;/c&gt; if you feel like it.  I &lt;e&gt;really&lt;/e&gt; want to go to sleep now.
 &lt;/p&gt;
 
-&lt;pre caption="Code Sample"&gt;
+&lt;pre&gt;
 This is text output or code.
 # &lt;i&gt;this is user input&lt;/i&gt;
 
@@ -257,12 +257,11 @@ only tags that should appear immediately inside a <c>&lt;body&gt;</c> element.
 Another thing -- these tags <e>should not</e> be stacked -- in other words,
 don't put a <c>&lt;note&gt;</c> element inside a <c>&lt;p&gt;</c> element. As
 you might guess, the <c>&lt;pre&gt;</c> element preserves its whitespace
-exactly, making it well-suited for code excerpts.  You must name the
-<c>&lt;pre&gt;</c> tag with a <c>caption</c> attribute:
+exactly, making it well-suited for code excerpts:
 </p>
 
 <codesample lang="sgml"><!-- Named &lt;pre&gt; -->
-&lt;pre caption="Output of uptime"&gt;
+&lt;pre&gt;
 # &lt;i&gt;uptime&lt;/i&gt;
 16:50:47 up 164 days,  2:06,  5 users,  load average: 0.23, 0.20, 0.25
 &lt;/pre&gt;
@@ -551,8 +550,8 @@ and the attribute value. As an example:
 </p>
 
 <codesample lang="sgml"><!-- Attributes -->
-Wrong  :     &lt;pre caption = "Attributes"&gt;
-Correct:     &lt;pre caption="Attributes"&gt;
+Wrong  :     &lt;uri link = "https://forums.gentoo.org/"&gt;
+Correct:     &lt;uri link="https://forums.gentoo.org/"&gt;
 </codesample>
 
 </body>
@@ -579,10 +578,6 @@ with a capital letter.
   &lt;li&gt;With period. Multiple sentences, remember?&lt;/li&gt;
 &lt;/ul&gt;
 </codesample>
-
-<p>
-Code Listings should <e>always</e> have a <c>caption</c>.
-</p>
 
 <p>
 Try to use <c>&lt;uri&gt;</c> with the <c>link</c> attribute as much as
