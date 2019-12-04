@@ -30,7 +30,7 @@
 
 <section>
 <title>Default <c>src_compile</c></title>
-<body>
+
 <subsection>
 <title>with EAPI=0,1</title>
 <body>
@@ -58,12 +58,11 @@ src_compile() {
 </codesample>
 </body>
 </subsection>
-</body>
 </section>
 
 <section>
 <title>Sample <c>src_compile</c></title>
-<body>
+
 <subsection>
 <title>with EAPI=0</title>
 <body>
@@ -94,7 +93,6 @@ porting the above example to EAPI=2, you won't need to define an extra
 </p>
 </body>
 </subsection>
-</body>
 </section>
 
 <section>

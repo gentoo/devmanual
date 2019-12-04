@@ -8,10 +8,10 @@
 A thorough understanding of <c>bash</c> programming is vital when working with
 ebuilds.
 </p>
+</body>
 
 <section>
 <title>Bash Conditionals</title>
-<body>
 
 <subsection>
 <title>Basic Selection</title>
@@ -616,8 +616,6 @@ These should be avoided in favour of <c>[[ ]]</c> and the above operators.
 
 </body>
 </subsection>
-
-</body>
 </section>
 
 <section>
@@ -687,6 +685,7 @@ manipulate or return information based upon variables. These can be used instead
 of expensive (or illegal, if we're in global scope) external calls to <c>sed</c>
 and friends.
 </p>
+</body>
 
 <subsection>
 <title><c>bash</c> String Length</title>
@@ -1038,10 +1037,6 @@ There is no <c>**=</c> assignment operator.
 
 </body>
 </subsection>
-
-</body>
 </section>
-
-</body>
 </chapter>
 </guide>

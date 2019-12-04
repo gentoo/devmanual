@@ -49,6 +49,7 @@ If a package requires many patches, even if they are individually
 small, it is often best to create a patch tarball to avoid cluttering
 up the tree too much.
 </p>
+</body>
 
 <section>
 <title>Patch Descriptions</title>
@@ -108,6 +109,5 @@ from the <c>vim</c> patch tarball:
 
 </body>
 </section>
-</body>
 </chapter>
 </guide>

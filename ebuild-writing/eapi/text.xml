@@ -22,6 +22,7 @@ file adheres to.
 <p>
 This section provides usage and descriptions of the different EAPIs.
 </p>
+</body>
 
 <section>
 <title>Usage of EAPIs</title>
@@ -134,7 +135,6 @@ IUSE="foo +bar"
 
 <section>
 <title>EAPI=2</title>
-<body>
 
 <subsection>
 <title>Helpers</title>
@@ -323,8 +323,6 @@ src_compile() {
 </ul>
 </body>
 </subsection>
-
-</body>
 </section>
 <section>
 <title>EAPI=3</title>
@@ -353,7 +351,6 @@ src_compile() {
 
 <section>
 <title>EAPI=4</title>
-<body>
 
 <subsection>
 <title>Helpers</title>
@@ -668,13 +665,10 @@ src_install() {
 </ul>
 </body>
 </subsection>
-
-</body>
 </section>
 
 <section>
 <title>EAPI=5</title>
-<body>
 
 <subsection>
 <title>Metadata</title>
@@ -826,13 +820,10 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 </ul>
 </body>
 </subsection>
-
-</body>
 </section>
 
 <section>
 <title>EAPI=6</title>
-<body>
 
 <subsection>
 <title>Bash version</title>
@@ -971,14 +962,11 @@ src_install() {
 </ul>
 </body>
 </subsection>
-
-
-</body>
 </section>
 
 <section>
 <title>EAPI=7</title>
-<body>
+
 <subsection>
 <title>Terminology</title>
 <body>
@@ -1157,9 +1145,6 @@ src_install() {
 </ul>
 </body>
 </subsection>
-</body>
 </section>
-
-</body>
 </chapter>
 </guide>

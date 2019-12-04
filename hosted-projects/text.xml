@@ -8,6 +8,7 @@
 The following guidelines have been proposed for hosted projects in an attempt to
 prevent a repeat of the <c>genkernel</c> disaster.
 </p>
+</body>
 
 <section>
 <title>Documentation Requirement</title>
@@ -161,7 +162,5 @@ Good places to look for further hints include:
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

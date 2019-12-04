@@ -12,6 +12,7 @@ This section provides a brief introduction to eclass authoring.
 You should reread the <uri link="::general-concepts/overlay#Overlay and Eclasses"/>
 and <uri link="::general-concepts/portage-cache"/> sections before continuing.
 </important>
+</body>
 
 <section>
 <title>Purpose of Eclasses</title>
@@ -773,8 +774,5 @@ esac
 </codesample>
 </body>
 </section>
-
-</body>
-
 </chapter>
 </guide>

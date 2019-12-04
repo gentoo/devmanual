@@ -24,6 +24,7 @@ NetBSD (and hence Gentoo/FreeBSD) use OpenPAM, which is a minimal version.  The
 different implementations can provide different authentication modules, and can
 differ in some details of the configuration.
 </p>
+</body>
 
 <section>
 <title>Structure of a <c>pamd</c> File</title>
@@ -263,7 +264,5 @@ directory.
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

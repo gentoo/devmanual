@@ -9,10 +9,10 @@ This guide aims to explain common everyday ebuild maintenance
 routines, as well as other rarer maintenance routines which
 developers may not be familiar with.
 </p>
+</body>
 
 <section>
 <title>Adding a new ebuild</title>
-<body>
 
 <subsection>
 <title>What (not) to put in the Gentoo repository</title>
@@ -132,8 +132,6 @@ which is often more convenient.
 
 </body>
 </subsection>
-
-</body>
 </section>
 
 <section>
@@ -510,7 +508,5 @@ https://wiki.gentoo.org/wiki/No_homepage</uri>
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

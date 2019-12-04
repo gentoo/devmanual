@@ -104,6 +104,7 @@ Usually, "live" ebuilds
 (see <uri link="::ebuild-writing/functions/src_unpack/cvs-sources"/>)
 do not specify a <c>KEYWORDS</c> variable, or assign the empty string to it.
 </note>
+</body>
 
 <section>
 <title>Equal Visibility Requirement</title>
@@ -272,7 +273,6 @@ Vulnerability Treatment Policy</uri>
 </p>
 
 </body>
-</section>
 
 <subsection>
   <title>
@@ -298,7 +298,7 @@ Vulnerability Treatment Policy</uri>
     </p>
   </body>
 </subsection>
-
+</section>
 
 <section>
 <title>Removing Package Versions</title>
@@ -328,7 +328,5 @@ so that you can tidy up, file a bug.
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

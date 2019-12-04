@@ -17,6 +17,7 @@ contact the x86 team. If your package requires specific hardware, or a specific
 non-trivial setup to test, then we will probably allow you to mark it stable,
 unless someone on the team can test it.
 </p>
+</body>
 
 <section>
 <title>x86 Team Guidelines</title>
@@ -67,7 +68,5 @@ The x86 team can be contacted:
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

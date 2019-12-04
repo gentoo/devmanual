@@ -8,6 +8,7 @@
 The <c>cat</c> command can be used to concatenate the contents of two or more
 files. The usage is <c>cat firstfile secondfile ...</c>.
 </p>
+</body>
 
 <section>
 <title>Abuse of <c>cat</c></title>
@@ -80,7 +81,5 @@ desired effect.
 </p>
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

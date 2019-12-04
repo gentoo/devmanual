@@ -67,6 +67,7 @@ always the case,
 which is why some packages, particularly those which use <c>sed -i</c>, have
 <c>DEPEND</c> s upon <c>>=sys-apps/sed-4</c>.
 </p>
+</body>
 
 <section>
 <title>Basic <c>sed</c> Invocation</title>
@@ -415,7 +416,6 @@ the file, for example, causing your sed script to break.
 
 <section>
 <title>Regular Expression Atoms in <c>sed</c></title>
-<body>
 
 <subsection>
 <title>Basic Atoms</title>
@@ -772,8 +772,6 @@ Read the source, it's the only place these're documented properly...
 
 </body>
 </subsection>
-
-</body>
 </section>
 
 <section>
@@ -899,7 +897,5 @@ symbols.
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

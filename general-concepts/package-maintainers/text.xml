@@ -14,6 +14,7 @@ When assigning bugs, the first maintainer listed becomes the bug's
 assignee and the remaining maintainers are added to CC, unless stated
 otherwise in the metadata.
 </p>
+</body>
 
 <section>
 <title>Maintainer authority</title>
@@ -87,7 +88,5 @@ providing a list of newly-unmaintained packages.
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

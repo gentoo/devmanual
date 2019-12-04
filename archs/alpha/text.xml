@@ -9,6 +9,7 @@ The Alpha port uses the <c>alpha</c> keyword. It focuses upon HP (formerly Compa
 (formerly DEC)) hardware. This covers from <c>ev4</c> (known as 21064) through
 <c>ev7z</c> (known as 21364a).
 </p>
+</body>
 
 <section>
 <title>Alpha Kernel and Userland ABIs</title>
@@ -153,7 +154,5 @@ The Alpha team can be contacted:
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

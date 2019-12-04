@@ -12,6 +12,7 @@ provided you know bash already. See
 bash-completion-r1.eclass</uri>
 for how to install completion files.
 </p>
+</body>
 
 <section>
 <title>Completion-Related Internal Bash Variables</title>
@@ -423,8 +424,6 @@ Lines 1-12 are pretty much the same as in the previous section.
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>
 

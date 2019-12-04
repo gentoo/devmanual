@@ -2,7 +2,6 @@
 <guide self="archs/amd64/">
 <chapter>
 <title>Arch Specific Notes -- AMD64/EM64T</title>
-<body>
 
 <section>
 <title>Position Independent Code Issues</title>
@@ -20,6 +19,7 @@ with an error message like this:
 foo.o: relocation R_X86_64_32 can not be used when making a shared
 object; recompile with -fPIC
 </pre>
+</body>
 
 <subsection>
 <title>How to fix -fPIC issues</title>
@@ -29,6 +29,7 @@ object; recompile with -fPIC
 There are several ways to enforce <c>-fPIC</c> on shared objects, each with its
 pros and cons.
 </p>
+</body>
 
 <subsubsection>
 <title><c>sed</c>'ing the Makefile</title>
@@ -54,8 +55,6 @@ This is more readable, and easier to send upstream.
 
 </body>
 </subsubsection>
-
-</body>
 </subsection>
 
 <subsection>
@@ -76,8 +75,6 @@ done.  It should only be applied to shared objects.
 
 </body>
 </subsection>
-
-</body>
 </section>
 
 <section>
@@ -93,10 +90,10 @@ go to <c>/lib32</c> respectively <c>/usr/lib32</c>, the 64bit ones normally to <
 <c>/usr/lib64</c>. In a perfect world, you wouldn't have to read on. Unfortunately,
 that's not the case, and so it's a bit more complicated.
 </p>
+</body>
 
 <subsection>
 <title>Multilib-Toolchain</title>
-<body>
 
 <subsubsection>
 <title>GCC</title>
@@ -129,8 +126,6 @@ To understand how this is done in the ebuild, read
 
 </body>
 </subsubsection>
-
-</body>
 </subsection>
 
 <subsection>
@@ -322,6 +317,7 @@ into anything other than <c>(/usr)/lib64</c>.
 this behaviour is controlled by the <c>MULTILIB_STRICT_EXEMPT</c> variable in
 <c>make.profile</c>.
 </p>
+</body>
 
 <subsubsection>
 <title>How to fix ebuilds properly</title>
@@ -355,8 +351,6 @@ modifications!
 
 </body>
 </subsubsection>
-
-</body>
 </subsection>
 
 <subsection>
@@ -433,13 +427,10 @@ LIBDIR_x86="lib32"
 
 </body>
 </subsection>
-
-</body>
 </section>
 
 <section>
 <title>Porting Notes</title>
-<body>
 
 <subsection>
 <title>Machine Word sizes</title>
@@ -586,8 +577,6 @@ segmentation faults or strange behaviour. GCC 4.0 refuses to compile such code.
 
 </body>
 </subsection>
-
-</body>
 </section>
 
 <section>
@@ -608,7 +597,5 @@ segmentation faults or strange behaviour. GCC 4.0 refuses to compile such code.
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

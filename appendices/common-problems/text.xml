@@ -8,6 +8,7 @@
 This page provides suggestions on how to handle various commonly seen errors
 and QA notices.
 </p>
+</body>
 
 <section>
 <title>Handling QA Notices</title>
@@ -24,6 +25,7 @@ substitute for proper testing and QA by developers.
 Some eclasses output messages in the same format. These are not
 covered here.
 </note>
+</body>
 
 <subsection>
 <title>QA Notice -- USE Flag foo not in IUSE</title>
@@ -150,9 +152,6 @@ you see this notice locally. If you see this notice when working with a pure
 <c>emerge sync</c> over <c>rsync</c> setup, it is probably a genuine issue.
 </p>
 
-</body>
-</subsection>
-
 <todo>
 from vapier:
 TEXTREL's ... binary files which contain text relocations ... see
@@ -165,6 +164,7 @@ directories Executable stacks ... binary files whose stack is marked with
 </todo>
 
 </body>
+</subsection>
 </section>
 
 <section>
@@ -223,7 +223,5 @@ by tricking the build system into using a safer location. See
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

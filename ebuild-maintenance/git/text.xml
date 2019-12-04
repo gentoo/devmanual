@@ -10,11 +10,10 @@ development. It assumes that the readers possess basic git knowledge.
 For a generic guide, please see the official
 <uri link="https://git-scm.com/book/">git book</uri>.
 </p>
-
+</body>
 
 <section>
 <title>Preparing a development checkout</title>
-<body>
 
 <subsection>
 <title>Cloning the gentoo.git repository</title>
@@ -103,13 +102,10 @@ the historical commits after the initial git commit.
 
 </body>
 </subsection>
-
-</body>
 </section>
 
 <section>
 <title>Committing to gentoo.git</title>
-<body>
 
 <subsection>
 <title>Committing and verifying commits</title>
@@ -320,10 +316,6 @@ Signed-off-by: Alice Bar &lt;a.bar@example.org&gt;
 
 </body>
 </subsection>
-
-</body>
 </section>
-
-</body>
 </chapter>
 </guide>

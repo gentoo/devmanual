@@ -8,6 +8,7 @@
 The <c>metadata.xml</c> file is used to specify additional data about a
 package or category.
 </p>
+</body>
 
 <section>
 <title>Syntax</title>
@@ -370,6 +371,7 @@ metadata first shall be the assignee for the bugs for that package as
 per <uri link="https://www.gentoo.org/glep/glep-0067.html#bug-assignment">
 GLEP 67</uri>.
 </p>
+</body>
 
 <subsection>
 <title>Package Metadata Examples</title>
@@ -381,6 +383,7 @@ provided. These examples are based on actual package metadata files to
 keep things as realistic as possible. However, they may not include
 these files verbatim and should be taken as hypothetical examples.
 </p>
+</body>
 
 <subsubsection>
 <title>Projects as Maintainers</title>
@@ -613,7 +616,6 @@ specified in the <c>&lt;subslots&gt;</c> tag.
 
 </body>
 </subsubsection>
-</body>
 </subsection>
 <subsection>
 <title>Maintainer-Needed</title>
@@ -659,7 +661,6 @@ part of the QA reports.
 
 </body>
 </subsection>
-</body>
 </section>
 
 <section>
@@ -718,7 +719,5 @@ Date:   Tue Sep 22 10:47:49 2015 +0200
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

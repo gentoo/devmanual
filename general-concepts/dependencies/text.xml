@@ -9,6 +9,7 @@
   Automatic dependency resolution is one of the most useful features provided by
   <c>emerge</c>.
 </p>
+</body>
 
 <section>
 <title>Build Dependencies</title>
@@ -137,6 +138,7 @@ DEPEND=">=dev-libs/openssl-0.9.7d"
 <p>
 This states that at least version 0.9.7d of <c>openssl</c> is required.
 </p>
+</body>
 
 <subsection>
 <title>Version Specifiers</title>
@@ -291,8 +293,6 @@ newer package that caused the issues.
 
 </body>
 </subsection>
-
-</body>
 </section>
 
 <section>
@@ -322,6 +322,7 @@ To depend on a specific version or version-range within a SLOT we use:
 DEPEND="qt3? ( ~x11-libs/qt-3.3.8:3 )
 	gtk? ( >=x11-libs/gtk+-2.24.9:2 )
 </codesample>
+</body>
 
 <subsection>
 <title>Slot Operators</title>
@@ -361,8 +362,6 @@ RDEPEND="media-libs/cogl:1.0=
 
 </body>
 </subsection>
-
-</body>
 </section>
 
 <section>
@@ -442,6 +441,7 @@ To depend on either <c>foo</c> or <c>bar</c> if the <c>baz</c> <c>USE</c> flag i
 <codesample lang="ebuild">
 DEPEND="baz? ( || ( app-misc/foo app-misc/bar ) )"
 </codesample>
+</body>
 
 <subsection>
 <title>Any of Many Versus USE</title>
@@ -466,8 +466,6 @@ flag is not necessary if and only if all of the following hold:
 
 </body>
 </subsection>
-
-</body>
 </section>
 
 <section>
@@ -527,6 +525,7 @@ There are also shortcuts for conditional situations:
     <ti><c>bar? ( app-misc/foo[-bar] ) !bar? ( app-misc/foo[bar] )</c></ti>
   </tr>
 </table>
+</body>
 
 <subsection>
 <title>Use dependency defaults</title>
@@ -544,8 +543,6 @@ presence or absence.
 
 </body>
 </subsection>
-
-</body>
 </section>
 
 <section>
@@ -615,7 +612,5 @@ DEPEND="test? ( dev-util/foo )"
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

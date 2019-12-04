@@ -9,6 +9,7 @@ The <c>echo</c> command can be used to print strings. The standard
 usage is <c>echo firstString secondString ...</c>. Also, it provides
 additional parameters for formatting of the output.
 </p>
+</body>
 
 <section>
 <title>Abuse of <c>echo</c></title>
@@ -90,7 +91,5 @@ command are available in the bash man page.
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

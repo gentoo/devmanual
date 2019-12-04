@@ -12,14 +12,15 @@ writing ebuilds.
 
 <section>
 <title>Common Ebuild Writing Mistakes</title>
-<body>
 
 <subsection>
 <title>Invalid use of <c>static</c> use-flag</title>
 <body>
+<p>
 The <c>static</c> use-flag should only be used to make a binary use static
 linking instead of dynamic linking. It should not be used to make a library
 install static libraries. Instead, the <c>static-libs</c> use-flag is used for this.
+</p>
 </body>
 </subsection>
 
@@ -43,16 +44,20 @@ See also <uri link="::ebuild-writing/variables#ROOT"/>.
 <title>Referencing the full path to documentation files that could be
 compressed</title>
 <body>
+<p>
 When printing out to the users where to find files like INSTALL, do not specify
 the full path since <c>PORTAGE_COMPRESS</c> comes into play.  The file could be
 compressed with gzip, bzip2, or some other random compression tool.  So,
 instead of doing this:
+</p>
 
 <codesample lang="ebuild">
 elog "They are listed in /usr/share/doc/${PF}/INSTALL.gz"
 </codesample>
 
+<p>
 Do something like:
+</p>
 
 <codesample lang="ebuild">
 elog "They are listed in the INSTALL file in /usr/share/doc/${PF}"
@@ -63,10 +68,12 @@ elog "They are listed in the INSTALL file in /usr/share/doc/${PF}"
 <subsection>
 <title>Build log not verbose</title>
 <body>
+<p>
 When writing ebuilds, you should always check the build log, because the build
 system might ignore CC/CXX/LD/CFLAGS/LDFLAGS and such or add undesired flags
 by default. In order to analyze this and have complete information, in case
 someone reports a bug for your package, the <b>build log must always be verbose.</b>
+</p>
 <p>
 There are several ways to fix non-verbose build logs depending on the build system:
 </p>
@@ -96,10 +103,14 @@ preferred.</note>
 <subsection>
 <title>-Werror compiler flag not removed</title>
 <body>
+<p>
 "-Werror" is a flag which turns all warnings into errors and thus will abort compiling if any warning is encountered.
+</p>
 
-<p><b>Rationale</b><p />
+<p><b>Rationale</b></p>
+<p>
 This flag is not recommended for releases and should always be disabled when encountered in build-logs, because there are numerous cases where this breaks without purpose, e.g.:
+</p>
 <ul>
   <li>
     new warnings on version bumps of GCC/GLIBC the developer was not aware of at the point of coding
@@ -117,11 +128,14 @@ This flag is not recommended for releases and should always be disabled when enc
     random breakage depending on what distro/architecture/library version/kernel/userland the developer was testing "-Werror" on
   </li>
 </ul>
+<p>
 Turning off "-Werror" we will still see the warnings, but there is no reason that they cause compile failure. Also note that portage already emits QA notices about gcc warnings that can cause runtime breakage.
 </p>
 
-<p><b>How to fix</b><p />
+<p><b>How to fix</b></p>
+<p>
 To fix the affected build system you should try the following methods:
+</p>
 <ul>
   <li>
     remove the compiler flag from the build system, <e>e.g. Makefile.am or configure.ac</e> or even provide a switch (for autotools based build systems that could be "--disable-werror", which is good for sending a patch upstream)
@@ -130,14 +144,17 @@ To fix the affected build system you should try the following methods:
     use <e>append-flags -Wno-error</e> (needs flag-o-matic.eclass); for this to work the environment flags have to be respected and placed after build system flags; this method is not preferred as it will disable all "-Werror=specific-warning" flags as well, see next section
   </li>
 </ul>
+<p>
 Always check that it's really gone in the build log.
 </p>
 
-<p><b>Specific -Werror=... flags</b><p />
+<p><b>Specific -Werror=... flags</b></p>
+<p>
 GCC can turn any specific warning into an error. A specific -Werror flag would be "-Werror=implicit-function-declaration" for example and will only affect warnings about implicit function declarations. It's mostly safe to leave these untouched, cause they are pinned to this issue and should not cause random build time breakage. Also, we can expect that upstream did this on purpose to avoid known runtime errors and not just for testing their builds. However you should check the specified warnings yourself or ask other developers if unsure.
 </p>
 
-<p><b>Exceptions</b><p />
+<p><b>Exceptions</b></p>
+<p>
 Removing "-Werror" from configure.ac can cause breakage in very rare
 cases where the configure phase relies on the exit code. See
 <uri link="https://sourceforge.net/tracker/?func=detail&amp;aid=2959749&amp;group_id=204462&amp;atid=989708">
@@ -423,8 +440,6 @@ at least when the ebuild hits the stable branch.
 </p>
 </body>
 </subsection>
-
-</body>
 </section>
 
 

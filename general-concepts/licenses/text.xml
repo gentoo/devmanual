@@ -36,6 +36,7 @@ be used) then use the following syntax:
 <codesample lang="ebuild">
 LICENSE="|| ( foo bar )"
 </codesample>
+</body>
 
 <section>
 <title>License-implied restrictions</title>
@@ -189,7 +190,5 @@ you are unsure as to the meaning of any part of it.
 
 </body>
 </section>
-</body>
-
 </chapter>
 </guide>

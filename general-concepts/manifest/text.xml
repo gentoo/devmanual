@@ -3,8 +3,6 @@
 <chapter>
 <title>Manifest</title>
 
-<body>
-
 <section>
 <title>Generating the Manifest</title>
 <body>
@@ -74,7 +72,5 @@ package later. This will change before signing is made mandatory.
 </p>
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

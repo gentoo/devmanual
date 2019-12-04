@@ -10,6 +10,7 @@ hardware (Sun UltraSparc systems with <c>v9</c> CPUs). <c>v8</c> processors
 and 2.4 kernels should still work with Gentoo, but they are no longer supported
 by the Gentoo/SPARC team.
 </p>
+</body>
 
 <section>
 <title>SPARC Kernel and Userland ABIs</title>
@@ -133,8 +134,6 @@ The SPARC team can be contacted:
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>
 

@@ -63,6 +63,7 @@ is additional work for the system administrator. In particular, non-text files
 and files that are not intended for system administrator usage should be moved
 to <c>/usr/share</c>.
 </p>
+</body>
 
 <section>
 <title>FHS</title>
@@ -76,7 +77,5 @@ much of our policy coincides with it.
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

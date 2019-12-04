@@ -23,6 +23,7 @@ calling functions) and the size of data types. ISA stands for "Instruction
 Set Architecture", and refers to the instructions available and the number
 and types of registers for a given CPU.
 </note>
+</body>
 
 <section>
 <title>MIPS ABIs</title>
@@ -133,7 +134,5 @@ The MIPS team can be contacted:
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

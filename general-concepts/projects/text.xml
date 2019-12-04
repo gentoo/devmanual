@@ -27,6 +27,7 @@ The full listing of all the projects can be found on
 api.gentoo.org</uri> or on the
 <uri link="https://wiki.gentoo.org/wiki/Project:Gentoo">wiki</uri>.
 </p>
+</body>
 
 <section>
 <title>Starting New Projects</title>
@@ -82,7 +83,5 @@ the project's email address <c>devmanual@gentoo.org</c>.
 
 </body>
 </section>
-
-</body>
 </chapter>
 </guide>

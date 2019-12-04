@@ -45,6 +45,7 @@ For full details, see <uri link="http://www.opengroup.org/onlinepubs/000095399/u
 IEEE1003.1-2004-tail</uri>. Note that tail-1 on GNU systems describes
 many non-portable options.
 </p>
+</body>
 
 <section>
 <title>Chaining with <c>head</c> or <c>tail</c> with <c>sed</c></title>
@@ -97,6 +98,5 @@ sed -n -e '123p'
 
 </body>
 </section>
-</body>
 </chapter>
 </guide>
