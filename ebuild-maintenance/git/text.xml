@@ -63,7 +63,7 @@ To ensure that the Gentoo policies are followed, you should set the following
 configuration variables:
 </p>
 
-<pre caption="Configuring git for the Gentoo repository">
+<pre>
 git config --local user.name "${YOUR_FULL_NAME}"
 # use your @gentoo.org address even if you have a different default
 git config --local user.email "${YOUR_NICKNAME}@gentoo.org"
@@ -89,7 +89,7 @@ To include the converted CVS history in the git repository, you can
 graft it into the repository:
 </p>
 
-<pre caption="Grafting the history into git">
+<pre>
 git remote add history https://anongit.gentoo.org/git/repo/gentoo/historical.git/
 git fetch history
 git replace --graft 56bd759df1d0c750a065b8c845e93d5dfa6b549d history/master
@@ -305,7 +305,7 @@ message.
 An example commit message is shown below:
 </p>
 
-<pre caption="Example commit message">
+<pre>
 app-misc/foo: version bump to 0.5
 
 This also adds a new USE flag 'bar' which controls the

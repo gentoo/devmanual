@@ -179,7 +179,7 @@ skel.ebuild</uri>.
 The first two lines <e>must</e> look like this:
 </p>
 
-<pre caption="Valid Header">
+<pre>
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 </pre>
@@ -222,7 +222,7 @@ number is not consistent with the tarball/source, then use MY_P. An example
 dev-python/pyopenal fetches a tarball called PyOpenAL, so we redefine it like:
 </p>
 
-<pre caption="Example versioning redefinition">
+<pre>
 MY_P=${P/pyopenal/PyOpenAL}
 SRC_URI="http://download.gna.org/pyopenal/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
@@ -352,7 +352,7 @@ Make sure you have the SLOT variable in the ebuild. If you don't plan to use it,
 don't remove it. Put in:
 </p>
 
-<pre caption="Default SLOT variable">
+<pre>
 SLOT="0"
 </pre>
 
@@ -503,7 +503,7 @@ It is wise to submit a diff for a package update rather than the whole ebuild.
 The best way to generate it would be:
 </p>
 
-<pre caption="Creating a diff">
+<pre>
 $ <i>diff -u some-package-0.1.0.ebuild some-package-0.2.0.ebuild &gt; ~/some-package-0.2.0.diff</i>
 </pre>
 

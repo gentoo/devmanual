@@ -16,7 +16,7 @@ the ebuild meets all Gentoo Linux development standards.
 The user-submitted ebuild must not contain custom headers like this:
 </p>
 
-<pre caption="A custom header that should be included in the commit message instead">
+<pre>
 # Ebuild updated by: me &lt;me@example.com&gt;
 </pre>
 

@@ -257,7 +257,7 @@ the latest file in <path>profiles/updates/</path> in the
 following format:
 </p>
 
-<pre caption="Adding an entry to updates">
+<pre>
 move old-category/package-name new-category/package-name
 </pre>
 
@@ -350,7 +350,7 @@ also need to create a new entry in <path>profiles/updates/</path> in
 the Gentoo repository in the following format:
 </p>
 
-<pre caption="Adding an entry to updates">
+<pre>
 slotmove app-text/gtkspell 0 2
 </pre>
 
@@ -423,7 +423,7 @@ Here is a list of commands that will delete <path>dev-util/pmk</path>
 from the tree:
 </p>
 
-<pre caption="Removing a package from git">
+<pre>
 # cd dev-qt
 # git rm -rf qtphonon
 # git commit --gpg-sign
@@ -433,7 +433,7 @@ from the tree:
 An example commit message is shown below:
 </p>
 
-<pre caption="Package removal commit message">
+<pre>
 commit b97eb6d43f45dfd5b739638928db22d3f3392685
 Author: Michael Palimaka &lt;kensington@gentoo.org&gt;
 Date:   Tue Oct 3 21:43:03 2017 +1100
