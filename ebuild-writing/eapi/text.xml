@@ -1110,8 +1110,8 @@ src_install() {
 		<p><b>New function <c>dostrip</c></b></p>
 		<p>
 			The <c>dostrip</c> helper has been added with <c>EAPI=7</c>.
-			This function controls whether or not to strip a binary.<br />
-			<c>dostrip -x [file]</c> will exclude a binary from being stripped.<br />
+			This function controls whether or not to strip a binary.
+			<c>dostrip -x [file]</c> will exclude a binary from being stripped.
 			Conversely, when combined with RESTRICT=strip, <c>dostrip [file]</c> selects a binary
 			file to be stripped.
 		</p>

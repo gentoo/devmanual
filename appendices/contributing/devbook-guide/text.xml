@@ -71,7 +71,9 @@ document and specifies its DTD. The <c>&lt;!-- &#36;Header&#36; --&gt;</c> line
 will be automatically modified by the CVS server and helps to track revisions.
 Next, there's a <c>&lt;guide&gt;</c> tag -- the entire guide document is
 enclosed within a <c>&lt;guide&gt; &lt;/guide&gt;</c> pair.
-<br/>
+</p>
+
+<p>
 The <c>lang</c> attribute should be used to specify the language code of your
 document. It is used to format the date and insert strings like "<e>Note</e>",
 "<e>Content</e>", etc. in the specified language. The default is English.

@@ -242,22 +242,22 @@ part.
 
 <ul>
   <li>
-    <e>Always include the CATEGORY.</e><br />
+    <e>Always include the CATEGORY.</e>
     For example, use <c>&gt;=x11-libs/gtk+-2</c> and not <c>&gt;=gtk+-2</c>.
   </li>
   <li>
-    <e>Do not put an asterisk (*) for &gt;= dependencies.</e><br />
+    <e>Do not put an asterisk (*) for &gt;= dependencies.</e>
     For example, it should be <c>&gt;=x11-libs/gtk+-2</c> rather than
     <c>&gt;=x11-libs/gtk+-2*</c>.
   </li>
   <li><e>GTK specific. Always use =x11-libs/gtk+-1.2* for GTK+1 apps.</e></li>
   <li>
-    <e>Never depend on a meta package.</e><br />
+    <e>Never depend on a meta package.</e>
     So don't depend on gnome-base/gnome, always depend on the specific
     libraries like libgnome.
   </li>
   <li>
-    <e>One dependency per line.</e><br />
+    <e>One dependency per line.</e>
     Don't put multiple dependency on the same line. It makes it ugly to read
     and hard to follow.
   </li>
@@ -277,29 +277,29 @@ some tips on how to find the correct dependencies.
 
 <ul>
   <li>
-    <e>Look in configure.in or configure.ac</e><br />
+    <e>Look in configure.in or configure.ac.</e>
     Look for checks for packages in here. Things to look out for are pkg-config
     checks or AM_* functions that check for a specific version.
   </li>
   <li>
-    <e>Look at included .spec files</e><br />
+    <e>Look at included .spec files.</e>
     A good indication of dependencies is to look at the included .spec files
     for relevant deps. However, do not trust them to be the definitive complete
-    list of dependencies
+    list of dependencies.
   </li>
   <li>
-    <e>Look at the application/library website</e><br />
+    <e>Look at the application/library website.</e>
     Check the application website for possible dependencies that they suggest
     are needed.
   </li>
   <li>
-    <e>Read the README and INSTALL for the package</e><br />
+    <e>Read the README and INSTALL for the package.</e>
     They usually also contain useful information about building and installing
     packages.
   </li>
   <li>
     <e>Remember non-binary dependencies such as pkg-config, doc generation
-    programs, etc.</e><br />
+    programs, etc.</e>
     Usually the build process requires some dependencies such as intltool,
     libtool, pkg-config, doxygen, scrollkeeper, gtk-doc, etc. Make sure those
     are clearly stated.
