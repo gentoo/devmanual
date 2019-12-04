@@ -22,7 +22,7 @@ because users can set any combination of flags.
 <p>
 Packages should not configure and link based upon what is available at
 compile time <d/> any autodetection must be overridden. This is commonly
-referred to as the dependency being "automagic" - This is bad because the
+referred to as the dependency being "automagic". This is bad because the
 dependency is not detected by the package manager tools and can easily
 break, among other issues.
 </p>

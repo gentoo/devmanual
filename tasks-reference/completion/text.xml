@@ -366,7 +366,7 @@ Lines 1-12 are pretty much the same as in the previous section.
       If <c>${prev}</c> is equal to <c>-X</c>
       or <c>--package-names</c>, call <c>_pkgname</c> (a function
       defined by <c>gentoo-bashcomp</c> that completes on package
-      names - it sets <c>${COMPREPLY}</c>, so we don't worry about
+      names <d/> it sets <c>${COMPREPLY}</c>, so we don't worry about
       that here).
     </ti>
   </tr>

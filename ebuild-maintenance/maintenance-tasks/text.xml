@@ -224,14 +224,14 @@ on some architectures, then you should file a bug or ask on IRC before
 you upgrade the package. If you really need to get the ebuild added in
 a hurry, for example, for a security fix, then you should drop
 any <c>KEYWORDS</c> which are causing problems and CC the relevant
-architectures on the bug - you should file a new bug to the
+architectures on the bug <d/> you should file a new bug to the
 architecture in question regarding this if no bug is already
 available.
 </p>
 
 <p>
 If there are no new dependencies, do not remove keywords if your
-commit fails with repoman - please try a full <c>git pull</c> and if
+commit fails with repoman <d/> please try a full <c>git pull</c> and if
 you still have problems, then commit with <c>repoman -I</c> and file a
 bug to the broken architecture, noting it in your git commit message.
 </p>
@@ -369,7 +369,7 @@ happens to contain an entry which may be affected by your change.
 
 <p>
 When removing an ebuild make sure that no dependencies in Portage are broken
-due to the removal - additionally, your git commit message should explain
+due to the removal <d/> additionally, your git commit message should explain
 clearly why the ebuild is being removed from the git repository.
 </p>
 
@@ -381,7 +381,7 @@ get a newer version marked stable, then please file a bug or ask on IRC.
 
 <p>
 You should also not cause an unnecessary downgrade for any "<c>~arch</c>"
-when removing ebuilds - instead, it is best to get the newest version
+when removing ebuilds <d/> instead, it is best to get the newest version
 marked "<c>~arch</c>" first and then remove redundant versions of the ebuild.
 </p>
 

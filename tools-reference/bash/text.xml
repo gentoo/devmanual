@@ -121,7 +121,7 @@ all new code.
 
 <p>
 This is because <c>[[ ]]</c> is a bash syntax construct, whereas <c>[ ]</c> is a
-program which happens to be implemented as an internal -- as such, cleaner
+program which happens to be implemented as an internal <d/> as such, cleaner
 syntax is possible with the former. For a simple illustration, consider:
 </p>
 
@@ -604,9 +604,10 @@ These are used <e>outside</e> of the <c>[[ ]]</c> blocks. For operator precedenc
 
 <note>
 These will also sometimes work <e>inside</e> <c>[[ ]]</c> constructs, and using
-<c>!</c> before a test is fairly common. <c>[[ ! -f foo ]] &amp;&amp; bar</c> is fine. However,
-there are catches -- <c>[[ -f foo &amp;&amp; bar ]]</c> will <b>not</b> work properly, since
-commands cannot be run inside <c>[[ ]]</c> blocks.
+<c>!</c> before a test is fairly common. <c>[[ ! -f foo ]] &amp;&amp; bar</c>
+is fine. However, there are catches <d/> <c>[[ -f foo &amp;&amp; bar ]]</c>
+will <b>not</b> work properly, since commands cannot be run inside <c>[[ ]]</c>
+blocks.
 </note>
 
 <p>

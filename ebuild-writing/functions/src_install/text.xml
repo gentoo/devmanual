@@ -152,8 +152,8 @@ compilation required) themes:
 
 <p>
 Or sometimes a combination of <c>insinto</c> and <c>doins</c> (plus related
-functions -- see <uri link="::function-reference/install-functions"/>) <d/> the following is based
-upon the <c>sys-fs/udev</c> install:
+functions <d/> see <uri link="::function-reference/install-functions"/>) <d/>
+the following is based upon the <c>sys-fs/udev</c> install:
 </p>
 
 <codesample lang="ebuild">

@@ -13,7 +13,7 @@
 <p>
 The guideXML syntax is lightweight yet expressive, so that it is easy to
 learn yet also provides all the features we need for the creation of web
-documentation.  The number of tags is kept to a minimum -- just those we need.
+documentation.  The number of tags is kept to a minimum <d/> just those we need.
 This makes it easy to transform guide into other formats, such as DocBook
 XML/SGML or web-ready HTML.
 </p>
@@ -69,7 +69,7 @@ using GuideXML.</i>
 On the first lines, we see the requisite tag that identifies this as an XML
 document and specifies its DTD. The <c>&lt;!-- &#36;Header&#36; --&gt;</c> line
 will be automatically modified by the CVS server and helps to track revisions.
-Next, there's a <c>&lt;guide&gt;</c> tag -- the entire guide document is
+Next, there's a <c>&lt;guide&gt;</c> tag <d/> the entire guide document is
 enclosed within a <c>&lt;guide&gt; &lt;/guide&gt;</c> pair.
 </p>
 
@@ -89,7 +89,7 @@ Then, we come to the <c>&lt;author&gt;</c> tags, which contain information
 about the various authors of the document.  Each <c>&lt;author&gt;</c> tag
 allows for an optional <c>title</c> element, used to specify the author's
 relationship to the document (author, co-author, editor, etc.).  In this
-particular example, the authors' names are enclosed in another tag -- a
+particular example, the authors' names are enclosed in another tag <d/> a
 <c>&lt;mail&gt;</c> tag, used to specify an email address for this particular
 person. The <c>&lt;mail&gt;</c> tag is optional and can be omitted, and at
 least one <c>&lt;author&gt;</c> element is required per guide document.
@@ -157,9 +157,9 @@ guide document:
 Above, I set the chapter title by adding a child <c>&lt;title&gt;</c>
 element to the <c>&lt;chapter&gt;</c> element.  Then, I created a section by
 adding a <c>&lt;section&gt;</c> element.  If you look inside the
-<c>&lt;section&gt;</c> element, you'll see that it has two child elements -- a
+<c>&lt;section&gt;</c> element, you'll see that it has two child elements <d/> a
 <c>&lt;title&gt;</c> and a <c>&lt;body&gt;</c>.  While the <c>&lt;title&gt;</c>
-is nothing new, the <c>&lt;body&gt;</c> is -- it contains the actual text
+is nothing new, the <c>&lt;body&gt;</c> is <d/> it contains the actual text
 content of this particular section.  We'll look at the tags that are allowed
 inside a <c>&lt;body&gt;</c> element in a bit. 
 </p>
@@ -247,14 +247,14 @@ This is important.
 <body>
 
 <p>
-We introduced a lot of new tags in the previous section -- here's what you need
-to know. The <c>&lt;p&gt;</c> (paragraph), <c>&lt;pre&gt;</c> (code block),
+We introduced a lot of new tags in the previous section <d/> here's what you
+need to know. The <c>&lt;p&gt;</c> (paragraph), <c>&lt;pre&gt;</c> (code block),
 <c>&lt;note&gt;</c>, <c>&lt;warning&gt;</c> (warning) and
 <c>&lt;important&gt;</c> (important) tags all can contain one or more lines of
 text. Besides the <c>&lt;table&gt;</c>, <c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c>
 and <c>&lt;dl&gt;</c> elements (which we'll cover in just a bit), these are the
 only tags that should appear immediately inside a <c>&lt;body&gt;</c> element.
-Another thing -- these tags <e>should not</e> be stacked -- in other words,
+Another thing <d/> these tags <e>should not</e> be stacked <d/> in other words,
 don't put a <c>&lt;note&gt;</c> element inside a <c>&lt;p&gt;</c> element. As
 you might guess, the <c>&lt;pre&gt;</c> element preserves its whitespace
 exactly, making it well-suited for code excerpts:
@@ -286,7 +286,7 @@ quickly identify commands that they need to type in.  Also, because
 <c>&lt;c&gt;</c> elements are already offset from regular text, <e>it is rarely
 necessary to surround user input with double-quotes</e>. For example, don't
 refer to a "<c>&lt;c&gt;</c>" element like I did in this sentence.  Avoiding
-the use of unnecessary double-quotes makes a document more readable -- and 
+the use of unnecessary double-quotes makes a document more readable <d/> and
 adorable!
 </p>
 
@@ -321,12 +321,12 @@ Fill this section with the information about the use of
 
 <p>
 The <c>&lt;uri&gt;</c> tag is used to point to files/locations on the Internet.
-It has two forms -- the first can be used when you want to have the actual URI
+It has two forms <d/> the first can be used when you want to have the actual URI
 displayed in the body text, such as this link to
 <uri>https://forums.gentoo.org/</uri>.  To create this link, I typed
 <c>&lt;uri&gt;https://forums.gentoo.org/&lt;/uri&gt;</c>.  The alternate form is
-when you want to associate a URI with some other text -- for example, <uri
-link="https://forums.gentoo.org/">the Gentoo Forums</uri>.  To create
+when you want to associate a URI with some other text <d/> for example,
+<uri link="https://forums.gentoo.org/">the Gentoo Forums</uri>.  To create
 <e>this</e> link, I typed <c>&lt;uri link="https://forums.gentoo.org/"&gt;the
 Gentoo Forums&lt;/uri&gt;</c>. You don't need to write
 <c>https://www.gentoo.org/</c> to link to other parts of the Gentoo web site.
@@ -350,7 +350,7 @@ link="https://www.w3.org/QA/Tips/noClickHere">W3C</uri>.
 <body>
 
 <p>
-Here's how to insert a figure into a document -- <c>&lt;figure
+Here's how to insert a figure into a document <d/> <c>&lt;figure
 link="mygfx.png" short="my picture" caption="my favorite picture of all
 time"/&gt;</c>.  The <c>link</c> attribute points to the actual graphic image,
 the <c>short</c> attribute specifies a short description (currently used for
@@ -372,7 +372,7 @@ tag. However, for inserting actual table data, we <e>don't</e> support the HTML
 &lt;td&gt; tag; instead, use the <c>&lt;th&gt;</c> if you are inserting a
 header, and <c>&lt;ti&gt;</c> if you are inserting a normal informational
 block. You can use a <c>&lt;th&gt;</c> anywhere you can use a <c>&lt;ti&gt;</c>
--- there's no requirement that <c>&lt;th&gt;</c> elements appear only in the
+<d/> there's no requirement that <c>&lt;th&gt;</c> elements appear only in the
 first row.
 </p>
 
@@ -462,8 +462,8 @@ to <uri link="#doc_chap2_pre2">code listing 2 in chapter 2</uri>, type
 Since all Gentoo Documentation is a joint effort and several people will
 most likely change existing documentation, a coding style is needed.
 A coding style contains two sections. The first one is regarding
-internal coding - how the XML-tags are placed. The second one is
-regarding the content - how not to confuse the reader.
+internal coding <d/> how the XML-tags are placed. The second one is
+regarding the content <d/> how not to confuse the reader.
 </p>
 
 <p>
