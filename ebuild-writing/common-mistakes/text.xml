@@ -504,7 +504,7 @@ The best way to generate it would be:
 </p>
 
 <pre>
-$ <i>diff -u some-package-0.1.0.ebuild some-package-0.2.0.ebuild &gt; ~/some-package-0.2.0.diff</i>
+$ diff -u some-package-0.1.0.ebuild some-package-0.2.0.ebuild &gt; ~/some-package-0.2.0.diff
 </pre>
 
 </body>

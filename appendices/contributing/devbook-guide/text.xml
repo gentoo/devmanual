@@ -43,26 +43,26 @@ tags used in a GuideXML document:
 &lt;!DOCTYPE guide SYSTEM "/dtd/guide.dtd"&gt;
 &lt;!-- &#36;Header&#36; --&gt;
 
-&lt;guide lang="<i>en</i>"&gt;
-&lt;title&gt;<i>Gentoo Documentation Guide</i>&lt;/title&gt;
+&lt;guide lang="en"&gt;
+&lt;title&gt;Gentoo Documentation Guide&lt;/title&gt;
 
-&lt;author title="<i>Author</i>"&gt;
-  &lt;mail link="<i>yourname@gentoo.org</i>"&gt;<i>Your Name</i>&lt;/mail&gt;
+&lt;author title="Author"&gt;
+  &lt;mail link="yourname@gentoo.org"&gt;Your Name&lt;/mail&gt;
 &lt;/author&gt;
 
 &lt;abstract&gt;
-<i>This guide shows you how to compose web documentation using
+This guide shows you how to compose web documentation using
 our new lightweight Gentoo GuideXML syntax.  This syntax is the official
 format for Gentoo web documentation, and this document itself was created
-using GuideXML.</i>
+using GuideXML.
 &lt;/abstract&gt;
 
 &lt;!-- The content of this document is licensed under the CC-BY-SA license --&gt;
 &lt;!-- See https://creativecommons.org/licenses/by-sa/3.0 --&gt;
 &lt;license version="3.0"/&gt;
 
-&lt;version&gt;<i>1</i>&lt;/version&gt;
-&lt;date&gt;<i>2011-11-29</i>&lt;/date&gt;
+&lt;version&gt;1&lt;/version&gt;
+&lt;date&gt;2011-11-29&lt;/date&gt;
 </codesample>
 
 <p>
@@ -139,13 +139,13 @@ guide document:
 
 <codesample lang="sgml"><!-- Minimal guide example -->
 &lt;chapter&gt;
-&lt;title&gt;<i>This is my chapter</i>&lt;/title&gt;
+&lt;title&gt;This is my chapter&lt;/title&gt;
 &lt;section&gt;
-&lt;title&gt;<i>This is section one of my chapter</i>&lt;/title&gt;
+&lt;title&gt;This is section one of my chapter&lt;/title&gt;
 &lt;body&gt;
 
 &lt;p&gt;
-<i>This is the actual text content of my section.</i>
+This is the actual text content of my section.
 &lt;/p&gt;
 
 &lt;/body&gt;
@@ -222,10 +222,10 @@ Type <c>ls</c> if you feel like it.  I <e>really</e> want to go to sleep now.
 
 <codesample lang="sgml"><!-- Code Sample -->
 This is text output or code.
-# <i>this is user input</i>
+# this is user input
 
 Make HTML/XML easier to read by using selective emphasis:
-&lt;foo&gt;<i>bar</i>&lt;/foo&gt;
+&lt;foo&gt;bar&lt;/foo&gt;
 </codesample>
 
 <note>
