@@ -21,6 +21,7 @@ Before adding a new virtual, it should be discussed on <c>gentoo-dev</c>.
 
 <p>
 An example of a virtual:
+</p>
 
 <codesample lang="ebuild">
 EAPI=4
@@ -32,6 +33,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~x86-fbsd"
 RDEPEND="|| ( >=sys-devel/gcc-4.1 dev-libs/boost )"
 </codesample>
 
+<p>
 Looks familar...right?  It should since its going to look just like a regular
 ebuild.
 </p>

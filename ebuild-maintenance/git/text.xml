@@ -216,6 +216,7 @@ change followed by a colon ':' character. Use the rules in the
 following list to determine the proper format based on what has
 changed, substituting the package, category and eclass names
 appropriately:
+</p>
 
 <ul>
 <li><c>${CATEGORY}/${PN}:</c>Single Package (Note that <c>repoman commit</c>
@@ -227,6 +228,7 @@ automatically inserts this for you)</li>
 <li><c>metadata:</c> Metadata Directory</li>
 </ul>
 
+<p>
 For packages where <c>${CATEGORY}/${PN}:</c> is long, the line length
 limit can be exceeded, if absolutely necessary, to ensure a more
 useful summary line. If a commit affects multiple directories, prepend
@@ -235,6 +237,7 @@ there are any bugs on Gentoo Bugzilla associated with the commit, id
 of the bug can be appended to the summary line using the format
 <c>#BUG-ID</c>. If you are modifying keywords, clearly state what
 keywords are added/removed.
+</p>
 
 <warning>
 By default, lines starting with <c>#</c> are considered to be comments
@@ -243,7 +246,6 @@ line does not start with <c>#BUG-ID</c>. Optionally, git can be
 configured to use a different character for comments by changing the
 <c>commentchar</c> option.
 </warning>
-</p>
 
 <p>
 For non-trivial commits, the message should contain a detailed
@@ -260,6 +262,7 @@ explained in the
 <uri link="https://kernel.org/doc/html/latest/process/submitting-patches.html">
 Linux Kernel patch guideline</uri>. Additionally, the following tags
 are optionally used in Gentoo:
+</p>
 
 <ul>
 <li><c>Bug:</c> Use this to reference bugs <e>without</e> closing them.
@@ -281,7 +284,6 @@ automatically with reference to the commit.</li>
 <c>repoman commit</c> and records the options passed to repoman (such
 as --force) for the commit.</li>
 </ul>
-</p>
 
 <p>
 Additionally, some developers prefer referencing bugs on the summary

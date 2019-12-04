@@ -148,7 +148,6 @@ This states that at least version 0.9.7d of <c>openssl</c> is required.
 Available version specifiers are:
 </p>
 
-<p>
 <table>
   <tr>
     <th>Specifier</th>
@@ -182,7 +181,6 @@ Available version specifiers are:
     <ti>A version strictly before 1.23 is required.</ti>
   </tr>
 </table>
-</p>
 
 </body>
 </subsection>

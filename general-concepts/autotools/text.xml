@@ -659,8 +659,7 @@ For more details on autotools:
   <li>
     The GNU documentation for the various autotools components is of varying
     quality and completeness:
-  </li>
-  <ul>
+    <ul>
     <li>
       <uri link="https://www.gnu.org/software/automake/manual/automake.html">
         GNU automake Manual
@@ -678,7 +677,8 @@ For more details on autotools:
     <li>
       <uri link="https://autotools.io">Autotools Mythbuster</uri>
     </li>
-  </ul>
+    </ul>
+  </li>
   <li>
     There are some good overview lectures available online. <uri
     link="http://www.shlomifish.org/lecture/Autotools/">These

@@ -24,6 +24,8 @@ The character set <b>must</b> be UTF-8 as specified by
 <p>
 Concerning indentation there is no strict rule governing the style and
 width. However the following minimal set of rules need to be followed:
+</p>
+
 <ul>
   <li>
     Indentation should be consistent, i.e. either spaces or tabs, but
@@ -34,7 +36,6 @@ width. However the following minimal set of rules need to be followed:
     belong to other developers.
   </li>
 </ul>
-</p>
 
 <p>
 The following table summarizes the tags that may appear in a

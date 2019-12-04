@@ -15,20 +15,22 @@ The basic filesystem layout and purpose is as follows:
   <li><c>/opt</c>: Binary-only applications.</li>
   <li><c>/sbin</c>: System administrator boot-critical applications</li>
   <li><c>/tmp</c>: Temporary data</li>
-  <li><c>/usr</c>: General applications</li>
-  <ul>
+  <li><c>/usr</c>: General applications
+    <ul>
     <li><c>/usr/bin</c>: Applications</li>
     <li><c>/usr/lib</c>: Libraries</li>
     <li><c>/usr/local</c>: Non-portage applications. <b>Ebuilds must not install here</b>.</li>
     <li><c>/usr/sbin</c>: Non-system-critical system administrator applications</li>
     <li><c>/usr/share</c>: Architecture independent application data and documentation</li>
-  </ul>
-  <li><c>/var</c>: Program generated data</li>
-  <ul>
+    </ul>
+  </li>
+  <li><c>/var</c>: Program generated data
+    <ul>
     <li><c>/var/cache</c>: Long term data which can be regenerated</li>
     <li><c>/var/lib</c>: General application generated data</li>
     <li><c>/var/log</c>: Log files</li>
-  </ul>
+    </ul>
+  </li>
 </ul>
 
 <p>

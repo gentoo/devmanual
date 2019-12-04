@@ -21,6 +21,8 @@ Starting with EAPI=7, this function is banned and <c>eapply</c> must be used.
 Beginning with EAPI=6, a new function <c>eapply</c> was added to apply patches
 without the need for an eclass.
 This function differs from epatch in several ways:
+</p>
+
 <ul>
 <li><c>eapply</c> will not unpack patches for you.</li>
 <li>
@@ -32,7 +34,6 @@ When specifying a directory, at least one file with a name ending in .patch or .
 must exist or the command fails.  Other files are ignored.
 </li>
 </ul>
-</p>
 
 <p>
 Note that distributing modified tarballs rather than a vanilla tarball

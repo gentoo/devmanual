@@ -40,8 +40,7 @@ The statement is composed of 3 or 4 tokens:
   <li>
     The first token specifies the type of service for which the statement is done.
     There are four types:
-  </li>
-  <ul>
+    <ul>
     <li>
       <e>account</e>, which checks for validity of the user account.
     </li>
@@ -57,12 +56,12 @@ The statement is composed of 3 or 4 tokens:
       mount/umount of home directories, executed both before starting and after
       closing the user session.
     </li>
-  </ul>
+    </ul>
+  </li>
   <li>
     The second token is the control that tells PAM how to behave with failures and
     success of the authentication for the module specified:
-  </li>
-  <ul>
+    <ul>
     <li>
       <e>requisite</e>, a failure results in the termination of the process.
     </li>
@@ -79,7 +78,8 @@ The statement is composed of 3 or 4 tokens:
       not the only module present, in which case a success or a failure of it
       makes the authentication succeed or fail.
     </li>
-  </ul>
+    </ul>
+  </li>
   <li>
     The third token is the module to execute for that type of service; PAM modules
     are extensible and, as the name says, pluggable. The result is that there are

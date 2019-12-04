@@ -36,6 +36,7 @@ api.gentoo.org</uri> or on the
 <p>
 According to the metastructure any developer may create a new
 project. There are two procedures involved in starting a new project:
+</p>
 
 <ol>
   <li>
@@ -49,6 +50,7 @@ project. There are two procedures involved in starting a new project:
   </li>
 </ol>
 
+<p>
 There is no approval required for the RFC and negative comments do not
 block a developer from creating a project. Competing projects are
 allowed to co-exist in Gentoo; existence of another project with

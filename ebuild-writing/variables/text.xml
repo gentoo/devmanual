@@ -531,6 +531,7 @@ build system.
 Below is an example of an ebuild that uses <c>ROOT</c> in
 <c>pkg_postinst()</c> to conditionally print an error message if an
 old and obsolete configuration file still exists:
+</p>
 
 <codesample lang="ebuild">
 pkg_postinst() {
@@ -542,7 +543,6 @@ pkg_postinst() {
 	fi
 }
 </codesample>
-</p>
 
 </body>
 </section>

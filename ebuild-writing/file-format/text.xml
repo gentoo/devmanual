@@ -88,6 +88,7 @@ Any of these suffixes may be followed by an unsigned integer.
 <p>
 These suffixes can be chained together and will be processed iteratively.  To
 give some examples (the following list is from lowest version to highest):
+</p>
 
 <ul>
   <li>foo-1.0.0_alpha_pre</li>
@@ -95,7 +96,6 @@ give some examples (the following list is from lowest version to highest):
   <li>foo-1.0.0_beta_pre</li>
   <li>foo-1.0.0_beta_p1</li>
 </ul>
-</p>
 
 <p>
 No integer part of the version may be longer than 18 digits.
