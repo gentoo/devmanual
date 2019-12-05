@@ -1,0 +1,98 @@
+<!-- Copyright 2019 Gentoo Authors -->
+<!-- Distributed under the terms of the MIT/X11 license -->
+
+<!-- Document Type Definition for the Gentoo Devmanual -->
+<!-- Based on common.dtd from GuideXML -->
+
+<!ENTITY  % block.class     "p|pre|codesample|note|important|warning|todo
+                                |figure|table|ul|ol|dl
+                                |list-group-u|list-group-d">
+<!ENTITY  % inline.class    "sup|sub|b|c|d|e|path|uri">
+<!ENTITY  % all.class       "%block.class;|%inline.class;">
+
+<!ELEMENT guide         (include|chapter)+>
+<!ATTLIST guide         root (true) #IMPLIED
+                        self CDATA #IMPLIED>
+
+<!ELEMENT include       EMPTY>
+<!ATTLIST include       href CDATA #REQUIRED>
+
+<!ELEMENT chapter       (title, (body|section), section*)>
+<!ELEMENT section       (title, (body|subsection), subsection*)>
+<!ELEMENT subsection    (title, (body|subsubsection), subsubsection*)>
+<!ELEMENT subsubsection (title, body)>
+
+<!-- Title texts are used as anchors, so we shouldn't allow any formatting,
+     but unfortunately it is used in the document. -->
+<!ELEMENT title         (#PCDATA|%inline.class;)*>
+
+<!ELEMENT body          (authors|contentsTree|%block.class;)+>
+
+<!ELEMENT authors       (author)+>
+<!ELEMENT author        (#PCDATA|%inline.class;)*>
+<!ATTLIST author        name  CDATA #REQUIRED
+                        email CDATA #IMPLIED>
+
+<!ELEMENT contentsTree  EMPTY>
+<!ATTLIST contentsTree  maxdepth   CDATA #IMPLIED
+                        root       CDATA #IMPLIED
+                        extraction CDATA #IMPLIED>
+
+<!ELEMENT p             (#PCDATA|%inline.class;)*>
+
+<!ELEMENT pre           (#PCDATA)>
+
+<!ELEMENT codesample    (#PCDATA)>
+<!ATTLIST codesample    lang (c|ebuild|make|m4|sgml) #REQUIRED
+                        numbering (lines) #IMPLIED>
+
+<!ELEMENT note          (#PCDATA|%inline.class;)*>
+<!ELEMENT important     (#PCDATA|%inline.class;)*>
+<!ELEMENT warning       (#PCDATA|%inline.class;)*>
+<!ELEMENT todo          (#PCDATA|%inline.class;)*>
+
+<!ELEMENT figure        EMPTY>
+<!ATTLIST figure        link CDATA #REQUIRED
+                        short CDATA #IMPLIED
+                        caption CDATA #IMPLIED>
+
+<!ELEMENT table         (tcolumn*, tr+)>
+
+<!ELEMENT tcolumn       EMPTY>
+<!ATTLIST tcolumn       width CDATA #REQUIRED>
+
+<!ELEMENT tr            (th|ti)+>
+
+<!ELEMENT th            (#PCDATA|%inline.class;)*>
+<!ATTLIST th            colspan CDATA #IMPLIED
+                        rowspan CDATA #IMPLIED
+                        align (left|center|right) "left">
+
+<!ELEMENT ti            (#PCDATA|%all.class;)*>
+<!ATTLIST ti            colspan CDATA #IMPLIED
+                        rowspan CDATA #IMPLIED
+                        nowrap  CDATA #IMPLIED
+                        align (left|center|right) "left">
+
+<!ELEMENT ul            (li)+>
+<!ELEMENT ol            (li)+>
+<!ELEMENT li            (#PCDATA|%all.class;)*>
+
+<!ELEMENT dl            (dt, dd)+>
+<!ELEMENT dt            (#PCDATA|%inline.class;)*>
+<!-- The following is strange, but devbook.xsl expects only p elements -->
+<!ELEMENT dd            (p)+>
+
+<!ELEMENT list-group-u  (#PCDATA|%all.class;)*>
+<!ELEMENT list-group-d  (#PCDATA|%all.class;)*>
+
+<!ELEMENT sup           (#PCDATA|%inline.class;)*>
+<!ELEMENT sub           (#PCDATA|%inline.class;)*>
+<!ELEMENT b             (#PCDATA|%inline.class;)*>
+<!ELEMENT c             (#PCDATA|%inline.class;)*>
+<!ELEMENT e             (#PCDATA|%inline.class;)*>
+<!ELEMENT path          (#PCDATA|%inline.class;)*>
+<!ELEMENT d             EMPTY>
+
+<!ELEMENT uri           (#PCDATA|%inline.class;)*>
+<!ATTLIST uri           link CDATA #IMPLIED>
