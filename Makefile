@@ -1,12 +1,12 @@
 # These "find" commands match text.xml and *.svg files, respectively,
 # but only after excluding the .git directory from the search for
 # performance and overall sanity reasons.
-HTMLS := $(subst text.xml,index.html,\
-  $(shell find ./ -name .git -prune -o \( -type f -name 'text.xml' -print \)))
-IMAGES := $(patsubst %.svg,%.png,\
-  $(shell find ./ -name .git -prune -o \( -type f -name '*.svg' -print \)))
+XMLS := $(shell find . -name .git -prune -o -type f -name 'text.xml' -print)
+SVGS := $(shell find . -name .git -prune -o -type f -name '*.svg' -print)
+HTMLS := $(subst text.xml,index.html,$(XMLS))
+IMAGES := $(patsubst %.svg,%.png,$(SVGS))
 
-all: prereq $(HTMLS) $(IMAGES)
+all: prereq validate $(HTMLS) $(IMAGES)
 
 prereq:
 	@type convert >/dev/null 2>&1 || \
@@ -14,6 +14,9 @@ prereq:
           exit 1; }
 	@type xsltproc >/dev/null 2>&1 || \
 	{ echo "dev-libs/libxslt is required" >&2;\
+	  exit 1; }
+	@type xmllint >/dev/null 2>&1 || \
+	{ echo "dev-libs/libxml2 is required" >&2;\
 	  exit 1; }
 
 %.png : %.svg
@@ -34,7 +37,11 @@ prereq:
 %.html: $$(dir $$@)text.xml devbook.xsl xsl/*.xsl $$(subst text.xml,index.html,$$(wildcard $$(dir $$@)*/text.xml))
 	xsltproc devbook.xsl $< > $@
 
+validate: prereq
+	@xmllint --noout --dtdvalid devbook.dtd $(XMLS) \
+	  && echo "xmllint validation successful"
+
 clean:
 	rm -f $(HTMLS) $(IMAGES)
 
-.PHONY: all prereq clean
+.PHONY: all prereq validate clean
