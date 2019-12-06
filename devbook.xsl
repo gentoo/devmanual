@@ -336,8 +336,15 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
-      <xsl:otherwise>
+      <xsl:when test="@link">
         <a class="{$class}" href="{@link}"><xsl:value-of select="."/></a>
+      </xsl:when>
+      <xsl:when test="contains(., '://')">
+        <a class="{$class}" href="{.}"><xsl:value-of select="."/></a>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:message>Error: No link target (<xsl:value-of select="."/>)</xsl:message>
+        <a class="{$class}"><xsl:value-of select="."/></a>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
