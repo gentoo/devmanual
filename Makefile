@@ -19,8 +19,11 @@ prereq:
 	{ echo "dev-libs/libxml2 is required" >&2;\
 	  exit 1; }
 
-index:
-	@./search_index.py text.xml > documents.js
+# Since search_index.py rebuilds the index from scratch instead of
+# updating it, we pass it the names of ALL prerequisites ($^) and not
+# just the names of the ones that are new ($?).
+documents.js: $(XMLS)
+	./search_index.py $^ > documents.js
 
 %.png : %.svg
 	convert $< $@
