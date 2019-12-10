@@ -116,6 +116,7 @@ re-evaluate your user's name, shell, home directory, and its
 permissions. Our GLEP 81 implementation will reveal many user
 management issues that were allowed to fester in the past.
 </p>
+</body>
 
 <subsection>
 <title>Choosing a shell</title>
@@ -258,6 +259,9 @@ usually exploitable.
 </body>
 </subsection>
 
+<subsection>
+<title>Epilogue</title>
+<body>
 <p>
 These suggestions are not rules and are not written in stone, except
 perhaps for the world-writable warning. There are packages in the tree
@@ -273,6 +277,7 @@ Unless your package is exceptional, though, following these guidelines
 will minimize the potential for problems down the road.
 </p>
 </body>
+</subsection>
 </section>
 
 <section>
