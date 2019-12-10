@@ -42,9 +42,32 @@ function search() {
       $.each(results, function(index, result) {
         var uid = result.ref;
         var contents = getContents(documents, uid);
+        var stems = Object.keys(result.matchData.metadata);
+        var positions = [];
+        var text = "";
+        var pos = 0;
+
+        stems.forEach(function (stem) {
+            positions = positions.concat(result.matchData.metadata[stem].text.position);
+        });
+        positions.sort(function(x, y) {
+            if (x[0] < y[0]) { return -1; }
+            else if (x[0] > y[0]) { return 1; }
+            else { return 0; }
+        });
+
+        for (var i = 0; i < positions.length; i++) {
+          text += contents.text.substring(pos, positions[i][0]);
+          pos = positions[i][0];
+          text += "<span style='background-color: yellow;'>";
+          text += contents.text.substring(pos, pos + positions[i][1]);
+          pos += positions[i][1];
+          text += "</span>";
+        }
+        text += contents.text.substring(pos);
 
         $("#searchResults .modal-body").append(`<article><h5><a href="${contents.url}">
-                                                ${title}</a></h5><p>${contents.text}</p></article>`);
+                                                ${contents.name}</a></h5><p>${text}</p></article>`);
       });
     } else {
       $("#searchResults .modal-body").empty();
