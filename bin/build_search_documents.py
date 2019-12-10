@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU GPL version 2 or later
 import json
@@ -6,19 +6,103 @@ import os.path
 import sys
 import xml.etree.ElementTree as ET
 
-files = sys.argv[1:]
-documents = []
-url_root = 'https://devmanual.gentoo.org/'
 
-for f in files:
-    tree = ET.parse(f)
-    root = tree.getroot()
-    for chapter in root.findall('chapter'):
+def stringify_node(parent: ET.Element) -> str:
+    """Flatten this node and its immediate children to a string.
+
+    Combine the text and tail of this node, and any of its immediate
+    children, if there are any, into a flat string. The tag <d/> is a
+    special case that resolves to the dash ('-') character.
+
+    Keyword arguments:
+    parent -- the node to convert to a string
+
+    """
+    if parent.text:
+        text = parent.text.lstrip()
+    else:
+        text = str()
+
+    for child in parent.getchildren():
+        # The '<d/>' tag is simply a fancier '-' character
+        if child.tag == 'd':
+            text += '-'
+        if child.text:
+            text += child.text.lstrip()
+        if child.tail:
+            text += child.tail.rstrip()
+
+    text += parent.tail.rstrip()
+    return text.replace('\n', ' ')
+
+
+def process_node(documents: list, node: ET.Element, name: str, url: str) -> None:
+    """Recursively process a given node and its children based on tag values.
+
+    For the top level node <chapter>, extract the title and recurse
+    down to the children.
+    For the intermediary nodes with titles, such as <section>, update
+    the search result title and url, and recurse down.
+    For the terminal nodes, such as <p>, convert the contents of the
+    node to a string, and add it to the search documents.
+
+    Keyword arguments:
+    documents -- the search documents array
+    node -- the node to process
+    name -- the title to display for the search term match
+    url -- the url for the search term match in the document
+
+    """
+    if node.tag == 'chapter':
+        name = stringify_node(node.find('title'))
+
+        for child in node:
+            process_node(documents, child, name, url)
+    elif node.tag in ['section', 'subsection', 'subsubsection']:
+        title = stringify_node(node.find('title'))
+        name += ' -> ' + title
+        url = "{url_base}#{anchor}".format(
+            url_base=url.split('#')[0],
+            anchor=title.lower().replace(' ', '-'))
+
+        for child in node:
+            process_node(documents, child, name, url)
+    elif node.tag in ['body', 'guide']:
+        for child in node:
+            process_node(documents, child, name, url)
+    elif node.tag in ['p', 'important', 'note', 'warning']:
+        text = stringify_node(node)
+
+        documents.append({'id': len(documents),
+                          'name': name,
+                          'text': text,
+                          'url': url})
+    else:
+        pass
+
+
+def main(pathnames: list) -> None:
+    """The entry point of the script.
+
+    Keyword arguments:
+    pathnames -- a list of path names to process in sequential order
+    """
+    url_root = 'https://devmanual.gentoo.org/'
+    documents = []
+
+    for path in pathnames:
+        tree = ET.parse(path)
+        root = tree.getroot()
+
         try:
-            documents.append({"name": chapter.find('title').text,
-                "text": chapter.find('body').find('p').text,
-                 "url": url_root + os.path.dirname(f) + '/'})
-        except AttributeError:
-            pass
+            url = url_root + os.path.dirname(path) + '/'
 
-print('var documents = ' + json.dumps(documents) + ';')
+            process_node(documents, root, None, url)
+        except:
+            raise
+
+    print('var documents = ' + json.dumps(documents) + ';')
+
+
+if __name__ in '__main__':
+    main(sys.argv[1:])

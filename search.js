@@ -5,9 +5,9 @@
 "use strict";
 
 var search_index = lunr(function () {
-  this.ref('name');
+  this.ref('id');
   this.field('text');
-  this.field('url');
+  this.metadataWhitelist = ['position']
 
   documents.forEach(function (doc) {
     this.add(doc);
@@ -23,15 +23,13 @@ search_input.addEventListener("keyup", function(event) {
   }
 });
 
-function getContents(docs, article) {
-  var contents = { text: "", url: "" };
+function getContents(docs, uid) {
+  var contents = { name: "", text: "", url: "" };
 
-  for (var i = 0; i< docs.length; i++) {
-    if (docs[i].name == article) {
-      contents.text = docs[i].text;
-      contents.url = docs[i].url;
-    }
-  }
+  contents.name = docs[uid].name;
+  contents.text = docs[uid].text;
+  contents.url = docs[uid].url;
+
   return contents;
 }
 
@@ -42,8 +40,8 @@ function search() {
     if (results.length > 0) {
       $("#searchResults .modal-body").empty();
       $.each(results, function(index, result) {
-        var title = result.ref;
-        var contents = getContents(documents, title);
+        var uid = result.ref;
+        var contents = getContents(documents, uid);
 
         $("#searchResults .modal-body").append(`<article><h5><a href="${contents.url}">
                                                 ${title}</a></h5><p>${contents.text}</p></article>`);
