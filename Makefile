@@ -10,8 +10,8 @@ IMAGES := $(patsubst %.svg,%.png,$(SVGS))
 all: prereq validate $(HTMLS) $(IMAGES) documents.js
 
 prereq:
-	@type convert >/dev/null 2>&1 || \
-	{ echo "media-gfx/imagemagick[corefonts,svg,truetype] required" >&2;\
+	@type rsvg-convert >/dev/null 2>&1 || \
+	{ echo "gnome-base/librsvg required" >&2;\
           exit 1; }
 	@type xsltproc >/dev/null 2>&1 || \
 	{ echo "dev-libs/libxslt is with python required" >&2;\
@@ -32,7 +32,7 @@ documents.js: bin/build_search_documents.py $(XMLS)
 	mv _documents.js documents.js
 
 %.png : %.svg
-	convert $< $@
+	rsvg-convert --output=$@ $<
 
 # Secondary expansion allows us to use the automatic variable $@ in
 # the prerequisites. When it is used (and we have no idea when that
