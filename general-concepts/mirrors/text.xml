@@ -142,9 +142,8 @@ doing so can cause all kinds of problems with strict firewalls.
 <title>Mirroring Process</title>
 
 <body>
-<figure short="Mirroring Process" link="diagram.png">
-Diagram showing the mirroring process.
-</figure>
+<figure short="Mirroring Process" link="diagram.png"
+  caption="Diagram showing the mirroring process." />
 </body>
 </section>
 

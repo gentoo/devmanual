@@ -188,7 +188,9 @@
   <xsl:template match="figure">
     <div class="figure">
       <div class="image"><img alt="{@short}" src="{@link}"/></div>
-      <p class="caption"><xsl:value-of select="."/></p>
+      <xsl:if test="@caption">
+        <p class="caption"><xsl:value-of select="@caption"/></p>
+      </xsl:if>
     </div>
   </xsl:template>
 

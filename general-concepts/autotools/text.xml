@@ -42,9 +42,9 @@ together with a few relatively simple upstream-supplied input files, are used to
 create the build system for a package.
 </p>
 
-<figure short="How autotools fits together" link="diagram.png">
-A basic overview of how the main autotools components fit together.
-</figure>
+<figure short="How autotools fits together" link="diagram.png"
+  caption="A basic overview of how the main autotools components fit together."
+  />
 
 <p>
 In a simple setup:

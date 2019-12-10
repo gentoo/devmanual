@@ -29,9 +29,8 @@
   </li>
 </ul>
 
-<figure short="Git to RSYNC Propagation" link="diagram.png">
-  Diagram showing Git to RSYNC Propagation
-</figure>
+<figure short="Git to RSYNC Propagation" link="diagram.png"
+  caption="Diagram showing Git to RSYNC Propagation" />
 
 <p>
   The <c>emerge-websync</c> snapshot is made daily from the staging box.
