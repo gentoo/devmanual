@@ -85,10 +85,6 @@ inherit acct-user
 
 DESCRIPTION="Meaningful description of the user"
 ACCT_USER_ID=123
-ACCT_USER_SHELL=/usr/bin/foo
-ACCT_USER_HOME=/var/lib/foo
-ACCT_USER_HOME_OWNER=foo:bar
-ACCT_USER_HOME_PERMS=0775
 ACCT_USER_GROUPS=( foo bar baz )
 
 acct-user_add_deps
