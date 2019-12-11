@@ -5,8 +5,7 @@
 <!-- Based on common.dtd from GuideXML -->
 
 <!ENTITY  % block.class     "p|pre|codesample|note|important|warning|todo
-                                |figure|table|ul|ol|dl
-                                |list-group-u|list-group-d">
+                                |figure|table|ul|ol|dl">
 <!ENTITY  % inline.class    "sup|sub|b|c|d|e|path|uri">
 <!ENTITY  % all.class       "%block.class;|%inline.class;">
 
@@ -75,16 +74,16 @@
                         align (left|center|right) "left">
 
 <!ELEMENT ul            (li)+>
+<!ATTLIST ul            class CDATA #IMPLIED>
+
 <!ELEMENT ol            (li)+>
+
 <!ELEMENT li            (#PCDATA|%all.class;)*>
 
 <!ELEMENT dl            (dt, dd)+>
 <!ELEMENT dt            (#PCDATA|%inline.class;)*>
 <!-- The following is strange, but devbook.xsl expects only p elements -->
 <!ELEMENT dd            (p)+>
-
-<!ELEMENT list-group-u  (#PCDATA|%all.class;)*>
-<!ELEMENT list-group-d  (#PCDATA|%all.class;)*>
 
 <!ELEMENT sup           (#PCDATA|%inline.class;)*>
 <!ELEMENT sub           (#PCDATA|%inline.class;)*>

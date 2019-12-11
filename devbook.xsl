@@ -204,15 +204,21 @@
   </xsl:template>
 
   <xsl:template match="ul">
-    <ul><xsl:apply-templates/></ul>
-  </xsl:template>
-
-  <xsl:template match="list-group-d">
-    <div class="list-group"><xsl:apply-templates><xsl:with-param name="class">list-group-item</xsl:with-param></xsl:apply-templates></div>
-  </xsl:template>
-
-  <xsl:template match="list-group-u">
-    <ul class="list-group"><xsl:apply-templates><xsl:with-param name="class">list-group-item</xsl:with-param></xsl:apply-templates></ul>
+    <xsl:choose>
+      <xsl:when test="@class='list-group'">
+        <div class="list-group">
+          <xsl:for-each select="li">
+            <xsl:apply-templates>
+              <xsl:with-param name="class">list-group-item</xsl:with-param>
+            </xsl:apply-templates>
+            <xsl:value-of select='$newline'/>
+          </xsl:for-each>
+        </div>
+      </xsl:when>
+      <xsl:otherwise>
+        <ul><xsl:apply-templates/></ul>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- Definition Lists -->
