@@ -33,6 +33,21 @@ function getContents(docs, uid) {
   return contents;
 }
 
+function escapeHTML(str) {
+  return str.replace(/[&<"']/g, function(m) {
+    switch (m) {
+    case '&':
+      return '&amp;';
+    case '<':
+      return '&lt;';
+    case '"':
+      return '&quot;';
+    default:
+      return '&#039;';
+    }
+  });
+};
+
 function search() {
   var term = document.getElementById("searchInput").value;
   if (term !== "") {
@@ -57,14 +72,14 @@ function search() {
         });
 
         for (var i = 0; i < positions.length; i++) {
-          text += contents.text.substring(pos, positions[i][0]);
+          text += escapeHTML(contents.text.substring(pos, positions[i][0]));
           pos = positions[i][0];
           text += "<span style='background-color: yellow;'>";
-          text += contents.text.substring(pos, pos + positions[i][1]);
+          text += escapeHTML(contents.text.substring(pos, pos + positions[i][1]));
           pos += positions[i][1];
           text += "</span>";
         }
-        text += contents.text.substring(pos);
+        text += escapeHTML(contents.text.substring(pos));
 
         $("#searchResults .modal-body").append(`<article><h5><a href="${contents.url}">
                                                 ${contents.name}</a></h5><p>${text}</p></article>`);
