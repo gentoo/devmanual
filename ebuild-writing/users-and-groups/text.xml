@@ -85,7 +85,7 @@ inherit acct-user
 
 DESCRIPTION="Meaningful description of the user"
 ACCT_USER_ID=123
-ACCT_USER_GROUPS=( foo bar baz )
+ACCT_USER_GROUPS=( "${PN}" )
 
 acct-user_add_deps
 </pre>
