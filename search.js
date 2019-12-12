@@ -4,16 +4,7 @@
  */
 "use strict";
 
-var search_index = lunr(function () {
-  this.ref('id');
-  this.field('text');
-  this.metadataWhitelist = ['position']
-
-  documents.forEach(function (doc) {
-    this.add(doc);
-  }, this);
-});
-
+var search_index = null;
 var search_input = document.getElementById("searchInput");
 
 search_input.addEventListener("keyup", function(event) {
@@ -22,6 +13,31 @@ search_input.addEventListener("keyup", function(event) {
     document.getElementById("mw-searchButton").click();
   }
 });
+
+function buildIndex() {
+  search_index = lunr(function () {
+    this.ref('id');
+    this.field('text');
+    this.metadataWhitelist = ['position']
+
+    documents.forEach(function (doc) {
+      this.add(doc);
+    }, this);
+  });
+}
+
+function fetchDocuments() {
+  document.getElementsByName("search")[0].onclick = null;
+  if (search_index == null) {
+    const script = document.createElement('script')
+    script.src = documentsSrc;
+    script.async = false;
+    script.onload = function() {
+      buildIndex();
+    }
+    document.body.appendChild(script);
+  }
+}
 
 function getContents(docs, uid) {
   var contents = { name: "", text: "", url: "" };
