@@ -99,14 +99,14 @@
   <xsl:template match="ti">
     <td class="devbook">
       <xsl:if test="@colspan">
-	<xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
+        <xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
       </xsl:if>
       <xsl:if test="@rowspan">
-	<xsl:attribute name="rowspan"><xsl:value-of select="@rowspan"/></xsl:attribute>
+        <xsl:attribute name="rowspan"><xsl:value-of select="@rowspan"/></xsl:attribute>
       </xsl:if>
       <xsl:if test="@nowrap">
-	<!-- Disable word wrapping for this table item. Usage: <ti nowrap="nowrap"> -->
-	<xsl:attribute name="nowrap"><xsl:value-of select="@nowrap"/></xsl:attribute>
+        <!-- Disable word wrapping for this table item. Usage: <ti nowrap="nowrap"> -->
+        <xsl:attribute name="nowrap"><xsl:value-of select="@nowrap"/></xsl:attribute>
       </xsl:if>
       <xsl:apply-templates/>
     </td>
@@ -116,18 +116,18 @@
   <xsl:template match="th">
     <th>
       <xsl:if test="@colspan">
-	<xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
-	<!-- Center only when item spans several columns as
+        <xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
+        <!-- Center only when item spans several columns as
              centering all <th> might disrupt some pages.
              We might want to use a plain html <th> tag later.
              Tip: to center a single-cell title, use <th colspan="1">
-	  -->
-	<xsl:attribute name="style">text-align:center</xsl:attribute>
+          -->
+        <xsl:attribute name="style">text-align:center</xsl:attribute>
       </xsl:if>
       <xsl:if test="@rowspan">
-	<xsl:attribute name="rowspan"><xsl:value-of select="@rowspan"/></xsl:attribute>
+        <xsl:attribute name="rowspan"><xsl:value-of select="@rowspan"/></xsl:attribute>
       </xsl:if>
-	<xsl:apply-templates/>
+        <xsl:apply-templates/>
     </th>
   </xsl:template>
   <!-- End Table Jojo -->
@@ -152,27 +152,27 @@
               <xsl:when test="$lang = 'ebuild'">
                 <xsl:call-template name="lang.highlight.ebuild.tokenate">
                   <xsl:with-param name="data" select="."/>
-                </xsl:call-template>               
+                </xsl:call-template>
               </xsl:when>
               <xsl:when test="$lang = 'make'">
                 <xsl:call-template name="lang.highlight.make.tokenate">
                   <xsl:with-param name="data" select="."/>
-                </xsl:call-template>               
+                </xsl:call-template>
               </xsl:when>
               <xsl:when test="$lang = 'm4'">
                 <xsl:call-template name="lang.highlight.m4.tokenate">
                   <xsl:with-param name="data" select="."/>
-                </xsl:call-template>               
+                </xsl:call-template>
               </xsl:when>
               <xsl:when test="$lang = 'sgml'">
                 <xsl:call-template name="lang.highlight.sgml.tokenate">
                   <xsl:with-param name="data" select="."/>
-                </xsl:call-template>               
+                </xsl:call-template>
               </xsl:when>
               <xsl:when test="$lang = 'c'">
                 <xsl:call-template name="lang.highlight.c.tokenate">
                   <xsl:with-param name="data" select="."/>
-                </xsl:call-template>               
+                </xsl:call-template>
               </xsl:when>
               <xsl:otherwise>
                 <xsl:message>Error: Unknown language type (<xsl:value-of select="$lang"/>)</xsl:message>
@@ -305,8 +305,8 @@
           <xsl:call-template name="str:repeatString">
             <xsl:with-param name="count" select="$relative_path_depth"/>
             <xsl:with-param name="append">../</xsl:with-param>
-	  </xsl:call-template>
-	</xsl:variable>
+          </xsl:call-template>
+        </xsl:variable>
         <xsl:choose>
           <xsl:when test="contains(@link, '##')">
             <a class="{$class}" href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'), '/index.html#', substring-after(@link, '##'))}"><xsl:value-of select="."/></a>
@@ -363,8 +363,8 @@
     <xsl:param name="ulclass"/>
     <xsl:param name="maxdepth">
       <xsl:choose>
-	<xsl:when test="@maxdepth"><xsl:value-of select="@maxdepth"/></xsl:when>
-	<xsl:otherwise>0</xsl:otherwise>
+        <xsl:when test="@maxdepth"><xsl:value-of select="@maxdepth"/></xsl:when>
+        <xsl:otherwise>0</xsl:otherwise>
       </xsl:choose>
     </xsl:param>
     <xsl:param name="path">
@@ -378,7 +378,7 @@
         <xsl:call-template name="str:repeatString">
           <xsl:with-param name="count" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
           <xsl:with-param name="append">../</xsl:with-param>
-	</xsl:call-template>
+        </xsl:call-template>
       </xsl:if>
     </xsl:param>
     <xsl:param name="extraction" select="@extraction"/>
@@ -388,37 +388,37 @@
     <xsl:if test="count(document($doc_self)/guide/include) &gt; 0 and ($depth &lt; $maxdepth or $maxdepth = '0')">
     <xsl:choose>
       <xsl:when test="$extraction_counting = 1">
-	<xsl:for-each select="document($doc_self)/guide/include">
-	  <count value="{count(document(concat($path, @href, 'text.xml'))//*[name()=$extraction])}" path="{concat($path, @href)}">
-	    <xsl:call-template name="contentsTree">
-	      <xsl:with-param name="depth" select="$depth + 1"/>
-	      <xsl:with-param name="maxdepth" select="$maxdepth"/>
-	      <xsl:with-param name="path" select="concat($path, @href)"/>
-	      <xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
-	      <xsl:with-param name="extraction" select="$extraction"/>
-	      <xsl:with-param name="extraction_counting" select="1"/>
-	    </xsl:call-template>
-	  </count>
-	</xsl:for-each>
+        <xsl:for-each select="document($doc_self)/guide/include">
+          <count value="{count(document(concat($path, @href, 'text.xml'))//*[name()=$extraction])}" path="{concat($path, @href)}">
+            <xsl:call-template name="contentsTree">
+              <xsl:with-param name="depth" select="$depth + 1"/>
+              <xsl:with-param name="maxdepth" select="$maxdepth"/>
+              <xsl:with-param name="path" select="concat($path, @href)"/>
+              <xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
+              <xsl:with-param name="extraction" select="$extraction"/>
+              <xsl:with-param name="extraction_counting" select="1"/>
+            </xsl:call-template>
+          </count>
+        </xsl:for-each>
       </xsl:when>
       <xsl:otherwise>
-	<ul class="{$ulclass}">
-	  <xsl:for-each select="document($doc_self)/guide/include">
-	    <xsl:variable name="extraction_counter_node">
-	      <xsl:call-template name="contentsTree">
-		<xsl:with-param name="depth" select="$depth + 1"/>
-		<xsl:with-param name="maxdepth" select="$maxdepth"/>
-		<xsl:with-param name="path" select="concat($path, @href)"/>
-		<xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
-		<xsl:with-param name="extraction" select="$extraction"/>
-		<xsl:with-param name="extraction_counting" select="1"/>
-	      </xsl:call-template>
-	    </xsl:variable>
-	    <xsl:variable name="extraction_counter" select="count(exslt:node-set($extraction_counter_node)//*[@value != 0]) + count(document(concat($path, @href, 'text.xml'))//*[name()=$extraction])"/>
-	    <xsl:if test="string($extraction) = '' or $extraction_counter > 0">
-	    <li>
-	      <a class="reference" href="{concat($path_rel, @href, 'index.html')}"><xsl:value-of select="document(concat($path, @href, 'text.xml'))/guide/chapter[1]/title"/></a>
-	      <xsl:if test="$extraction != ''">
+        <ul class="{$ulclass}">
+          <xsl:for-each select="document($doc_self)/guide/include">
+            <xsl:variable name="extraction_counter_node">
+              <xsl:call-template name="contentsTree">
+                <xsl:with-param name="depth" select="$depth + 1"/>
+                <xsl:with-param name="maxdepth" select="$maxdepth"/>
+                <xsl:with-param name="path" select="concat($path, @href)"/>
+                <xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
+                <xsl:with-param name="extraction" select="$extraction"/>
+                <xsl:with-param name="extraction_counting" select="1"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:variable name="extraction_counter" select="count(exslt:node-set($extraction_counter_node)//*[@value != 0]) + count(document(concat($path, @href, 'text.xml'))//*[name()=$extraction])"/>
+            <xsl:if test="string($extraction) = '' or $extraction_counter > 0">
+            <li>
+              <a class="reference" href="{concat($path_rel, @href, 'index.html')}"><xsl:value-of select="document(concat($path, @href, 'text.xml'))/guide/chapter[1]/title"/></a>
+              <xsl:if test="$extraction != ''">
                 <ul>
                 <xsl:for-each select="document(concat($path, @href, 'text.xml'))//*[name()=$extraction]">
                   <xsl:variable name="extraction_id" select="position()"/>
@@ -426,17 +426,17 @@
                 </xsl:for-each>
                 </ul>
               </xsl:if>
-	      <xsl:call-template name="contentsTree">
-		<xsl:with-param name="depth" select="$depth + 1"/>
-		<xsl:with-param name="maxdepth" select="$maxdepth"/>
-		<xsl:with-param name="path" select="concat($path, @href)"/>
-		<xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
-		<xsl:with-param name="extraction" select="$extraction"/>
-	      </xsl:call-template>
-	    </li>
-	    </xsl:if>
-	  </xsl:for-each>
-	</ul>
+              <xsl:call-template name="contentsTree">
+                <xsl:with-param name="depth" select="$depth + 1"/>
+                <xsl:with-param name="maxdepth" select="$maxdepth"/>
+                <xsl:with-param name="path" select="concat($path, @href)"/>
+                <xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
+                <xsl:with-param name="extraction" select="$extraction"/>
+              </xsl:call-template>
+            </li>
+            </xsl:if>
+          </xsl:for-each>
+        </ul>
       </xsl:otherwise>
     </xsl:choose>
     </xsl:if>
@@ -609,64 +609,64 @@
     <xsl:param name="self" select="/guide/@self"/>
     <xsl:choose>
       <!-- To find the "next" node:
-	   * See if this node includes any subnodes... if it does, that is
-	     our next node
-	   * Look at our parent and see if it includes any nodes after us, if
-	     it does use it.
-	   * Repeat recursively, going down parents if needed.
+           * See if this node includes any subnodes... if it does, that is
+             our next node
+           * Look at our parent and see if it includes any nodes after us, if
+             it does use it.
+           * Repeat recursively, going down parents if needed.
            * End at the root item if needed.
       -->
       <xsl:when test="count(/guide/include) &gt; 0">
-	<xsl:variable name="doc" select="/guide/include[1]/@href"/>
-	<a href="{concat($doc, 'index.html')}"><xsl:value-of select="document(concat(/guide/@self, $doc, 'text.xml'))/guide/chapter[1]/title"/> &#160;<span class="fa fa-arrow-right"/></a>
+        <xsl:variable name="doc" select="/guide/include[1]/@href"/>
+        <a href="{concat($doc, 'index.html')}"><xsl:value-of select="document(concat(/guide/@self, $doc, 'text.xml'))/guide/chapter[1]/title"/> &#160;<span class="fa fa-arrow-right"/></a>
       </xsl:when>
       <xsl:otherwise>
-	<!-- This document's path -->
-	<xsl:variable name="doc_self" select="concat($self, 'text.xml')"/>
-	<!-- Turn the absolute path into a relative path so we can find ourselves in
-	     the parent -->
+        <!-- This document's path -->
+        <xsl:variable name="doc_self" select="concat($self, 'text.xml')"/>
+        <!-- Turn the absolute path into a relative path so we can find ourselves in
+             the parent -->
         <xsl:variable name="path_self" select="concat(str:tokenize($self, '/')[last()], '/')"/>
-	<xsl:variable name="index_self" select="count(document(concat($self, '../text.xml'))/guide/include[@href=$path_self]/preceding-sibling::*)+1"/>
-	<!-- Go down a parent, lookup the item after us... -->
+        <xsl:variable name="index_self" select="count(document(concat($self, '../text.xml'))/guide/include[@href=$path_self]/preceding-sibling::*)+1"/>
+        <!-- Go down a parent, lookup the item after us... -->
         <xsl:variable name="parentItem_lookup" select="document(concat($self, '../text.xml'))/guide/include[$index_self]/@href"/>
-	<xsl:variable name="parentItem_next" select="concat(document(concat($self, '../text.xml'))/guide/@self, $parentItem_lookup)"/>
+        <xsl:variable name="parentItem_next" select="concat(document(concat($self, '../text.xml'))/guide/@self, $parentItem_lookup)"/>
         <xsl:choose>
-	  <!-- If we have an item after us, or we are at the root node (termination condition) we need to
-	       not recurse any further... -->
-	  <xsl:when test="$parentItem_lookup != '' or document(concat($self, '../text.xml'))/guide/@root">
-	    <xsl:variable name="parentItem_actual">
-	      <xsl:choose>
-		<xsl:when test="$parentItem_next = ''"></xsl:when>
-		<xsl:otherwise><xsl:value-of select="$parentItem_next"/></xsl:otherwise>
-	      </xsl:choose>
-	    </xsl:variable>
-	    <!-- This is where we do a little trickery. To count how many levels we need to go down, 
+          <!-- If we have an item after us, or we are at the root node (termination condition) we need to
+               not recurse any further... -->
+          <xsl:when test="$parentItem_lookup != '' or document(concat($self, '../text.xml'))/guide/@root">
+            <xsl:variable name="parentItem_actual">
+              <xsl:choose>
+                <xsl:when test="$parentItem_next = ''"></xsl:when>
+                <xsl:otherwise><xsl:value-of select="$parentItem_next"/></xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
+            <!-- This is where we do a little trickery. To count how many levels we need to go down,
                  we count how far up we currently are (remember that the absolute link we get is relative to /...) and
-	         hence we can build a relative link... -->
-	    <xsl:variable name="relative_path" select="$parentItem_actual"/>
-	    <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
-	    <xsl:variable name="relative_path_depth_recursion">
-	      <xsl:call-template name="str:repeatString">
+                 hence we can build a relative link... -->
+            <xsl:variable name="relative_path" select="$parentItem_actual"/>
+            <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
+            <xsl:variable name="relative_path_depth_recursion">
+              <xsl:call-template name="str:repeatString">
                 <xsl:with-param name="count" select="$relative_path_depth"/>
                 <xsl:with-param name="append">../</xsl:with-param>
-	      </xsl:call-template>
-	    </xsl:variable>
-	    <a href="{concat($relative_path_depth_recursion, $relative_path, 'index.html')}"><xsl:value-of select="document(concat($parentItem_actual, 'text.xml'))/guide/chapter[1]/title"/> &#160;<span class="fa fa-arrow-right"/></a>
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <!-- We need to recurse downwards; so we need to strip off a directory element off our absolute path to feed
-	         into the next iteration... -->
-	    <xsl:variable name="relative_path_depth" select="string-length($self)-string-length(translate($self, '/' , ''))"/>
-	    <xsl:variable name="relative_path_fixed">
-	      <xsl:for-each select="str:tokenize_plasmaroo($self, '/')[position() &lt; (($relative_path_depth - 1)*2 + 1)]">
-		<xsl:value-of select="."/>
-	      </xsl:for-each>
-	    </xsl:variable>
-	    <xsl:call-template name="findNext">
-	      <xsl:with-param name="self" select="$relative_path_fixed"/>
-	    </xsl:call-template>
-	  </xsl:otherwise>
-	</xsl:choose>
+              </xsl:call-template>
+            </xsl:variable>
+            <a href="{concat($relative_path_depth_recursion, $relative_path, 'index.html')}"><xsl:value-of select="document(concat($parentItem_actual, 'text.xml'))/guide/chapter[1]/title"/> &#160;<span class="fa fa-arrow-right"/></a>
+          </xsl:when>
+          <xsl:otherwise>
+            <!-- We need to recurse downwards; so we need to strip off a directory element off our absolute path to feed
+                 into the next iteration... -->
+            <xsl:variable name="relative_path_depth" select="string-length($self)-string-length(translate($self, '/' , ''))"/>
+            <xsl:variable name="relative_path_fixed">
+              <xsl:for-each select="str:tokenize_plasmaroo($self, '/')[position() &lt; (($relative_path_depth - 1)*2 + 1)]">
+                <xsl:value-of select="."/>
+              </xsl:for-each>
+            </xsl:variable>
+            <xsl:call-template name="findNext">
+              <xsl:with-param name="self" select="$relative_path_fixed"/>
+            </xsl:call-template>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -678,13 +678,13 @@
     <xsl:variable name="include" select="document(concat($root, $path))/guide/include[last()]/@href"/>
     <xsl:choose>
       <xsl:when test="$include">
-	<xsl:call-template name="getLastNode">
+        <xsl:call-template name="getLastNode">
           <xsl:with-param name="root" select="$root"/>
-	  <xsl:with-param name="path" select="concat(substring-before($path, 'text.xml'), $include, 'text.xml')"/>
-	</xsl:call-template>
+          <xsl:with-param name="path" select="concat(substring-before($path, 'text.xml'), $include, 'text.xml')"/>
+        </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
-	<xsl:value-of select="$path"/>
+        <xsl:value-of select="$path"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -692,41 +692,41 @@
   <xsl:template name="findPrevious">
     <xsl:choose>
       <!-- To find the "previous" node:
-	   * Go down to our parent
-	     * See if there are any nodes before us
-	       * If we have a valid node that is before us
-	       * Fully recurse up the node to get the last extremity
-	     * Otherwise list the parent -->
+           * Go down to our parent
+             * See if there are any nodes before us
+               * If we have a valid node that is before us
+               * Fully recurse up the node to get the last extremity
+             * Otherwise list the parent -->
       <xsl:when test="/guide/@root">
-	<a href="#"><span class="fa fa-arrow-left"/>&#160; <xsl:value-of select="/guide/chapter[1]/title"/></a>
+        <a href="#"><span class="fa fa-arrow-left"/>&#160; <xsl:value-of select="/guide/chapter[1]/title"/></a>
       </xsl:when>
       <xsl:otherwise>
-	<!-- This document's path -->
-	<xsl:variable name="doc_self" select="concat(/guide/@self, 'text.xml')"/>
-	<!-- Turn the absolute path we have into a relative path so we can find ourselves in the
-	     parent -->
-	<!-- FIXME: Bombproof the doc_self so it still works if it's missing a '/' on the end -->
+        <!-- This document's path -->
+        <xsl:variable name="doc_self" select="concat(/guide/@self, 'text.xml')"/>
+        <!-- Turn the absolute path we have into a relative path so we can find ourselves in the
+             parent -->
+        <!-- FIXME: Bombproof the doc_self so it still works if it's missing a '/' on the end -->
         <xsl:variable name="path_self" select="concat(str:tokenize(/guide/@self, '/')[last()], '/')"/>
-	<xsl:variable name="index_self" select="count(document(concat(/guide/@self, '../text.xml'))/guide/include[@href=$path_self]/preceding-sibling::*)-1"/>
-	<xsl:choose>
-	  <xsl:when test="$index_self &gt; 0">
-	    <!-- Relative path of the parent -->
-	    <xsl:variable name="parentItem_path" select="document(concat(/guide/@self, '../text.xml'))/guide/@self"/>
-	    <!-- Previous item in the parent -->
-	    <xsl:variable name="parentItem_next" select="document(concat(/guide/@self, '../text.xml'))/guide/include[$index_self]/@href"/>
-	    <xsl:variable name="myItem_path">
-	    <xsl:call-template name="getLastNode">
+        <xsl:variable name="index_self" select="count(document(concat(/guide/@self, '../text.xml'))/guide/include[@href=$path_self]/preceding-sibling::*)-1"/>
+        <xsl:choose>
+          <xsl:when test="$index_self &gt; 0">
+            <!-- Relative path of the parent -->
+            <xsl:variable name="parentItem_path" select="document(concat(/guide/@self, '../text.xml'))/guide/@self"/>
+            <!-- Previous item in the parent -->
+            <xsl:variable name="parentItem_next" select="document(concat(/guide/@self, '../text.xml'))/guide/include[$index_self]/@href"/>
+            <xsl:variable name="myItem_path">
+            <xsl:call-template name="getLastNode">
               <xsl:with-param name="root" select="$parentItem_path"/>
-	      <xsl:with-param name="path" select="concat($parentItem_next, 'text.xml')"/>
-	    </xsl:call-template>
-	    </xsl:variable>
-	    <!-- Make a relative <a> link; we need an absolute reference for the XSLT processor though... -->
-	    <a href="{concat('../', substring-before($myItem_path, 'text.xml'), 'index.html')}"><span class="fa fa-arrow-left"/>&#160; <xsl:value-of select="document(concat($parentItem_path, $myItem_path))/guide/chapter[1]/title"/></a>
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <a href="../index.html"><span class="fa fa-arrow-left"/>&#160; <xsl:value-of select="document(concat(/guide/@self, '../text.xml'))/guide/chapter[1]/title"/></a>
-	  </xsl:otherwise>
-	</xsl:choose>
+              <xsl:with-param name="path" select="concat($parentItem_next, 'text.xml')"/>
+            </xsl:call-template>
+            </xsl:variable>
+            <!-- Make a relative <a> link; we need an absolute reference for the XSLT processor though... -->
+            <a href="{concat('../', substring-before($myItem_path, 'text.xml'), 'index.html')}"><span class="fa fa-arrow-left"/>&#160; <xsl:value-of select="document(concat($parentItem_path, $myItem_path))/guide/chapter[1]/title"/></a>
+          </xsl:when>
+          <xsl:otherwise>
+            <a href="../index.html"><span class="fa fa-arrow-left"/>&#160; <xsl:value-of select="document(concat(/guide/@self, '../text.xml'))/guide/chapter[1]/title"/></a>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -773,3 +773,7 @@
     </dl>
   </xsl:template>
 </xsl:stylesheet>
+
+<!-- Local Variables: -->
+<!-- indent-tabs-mode: nil -->
+<!-- End: -->
