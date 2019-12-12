@@ -549,7 +549,7 @@
               </div>
               <div class="collapse navbar-collapse" id="gw-toolbar">
               <div class="input-group">
-                <input type="search" name="search" placeholder="Search" title="Search Gentoo Developer Manual [f]" accesskey="f" id="searchInput" class="form-control"/>
+                <input type="search" name="search" placeholder="Search" title="Search Gentoo Developer Manual [f]" accesskey="f" id="searchInput" class="form-control" onclick="fetchDocuments()"/>
                 <div class="input-group-btn">
                   <input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton btn btn-default" onclick="search()"/>
                 </div>
@@ -629,7 +629,7 @@
             <xsl:with-param name="append">../</xsl:with-param>
           </xsl:call-template>
       </xsl:variable>
-      <script src="{$relative_path_depth_recursion}documents.js"></script>
+      <script><xsl:text>var documentsSrc = "</xsl:text><xsl:value-of select="$relative_path_depth_recursion"/><xsl:text>documents.js"</xsl:text></script>
       <script src="{$relative_path_depth_recursion}search.js"></script>
     </body>
     </html>
