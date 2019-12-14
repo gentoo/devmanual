@@ -127,7 +127,7 @@ cat << EOF > $OUTPUTDIR/text.xml
 <p>
 This section provides a reference for some of the more commonly used eclasses.
 Note that most eclasses have an accompanying manual page. These man pages can be
-installed by emerging <c>app-portage/eclass-manpages</c>.
+installed by emerging <c>app-doc/eclass-manpages</c>.
 </p>
 </body>
 
