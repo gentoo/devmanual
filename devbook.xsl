@@ -566,7 +566,6 @@
               <ul class="footerlinks three-icons">
                 <li><a href="http://twitter.com/gentoo" title="@Gentoo on Twitter"><span class="fa fa-twitter fa-fw"></span></a></li>
                 <li><a href="https://www.facebook.com/gentoo.org" title="Gentoo on Facebook"><span class="fa fa-facebook fa-fw"></span></a></li>
-                <li></li>
               </ul>
             </div>
             <div class="col-xs-10 col-sm-9 col-md-10">
