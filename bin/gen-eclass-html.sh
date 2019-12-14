@@ -24,7 +24,7 @@ IFS='' read -r -d '' FOOTER << 'EOF'
 <strong>Copyright (C) 2001-2019 Gentoo Authors</strong><br><small>
                 Gentoo is a trademark of the Gentoo Foundation, Inc.
                 The text of this document is distributed under the
-                <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+                <a href="https://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License, version 2</a>.
                 The <a href="https://www.gentoo.org/inside-gentoo/foundation/name-logo-guidelines.html">Gentoo Name and Logo Usage Guidelines</a> apply.
               </small>
 </div>
