@@ -98,20 +98,17 @@ for i in $(/usr/bin/qlist eclass-manpages) /usr/share/man/man5/ebuild.5*; do
 	BASENAME="${FILEBASE%.5*}"
 	[[ ${BASENAME} != "${FILEBASE}" ]] || continue
 	DIRNAME="${OUTPUTDIR}/${BASENAME}"
-	TMP="${DIRNAME}/index.html.tmp"
 	FINAL="${DIRNAME}/index.html"
 	DECOMPRESS=$(guesscompress "${i}")
 	[[ -d ${DIRNAME} ]] || mkdir -p ${DIRNAME}
 	# rebuild the man page each time
 	echo -n "${HEADER//@TITLE@/${BASENAME}}" > "${FINAL}"
-    # generate html pages and fix hyperlinks for eclass and ebuild man pages
-    $DECOMPRESS "$i" | /usr/bin/man2html -r - | \
-    sed -e "/<A HREF=/s:=.*man.*/\(.*eclass\).*html\">:=../\1/index.html>:" \
-    -e "/<\/BODY>/d" -e "/<\/HTML>/d"  \
-    -e "/<A HREF=/s:=.*man.*/\(.*ebuild\).*html\">:=../\1/\index.html>:" >> ${TMP}
-	# The first 4 lines are cruft for devmanual
-	tail -n $(($(wc -l ${TMP} | awk '{print $1}') - 4)) ${TMP} >> ${FINAL}
-	rm -f ${TMP}
+	# generate html pages and fix hyperlinks for eclass and ebuild man pages
+	${DECOMPRESS} "${i}" | /usr/bin/man2html -r - \
+	| sed -e "1,4d;/<\/BODY>/d;/<\/HTML>/d" \
+		-e '/<A HREF=/s:"\.\./man5/\([^"]*eclass\|ebuild\)\.5\.html":"../\1/index.html":g' \
+		-e 's:<A HREF="\.\./man[^"]*">\([^<>]*\)</A>:\1:g' \
+		>> "${FINAL}"
 	echo -n "${FOOTER}" >> "${FINAL}"
 done
 
