@@ -105,7 +105,7 @@ for i in $(/usr/bin/qlist eclass-manpages) /usr/share/man/man5/ebuild.5*; do
 	echo -n "${HEADER//@TITLE@/${BASENAME}}" > "${FINAL}"
 	# generate html pages and fix hyperlinks for eclass and ebuild man pages
 	${DECOMPRESS} "${i}" | /usr/bin/man2html -r - \
-	| sed -e "1,4d;/<\/BODY>/d;/<\/HTML>/d" \
+	| sed -e '1,/<BODY>/d;/<\/BODY>/,$d' \
 		-e '/<A HREF=/s:"\.\./man5/\([^"]*eclass\|ebuild\)\.5\.html":"../\1/index.html":g' \
 		-e 's:<A HREF="\.\./man[^"]*">\([^<>]*\)</A>:\1:g' \
 		>> "${FINAL}"
