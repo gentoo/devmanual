@@ -5,6 +5,51 @@
 
 OUTPUTDIR="eclass-reference"
 
+IFS='' read -r -d '' HEADER << 'EOF'
+<!DOCTYPE html><html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>@TITLE@ - Gentoo Development Guide</title>
+	<link rel="stylesheet" href="../../devmanual.css" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="The Gentoo Devmanual is a technical manual which covers topics such as writing ebuilds and eclasses, and policies that developers should be abiding by.">
+	<link href="https://assets.gentoo.org/tyrian/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="https://assets.gentoo.org/tyrian/tyrian.min.css" rel="stylesheet" media="screen">
+	<link rel="icon" href="https://www.gentoo.org/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header><div class="site-title"><div class="container"><div class="row">
+<div class="site-title-buttons"><div class="btn-group btn-group-sm">
+<a href="https://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-fw fa-download"></span><strong> Get Gentoo!</strong></a><div class="btn-group btn-group-sm">
+<a class="btn gentoo-org-sites dropdown-toggle" data-toggle="dropdown" data-target="#" href="#"><span class="fa fa-fw fa-map-o"></span><span class="hidden-xs"> gentoo.org sites </span><span class="caret"></span></a><ul class="dropdown-menu dropdown-menu-right">
+<li><a href="https://www.gentoo.org/" title="Main Gentoo website"><span class="fa fa-home fa-fw"></span> gentoo.org</a></li>
+<li><a href="https://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text-o fa-fw"></span> Wiki</a></li>
+<li><a href="https://bugs.gentoo.org/" title="Report issues and find common issues"><span class="fa fa-bug fa-fw"></span> Bugs</a></li>
+<li><a href="https://forums.gentoo.org/" title="Discuss with the community"><span class="fa fa-comments-o fa-fw"></span> Forums</a></li>
+<li><a href="https://packages.gentoo.org/" title="Find software for your Gentoo"><span class="fa fa-hdd-o fa-fw"></span> Packages</a></li>
+<li class="divider">
+<li><a href="https://planet.gentoo.org/" title="Find out what's going on in the developer community"><span class="fa fa-rss fa-fw"></span> Planet</a></li>
+<li><a href="https://archives.gentoo.org/" title="Read up on past discussions"><span class="fa fa-archive fa-fw"></span> Archives</a></li>
+<li><a href="https://sources.gentoo.org/" title="Browse our source code"><span class="fa fa-code fa-fw"></span> Sources</a></li>
+<li class="divider">
+<li><a href="https://infra-status.gentoo.org/" title="Get updates on the services provided by Gentoo"><span class="fa fa-server fa-fw"></span> Infra Status</a></li>
+</ul>
+</div>
+</div></div>
+<div class="logo">
+<a href="/" title="Back to the homepage" class="site-logo"><object data="https://assets.gentoo.org/tyrian/site-logo.svg" type="image/svg+xml"><img src="https://assets.gentoo.org/tyrian/site-logo.png" alt="Gentoo Linux Logo"></object></a><span class="site-label">Development Guide</span>
+</div>
+</div></div></div>
+<nav class="tyrian-navbar" role="navigation"><div class="container"><div class="row">
+<div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
+<div class="collapse navbar-collapse navbar-main-collapse"><ul class="nav navbar-nav">
+<li><a href="/index.html"><i class="fa fa-home"></i>  Home</a></li>
+<li><a href="../index.html"><i class="fa fa-arrow-up"></i>  Eclass Reference</a></li>
+</ul></div>
+</div></div></nav></header><div class="container"><div class="row"><div class="col-md010"><ol class="breadcrumb"><li><a href="/index.html">Master Index</a></li><li><a href="../index.html">Eclass Reference</a></li></ol></div></div></div>
+	<div class="container">
+EOF
+
 IFS='' read -r -d '' FOOTER << 'EOF'
 </div>
 <footer><div class="container">
@@ -58,50 +103,7 @@ for i in $(/usr/bin/qlist eclass-manpages) /usr/share/man/man5/ebuild.5*; do
 	DECOMPRESS=$(guesscompress "${i}")
 	[[ -d ${DIRNAME} ]] || mkdir -p ${DIRNAME}
 	# rebuild the man page each time
-	cat << EOF > ${FINAL}
-<!DOCTYPE html><html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>$BASENAME - Gentoo Development Guide</title>
-	<link rel="stylesheet" href="../../devmanual.css" type="text/css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="The Gentoo Devmanual is a technical manual which covers topics such as writing ebuilds and eclasses, and policies that developers should be abiding by.">
-	<link href="https://assets.gentoo.org/tyrian/bootstrap.min.css" rel="stylesheet" media="screen">
-	<link href="https://assets.gentoo.org/tyrian/tyrian.min.css" rel="stylesheet" media="screen">
-	<link rel="icon" href="https://www.gentoo.org/favicon.ico" type="image/x-icon">
-</head>
-<body>
-<header><div class="site-title"><div class="container"><div class="row">
-<div class="site-title-buttons"><div class="btn-group btn-group-sm">
-<a href="https://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-fw fa-download"></span><strong> Get Gentoo!</strong></a><div class="btn-group btn-group-sm">
-<a class="btn gentoo-org-sites dropdown-toggle" data-toggle="dropdown" data-target="#" href="#"><span class="fa fa-fw fa-map-o"></span><span class="hidden-xs"> gentoo.org sites </span><span class="caret"></span></a><ul class="dropdown-menu dropdown-menu-right">
-<li><a href="https://www.gentoo.org/" title="Main Gentoo website"><span class="fa fa-home fa-fw"></span> gentoo.org</a></li>
-<li><a href="https://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text-o fa-fw"></span> Wiki</a></li>
-<li><a href="https://bugs.gentoo.org/" title="Report issues and find common issues"><span class="fa fa-bug fa-fw"></span> Bugs</a></li>
-<li><a href="https://forums.gentoo.org/" title="Discuss with the community"><span class="fa fa-comments-o fa-fw"></span> Forums</a></li>
-<li><a href="https://packages.gentoo.org/" title="Find software for your Gentoo"><span class="fa fa-hdd-o fa-fw"></span> Packages</a></li>
-<li class="divider">
-<li><a href="https://planet.gentoo.org/" title="Find out what's going on in the developer community"><span class="fa fa-rss fa-fw"></span> Planet</a></li>
-<li><a href="https://archives.gentoo.org/" title="Read up on past discussions"><span class="fa fa-archive fa-fw"></span> Archives</a></li>
-<li><a href="https://sources.gentoo.org/" title="Browse our source code"><span class="fa fa-code fa-fw"></span> Sources</a></li>
-<li class="divider">
-<li><a href="https://infra-status.gentoo.org/" title="Get updates on the services provided by Gentoo"><span class="fa fa-server fa-fw"></span> Infra Status</a></li>
-</ul>
-</div>
-</div></div>
-<div class="logo">
-<a href="/" title="Back to the homepage" class="site-logo"><object data="https://assets.gentoo.org/tyrian/site-logo.svg" type="image/svg+xml"><img src="https://assets.gentoo.org/tyrian/site-logo.png" alt="Gentoo Linux Logo"></object></a><span class="site-label">Development Guide</span>
-</div>
-</div></div></div>
-<nav class="tyrian-navbar" role="navigation"><div class="container"><div class="row">
-<div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
-<div class="collapse navbar-collapse navbar-main-collapse"><ul class="nav navbar-nav">
-<li><a href="/index.html"><i class="fa fa-home"></i>  Home</a></li>
-<li><a href="../index.html"><i class="fa fa-arrow-up"></i>  Eclass Reference</a></li>
-</ul></div>
-</div></div></nav></header><div class="container"><div class="row"><div class="col-md010"><ol class="breadcrumb"><li><a href="/index.html">Master Index</a></li><li><a href="../index.html">Eclass Reference</a></li></ol></div></div></div>
-	<div class="container">
-EOF
+	echo -n "${HEADER//@TITLE@/${BASENAME}}" > "${FINAL}"
     # generate html pages and fix hyperlinks for eclass and ebuild man pages
     $DECOMPRESS "$i" | /usr/bin/man2html -r - | \
     sed -e "/<A HREF=/s:=.*man.*/\(.*eclass\).*html\">:=../\1/index.html>:" \
@@ -110,7 +112,7 @@ EOF
 	# The first 4 lines are cruft for devmanual
 	tail -n $(($(wc -l ${TMP} | awk '{print $1}') - 4)) ${TMP} >> ${FINAL}
 	rm -f ${TMP}
-	echo "${FOOTER}" >> ${FINAL}
+	echo -n "${FOOTER}" >> "${FINAL}"
 done
 
 # Remove old dirs (eclasses that were dropped from the tree)
