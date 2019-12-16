@@ -49,7 +49,7 @@ automatically before saving the file.
 
 <p>
 Other useful settings can be disabled backup files
-(by <c>(setq make-backup-files nil)</c>, so you don't clutter the git
+(by <c>(setq make-backup-files nil)</c>), so you don't clutter the git
 repository
 directories and confuse repoman with it (by adding unnecessary entries
 into a Manifest file e.g.). Emacs can even contact the outside world
