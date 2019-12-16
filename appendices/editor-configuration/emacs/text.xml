@@ -43,6 +43,8 @@ Files must end with a newline, in order to let tools like <c>diff</c>
 operate properly. To avoid accidental deletions, setting
 <c>(setq require-final-newline 'ask)</c> in your startup file will
 automatically check for the existence of it and ask you to add one.
+Note that many modes for programming languages will add the newline
+automatically before saving the file.
 </p>
 
 <p>
