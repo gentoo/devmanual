@@ -444,7 +444,8 @@
 
   <xsl:template match="/">
     <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
-    <html>
+    <xsl:value-of select='$newline'/>
+    <html lang="en">
     <head>
       <title><xsl:value-of select="/guide/chapter[1]/title"/> – Gentoo Development Guide</title>
       <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>

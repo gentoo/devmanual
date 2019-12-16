@@ -6,7 +6,8 @@
 OUTPUTDIR="eclass-reference"
 
 IFS='' read -r -d '' HEADER << 'EOF'
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>@TITLE@ - Gentoo Development Guide</title>
