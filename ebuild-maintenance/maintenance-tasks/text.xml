@@ -313,7 +313,7 @@ Here is an example where the package
     profiles/package.mask</c>
   </li>
   <li>
-    Commit all the changes in one commit using: <c>git commit --gpg-sign</c>
+    Commit all the changes in one commit using: <c>git commit --gpg-sign -signoff</c>
   </li>
   <li>
     Update any <uri link="::general-concepts/news">news items</uri>
@@ -335,6 +335,8 @@ Author: Guilherme Amadio &lt;amadio@gentoo.org&gt;
 Date:   Tue Nov 3 20:26:52 2015 +0100
 
   media-fonts/nanumfont: renamed to media-fonts/nanum
+  
+  Signed-off-by: Guilherme Amadio &lt;amadio@gentoo.org&gt;
 </pre>
 
 </body>
