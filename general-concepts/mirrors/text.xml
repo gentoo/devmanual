@@ -9,8 +9,9 @@
 <body>
 <p>
 Packages will automatically have their <c>SRC_URI</c> components mirrored onto
-Gentoo mirrors, including components hosted in other Gentoo locations like developer's
-space at <c>dev.gentoo.org</c>, see below.  When fetching, package manager checks
+Gentoo mirrors, including those hosted on the official Gentoo
+Infrastructure (i.e. developer space at <c>dev.gentoo.org</c>). When
+fetching, package manager checks
 Gentoo mirrors first before trying the original upstream location.
 </p>
 
