@@ -6,7 +6,7 @@ SVGS := $(shell find . -name .git -prune -o -type f -name '*.svg' -print)
 HTMLS := $(subst text.xml,index.html,$(XMLS))
 IMAGES := $(patsubst %.svg,%.png,$(SVGS))
 
-all: prereq validate $(HTMLS) $(IMAGES)
+all: prereq validate $(HTMLS) $(IMAGES) documents.js
 
 prereq:
 	@type convert >/dev/null 2>&1 || \
