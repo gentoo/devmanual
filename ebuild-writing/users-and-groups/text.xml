@@ -42,8 +42,8 @@ and must not be used for new packages.
 
 <p>
 Group ebuilds are placed in <c>acct-group</c> category, with the package name
-matching the group name.  The following can be used as a template for writing
-group ebuilds:
+matching the group name. The following ebuild for <c>acct-group/suricata</c>
+can be used as a template for writing group ebuilds:
 </p>
 
 <pre>
@@ -54,8 +54,8 @@ EAPI=7
 
 inherit acct-group
 
-DESCRIPTION="Meaningful description of the group"
-ACCT_GROUP_ID=123
+DESCRIPTION="Group for Suricata IDS"
+ACCT_GROUP_ID=477
 </pre>
 
 <p>
@@ -71,8 +71,8 @@ ACCT_GROUP_ID=123
 
 <p>
 User ebuilds are placed in <c>acct-user</c> category, with the package name
-matching the user name.  The following can be used as a template for writing
-user ebuilds:
+matching the user name. The following ebuild for <c>acct-user/suricata</c>
+can be used as a template for writing user ebuilds:
 </p>
 
 <pre>
@@ -83,8 +83,8 @@ EAPI=7
 
 inherit acct-user
 
-DESCRIPTION="Meaningful description of the user"
-ACCT_USER_ID=123
+DESCRIPTION="User for Suricata IDS"
+ACCT_USER_ID=477
 ACCT_USER_GROUPS=( "${PN}" )
 
 acct-user_add_deps
