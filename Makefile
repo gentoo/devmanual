@@ -23,7 +23,7 @@ prereq:
 # updating it, we pass it the names of ALL prerequisites ($^) and not
 # just the names of the ones that are new ($?).
 documents.js: $(XMLS)
-	./search_index.py $^ > _documents.js
+	./bin/build_search_documents.py $^ > _documents.js
 	mv _documents.js documents.js
 
 %.png : %.svg
