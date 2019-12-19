@@ -23,7 +23,8 @@ prereq:
 # updating it, we pass it the names of ALL prerequisites ($^) and not
 # just the names of the ones that are new ($?).
 documents.js: $(XMLS)
-	./search_index.py $^ > documents.js
+	./search_index.py $^ > _documents.js
+	mv _documents.js documents.js
 
 %.png : %.svg
 	convert $< $@
@@ -48,6 +49,6 @@ validate: prereq
 	  && echo "xmllint validation successful"
 
 clean:
-	rm -f $(HTMLS) $(IMAGES) documents.js
+	rm -f $(HTMLS) $(IMAGES) _documents.js documents.js
 
 .PHONY: all prereq validate clean
