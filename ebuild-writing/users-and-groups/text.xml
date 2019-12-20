@@ -6,21 +6,26 @@
 <body>
 <p>
 Creating users and groups is governed by <uri
-link="https://gentoo.org/glep/glep-0081.html">GLEP 81</uri>.  It is implemented
-via <c>acct-user</c> and <c>acct-group</c> eclasses.
+link="https://gentoo.org/glep/glep-0081.html">GLEP 81</uri>. It is implemented
+via <c>acct-user</c> and <c>acct-group</c> eclasses. New users and groups
+are created as packages respectively in <c>acct-user</c> and <c>acct-group</c>
+categories.
 </p>
 
 <p>
-New users and groups are created as packages respectively in <c>acct-user</c>
-and <c>acct-group</c> categories.  First, choose UIDs/GIDs that are not used by
-any other package.  You should consult the <uri
-link="https://wiki.gentoo.org/wiki/Project:Quality_Assurance/UID_GID_Assignment">
-UID/GID assignment list</uri> maintained by the QA project, and possibly the
-UID/GID registries maintained by other distributions that are linked on the
-same page.  Afterwards, send the proposed ebuilds to the <c>gentoo-dev</c>
-mailing list for review.  The naming conventions for user and group ebuilds are
-explained in the following sections. Finally, after getting positive reviews,
-commit the new user and group packages.
+First, check the <uri link="https://api.gentoo.org/uid-gid.txt">UID/GID
+assignment list</uri> and choose a free UID/GID in range 101..499. If you are
+adding a matching user and group, use the same number for both. When in doubt,
+take the next free number from 499 downwards.
+</p>
+
+<p>
+The aforementioned list can be found in the
+<uri link="https://gitweb.gentoo.org/data/api.git">data/api.git</uri> repository
+on <c>git.gentoo.org</c>. Add your new user(s) and group(s)
+to the <c>uid-gid.txt</c> file and push them before adding the actual packages.
+This counts as reserving the identifiers and will prevent collisions.
+Afterwards, you can push the new ebuilds.
 </p>
 
 <p>
