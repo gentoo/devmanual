@@ -6,8 +6,8 @@
 <body>
 
 <p>
-  Automatic dependency resolution is one of the most useful features provided by
-  <c>emerge</c>.
+Automatic dependency resolution is one of the most useful features
+provided by <c>emerge</c>.
 </p>
 </body>
 
