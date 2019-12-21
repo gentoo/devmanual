@@ -18,22 +18,32 @@ def stringify_node(parent: ET.Element) -> str:
     parent -- the node to convert to a string
 
     """
+    # We usually have something like:
+    #   <p>\nText
+    # Left strip the whitespace.
     if parent.text:
         text = parent.text.lstrip()
     else:
         text = str()
 
+    # For each child, strip the tags and append to text
+    # along with the tail text following it.
+    # The tail may include '\n' if it spans multiple lines.
+    # We will worry about those on return, not now.
     for child in parent.getchildren():
         # The '<d/>' tag is simply a fancier '-' character
         if child.tag == 'd':
             text += '-'
         if child.text:
-            text += child.text.lstrip()
+            text += child.text
         if child.tail:
-            text += child.tail.rstrip()
+            text += child.tail
 
-    text += parent.tail.rstrip()
-    return text.replace('\n', ' ')
+    # A paragraph typically ends with:
+    #   Text\n</p>
+    # Right strip any spurious whitespace.
+    # Finally, get rid of any intermediate newlines.
+    return text.rstrip().replace('\n', ' ')
 
 
 def process_node(documents: list, node: ET.Element, name: str, url: str) -> None:
