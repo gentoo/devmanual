@@ -19,11 +19,12 @@ prereq:
 	{ echo "dev-libs/libxml2 is required" >&2;\
 	  exit 1; }
 
-# Since search_index.py rebuilds the index from scratch instead of
-# updating it, we pass it the names of ALL prerequisites ($^) and not
-# just the names of the ones that are new ($?).
-documents.js: $(XMLS)
-	./bin/build_search_documents.py $^ > _documents.js
+# We need to parse all the XMLs every time, not just the ones
+# that are newer than the target. This is because each search
+# document in devmanual gets a unique ID, which is used to
+# quickly tie search matches to the corresponding documents.
+documents.js: bin/build_search_documents.py $(XMLS)
+	./bin/build_search_documents.py $(XMLS) > _documents.js
 	mv _documents.js documents.js
 
 %.png : %.svg
