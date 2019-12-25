@@ -30,7 +30,7 @@ def stringify_node(parent: ET.Element) -> str:
     # along with the tail text following it.
     # The tail may include '\n' if it spans multiple lines.
     # We will worry about those on return, not now.
-    for child in parent.getchildren():
+    for child in parent:
         # The '<d/>' tag is simply a fancier '-' character
         if child.tag == 'd':
             text += '-'
