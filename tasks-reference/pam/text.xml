@@ -16,14 +16,6 @@ With PAM, a program just needs to require authentication for a given login class
 (defined in a <c>pam.d</c> file), and PAM framework will take care of calling the
 modules which will provide authentication.
 </p>
-
-<p>
-There are different PAM implementations. Gentoo Linux, by default, uses the
-Linux-PAM implementation which is installed via <c>sys-libs/pam</c>; FreeBSD and
-NetBSD (and hence Gentoo/FreeBSD) use OpenPAM, which is a minimal version.  The
-different implementations can provide different authentication modules, and can
-differ in some details of the configuration.
-</p>
 </body>
 
 <section>
@@ -89,7 +81,7 @@ The statement is composed of 3 or 4 tokens:
     the module, but this creates problems because not all the systems install the
     modules in the same place: Linux-PAM on Gentoo is generally set up to load
     them from <c>/lib/security</c>, but for example on AMD64 this become
-    <c>/lib64/security</c>, and on OpenPAM they are just in <c>/usr/lib(64)</c>. The
+    <c>/lib64/security</c>. The
     result is that providing the full path will lead to non-working <c>pamd</c>
     files, and the right way to handle this is just states the module name <d /> the
     PAM implementation will take care of finding the module.
@@ -99,16 +91,6 @@ The statement is composed of 3 or 4 tokens:
     passed to the module. These are module-dependent.
   </li>
 </ul>
-
-<p>
-As the number and the type of modules shipped with the implementation depends on
-the implementations themselves (Linux-PAM provides a full working set of
-modules, OpenPAM doesn't provide modules at all, and it's the operating system
-which provides them, as FreeBSD or NetBSD do), there are just a few modules
-which can be used directly in <c>pamd</c> files without the risk of providing a
-non-working configuration file:
-</p>
-
 <ul>
   <li>
     <c>pam_deny.so</c>, <c>pam_permit.so</c> <d /> they just report a failure or a success
@@ -163,25 +145,15 @@ completely non-portable. It is not used in all the implementations of Linux-PAM
 
 <p>
 A solution came when AltLinux developers added a new instruction for the control
-token: <e>include</e>. That control token can be used on Linux-PAM 0.78 and on
-OpenPAM to do the same as a <c>required pam_stack.so</c>, replacing the module name
+token: <e>include</e>. That control token can be used since Linux-PAM 0.78
+to do the same as a <c>required pam_stack.so</c>, replacing the module name
 with the name of the login class to mimic.
 </p>
 
 <p>
 In this way, instead of loading a module which in turn reloads pam, the option
 is parsed directly by the PAM implementation which loads the other login class
-and takes care of executing it, and the same syntax is valid on both Linux-PAM
-and OpenPAM systems.
-</p>
-
-<p>
-New packages (and new versions of old packages) should then use the <c>include</c>
-directive instead of <c>pam_stack.so</c> module, but to do that they need to depend
-on a later version of <c>sys-libs/pam</c> or on <c>sys-libs/openpam</c> (note: openpam
-is for now just on G/FreeBSD's project overlay) <d /> to resolve this,
-<c>virtual/pam</c> is set up to add the right dependency for the use of the include
-directive.
+and takes care of executing it.
 </p>
 
 </body>
