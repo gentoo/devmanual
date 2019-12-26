@@ -14,16 +14,18 @@ categories.
 
 <p>
 First, check the <uri link="https://api.gentoo.org/uid-gid.txt">UID/GID
-assignment list</uri> and choose a free UID/GID in range 101..499. If you are
-adding a matching user and group, use the same number for both. When in doubt,
+assignment list</uri> and choose a free UID/GID in the range between
+101 and 499. If you are adding a user and a group with the same name,
+use the same number for their UID and GID, respectively. When in
+doubt,
 take the next free number from 499 downwards.
 </p>
 
 <p>
-The aforementioned list can be found in the
-<uri link="https://gitweb.gentoo.org/data/api.git">data/api.git</uri> repository
-on <c>git.gentoo.org</c>. Add your new user(s) and group(s)
-to the <c>uid-gid.txt</c> file and push them before adding the actual packages.
+Add your new user(s) and group(s) to the <c>uid-gid.txt</c> file
+located in the
+<uri link="https://gitweb.gentoo.org/data/api.git">data/api.git</uri>
+repository and push them before adding the actual packages.
 This counts as reserving the identifiers and will prevent collisions.
 Afterwards, you can push the new ebuilds.
 </p>
