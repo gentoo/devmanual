@@ -5,6 +5,12 @@ import json
 import os.path
 import sys
 import xml.etree.ElementTree as ET
+import re
+
+
+# The regex for stripping a newline and the possible indentation
+# whitespace following it in multiline content
+whitespace_re = re.compile(r'\n[ \t]*', flags=re.M)
 
 
 def stringify_node(parent: ET.Element) -> str:
@@ -28,7 +34,7 @@ def stringify_node(parent: ET.Element) -> str:
 
     # For each child, strip the tags and append to text
     # along with the tail text following it.
-    # The tail may include '\n' if it spans multiple lines.
+    # The tail may include '\n', '\t', ' ' if it spans multiple lines.
     # We will worry about those on return, not now.
     for child in parent:
         # The '<d/>' tag is simply a fancier '-' character
@@ -42,8 +48,8 @@ def stringify_node(parent: ET.Element) -> str:
     # A paragraph typically ends with:
     #   Text\n</p>
     # Right strip any spurious whitespace.
-    # Finally, get rid of any intermediate newlines.
-    return text.rstrip().replace('\n', ' ')
+    # Finally, get rid of any intermediate newlines and indentation whitespace.
+    return whitespace_re.sub(' ', text.rstrip())
 
 
 def process_node(documents: list, node: ET.Element, name: str, url: str) -> None:
