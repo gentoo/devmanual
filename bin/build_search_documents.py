@@ -77,7 +77,7 @@ def process_node(documents: list, node: ET.Element, name: str, url: str) -> None
 
         for child in node:
             process_node(documents, child, name, url)
-    elif node.tag in ['body', 'guide']:
+    elif node.tag in ['body', 'guide', 'li', 'ul']:
         for child in node:
             process_node(documents, child, name, url)
     elif node.tag in ['p', 'important', 'note', 'warning']:
