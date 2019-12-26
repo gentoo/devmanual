@@ -77,7 +77,7 @@ modifying the member list.
 
 <p>
 Developers should remember to add themselves to the alias by editing
-<c><path>/var/mail/alias/misc/&lt;alias name&gt;</path></c> on
+<c>/var/mail/alias/misc/&lt;alias name&gt;</c> on
 dev.gentoo.org. For example, the alias for the Devmanual project is
 located at <c>/var/mail/alias/misc/devmanual</c>, which corresponds to
 the project's email address <c>devmanual@gentoo.org</c>.

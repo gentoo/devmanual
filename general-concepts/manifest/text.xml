@@ -56,10 +56,10 @@ Portage Configuration:
 
 <ul>
   <li>
-    Set <path>PORTAGE_GPG_DIR</path> to your <path>~/.gnupg/</path> directory
+    Set <c>PORTAGE_GPG_DIR</c> to your <c>~/.gnupg/</c> directory
     (or the directory where the keyring with your new key is).
   </li>
-  <li>Set <path>PORTAGE_GPG_KEY</path> to the key id of your new key.</li>
+  <li>Set <c>PORTAGE_GPG_KEY</c> to the key id of your new key.</li>
   <li>Set FEATURES="sign".</li>
 </ul>
 

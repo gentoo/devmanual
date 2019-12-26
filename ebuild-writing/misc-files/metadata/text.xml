@@ -52,7 +52,7 @@ metadata.xml:
     <c>&lt;catmetadata&gt;</c>
   </ti>
   <ti>
-    This is the root element of the <path>metadata.xml</path> file for
+    This is the root element of the <c>metadata.xml</c> file for
     categories. It has no attributes. It contains a number of
     <c>&lt;longdescription&gt;</c> tags, each for a different language.
   </ti>
@@ -62,7 +62,7 @@ metadata.xml:
     <c>&lt;pkgmetadata&gt;</c>
   </ti>
   <ti>
-    This is the root element of the <path>metadata.xml</path> file for
+    This is the root element of the <c>metadata.xml</c> file for
     packages. It has no attributes. The following subtags are
     allowed:
     <c>&lt;longdescription&gt;</c>,
@@ -236,7 +236,7 @@ metadata.xml:
   <ti><c>&lt;cat&gt;</c></ti>
   <ti>
     This tag contains a valid category name as defined in
-    <path>profiles/categories</path>.
+    <c>profiles/categories</c>.
   </ti>
 </tr>
 </table>
@@ -389,8 +389,8 @@ these files verbatim and should be taken as hypothetical examples.
 
 <p>
 For the first example, a package maintained by a single project is
-presented. It is a simplified version of <path>metadata.xml</path> for
-the package <path>app-office/libreoffice</path>. The package
+presented. It is a simplified version of <c>metadata.xml</c> for
+the package <c>app-office/libreoffice</c>. The package
 maintainer is identified by the email address <c>office@gentoo.org</c>
 with the name <c>Gentoo Office Project</c> as specified in the
 optional &lt;name&gt; subtag. It also provides a long package
@@ -453,8 +453,8 @@ projects listing</uri> available on the Gentoo Wiki:
 <body>
 
 <p>
-The second example is formed after the <path>metadata.xml</path> of
-<path>sys-apps/portage</path>. It lists multiple maintainers where one
+The second example is formed after the <c>metadata.xml</c> of
+<c>sys-apps/portage</c>. It lists multiple maintainers where one
 is a developer and the other is a project. It illustrates how local
 USE flag descriptions are specified and also contains an upstream
 element. It is also worth pointing out the use of <c>mailto:</c>
@@ -502,7 +502,7 @@ as opposed to a URL. Conversely, email addresses specified in the
 <p>
 This example splits the maintainership based on package versions using
 the attribute <c>restrict</c>. According to the
-<path>metadata.xml</path> of <path>sys-boot/grub</path>, the ebuilds
+<c>metadata.xml</c> of <c>sys-boot/grub</c>, the ebuilds
 for version 2 and above are maintained by floppym@gentoo.org whereas
 earlier versions are maintained by the Gentoo Base System
 project. Note the use of "&amp;gt;" as opposed to "&gt;" in
@@ -571,7 +571,7 @@ is demonstrated.
 <p>
 The main focus of this example is to demonstrate how slots and
 subslots are specified, by examining the metadata of
-<path>media-libs/libpng</path>. There may be multiple reasons for
+<c>media-libs/libpng</c>. There may be multiple reasons for
 slotting depending on the nature of the package. For this particular
 package, it can be seen that the slots are used to provide different
 versions of the library with varying binary compatibility and that

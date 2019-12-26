@@ -215,7 +215,7 @@ Now, here's how the <c>&lt;body&gt;</c> element above is rendered:
 </p>
 
 <p>
-This is a paragraph.  <path>/etc/passwd</path> is a file.
+This is a paragraph.  <c>/etc/passwd</c> is a file.
 <uri>https://forums.gentoo.org</uri> is my favorite web site.
 Type <c>ls</c> if you feel like it.  I <e>really</e> want to go to sleep now.
 </p>

@@ -32,10 +32,10 @@ select all possible fields, then submit the query. For you lazy people, click
 
 <p>
 In general, the Gentoo repository should only be used for storing
-<path>.ebuild</path> files, as well as any relatively small companion
+<c>.ebuild</c> files, as well as any relatively small companion
 files, such as patches or sample configuration files. These types of
-files should be placed in the <path>mycat/mypkg/files</path> directory
-to keep the main <path>mycat/mypkg</path> directory uncluttered.
+files should be placed in the <c>mycat/mypkg/files</c> directory
+to keep the main <c>mycat/mypkg</c> directory uncluttered.
 Exceptions to this rule are for larger patch files (we recommend this
 for patches above 20KB) which should be distributed as tarballs via the
 <uri link="::general-concepts/mirrors/#suitable-download-hosts">Gentoo
@@ -99,23 +99,23 @@ work on those architectures.
 
 <p>
 As noted earlier, under each package subdirectory is
-a <path>files/</path> directory. Any patches, configuration files, or
+a <c>files/</c> directory. Any patches, configuration files, or
 other ancillary files your package might require should be added to
 this directory; any files bigger than 20KB-or-so should go to the
 mirrors to lower the amount of (unneeded) files our users have to
 download. You may want to consider naming patches you create yourself
 just to get your package to build with a version-specific name, such
-as <path>mypkg-1.0-gentoo.diff</path>, or more
-simply, <path>1.0-gentoo.diff</path>.  Also note that the
-<path>gentoo</path> extension informs people that this patch was created
+as <c>mypkg-1.0-gentoo.diff</c>, or more
+simply, <c>1.0-gentoo.diff</c>.  Also note that the
+<c>gentoo</c> extension informs people that this patch was created
 by us, the Gentoo Linux developers, rather than having been grabbed from a
 mailing list or somewhere else. Again, you should not compress these
 patches.
 </p>
 
 <p>
-Consider prefixing or suffixing (such as <path>mypkg-1.0</path>) every file
-you put into the <path>files/</path> directory, so that the files used for
+Consider prefixing or suffixing (such as <c>mypkg-1.0</c>) every file
+you put into the <c>files/</c> directory, so that the files used for
 each individual version on an ebuild are distinguishable from one another, and
 so that the changes between different revisions are visible.  This is generally
 a really good idea :).  You may want to use a different suffix if you wish to
@@ -123,8 +123,8 @@ convey more meaning with the patch name.
 </p>
 
 <p>
-If you have many files that should go into the <path>files/</path> directory,
-consider creating subdirectories such as <path>files/1.0/</path> and putting the
+If you have many files that should go into the <c>files/</c> directory,
+consider creating subdirectories such as <c>files/1.0/</c> and putting the
 relevant files in the appropriate subdirectory.  If you use this method,
 you do not need to add version information to the names of the files,
 which is often more convenient.
@@ -253,7 +253,7 @@ to be in very poor taste and may result in disciplinary action.
 Moving a package in the tree requires several operations. Firstly,
 the package directory needs to be moved to the correct category
 using <c>git mv</c>. After this, a new entry needs to be added to
-the latest file in <path>profiles/updates/</path> in the
+the latest file in <c>profiles/updates/</c> in the
 following format:
 </p>
 
@@ -269,10 +269,10 @@ the package to be moved) need to be updated properly.
 </p>
 
 <p>
-Next is checking the files under <path>profiles/</path> such as
-<path>profiles/package.mask</path> and update them to reflect the ebuild
+Next is checking the files under <c>profiles/</c> such as
+<c>profiles/package.mask</c> and update them to reflect the ebuild
 move. Various eclasses automatically provide some of the dependencies upon
-inherit, so the files under <path>eclass/</path> should be checked and updated
+inherit, so the files under <c>eclass/</c> should be checked and updated
 properly. If the package metadata.xml has tags with <c>restrict</c>
 attribute, they should be updated to reflect the move. The
 metadata.xml for various packages may contain references to the
@@ -283,8 +283,8 @@ related to the package should be updated.
 
 <p>
 Here is an example where the package
-<path>net-misc/fwbuilder</path> is transparently moved to
-<path>net-firewall/fwbuilder</path>:
+<c>net-misc/fwbuilder</c> is transparently moved to
+<c>net-firewall/fwbuilder</c>:
 </p>
 
 <ol>
@@ -292,14 +292,14 @@ Here is an example where the package
   <li>
     <p>
       Add the following entry to the latest file in
-      <path>profile/updates/</path>:
+      <c>profile/updates/</c>:
     </p>
     <p><c>move net-misc/fwbuilder net-firewall/fwbuilder</c></p>
   </li>
   <li>Update the reverse dependencies of the package</li>
   <li>
-    Update <path>profiles/package.mask</path> and other related files under
-    <path>profiles/</path>
+    Update <c>profiles/package.mask</c> and other related files under
+    <c>profiles/</c>
   </li>
   <li>Check the eclasses that may be referencing the package</li>
   <li>
@@ -348,7 +348,7 @@ Date:   Wed Dec 18 19:56:03 2019 +0100
 <p>
 The process for changing the ebuild's SLOT is very similar to the
 previous process.  Besides changing the SLOT in the ebuild file, you
-also need to create a new entry in <path>profiles/updates/</path> in
+also need to create a new entry in <c>profiles/updates/</c> in
 the Gentoo repository in the following format:
 </p>
 
@@ -358,7 +358,7 @@ slotmove app-text/gtkspell 0 2
 
 <p>
 Make sure that you have fixed all the reverse dependencies and that
-you have updated every file in <path>profiles/</path> directory that
+you have updated every file in <c>profiles/</c> directory that
 happens to contain an entry which may be affected by your change.
 </p>
 
@@ -421,7 +421,7 @@ When removing packages follow these steps:
 </ol>
 
 <p>
-Here is a list of commands that will delete <path>dev-util/pmk</path>
+Here is a list of commands that will delete <c>dev-util/pmk</c>
 from the tree:
 </p>
 
@@ -459,9 +459,9 @@ already provided by another package (detectable with
 situation before you can commit the ebuild or, if you encounter this
 with an existing package, file a bug about that package (see below for
 a few exceptions). The reason file conflicts are critical is because
-if "foo" provides the file <path>/usr/bin/example</path> and "bar" is
+if "foo" provides the file <c>/usr/bin/example</c> and "bar" is
 going to overwrite it, and later "bar" is unmerged, Portage will remove
-<path>/usr/bin/example</path> and it is therefore likely it will break
+<c>/usr/bin/example</c> and it is therefore likely it will break
 "foo".
 </p>
 

@@ -175,7 +175,7 @@ do not split relevant or interdependent changes within a single package.
 <li>
 Avoid creating commits introducing a temporary breakage. Unless impossible,
 add packages in dependency install order. Add licenses before the packages
-needing them. Commit <path>package.mask</path> and other profile changes before
+needing them. Commit <c>package.mask</c> and other profile changes before
 ebuilds relying on them. Usually it is also acceptable to include those changes
 along with the commit adding the package.
 </li>

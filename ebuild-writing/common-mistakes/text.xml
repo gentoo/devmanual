@@ -317,14 +317,14 @@ Another common mistake users make when submitting ebuilds is supplying an
 invalid license. For example, <c>GPL</c> is not a valid license. You need to
 specify <c>GPL-1</c> or <c>GPL-2</c>. Same with <c>LGPL</c>. Make sure the
 license you use in the <c>LICENSE</c> field is something that exists in
-the <path>licenses</path> directory. As a tip, check the <path>COPYING</path>
+the <c>licenses</c> directory. As a tip, check the <c>COPYING</c>
 in a source tarball for the license. If a package does not specify it
 uses <c>GPL-1</c> or <c>GPL-2</c>, it is very likely it uses <c>GPL-2</c>.
 </p>
 
 <p>
 If the license for the package you submit is unique and not in
-<path>licenses/</path>, then you must submit the new license in a
+<c>licenses/</c>, then you must submit the new license in a
 separate file.
 </p>
 
@@ -413,7 +413,7 @@ implied already, you should only add it if it is something other than
 
 <p>
 If your package has documentation, make sure you install it using <c>dodoc</c>
-or in <path>/usr/share/doc/${PF}</path>. Remember to check for errors when
+or in <c>/usr/share/doc/${PF}</c>. Remember to check for errors when
 running <c>dodoc</c>/<c>doins</c>.
 </p>
 
