@@ -6,7 +6,7 @@
 
 <!ENTITY  % block.class     "p|pre|codesample|note|important|warning|todo
                                 |figure|table|ul|ol|dl">
-<!ENTITY  % inline.class    "sup|sub|b|c|d|e|path|uri">
+<!ENTITY  % inline.class    "b|c|e|d|uri">
 <!ENTITY  % all.class       "%block.class;|%inline.class;">
 
 <!ELEMENT guide         (chapter, include*)>
@@ -85,12 +85,9 @@
 <!-- The following is strange, but devbook.xsl expects only p elements -->
 <!ELEMENT dd            (p)+>
 
-<!ELEMENT sup           (#PCDATA|%inline.class;)*>
-<!ELEMENT sub           (#PCDATA|%inline.class;)*>
 <!ELEMENT b             (#PCDATA|%inline.class;)*>
 <!ELEMENT c             (#PCDATA|%inline.class;)*>
 <!ELEMENT e             (#PCDATA|%inline.class;)*>
-<!ELEMENT path          (#PCDATA|%inline.class;)*>
 <!ELEMENT d             EMPTY>
 
 <!ELEMENT uri           (#PCDATA|%inline.class;)*>
