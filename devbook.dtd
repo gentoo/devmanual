@@ -9,7 +9,7 @@
 <!ENTITY  % inline.class    "sup|sub|b|c|d|e|path|uri">
 <!ENTITY  % all.class       "%block.class;|%inline.class;">
 
-<!ELEMENT guide         (chapter,include*)>
+<!ELEMENT guide         (chapter, include*)>
 <!ATTLIST guide         root (true) #IMPLIED
                         self CDATA #IMPLIED>
 
