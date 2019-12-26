@@ -624,17 +624,17 @@ src_install() {
 		</p>
 			<dl>
 				<dt><c>source</c></dt>
-				<dd><p>
+				<dd>
 					if building and installing a package from source,
-				</p></dd>
+				</dd>
 				<dt><c>binary</c></dt>
-				<dd><p>
+				<dd>
 					if installing a binary package,
-				</p></dd>
+				</dd>
 				<dt><c>buildonly</c></dt>
-				<dd><p>
+				<dd>
 					if building a binary package without installing it.
-				</p></dd>
+				</dd>
 			</dl>
 	</li>
 	<li>

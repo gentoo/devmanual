@@ -113,87 +113,70 @@ Software-wise, in general all of the following should be met in order for a pack
 <dl>
 <dt>Active, Cooperative Upstream</dt>
 <dd>
-  <p>
   If a package is undeveloped or unmaintained upstream, it can be extremely
   difficult to get problems fixed. If a package does not have an active
   upstream, the developers who add the package to the tree must ensure that
   they are able to fix any issues which may arise.
-  </p>
-  <p>
+</dd>
+<dd>
   Sometimes upstream may have a reason for not wanting their package included
   in the tree. This should be respected.
-  </p>
 </dd>
 
 <dt>Reasonably Stable</dt>
 <dd>
-  <p>
   Keep super-experimental things out of the tree. If you must commit them,
   consider using <c>package.mask</c> until things calm down, or better yet make
   them available as overlay ebuilds.
-  </p>
 </dd>
 
 <dt>Reasonably Useful</dt>
 <dd>
-  <p>
   Don't feel obliged to include "Joe's '1337 XMMS Skinz Collection" or "Hans'
   Super Cool Fast File System" in the tree just because a few users ask for
   it. Stick to things that might actually be of use.
-  </p>
 </dd>
 
 <dt>Properly Packaged</dt>
 <dd>
-  <p>
   If something is only available in live CVS or dodgy autopackage format,
   don't include it until upstream can come up with a decent source package.
   Similarly, avoid things that don't have a proper build system (where
   relevant) <d/> these are very tricky to maintain.
-  </p>
 </dd>
 
 <dt>Patching and Distribution Permitted</dt>
 <dd>
-  <p>
   If we can't patch packages as necessary ourselves, we end up relying
   entirely upon upstream for support. This can be problematic, especially if
   upstream are slow at fixing things. We don't want to be in the situation
   where we can't stable a critical package because we're still waiting for a
   closed-source vendor to get their act together.
-  </p>
-
-  <p>
+</dd>
+<dd>
   Similarly, not being able to mirror and distribute tarballs ourselves makes
   us rely entirely upon upstream mirrors. Experience has shown that these are
   often extremely unreliable, with files changing, moving or vanishing at
   random.
-  </p>
 </dd>
 
 <dt>Working Ebuilds</dt>
 <dd>
-  <p>
   If you don't have a <e>working</e> ebuild, don't include it.
-  </p>
 </dd>
 
 <dt>Portable</dt>
 <dd>
-  <p>
   If software is unportable, it's generally because it's badly written.
   Remember that although x86 has a market majority <e>now</e>, it probably won't in
   the not too distant future once x86-64 catches on.
-  </p>
 </dd>
 
 <dt>Reasonable Security Record</dt>
 <dd>
-  <p>
   Don't include software that has a terrible security record. Each
   vulnerability is a <e>lot</e> of work for a lot of people (security teams, arch
   teams and package maintainers).
-  </p>
 </dd>
 </dl>
 

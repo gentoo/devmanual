@@ -56,36 +56,30 @@ in use, there are various alternatives:
     <c>sed</c>, <c>awk</c>, <c>grep</c>, <c>egrep</c>, <c>cut</c> etc
   </dt>
   <dd>
-    <p>
     Usually when any of the above are used in global scope, it is to manipulate
     a version or program name string. These should be avoided in favour of
     pure <c>bash</c> constructs. The <c>eapi7-ver</c> eclass is often of use here.
     See <uri link="::ebuild-writing/variables/#Version and Name Formatting Issues"/>,
     <c>man eapi7-ver.eclass</c> and <uri
     link="::tools-reference/bash/#Bash Variable Manipulation"/>.
-    </p>
   </dd>
   <dt>
     <c>has_version</c>, <c>best_version</c>
   </dt>
   <dd>
-    <p>
     Calls to either of these globally indicates a serious problem. You must <b>not</b>
     have metadata varying based upon system-dependent information <d/> see
     <uri link="::general-concepts/portage-cache/"/>. You should rewrite your ebuilds
     to correctly use dependencies.
-    </p>
   </dd>
   <dt>
     <c>python</c>, <c>perl</c> etc
   </dt>
   <dd>
-    <p>
     Ebuilds are <c>bash</c> scripts. Offloading anything you don't know how to do
     in <c>bash</c> onto another language is not acceptable <d/> if nothing else,
     because not all users will always have a full system when ebuilds are
     sourced.
-    </p>
   </dd>
 </dl>
 

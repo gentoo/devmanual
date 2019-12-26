@@ -269,25 +269,19 @@ configurations.
     d
   </dt>
   <dd>
-    <p>
-      Directory containing mixed-bit objects
-    </p>
+    Directory containing mixed-bit objects
   </dd>
   <dt>
     dXX
   </dt>
   <dd>
-    <p>
-      Directory containing XXbit objects
-    </p>
+    Directory containing XXbit objects
   </dd>
   <dt>
     l->foo
   </dt>
   <dd>
-    <p>
-      Link to foo
-    </p>
+    Link to foo
   </dd>
 </dl>
 

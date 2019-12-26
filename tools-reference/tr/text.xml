@@ -26,27 +26,21 @@ and only writes to standard output. Therefore, you will have to use
     Deleting characters
   </dt>
   <dd>
-    <p>
-      To delete all occurrences of certain characters, use <c>tr -d asdf</c>.
-    </p>
+    To delete all occurrences of certain characters, use <c>tr -d asdf</c>.
   </dd>
   <dt>
     Deleting repeated characters
   </dt>
   <dd>
-    <p>
-      To replace repeated characters with a single character ('squeeze'), use
-      <c>tr -s asdf</c>.
-    </p>
+    To replace repeated characters with a single character ('squeeze'), use
+    <c>tr -s asdf</c>.
   </dd>
   <dt>
     Transliterating characters
   </dt>
   <dd>
-    <p>
-      To replace all 'a' characters with '1', all 'b' with '2' and all 'c' with
-      '3', use <c>tr abc 123</c>.
-    </p>
+    To replace all 'a' characters with '1', all 'b' with '2' and all 'c' with
+    '3', use <c>tr abc 123</c>.
   </dd>
 </dl>
 
