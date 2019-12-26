@@ -80,10 +80,9 @@
 
 <!ELEMENT li            (#PCDATA|%all.class;)*>
 
-<!ELEMENT dl            (dt, dd)+>
+<!ELEMENT dl            (dt, dd+)+>
 <!ELEMENT dt            (#PCDATA|%inline.class;)*>
-<!-- The following is strange, but devbook.xsl expects only p elements -->
-<!ELEMENT dd            (p)+>
+<!ELEMENT dd            (#PCDATA|%inline.class;)*>
 
 <!ELEMENT b             (#PCDATA|%inline.class;)*>
 <!ELEMENT c             (#PCDATA|%inline.class;)*>

@@ -231,16 +231,7 @@
   </xsl:template>
 
   <xsl:template match="dd">
-    <dd>
-      <xsl:for-each select="p">
-        <xsl:choose>
-        <xsl:when test="count(../p) = 1"><xsl:apply-templates/></xsl:when>
-        <xsl:when test="position() = 1"><p class="first"><xsl:apply-templates/></p></xsl:when>
-        <xsl:when test="position() = last()"><p class="last"><xsl:apply-templates/></p></xsl:when>
-        <xsl:otherwise><p><xsl:apply-templates/></p></xsl:otherwise>
-        </xsl:choose>
-      </xsl:for-each>
-    </dd>
+    <dd><xsl:apply-templates/></dd>
   </xsl:template>
 
   <xsl:template match="important">

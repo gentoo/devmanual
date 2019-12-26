@@ -139,11 +139,8 @@ dt {
     font-weight: bold;
 }
 
-dd p.first {
+dd {
     margin-top: 0.2em;
-}
-
-dd p.last {
     margin-bottom: 0.2em;
 }
 
