@@ -94,16 +94,14 @@ Items which are in <c>RDEPEND</c> but not <c>DEPEND</c> could <e>in theory</e> b
 </section>
 
 <section>
-<title>Post-Merge Dependencies</title>
+<title>Post Dependencies</title>
 <body>
 
 <p>
-The <c>PDEPEND</c> variable specifies dependencies that should be
-merged <e>after</e> the package, but which may be merged at any time,
-if the former is not possible. This is sometimes used for plugins
-that have a dependency upon the package being merged. Generally
-<c>PDEPEND</c> should be avoided in favour of <c>RDEPEND</c> except
-where this will create circular dependency chains.
+The <c>PDEPEND</c> variable specifies runtime dependencies that do not strictly
+require being satisfied immediately. They can be merged <e>after</e>
+the package. This variable is used purely to resolve circular dependencies,
+while in general case <c>RDEPEND</c> should be used instead.
 </p>
 
 </body>
