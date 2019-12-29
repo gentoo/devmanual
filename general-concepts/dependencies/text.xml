@@ -622,5 +622,54 @@ DEPEND="test? ( dev-util/foo )"
 
 </body>
 </section>
+
+<section>
+<title>Circular Dependencies</title>
+<body>
+
+<p>
+Circular dependencies occur if one or more of package's (possibly indirect)
+dependencies depend on the package itself. This creates a dependency cycle where
+each of the packages must technically be installed before the other.
+For example, if package A depends on B, B depends on C and C depends on A, then
+the package manager cannot install A before C, and C before A.
+</p>
+
+<p>
+There are three kinds of circular dependencies:
+</p>
+
+<ol>
+  <li>
+    Circular dependencies that occur if only one of the packages strictly needs
+    to be installed before the other. For example, <c>dev-python/certifi</c>
+    strictly requires <c>dev-python/setuptools</c> to build but the latter
+    package requires the former for some runtime functionality. As a result,
+    <c>dev-python/certifi</c> can be installed later than the other package.
+    <c>PDEPEND</c> is used to express this and automatically resolve
+    the circular dependency.
+  </li>
+
+  <li>
+    Circular dependencies that occur if the cycle applies only to some
+    combination of USE flags on one of the packages. For example, running tests
+    in <c>dev-python/setuptools</c> requires a number of packages which require
+    <c>dev-python/setuptools</c> to be installed first. This kind of circular
+    dependency can be resolved by the user by adjusting USE flags on one
+    of the packages, e.g. by disabling tests on <c>dev-python/setuptools</c>,
+    and reenabling them once the dependency is initially installed.
+  </li>
+
+  <li>
+    Circular dependencies that cannot be resolved using the regular means.
+    For example, <c>dev-util/cmake</c> used to depend
+    on <c>dev-libs/jsoncpp</c>, while the latter package used the former
+    to build. Resolving this kind of dependency usually requires bundling one
+    of the dependencies conditionally, or providing an alternate bootstrap path.
+  </li>
+</ol>
+
+</body>
+</section>
 </chapter>
 </guide>
