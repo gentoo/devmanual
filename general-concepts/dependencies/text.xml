@@ -12,14 +12,58 @@ provided by <c>emerge</c>.
 </body>
 
 <section>
+<title>CHOST vs CBUILD</title>
+<body>
+
+<p>
+In order to avoid ambiguity, we use the following terms to indicate different
+systems when cross-compiling:
+</p>
+
+<dl>
+  <dt>CBUILD</dt>
+  <dd>
+    The system on which the build is performed.  Dependencies that apply
+    to the CBUILD system can be executed during build time.  When
+    cross-compiling, they are not installed into the system being built.
+  </dd>
+
+  <dt>CHOST</dt>
+  <dd>
+    The system on which the package is going to be executed.  When
+    cross-compiling, dependencies applying to CHOST can not be executed.
+  </dd>
+</dl>
+
+<p>
+When not cross-compiling, CBUILD and CHOST have the same value and both classes
+of dependencies are merged.
+</p>
+
+</body>
+</section>
+
+<section>
 <title>Build Dependencies</title>
 <body>
 
 <p>
-The <c>DEPEND</c> ebuild variable should specify any dependencies which are
-required to unpack, patch, compile or install the package (but see
+Build dependencies are used to specify any dependencies that are required
+to unpack, patch, compile, test or install the package (but see
 <uri link="::general-concepts/dependencies#Implicit System Dependency"/> for
 exemptions).
+</p>
+
+<p>
+Starting with EAPI 7, build dependencies are split into two variables:
+<c>BDEPEND</c> and <c>DEPEND</c>. <c>BDEPEND</c> specifies dependencies
+applicable to CBUILD, i.e. programs that need to be executed during the build,
+e.g. <c>virtual/pkgconfig</c>. <c>DEPEND</c> specifies dependencies for CHOST,
+i.e. packages that need to be found on built system, e.g. libraries and headers.
+</p>
+
+<p>
+In earlier EAPIs, all build dependencies are placed in <c>DEPEND</c>.
 </p>
 
 </body>
