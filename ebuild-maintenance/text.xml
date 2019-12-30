@@ -18,5 +18,6 @@ This section covers various tasks related to working with ebuilds.
 </chapter>
 
 <include href="git/"/>
+<include href="package-moves/"/>
 <include href="maintenance-tasks/"/>
 </guide>
