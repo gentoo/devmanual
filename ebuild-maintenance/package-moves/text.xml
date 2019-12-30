@@ -5,8 +5,28 @@
 <body>
 
 <p>
-This chapter describes the use of package and slot moves.
+This chapter describes the use of package and slot moves. The package update
+mechanism is a powerful tool, and needs to be used with caution. In particular,
+the following must be noted:
 </p>
+
+<ol>
+  <li>
+    Updates are <e>not one-shot</e> operations and they are not stateful. All
+    updates can be reapplied multiple times to the same system, and all old
+    updates are applied to fresh Gentoo installations.
+  </li>
+  <li>
+    Once an update entry is created, the old package name (or slot) cannot be
+    reused. Attempting to reuse it will cause updates to apply again,
+    to the reused name. This also means that updates cannot be undone.
+  </li>
+  <li>
+    Updates can only perform one-to-one moves. They cannot be used to merge
+    packages. Attempting to move two or more packages into a single name may
+    cause serious problems for users.
+  </li>
+</ol>
 
 </body>
 
