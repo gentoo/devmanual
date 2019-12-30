@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<guide self="ebuild-maintenance/maintenance-tasks/">
+<chapter>
+<title>Package and slot moves</title>
+
+<body>
+<p>
+This chapter describes the use of package and slot moves.
+</p>
+</body>
+
+<section>
+<title>Moving a package</title>
+<body>
+
+<p>
+Moving a package in the tree requires several operations. Firstly,
+the package directory needs to be moved to the correct category
+using <c>git mv</c>. After this, a new entry needs to be added to
+the latest file in <c>profiles/updates/</c> in the
+following format:
+</p>
+
+<pre>
+move old-category/package-name new-category/package-name
+</pre>
+
+<p>
+Following the update entry, ebuilds that have a
+<uri link="::general-concepts/dependencies">dependency</uri>
+to this package (in other words, the reverse dependencies of
+the package to be moved) need to be updated properly.
+</p>
+
+<p>
+Next is checking the files under <c>profiles/</c> such as
+<c>profiles/package.mask</c> and update them to reflect the ebuild
+move. Various eclasses automatically provide some of the dependencies upon
+inherit, so the files under <c>eclass/</c> should be checked and updated
+properly. If the package metadata.xml has tags with <c>restrict</c>
+attribute, they should be updated to reflect the move. The
+metadata.xml for various packages may contain references to the
+package being moved using the <c>&lt;pkg&gt;</c> tag which need to be
+updated accordingly as well. Lastly, the titles of the open bugs
+related to the package should be updated.
+</p>
+
+<p>
+Here is an example where the package
+<c>net-misc/fwbuilder</c> is transparently moved to
+<c>net-firewall/fwbuilder</c>:
+</p>
+
+<ol>
+  <li>Issue <c>git mv net-misc/fwbuilder net-firewall/fwbuilder</c></li>
+  <li>
+    <p>
+      Add the following entry to the latest file in
+      <c>profile/updates/</c>:
+    </p>
+    <p><c>move net-misc/fwbuilder net-firewall/fwbuilder</c></p>
+  </li>
+  <li>Update the reverse dependencies of the package</li>
+  <li>
+    Update <c>profiles/package.mask</c> and other related files under
+    <c>profiles/</c>
+  </li>
+  <li>Check the eclasses that may be referencing the package</li>
+  <li>
+    Update all the
+    <uri link="::ebuild-writing/misc-files/metadata">metadata.xml</uri>
+    files which contain a reference to this package using the
+    <c>&lt;pkg&gt;</c> tag or the <c>restrict</c> attribute.
+  </li>
+  <li>
+    Stage all the changed files using <c>git add</c>. For example: <c>git add
+    profiles/package.mask</c>
+  </li>
+  <li>
+    Commit all the changes in one commit using: <c>git commit --gpg-sign --signoff</c>
+  </li>
+  <li>
+    Update any <uri link="::general-concepts/news">news items</uri>
+    referencing the package in a <c>Display-If-Installed</c> header
+    or in the item's body (and increment their <c>Revision</c>).
+  </li>
+  <li>Update any open bugs related to the package</li>
+</ol>
+
+<p>
+It is very important to commit all the changes in a single commit to ensure
+that no breakage occurs. The commit message should follow a format similar
+to the following:
+</p>
+
+<pre>
+commit 7a699bcdce5c1412c02a2aa7717a31bc17c49058
+Author: Miroslav Šulc &lt;fordfrog@gentoo.org&gt;
+Date:   Wed Dec 18 19:56:03 2019 +0100
+
+  media-libs/libclxclient: moved to x11-libs/libclxclient
+
+  Signed-off-by: Miroslav Šulc &lt;fordfrog@gentoo.org&gt;
+</pre>
+
+</body>
+</section>
+
+<section>
+<title>Changing ebuild's SLOT</title>
+<body>
+<p>
+The process for changing the ebuild's SLOT is very similar to the
+previous process.  Besides changing the SLOT in the ebuild file, you
+also need to create a new entry in <c>profiles/updates/</c> in
+the Gentoo repository in the following format:
+</p>
+
+<pre>
+slotmove app-text/gtkspell 0 2
+</pre>
+
+<p>
+Make sure that you have fixed all the reverse dependencies and that
+you have updated every file in <c>profiles/</c> directory that
+happens to contain an entry which may be affected by your change.
+</p>
+
+</body>
+</section>
+</chapter>
+</guide>
