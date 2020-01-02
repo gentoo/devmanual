@@ -53,10 +53,12 @@ validate: prereq
 # We have to loop through them because otherwise tidy won't
 # tell you which file contains a mistake.
 tidy: $(HTMLS)
-	@for f in $(HTMLS); do \
+	@status=0; \
+	for f in $(HTMLS); do \
 	  output=$$(tidy -q -errors --drop-empty-elements no $${f} 2>&1) \
 	  || { status=$$?; echo "Failed on $${f}:"; echo "$${output}"; }; \
 	done; \
+	test $${status} -eq 0 && echo "tidy validation successful"; \
 	exit $${status}
 
 clean:
