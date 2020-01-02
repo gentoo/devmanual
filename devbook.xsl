@@ -47,8 +47,6 @@
 
       <h3 id="{$anchor}"><xsl:apply-templates select="title"/></h3>
       <xsl:apply-templates select="(body|subsubsection)"/>
-
-      <!-- If you need, change here to add more nesting levels -->
     </div>
   </xsl:template>
 
