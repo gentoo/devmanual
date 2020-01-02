@@ -83,10 +83,10 @@ def process_node(documents: list, node: ET.Element, name: str, url: str) -> None
 
         for child in node:
             process_node(documents, child, name, url)
-    elif node.tag in ['body', 'dl', 'guide', 'li', 'ul', 'table', 'tr']:
+    elif node.tag in ['body', 'dl', 'guide', 'ul', 'table', 'tr']:
         for child in node:
             process_node(documents, child, name, url)
-    elif node.tag in ['p', 'dd', 'dt', 'important', 'note', 'warning', 'th', 'ti']:
+    elif node.tag in ['p', 'dd', 'dt', 'important', 'li', 'note', 'warning', 'th', 'ti']:
         text = stringify_node(node)
 
         documents.append({'id': len(documents),
