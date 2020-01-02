@@ -267,9 +267,7 @@ Vulnerability Treatment Policy</uri>
 </body>
 
 <subsection>
-  <title>
-    Simultaneous stabilization on all architectures
-  </title>
+<title>Simultaneous stabilization on all architectures</title>
   <body>
     <p>
       If you maintain an architecture-independent package (data files,

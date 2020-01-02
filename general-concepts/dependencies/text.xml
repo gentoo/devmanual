@@ -419,9 +419,7 @@ DEPEND="!build? (
 </section>
 
 <section>
-<title>
-Any of Many Dependencies
-</title>
+<title>Any of Many Dependencies</title>
 <body>
 
 <p>
