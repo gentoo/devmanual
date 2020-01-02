@@ -34,7 +34,7 @@ can see real ebuilds in the main tree).
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -204,7 +204,7 @@ Here's <c>app-misc/detox/detox-1.1.1.ebuild</c>:
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -262,7 +262,7 @@ one must use EAPI 7. Here's <c>app-misc/detox/detox-1.1.0.ebuild</c>:
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -318,7 +318,7 @@ replacement iconv for <c>libc</c> implementations which don't have their own.
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -357,7 +357,7 @@ Another more complicated example, this time based upon
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
