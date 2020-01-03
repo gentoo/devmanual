@@ -280,7 +280,10 @@
     <xsl:param name="data"/>
     <xsl:variable name="lcletters">abcdefghijklmnopqrstuvwxyz--</xsl:variable>
     <xsl:variable name="ucletters">ABCDEFGHIJKLMNOPQRSTUVWXYZ<xsl:text> </xsl:text>,</xsl:variable>
-    <xsl:value-of select="translate(normalize-space($data),$ucletters,$lcletters)"/>
+    <xsl:variable name="lcdata" select="translate(normalize-space($data), $ucletters, $lcletters)"/>
+    <!-- Delete anything but letters, digits, hyphen, dot, underscore -->
+    <xsl:variable name="allowed">abcdefghijklmnopqrstuvwxyz0123456789-._</xsl:variable>
+    <xsl:value-of select="translate($lcdata, translate($lcdata, $allowed, ''), '')"/>
   </xsl:template>
 
   <xsl:template match="uri">
