@@ -233,16 +233,16 @@ For packages where <c>${CATEGORY}/${PN}:</c> is long, the line length
 limit can be exceeded, if absolutely necessary, to ensure a more
 useful summary line. If a commit affects multiple directories, prepend
 the message with which reflects the intention of the change best. If
-there are any bugs on Gentoo Bugzilla associated with the commit, id
+there are any bugs on Gentoo Bugzilla associated with the commit, the id
 of the bug can be appended to the summary line using the format
-<c>#BUG-ID</c>. If you are modifying keywords, clearly state what
+<c>#nnnnnn</c>. If you are modifying keywords, clearly state what
 keywords are added/removed.
 </p>
 
 <warning>
 By default, lines starting with <c>#</c> are considered to be comments
 by git and not included in the commit message. Make sure that a new
-line does not start with <c>#BUG-ID</c>. Optionally, git can be
+line does not start with <c>#nnnnnn</c>. Optionally, git can be
 configured to use a different character for comments by changing the
 <c>commentchar</c> option.
 </warning>
@@ -284,12 +284,6 @@ automatically with reference to the commit.</li>
 <c>repoman commit</c> and records the options passed to repoman (such
 as --force) for the commit.</li>
 </ul>
-
-<p>
-Additionally, some developers prefer referencing bugs on the summary
-line using the <c>#nnnnnn</c> form. Developers are free to use either
-form, or both simultaneously to combine their advantages.
-</p>
 
 <p>
 When committing <uri link="::ebuild-writing/user-submitted">user
