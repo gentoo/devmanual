@@ -278,8 +278,8 @@
 
   <xsl:template name="convert-to-anchor">
     <xsl:param name="data"/>
-    <xsl:variable name="lcletters">abcdefghijklmnopqrstuvwxyz--</xsl:variable>
-    <xsl:variable name="ucletters">ABCDEFGHIJKLMNOPQRSTUVWXYZ<xsl:text> </xsl:text>,</xsl:variable>
+    <xsl:variable name="lcletters">abcdefghijklmnopqrstuvwxyz-</xsl:variable>
+    <xsl:variable name="ucletters">ABCDEFGHIJKLMNOPQRSTUVWXYZ<xsl:text> </xsl:text></xsl:variable>
     <xsl:variable name="lcdata" select="translate(normalize-space($data), $ucletters, $lcletters)"/>
     <!-- Delete anything but letters, digits, hyphen, dot, underscore -->
     <xsl:variable name="allowed">abcdefghijklmnopqrstuvwxyz0123456789-._</xsl:variable>
