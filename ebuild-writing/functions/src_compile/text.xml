@@ -31,9 +31,10 @@
 <section>
 <title>Default <c>src_compile</c></title>
 
-<subsection>
-<title>with EAPI=0,1</title>
 <body>
+<ul>
+<li>
+<p>with EAPI=0,1</p>
 <codesample lang="ebuild">
 src_compile() {
 	if [ -x ./configure ]; then
@@ -44,11 +45,10 @@ src_compile() {
 	fi
 }
 </codesample>
-</body>
-</subsection>
-<subsection>
-<title>with EAPI=2</title>
-<body>
+</li>
+
+<li>
+<p>with EAPI=2</p>
 <codesample lang="ebuild">
 src_compile() {
 	if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ]; then
@@ -56,16 +56,18 @@ src_compile() {
 	fi
 }
 </codesample>
+</li>
+</ul>
 </body>
-</subsection>
 </section>
 
 <section>
 <title>Sample <c>src_compile</c></title>
 
-<subsection>
-<title>with EAPI=0</title>
 <body>
+<ul>
+<li>
+<p>with EAPI=0</p>
 <codesample lang="ebuild">
 src_compile() {
 	use sparc &amp;&amp; filter-flags -fomit-frame-pointer
@@ -81,18 +83,18 @@ src_compile() {
 <note>
 You also need to inherit the <uri link="::eclass-reference/flag-o-matic.eclass/">flag-o-matic</uri> eclass in order to use the <c>append-ldflags</c> function.
 </note>
-</body>
-</subsection>
-<subsection>
-<title>with EAPI=2</title>
-<body>
+</li>
+
+<li>
+<p>with EAPI=2</p>
 <p>
-porting the above example to EAPI=2, you won't need to define an extra
+Porting the above example to EAPI=2, you won't need to define an extra
 <c>src_compile</c>, as it only calls <c>emake</c> (which is the default
 <c>src_compile</c> function).
 </p>
+</li>
+</ul>
 </body>
-</subsection>
 </section>
 
 <section>

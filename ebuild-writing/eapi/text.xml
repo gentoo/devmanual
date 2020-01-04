@@ -137,7 +137,7 @@ IUSE="foo +bar"
 <title>EAPI=2</title>
 
 <subsection>
-<title>Helpers</title>
+<title>EAPI 2 Helpers</title>
 <body>
 <ul>
 	<li>
@@ -158,7 +158,7 @@ doman foo.lang.1
 </subsection>
 
 <subsection>
-<title>Metadata</title>
+<title>EAPI 2 Metadata</title>
 <body>
 <ul>
 	<li>
@@ -234,7 +234,7 @@ SRC_URI="https://dl.google.com/earth/client/GE4/release_4_3/GoogleEarthLinux.bin
 </subsection>
 
 <subsection>
-<title>Phases</title>
+<title>EAPI 2 Phases</title>
 <body>
 <ul>
 	<li>
@@ -346,7 +346,7 @@ src_compile() {
 <title>EAPI=4</title>
 
 <subsection>
-<title>Helpers</title>
+<title>EAPI 4 Helpers</title>
 <body>
 <ul>
 	<li>
@@ -470,7 +470,7 @@ src_install() {
 </subsection>
 
 <subsection>
-<title>Metadata</title>
+<title>EAPI 4 Metadata</title>
 <body>
 <ul>
 	<li>
@@ -494,7 +494,7 @@ DEPEND="
 </subsection>
 
 <subsection>
-<title>Phases</title>
+<title>EAPI 4 Phases</title>
 <body>
 <ul>
 	<li>
@@ -577,7 +577,7 @@ src_install() {
 </subsection>
 
 <subsection>
-<title>Variables</title>
+<title>EAPI 4 Variables</title>
 <body>
 <ul>
 	<li>
@@ -668,7 +668,7 @@ src_install() {
 <title>EAPI=5</title>
 
 <subsection>
-<title>Metadata</title>
+<title>EAPI 5 Metadata</title>
 <body>
 <ul>
 	<li>
@@ -731,7 +731,7 @@ RDEPEND="dev-libs/foo:2=
 </subsection>
 
 <subsection>
-<title>Profiles</title>
+<title>EAPI 5 Profiles</title>
 <body>
 <ul>
 	<li>
@@ -745,7 +745,7 @@ RDEPEND="dev-libs/foo:2=
 </subsection>
 
 <subsection>
-<title>Helpers</title>
+<title>EAPI 5 Helpers</title>
 <body>
 <ul>
 	<li>
@@ -788,7 +788,7 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 </subsection>
 
 <subsection>
-<title>Phases</title>
+<title>EAPI 5 Phases</title>
 <body>
 <ul>
 	<li>
@@ -802,7 +802,7 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 </subsection>
 
 <subsection>
-<title>Variables</title>
+<title>EAPI 5 Variables</title>
 <body>
 <ul>
 	<li>
@@ -821,14 +821,14 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 <title>EAPI=6</title>
 
 <subsection>
-<title>Bash version</title>
+<title>EAPI 6 Bash version</title>
 <body>
 <p>Ebuilds can use features of Bash version 4.2 (was 3.2 before).</p>
 </body>
 </subsection>
 
 <subsection>
-<title>Ebuild environment</title>
+<title>EAPI 6 Ebuild Environment</title>
 <body>
 <ul>
 	<li>
@@ -850,7 +850,7 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 </subsection>
 
 <subsection>
-<title>Phases</title>
+<title>EAPI 6 Phases</title>
 <body>
 <ul>
 	<li>
@@ -888,7 +888,7 @@ src_install() {
 </subsection>
 
 <subsection>
-<title>Helpers</title>
+<title>EAPI 6 Helpers</title>
 <body>
 <ul>
 	<li>
@@ -963,7 +963,7 @@ src_install() {
 <title>EAPI=7</title>
 
 <subsection>
-<title>Terminology</title>
+<title>EAPI 7 Terminology</title>
 <body>
 <p>Documents may use the following terms to better describe dependency and installation targets.</p>
 <ul>
@@ -983,7 +983,7 @@ src_install() {
 </body>
 </subsection>
 <subsection>
-<title>Variables</title>
+<title>EAPI 7 Variables</title>
 <body>
 <ul>
 	<li>
@@ -1030,7 +1030,7 @@ src_install() {
 </body>
 </subsection>
 <subsection>
-<title>Metadata</title>
+<title>EAPI 7 Metadata</title>
 <body>
 <ul>
 	<li>
@@ -1045,7 +1045,7 @@ src_install() {
 </body>
 </subsection>
 <subsection>
-<title>Profiles</title>
+<title>EAPI 7 Profiles</title>
 <body>
 <ul>
 	<li>
@@ -1056,7 +1056,7 @@ src_install() {
 </body>
 </subsection>
 <subsection>
-<title>Helpers</title>
+<title>EAPI 7 Helpers</title>
 <body>
 <ul>
 	<li>
