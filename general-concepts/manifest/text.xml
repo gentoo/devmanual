@@ -15,7 +15,9 @@ by the package. This is used to verify integrity upon fetching them.
 </p>
 
 <p>
-To generate the <c>Manifest</c>, use <c>ebuild foo.ebuild manifest</c>.
+To generate the <c>Manifest</c>, use <c>ebuild foo.ebuild manifest</c>
+or <c>repoman manifest</c>. You may want to set <c>GENTOO_MIRRORS=</c> while
+calling it to fetch distfiles from their original locations immediately.
 </p>
 </body>
 </section>
