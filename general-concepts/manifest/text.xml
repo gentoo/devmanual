@@ -7,68 +7,15 @@
 <title>Generating the Manifest</title>
 <body>
 <p>
-In the tree, every package has a <c>Manifest</c> file. This file lives in the same
-directory as the ebuilds for the package. The <c>Manifest</c> file contains digests
-(currently RMD160, SHA1, SHA256, SHA512 and WHIRLPOOL) and file size data for every
-file in the directory and any subdirectories. This is used to verify integrity.
-The <c>Manifest</c> may also be digitally signed.
+In the tree, every package has a <c>Manifest</c> file. This file lives
+in the same directory as the ebuilds for the package. The <c>Manifest</c> file
+contains digests (the current list can be found in <c>metadata/layout.conf</c>
+as <c>manifest-hashes</c>) and file size data for every distfile used
+by the package. This is used to verify integrity upon fetching them.
 </p>
 
 <p>
-To generate the <c>Manifest</c>, use <c>ebuild foo.ebuild manifest</c>. When
-committing, the <c>Manifest</c> file must be regenerated to handle any
-changes <d/> <c>repoman</c> will do this automatically.
-</p>
-</body>
-</section>
-
-<section>
-<title>Signing the Manifest using your GPG key</title>
-<body>
-<p>
-Requirements:
-</p>
-
-<ul>
-  <li>&gt;=sys-apps/portage-2.0.51_pre10</li>
-  <li>&gt;=app-crypt/gnupg-1.2.4</li>
-</ul>
-
-<p>
-Key Setup:
-</p>
-
-<ul>
-  <li>
-    <uri link="https://www.gentoo.org/doc/en/gnupg-user.xml#doc_chap2">Create</uri>
-    a new DSA GnuPG key with at least a 1024 bit keylength, an expiration
-    period no longer than 6 months and a good passphrase.
-  </li>
-  <li>
-    <uri link="https://www.gentoo.org/doc/en/gnupg-user.xml#doc_chap3">Upload</uri>
-    the key to a keyserver.
-  </li>
-</ul>
-
-<p>
-Portage Configuration:
-</p>
-
-<ul>
-  <li>
-    Set <c>PORTAGE_GPG_DIR</c> to your <c>~/.gnupg/</c> directory
-    (or the directory where the keyring with your new key is).
-  </li>
-  <li>Set <c>PORTAGE_GPG_KEY</c> to the key id of your new key.</li>
-  <li>Set FEATURES="sign".</li>
-</ul>
-
-<p>
-Now you should be able to sign your Manifests on repoman commit. Repoman will
-ask you for your passphrase before committing the Manifest. This step is
-<e>after</e> it has committed the other files. At the moment repoman doesn't
-check if the Manifest is already signed, so others are able to "unsign" your
-package later. This will change before signing is made mandatory.
+To generate the <c>Manifest</c>, use <c>ebuild foo.ebuild manifest</c>.
 </p>
 </body>
 </section>
