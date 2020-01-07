@@ -20,6 +20,25 @@ or <c>repoman manifest</c>. You may want to set <c>GENTOO_MIRRORS=</c> while
 calling it to fetch distfiles from their original locations immediately.
 </p>
 </body>
+
+<subsection>
+<title>Thin and thick Manifests</title>
+<body>
+<p>
+There are two kinds of Manifest files in Gentoo: thin Manifests that are used
+in the development repositories, and thick Manifests that are distributed
+via rsync to end users. Thin Manifests are described above.
+</p>
+
+<p>
+Thick Manifests add checksums for all files in the repository, and an OpenPGP
+signature. This provides both for integrity and authenticity checking when
+the repository is transmitted over insecure channels. Thick Manifests
+are automatically generated on Gentoo Infrastructure, and require no specific
+action from developers.
+</p>
+</body>
+</subsection>
 </section>
 </chapter>
 </guide>
