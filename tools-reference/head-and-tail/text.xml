@@ -33,7 +33,7 @@ file. The <c>-n</c> argument specifies how many lines to display.
 
 <p>
 To specify "the last five lines", use <c>tail -n5</c>. To specify "all
-but the first five lines", use <c>tail -n+5</c>.
+but the first five lines", use <c>tail -n+6</c>.
 </p>
 
 <warning>
