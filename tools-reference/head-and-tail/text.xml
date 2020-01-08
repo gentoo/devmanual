@@ -36,6 +36,14 @@ To specify "the last five lines", use <c>tail -n5</c>. To specify "all
 but the first five lines", use <c>tail -n+6</c>.
 </p>
 
+<codesample lang="ebuild">
+# bad: drop first five lines, clumsily computing line count
+tail -n $(($(wc -l in.txt | awk '{print $1}') - 5)) in.txt &gt; out.txt
+
+# good: let tail count lines from the beginning of the file
+tail -n +6 in.txt &gt; out.txt
+</codesample>
+
 <warning>
 <c>head/tail -5</c> syntax is deprecated and not POSIX compliant.
 </warning>
