@@ -14,7 +14,7 @@ discussion on the <c>gentoo-dev</c> list.
 The <c>metadata.xml</c> file on each ebuild category contains a list of the local
 <c>USE</c> flags, together with short description for the package in the said category.
 More information about the <c>metadata.xml</c> file can be found
-<uri link="::ebuild-writing/misc-files/metadata/index.html">here.</uri>
+<uri link="::ebuild-writing/misc-files/metadata">here.</uri>
 </p>
 
 <note>

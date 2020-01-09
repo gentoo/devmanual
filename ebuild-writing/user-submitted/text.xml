@@ -22,10 +22,10 @@ The user-submitted ebuild must not contain custom headers like this:
 
 <p>
 Such information should be included in the git commit message instead.
-The use of tags such as <c>Suggested-By:</c> or <c>Reported-By:</c>in
+The use of tags such as <c>Suggested-By:</c> or <c>Reported-By:</c> in
 the commit message, as explained in the
-<uri link="::ebuild-maintenance#git-commit-message-format">commit
-message format section</uri>, is highly encouraged.
+<uri link="::ebuild-maintenance/git#Git Commit Message Format">
+commit message format section</uri>, is highly encouraged.
 Note that ebuilds received in the form of git patches or pull requests
 will have the user as the commit author by default, in which case
 including the user information in the commit message explicitly
