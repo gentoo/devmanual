@@ -109,6 +109,7 @@ for i in $(/usr/bin/qlist eclass-manpages) /usr/share/man/man5/ebuild.5*; do
 	| sed -e '1,/<BODY>/d;/<\/BODY>/,$d' \
 		-e '/<A HREF=/s:"\.\./man5/\([^"]*eclass\|ebuild\)\.5\.html":"../\1/index.html":g' \
 		-e 's:<A HREF="\.\./man[^"]*">\([^<>]*\)</A>:\1:g' \
+		-e 's:<A HREF="[^"]*//localhost/[^"]*">\([^<>]*\)</A>:\1:g' \
 		>> "${FINAL}"
 	echo -n "${FOOTER}" >> "${FINAL}"
 done
