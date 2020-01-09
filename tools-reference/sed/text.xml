@@ -247,10 +247,11 @@ character 'a'.
 <note>
 At the time of writing, the <c>sed</c> documentation (<c>man sed</c> and
 <c>sed.info</c>) does not mention that POSIX character classes are supported.
-Consult <uri
-link="http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap09.html#tag_09_03">
-IEEE1003.1-2004-9.3</uri> for full details of how these <e>should</e> work, and
-the <c>sed</c> source code for full details of how these <e>actually</e> work.
+Consult
+<uri link="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html#tag_09_03">
+IEEE Std 1003.1-2017, section 9.3</uri> for full details of how these
+<e>should</e> work, and the <c>sed</c> source code for full details of how
+these <e>actually</e> work.
 </note>
 
 <p>

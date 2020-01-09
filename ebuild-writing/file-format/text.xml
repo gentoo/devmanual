@@ -26,8 +26,8 @@ discouraged, but technically valid.
 
 <note>
 This is the same as
-<uri link="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_282">
-IEEE Std 1003.1-2013, section 3.282 (Portable Filename Character Set)</uri>,
+<uri link="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap03.html#tag_03_282">
+IEEE Std 1003.1-2017, section 3.282 (Portable Filename Character Set)</uri>,
 with the exception of the period character and with the addition of the plus
 character to keep GTK+ and friends happy.
 </note>

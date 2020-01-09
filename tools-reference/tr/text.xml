@@ -6,9 +6,9 @@
 
 <p>
 The <c>tr</c> command can be used to translate, squeeze and delete character
-sequences. See <c>man tr</c> and <uri
-link="http://www.opengroup.org/onlinepubs/000095399/utilities/tr.html">
-IEEE1003.1-2004-tr</uri> for the full specification.
+sequences. See <c>man tr</c> and
+<uri link="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/tr.html">
+IEEE Std 1003.1-2017-tr</uri> for the full specification.
 </p>
 
 <note>

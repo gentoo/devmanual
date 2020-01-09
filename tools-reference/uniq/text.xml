@@ -14,9 +14,9 @@ Instead of using <c>sort | uniq</c>, one should use <c>sort -u</c>.
 </note>
 
 <p>
-See <c>man uniq</c> and <uri
-link="http://www.opengroup.org/onlinepubs/000095399/utilities/uniq">
-IEEE1003.1-2004-uniq</uri> for details.
+See <c>man uniq</c> and
+<uri link="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/uniq.html">
+IEEE Std 1003.1-2017-uniq</uri> for details.
 </p>
 
 </body>

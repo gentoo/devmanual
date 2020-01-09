@@ -57,8 +57,8 @@ do_stuff | cut -c 2-
 
 <p>
 See the cut manpage and
-<uri link="http://www.opengroup.org/onlinepubs/000095399/utilities/cut.html">
-IEEE1003.1-2004-cut</uri> for full documentation.
+<uri link="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/cut.html">
+IEEE Std 1003.1-2017-cut</uri> for full documentation.
 </p>
 
 </body>

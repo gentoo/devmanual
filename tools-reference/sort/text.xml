@@ -16,9 +16,9 @@ To ignore case, the <c>-f</c> switch may be used.
 </p>
 
 <p>
-Many other options are available. See <c>man sort</c> and <uri
-link="http://www.opengroup.org/onlinepubs/000095399/utilities/sort.html">
-IEEE1003.1-2004-sort</uri> for details.
+Many other options are available. See <c>man sort</c> and
+<uri link="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sort.html">
+IEEE Std 1003.1-2017-sort</uri> for details.
 </p>
 
 </body>

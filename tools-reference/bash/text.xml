@@ -828,9 +828,9 @@ with the first match of <c>pattern</c> replaced with <c>replacement</c>. To repl
 <c>man bash</c> incorrectly describes what will be matched. Of all the possible
 leftmost matches, the longest will be taken. Yes, really, the longest, even if
 it involves favouring later groups or later branches. This is <b>not</b> like
-<c>perl</c> or <c>sed</c>. See <uri
-link="http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap09.html#tag_09_01">
-IEEE1003.1-2004-9.1</uri> for details.
+<c>perl</c> or <c>sed</c>.
+See <uri link="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html#tag_09_01">
+IEEE Std 1003.1-2017, section 9.1</uri> for details.
 </note>
 
 <p>

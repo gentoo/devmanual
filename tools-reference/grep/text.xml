@@ -14,15 +14,15 @@ expression matches any line in a file.
 The usage is <c>grep "pattern" files</c>. If no files are specified,
 text is read from the standard input. The <c>pattern</c> is a standard
 basic regular expression, as described in
-<uri link="http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap09.html#tag_09_03">
-IEEE1003.1-2004-9.3</uri>.
+<uri link="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html#tag_09_03">
+IEEE Std 1003.1-2017, section 9.3</uri>.
 </p>
 
 <p>
 If the <c>-E</c> argument is supplied, <c>pattern</c> is treated as
 being an extended regular expression as described in
-<uri link="http://www.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap09.html#tag_09_04">
-IEEE1003.1-2004-9.4</uri>.
+<uri link="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html#tag_09_04">
+IEEE Std 1003.1-2017, section 9.4</uri>.
 </p>
 
 <p>
@@ -54,8 +54,8 @@ of <c>1</c> indicates no matches.
 </p>
 
 <p>
-See <uri link="http://www.opengroup.org/onlinepubs/000095399/utilities/grep.html">
-IEEE1003.1-2004-grep</uri> for details. The grep-1 manual page on GNU
+See <uri link="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/grep.html">
+IEEE Std 1003.1-2017-grep</uri> for details. The grep-1 manual page on GNU
 systems documents many non-portable additional features.
 </p>
 
