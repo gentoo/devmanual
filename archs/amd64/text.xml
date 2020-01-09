@@ -579,7 +579,7 @@ segmentation faults or strange behaviour. GCC 4.0 refuses to compile such code.
 
 <ul>
   <li>
-    <uri link="https://amd64.gentoo.org/">Gentoo/AMD64 Project</uri>
+    <uri link="https://wiki.gentoo.org/wiki/Project:AMD64">Gentoo/AMD64 Project</uri>
   </li>
   <li>
     <uri link="https://www.gentoo.org/doc/en/gentoo-amd64-faq.xml">Gentoo/Linux AMD64 FAQ</uri>
