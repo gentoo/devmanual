@@ -19,10 +19,12 @@ recommendations, not padding designed to make this document look important.
     Mastering Regular Expressions
   </dt>
   <dd>
-    "Mastering Regular Expressions" by Jeffrey E. F. Friedl (O'Reilly,
-    ISBN 0-596-00289-0) is <b>the</b> book on regular expressions. Very readable and
-    devoid of the usual mathematical jargon that tends to fill up these kinds of
-    books. <uri link="http://www.oreilly.com/catalog/regex2/">Publisher's page</uri>
+    "Mastering Regular Expressions" by Jeffrey E. F. Friedl (3rd edition,
+    O'Reilly, 2006, ISBN 0-596-52812-4) is <b>the</b> book on regular
+    expressions. Very readable and devoid of the usual mathematical jargon
+    that tends to fill up these kinds of books.
+    <uri link="https://www.oreilly.com/library/view/mastering-regular-expressions/0596528124/">
+    Publisher's page</uri>
   </dd>
 </dl>
 
@@ -38,10 +40,10 @@ recommendations, not padding designed to make this document look important.
     Making Packager-Friendly Software
   </dt>
   <dd>
-    <uri link="http://www.onlamp.com/pub/a/onlamp/2005/03/31/packaging.html">Making
-    Packager-Friendly Software</uri> by Julio M. Merino Vidal describes various things
-    that can be done by upstream software providers to make life easy for the
-    distribution people (that means you).
+    <uri link="https://jmmv.dev/2005/03/making-packager-friendly-software-1.html">
+    Making Packager-Friendly Software</uri> by Julio M. Merino Vidal describes
+    various things that can be done by upstream software providers to make life
+    easy for the distribution people (that means you).
   </dd>
   <dt>
     How to Report Bugs Effectively
