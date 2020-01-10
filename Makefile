@@ -4,6 +4,7 @@
 XMLS := $(shell find . -name .git -prune -o -type f -name 'text.xml' -print)
 SVGS := $(shell find . -name .git -prune -o -type f -name '*.svg' -print)
 HTMLS := $(subst text.xml,index.html,$(XMLS))
+ECLASS_HTMLS := $(wildcard eclass-reference/*/index.html)
 IMAGES := $(patsubst %.svg,%.png,$(SVGS))
 
 all: prereq validate $(HTMLS) $(IMAGES) documents.js
@@ -52,9 +53,9 @@ validate: prereq
 # Run app-text/tidy-html5 on the output to detect mistakes.
 # We have to loop through them because otherwise tidy won't
 # tell you which file contains a mistake.
-tidy: $(HTMLS)
+tidy: $(HTMLS) $(ECLASS_HTMLS)
 	@status=0; \
-	for f in $(HTMLS); do \
+	for f in $^; do \
 	  output=$$(tidy -q -errors --drop-empty-elements no $${f} 2>&1) \
 	  || { status=$$?; echo "Failed on $${f}:"; echo "$${output}"; }; \
 	done; \
