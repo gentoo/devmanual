@@ -45,7 +45,7 @@ For current Gentoo developers, access is at
 Non-developers can clone the repository by typing
 <c>git clone git://anongit.gentoo.org/proj/devmanual.git</c>.
 The sources are also hosted on
-<uri link="https://github.com/gentoo/devmanual.gentoo.org">GitHub</uri>
+<uri link="https://github.com/gentoo/devmanual">GitHub</uri>
 for those who prefer to submit patches using pull requests.
 </p>
 

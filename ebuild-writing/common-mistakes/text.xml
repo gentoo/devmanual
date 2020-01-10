@@ -157,7 +157,7 @@ GCC can turn any specific warning into an error. A specific -Werror flag would b
 <p>
 Removing "-Werror" from configure.ac can cause breakage in very rare
 cases where the configure phase relies on the exit code. See
-<uri link="https://sourceforge.net/tracker/?func=detail&amp;aid=2959749&amp;group_id=204462&amp;atid=989708">
+<uri link="https://sourceforge.net/p/open-vm-tools/tracker/81/">
 app-emulation/open-vm-tools bug</uri>. But even then we remove it from
 the resulting Makefile.
 </p>

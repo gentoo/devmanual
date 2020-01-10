@@ -260,7 +260,7 @@ For a package to move to stable, the following guidelines must be met:
 
 <p>
 For security fixes, the "reasonable amount of time" guideline may be relaxed.
-See the <uri link="https://www.gentoo.org/security/en/vulnerability-policy.xml">
+See the <uri link="https://www.gentoo.org/support/security/vulnerability-treatment-policy.html">
 Vulnerability Treatment Policy</uri>
 </p>
 
