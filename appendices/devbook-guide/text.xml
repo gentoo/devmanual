@@ -135,18 +135,20 @@ an example <c>&lt;body&gt;</c> element:
 
 <codesample lang="sgml"><!-- Example of a body element -->
 &lt;p&gt;
-This is a paragraph.  &lt;path&gt;/etc/passwd&lt;/path&gt; is a file.
+This is a paragraph. &lt;c&gt;/etc/passwd&lt;/c&gt; is a file.
 &lt;uri&gt;https://forums.gentoo.org&lt;/uri&gt; is my favorite website.
-Type &lt;c&gt;ls&lt;/c&gt; if you feel like it.  I &lt;e&gt;really&lt;/e&gt; want to go to sleep now.
+Type &lt;c&gt;ls&lt;/c&gt; if you feel like it. I &lt;e&gt;really&lt;/e&gt; want to go to sleep now.
 &lt;/p&gt;
 
 &lt;pre&gt;
 This is text output or code.
-# &lt;i&gt;this is user input&lt;/i&gt;
-
-Make HTML/XML easier to read by using selective emphasis:
-&lt;foo&gt;&lt;i&gt;bar&lt;/i&gt;&lt;/foo&gt;
+# this is user input
 &lt;/pre&gt;
+
+&lt;codesample lang="sgml"&gt;
+Make HTML/XML easier to read by using selective emphasis:
+&amp;lt;foo&amp;gt;bar&amp;lt;/foo&amp;gt;
+&lt;/codesample&gt;
 
 &lt;note&gt;
 This is a note.
@@ -166,15 +168,17 @@ Now, here's how the <c>&lt;body&gt;</c> element above is rendered:
 </p>
 
 <p>
-This is a paragraph.  <c>/etc/passwd</c> is a file.
+This is a paragraph. <c>/etc/passwd</c> is a file.
 <uri>https://forums.gentoo.org</uri> is my favorite web site.
-Type <c>ls</c> if you feel like it.  I <e>really</e> want to go to sleep now.
+Type <c>ls</c> if you feel like it. I <e>really</e> want to go to sleep now.
 </p>
 
-<codesample lang="sgml"><!-- Code Sample -->
+<pre>
 This is text output or code.
 # this is user input
+</pre>
 
+<codesample lang="sgml">
 Make HTML/XML easier to read by using selective emphasis:
 &lt;foo&gt;bar&lt;/foo&gt;
 </codesample>
@@ -199,21 +203,22 @@ This is important.
 
 <p>
 We introduced a lot of new tags in the previous section <d/> here's what you
-need to know. The <c>&lt;p&gt;</c> (paragraph), <c>&lt;pre&gt;</c> (code block),
-<c>&lt;note&gt;</c>, <c>&lt;warning&gt;</c> (warning) and
-<c>&lt;important&gt;</c> (important) tags all can contain one or more lines of
-text. Besides the <c>&lt;table&gt;</c>, <c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c>
+need to know. The <c>&lt;p&gt;</c> (paragraph), <c>&lt;pre&gt;</c>
+(preformatted block), <c>&lt;codesample&gt;</c> (code block),
+<c>&lt;note&gt;</c>, <c>&lt;warning&gt;</c> and <c>&lt;important&gt;</c> tags
+all can contain one or more lines of text. Besides the <c>&lt;figure&gt;</c>,
+<c>&lt;table&gt;</c>, <c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c>
 and <c>&lt;dl&gt;</c> elements (which we'll cover in just a bit), these are the
 only tags that should appear immediately inside a <c>&lt;body&gt;</c> element.
 Another thing <d/> these tags <e>should not</e> be stacked <d/> in other words,
 don't put a <c>&lt;note&gt;</c> element inside a <c>&lt;p&gt;</c> element. As
-you might guess, the <c>&lt;pre&gt;</c> element preserves its whitespace
-exactly, making it well-suited for code excerpts:
+you might guess, the <c>&lt;pre&gt;</c> and <c>&lt;codesample&gt;</c> elements
+preserve their whitespace exactly, making them well-suited for code excerpts:
 </p>
 
 <codesample lang="sgml"><!-- Named &lt;pre&gt; -->
 &lt;pre&gt;
-# &lt;i&gt;uptime&lt;/i&gt;
+# uptime
 16:50:47 up 164 days,  2:06,  5 users,  load average: 0.23, 0.20, 0.25
 &lt;/pre&gt;
 </codesample>
