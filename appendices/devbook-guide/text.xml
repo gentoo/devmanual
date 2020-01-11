@@ -262,10 +262,71 @@ prose more <e>punch</e>!
 <title>Code samples and colour-coding</title>
 <body>
 
-<todo>
-Fill this section with the information about the use of
-&lt;codesample/&gt;.
-</todo>
+<p>
+The <c>&lt;pre&gt;</c> tag does not support any syntax highlighting. When you
+need syntax highlighting, use the <c>&lt;codesample&gt;</c> tag along with a
+<c>lang</c> attribute <d/> usually you want this to be set to <c>"ebuild"</c>
+to syntax highlight ebuild code snippets. Currently, the following languages
+are supported:
+</p>
+
+<ul>
+  <li>c</li>
+  <li>ebuild</li>
+  <li>make</li>
+  <li>m4</li>
+  <li>sgml</li>
+</ul>
+
+<note>
+Remember that all leading and trailing spaces, and line breaks in
+<c>&lt;codesample&gt;</c> blocks will appear in the displayed html page.
+</note>
+
+<p>
+Sample <c>&lt;codesample lang="c"&gt;</c> block:
+</p>
+
+<codesample lang="c">
+#include &lt;stdio.h&gt;
+
+main()
+{
+	/* This is a comment */
+	printf("Hello, world!\n");
+}
+</codesample>
+
+<p>
+You can also specify <c>numbering="lines"</c> to enable line numbering, as in
+the following example:
+</p>
+
+<codesample lang="ebuild" numbering="lines">
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=7
+
+DESCRIPTION="MicroGnuEmacs, a port from the BSDs"
+HOMEPAGE="https://homepage.boetes.org/software/mg/"
+SRC_URI="https://github.com/hboetes/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+
+LICENSE="public-domain"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ppc ~ppc64 sparc x86"
+
+RDEPEND="sys-libs/ncurses:0=
+	>=dev-libs/libbsd-0.7.0"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+src_install()  {
+	dobin mg
+	doman mg.1
+	dodoc README tutorial
+}
+</codesample>
 
 </body>
 </subsection>
