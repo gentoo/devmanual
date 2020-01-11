@@ -125,6 +125,33 @@ not allowed, e.g., a subsection cannot be directly below a chapter.
 </body>
 </subsection>
 <subsection>
+<title>Including sub-documents</title>
+<body>
+
+<p>
+The manual is organized as a tree. Each directory contains one document, which
+can include multiple sub-documents using the <c>&lt;include href="foo/"/&gt;</c>
+tag. Note that the trailing slash in the <c>href</c> value is mandatory.
+</p>
+
+<p>
+A table of contents can be generated with <c>&lt;contentsTree&gt;</c>.
+Typically, this tag would be the only element in its own section body, as in
+the following example:
+</p>
+
+<codesample lang="sgml">
+&lt;section&gt;
+&lt;title&gt;Contents&lt;/title&gt;
+&lt;body&gt;
+&lt;contentsTree/&gt;
+&lt;/body&gt;
+&lt;/section&gt;
+</codesample>
+
+</body>
+</subsection>
+<subsection>
 <title>An example &lt;body&gt;</title>
 <body>
 
