@@ -64,7 +64,8 @@ conversion used in some of the figures throughout the document.
 <body>
 
 <p>
-DevBook XML is heavily based on <uri link="devbook-guide/">
+DevBook XML is heavily based on
+<uri link="::appendices/contributing/devbook-guide/">
 GuideXML</uri> and many tags are similar, if not the same. The main differences
 occur in layout which are designed to make a large-scale publication easier
 to produce and manage using a hierarchical tree system. Before starting off you
