@@ -32,6 +32,7 @@
 
     <!-- Scan for quotes... -->
     <xsl:for-each select="exslt:node-set($tokenizedData)">
+    <xsl:variable name="myPos" select="position()"/>
     <xsl:variable name="quotePos" select="count(../*[@delimiter='&quot;' and position() &lt; $myPos])"/>
     <xsl:variable name="commentOpen" select="count(str:tokenize_plasmaroo(substring-before($data, concat(' ', '/*'))))"/>
     <xsl:variable name="commentClosed" select="count(str:tokenize_plasmaroo(substring-before($data, concat(' ', '*/'))))"/>
