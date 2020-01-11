@@ -469,14 +469,23 @@ admonitions. A definition list comprises:
 
 <p>
 GuideXML makes it really easy to reference other parts of the document using
-hyperlinks.  You can create a link pointing to <uri link="#doc_chap1">Chapter
-One</uri> by typing <c>&lt;uri link="#doc_chap1"&gt;Chapter
-One&lt;/uri&gt;</c>.  To point to <uri link="#doc_chap1_sect2">section two of
-Chapter One</uri>, type <c>&lt;uri link="#doc_chap1_sect2"&gt;section two of
-Chapter One&lt;/uri&gt;</c>.  To refer to figure 3 in chapter 1, type
-<c>&lt;uri link="#doc_chap1_fig3"&gt;figure 1.3&lt;/uri&gt;</c>.  Or, to refer
-to <uri link="#doc_chap2_pre2">code listing 2 in chapter 2</uri>, type
-<c>&lt;uri link="#doc_chap2_pre2"&gt;code listing 2.2&lt;/uri&gt;</c>.
+hyperlinks. You can create a link pointing to another chapter, like
+<uri link="::ebuild-writing/file-format/">Ebuild File Format</uri>, by typing
+<c>&lt;uri link="::ebuild-writing/file-format/"&gt;Ebuild File
+Format&lt;/uri&gt;</c>, i.e., two colons followed by the relative path from
+the root node. To refer to a section in another chapter, like
+<uri link="::quickstart/#First Ebuild">First Ebuild</uri>, type
+<c>&lt;uri link="::quickstart/#First Ebuild"&gt;First Ebuild&lt;/uri&gt;</c>.
+</p>
+
+<p>
+If the link target's chapter (or section etc.) title is to be used as the link
+text, an empty <c>&lt;uri&gt;</c> element can be used. As a matter of fact,
+I could have written the two examples above in more compact form:
+<c>&lt;uri link="::ebuild-writing/file-format/"/&gt;</c> and
+<c>&lt;uri link="::quickstart/#First Ebuild"/&gt;</c> render as
+<uri link="::ebuild-writing/file-format/"/> and
+<uri link="::quickstart#First Ebuild"/>, respectively.
 </p>
 
 </body>
