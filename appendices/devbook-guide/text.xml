@@ -39,135 +39,87 @@ tags used in a GuideXML document:
 
 <codesample lang="sgml"><!-- The initial part of a guide XML document -->
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE guide SYSTEM "/dtd/guide.dtd"&gt;
-&lt;!-- &#36;Header&#36; --&gt;
-
-&lt;guide lang="en"&gt;
-&lt;title&gt;Gentoo Documentation Guide&lt;/title&gt;
-
-&lt;author title="Author"&gt;
-  &lt;mail link="yourname@gentoo.org"&gt;Your Name&lt;/mail&gt;
-&lt;/author&gt;
-
-&lt;abstract&gt;
-This guide shows you how to compose web documentation using
-our new lightweight Gentoo GuideXML syntax.  This syntax is the official
-format for Gentoo web documentation, and this document itself was created
-using GuideXML.
-&lt;/abstract&gt;
-
-&lt;!-- The content of this document is licensed under the CC-BY-SA license --&gt;
-&lt;!-- See https://creativecommons.org/licenses/by-sa/3.0 --&gt;
-&lt;license version="3.0"/&gt;
-
-&lt;version&gt;1&lt;/version&gt;
-&lt;date&gt;2011-11-29&lt;/date&gt;
+&lt;guide self="appendices/devbook-guide/"&gt;
+&lt;chapter&gt;
+&lt;title&gt;Gentoo GuideXML Guide&lt;/title&gt;
 </codesample>
 
 <p>
 On the first lines, we see the requisite tag that identifies this as an XML
-document and specifies its DTD. The <c>&lt;!-- &#36;Header&#36; --&gt;</c> line
-will be automatically modified by the CVS server and helps to track revisions.
-Next, there's a <c>&lt;guide&gt;</c> tag <d/> the entire guide document is
-enclosed within a <c>&lt;guide&gt; &lt;/guide&gt;</c> pair.
+document. Next, there's a <c>&lt;guide&gt;</c> tag <d/> the entire document is
+enclosed within a <c>&lt;guide&gt; &lt;/guide&gt;</c> pair. Its <c>self</c>
+attribute must point to the relative path of the document from the root node;
+in the example above the path is <c>appendices/devbook-guide/</c>. An exception
+is the root node itself, which has <c>&lt;guide root="true"&gt;</c> instead.
 </p>
 
 <p>
-The <c>lang</c> attribute should be used to specify the language code of your
-document. It is used to format the date and insert strings like "<e>Note</e>",
-"<e>Content</e>", etc. in the specified language. The default is English.
+Next, there is a <c>&lt;chapter&gt;</c> tag. Every document must have exactly
+one chapter. Its <c>&lt;title&gt;</c> is used to set the title for the entire
+document.
 </p>
 
-<p>
-Next, there's a <c>&lt;title&gt;</c> tag, used to set the title for the entire
-guide document.
-</p>
+<important>
+The <c>&lt;title&gt;</c> element cannot contain any newlines. Make sure it is
+in one line, including its opening and closing tags.
+</important>
 
 <p>
-Then, we come to the <c>&lt;author&gt;</c> tags, which contain information
-about the various authors of the document.  Each <c>&lt;author&gt;</c> tag
-allows for an optional <c>title</c> element, used to specify the author's
-relationship to the document (author, co-author, editor, etc.).  In this
-particular example, the authors' names are enclosed in another tag <d/> a
-<c>&lt;mail&gt;</c> tag, used to specify an email address for this particular
-person. The <c>&lt;mail&gt;</c> tag is optional and can be omitted, and at
-least one <c>&lt;author&gt;</c> element is required per guide document.
+All tags must be closed of course, so the document ends with:
 </p>
 
-<p>
-Next, we come to the <c>&lt;abstract&gt;</c>, <c>&lt;version&gt;</c> and
-<c>&lt;date&gt;</c> tags, used to specify a summary of the document, the
-current version number, and the current version date (in YYYY-MM-DD format)
-respectively. Dates that are invalid or not in the YYYY-MM-DD format will
-appear verbatim in the rendered document.
-</p>
-
-<p>
-This sums up the tags that should appear at the beginning of a guide document.
-Besides the <c>&lt;title&gt;</c> and <c>&lt;mail&gt;</c> tags, these tags
-shouldn't appear anywhere else except immediately inside the
-<c>&lt;guide&gt;</c> tag, and for consistency it's recommended (but not
-required) that these tags appear before the content of the document.  
-</p>
-
-<p>
-Finally we have the <c>&lt;license version="3.0"/&gt;</c> tag, used to publish
-the document under the <uri link="https://creativecommons.org/licenses/by-sa/3.0/">Creative
-Commons - Attribution / Share Alike</uri> license as required by the <uri
-link="/proj/en/gdp/doc/doc-policy.xml">Documentation Policy</uri>. Historically,
-the tag <c>&lt;license /&gt;</c> was used, which denoted the 2.5 version of the
-license. This is still accepted/allowed.
-</p>
+<codesample lang="sgml">
+&lt;/chapter&gt;
+&lt;/guide&gt;
+</codesample>
 
 </body>
 </subsection>
 <subsection>
-<title>Chapters and sections</title>
+<title>Sections and subsections</title>
 <body>
 
 <p>
 Once the initial tags have been specified, you're ready to start adding the
-structural elements of the document.  Guide documents are divided into
-chapters, and each chapter can hold one or more sections.  Every chapter and
-section has a title.  Here's an example chapter with a single section,
-consisting of a paragraph.  If you append this XML to the XML in the <uri
-link="#doc_chap2_pre1">previous excerpt</uri> and append a
-<c>&lt;/guide&gt;</c> to the end of the file, you'll have a valid (if minimal)
-guide document:
+structural elements of the document. Chapters are divided into sections;
+each section can hold zero or more subsections, which can contain zero or more
+subsubsections. Section, subsection and subsubsection elements must have a
+title. Here's an example section with a single subsection, consisting of a
+paragraph:
 </p>
 
 <codesample lang="sgml"><!-- Minimal guide example -->
-&lt;chapter&gt;
-&lt;title&gt;This is my chapter&lt;/title&gt;
 &lt;section&gt;
-&lt;title&gt;This is section one of my chapter&lt;/title&gt;
+&lt;title&gt;This is my section&lt;/title&gt;
+&lt;subsection&gt;
+&lt;title&gt;This is subsection one of my section&lt;/title&gt;
 &lt;body&gt;
 
 &lt;p&gt;
-This is the actual text content of my section.
+This is the actual text content of my subsection.
 &lt;/p&gt;
 
 &lt;/body&gt;
+&lt;/subsection&gt;
 &lt;/section&gt;
-&lt;/chapter&gt;
 </codesample>
 
 <p>
-Above, I set the chapter title by adding a child <c>&lt;title&gt;</c>
-element to the <c>&lt;chapter&gt;</c> element.  Then, I created a section by
-adding a <c>&lt;section&gt;</c> element.  If you look inside the
-<c>&lt;section&gt;</c> element, you'll see that it has two child elements <d/> a
-<c>&lt;title&gt;</c> and a <c>&lt;body&gt;</c>.  While the <c>&lt;title&gt;</c>
-is nothing new, the <c>&lt;body&gt;</c> is <d/> it contains the actual text
-content of this particular section.  We'll look at the tags that are allowed
-inside a <c>&lt;body&gt;</c> element in a bit. 
+Above, I set the section title by adding a child <c>&lt;title&gt;</c> element
+to the <c>&lt;section&gt;</c> element. Then, I created a subsection by adding
+a <c>&lt;subsection&gt;</c> element. If you look inside the
+<c>&lt;subsection&gt;</c> element, you'll see that it has two child elements
+<d/> a <c>&lt;title&gt;</c> and a <c>&lt;body&gt;</c>. While the
+<c>&lt;title&gt;</c> is nothing new, the <c>&lt;body&gt;</c> is <d/>
+it contains the actual text content of this particular subsection. We'll look
+at the tags that are allowed inside a <c>&lt;body&gt;</c> element in a bit.
 </p>
 
 <note>
-A <c>&lt;guide&gt;</c> element must contain at least one <c>&lt;chapter&gt;</c>
-elements, a <c>&lt;chapter&gt;</c> must contain at least one
-<c>&lt;section&gt;</c> elements and a <c>&lt;section&gt;</c> element must
-contain at least one <c>&lt;body&gt;</c> element.  
+The <c>&lt;chapter&gt;</c>, <c>&lt;section&gt;</c>, <c>&lt;subsection&gt;</c>
+and <c>&lt;subsubsection&gt;</c>) elements contain a <c>&lt;body&gt;</c> and/or
+any number of section elements of the next lower level. Skipping of levels is
+not allowed, e.g., a subsection cannot be directly below a chapter.
 </note>
 
 </body>
@@ -502,10 +454,10 @@ GuideXML-tag (both opening as closing), except for:
 <p>
 <b>Blank lines</b> must be placed immediately after <e>every</e>
 <c>&lt;body&gt;</c> (opening tag only) and before <e>every</e>
-<c>&lt;chapter&gt;</c>, <c>&lt;p&gt;</c>, <c>&lt;table&gt;</c>, 
-<c>&lt;author&gt;</c> (set), <c>&lt;pre&gt;</c>, <c>&lt;ul&gt;</c>, 
-<c>&lt;ol&gt;</c>, <c>&lt;warning&gt;</c>, <c>&lt;note&gt;</c> and
-<c>&lt;important&gt;</c> (opening tags only).
+<c>&lt;section&gt;</c>, <c>&lt;p&gt;</c>, <c>&lt;pre&gt;</c>,
+<c>&lt;codesample&gt;</c>, <c>&lt;figure;&gt;</c>, <c>&lt;table&gt;</c>,
+<c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c>, <c>&lt;dl&gt;</c>, <c>&lt;note&gt;</c>
+<c>&lt;important&gt;</c> and <c>&lt;warning&gt;</c> (opening tags only).
 </p>
 
 <p>
@@ -520,10 +472,10 @@ columns to help console users.
 <p>
 <b>Indentation</b> may not be used, except with the XML-constructs of which the
 parent XML-tags are <c>&lt;tr&gt;</c> (from <c>&lt;table&gt;</c>),
-<c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c>, <c>&lt;dl&gt;</c>, and
-<c>&lt;author&gt;</c>. If indentation is used, it <e>must</e> be two spaces for
-each indentation. That means <e>no tabs</e> and <e>not</e> more spaces.
-Besides, tabs are not allowed in GuideXML documents.
+<c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c> and <c>&lt;dl&gt;</c>. If indentation
+is used, it <e>must</e> be two spaces for each indentation. That means
+<e>no tabs</e> and <e>not</e> more spaces. Besides, tabs are not allowed in
+GuideXML documents.
 </p>
 
 <p>
