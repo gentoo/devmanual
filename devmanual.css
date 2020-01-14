@@ -24,10 +24,6 @@ code, pre {
     -moz-tab-size: 4;
 }
 
-td.devbook {
-    vertical-align: top;
-}
-
 pre span.Special { color: magenta; }
 pre span.Identifier { color: blue; }
 pre span.Type { color: blue; }

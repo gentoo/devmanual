@@ -95,7 +95,7 @@
 
   <!-- Table Item -->
   <xsl:template match="ti">
-    <td class="devbook">
+    <td>
       <xsl:if test="@colspan">
         <xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
       </xsl:if>
