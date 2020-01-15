@@ -9,7 +9,7 @@ As with CVS, an eclass exists for working directly with upstream
 Subversion repositories. See <uri link="::eclass-reference/subversion.eclass/">subversion.eclass</uri>
 for a full list of functions and variables. Also see
 the <uri link="::ebuild-writing/functions/src_unpack/cvs-sources"/> 
-ection.
+section.
 </p>
 </body>
 
