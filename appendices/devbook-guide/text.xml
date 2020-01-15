@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="appendices/devbook-guide/">
 <chapter>
-<title>Gentoo GuideXML Guide</title>
+<title>Gentoo DevBook XML Guide</title>
 
 <section>
-<title>GuideXML basics</title>
+<title>DevBook XML basics</title>
 <subsection>
-<title>GuideXML design goals</title>
+<title>DevBook XML design goals</title>
 <body>
 
 <p>
-The guideXML syntax is lightweight yet expressive, so that it is easy to
+The DevBook XML syntax is lightweight yet expressive, so that it is easy to
 learn yet also provides all the features we need for the creation of web
 documentation.  The number of tags is kept to a minimum <d/> just those we need.
 This makes it easy to transform guide into other formats, such as DocBook
@@ -18,7 +18,7 @@ XML/SGML or web-ready HTML.
 </p>
 
 <p>
-The goal is to make it easy to <e>create</e> and <e>transform</e> guideXML
+The goal is to make it easy to <e>create</e> and <e>transform</e> DevBook XML
 documents.
 </p>
 
@@ -27,21 +27,21 @@ documents.
 </section>
 
 <section>
-<title>GuideXML</title>
+<title>Devbook XML</title>
 <subsection>
 <title>Basic structure</title>
 <body>
 
 <p>
-Let's start learning the GuideXML syntax.  We'll start with the the initial 
-tags used in a GuideXML document:
+Let's start learning the DevBook XML syntax. We'll start with the initial tags
+used in a DevBook XML document:
 </p>
 
-<codesample lang="sgml"><!-- The initial part of a guide XML document -->
+<codesample lang="sgml"><!-- The initial part of a DevBook XML document -->
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;guide self="appendices/devbook-guide/"&gt;
 &lt;chapter&gt;
-&lt;title&gt;Gentoo GuideXML Guide&lt;/title&gt;
+&lt;title&gt;Gentoo DevBook XML Guide&lt;/title&gt;
 </codesample>
 
 <p>
@@ -88,7 +88,7 @@ title. Here's an example section with a single subsection, consisting of a
 paragraph:
 </p>
 
-<codesample lang="sgml"><!-- Minimal guide example -->
+<codesample lang="sgml"><!-- Minimal DevBook example -->
 &lt;section&gt;
 &lt;title&gt;This is my section&lt;/title&gt;
 &lt;subsection&gt;
@@ -408,8 +408,8 @@ for adding images without captions, borders, etc.
 <body>
 
 <p>
-GuideXML supports a simplified table syntax similar to that of HTML. To start a
-table, use a <c>&lt;table&gt;</c> tag. Start a row with a <c>&lt;tr&gt;</c>
+DevBook XML supports a simplified table syntax similar to that of HTML. To start
+a table, use a <c>&lt;table&gt;</c> tag. Start a row with a <c>&lt;tr&gt;</c>
 tag. However, for inserting actual table data, we <e>don't</e> support the HTML
 &lt;td&gt; tag; instead, use the <c>&lt;th&gt;</c> if you are inserting a
 header, and <c>&lt;ti&gt;</c> if you are inserting a normal informational
@@ -495,7 +495,7 @@ admonitions. A definition list comprises:
 <body>
 
 <p>
-GuideXML makes it really easy to reference other parts of the document using
+DevBook XML makes it really easy to reference other parts of the document using
 hyperlinks. You can create a link pointing to another chapter, like
 <uri link="::ebuild-writing/file-format/">Ebuild File Format</uri>, by typing
 <c>&lt;uri link="::ebuild-writing/file-format/"&gt;Ebuild File
@@ -544,8 +544,8 @@ Both sections are described next.
 <body>
 
 <p>
-<b>Newlines</b> must be placed immediately after <e>every</e>
-GuideXML-tag (both opening as closing), except for:
+<b>Newlines</b> must be placed immediately after <e>every</e> DevBook XML tag
+(both opening as closing), except for:
 <c>&lt;version&gt;</c>, <c>&lt;date&gt;</c>, <c>&lt;title&gt;</c>, 
 <c>&lt;th&gt;</c>, <c>&lt;ti&gt;</c>,
 <c>&lt;li&gt;</c>, <c>&lt;i&gt;</c>, <c>&lt;e&gt;</c>,
@@ -577,7 +577,7 @@ parent XML-tags are <c>&lt;tr&gt;</c> (from <c>&lt;table&gt;</c>),
 <c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c> and <c>&lt;dl&gt;</c>. If indentation
 is used, it <e>must</e> be two spaces for each indentation. That means
 <e>no tabs</e> and <e>not</e> more spaces. Besides, tabs are not allowed in
-GuideXML documents.
+DevBook XML documents.
 </p>
 
 <p>
