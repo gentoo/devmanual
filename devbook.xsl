@@ -329,6 +329,12 @@
               <xsl:when test=". != ''">
                 <a class="{$class}" href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), $slash, 'index.html')}"><xsl:value-of select="."/></a>
               </xsl:when>
+              <xsl:when test="starts-with(@link, '::eclass-reference/') and substring-after(@link, '::eclass-reference/') != ''">
+                <!-- Eclass reference pages are generated with man2html,
+                     so there isn't any text.xml that could be loaded.
+                     Use the name of the eclass as link text. #442194 -->
+                <a class="{$class}" href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), $slash, 'index.html')}"><xsl:value-of select="substring-before(concat(substring-after(@link, '::eclass-reference/'), $slash), '/')"/></a>
+              </xsl:when>
               <xsl:otherwise>
                 <a class="{$class}" href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), $slash, 'index.html')}"><xsl:value-of select="document(concat(/guide/@self, $relative_path_depth_recursion, substring-after(@link, '::'), '/text.xml'))/guide/chapter[1]/title"/></a>
               </xsl:otherwise>
