@@ -163,7 +163,7 @@ an example <c>&lt;body&gt;</c> element:
 <codesample lang="sgml"><!-- Example of a body element -->
 &lt;p&gt;
 This is a paragraph. &lt;c&gt;/etc/passwd&lt;/c&gt; is a file.
-&lt;uri&gt;https://forums.gentoo.org&lt;/uri&gt; is my favorite website.
+&lt;uri&gt;https://forums.gentoo.org/&lt;/uri&gt; is my favorite website.
 Type &lt;c&gt;ls&lt;/c&gt; if you feel like it. I &lt;e&gt;really&lt;/e&gt; want to go to sleep now.
 &lt;/p&gt;
 
@@ -196,7 +196,7 @@ Now, here's how the <c>&lt;body&gt;</c> element above is rendered:
 
 <p>
 This is a paragraph. <c>/etc/passwd</c> is a file.
-<uri>https://forums.gentoo.org</uri> is my favorite web site.
+<uri>https://forums.gentoo.org/</uri> is my favorite web site.
 Type <c>ls</c> if you feel like it. I <e>really</e> want to go to sleep now.
 </p>
 
@@ -370,13 +370,7 @@ displayed in the body text, such as this link to
 when you want to associate a URI with some other text <d/> for example,
 <uri link="https://forums.gentoo.org/">the Gentoo Forums</uri>.  To create
 <e>this</e> link, I typed <c>&lt;uri link="https://forums.gentoo.org/"&gt;the
-Gentoo Forums&lt;/uri&gt;</c>. You don't need to write
-<c>https://www.gentoo.org/</c> to link to other parts of the Gentoo web site.
-For instance, a link to the <uri link="/doc/en/">documentation main index</uri>
-should be simply <c>&lt;uri link="/doc/en/index.xml"&gt;documentation main
-index&lt;/uri&gt;</c>. You can even omit <c>index.xml</c> when you link to a
-directory index, e.g. <c>&lt;uri link="/doc/en/"&gt;documentation main
-index&lt;/uri&gt;</c>. Leaving the trailing slash saves an extra HTTP request.
+Gentoo Forums&lt;/uri&gt;</c>.
 </p>
 
 <p>
@@ -649,8 +643,8 @@ with a capital letter.
 
 <p>
 Try to use <c>&lt;uri&gt;</c> with the <c>link</c> attribute as much as
-possible. In other words, the <uri link="https://forums.gentoo.org">Gentoo
-Forums</uri> is preferred over <uri>https://forums.gentoo.org</uri>.
+possible. In other words, the <uri link="https://forums.gentoo.org/">Gentoo
+Forums</uri> is preferred over <uri>https://forums.gentoo.org/</uri>.
 </p>
 
 </body>
