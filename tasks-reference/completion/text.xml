@@ -8,8 +8,7 @@
 Since v2.05a, <c>bash</c> has offered intelligent programmable completion.  Writing
 such completions for your own programs/things you maintain is relatively easy
 provided you know bash already. See
-<uri link="::eclass-reference/bash-completion-r1.eclass/">
-bash-completion-r1.eclass</uri>
+<uri link="::eclass-reference/bash-completion-r1.eclass/"/>
 for how to install completion files.
 </p>
 </body>
