@@ -557,7 +557,7 @@ Both sections are described next.
 <b>Blank lines</b> must be placed immediately after <e>every</e>
 <c>&lt;body&gt;</c> (opening tag only) and before <e>every</e>
 <c>&lt;section&gt;</c>, <c>&lt;p&gt;</c>, <c>&lt;pre&gt;</c>,
-<c>&lt;codesample&gt;</c>, <c>&lt;figure;&gt;</c>, <c>&lt;table&gt;</c>,
+<c>&lt;codesample&gt;</c>, <c>&lt;figure&gt;</c>, <c>&lt;table&gt;</c>,
 <c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c>, <c>&lt;dl&gt;</c>, <c>&lt;note&gt;</c>
 <c>&lt;important&gt;</c> and <c>&lt;warning&gt;</c> (opening tags only).
 </p>
