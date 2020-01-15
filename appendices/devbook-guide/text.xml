@@ -546,11 +546,11 @@ Both sections are described next.
 <p>
 <b>Newlines</b> must be placed immediately after <e>every</e> DevBook XML tag
 (both opening as closing), except for:
-<c>&lt;version&gt;</c>, <c>&lt;date&gt;</c>, <c>&lt;title&gt;</c>, 
-<c>&lt;th&gt;</c>, <c>&lt;ti&gt;</c>,
-<c>&lt;li&gt;</c>, <c>&lt;i&gt;</c>, <c>&lt;e&gt;</c>,
-<c>&lt;uri&gt;</c>, <c>&lt;path&gt;</c>, <c>&lt;b&gt;</c>, <c>&lt;c&gt;</c>, 
-<c>&lt;mail&gt;</c>.
+<c>&lt;title&gt;</c>,
+<c>&lt;th&gt;</c>, <c>&lt;ti&gt;</c>, <c>&lt;li&gt;</c>,
+<c>&lt;dt&gt;</c>, <c>&lt;dd&gt;</c>,
+<c>&lt;b&gt;</c>, <c>&lt;c&gt;</c>, <c>&lt;e&gt;</c>, <c>&lt;d/&gt;</c>,
+<c>&lt;uri&gt;</c>.
 </p>
 
 <p>
@@ -564,11 +564,12 @@ Both sections are described next.
 
 <p>
 <b>Word-wrapping</b> must be applied at 80 characters except inside
-<c>&lt;pre&gt;</c>. You may only deviate from this rule when there is no other
-choice (for instance when a URL exceeds the maximum amount of characters).  The
-editor must then wrap whenever the first whitespace occurs. You should try to
-keep the <e>rendered</e> content of <c>&lt;pre&gt;</c> elements within 80
-columns to help console users.
+<c>&lt;pre&gt;</c> and <c>&lt;codesample&gt;</c>. You may only deviate from
+this rule when there is no other choice (for instance when a URL exceeds the
+maximum amount of characters). The editor must then wrap whenever the first
+whitespace occurs. You should try to keep the <e>rendered</e> content of
+<c>&lt;pre&gt;</c> and <c>&lt;codesample&gt;</c> elements within 80 columns
+to help console users.
 </p>
 
 <p>
