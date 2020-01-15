@@ -301,7 +301,7 @@ The following variables may or must be defined by every ebuild.
     An array or space-delimited list of documentation files for
     the default src_install function to install using dodoc. If
     undefined, a reasonable default list is used. (Requires
-    <uri link="::ebuild-writing/eapi/#eapi=4">EAPI>=4</uri>.)
+    <uri link="::ebuild-writing/eapi/#EAPI=4">EAPI&gt;=4</uri>.)
     </ti>
   </tr>
   <tr>
@@ -310,7 +310,7 @@ The following variables may or must be defined by every ebuild.
     An array or space-delimited list of documentation files or
     directories for the <c>einstalldocs</c> function to install
     recursively. (Requires
-    <uri link="::ebuild-writing/eapi/#eapi=6">EAPI>=6</uri>.)
+    <uri link="::ebuild-writing/eapi/#EAPI=6">EAPI&gt;=6</uri>.)
     </ti>
   </tr>
 </table>
@@ -752,7 +752,7 @@ Finally, to state "at least one of foo, bar, or baz must be set":
 REQUIRED_USE="|| ( foo bar baz )"
 </codesample>
 <important>
-See section <uri link="::general-concepts/use-flags/#conflicting-use-flags" />
+See section <uri link="::general-concepts/use-flags/#Conflicting USE Flags"/>
 for when (and when not) to use <c>REQUIRED_USE</c>.
 </important>
 </body>

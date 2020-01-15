@@ -38,7 +38,7 @@ files should be placed in the <c>mycat/mypkg/files</c> directory
 to keep the main <c>mycat/mypkg</c> directory uncluttered.
 Exceptions to this rule are for larger patch files (we recommend this
 for patches above 20KB) which should be distributed as tarballs via the
-<uri link="::general-concepts/mirrors/#suitable-download-hosts">Gentoo
+<uri link="::general-concepts/mirrors/#Suitable Download Hosts">Gentoo
 mirror system</uri> so that people do not waste excessive amounts of
 bandwidth and hard drive space. Also, you should not add binary
 (non-ASCII) files to the git tree. Also, speaking of merging changes,

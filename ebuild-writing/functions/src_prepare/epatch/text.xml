@@ -100,7 +100,7 @@ src_unpack() {
 
 <p>
 For larger patches, using
-<uri link="::general-concepts/mirrors/#suitable-download-hosts">
+<uri link="::general-concepts/mirrors/#Suitable Download Hosts">
 your devspace</uri> rather than
 <uri link="::ebuild-writing/variables#Predefined Read-Only Variables">
 ${FILESDIR}</uri> is more appropriate. In these situations, it is

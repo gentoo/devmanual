@@ -154,8 +154,8 @@ doing so can cause all kinds of problems with strict firewalls.
   <body>
     <p>
       Usage of third-party mirrors and the <c>mirror://</c>
-      pseudo-protocol is described in the <uri
-      link="::ebuild-writing/variables/#third-party-mirrors"><c>SRC_URI</c>
+      pseudo-protocol is described in the
+      <uri link="::ebuild-writing/variables/#Third-party mirrors"><c>SRC_URI</c>
       variable documentation</uri>.
     </p>
   </body>

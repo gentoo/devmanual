@@ -25,7 +25,7 @@ number in the patch name as a suffix to the version part <d/>
 
 <p>
 Larger patches should be
-<uri link="::general-concepts/mirrors/#suitable-download-hosts">
+<uri link="::general-concepts/mirrors/#Suitable Download Hosts">
 mirrored</uri>, preferably on the Gentoo Infrastructure. When
 mirroring patches, choosing a name that will not cause conflicts is
 important — the <c>${P}</c> prefix is highly recommended
