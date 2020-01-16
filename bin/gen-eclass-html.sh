@@ -141,7 +141,7 @@ installed by emerging <c>app-doc/eclass-manpages</c>.
 EOF
 
 for i in $(find $OUTPUTDIR/ -maxdepth 1 -mindepth 1 -type d | sort); do
-	echo "<li><uri link=\"$(basename $i)/index.html\">$(basename $i) Reference</uri></li>" >> ${OUTPUTDIR}/text.xml
+	echo "<li><uri link=\"$(basename $i)/index.html\">$(basename $i)</uri></li>" >> ${OUTPUTDIR}/text.xml
 done
 
 cat << EOF >> ${OUTPUTDIR}/text.xml
