@@ -16,8 +16,7 @@ This page lists the contributions to the Gentoo Development Guide:
   <uri link="::tools-reference/cat/#Here Documents"/>
 </author>
 <author name="Aaron Walker" email="ka0ttic@gentoo.org">
-  <uri link="::tasks-reference/completion"/>,
-  <uri link="::eclass-reference/subversion.eclass"/>
+  <uri link="::tasks-reference/completion"/>
 </author>
 <author name="Robert Coie" email="rac@gentoo.org">
   <uri link="::appendices/editor-configuration/xemacs"/>
