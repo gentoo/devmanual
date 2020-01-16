@@ -4,8 +4,6 @@
 <title>Gentoo DevBook XML Guide</title>
 
 <section>
-<title>DevBook XML basics</title>
-<subsection>
 <title>DevBook XML design goals</title>
 <body>
 
@@ -23,7 +21,6 @@ documents.
 </p>
 
 </body>
-</subsection>
 </section>
 
 <section>
@@ -515,8 +512,6 @@ I could have written the two examples above in more compact form:
 
 <section>
 <title>Coding Style</title>
-<subsection>
-<title>Introduction</title>
 <body>
 
 <p>
@@ -532,7 +527,7 @@ Both sections are described next.
 </p>
 
 </body>
-</subsection>
+
 <subsection>
 <title>Internal Coding Style</title>
 <body>
