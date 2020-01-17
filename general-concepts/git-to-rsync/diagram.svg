@@ -1,142 +1,504 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="700" height="250" xmlns="http://www.w3.org/2000/svg" version="1.1">
-    <desc>Git to RSYNC Propagation</desc>
-
-    <rect x="-10" y="-10" width="1000" height="1000" fill="#eeeeee" id="background" />
-
-    <rect x="10" y="110" width="80" height="30"
-        fill="#ffcccc" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="50" y="130">Developers</text>
-
-    <line x1="90"  y1="125" x2="130" y2="125" stroke-width="2" stroke="black" />
-    <line x1="130" y1="125" x2="122" y2="120" stroke-width="2" stroke="black" />
-    <line x1="130" y1="125" x2="122" y2="130" stroke-width="2" stroke="black" />
-
-
-    <rect x="10" y="60" width="80" height="30"
-        fill="#ffcccc" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="50" y="80">Developers</text>
-
-    <path d="M 90 75 Q 110 75 110 100 Q 110 130 130 125"
-        stroke-width="2" stroke="black" fill="none" />
-
-    <rect x="10" y="160" width="80" height="30"
-        fill="#ffcccc" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="50" y="180">Developers</text>
-
-    <path d="M 90 175 Q 110 175 110 150 Q 110 120 130 125"
-        stroke-width="2" stroke="black" fill="none" />
-
-    <rect x="130" y="110" width="80" height="30"
-        fill="#ffffff" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="170" y="130">Git Remote</text>
-
-    <line x1="210" y1="125" x2="250" y2="125" stroke-width="2" stroke="black" />
-    <line x1="250" y1="125" x2="242" y2="120" stroke-width="2" stroke="black" />
-    <line x1="250" y1="125" x2="242" y2="130" stroke-width="2" stroke="black" />
-
-
-
-    <rect x="250" y="110" width="80" height="30"
-        fill="#ffffff" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="290" y="123">Staging</text>
-    <text style="text-anchor: middle;" x="290" y="135">Box</text>
-
-    <line x1="330" y1="125" x2="370" y2="125" stroke-width="2" stroke="black" />
-    <line x1="370" y1="125" x2="362" y2="120" stroke-width="2" stroke="black" />
-    <line x1="370" y1="125" x2="362" y2="130" stroke-width="2" stroke="black" />
-
-
-
-    <rect x="370" y="110" width="80" height="30"
-        fill="#ffffff" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="410" y="130">rsync1</text>
-
-
-
-    <line x1="490" y1="75"  x2="482" y2="70" stroke-width="2" stroke="black" />
-    <line x1="490" y1="75"  x2="482" y2="80" stroke-width="2" stroke="black" />
-    <path d="M 450 125 Q 470 125 470 100 Q 470 70 490 75"
-        stroke-width="2" stroke="black" fill="none" />
-
-    <rect x="490" y="60" width="80" height="30"
-        fill="#ccffcc" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="530" y="80">Public rsync</text>
-
-
-
-    <line x1="450" y1="125" x2="490" y2="125" stroke-width="2" stroke="black" />
-    <line x1="490" y1="125" x2="482" y2="120" stroke-width="2" stroke="black" />
-    <line x1="490" y1="125" x2="482" y2="130" stroke-width="2" stroke="black" />
-
-    <rect x="490" y="110" width="80" height="30"
-        fill="#ccffcc" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="530" y="130">Public rsync</text>
-
-
-
-    <line x1="490" y1="175" x2="482" y2="170" stroke-width="2" stroke="black" />
-    <line x1="490" y1="175" x2="482" y2="180" stroke-width="2" stroke="black" />
-    <path d="M 450 125 Q 470 125 470 150 Q 470 180 490 175"
-        stroke-width="2" stroke="black" fill="none" />
-
-    <rect x="490" y="160" width="80" height="30"
-        fill="#ccffcc" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="530" y="180">Public rsync</text>
-
-
-
-    <line x1="610" y1="25"  x2="602" y2="20" stroke-width="2" stroke="black" />
-    <line x1="610" y1="25"  x2="602" y2="30" stroke-width="2" stroke="black" />
-    <path d="M 570 75 Q 590 75 590 50 Q 590 20 610 25"
-        stroke-width="2" stroke="black" fill="none" />
-
-    <rect x="610" y="10" width="80" height="30"
-        fill="#ccccff" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="650" y="30">Users</text>
-
-
-
-    <line x1="570" y1="75" x2="610" y2="75" stroke-width="2" stroke="black" />
-    <line x1="610" y1="75" x2="602" y2="70" stroke-width="2" stroke="black" />
-    <line x1="610" y1="75" x2="602" y2="80" stroke-width="2" stroke="black" />
-
-    <rect x="610" y="60" width="80" height="30"
-        fill="#ccccff" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="650" y="80">Users</text>
-
-
-
-    <line x1="570" y1="125" x2="610" y2="125" stroke-width="2" stroke="black" />
-    <line x1="610" y1="125" x2="602" y2="120" stroke-width="2" stroke="black" />
-    <line x1="610" y1="125" x2="602" y2="130" stroke-width="2" stroke="black" />
-
-    <rect x="610" y="110" width="80" height="30"
-        fill="#ccccff" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="650" y="130">Users</text>
-
-
-    <line x1="570" y1="175" x2="610" y2="175" stroke-width="2" stroke="black" />
-    <line x1="610" y1="175" x2="602" y2="170" stroke-width="2" stroke="black" />
-    <line x1="610" y1="175" x2="602" y2="180" stroke-width="2" stroke="black" />
-
-    <rect x="610" y="160" width="80" height="30"
-        fill="#ccccff" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="650" y="180">Users</text>
-
-
-
-    <line x1="610" y1="225" x2="602" y2="220" stroke-width="2" stroke="black" />
-    <line x1="610" y1="225" x2="602" y2="230" stroke-width="2" stroke="black" />
-    <path d="M 570 175 Q 590 175 590 200 Q 590 230 610 225"
-        stroke-width="2" stroke="black" fill="none" />
-
-    <rect x="610" y="210" width="80" height="30"
-        fill="#ccccff" stroke="black" stroke-width="2" />
-    <text style="text-anchor: middle;" x="650" y="230">Users</text>
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg133"
+   version="1.1"
+   height="250"
+   width="700">
+  <metadata
+     id="metadata139">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs137" />
+  <desc
+     id="desc2">Git to RSYNC Propagation</desc>
+  <rect
+     id="background"
+     fill="#eeeeee"
+     height="1000"
+     width="1000"
+     y="-10"
+     x="-10" />
+  <rect
+     id="rect5"
+     stroke-width="2"
+     stroke="black"
+     fill="#ffcccc"
+     height="30"
+     width="80"
+     y="110"
+     x="10" />
+  <text
+     id="text7"
+     y="130"
+     x="50"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Developers</text>
+  <line
+     id="line9"
+     stroke="black"
+     stroke-width="2"
+     y2="125"
+     x2="130"
+     y1="125"
+     x1="90" />
+  <line
+     id="line11"
+     stroke="black"
+     stroke-width="2"
+     y2="120"
+     x2="122"
+     y1="125"
+     x1="130" />
+  <line
+     id="line13"
+     stroke="black"
+     stroke-width="2"
+     y2="130"
+     x2="122"
+     y1="125"
+     x1="130" />
+  <rect
+     id="rect15"
+     stroke-width="2"
+     stroke="black"
+     fill="#ffcccc"
+     height="30"
+     width="80"
+     y="60"
+     x="10" />
+  <text
+     id="text17"
+     y="80"
+     x="50"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Developers</text>
+  <path
+     id="path19"
+     fill="none"
+     stroke="black"
+     stroke-width="2"
+     d="M 90 75 Q 110 75 110 100 Q 110 130 130 125" />
+  <rect
+     id="rect21"
+     stroke-width="2"
+     stroke="black"
+     fill="#ffcccc"
+     height="30"
+     width="80"
+     y="160"
+     x="10" />
+  <text
+     id="text23"
+     y="180"
+     x="50"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Developers</text>
+  <path
+     id="path25"
+     fill="none"
+     stroke="black"
+     stroke-width="2"
+     d="M 90 175 Q 110 175 110 150 Q 110 120 130 125" />
+  <rect
+     id="rect27"
+     stroke-width="2"
+     stroke="black"
+     fill="#ffffff"
+     height="30"
+     width="80"
+     y="110"
+     x="130" />
+  <text
+     id="text29"
+     y="130"
+     x="170"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Git Remote</text>
+  <line
+     id="line31"
+     stroke="black"
+     stroke-width="2"
+     y2="125"
+     x2="250"
+     y1="125"
+     x1="210" />
+  <line
+     id="line33"
+     stroke="black"
+     stroke-width="2"
+     y2="120"
+     x2="242"
+     y1="125"
+     x1="250" />
+  <line
+     id="line35"
+     stroke="black"
+     stroke-width="2"
+     y2="130"
+     x2="242"
+     y1="125"
+     x1="250" />
+  <rect
+     id="rect37"
+     stroke-width="2"
+     stroke="black"
+     fill="#ffffff"
+     height="30"
+     width="80"
+     y="110"
+     x="250" />
+  <text
+     id="text39"
+     y="123"
+     x="290"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Staging</text>
+  <text
+     id="text41"
+     y="135"
+     x="290"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Box</text>
+  <line
+     id="line43"
+     stroke="black"
+     stroke-width="2"
+     y2="125"
+     x2="370"
+     y1="125"
+     x1="330" />
+  <line
+     id="line45"
+     stroke="black"
+     stroke-width="2"
+     y2="120"
+     x2="362"
+     y1="125"
+     x1="370" />
+  <line
+     id="line47"
+     stroke="black"
+     stroke-width="2"
+     y2="130"
+     x2="362"
+     y1="125"
+     x1="370" />
+  <rect
+     id="rect49"
+     stroke-width="2"
+     stroke="black"
+     fill="#ffffff"
+     height="30"
+     width="80"
+     y="110"
+     x="370" />
+  <text
+     id="text51"
+     y="130"
+     x="410"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">rsync1</text>
+  <line
+     id="line53"
+     stroke="black"
+     stroke-width="2"
+     y2="70"
+     x2="482"
+     y1="75"
+     x1="490" />
+  <line
+     id="line55"
+     stroke="black"
+     stroke-width="2"
+     y2="80"
+     x2="482"
+     y1="75"
+     x1="490" />
+  <path
+     id="path57"
+     fill="none"
+     stroke="black"
+     stroke-width="2"
+     d="M 450 125 Q 470 125 470 100 Q 470 70 490 75" />
+  <rect
+     id="rect59"
+     stroke-width="2"
+     stroke="black"
+     fill="#ccffcc"
+     height="30"
+     width="80"
+     y="60"
+     x="490" />
+  <text
+     id="text61"
+     y="80"
+     x="530"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Public rsync</text>
+  <line
+     id="line63"
+     stroke="black"
+     stroke-width="2"
+     y2="125"
+     x2="490"
+     y1="125"
+     x1="450" />
+  <line
+     id="line65"
+     stroke="black"
+     stroke-width="2"
+     y2="120"
+     x2="482"
+     y1="125"
+     x1="490" />
+  <line
+     id="line67"
+     stroke="black"
+     stroke-width="2"
+     y2="130"
+     x2="482"
+     y1="125"
+     x1="490" />
+  <rect
+     id="rect69"
+     stroke-width="2"
+     stroke="black"
+     fill="#ccffcc"
+     height="30"
+     width="80"
+     y="110"
+     x="490" />
+  <text
+     id="text71"
+     y="130"
+     x="530"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Public rsync</text>
+  <line
+     id="line73"
+     stroke="black"
+     stroke-width="2"
+     y2="170"
+     x2="482"
+     y1="175"
+     x1="490" />
+  <line
+     id="line75"
+     stroke="black"
+     stroke-width="2"
+     y2="180"
+     x2="482"
+     y1="175"
+     x1="490" />
+  <path
+     id="path77"
+     fill="none"
+     stroke="black"
+     stroke-width="2"
+     d="M 450 125 Q 470 125 470 150 Q 470 180 490 175" />
+  <rect
+     id="rect79"
+     stroke-width="2"
+     stroke="black"
+     fill="#ccffcc"
+     height="30"
+     width="80"
+     y="160"
+     x="490" />
+  <text
+     id="text81"
+     y="180"
+     x="530"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Public rsync</text>
+  <line
+     id="line83"
+     stroke="black"
+     stroke-width="2"
+     y2="20"
+     x2="602"
+     y1="25"
+     x1="610" />
+  <line
+     id="line85"
+     stroke="black"
+     stroke-width="2"
+     y2="30"
+     x2="602"
+     y1="25"
+     x1="610" />
+  <path
+     id="path87"
+     fill="none"
+     stroke="black"
+     stroke-width="2"
+     d="M 570 75 Q 590 75 590 50 Q 590 20 610 25" />
+  <rect
+     id="rect89"
+     stroke-width="2"
+     stroke="black"
+     fill="#ccccff"
+     height="30"
+     width="80"
+     y="10"
+     x="610" />
+  <text
+     id="text91"
+     y="30"
+     x="650"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Users</text>
+  <line
+     id="line93"
+     stroke="black"
+     stroke-width="2"
+     y2="75"
+     x2="610"
+     y1="75"
+     x1="570" />
+  <line
+     id="line95"
+     stroke="black"
+     stroke-width="2"
+     y2="70"
+     x2="602"
+     y1="75"
+     x1="610" />
+  <line
+     id="line97"
+     stroke="black"
+     stroke-width="2"
+     y2="80"
+     x2="602"
+     y1="75"
+     x1="610" />
+  <rect
+     id="rect99"
+     stroke-width="2"
+     stroke="black"
+     fill="#ccccff"
+     height="30"
+     width="80"
+     y="60"
+     x="610" />
+  <text
+     id="text101"
+     y="80"
+     x="650"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Users</text>
+  <line
+     id="line103"
+     stroke="black"
+     stroke-width="2"
+     y2="125"
+     x2="610"
+     y1="125"
+     x1="570" />
+  <line
+     id="line105"
+     stroke="black"
+     stroke-width="2"
+     y2="120"
+     x2="602"
+     y1="125"
+     x1="610" />
+  <line
+     id="line107"
+     stroke="black"
+     stroke-width="2"
+     y2="130"
+     x2="602"
+     y1="125"
+     x1="610" />
+  <rect
+     id="rect109"
+     stroke-width="2"
+     stroke="black"
+     fill="#ccccff"
+     height="30"
+     width="80"
+     y="110"
+     x="610" />
+  <text
+     id="text111"
+     y="130"
+     x="650"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Users</text>
+  <line
+     id="line113"
+     stroke="black"
+     stroke-width="2"
+     y2="175"
+     x2="610"
+     y1="175"
+     x1="570" />
+  <line
+     id="line115"
+     stroke="black"
+     stroke-width="2"
+     y2="170"
+     x2="602"
+     y1="175"
+     x1="610" />
+  <line
+     id="line117"
+     stroke="black"
+     stroke-width="2"
+     y2="180"
+     x2="602"
+     y1="175"
+     x1="610" />
+  <rect
+     id="rect119"
+     stroke-width="2"
+     stroke="black"
+     fill="#ccccff"
+     height="30"
+     width="80"
+     y="160"
+     x="610" />
+  <text
+     id="text121"
+     y="180"
+     x="650"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Users</text>
+  <line
+     id="line123"
+     stroke="black"
+     stroke-width="2"
+     y2="220"
+     x2="602"
+     y1="225"
+     x1="610" />
+  <line
+     id="line125"
+     stroke="black"
+     stroke-width="2"
+     y2="230"
+     x2="602"
+     y1="225"
+     x1="610" />
+  <path
+     id="path127"
+     fill="none"
+     stroke="black"
+     stroke-width="2"
+     d="M 570 175 Q 590 175 590 200 Q 590 230 610 225" />
+  <rect
+     id="rect129"
+     stroke-width="2"
+     stroke="black"
+     fill="#ccccff"
+     height="30"
+     width="80"
+     y="210"
+     x="610" />
+  <text
+     id="text131"
+     y="230"
+     x="650"
+     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Users</text>
 </svg>
-
-<!-- vim: set ft=xml sw=4 sts=4 et : -->

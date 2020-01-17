@@ -5,17 +5,11 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   inkscape:export-ydpi="96"
-   inkscape:export-xdpi="96"
-   inkscape:version="1.0beta1 (fe3e306978, 2019-09-17)"
-   sodipodi:docname="diagram.svg"
-   id="svg2503"
-   viewBox="-130 100 1100 80"
-   height="80"
+   version="1.0"
    width="1100"
-   version="1.0">
+   height="80"
+   viewBox="-130 100 1100 80"
+   id="svg2503">
   <metadata
      id="metadata55">
     <rdf:RDF>
@@ -28,389 +22,366 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <sodipodi:namedview
-     inkscape:current-layer="svg2503"
-     inkscape:window-maximized="0"
-     inkscape:window-y="29"
-     inkscape:window-x="0"
-     inkscape:cy="-42.598355"
-     inkscape:cx="920.06029"
-     inkscape:zoom="3.7798071"
-     showgrid="false"
-     id="namedview53"
-     inkscape:window-height="1423"
-     inkscape:window-width="1929"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0"
-     guidetolerance="10"
-     gridtolerance="10"
-     objecttolerance="10"
-     borderopacity="1"
-     inkscape:document-rotation="0"
-     bordercolor="#666666"
-     pagecolor="#ffffff" />
   <defs
      id="defs2577" />
   <desc
      id="desc2505">Ebuild Function Order</desc>
   <rect
-     style="fill:#eeeeee;stroke-width:0.293003"
-     id="background"
-     y="96.698219"
-     x="-129.33987"
+     width="1101.323"
      height="85.745827"
-     width="1101.323" />
-  <rect
-     style="opacity:1;fill:#ccccff;stroke:#000000;stroke-width:2;stop-opacity:1"
-     id="rect2508"
-     y="115.12637"
-     x="-7.6246438"
-     height="30"
-     width="80" />
-  <text
-     style="text-anchor:middle;opacity:1;stop-opacity:1"
-     id="text2510"
-     y="135.12637"
-     x="32.375347">pkg_setup</text>
-  <rect
-     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1"
-     id="rect2518"
-     y="115.12637"
-     x="109.90766"
-     height="30"
-     width="80" />
-  <text
-     style="text-anchor:middle;opacity:1;stop-opacity:1"
-     id="text2520"
-     y="135.12637"
-     x="149.90767">src_unpack</text>
-  <rect
-     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1"
-     id="rect2528"
-     y="115.12637"
-     x="428.4689"
-     height="30"
-     width="80" />
-  <text
-     style="text-anchor:middle;opacity:1;stop-opacity:1"
-     id="text2530"
-     y="135.12637"
-     x="468.4689">src_compile</text>
-  <path
-     inkscape:connector-curvature="0"
-     style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
-     id="path2538"
-     d="m 509.22566,130.12637 c 11.55683,0 17.33525,4 17.33525,12 0,8.66667 5.77842,13 17.33525,13 h 69.34101 c 11.55683,0 17.33525,-4.33333 17.33525,-13 0,-8 5.77842,-12 17.33525,-12" />
-  <rect
-     style="opacity:1;fill:#ccffcc;stroke:#000000;stroke-width:2;stop-opacity:1"
-     id="rect2540"
-     y="115.12637"
-     x="538.37067"
-     height="30"
-     width="80" />
-  <text
-     style="text-anchor:middle;opacity:1;stop-opacity:1"
-     id="text2542"
-     y="135.12637"
-     x="578.37061">src_test</text>
-  <g
-     id="g915">
-    <line
-       x1="619.22565"
-       y1="130.12637"
-       x2="647.90759"
-       y2="130.12637"
-       id="line2544"
-       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
-    <line
-       x1="647.90759"
-       y1="130.12637"
-       x2="639.90759"
-       y2="125.12637"
-       id="line2546"
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
-    <line
-       x1="647.90759"
-       y1="130.12637"
-       x2="639.90759"
-       y2="135.12637"
-       id="line2548"
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
-  </g>
-  <rect
-     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1"
-     id="rect2550"
-     y="115.12637"
-     x="649.09814"
-     height="30"
-     width="80" />
-  <text
-     style="text-anchor:middle;opacity:1;stop-opacity:1"
-     id="text2552"
-     y="135.12637"
-     x="687.09814">src_install</text>
-  <g
-     id="g920">
-    <line
-       x1="729.9978"
-       y1="130.12637"
-       x2="767.09814"
-       y2="130.12637"
-       id="line2554"
-       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
-    <line
-       x1="767.09814"
-       y1="130.12637"
-       x2="759.09814"
-       y2="125.12637"
-       id="line2556"
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
-    <line
-       x1="767.09814"
-       y1="130.12637"
-       x2="759.09814"
-       y2="135.12637"
-       id="line2558"
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
-  </g>
-  <rect
-     style="opacity:1;fill:#ccccff;stroke:#000000;stroke-width:2;stop-opacity:1"
-     id="rect2560"
-     y="115.12637"
-     x="767.90759"
-     height="30"
-     width="80" />
-  <text
-     style="text-anchor:middle;opacity:1;stop-opacity:1"
-     id="text2562"
-     y="135.12637"
-     x="807.90759">pkg_preinst</text>
-  <g
-     id="g925">
-    <line
-       x1="848.47461"
-       y1="130.12637"
-       x2="873.90759"
-       y2="130.12637"
-       id="line2564"
-       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
-    <line
-       x1="873.90759"
-       y1="130.12637"
-       x2="865.90759"
-       y2="125.12637"
-       id="line2566"
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
-    <line
-       x1="873.90759"
-       y1="130.12637"
-       x2="865.90759"
-       y2="135.12637"
-       id="line2568"
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
-  </g>
-  <rect
-     style="opacity:1;fill:#ccccff;stroke:#000000;stroke-width:2;stop-opacity:1"
-     id="rect2570"
-     y="115.12637"
-     x="873.90759"
-     height="30"
-     width="80" />
-  <text
-     style="text-anchor:middle;opacity:1;stop-opacity:1"
-     id="text2572"
-     y="135.12637"
-     x="913.90759">pkg_postinst</text>
-  <path
-     inkscape:connector-curvature="0"
-     style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
-     id="path2574"
-     d="m 71.583477,130.33234 c 17.871085,0 26.806636,5.59997 26.806636,16.79991 0,11.85877 8.935547,17.78815 26.806617,17.78815 h 589.74589 c 17.87109,0 26.80666,-5.92938 26.80666,-17.78815 0,-11.19994 8.93553,-16.79991 26.80662,-16.79991" />
-  <rect
-     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1"
-     id="rect2583"
-     y="115.12637"
-     x="322.2374"
-     height="30"
-     width="80" />
-  <text
-     style="text-anchor:middle;opacity:1;stop-opacity:1"
-     id="text2585"
-     y="135.1263"
-     x="363.37662">src_configure</text>
-  <rect
-     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1"
-     id="rect2587"
-     y="115.12637"
-     x="215.93536"
-     height="30"
-     width="80" />
-  <text
-     style="text-anchor:middle;opacity:1;stop-opacity:1"
-     id="text2589"
-     y="135.1263"
-     x="258.45276">src_prepare</text>
+     x="-129.33987"
+     y="96.698219"
+     id="background"
+     style="fill:#eeeeee;stroke-width:0.293003" />
   <rect
      width="80"
      height="30"
-     x="-113.90761"
-     y="115.0796"
-     id="rect880"
+     x="-7.6246438"
+     y="115.12637"
+     id="rect2508"
      style="opacity:1;fill:#ccccff;stroke:#000000;stroke-width:2;stop-opacity:1" />
   <text
+     x="32.375347"
+     y="135.12637"
+     id="text2510"
+     style="text-anchor:middle;opacity:1;stop-opacity:1;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">pkg_setup</text>
+  <rect
+     width="80"
+     height="30"
+     x="109.90766"
+     y="115.12637"
+     id="rect2518"
+     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1" />
+  <text
+     x="149.90767"
+     y="135.12637"
+     id="text2520"
+     style="text-anchor:middle;opacity:1;stop-opacity:1;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">src_unpack</text>
+  <rect
+     width="80"
+     height="30"
+     x="428.4689"
+     y="115.12637"
+     id="rect2528"
+     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1" />
+  <text
+     x="468.4689"
+     y="135.12637"
+     id="text2530"
+     style="text-anchor:middle;opacity:1;stop-opacity:1;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">src_compile</text>
+  <path
+     d="m 509.22566,130.12637 c 11.55683,0 17.33525,4 17.33525,12 0,8.66667 5.77842,13 17.33525,13 h 69.34101 c 11.55683,0 17.33525,-4.33333 17.33525,-13 0,-8 5.77842,-12 17.33525,-12"
+     id="path2538"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
+  <rect
+     width="80"
+     height="30"
+     x="538.37067"
+     y="115.12637"
+     id="rect2540"
+     style="opacity:1;fill:#ccffcc;stroke:#000000;stroke-width:2;stop-opacity:1" />
+  <text
+     x="578.37061"
+     y="135.12637"
+     id="text2542"
+     style="text-anchor:middle;opacity:1;stop-opacity:1;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">src_test</text>
+  <g
+     id="g915">
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
+       id="line2544"
+       y2="130.12637"
+       x2="647.90759"
+       y1="130.12637"
+       x1="619.22565" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
+       id="line2546"
+       y2="125.12637"
+       x2="639.90759"
+       y1="130.12637"
+       x1="647.90759" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
+       id="line2548"
+       y2="135.12637"
+       x2="639.90759"
+       y1="130.12637"
+       x1="647.90759" />
+  </g>
+  <rect
+     width="80"
+     height="30"
+     x="649.09814"
+     y="115.12637"
+     id="rect2550"
+     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1" />
+  <text
+     x="687.09814"
+     y="135.12637"
+     id="text2552"
+     style="text-anchor:middle;opacity:1;stop-opacity:1;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">src_install</text>
+  <g
+     id="g920">
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
+       id="line2554"
+       y2="130.12637"
+       x2="767.09814"
+       y1="130.12637"
+       x1="729.9978" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
+       id="line2556"
+       y2="125.12637"
+       x2="759.09814"
+       y1="130.12637"
+       x1="767.09814" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
+       id="line2558"
+       y2="135.12637"
+       x2="759.09814"
+       y1="130.12637"
+       x1="767.09814" />
+  </g>
+  <rect
+     width="80"
+     height="30"
+     x="767.90759"
+     y="115.12637"
+     id="rect2560"
+     style="opacity:1;fill:#ccccff;stroke:#000000;stroke-width:2;stop-opacity:1" />
+  <text
+     x="807.90759"
+     y="135.12637"
+     id="text2562"
+     style="text-anchor:middle;opacity:1;stop-opacity:1;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">pkg_preinst</text>
+  <g
+     id="g925">
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
+       id="line2564"
+       y2="130.12637"
+       x2="873.90759"
+       y1="130.12637"
+       x1="848.47461" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
+       id="line2566"
+       y2="125.12637"
+       x2="865.90759"
+       y1="130.12637"
+       x1="873.90759" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
+       id="line2568"
+       y2="135.12637"
+       x2="865.90759"
+       y1="130.12637"
+       x1="873.90759" />
+  </g>
+  <rect
+     width="80"
+     height="30"
+     x="873.90759"
+     y="115.12637"
+     id="rect2570"
+     style="opacity:1;fill:#ccccff;stroke:#000000;stroke-width:2;stop-opacity:1" />
+  <text
+     x="913.90759"
+     y="135.12637"
+     id="text2572"
+     style="text-anchor:middle;opacity:1;stop-opacity:1;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">pkg_postinst</text>
+  <path
+     d="m 71.583477,130.33234 c 17.871085,0 26.806636,5.59997 26.806636,16.79991 0,11.85877 8.935547,17.78815 26.806617,17.78815 h 589.74589 c 17.87109,0 26.80666,-5.92938 26.80666,-17.78815 0,-11.19994 8.93553,-16.79991 26.80662,-16.79991"
+     id="path2574"
+     style="opacity:1;fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
+  <rect
+     width="80"
+     height="30"
+     x="322.2374"
+     y="115.12637"
+     id="rect2583"
+     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1" />
+  <text
+     x="363.37662"
+     y="135.12637"
+     id="text2585"
+     style="text-anchor:middle;opacity:1;stop-opacity:1;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">src_configure</text>
+  <rect
+     width="80"
+     height="30"
+     x="215.93536"
+     y="115.12637"
+     id="rect2587"
+     style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:2;stop-opacity:1" />
+  <text
+     x="258.45276"
+     y="135.12637"
+     id="text2589"
+     style="text-anchor:middle;opacity:1;stop-opacity:1;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">src_prepare</text>
+  <rect
+     style="opacity:1;fill:#ccccff;stroke:#000000;stroke-width:2;stop-opacity:1"
+     id="rect880"
+     y="115.0796"
+     x="-113.90761"
+     height="30"
+     width="80" />
+  <text
      x="-73.904678"
-     y="133.18214"
+     y="135.12637"
      id="text890"
-     style="text-anchor:middle;opacity:1;stop-opacity:1">pkg_pretend</text>
+     style="text-anchor:middle;opacity:1;stop-opacity:1;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">pkg_pretend</text>
   <g
      id="g910">
     <line
-       x1="537.90765"
-       y1="130.12637"
-       x2="529.90765"
-       y2="125.12637"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
        id="line2534"
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
-    <line
-       x1="537.90765"
-       y1="130.12637"
+       y2="125.12637"
        x2="529.90765"
-       y2="135.12637"
+       y1="130.12637"
+       x1="537.90765" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
        id="line2536"
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
+       y2="135.12637"
+       x2="529.90765"
+       y1="130.12637"
+       x1="537.90765" />
     <line
-       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
+       x1="512.47461"
+       y1="130.12637"
+       x2="537.90759"
+       y2="130.12637"
        id="line890"
-       y2="130.12637"
-       x2="537.90759"
-       y1="130.12637"
-       x1="512.47461" />
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
     <line
-       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
-       id="line894"
-       y2="130.12637"
-       x2="537.90759"
+       x1="509.22568"
        y1="130.12637"
-       x1="509.22568" />
+       x2="537.90759"
+       y2="130.12637"
+       id="line894"
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
   </g>
   <g
      id="g904">
     <line
-       x1="428.4689"
-       y1="130.12637"
-       x2="420.4689"
-       y2="125.12637"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
        id="line2524"
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
-    <line
-       x1="428.4689"
-       y1="130.12637"
+       y2="125.12637"
        x2="420.4689"
-       y2="135.12637"
-       id="line2526"
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
-    <line
-       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
-       id="line902"
-       y2="130.12637"
-       x2="428.4689"
        y1="130.12637"
-       x1="403.03592" />
+       x1="428.4689" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
+       id="line2526"
+       y2="135.12637"
+       x2="420.4689"
+       y1="130.12637"
+       x1="428.4689" />
+    <line
+       x1="403.03592"
+       y1="130.12637"
+       x2="428.4689"
+       y2="130.12637"
+       id="line902"
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
   </g>
   <g
      id="g899">
     <line
-       x1="322.2374"
-       y1="130.12637"
-       x2="314.2374"
-       y2="125.12637"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
        id="line2616"
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
-    <line
-       x1="322.2374"
-       y1="130.12637"
+       y2="125.12637"
        x2="314.2374"
-       y2="135.12637"
-       id="line2618"
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
-    <line
-       x1="296.80441"
        y1="130.12637"
-       x2="322.2374"
-       y2="130.12637"
+       x1="322.2374" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
+       id="line2618"
+       y2="135.12637"
+       x2="314.2374"
+       y1="130.12637"
+       x1="322.2374" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
        id="line904"
-       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
+       y2="130.12637"
+       x2="322.2374"
+       y1="130.12637"
+       x1="296.80441" />
   </g>
   <g
      id="g894">
     <line
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
-       id="line2608"
+       x1="215.93535"
+       y1="130.12637"
+       x2="207.93535"
        y2="125.12637"
-       x2="207.93535"
-       y1="130.12637"
-       x1="215.93535" />
+       id="line2608"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
     <line
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
-       id="line2610"
+       x1="215.93535"
+       y1="130.12637"
+       x2="207.93535"
        y2="135.12637"
-       x2="207.93535"
-       y1="130.12637"
-       x1="215.93535" />
+       id="line2610"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
     <line
-       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
-       id="line906"
-       y2="130.12637"
-       x2="215.93535"
+       x1="190.50237"
        y1="130.12637"
-       x1="190.50237" />
+       x2="215.93535"
+       y2="130.12637"
+       id="line906"
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
   </g>
   <g
      id="g884">
     <line
-       x1="-7.6246533"
-       y1="130.12637"
-       x2="-15.624653"
-       y2="125.12637"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
        id="line884"
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
-    <line
-       x1="-7.6246533"
-       y1="130.12637"
+       y2="125.12637"
        x2="-15.624653"
-       y2="135.12637"
-       id="line886"
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
-    <line
-       x1="-33.057636"
        y1="130.12637"
-       x2="-7.6246533"
-       y2="130.12637"
+       x1="-7.6246533" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
+       id="line886"
+       y2="135.12637"
+       x2="-15.624653"
+       y1="130.12637"
+       x1="-7.6246533" />
+    <line
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
        id="line916"
-       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
+       y2="130.12637"
+       x2="-7.6246533"
+       y1="130.12637"
+       x1="-33.057636" />
   </g>
   <g
      id="g889">
     <line
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
-       x1="109.90767"
-       y1="130.12637"
-       x2="101.90767"
+       id="line2514"
        y2="125.12637"
-       id="line2514" />
-    <line
-       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1"
-       x1="109.90767"
-       y1="130.12637"
        x2="101.90767"
-       y2="135.12637"
-       id="line2516" />
-    <line
-       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1"
-       id="line920"
-       y2="130.12637"
-       x2="109.90767"
        y1="130.12637"
-       x1="72.807327" />
+       x1="109.90767"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
+    <line
+       id="line2516"
+       y2="135.12637"
+       x2="101.90767"
+       y1="130.12637"
+       x1="109.90767"
+       style="opacity:1;stroke:#000000;stroke-width:2;stop-opacity:1" />
+    <line
+       x1="72.807327"
+       y1="130.12637"
+       x2="109.90767"
+       y2="130.12637"
+       id="line920"
+       style="opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stop-opacity:1" />
   </g>
 </svg>
