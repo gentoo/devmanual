@@ -19,6 +19,9 @@ prereq:
 	@type xmllint >/dev/null 2>&1 || \
 	{ echo "dev-libs/libxml2 is required" >&2;\
 	  exit 1; }
+	@fc-list -q "Open Sans" || \
+	{ echo "media-fonts/open-sans is required" >&2;\
+	  exit 1; }
 
 # We need to parse all the XMLs every time, not just the ones
 # that are newer than the target. This is because each search
