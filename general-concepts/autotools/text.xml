@@ -78,7 +78,7 @@ and have the same format <d/> the only difference is the name.
 <p>
   You may see autotools being used in a variety of phase
   functions. Prior to EAPI2, the QA team preferred that the source
-  code be manipulated in <c>src_unpack</c><d/>the rationale being that
+  code be manipulated in <c>src_unpack</c> <d/> the rationale being that
   <c>src_unpack</c> handles "getting the package ready to be
   compiled."
 </p>

@@ -272,8 +272,8 @@ Vulnerability Treatment Policy</uri>
     <p>
       If you maintain an architecture-independent package (data files,
       icons, pure Perl,...) then you may request that your
-      package be stabilized on all arches at once. To do this<d />when
-      you are filing the stabilization bug<d />please add the keyword
+      package be stabilized on all arches at once. To do this <d/> when
+      you are filing the stabilization bug <d/> please add the keyword
       <c>ALLARCHES</c> in addition to <c>STABLEREQ</c> and CC the
       arches that you would like to stabilize.
     </p>

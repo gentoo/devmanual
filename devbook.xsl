@@ -265,7 +265,7 @@
   </xsl:template>
 
   <xsl:template match="d">
-    &#8212;
+    <xsl:text>&#8212;</xsl:text>
   </xsl:template>
 
   <xsl:template match="e">
