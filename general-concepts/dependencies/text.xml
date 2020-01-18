@@ -298,11 +298,6 @@ newer package that caused the issues.
 <body>
 
 <p>
-In order to depend on a package in a specific <c>SLOT</c> you must specify
-at least <c>EAPI=1</c>.
-</p>
-
-<p>
 To depend on a specific <c>SLOT</c>, <c>:SLOT</c> should be appended to
 the package name, where 'SLOT' is the <c>SLOT</c> of the package wanted:
 </p>

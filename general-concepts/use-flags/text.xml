@@ -195,6 +195,34 @@ To get a flag added to <c>use.mask</c>, ask the relevant arch team.
 </section>
 
 <section>
+<title>IUSE defaults</title>
+<body>
+
+<p>
+Add <c>+</c> or <c>-</c> before the name of the use flag in <c>IUSE</c> to turn
+it on or off by default.
+</p>
+
+<important>
+Adding <c>-</c> before a flag in <c>IUSE</c> is pretty much useless, as it will
+neither override the user configuration (<c>make.conf</c>) nor the profile
+default (<c>make.defaults</c> and <c>package.use</c>). See make.conf(5) for
+details on USE-ordering in Portage.
+</important>
+
+<codesample lang="ebuild">
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=7
+
+IUSE="foo +bar"
+</codesample>
+
+</body>
+</section>
+
+<section>
 <title>Local and Global USE Flags</title>
 <body>
 
