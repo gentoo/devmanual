@@ -73,7 +73,7 @@ is the best.  Using the features of the latest EAPI is encouraged.
 		Support for the <c>ECONF_SOURCE</c> variable, which is also supported by
 		<c>econf</c>, has been added to the default <c>src_compile</c> implementation.
 		</p>
-		<codesample lang="ebuild">
+<codesample lang="ebuild">
 src_compile() {
 	if [[ -x ${ECONF_SOURCE:-.}/configure ]] ; then
 		econf
@@ -82,7 +82,7 @@ src_compile() {
 		emake || die "emake failed"
 	fi
 }
-		</codesample>
+</codesample>
 	</li>
 	<li>
 		<p><b>SLOT dependencies</b></p>
@@ -117,15 +117,14 @@ src_compile() {
 		override the profile and user config (make.conf and package.use)
 		</important>
 
-		<codesample lang="ebuild">
+<codesample lang="ebuild">
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=1
 
 IUSE="foo +bar"
-
-		</codesample>
+</codesample>
 	</li>
 </ul>
 
@@ -146,12 +145,12 @@ IUSE="foo +bar"
 		<c>doman</c> automatically detects language codes and puts it in the
 		appropriate directory.
 		</p>
-		<codesample lang="ebuild">
+<codesample lang="ebuild">
 doman foo.1
 # will go into /usr/share/man/man1/foo.1
 doman foo.lang.1
 # will go into /usr/share/man/lang/man1/foo.1 with EAPI=2
-		</codesample>
+</codesample>
 	</li>
 </ul>
 </body>
@@ -224,10 +223,10 @@ doman foo.lang.1
 		should be separated by whitespace.
 		</p>
 		<p>Example:</p>
-		<codesample lang="ebuild">
+<codesample lang="ebuild">
 SRC_URI="https://dl.google.com/earth/client/GE4/release_4_3/GoogleEarthLinux.bin
                         -&gt; GoogleEarthLinux-${PV}.bin"
-		</codesample>
+</codesample>
 	</li>
 </ul>
 </body>
@@ -254,7 +253,7 @@ SRC_URI="https://dl.google.com/earth/client/GE4/release_4_3/GoogleEarthLinux.bin
 		</p>
 		<p>The default <c>src_configure</c> and <c>src_compile</c>
 		functions in EAPI=2:</p>
-		<codesample lang="ebuild">
+<codesample lang="ebuild">
 src_configure() {
 	if [[ -x ${ECONF_SOURCE:-.}/configure ]] ; then
 		econf
@@ -266,7 +265,7 @@ src_compile() {
 		emake || die "emake failed"
 	fi
 }
-		</codesample>
+</codesample>
 	</li>
 	<li>
 		<p><b>Execution Order of Phase Functions</b></p>
@@ -359,7 +358,7 @@ src_compile() {
 			[arg,...]</c>.
 		</p>
 		<p>Example:</p>
-		<codesample lang="ebuild">
+<codesample lang="ebuild">
 EAPI=2
 ...
 src_test() {
@@ -372,8 +371,8 @@ src_test() {
 		die "Make check failed"
 	fi
 }
-		</codesample>
-		<codesample lang="ebuild">
+</codesample>
+<codesample lang="ebuild">
 EAPI=4
 ...
 src_test() {
@@ -386,7 +385,7 @@ src_test() {
 		die "Make check failed"
 	fi
 }
-		</codesample>
+</codesample>
 	</li>
 	<li>
 		<p><b>recursive dodoc</b></p>
@@ -396,13 +395,13 @@ src_test() {
 			recursively into the docdir.
 		</p>
 		<p>Example:</p>
-		<codesample lang="ebuild">
+<codesample lang="ebuild">
 src_install() {
 	default
 	dodoc ChangeLog
 	dodoc -r doc/
 }
-		</codesample>
+</codesample>
 	</li>
 	<li>
 		<p><b>doins symlink supports</b></p>
@@ -484,11 +483,11 @@ src_install() {
 			<c>(-)</c> the opposite.
 		</p>
 			<p>Example:</p>
-			<codesample lang="ebuild">
+<codesample lang="ebuild">
 DEPEND="
 	>=dev-libs/boost-1.32[boost(+)]
 	sys-devel/gcc[openmp(-)]"
-			</codesample>
+</codesample>
 	</li>
 </ul>
 </body>
@@ -517,7 +516,7 @@ DEPEND="
 				sequence, environment saving is not guaranteed.
 			</important>
 		<p>Example:</p>
-		<codesample lang="ebuild">
+<codesample lang="ebuild">
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
@@ -537,14 +536,14 @@ pkg_pretend() {
 		fi
 	fi
 }
-		</codesample>
+</codesample>
 	</li>
 	<li>
 		<p><b>default src_install is no longer a no-op</b></p>
 		<p>
 			The default <c>src_install</c> function in EAPI=4:
 		</p>
-		<codesample lang="ebuild">
+<codesample lang="ebuild">
 src_install() {
 	if [[ -f Makefile ]] || [[ -f GNUmakefile]] || [[ -f makefile ]] ; then
 		emake DESTDIR="${D}" install
@@ -562,7 +561,7 @@ src_install() {
 		dodoc ${DOCS}
 	fi
 }
-		</codesample>
+</codesample>
 	</li>
 	<li>
 		<p><b>pkg_info for non-installed packages</b></p>
@@ -689,9 +688,9 @@ src_install() {
 		<p>
 		A slot dependency may contain an optional sub-slot part that follows the regular slot and is delimited by a <c>/</c> character. This can be useful for packages installing pre-built binaries that require a library with a specific soname version which corresponds to the sub-slot. For example:
 		</p>
-		<codesample lang="ebuild">
+<codesample lang="ebuild">
 RDEPEND="dev-libs/foo:0/3"
-		</codesample>
+</codesample>
 		<p>
 		Package dependency specifications can use <b>slot operators</b> to
 		clarify what should happen if the slot and/or sub-slot of a runtime
@@ -717,12 +716,12 @@ RDEPEND="dev-libs/foo:0/3"
 		<p>
 		For example:
 		</p>
-		<codesample lang="ebuild">
+<codesample lang="ebuild">
 RDEPEND="dev-libs/foo:2=
 	&gt;=dev-libs/bar-0.9:=
 	media-gfx/baz:*
 	x11-misc/wombat:0"
-		</codesample>
+</codesample>
 		<p>
 		means that the package should be rebuilt when <c>foo:2</c> or <c>&gt;=bar-0.9</c> are upgraded to versions with different subslots, but that changes in subslots of <c>baz</c> or <c>wombat:0</c> should be ignored.
 		</p>
@@ -777,12 +776,12 @@ RDEPEND="dev-libs/foo:2=
 	<li>
 		<p><b>New usex helper function</b></p>
 		<!-- We probably need an example here -->
-		<pre>
+<pre>
 USAGE: usex &lt;USE flag&gt; [true output] [false output] [true suffix] [false suffix]
 DESCRIPTION:
 If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
  otherwise echo [false output][false suffix] (defaults to "no").
-		</pre>
+</pre>
 	</li>
 </ul>
 </body>
@@ -859,7 +858,7 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 		<p>
 			This phase is no longer a no-op, it supports applying patches via the <c>PATCHES</c> variable and applying user patches via <c>eapply_user</c>. The default <c>src_prepare</c> looks like this:
 		</p>
-			<codesample lang="ebuild">
+<codesample lang="ebuild">
 src_prepare() {
 	if declare -p PATCHES | grep -q "^declare -a "; then
 		[[ -n ${PATCHES[@]} ]] &amp;&amp; eapply "${PATCHES[@]}"
@@ -868,21 +867,21 @@ src_prepare() {
 	fi
 	eapply_user
 }
-			</codesample>
+</codesample>
 	</li>
 	<li>
 		<p><b>New <c>src_install</c> Phase Function</b></p>
 		<p>
 			This phase uses the new <c>einstalldocs</c> function for installation of documentation. The default <c>src_install</c> looks like this:
 		</p>
-			<codesample lang="ebuild">
+<codesample lang="ebuild">
 src_install() {
 	if [[ -f Makefile ]] || [[ -f GNUmakefile ]] || [[ -f makefile ]]; then
 		emake DESTDIR="${D}" install
 	fi
 	einstalldocs
 }
-			</codesample>
+</codesample>
 	</li>
 </ul>
 </body>

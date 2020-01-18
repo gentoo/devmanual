@@ -272,12 +272,13 @@ complete -F _foo foo
       Most of the time, you'll want to perform a certain action if <c>${prev}</c> is
       equal to a certain option.  For example, if <c>foo</c> has a --file option
       (and -f for short) that takes any kind file, you could do:
-      <codesample lang="ebuild">
+<codesample lang="ebuild">
 case "${prev}" in
 	-f|--file)
 		COMPREPLY=( $(compgen -f ? ${cur}) )
 	;;
-esac</codesample>
+esac
+</codesample>
     </ti>
   </tr>
   <tr>
@@ -425,4 +426,3 @@ Lines 1-12 are pretty much the same as in the previous section.
 </section>
 </chapter>
 </guide>
-
