@@ -45,6 +45,8 @@ This page lists the contributions to the Gentoo Development Guide:
 <author name="Alin Dobre" email="alin@gentoo.org">
   <uri link="::tools-reference/echo"/>
 </author>
+<!-- Contributions above this line were to the original (reStructuredText)
+     version, so they won't appear in the commit history -->
 <author name="Joseph Jezak" email="josejx@gentoo.org">
   <uri link="::archs/ppc"/>
 </author>
@@ -52,7 +54,7 @@ This page lists the contributions to the Gentoo Development Guide:
   Previous maintainer (XSL Stylesheets, legacy Developer Handbook content)
 </author>
 <author name="Mark Loeser" email="halcy0n@gentoo.org">
-  XSL Stylesheets, current maintainer
+  XSL Stylesheets, previous maintainer
 </author>
 <author name="Petteri Räty" email="betelgeuse@gentoo.org">
 <uri link="::ebuild-writing"/>,
@@ -61,11 +63,13 @@ This page lists the contributions to the Gentoo Development Guide:
 Misc
 </author>
 <author name="Ulrich Müller" email="ulm@gentoo.org">
-  <uri link="::ebuild-writing"/>,
-  <uri link="::appendices/editor-configuration/emacs"/>,
-  <uri link="::general-concepts/licenses/"/>,
+  <uri link="::quickstart/"/>,
   <uri link="::general-concepts/virtuals/"/>,
-  <uri link="::ebuild-writing/eapi/"/>
+  <uri link="::ebuild-writing/"/>,
+  <uri link="::ebuild-maintenance/"/>,
+  <uri link="::appendices/editor-configuration/emacs/"/>,
+  <uri link="::appendices/devbook-guide/"/>,
+  DTD, XSL stylesheet, eclass conversion
 </author>
 <author name="Mike Pagano" email="mpagano@gentoo.org">
   <uri link="::general-concepts/news"/>
@@ -82,10 +86,43 @@ Misc
 <author name="Daniel Robbins" email="drobbins@gentoo.org">
   <uri link="::appendices/devbook-guide/">GuideXML guide</uri>
 </author>
-<author name="John P. Davis" email="zhen@gentoo.org">
-  <uri link="::appendices/devbook-guide/">GuideXML guide</uri>
+<author name="Jeremy Olexa" email="darkside@gentoo.org">
+  <uri link="::general-concepts/use-flags/"/>
 </author>
-
+<author name="Julian Ospald" email="hasufell@gentoo.org">
+  <uri link="::ebuild-writing/common-mistakes/"/>,
+  <uri link="::tools-reference/find/"/>
+</author>
+<author name="Alexandre Rostovtsev" email="tetromino@gentoo.org">
+  <uri link="::general-concepts/slotting/"/>
+</author>
+<author name="Göktürk Yüksek" email="gokturk@gentoo.org">
+  <uri link="::general-concepts/projects/"/>,
+  <uri link="::ebuild-writing/variables/"/>,
+  <uri link="::ebuild-writing/misc-files/metadata/"/>,
+  <uri link="::eclass-writing/"/>,
+  <uri link="::appendices/devbook-guide/"/>,
+  search functionality
+</author>
+<author name="Michael Orlitzky" email="mjo@gentoo.org">
+  <uri link="::ebuild-writing/users-and-groups/"/>,
+  <uri link="::eclass-writing/"/>
+</author>
+<author name="Michał Górny" email="mgorny@gentoo.org">
+  <uri link="::general-concepts/"/>,
+  <uri link="::ebuild-writing/users-and-groups/"/>,
+  <uri link="::ebuild-writing/variables/"/>,
+  <uri link="::ebuild-writing/functions/src_test/"/>,
+  <uri link="::ebuild-maintenance/"/>
+</author>
+<author name="Brian Evans" email="grknight@gentoo.org">
+  <uri link="::ebuild-writing/eapi/"/>,
+  <uri link="::ebuild-writing/variables/"/>,
+  <uri link="::ebuild-writing/functions/src_prepare/epatch/"/>
+</author>
+<author name="Lucas Ramage" email="ramage.lucas@protonmail.com">
+  Search functionality
+</author>
 </authors>
 
 </body>
