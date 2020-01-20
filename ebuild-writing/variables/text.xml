@@ -117,6 +117,8 @@ for these variables when writing ebuilds.
     <ti><c>EPREFIX</c></ti>
     <ti>
       The normalised offset-prefix path of an offset installation.
+      See <uri link="https://wiki.gentoo.org/wiki/Project:Prefix/Technical_Documentation">
+      Gentoo Prefix Technical Documentation</uri> for more information.
     </ti>
   </tr>
   <tr>

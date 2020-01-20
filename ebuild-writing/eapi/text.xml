@@ -63,32 +63,6 @@ is the best.  Using the features of the latest EAPI is encouraged.
 </section>
 
 <section>
-<title>EAPI=3</title>
-<body>
-
-<ul>
-	<li>
-		<p><b>Gentoo Prefix support</b></p>
-		<p>
-			Support for the <c>EPREFIX</c>, <c>EROOT</c>, and <c>ED</c>
-			variables. If an ebuild uses one of these, it must be EAPI3 aware.
-			See <uri link="https://wiki.gentoo.org/wiki/Project:Prefix/Technical_Documentation">
-			Gentoo Prefix Technical Documentation</uri> for more information.
-		</p>
-	</li>
-	<li>
-		<p><b>unpack supports .xz and .tar.xz</b></p>
-		<p>
-			The <c>unpack</c> command supports xz-archives and xz-compressed tar
-			files.
-		</p>
-	</li>
-</ul>
-
-</body>
-</section>
-
-<section>
 <title>EAPI=4</title>
 
 <subsection>

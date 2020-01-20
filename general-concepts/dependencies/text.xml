@@ -32,10 +32,7 @@ exemptions).
 <p>
 The <c>RDEPEND</c> ebuild variable should specify any dependencies which are
 required at runtime. This includes libraries (when dynamically linked), any data
-packages and (for interpreted languages) the relevant interpreter. In EAPI=3 or
-older, if this variable is not specified it defaults to the value of
-<c>DEPEND</c>, however the implicit usage is frowned upon. In EAPI=4, the
-implicit behaviour was removed and the assignment is always explicit.
+packages and (for interpreted languages) the relevant interpreter.
 </p>
 
 <p>

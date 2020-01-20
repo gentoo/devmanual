@@ -73,6 +73,45 @@ usually simpler to avoid working with <c>${A}</c>.
 </section>
 
 <section>
+<title>Known file formats</title>
+<body>
+
+<p>
+The <c>unpack</c> function recognizes the following file formats:
+</p>
+
+<ul>
+  <li><c>*.tar</c></li>
+  <li>
+    <c>*.gz</c>, <c>*.Z</c>,
+    <c>*.tar.gz</c>, <c>*.tgz</c>, <c>*.tar.Z</c>
+  </li>
+  <li>
+    <c>*.bz2</c>, <c>*.bz</c>,
+    <c>*.tar.bz2</c>, <c>*.tbz2</c>, <c>*.tar.bz</c>, <c>*.tbz</c>
+  </li>
+  <li><c>*.lzma</c>, <c>*.tar.lzma</c></li>
+  <li><c>*.xz</c>, <c>*.tar.xz</c>, <c>*.txz</c></li>
+  <li><c>*.zip</c>, <c>*.ZIP</c>, <c>*.jar</c></li>
+  <li><c>*.a</c>, <c>*.deb</c></li>
+  <li><c>*.7z</c>, <c>*.7Z</c></li>
+  <li><c>*.rar</c>, <c>*.RAR</c></li>
+  <li><c>*.LHA</c>, <c>*.LHa</c>, <c>*.lha</c>, <c>*.lzh</c></li>
+</ul>
+
+<p>
+In EAPI 6 and later, filename extensions are matched case-insensitively.
+</p>
+
+<important>
+Unless the utility needed for unpacking is in the system set, the ebuild must
+specify the necessary build time dependency for it.
+</important>
+
+</body>
+</section>
+
+<section>
 <title><c>src_unpack</c> Actions</title>
 <body>
 <p>
