@@ -5,11 +5,12 @@
 
 <body>
 <p>
-The Package Manager Specification (PMS) is a standardization
-effort to ensure that the ebuild file format, the ebuild repository format
-(of which the Gentoo repository is Gentoo's main incarnation) as well as behavior
-of the package managers interacting with these ebuilds is properly written
-down and agreed upon.
+The <uri link="https://wiki.gentoo.org/wiki/Project:PMS">Package Manager
+Specification (PMS)</uri> is a standardization effort to ensure that the
+ebuild file format, the ebuild repository format (of which the Gentoo
+repository is Gentoo's main incarnation) as well as behaviour of the package
+managers interacting with these ebuilds is properly written down and agreed
+upon.
 </p>
 
 <p>
@@ -33,21 +34,22 @@ appendix of the Package Manager Specification.  The two-page leaflet
 can be printed out, consulted for reference and is available
 as <c>app-doc/pms</c> in the main tree.
 </important>
-<p>
-If EAPI is undefined in an ebuild, then EAPI=0 is selected.  You should
-set the EAPI variable, by specifying it at the top of the ebuild:
-</p>
 
-<note>
-Most developers prefer to set the EAPI version without quotes. However, the PMS allows single and double quotes as well.
-</note>
+<p>
+You must set the EAPI variable by specifying it at the top of the ebuild:
+</p>
 
 <codesample lang="ebuild">
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 </codesample>
+
+<note>
+Most developers prefer to set the EAPI version without quotes. However, the PMS
+allows single and double quotes as well.
+</note>
 
 <important>
 EAPI must only be defined in ebuild files, not eclasses. (eclasses may have
@@ -55,7 +57,7 @@ EAPI-conditional code)
 </important>
 
 <p>
-When writing new ebuilds developers can choose whathever EAPI they think
+When writing new ebuilds developers can choose whatever EAPI they think
 is the best.  Using the features of the latest EAPI is encouraged.
 </p>
 
@@ -63,7 +65,26 @@ is the best.  Using the features of the latest EAPI is encouraged.
 </section>
 
 <section>
+<title>EAPIs 0 to 3</title>
+<body>
+
+<p>
+EAPIs 0 to 3 are obsolete and must no longer be used. Refer to the Package
+Manager Specification for details about them.
+</p>
+
+</body>
+</section>
+
+<section>
 <title>EAPI=4</title>
+<body>
+
+<todo>
+Split up and move each feature to the section that is relevant for it.
+</todo>
+
+</body>
 
 <subsection>
 <title>EAPI 4 Helpers</title>
