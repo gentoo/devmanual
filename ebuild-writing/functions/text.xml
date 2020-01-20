@@ -63,6 +63,43 @@ Avoid network access in any phase by using local files, extending
 </body>
 
 <section>
+<title>Default phase functions</title>
+<body>
+
+<p>
+The default <c>pkg_nofetch</c> and <c>src_*</c> phase functions are accessible
+via a function having a name that begins with <c>default_</c> and ends with the
+respective phase function name. For example, a call to a function with the name
+<c>default_src_compile</c> is equivalent to a call to the default
+<c>src_compile</c> implementation.
+</p>
+
+<p>
+The default phase functions are:
+</p>
+
+<ul>
+  <li><c>default_pkg_nofetch</c></li>
+  <li><c>default_src_unpack</c></li>
+  <li><c>default_src_prepare</c></li>
+  <li><c>default_src_configure</c></li>
+  <li><c>default_src_compile</c></li>
+  <li><c>default_src_test</c></li>
+  <li><c>default_src_install</c></li>
+</ul>
+
+<p>
+A function named <c>default</c> is redefined for each of the above phases,
+so that it will call the <c>default_*</c> function corresponding to
+the current phase. For example, a call to the <c>default</c> function
+during the <c>src_compile</c> phase is equivalent to a call to the
+<c>default_src_compile</c> function.
+</p>
+
+</body>
+</section>
+
+<section>
 <title>Contents</title>
 <body>
 <contentsTree/>

@@ -388,11 +388,12 @@ and in the local distdir.
 <p>
 Here we download a file from upstream which has a plain name like
 <c>1.0.tar.gz</c> and save/mirror it with a better name like
-<c>thepackage-1.0.tar.gz</c>.
+<c>thepackage-1.0.tar.gz</c>. As usual, all tokens, including the operator
+and the output file name, must be separated by whitespace.
 </p>
 
 <codesample lang="ebuild">
-SRC_URI="https://example.com/files/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://example.com/files/${PV}.tar.gz -&gt; ${P}.tar.gz"
 </codesample>
 
 </body>

@@ -11,7 +11,7 @@
   </tr>
   <tr>
     <th>Purpose</th>
-    <ti>Configure and build the package.<important>the configure parts of <c>src_compile</c> have been splitted out in EAPI=2 to <c>src_configure</c>. see <uri link="::ebuild-writing/functions/src_configure"/></important></ti>
+    <ti>Build the package.</ti>
   </tr>
   <tr>
     <th>Sandbox</th>
@@ -33,22 +33,7 @@
 
 <body>
 <ul>
-<li>
-<p>with EAPI=0,1</p>
-<codesample lang="ebuild">
-src_compile() {
-	if [ -x ./configure ]; then
-		econf
-	fi
-	if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ]; then
-		emake || die "emake failed"
-	fi
-}
-</codesample>
-</li>
-
-<li>
-<p>with EAPI=2</p>
+  <li>
 <codesample lang="ebuild">
 src_compile() {
 	if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ]; then
@@ -56,44 +41,33 @@ src_compile() {
 	fi
 }
 </codesample>
-</li>
+  </li>
 </ul>
 </body>
 </section>
 
 <section>
 <title>Sample <c>src_compile</c></title>
-
 <body>
+
 <ul>
-<li>
-<p>with EAPI=0</p>
+  <li>
 <codesample lang="ebuild">
 src_compile() {
 	use sparc &amp;&amp; filter-flags -fomit-frame-pointer
 	append-ldflags -Wl,-z,now
 
-	econf \
-		$(use_enable ssl ) \
-		$(use_enable perl perlinterp )
-
-	emake || die "Make failed!"
+	emake
 }
 </codesample>
-<note>
-You also need to inherit the <uri link="::eclass-reference/flag-o-matic.eclass/">flag-o-matic</uri> eclass in order to use the <c>append-ldflags</c> function.
-</note>
-</li>
-
-<li>
-<p>with EAPI=2</p>
-<p>
-Porting the above example to EAPI=2, you won't need to define an extra
-<c>src_compile</c>, as it only calls <c>emake</c> (which is the default
-<c>src_compile</c> function).
-</p>
-</li>
+    <note>
+    You also need to inherit the
+    <uri link="::eclass-reference/flag-o-matic.eclass/">flag-o-matic</uri>
+    eclass in order to use the <c>append-ldflags</c> function.
+    </note>
+  </li>
 </ul>
+
 </body>
 </section>
 
@@ -112,7 +86,6 @@ The following subsections cover different topics which often occur when writing
 </chapter>
 
 <include href="build-environment/"/>
-<!--<include href="configuring/"/>-->
 <include href="building/"/>
 <include href="no-build-system/"/>
 </guide>

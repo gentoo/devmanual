@@ -31,18 +31,22 @@
 <section>
 <title>Default <c>src_prepare</c></title>
 <body>
+
 <p>
-Starting from EAPI=2, the src_prepare function is the appropriate area to perform
-any kind of patching and source code manipulation, instead of src_unpack.
+Before EAPI 6, the default implementation did nothing:
 </p>
+
 <codesample lang="ebuild">
 src_prepare() {
-	true;
+	true
 }
 </codesample>
+
 <p>
-Beginning with EAPI=6, the src_prepare function gained a new default implementation:
+Beginning with EAPI 6, the src_prepare function gained a new default
+implementation:
 </p>
+
 <codesample lang="ebuild">
 src_prepare() {
     if declare -p PATCHES | grep -q "^declare -a "; then
@@ -53,10 +57,12 @@ src_prepare() {
     eapply_user
 }
 </codesample>
+
 <note>
-With EAPI=6, you must call <c>eapply_user</c> or <c>default</c> if you define
+With EAPI 6, you must call <c>eapply_user</c> or <c>default</c> if you define
 <c>src_prepare</c>!
 </note>
+
 </body>
 </section>
 

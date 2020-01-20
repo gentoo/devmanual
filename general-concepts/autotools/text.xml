@@ -76,20 +76,12 @@ and have the same format <d/> the only difference is the name.
 </note>
 
 <p>
-  You may see autotools being used in a variety of phase
-  functions. Prior to EAPI2, the QA team preferred that the source
-  code be manipulated in <c>src_unpack</c> <d/> the rationale being that
-  <c>src_unpack</c> handles "getting the package ready to be
-  compiled."
-</p>
-
-<p>
-  EAPI2, however, introduced a new phase function: <uri
-  link="::ebuild-writing/functions/src_prepare" />. This is now the
-  appropriate place to manipulate the source code prior to
-  configuration and compilation. In particular, <c>src_prepare</c> is
-  called before <uri link="::ebuild-writing/functions/src_configure"
-  />, which usually expects the <c>configure</c> script to exist.
+You may see autotools being used in a variety of phase functions.
+The <uri link="::ebuild-writing/functions/src_prepare/"/> function is the most
+appropriate place to manipulate the source code prior to configuration
+and compilation. In particular, <c>src_prepare</c> is called before
+<uri link="::ebuild-writing/functions/src_configure/"/>, which usually expects
+the <c>configure</c> script to exist.
 </p>
 
 <p>

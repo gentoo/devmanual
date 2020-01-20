@@ -12,12 +12,6 @@ handles <c>-p</c> levels, <c>gunzip</c> and so on as necessary.
 </p>
 
 <p>
-Also note that old ebuilds may still use src_unpack to apply patches.
-This is because those ebuilds are based in EAPI=1.
-You are advised to use the latest and apply your patches in src_prepare function instead.
-</p>
-
-<p>
 Starting with EAPI=7, this function is banned and <c>eapply</c> must be used.
 </p>
 
@@ -90,9 +84,7 @@ fails. The following is taken from <c>app-misc/detox</c>:
 </p>
 
 <codesample lang="ebuild">
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}/${P}-destdir.patch"
 	epatch "${FILESDIR}/${P}-parallel_build.patch"
 }
@@ -109,15 +101,6 @@ usually best to compress the patch in question with <c>xz</c> or
 be compressed). For example, from <c>app-admin/showconsole</c>:
 </p>
 
-<codesample lang="ebuild">
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${WORKDIR}/${P}-suse-update.patch.bz2"
-	epatch "${FILESDIR}/${PV}-no-TIOCGDEV.patch"
-}
-</codesample>
-<p>As stated before, if you are using EAPI >=2, you should apply the patches in the <uri link="::ebuild-writing/functions/src_prepare">src_prepare</uri> function</p>
 <codesample lang="ebuild">
 src_prepare() {
 	epatch "${WORKDIR}/${P}-suse-update.patch.bz2"
@@ -146,9 +129,7 @@ A simple example:
 </p>
 
 <codesample lang="ebuild">
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	EPATCH_SOURCE="${WORKDIR}/patches" EPATCH_SUFFIX="patch" \
 		EPATCH_FORCE="yes" epatch
 }

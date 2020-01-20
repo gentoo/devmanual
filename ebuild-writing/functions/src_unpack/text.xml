@@ -11,7 +11,7 @@
   </tr>
   <tr>
     <th>Purpose</th>
-    <ti>Extract source packages and do any necessary patching or fixes.</ti>
+    <ti>Extract source packages.</ti>
   </tr>
   <tr>
     <th>Sandbox</th>
@@ -33,7 +33,7 @@
 <body>
 <codesample lang="ebuild">
 src_unpack() {
-	if [ "${A}" != "" ]; then
+	if [[ -n ${A} ]]; then
 		unpack ${A}
 	fi
 }
@@ -44,20 +44,13 @@ src_unpack() {
 <section>
 <title>Sample <c>src_unpack</c></title>
 <body>
+
 <codesample lang="ebuild">
 src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	epatch "${FILESDIR}/${PV}/${P}-fix-bogosity.patch"
-	use pam &amp;&amp; epatch "${FILESDIR}/${PV}/${P}-pam.patch"
-
-	sed -i -e 's/"ispell"/"aspell"/' src/defaults.h || die "Sed failed!"
+	unpack ${P}.tar.xz
+	use foo &amp;&amp; unpack ${P}-foo-extension.tar.xz
 }
 </codesample>
-<note>
-When using EAPI >=2, you should use the <uri link="::ebuild-writing/functions/src_prepare">src_prepare</uri> function to apply patches or alter any of the source files, instead of the src_unpack.
-</note>
 
 </body>
 </section>

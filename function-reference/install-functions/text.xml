@@ -237,7 +237,17 @@ the first is the source name, the second the name to use when installing.
       <c>doman</c>
     </ti>
     <ti>
-      Install a man page
+      <p>
+      Install a man page into the appropriate section of <c>/usr/share/man</c>.
+      e.g., <c>foo.1</c> will be installed in <c>/usr/share/man/man1/foo.1</c>.
+      </p>
+      <p>
+      If the man page is named <c>foo.&lt;lang&gt;.1</c> then it will be
+      installed in <c>/usr/share/man/&lt;lang&gt;/man1/foo.1</c>, where
+      <c>&lt;lang&gt;</c> is a language code. Option <c>-i18n=&lt;lang&gt;</c>
+      can be used to explicitly specify a subdirectory (or to suppress it, if
+      empty).
+      </p>
     </ti>
   </tr>
   <tr>

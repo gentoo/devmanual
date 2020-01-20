@@ -218,14 +218,13 @@ to the package manager.
 </p>
 
 <p>
-The following description applies to all EAPIs starting with EAPI 2.
+There are two kinds of blockers: <e>weak blockers</e> and <e>strong
+blockers</e>.
 </p>
 
 <p>
-There are two kinds of blockers: soft blockers and hard blockers.
+A weak blocker is defined using the following syntax:
 </p>
-
-<p>A soft blocker is defined using the following syntax:</p>
 
 <codesample lang="ebuild">
 RDEPEND="!app-misc/foo"
@@ -233,24 +232,34 @@ RDEPEND="!app-misc/foo"
 
 <p>
 The package manager will try to resolve this conflict automatically.
-The package blocked by a soft blocker can be uninstalled <e>after</e>
+The package blocked by a weak blocker can be uninstalled <e>after</e>
 installing the package blocking it. However, it exempts the common
-files from file collision checks. Soft blockers are usually used
+files from file collision checks. Weak blockers are usually used
 to solve file collisions between packages and are meaningful only
 in <c>RDEPEND</c>.
 </p>
 
+<p>
+More specifically, installation of the newer package may overwrite any
+colliding files that belong to the older package that is explicitly blocked.
+When such file collisions occur, the colliding files cease to belong to the
+older package, and they remain installed after the older package is eventually
+uninstalled. The older package is uninstalled only after any newer blocking
+packages have been merged on top of it.
+</p>
+
 <warning>
-Soft blockers that are pure <c>DEPEND</c> <e>do not work correctly</e>.
+Weak blockers that are pure <c>DEPEND</c> <e>do not work correctly</e>.
 While Portage seemingly queues the package for removal, it <e>does not</e>
 exempt their contents from file collision checks. Always include your
-soft blockers in <c>RDEPEND</c>!
+weak blockers in <c>RDEPEND</c>!
 </warning>
 
 <p>
 If it is strictly necessary to resolve the blocker before the package
-is built (installed), a hard blocker must be used instead. Hard blockers
-are expressed using the following syntax:
+is built (installed), a strong blocker must be used instead. In this case,
+temporary simultaneous installation of the conflicting packages is not allowed.
+Strong blockers are expressed using the following syntax:
 </p>
 
 <codesample lang="ebuild">
@@ -258,13 +267,18 @@ RDEPEND="!!app-misc/foo"
 </codesample>
 
 <p>
-Hard blockers apply accordingly to the dependency type defining them.
+Strong blockers apply accordingly to the dependency type defining them.
 Blockers defined in <c>RDEPEND</c> are enforced as long as the package
 is installed (but do not prevent building binary packages). Blockers
 defined purely in <c>DEPEND</c> are enforced only for building
 the package from source, and may not apply once the package is installed
 or when it is installed from a binary package.
 </p>
+
+<note>
+If both weak and strong blockers match a given package, the strong blocker
+takes precedence.
+</note>
 
 <p>
 Specific versions can also be blocked:
@@ -462,10 +476,6 @@ flag is not necessary if and only if all of the following hold:
 <section>
 <title>Built with USE Dependencies</title>
 <body>
-
-<p>
-In order to use built with use dependencies you must specify <c>EAPI=2</c>.
-</p>
 
 <p>
 Available specifiers are:
