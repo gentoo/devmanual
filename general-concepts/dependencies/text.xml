@@ -537,36 +537,6 @@ presence or absence.
 </section>
 
 <section>
-<title>Legacy Inverse USE-Conditional Dependency Syntax</title>
-<body>
-
-<p>
-	Once upon a time the <c>:</c> conditional operator was allowed in <c>*DEPEND</c>:
-</p>
-
-<codesample lang="ebuild">
-DEPEND="use-flag? ( app-misc/foo ) : ( app-misc/bar )"
-</codesample>
-
-<p>
-<b>This syntax is no longer permitted</b>. It is exactly equivalent to the
-following, which should be used instead:
-</p>
-
-<codesample lang="ebuild">
-DEPEND="use-flag?  ( app-misc/foo )
-	!use-flag? ( app-misc/bar )"
-</codesample>
-
-<p>
-It is useful to recognise the legacy syntax and to know that it is no longer
-valid.
-</p>
-
-</body>
-</section>
-
-<section>
 <title>Test Dependencies</title>
 <body>
 
