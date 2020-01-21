@@ -363,12 +363,12 @@ SLOT="0"
 <body>
 
 <p>
-Please check if the HOMEPAGE variable is right and leads users to the right
-page if they want to find out more about the package. And make sure the
-DESCRIPTION is not overly long. Good descriptions will describe the main
-function of the package in a sentence. Set HOMEPAGE to
-<uri link="::ebuild-maintenance/maintenance-tasks#Homepage unavailable">
-No_homepage wiki page</uri>, if there is none.
+Please check if the <c>HOMEPAGE</c> variable is right and leads users to the
+right page if they want to find out more about the package. And make sure
+the <c>DESCRIPTION</c> is not overly long. Good descriptions will describe
+the main function of the package in a sentence. If no homepage for the package
+is available, set the <c>HOMEPAGE</c> variable to
+<c>https://wiki.gentoo.org/wiki/No_homepage</c>.
 </p>
 
 </body>

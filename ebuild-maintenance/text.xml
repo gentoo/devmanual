@@ -2,11 +2,14 @@
 <guide self="ebuild-maintenance/">
 <chapter>
 <title>Ebuild Maintenance</title>
-
 <body>
+
 <p>
-This section covers various tasks related to working with ebuilds.
+This section aims to explain common everyday ebuild maintenance routines,
+as well as other rarer maintenance routines which developers may not be
+familiar with.
 </p>
+
 </body>
 
 <section>
