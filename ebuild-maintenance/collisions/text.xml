@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<guide self="ebuild-maintenance/collisions/">
+<chapter>
+<title>Package Collisions</title>
+<body>
+
+<p>
+When you encounter a package that is trying to install files that are
+already provided by another package (detectable with
+<c>FEATURES=collision-protect</c> for example) you have to fix this
+situation before you can commit the ebuild or, if you encounter this
+with an existing package, file a bug about that package (see below for
+a few exceptions). The reason file conflicts are critical is because
+if "foo" provides the file <c>/usr/bin/example</c> and "bar" is
+going to overwrite it, and later "bar" is unmerged, Portage will remove
+<c>/usr/bin/example</c> and it is therefore likely it will break
+"foo".
+</p>
+
+<p>
+The most obvious fix is to add a blocking dependency to both packages
+that want to install that file, so they can't be installed at the same
+time. But unless there are also other reasons for those packages to
+block each other you should avoid this if possible and rather fix the
+package, which could include one or more of the following steps:
+</p>
+
+<ul>
+  <li>Make "foo" (R)DEPEND on "bar" and not install the conflicting
+  file.</li>
+  <li>Remove conflicting files from "foo" in <c>src_install</c>
+  or <c>pkg_preinst</c>.</li>
+  <li>Move conflicting files into a new subpackage and make "foo" and
+  "bar" both (R)DEPEND on that package.</li>
+  <li>Change the location where "foo" or "bar" installs conflicting
+  files.</li>
+</ul>
+
+<p>
+In some cases conflicting files can't be really fixed or aren't
+critical, currently known exceptions are Perl module manpages
+(overwriting the ones from Perl itself) and <c>CONFIG_PROTECT</c>'ed
+files (which should still be fixed, but aren't critical as Portage
+won't overwrite them).
+</p>
+
+</body>
+</chapter>
+</guide>
