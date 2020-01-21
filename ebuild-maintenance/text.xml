@@ -20,6 +20,7 @@ This section covers various tasks related to working with ebuilds.
 <include href="new-ebuild/"/>
 <include href="git/"/>
 <include href="package-moves/"/>
+<include href="removal/"/>
 <include href="stabilization/"/>
 <include href="maintenance-tasks/"/>
 </guide>

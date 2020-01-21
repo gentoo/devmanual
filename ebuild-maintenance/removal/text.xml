@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<guide self="ebuild-maintenance/removal/">
+<chapter>
+<title>Removing Ebuilds and Packages</title>
+
+<section>
+<title>Removing ebuilds</title>
+<body>
+
+<p>
+When removing an ebuild make sure that no dependencies in Portage are broken
+due to the removal <d/> additionally, your git commit message should explain
+clearly why the ebuild is being removed from the git repository.
+</p>
+
+<p>
+If you need to remove ebuilds, make sure you do not accidentally remove
+the newest/only stable ebuild for any architecture. If you would like to
+get a newer version marked stable, then please file a bug or ask on IRC.
+</p>
+
+<p>
+You should also not cause an unnecessary downgrade for any "<c>~arch</c>"
+when removing ebuilds <d/> instead, it is best to get the newest version
+marked "<c>~arch</c>" first and then remove redundant versions of the ebuild.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Removing a package</title>
+<body>
+
+<p>
+When removing packages follow these steps:
+</p>
+
+<ol>
+  <li>
+    Make sure that no dependencies in the Gentoo repository are broken due to
+    the removal
+  </li>
+  <li>Send last rites to gentoo-dev-announce and gentoo-dev</li>
+  <li>Mask the package</li>
+  <li>Wait 30 days (or more)</li>
+  <li>Remove from the git tree unless the reason for removal has been fixed</li>
+  <li>
+    Remove any references to the package from other ebuilds, e.g.,
+    use-conditional dependencies. Blockers are the only exception to this.
+  </li>
+  <li>Remove package.mask and any package.use.mask entries</li>
+  <li>
+    Remove the <c>&lt;pkg&gt;</c> tags referencing this package in the
+    <uri link="::ebuild-writing/misc-files/metadata">metadata.xml</uri>
+    files of other packages.
+  </li>
+  <li>Close open bugs as WONTFIX</li>
+</ol>
+
+<p>
+Here is a list of commands that will delete <c>dev-util/pmk</c>
+from the tree:
+</p>
+
+<pre>
+# cd dev-qt
+# git rm -rf qtphonon
+# git commit --gpg-sign
+</pre>
+
+<p>
+An example commit message is shown below:
+</p>
+
+<pre>
+commit b97eb6d43f45dfd5b739638928db22d3f3392685
+Author: Michael Palimaka &lt;kensington@gentoo.org&gt;
+Date:   Tue Oct 3 21:43:03 2017 +1100
+
+  dev-qt/qtphonon: remove last rited package
+
+  Closes: https://bugs.gentoo.org/629144
+</pre>
+
+</body>
+</section>
+</chapter>
+</guide>
