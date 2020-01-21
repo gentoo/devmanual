@@ -1,4 +1,4 @@
-<!-- Copyright 2019 Gentoo Authors -->
+<!-- Copyright 2019-2020 Gentoo Authors -->
 <!-- Distributed under the terms of the MIT/X11 license -->
 
 <!-- Document Type Definition for the Gentoo Devmanual -->
@@ -55,10 +55,7 @@
                         short CDATA #IMPLIED
                         caption CDATA #IMPLIED>
 
-<!ELEMENT table         (tcolumn*, tr+)>
-
-<!ELEMENT tcolumn       EMPTY>
-<!ATTLIST tcolumn       width CDATA #REQUIRED>
+<!ELEMENT table         (tr)+>
 
 <!ELEMENT tr            (th|ti)+>
 

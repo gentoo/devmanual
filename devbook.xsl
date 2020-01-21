@@ -89,10 +89,6 @@
   <tr><xsl:apply-templates/></tr>
   </xsl:template>
 
-  <xsl:template match="tcolumn">
-  <col width="{@width}"/>
-  </xsl:template>
-
   <!-- Table Item -->
   <xsl:template match="ti">
     <td>
