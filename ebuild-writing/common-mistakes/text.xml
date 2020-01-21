@@ -451,8 +451,7 @@ at least when the ebuild hits the stable branch.
 
 <p>
 Please submit ebuilds properly by following the
-<uri link="::ebuild-maintenance/maintenance-tasks#Adding a new ebuild">
-Adding new Ebuild</uri> tutorial.
+<uri link="::ebuild-maintenance/new-ebuild/"/> tutorial.
 </p>
 
 </body>
