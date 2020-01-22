@@ -31,16 +31,7 @@
 <section>
 <title>Default <c>src_install</c></title>
 <body>
-<p>
-For EAPIs 0,1,2, and 3, the default <c>src_install</c> function is the
-following:
-</p>
-<codesample lang="ebuild">
-src_install()
-{
-	return
-}
-</codesample>
+
 <p>
 For EAPIs 4 and later, the default <c>src_install</c> function is the following:
 </p>
@@ -74,7 +65,7 @@ src_install() {
 	einstalldocs
 }
 </codesample>
-<important>The following examples assume EAPI 4 or later</important>
+
 </body>
 </section>
 
