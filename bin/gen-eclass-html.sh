@@ -11,11 +11,11 @@ IFS='' read -r -d '' HEADER << 'EOF'
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>@TITLE@ - Gentoo Development Guide</title>
-	<link rel="stylesheet" href="../../devmanual.css" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="The Gentoo Devmanual is a technical manual which covers topics such as writing ebuilds and eclasses, and policies that developers should be abiding by.">
 	<link href="https://assets.gentoo.org/tyrian/bootstrap.min.css" rel="stylesheet" media="screen">
 	<link href="https://assets.gentoo.org/tyrian/tyrian.min.css" rel="stylesheet" media="screen">
+	<link rel="stylesheet" href="../../devmanual.css" type="text/css">
 	<link rel="icon" href="https://www.gentoo.org/favicon.ico" type="image/x-icon">
 </head>
 <body>
