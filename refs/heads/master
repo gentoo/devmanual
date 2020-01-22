@@ -1,17 +1,17 @@
 certificate version 0.1
-pusher 5188335088415E2E! 1579643582 +0100
+pusher 5188335088415E2E! 1579717441 +0100
 pushee git+ssh://git.gentoo.org/proj/devmanual.git
-nonce 1579643582-6f75f1af516f7d4d6ec66a9bd96604fda00c8abc
+nonce 1579717441-821fb166db3932a476ad020a4a03b4186fce31b9
 
-1ed5eb0e574691e45e47c0061bd1539624482563 264672ddb6857313b7ba9426853d58e3b61b6590 refs/heads/master
+264672ddb6857313b7ba9426853d58e3b61b6590 dc3fdda90a01bde7de5bfb409c4a46a4486e9e7a refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCAAdFiEEtDnZ1O9xIP68rzDbUYgzUIhBXi4FAl4ncr4ACgkQUYgzUIhB
-Xi7z8ggAoFsVSqT7ehLQfqdOcXGje0C0S7yq0gloSwTHP4GmV6liAHKueNKLCqeW
-DkQaZhYtAriNDlh7QN/+WWtfX7DdkrRbNqvWgmER+pHGSnJdtAW/MjrzNo1KDUye
-j305pL1ZCSxSQ4Nu/E/R5Q+c+3uDGkmMZvfIje7Ej7YcMoqLxCM7x2+d3bcHYhs6
-oIawzojdzcMvcav54qFCdyb/Bd9BM/x6cbUS4qUNp3wVOPJ4zrqU0uPknxvkVOmZ
-iydAObEN+Ae6lYdMV+soQxIbZsnrwXcSw8o3juItHhbp8MhphLqITIgPYpqBgdeb
-xoMQTJKxhYqczeCj35l/iZH7zbJsvQ==
-=LUxu
+iQEzBAABCAAdFiEEtDnZ1O9xIP68rzDbUYgzUIhBXi4FAl4ok0EACgkQUYgzUIhB
+Xi6qFQf/SloV6jBHxeShPFeMND/OSGl3uGUj7c/o79kYVIIX0+ng9SomokBpp9Xt
+p9D6DhQ1sGIwulloVvSkTwy7o/w3z2Bs6YlR33sSkMCuHQ9bRrbjYPxKgE6crfON
+3ZHeLlFg23DYkbq+hHlZKZcU0nHrgfi/qLrfK1dHR1z/02XWtb2p6aZRpLxsVqsp
+VElBQrQTh2VT1lOOTShSlpFbBshBuhJM3s3AEdKIuaxtreMYPIoM8eggzg5xGjWq
+oaL/dY/9yEdQxuHdQnbO6yogRU1oRo3IRJu0Cr3vRp/lcfr/daquskfJDTJC87tf
+9XdBBu2Xcey/iGCJwU1yd1N0D3fzJQ==
+=4Sf9
 -----END PGP SIGNATURE-----
