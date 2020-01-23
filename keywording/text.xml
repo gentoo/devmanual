@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <guide self="keywording/">
 <chapter>
-<title>Keywording</title>
+<title>Keywording and Stabilization</title>
 <body>
 
 <note>
@@ -204,14 +204,31 @@ stable tree getting broken this way.
 </p>
 
 <p>
-Sometimes you may need to remove a keyword because of new unresolved
-dependencies. If you do this, you <b>must</b> file a bug notifying the relevant
-arch teams.
+This also applies to revision bumps, not just to upstream version changes.
 </p>
 
 <p>
-This also applies to revision bumps, not just to upstream version changes.
+If a new version introduces new dependencies which are not available on some
+architectures, then you should file a bug or ask on IRC before you upgrade the
+ebuild. If you really need to get the ebuild added in a hurry, for example,
+for a security fix, then you should drop any <c>KEYWORDS</c> which are causing
+problems and CC the relevant architectures on the bug <d/> you <b>must</b> file
+a new bug to the architecture in question regarding this if no bug is already
+available.
 </p>
+
+<p>
+If there are no new dependencies, do not remove keywords if your commit fails
+with repoman <d/> please try a full <c>git pull</c> and if you still have
+problems, then commit with <c>repoman -I</c> and file a bug to the broken
+architecture, noting it in your git commit message.
+</p>
+
+<important>
+When committing, make sure that you reference any bugs in the commit message.
+See <uri link="::ebuild-maintenance/git/#Git Commit Message Format"/> for how
+to do this.
+</important>
 
 </body>
 </section>
@@ -221,18 +238,25 @@ This also applies to revision bumps, not just to upstream version changes.
 <body>
 
 <p>
-Moving an ebuild from <c>~arch</c> to <c>arch</c> is done only by the relevant arch teams.
-If you have access to non-x86 hardware but are not on the arch teams, you may wish 
-to make individual arrangements <d /> the arch teams are happy for help, so long as
-they know what is going on. Please note that <c>x86</c> is now no longer an exception
-and stabilisation must be done through the <c>x86</c> arch team unless you have
-individual arrangements <d /> see
-<uri link="https://www.gentoo.org/glep/glep-0040.html">GLEP 40</uri>
-for further details.
+Stabilization, i.e., moving an ebuild from <c>~arch</c> to <c>arch</c>, is done
+by the relevant architecture teams. If you have access to exotic hardware but
+are not on the arch teams, you may wish to make individual arrangements <d/>
+the arch teams are happy for help, so long as they know what is going on.
 </p>
 
 <p>
-For an ebuild to move to stable, the following guidelines must be met:
+In order to request stabilization of an ebuild, file a bug to the package's
+maintainer (which may be yourself), and list all secondary maintainers
+in the bug's CC. When the maintainers consider the ebuild to be ready for
+stabilization, they will add the relevant architecture teams to the CC list.
+That way teams can remove themselves from the list when they are done, giving
+a clear indication of which teams still have to stabilize a package.
+</p>
+
+<p>
+For an ebuild to move to stable, the following guidelines must be met
+(see <uri link="https://www.gentoo.org/glep/glep-0040.html">GLEP 40</uri>
+for further details):
 </p>
 
 <ul>
@@ -266,6 +290,37 @@ Vulnerability Treatment Policy</uri>
 </p>
 
 </body>
+
+<subsection>
+<title>Stabilization rules</title>
+<body>
+
+<p>
+SPARC: You must have prior permission from the arch lead. Usually we expect
+you to be on the sparc alias for QA reasons, although other arrangements
+can be made if you will only be working with a small group of packages.
+</p>
+
+<p>
+ALPHA: Maintainers may keyword their own packages but are reminded to inform
+the Alpha team if they can help out with testing and keywording packages so
+the team can keep an eye out for possible keywording mistakes.
+</p>
+
+<p>
+Exotic architectures (like hppa, ia64, ppc*, sparc) are short on manpower,
+so it's best if you avoid opening bugs for stabilization of new packages
+for them, unless it is absolutely necessary (e.g., a reverse dependency
+for your package).
+</p>
+
+<p>
+Some architectures (like mips, riscv) do not maintain a stable keyword.
+So packages are not to be marked stable for one of these architectures.
+</p>
+
+</body>
+</subsection>
 
 <subsection>
 <title>Simultaneous stabilization on all architectures</title>

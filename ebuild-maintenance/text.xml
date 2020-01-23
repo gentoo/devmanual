@@ -25,5 +25,4 @@ familiar with.
 <include href="package-moves/"/>
 <include href="collisions/"/>
 <include href="removal/"/>
-<include href="stabilization/"/>
 </guide>
