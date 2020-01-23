@@ -26,5 +26,4 @@ familiar with.
 <include href="collisions/"/>
 <include href="removal/"/>
 <include href="stabilization/"/>
-<include href="maintenance-tasks/"/>
 </guide>
