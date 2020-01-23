@@ -99,7 +99,7 @@ of the package and its purpose.
 
 <p>
 The <c>HOMEPAGE</c> is a link to the package's homepage (remember to
-include the <c>http://</c> part).
+include the URI scheme, for example <c>https://</c>).
 </p>
 
 <p>
