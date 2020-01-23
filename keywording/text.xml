@@ -221,7 +221,7 @@ This also applies to revision bumps, not just to upstream version changes.
 <body>
 
 <p>
-Moving a package from <c>~arch</c> to <c>arch</c> is done only by the relevant arch teams.
+Moving an ebuild from <c>~arch</c> to <c>arch</c> is done only by the relevant arch teams.
 If you have access to non-x86 hardware but are not on the arch teams, you may wish 
 to make individual arrangements <d /> the arch teams are happy for help, so long as
 they know what is going on. Please note that <c>x86</c> is now no longer an exception
@@ -232,25 +232,26 @@ for further details.
 </p>
 
 <p>
-For a package to move to stable, the following guidelines must be met:
+For an ebuild to move to stable, the following guidelines must be met:
 </p>
 
 <ul>
   <li>
-    The package has spent a reasonable amount of time in <c>~arch</c> first. Thirty
-    days is the usual figure, although this is clearly only a guideline. For
-    critical packages, a much longer duration is expected. For small packages
-    which have only minor changes between versions, a shorter period is sometimes
-    appropriate.
+    The ebuild has spent a reasonable amount of time in <c>~arch</c> first.
+    Thirty days is the usual figure, although this is clearly only a guideline.
+    For critical packages, a much longer duration is expected. For small
+    packages that have only minor changes between versions, a shorter period is
+    sometimes appropriate.
   </li>
   <li>
-    The package must not have any non-<c>arch</c> dependencies.
+    The ebuild must not have any non-<c>arch</c> dependencies.
   </li>
   <li>
-    The package must not have any severe outstanding bugs or issues.
+    The package version (and the ebuild) must not have any severe outstanding
+    bugs or issues.
   </li>
   <li>
-    The package must be widely tested.
+    The package version must be widely tested.
   </li>
   <li>
     If the package is a library, it should be known not to break any package which
