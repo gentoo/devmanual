@@ -19,17 +19,18 @@ writing ebuilds or working with the Gentoo repository.
 
 </chapter>
 
+<!-- Keep in alphabetical order -->
 <include href="autotools/"/>
 <include href="config-protect/"/>
-<include href="git-to-rsync/"/>
 <include href="dependencies/"/>
-<include href="manifest/"/>
 <include href="ebuild-revisions/"/>
 <include href="emerge-and-ebuild/"/>
 <include href="features/"/>
 <include href="filesystem/"/>
+<include href="git-to-rsync/"/>
 <include href="install-destinations/"/>
 <include href="licenses/"/>
+<include href="manifest/"/>
 <include href="mirrors/"/>
 <include href="news/"/>
 <include href="overlay/"/>
