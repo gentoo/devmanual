@@ -268,13 +268,8 @@
      y="80"
      x="140" />
   <text
-     id="text69"
-     y="93"
-     x="180"
-     style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">configure.in /</text>
-  <text
      id="text71"
-     y="105"
+     y="99"
      x="180"
      style="text-anchor:middle;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">configure.ac</text>
   <line
