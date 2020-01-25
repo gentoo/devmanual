@@ -34,6 +34,7 @@ writing ebuilds or working with the Gentoo repository.
 <include href="mirrors/"/>
 <include href="news/"/>
 <include href="overlay/"/>
+<include href="package-collisions/"/>
 <include href="package-maintainers/"/>
 <include href="pic/"/>
 <include href="portage-cache/"/>

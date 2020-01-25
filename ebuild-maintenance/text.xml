@@ -23,6 +23,5 @@ familiar with.
 <include href="new-ebuild/"/>
 <include href="git/"/>
 <include href="package-moves/"/>
-<include href="collisions/"/>
 <include href="removal/"/>
 </guide>
