@@ -128,13 +128,14 @@ cat << EOF > $OUTPUTDIR/text.xml
 <guide self="eclass-reference/">
 <chapter>
 <title>Eclass Reference</title>
-
 <body>
+
 <p>
 This section provides a reference for some of the more commonly used eclasses.
 Note that most eclasses have an accompanying manual page. These man pages can be
 installed by emerging <c>app-doc/eclass-manpages</c>.
 </p>
+
 </body>
 
 <section>
