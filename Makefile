@@ -7,7 +7,7 @@ HTMLS := $(subst text.xml,index.html,$(XMLS))
 ECLASS_HTMLS := $(wildcard eclass-reference/*/index.html)
 IMAGES := $(patsubst %.svg,%.png,$(SVGS))
 
-all: prereq validate $(HTMLS) $(IMAGES) documents.js
+all: prereq validate build documents.js
 
 prereq:
 	@type rsvg-convert >/dev/null 2>&1 || \
@@ -22,6 +22,8 @@ prereq:
 	@fc-list -q "Open Sans" || \
 	{ echo "media-fonts/open-sans is required" >&2;\
 	  exit 1; }
+
+build: $(HTMLS) $(IMAGES)
 
 # We need to parse all the XMLs every time, not just the ones
 # that are newer than the target. This is because each search
@@ -68,4 +70,4 @@ tidy: $(HTMLS) $(ECLASS_HTMLS)
 clean:
 	rm -f $(HTMLS) $(IMAGES) _documents.js documents.js
 
-.PHONY: all prereq validate tidy clean
+.PHONY: all prereq validate build tidy clean
