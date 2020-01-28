@@ -7,6 +7,9 @@ HTMLS := $(subst text.xml,index.html,$(XMLS))
 ECLASS_HTMLS := $(wildcard eclass-reference/*/index.html)
 IMAGES := $(patsubst %.svg,%.png,$(SVGS))
 
+# Nonzero value disables external assets for offline browsing.
+OFFLINE = 0
+
 all: prereq validate build documents.js
 
 prereq:
@@ -49,7 +52,7 @@ documents.js: bin/build_search_documents.py $(XMLS)
 #
 .SECONDEXPANSION:
 %.html: $$(dir $$@)text.xml devbook.xsl xsl/*.xsl $$(subst text.xml,index.html,$$(wildcard $$(dir $$@)*/text.xml))
-	xsltproc devbook.xsl $< > $@
+	xsltproc --param offline "$(OFFLINE)" devbook.xsl $< > $@
 
 validate: prereq
 	@xmllint --noout --dtdvalid devbook.dtd $(XMLS) \

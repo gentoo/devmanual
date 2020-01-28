@@ -14,6 +14,10 @@
 
 <xsl:output method="html" encoding="UTF-8" indent="yes" omit-xml-declaration="yes"/>
 
+<!-- When true, disable external assets for offline browsing.
+     The parameter can be passed with "xsltproc -\-param offline 1". -->
+<xsl:param name="offline" select="0"/>
+
 <xsl:variable name="newline">
 <xsl:text>
 </xsl:text>
@@ -451,13 +455,21 @@
       <title><xsl:value-of select="/guide/chapter[1]/title"/> – Gentoo Development Guide</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="description" content="The Gentoo Devmanual is a technical manual which covers topics such as writing ebuilds and eclasses, and policies that developers should be abiding by." />
-      <link href="https://assets.gentoo.org/tyrian/bootstrap.min.css" rel="stylesheet" media="screen" />
-      <link href="https://assets.gentoo.org/tyrian/tyrian.min.css" rel="stylesheet" media="screen" />
+      <xsl:choose>
+        <xsl:when test="$offline">
+          <link rel="stylesheet" href="{$relative_path_depth_recursion}offline.css" type="text/css" />
+        </xsl:when>
+        <xsl:otherwise>
+          <link href="https://assets.gentoo.org/tyrian/bootstrap.min.css" rel="stylesheet" media="screen" />
+          <link href="https://assets.gentoo.org/tyrian/tyrian.min.css" rel="stylesheet" media="screen" />
+        </xsl:otherwise>
+      </xsl:choose>
       <link rel="stylesheet" href="{$relative_path_depth_recursion}devmanual.css" type="text/css" />
       <link rel="icon" href="https://www.gentoo.org/favicon.ico" type="image/x-icon" />
     </head>
     <body>
       <header>
+        <xsl:if test="not($offline)">
         <div class="site-title">
           <div class="container">
             <div class="row">
@@ -561,6 +573,7 @@
             </div>
           </div>
         </div>
+        </xsl:if>
         <div class="container">
           <div class="row">
             <div class="col-md010">
@@ -581,20 +594,24 @@
       </main>
       <footer>
         <div class="container">
-          <div class="row">
-            <div class="col-xs-12 col-md-offset-2 col-md-7">
+          <xsl:if test="not($offline)">
+            <div class="row">
+              <div class="col-xs-12 col-md-offset-2 col-md-7">
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <h3 class="footerhead">Questions or comments?</h3>
+                Please feel free to <a href="https://www.gentoo.org/inside-gentoo/contact/">contact us</a>.
+              </div>
             </div>
-            <div class="col-xs-12 col-md-3">
-              <h3 class="footerhead">Questions or comments?</h3>
-              Please feel free to <a href="https://www.gentoo.org/inside-gentoo/contact/">contact us</a>.
-            </div>
-          </div>
+          </xsl:if>
           <div class="row">
             <div class="col-xs-2 col-sm-3 col-md-2">
-              <ul class="footerlinks three-icons">
-                <li><a href="https://twitter.com/gentoo" title="@Gentoo on Twitter"><span class="fa fa-twitter fa-fw"></span></a></li>
-                <li><a href="https://www.facebook.com/gentoo.org" title="Gentoo on Facebook"><span class="fa fa-facebook fa-fw"></span></a></li>
-              </ul>
+              <xsl:if test="not($offline)">
+                <ul class="footerlinks three-icons">
+                  <li><a href="https://twitter.com/gentoo" title="@Gentoo on Twitter"><span class="fa fa-twitter fa-fw"></span></a></li>
+                  <li><a href="https://www.facebook.com/gentoo.org" title="Gentoo on Facebook"><span class="fa fa-facebook fa-fw"></span></a></li>
+                </ul>
+              </xsl:if>
             </div>
             <div class="col-xs-10 col-sm-9 col-md-10">
               <strong>Copyright (C) 2001-2020 Gentoo Authors</strong><br />
@@ -608,11 +625,13 @@
           </div>
         </div>
       </footer>
-      <script src="https://assets.gentoo.org/tyrian/jquery.min.js"></script>
-      <script src="https://assets.gentoo.org/tyrian/bootstrap.min.js"></script>
-      <script src="https://assets.gentoo.org/lunr/lunr.min.js"></script>
-      <script><xsl:text>var documentsSrc = "</xsl:text><xsl:value-of select="$relative_path_depth_recursion"/><xsl:text>documents.js"</xsl:text></script>
-      <script src="{$relative_path_depth_recursion}search.js"></script>
+      <xsl:if test="not($offline)">
+        <script src="https://assets.gentoo.org/tyrian/jquery.min.js"></script>
+        <script src="https://assets.gentoo.org/tyrian/bootstrap.min.js"></script>
+        <script src="https://assets.gentoo.org/lunr/lunr.min.js"></script>
+        <script><xsl:text>var documentsSrc = "</xsl:text><xsl:value-of select="$relative_path_depth_recursion"/><xsl:text>documents.js"</xsl:text></script>
+        <script src="{$relative_path_depth_recursion}search.js"></script>
+      </xsl:if>
     </body>
     </html>
   </xsl:template>
