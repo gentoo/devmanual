@@ -114,7 +114,7 @@ at the tags that are allowed inside a <c>&lt;body&gt;</c> element in a bit.
 
 <note>
 The <c>&lt;chapter&gt;</c>, <c>&lt;section&gt;</c>, <c>&lt;subsection&gt;</c>
-and <c>&lt;subsubsection&gt;</c>) elements contain a <c>&lt;body&gt;</c> and/or
+and <c>&lt;subsubsection&gt;</c> elements contain a <c>&lt;body&gt;</c> and/or
 any number of section elements of the next lower level. Skipping of levels is
 not allowed, e.g., a subsection cannot be directly below a chapter.
 </note>
@@ -619,7 +619,7 @@ Correct:     &lt;uri link="https://forums.gentoo.org/"&gt;
 
 <p>
 Inside tables (<c>&lt;table&gt;</c>) and listings (<c>&lt;ul&gt;</c>,
-<c>&lt;ol&gt;</c>) and <c>&lt;dl&gt;</c>, periods (".") should not be used
+<c>&lt;ol&gt;</c> and <c>&lt;dl&gt;</c>), periods (".") should not be used
 unless multiple sentences are used. In that case, every sentence should end
 with a period (or other reading marks).
 </p>
