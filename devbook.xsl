@@ -542,48 +542,50 @@
                 </button>
               </div>
               <div class="collapse navbar-collapse" id="gw-toolbar">
-              <div class="input-group">
-                <input type="search" name="search" placeholder="Search" title="Search Gentoo Developer Manual [f]" accesskey="f" id="searchInput" class="form-control" onclick="fetchDocuments()"/>
-                <div class="input-group-btn">
-                  <input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton btn btn-default" onclick="search()"/>
+                <div class="input-group">
+                  <input type="search" name="search" placeholder="Search" title="Search Gentoo Developer Manual [f]" accesskey="f" id="searchInput" class="form-control" onclick="fetchDocuments()"/>
+                  <div class="input-group-btn">
+                    <input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton btn btn-default" onclick="search()"/>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </nav>
-      </header>
-      <div id="searchResults" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
+        </nav>
+        <div id="searchResults" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">x</button>
               <h4 class="modal-title">Search Results</h4>
-            </div>
-            <div class="modal-body">
-              <p>No results found.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+              <div class="modal-body">
+                <p>No results found.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md010">
-            <ol class="breadcrumb">
-              <xsl:call-template name="printParentDocs">
-                <xsl:with-param name="path" select="/guide/@self"/>
-                <xsl:with-param name="depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
-              </xsl:call-template>
-            </ol>
+        <div class="container">
+          <div class="row">
+            <div class="col-md010">
+              <ol class="breadcrumb">
+                <xsl:call-template name="printParentDocs">
+                  <xsl:with-param name="path" select="/guide/@self"/>
+                  <xsl:with-param name="depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
+                </xsl:call-template>
+              </ol>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <xsl:apply-templates/>
-      </div>
+      </header>
+      <main>
+        <div class="container">
+          <xsl:apply-templates/>
+        </div>
+      </main>
       <footer>
         <div class="container">
           <div class="row">

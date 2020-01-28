@@ -47,12 +47,13 @@ IFS='' read -r -d '' HEADER << 'EOF'
 <li><a href="/index.html"><i class="fa fa-home"></i>  Home</a></li>
 <li><a href="../index.html"><i class="fa fa-arrow-up"></i>  Eclass Reference</a></li>
 </ul></div>
-</div></div></nav></header><div class="container"><div class="row"><div class="col-md010"><ol class="breadcrumb"><li><a href="/index.html">Master Index</a></li><li><a href="../index.html">Eclass Reference</a></li></ol></div></div></div>
-	<div class="container">
+</div></div></nav>
+<div class="container"><div class="row"><div class="col-md010"><ol class="breadcrumb"><li><a href="/index.html">Master Index</a></li><li><a href="../index.html">Eclass Reference</a></li></ol></div></div></div></header>
+<main><div class="container">
 EOF
 
 IFS='' read -r -d '' FOOTER << 'EOF'
-</div>
+</div></main>
 <footer><div class="container">
 <div class="row">
 <div class="col-xs-12 col-md-offset-2 col-md-7"></div>
