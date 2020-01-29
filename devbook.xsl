@@ -437,18 +437,18 @@
   </xsl:template>
 
   <xsl:template match="/">
+    <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
+    <xsl:variable name="relative_path_depth_recursion">
+      <xsl:call-template name="str:repeatString">
+        <xsl:with-param name="count" select="$relative_path_depth"/>
+        <xsl:with-param name="append">../</xsl:with-param>
+      </xsl:call-template>
+    </xsl:variable>
     <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
     <xsl:value-of select='$newline'/>
     <html lang="en">
     <head>
       <title><xsl:value-of select="/guide/chapter[1]/title"/> – Gentoo Development Guide</title>
-      <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
-      <xsl:variable name="relative_path_depth_recursion">
-        <xsl:call-template name="str:repeatString">
-          <xsl:with-param name="count" select="$relative_path_depth"/>
-          <xsl:with-param name="append">../</xsl:with-param>
-        </xsl:call-template>
-      </xsl:variable>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="description" content="The Gentoo Devmanual is a technical manual which covers topics such as writing ebuilds and eclasses, and policies that developers should be abiding by." />
       <link href="https://assets.gentoo.org/tyrian/bootstrap.min.css" rel="stylesheet" media="screen" />
@@ -508,13 +508,6 @@
               </div>
               <div class="collapse navbar-collapse navbar-main-collapse">
                 <ul class="nav navbar-nav">
-                  <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
-                  <xsl:variable name="relative_path_depth_recursion">
-                    <xsl:call-template name="str:repeatString">
-                      <xsl:with-param name="count" select="$relative_path_depth"/>
-                      <xsl:with-param name="append">../</xsl:with-param>
-                    </xsl:call-template>
-                  </xsl:variable>
                   <li><a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'), 'index.html', substring-after(@link, '##'))}"><span class="fa fa-home"/>&#160; Home</a></li>
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><xsl:value-of select="/guide/chapter[1]/title"/> <span class="caret"></span></a>
@@ -618,13 +611,6 @@
       <script src="https://assets.gentoo.org/tyrian/jquery.min.js"></script>
       <script src="https://assets.gentoo.org/tyrian/bootstrap.min.js"></script>
       <script src="https://assets.gentoo.org/lunr/lunr.min.js"></script>
-      <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
-      <xsl:variable name="relative_path_depth_recursion">
-          <xsl:call-template name="str:repeatString">
-            <xsl:with-param name="count" select="$relative_path_depth"/>
-            <xsl:with-param name="append">../</xsl:with-param>
-          </xsl:call-template>
-      </xsl:variable>
       <script><xsl:text>var documentsSrc = "</xsl:text><xsl:value-of select="$relative_path_depth_recursion"/><xsl:text>documents.js"</xsl:text></script>
       <script src="{$relative_path_depth_recursion}search.js"></script>
     </body>
