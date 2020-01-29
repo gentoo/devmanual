@@ -102,6 +102,8 @@ for i in $(/usr/bin/qlist eclass-manpages) /usr/share/man/man5/ebuild.5*; do
 	FINAL="${DIRNAME}/index.html"
 	DECOMPRESS=$(guesscompress "${i}")
 	[[ -d ${DIRNAME} ]] || mkdir -p ${DIRNAME}
+	# update the dir's mtime to prevent its removal below
+	touch ${DIRNAME}
 	# rebuild the man page each time
 	echo -n "${HEADER//@TITLE@/${BASENAME}}" > "${FINAL}"
 	# generate html pages and fix hyperlinks for eclass and ebuild man pages
