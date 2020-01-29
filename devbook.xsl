@@ -469,111 +469,121 @@
     </head>
     <body>
       <header>
-        <xsl:if test="not($offline)">
-        <div class="site-title">
-          <div class="container">
-            <div class="row">
-              <div class="site-title-buttons">
-                <div class="btn-group btn-group-sm">
-                  <a href="https://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-fw fa-download"></span> <strong> Get Gentoo!</strong></a>
-                  <div class="btn-group btn-group-sm">
-                    <a class="btn gentoo-org-sites dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
-                      <span class="fa fa-fw fa-map-o"></span> <span class="hidden-xs"> gentoo.org sites </span> <span class="caret"></span>
+        <xsl:choose>
+          <xsl:when test="$offline">
+            <nav class="offline">
+              <ul>
+                <li><xsl:call-template name="findPrevious"/></li>
+                <li><xsl:call-template name="findNext"/></li>
+              </ul>
+            </nav>
+          </xsl:when>
+          <xsl:otherwise>
+            <div class="site-title">
+              <div class="container">
+                <div class="row">
+                  <div class="site-title-buttons">
+                    <div class="btn-group btn-group-sm">
+                      <a href="https://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-fw fa-download"></span> <strong> Get Gentoo!</strong></a>
+                      <div class="btn-group btn-group-sm">
+                        <a class="btn gentoo-org-sites dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+                          <span class="fa fa-fw fa-map-o"></span> <span class="hidden-xs"> gentoo.org sites </span> <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                          <li><a href="https://www.gentoo.org/" title="Main Gentoo website"><span class="fa fa-home fa-fw"></span> gentoo.org</a></li>
+                          <li><a href="https://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text-o fa-fw"></span> Wiki</a></li>
+                          <li><a href="https://bugs.gentoo.org/" title="Report issues and find common issues"><span class="fa fa-bug fa-fw"></span> Bugs</a></li>
+                          <li><a href="https://forums.gentoo.org/" title="Discuss with the community"><span class="fa fa-comments-o fa-fw"></span> Forums</a></li>
+                          <li><a href="https://packages.gentoo.org/" title="Find software for your Gentoo"><span class="fa fa-hdd-o fa-fw"></span> Packages</a></li>
+                          <li class="divider"></li>
+                          <li><a href="https://planet.gentoo.org/" title="Find out what's going on in the developer community"><span class="fa fa-rss fa-fw"></span> Planet</a></li>
+                          <li><a href="https://archives.gentoo.org/" title="Read up on past discussions"><span class="fa fa-archive fa-fw"></span> Archives</a></li>
+                          <li><a href="https://sources.gentoo.org/" title="Browse our source code"><span class="fa fa-code fa-fw"></span> Sources</a></li>
+                          <li class="divider"></li>
+                          <li><a href="https://infra-status.gentoo.org/" title="Get updates on the services provided by Gentoo"><span class="fa fa-server fa-fw"></span> Infra Status</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <a href="/" title="Back to the homepage" class="site-logo">
+                      <object data="https://assets.gentoo.org/tyrian/site-logo.svg" type="image/svg+xml">
+                        <img src="https://assets.gentoo.org/tyrian/site-logo.png" alt="Gentoo Linux Logo" />
+                      </object>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                      <li><a href="https://www.gentoo.org/" title="Main Gentoo website"><span class="fa fa-home fa-fw"></span> gentoo.org</a></li>
-                      <li><a href="https://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text-o fa-fw"></span> Wiki</a></li>
-                      <li><a href="https://bugs.gentoo.org/" title="Report issues and find common issues"><span class="fa fa-bug fa-fw"></span> Bugs</a></li>
-                      <li><a href="https://forums.gentoo.org/" title="Discuss with the community"><span class="fa fa-comments-o fa-fw"></span> Forums</a></li>
-                      <li><a href="https://packages.gentoo.org/" title="Find software for your Gentoo"><span class="fa fa-hdd-o fa-fw"></span> Packages</a></li>
-                      <li class="divider"></li>
-                      <li><a href="https://planet.gentoo.org/" title="Find out what's going on in the developer community"><span class="fa fa-rss fa-fw"></span> Planet</a></li>
-                      <li><a href="https://archives.gentoo.org/" title="Read up on past discussions"><span class="fa fa-archive fa-fw"></span> Archives</a></li>
-                      <li><a href="https://sources.gentoo.org/" title="Browse our source code"><span class="fa fa-code fa-fw"></span> Sources</a></li>
-                      <li class="divider"></li>
-                      <li><a href="https://infra-status.gentoo.org/" title="Get updates on the services provided by Gentoo"><span class="fa fa-server fa-fw"></span> Infra Status</a></li>
+                    <span class="site-label">Development Guide</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <nav class="tyrian-navbar" role="navigation">
+              <div class="container">
+                <div class="row">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                  </div>
+                  <div class="collapse navbar-collapse navbar-main-collapse">
+                    <ul class="nav navbar-nav">
+                      <li><a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'), 'index.html', substring-after(@link, '##'))}"><span class="fa fa-home"/>&#160; Home</a></li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><xsl:value-of select="/guide/chapter[1]/title"/> <span class="caret"></span></a>
+                        <xsl:call-template name="contentsTree">
+                          <xsl:with-param name="maxdepth" select="1"/>
+                          <xsl:with-param name="ulclass">dropdown-menu</xsl:with-param>
+                        </xsl:call-template>
+                      </li>
+                      <li><xsl:call-template name="findPrevious"/></li>
+                      <li><xsl:call-template name="findNext"/></li>
                     </ul>
                   </div>
                 </div>
               </div>
-              <div>
-                <a href="/" title="Back to the homepage" class="site-logo">
-                  <object data="https://assets.gentoo.org/tyrian/site-logo.svg" type="image/svg+xml">
-                    <img src="https://assets.gentoo.org/tyrian/site-logo.png" alt="Gentoo Linux Logo" />
-                  </object>
-                </a>
-                <span class="site-label">Development Guide</span>
+            </nav>
+            <nav class="navbar navbar-grey navbar-stick" id="devmanual-actions" role="navigation">
+              <div class="container">
+                <div class="row">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gw-toolbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                  </div>
+                  <div class="collapse navbar-collapse" id="gw-toolbar">
+                    <div class="input-group">
+                      <input type="search" name="search" placeholder="Search" title="Search Gentoo Developer Manual [f]" accesskey="f" id="searchInput" class="form-control" onclick="fetchDocuments()"/>
+                      <div class="input-group-btn">
+                        <input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton btn btn-default" onclick="search()"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <nav class="tyrian-navbar" role="navigation">
-          <div class="container">
-            <div class="row">
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-              </div>
-              <div class="collapse navbar-collapse navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                  <li><a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'), 'index.html', substring-after(@link, '##'))}"><span class="fa fa-home"/>&#160; Home</a></li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><xsl:value-of select="/guide/chapter[1]/title"/> <span class="caret"></span></a>
-                    <xsl:call-template name="contentsTree">
-                      <xsl:with-param name="maxdepth" select="1"/>
-                      <xsl:with-param name="ulclass">dropdown-menu</xsl:with-param>
-                    </xsl:call-template>
-                  </li>
-                  <li><xsl:call-template name="findPrevious"/></li>
-                  <li><xsl:call-template name="findNext"/></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </nav>
-        <nav class="navbar navbar-grey navbar-stick" id="devmanual-actions" role="navigation">
-          <div class="container">
-            <div class="row">
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gw-toolbar">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-              </div>
-              <div class="collapse navbar-collapse" id="gw-toolbar">
-                <div class="input-group">
-                  <input type="search" name="search" placeholder="Search" title="Search Gentoo Developer Manual [f]" accesskey="f" id="searchInput" class="form-control" onclick="fetchDocuments()"/>
-                  <div class="input-group-btn">
-                    <input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton btn btn-default" onclick="search()"/>
+            </nav>
+            <div id="searchResults" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                    <h4 class="modal-title">Search Results</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>No results found.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </nav>
-        <div id="searchResults" class="modal fade" role="dialog">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">x</button>
-              <h4 class="modal-title">Search Results</h4>
-              </div>
-              <div class="modal-body">
-                <p>No results found.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        </xsl:if>
+          </xsl:otherwise>
+        </xsl:choose>
         <div class="container">
           <div class="row">
             <div class="col-md010">

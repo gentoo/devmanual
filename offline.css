@@ -17,3 +17,29 @@ header, footer {
 h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
+
+nav.offline ul, .breadcrumb {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav.offline li, .breadcrumb li {
+    display: inline;
+}
+
+nav.offline li+li {
+    margin-left: 1em;
+}
+
+.breadcrumb li+li:before {
+    content: " / ";
+}
+
+.fa-arrow-left:after {
+    content: "\25c4"; /* BLACK LEFT-POINTING POINTER */
+}
+
+.fa-arrow-right:after {
+    content: "\25ba"; /* BLACK RIGHT-POINTING POINTER */
+}
