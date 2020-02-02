@@ -37,7 +37,7 @@ IFS='' read -r -d '' HEADER << 'EOF'
 </ul>
 </div>
 </div></div>
-<div class="logo">
+<div>
 <a href="/" title="Back to the homepage" class="site-logo"><object data="https://assets.gentoo.org/tyrian/site-logo.svg" type="image/svg+xml"><img src="https://assets.gentoo.org/tyrian/site-logo.png" alt="Gentoo Linux Logo"></object></a><span class="site-label">Development Guide</span>
 </div>
 </div></div></div>
