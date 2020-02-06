@@ -1,16 +1,16 @@
-# These "find" commands match text.xml and *.svg files, respectively,
-# but only after excluding the .git directory from the search for
-# performance and overall sanity reasons.
-XMLS := $(shell find . -name .git -prune -o -type f -name 'text.xml' -print)
-SVGS := $(shell find . -name .git -prune -o -type f -name '*.svg' -print)
+# Run a single "find" pass to get a list of all files (with the .git
+# directory excluded), then filter out what we need.
+ALL_FILES := $(shell find . -name .git -prune -o -type f -print)
+XMLS := $(filter %/text.xml,$(ALL_FILES))
+SVGS := $(filter %.svg,$(ALL_FILES))
 HTMLS := $(subst text.xml,index.html,$(XMLS))
-ECLASS_HTMLS := $(wildcard eclass-reference/*/index.html)
+ECLASS_HTMLS := $(filter ./eclass-reference/%/index.html,$(ALL_FILES))
 IMAGES := $(patsubst %.svg,%.png,$(SVGS))
 
 # Nonzero value disables external assets for offline browsing.
 OFFLINE = 0
 
-all: prereq validate build documents.js
+all: prereq validate delete-old build documents.js
 
 prereq:
 	@type rsvg-convert >/dev/null 2>&1 || \
@@ -70,7 +70,14 @@ tidy: $(HTMLS) $(ECLASS_HTMLS)
 	test $${status} -eq 0 && echo "tidy validation successful"; \
 	exit $${status}
 
-clean:
-	rm -f $(HTMLS) $(IMAGES) _documents.js documents.js
+# Delete any orphaned html and image files that could be left over
+# after the corresponding source file was moved or removed.
+delete-old:
+	@-rm -f $(filter-out $(HTMLS) $(ECLASS_HTMLS) $(IMAGES), \
+	  $(filter %/index.html %.png,$(ALL_FILES)))
+	@find . ! -path './.git*' -type d -empty -delete
 
-.PHONY: all prereq validate build tidy clean
+clean: delete-old
+	@rm -f $(HTMLS) $(IMAGES) _documents.js documents.js
+
+.PHONY: all prereq validate build tidy delete-old clean
