@@ -26,9 +26,9 @@ If this is a problem, don't submit anything.
 
 <p>
 This document is produced using the DevBook XML build system. You can download
-a snapshot of the system as well as the relevant XML files from Subversion. You
-can also view the XML of any page by replacing <c>index.html</c> with
-<c>text.xml</c> in the URL. If you'd rather just work with plain text, that's
+a snapshot of the system as well as the relevant XML files from Git,
+see the <uri link="::appendices/contributing/#Where to find the sources">
+following section</uri>. If you'd rather just work with plain text, that's
 fine too <d/> the formatting can be easily done by someone else (meaning, us).
 </p>
 </body>
