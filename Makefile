@@ -7,6 +7,14 @@ HTMLS := $(subst text.xml,index.html,$(XMLS))
 ECLASS_HTMLS := $(filter ./eclass-reference/%/index.html,$(ALL_FILES))
 IMAGES := $(patsubst %.svg,%.png,$(SVGS))
 
+CSS_FILES = devmanual.css offline.css
+JS_FILES = search.js documents.js
+
+prefix = /usr/local/share
+docdir = $(prefix)/doc/devmanual
+htmldir = $(docdir)
+DESTDIR =
+
 # Nonzero value disables external assets for offline browsing.
 OFFLINE = 0
 
@@ -54,6 +62,17 @@ documents.js: bin/build_search_documents.py $(XMLS)
 %.html: $$(dir $$@)text.xml devbook.xsl xsl/*.xsl $$(subst text.xml,index.html,$$(wildcard $$(dir $$@)*/text.xml))
 	xsltproc --param offline "$(OFFLINE)" devbook.xsl $< > $@
 
+install: all
+	set -e; \
+	for file in $(HTMLS) $(ECLASS_HTMLS) $(IMAGES); do \
+	  install -d "$(DESTDIR)$(htmldir)"/$${file%/*}; \
+	  install -m 644 $${file} "$(DESTDIR)$(htmldir)"/$${file}; \
+	done
+	install -m 644 $(CSS_FILES) "$(DESTDIR)$(htmldir)"/
+	if test $(OFFLINE) -eq 0; then \
+	  install -m 644 $(JS_FILES) "$(DESTDIR)$(htmldir)"/; \
+	fi
+
 validate:
 	@xmllint --noout --dtdvalid devbook.dtd $(XMLS) \
 	  && echo "xmllint validation successful"
@@ -80,4 +99,4 @@ delete-old:
 clean:
 	@rm -f $(HTMLS) $(IMAGES) _documents.js documents.js
 
-.PHONY: all prereq validate build tidy delete-old clean
+.PHONY: all prereq build install validate tidy delete-old clean
