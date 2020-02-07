@@ -15,7 +15,7 @@ all: prereq validate build documents.js
 prereq:
 	@type rsvg-convert >/dev/null 2>&1 || \
 	{ echo "gnome-base/librsvg required" >&2;\
-          exit 1; }
+	  exit 1; }
 	@type xsltproc >/dev/null 2>&1 || \
 	{ echo "dev-libs/libxslt is with python required" >&2;\
 	  exit 1; }
