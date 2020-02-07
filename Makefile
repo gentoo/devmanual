@@ -10,7 +10,7 @@ IMAGES := $(patsubst %.svg,%.png,$(SVGS))
 # Nonzero value disables external assets for offline browsing.
 OFFLINE = 0
 
-all: prereq validate delete-old build documents.js
+all: prereq validate build documents.js
 
 prereq:
 	@type rsvg-convert >/dev/null 2>&1 || \
@@ -54,7 +54,7 @@ documents.js: bin/build_search_documents.py $(XMLS)
 %.html: $$(dir $$@)text.xml devbook.xsl xsl/*.xsl $$(subst text.xml,index.html,$$(wildcard $$(dir $$@)*/text.xml))
 	xsltproc --param offline "$(OFFLINE)" devbook.xsl $< > $@
 
-validate: prereq
+validate:
 	@xmllint --noout --dtdvalid devbook.dtd $(XMLS) \
 	  && echo "xmllint validation successful"
 
@@ -77,7 +77,7 @@ delete-old:
 	  $(filter %/index.html %.png,$(ALL_FILES)))
 	@find . ! -path './.git*' -type d -empty -delete
 
-clean: delete-old
+clean:
 	@rm -f $(HTMLS) $(IMAGES) _documents.js documents.js
 
 .PHONY: all prereq validate build tidy delete-old clean
