@@ -54,15 +54,19 @@ pkg_info() {
 <section>
 <title>Notes on <c>pkg_info</c></title>
 <body>
+
 <p>
-this phase will be called when a package manager displays
-information about a package.
-within EAPI=4, this phase can also be called for non-installed
-packages.
+This phase will be called when a package manager displays information about
+a package.
 </p>
+
+<p>
+The <c>pkg_info</c> function may also be called by the package manager for
+non-installed packages. Ebuild writers should note that dependencies may not be
+available.
+</p>
+
 </body>
 </section>
-
 </chapter>
 </guide>
-

@@ -32,7 +32,10 @@ during the unpack and compile stages.
       <c>econf args</c>
     </ti>
     <ti>
-      Wrapper for <c>./configure</c>. Passes on all <c>args</c>. Will abort (via <c>die</c>) should <c>configure</c> fail.
+      Wrapper for <c>./configure</c>. Passes on all <c>args</c>. Will abort
+      (via <c>die</c>) should <c>configure</c> fail.
+      See <uri link="::ebuild-writing/functions/src_configure/configuring/#econf Options"/>
+      for details.
     </ti>
   </tr>
   <tr>

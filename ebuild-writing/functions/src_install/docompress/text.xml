@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_install/docompress/">
+<chapter>
+<title>Controllable Compression</title>
+<body>
+
+<p>
+You can call the <c>docompress</c> function in <c>src_install</c> to control
+which items in the destination folder <c>${D}</c> should be compressed and
+which shouldn't be compressed. You can include or exclude directories or plain
+files. The default inclusion list contains:
+</p>
+
+<ul>
+  <li><c>/usr/share/doc</c></li>
+  <li><c>/usr/share/info</c></li>
+  <li><c>/usr/share/man</c></li>
+</ul>
+
+<p>
+The default exclusion list contains:
+</p>
+
+<ul>
+  <li><c>/usr/share/doc/${PF}/html</c></li>
+</ul>
+
+<p>
+When a directory is in- or excluded, all files and directories in the given
+directories shall be added to the corresponding list. If a file is in- or
+excluded, the file shall be added to the corresponding list (exclusion is
+stronger than inclusion <d/> if a file is in both lists, the inclusion will
+be ignored).
+</p>
+
+<p>
+If the first argument of <c>docompress</c> is <c>-x</c>, the items specified
+will be added to the exclusion list, otherwise they will be added to the
+inclusion list.
+</p>
+
+<note>
+When <c>docompress</c> is called, it is <e>not</e> required that the paths
+specified as its arguments are pointing to existing files or directories.
+However, if a file still doesn't exist when <c>src_install</c> has completed,
+it will be ignored with a warning.
+</note>
+
+</body>
+</chapter>
+</guide>

@@ -47,10 +47,9 @@ function can die in multiple places.
 </p>
 
 <p>
-Ebuild helpers from EAPI 4 and onwards automatically die on
-failure. Some eclass-provided functions will automatically die upon
-failure, others will not. Developers should check the
-<uri link="::eclass-reference/">eclass reference</uri> when in doubt.
+Ebuild helpers automatically die on failure. Some eclass-provided functions
+will automatically die upon failure, others will not. Developers should check
+the <uri link="::eclass-reference/">eclass reference</uri> when in doubt.
 </p>
 
 <p>
@@ -135,5 +134,30 @@ time, <c>assert</c> is enough.
 </body>
 </section>
 
+<section>
+<title>The <c>nonfatal</c> Command</title>
+<body>
+
+<p>
+If a non-zero exit status from an ebuild helper function is expected, you may
+call it under the <c>nonfatal</c> function. Instead of dying on failure,
+the command will then return non-zero exit status, as in the following example:
+</p>
+
+<codesample lang="ebuild">
+src_test() {
+	if ! nonfatal emake check ; then
+		local a
+		eerror "Tests failed. Looking for files to add to your bug report..."
+		while IFS='' read -r -d $'\0' a ; do
+			eerror "    ${a}"
+		done &lt; &lt;(find "${S}" -type f -name '*.log' -print0)
+		die "Make check failed"
+	fi
+}
+</codesample>
+
+</body>
+</section>
 </chapter>
 </guide>

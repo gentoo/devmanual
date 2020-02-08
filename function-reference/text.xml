@@ -18,6 +18,7 @@ The following functions are available for use in ebuilds:
 </chapter>
 
 <include href="build-functions/"/>
+<include href="error-functions/"/>
 <include href="install-functions/"/>
 <include href="message-functions/"/>
 <include href="query-functions/"/>

@@ -109,9 +109,15 @@ Usually the package's build system will not install the <c>README</c>,
 </p>
 
 <codesample lang="ebuild">
-    emake DESTDIR="${D}" install
-    dodoc README CHANGES
+	emake DESTDIR="${D}" install
+	dodoc README CHANGES
+	dodoc -r doc
 </codesample>
+
+<p>
+<c>dodoc</c> supports <c>-r</c> as the first argument, which allows directories
+to be installed recursively.
+</p>
 
 <note>
 There is no need to <c>dodoc</c> <c>COPYING</c>! The license belongs
@@ -215,5 +221,20 @@ upstream explaining the situation to them.
 </body>
 </section>
 
+<section>
+<title><c>src_install</c> Processes</title>
+<body>
+
+<p>
+The following subsections cover different topics which often occur when writing
+<c>src_install</c> functions.
+</p>
+
+<contentsTree/>
+
+</body>
+</section>
 </chapter>
+
+<include href="docompress/"/>
 </guide>

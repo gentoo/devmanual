@@ -128,8 +128,7 @@ the first is the source name, the second the name to use when installing.
     </ti>
     <ti>
       Install a documentation file into <c>/usr/share/doc/${PF}</c>.
-      For EAPI 4 and above, the <c>-r</c> option allows directories to
-      be installed recursively.
+      The <c>-r</c> option allows directories to be installed recursively.
     </ti>
   </tr>
   <tr>
@@ -205,6 +204,8 @@ the first is the source name, the second the name to use when installing.
     <ti>
       Install a miscellaneous file.
       The <c>-r</c> option allows directories to be installed recursively.
+      Any symlinks encountered are installed as symlinks, when installing
+      recursively.
     </ti>
   </tr>
   <tr>
@@ -405,6 +406,15 @@ the first is the source name, the second the name to use when installing.
     </ti>
     <ti>
       Install an <c>sbin</c> file using the second argument as the name
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>docompress</c>
+    </ti>
+    <ti>
+      Controls compression of files. Normally executed to exclude from
+      compression, e.g., <c>docompress -x /usr/share/doc/${PF}/examples</c>.
     </ti>
   </tr>
   <tr>

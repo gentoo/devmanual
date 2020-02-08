@@ -572,14 +572,24 @@ There are also shortcuts for conditional situations:
 <body>
 
 <p>
-If a dependency is introducing or removing a <c>USE</c> flag in new versions, a use
-dependency default may be used. Appending a <c>(+)</c> or <c>(-)</c> suffix will indicate
-whether the absence of the flag from a particular version should indicate its
-presence or absence.
+If a dependency is introducing or removing a <c>USE</c> flag in a new package
+version, a <c>(+)</c> or <c>(-)</c> may be added to the use-dependency
+specification to define a default value in case the flag does not exist in the
+target package. The <c>(+)</c> indicates that the missing flag is assumed to be
+enabled, <c>(-)</c> the opposite.
 </p>
+
 <p>
-<c>>=dev-libs/boost-1.48[threads(+)]</c> will treat all versions without <c>threads</c> as having it set.
+For example, the following will treat all <c>boost</c> versions without the
+<c>threads</c> flag as having it enabled, and all <c>gcc</c> versions without
+the <c>openmp</c> as having it disabled:
 </p>
+
+<codesample lang="ebuild">
+DEPEND="
+	&gt;=dev-libs/boost-1.48[threads(+)]
+	sys-devel/gcc[openmp(-)]"
+</codesample>
 
 </body>
 </subsection>

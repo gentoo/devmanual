@@ -316,10 +316,10 @@ src_compile() {
 </codesample>
 
 <p>
-In some exceptional cases, above policy would break reverse USE
-dependencies. To avoid this, the ebuild can specify allowed USE flag
-combinations with <c>REQUIRED_USE</c> (available in EAPI 4). See section
-<uri link="::ebuild-writing/eapi/#EAPI=4"/> for a description
+In some exceptional cases, above policy would break reverse USE dependencies.
+To avoid this, the ebuild can specify allowed USE flag combinations with
+<c>REQUIRED_USE</c>. See section
+<uri link="::ebuild-writing/variables/#REQUIRED_USE"/> for a description
 of its syntax.
 </p>
 

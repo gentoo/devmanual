@@ -24,7 +24,7 @@ An example of a virtual:
 </p>
 
 <codesample lang="ebuild">
-EAPI=4
+EAPI=7
 
 DESCRIPTION="Virtual for C++ tr1 &lt;type_traits&gt;"
 SLOT="0"

@@ -153,6 +153,35 @@ for these variables when writing ebuilds.
 		satisfied by <c>BDEPEND</c>, typically executable build tools.
     </ti>
   </tr>
+  <tr>
+    <ti><c>MERGE_TYPE</c></ti>
+    <ti>
+      The type of package that is being merged. Possible values are:
+      <c>source</c> if building and installing a package from source,
+      <c>binary</c> if installing a binary package previously built from
+      the ebuild, <c>buildonly</c> if building a binary package without
+      installing it.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>REPLACING_VERSIONS</c></ti>
+    <ti>
+      A whitespace-separated list of all versions (<c>PVR</c>) of this package
+      that are being replaced (uninstalled or overwritten) as a result of this
+      install. It is a list, not a single optional value, to handle pathological
+      cases such as installing <c>foo-2:2</c> to replace <c>foo-2:1</c> and
+      <c>foo-3:2</c>. Available in <c>pkg_preinst</c> and <c>pkg_postinst</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>REPLACED_BY_VERSION</c></ti>
+    <ti>
+      The single version (<c>PVR</c>) of this package that is replacing the
+      version provided by this ebuild, if it is being uninstalled as part of
+      an install. An empty string otherwise, i.e., if it is being uninstalled
+      without replacement. Available in <c>pkg_prerm</c> and <c>pkg_postrm</c>.
+    </ti>
+  </tr>
 </table>
 
 </body>
@@ -238,9 +267,9 @@ The following variables may or must be defined by every ebuild.
   <tr>
     <ti><c>REQUIRED_USE</c></ti>
     <ti>
-    A list of assertions that must be met by the configuration of
-    <c>USE</c> flags to be valid for this ebuild. (Requires EAPI>=4.)
-    See <uri link="::ebuild-writing/variables#REQUIRED_USE"/>.
+      A list of assertions that must be met by the configuration of <c>USE</c>
+      flags to be valid for this ebuild.
+      See <uri link="::ebuild-writing/variables/#REQUIRED_USE"/>.
     </ti>
   </tr>
   <tr>
@@ -300,10 +329,11 @@ The following variables may or must be defined by every ebuild.
   <tr>
     <ti><c>DOCS</c></ti>
     <ti>
-    An array or space-delimited list of documentation files for
-    the default src_install function to install using dodoc. If
-    undefined, a reasonable default list is used. (Requires
-    <uri link="::ebuild-writing/eapi/#EAPI=4">EAPI&gt;=4</uri>.)
+      An array or whitespace-separated list of documentation files for
+      the default <c>src_install</c> function to install using <c>dodoc</c>.
+      If undefined, a reasonable default list is used. See the
+      <uri link="::ebuild-writing/functions/src_install/#Default src_install">
+      default <c>src_install</c> function</uri>.
     </ti>
   </tr>
   <tr>

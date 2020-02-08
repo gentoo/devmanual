@@ -67,7 +67,7 @@ pkg_pretend() {
 <title>Notes on <c>pkg_pretend</c></title>
 <body>
 <p>
-the <c>pkg_pretend</c> phase can be used to do sanity checks
+The <c>pkg_pretend</c> phase can be used to do sanity checks
 before the main phase function sequence is run (meaning this phase is
 executed after the package manager has calculated the dependencies
 and before installing them).

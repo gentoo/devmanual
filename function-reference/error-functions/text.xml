@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<guide self="function-reference/error-functions/">
+<chapter>
+<title>Error Functions Reference</title>
+<body>
+
+<p>
+The following functions are provided by the package manager for error handling.
+</p>
+
+<table>
+  <tr>
+    <th>Function</th>
+    <th>Details</th>
+  </tr>
+  <tr>
+    <ti><c>die</c></ti>
+    <ti>
+      <p>
+      Displays an error message provided in its argument, and aborts the build
+      process.
+      </p>
+      <p>
+      In EAPI 6 and later, <c>die</c> can be called under the <c>nonfatal</c>
+      command and with the <c>-n</c> option, in which case it will not abort
+      the build process, but return with non-zero status.
+      </p>
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>assert</c></ti>
+    <ti>
+      Checks the value of the <c>PIPESTATUS</c> array, and calls <c>die</c>
+      if any of its component is non-zero (which indicates failure of the
+      preceding command pipeline).
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>nonfatal</c></ti>
+    <ti>
+      Takes another command as its argument and executes it. If the command
+      fails and would normally die, it returns with non-zero status instead
+      when called under <c>nonfatal</c>.
+    </ti>
+  </tr>
+</table>
+
+</body>
+</chapter>
+</guide>
