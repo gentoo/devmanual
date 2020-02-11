@@ -41,8 +41,7 @@ build: $(HTMLS) $(IMAGES)
 # document in devmanual gets a unique ID, which is used to
 # quickly tie search matches to the corresponding documents.
 documents.js: bin/build_search_documents.py $(XMLS)
-	./bin/build_search_documents.py $(XMLS) > _documents.js
-	mv _documents.js documents.js
+	./bin/build_search_documents.py $(XMLS) > $@
 
 %.png : %.svg
 	rsvg-convert --output=$@ $<
@@ -89,14 +88,7 @@ tidy: $(HTMLS) $(ECLASS_HTMLS)
 	test $${status} -eq 0 && echo "tidy validation successful"; \
 	exit $${status}
 
-# Delete any orphaned html and image files that could be left over
-# after the corresponding source file was moved or removed.
-delete-old:
-	@-rm -f $(filter-out $(HTMLS) $(ECLASS_HTMLS) $(IMAGES), \
-	  $(filter %/index.html %.png,$(ALL_FILES)))
-	@find . ! -path './.git*' -type d -empty -delete
-
 clean:
-	@rm -f $(HTMLS) $(IMAGES) _documents.js documents.js
+	@rm -f $(HTMLS) $(IMAGES) documents.js
 
-.PHONY: all prereq build install validate tidy delete-old clean
+.PHONY: all prereq build install validate tidy clean
