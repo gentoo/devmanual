@@ -44,11 +44,17 @@ IFS='' read -r -d '' HEADER << 'EOF'
 <nav class="tyrian-navbar" role="navigation"><div class="container"><div class="row">
 <div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
 <div class="collapse navbar-collapse navbar-main-collapse"><ul class="nav navbar-nav">
-<li><a href="/index.html"><i class="fa fa-home"></i>  Home</a></li>
-<li><a href="../index.html"><i class="fa fa-arrow-up"></i>  Eclass Reference</a></li>
+<li><a href="../../index.html"><span class="fa fa-home"></span>&nbsp;Home</a></li>
+<li><a href="../index.html"><span class="fa fa-arrow-up"></span>&nbsp;Eclass Reference</a></li>
 </ul></div>
 </div></div></nav>
-<div class="container"><div class="row"><div class="col-md010"><ol class="breadcrumb"><li><a href="/index.html">Master Index</a></li><li><a href="../index.html">Eclass Reference</a></li></ol></div></div></div></header>
+<div class="container"><div class="row"><div class="col-md010">
+<ol class="breadcrumb">
+<li><a href="../../index.html">Master Index</a></li>
+<li><a href="../index.html">Eclass Reference</a></li>
+</ol>
+</div></div></div>
+</header>
 <main><div class="container">
 EOF
 
