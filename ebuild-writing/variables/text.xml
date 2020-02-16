@@ -448,8 +448,7 @@ pseudo-protocol.
 </p>
 
 <p>
-One might define a set of &quot;example&quot;
-mirrors,
+One might define a set of "example" mirrors,
 </p>
 
 <!--
@@ -755,7 +754,8 @@ to be matched, a USE flag in a terminal element must be enabled
 
 <p>
 Essentially, <c>REQUIRED_USE</c> is an analogue of <c>DEPEND</c> style syntax.
-For example, to state that some combination is forbidden, i.e. &quot;if foo is set, bar must be unset&quot;:
+For example, to state that some combination is forbidden, i.e. "if foo is set,
+bar must be unset":
 </p>
 
 <codesample lang="ebuild">

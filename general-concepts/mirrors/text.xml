@@ -29,7 +29,7 @@ Three <c>RESTRICT</c> keywords can be used to control the mirroring process.
 </p>
 
 <p>
-The <c>RESTRICT=&quot;mirror&quot;</c> setting should be used if we cannot legally mirror
+The <c>RESTRICT="mirror"</c> setting should be used if we cannot legally mirror
 certain files; files will still be downloaded from the original locations.
 </p>
 
