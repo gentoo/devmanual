@@ -420,7 +420,7 @@
                 <ul>
                 <xsl:for-each select="document(concat($path, @href, 'text.xml'))//*[name()=$extraction]">
                   <xsl:variable name="extraction_id" select="position()"/>
-                  <li><xsl:apply-templates select="(//*[name()=$extraction])[position()=$extraction_id]"/><br/></li>
+                  <li><xsl:apply-templates select="(//*[name()=$extraction])[position()=$extraction_id]"/></li>
                 </xsl:for-each>
                 </ul>
               </xsl:if>
