@@ -105,7 +105,7 @@ include the URI scheme, for example <c>https://</c>).
 <p>
 The <c>SRC_URI</c> tells Portage the address to use for downloading
 the source tarball. Here, <c>mirror://sourceforge/</c> is a special
-notation meaning &quot;any of the Sourceforge mirrors&quot;.
+notation meaning "any of the Sourceforge mirrors".
 <c>${P}</c> is a read-only variable set by Portage which is the package's
 name and version <d/> in this case, it would be <c>ctags-5.5.4</c>.
 </p>
@@ -116,8 +116,8 @@ or (at your option) any later version).
 </p>
 
 <p>
-The <c>SLOT</c> variable tells Portage which slot this package installs to. If
-you've not seen slots before, either just use <c>&quot;0&quot;</c> or read
+The <c>SLOT</c> variable tells Portage which slot this package installs to.
+If you've not seen slots before, either just use <c>"0"</c> or read
 <uri link="::general-concepts/slotting"/>.
 </p>
 
@@ -152,11 +152,10 @@ this <d/> see <uri link="::general-concepts/install-destinations"/> and
 </p>
 
 <note>
-The canonical install method is <c>emake DESTDIR=&quot;${D}&quot;
-install</c>. This will work with any properly written standard
-<c>Makefile</c>. If this gives sandbox errors, see <uri
-link="::ebuild-writing/functions/src_install/"/> for how to do manual
-installs.
+The canonical install method is <c>emake DESTDIR="${D}" install</c>. This will
+work with any properly written standard <c>Makefile</c>. If this gives sandbox
+errors, see <uri link="::ebuild-writing/functions/src_install/"/> for how to do
+manual installs.
 </note>
 
 <p>
