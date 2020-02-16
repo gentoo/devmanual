@@ -355,8 +355,8 @@ The following variables may or must be defined by every ebuild.
 <body>
 
 <p>
-When slots are not needed, use <c>SLOT="0"</c>. Do <b>not</b> use <c>SLOT=""</c>, as
-this will disable slotting for this package.
+When slots are not needed, use <c>SLOT="0"</c>. Do <b>not</b> use
+<c>SLOT=""</c>, because the variable must not be empty.
 </p>
 
 <p>
