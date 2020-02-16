@@ -47,7 +47,7 @@ src_install() {
 				FAQ CREDITS CHANGELOG ; do
 			[[ -s "${d}" ]] &amp;&amp; dodoc "${d}"
 		done
-	elif declare -p DOCS | grep -q "^declare -a " ; then
+	elif [[ $(declare -p DOCS) == "declare -a"* ]] ; then
 		dodoc "${DOCS[@]}"
 	else
 		dodoc ${DOCS}

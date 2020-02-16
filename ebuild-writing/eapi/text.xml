@@ -272,7 +272,7 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 		</p>
 <codesample lang="ebuild">
 src_prepare() {
-	if declare -p PATCHES | grep -q "^declare -a "; then
+	if [[ $(declare -p PATCHES 2&gt;/dev/null) == "declare -a"* ]]; then
 		[[ -n ${PATCHES[@]} ]] &amp;&amp; eapply "${PATCHES[@]}"
 	else
 		[[ -n ${PATCHES} ]] &amp;&amp; eapply ${PATCHES}

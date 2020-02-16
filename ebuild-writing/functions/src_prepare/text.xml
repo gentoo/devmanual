@@ -49,12 +49,12 @@ implementation:
 
 <codesample lang="ebuild">
 src_prepare() {
-    if declare -p PATCHES | grep -q "^declare -a "; then
-        [[ -n ${PATCHES[@]} ]] &amp;&amp; eapply "${PATCHES[@]}"
-    else
-        [[ -n ${PATCHES} ]] &amp;&amp; eapply ${PATCHES}
-    fi
-    eapply_user
+	if [[ $(declare -p PATCHES 2&gt;/dev/null) == "declare -a"* ]]; then
+		[[ -n ${PATCHES[@]} ]] &amp;&amp; eapply "${PATCHES[@]}"
+	else
+		[[ -n ${PATCHES} ]] &amp;&amp; eapply ${PATCHES}
+	fi
+	eapply_user
 }
 </codesample>
 
