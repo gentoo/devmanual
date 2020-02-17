@@ -13,7 +13,8 @@ parallel. This feature is called slotting.
 
 <p>
 Most packages have no need for slotting. These packages specify <c>SLOT="0"</c>
-in the ebuilds.
+in the ebuilds. This is purely a convention; the package manager does not treat
+<c>0</c> any different from other slot values.
 </p>
 
 <note>
