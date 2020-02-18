@@ -390,7 +390,7 @@
       <!-- See if we should be processing comments by now; we need to test for
 	   two possible cases:	* commentSeeker != 0 (so we have a comment), or,
 				* the first token is a "#" -->
-      <xsl:when test="($commentSeeker != 0 and position() > $commentSeeker) or substring(../*[position()=1], 1, 1) = $lang.highlight.ebuild.commentChar or
+      <xsl:when test="($commentSeeker != 0 and position() &gt; $commentSeeker) or substring(../*[position()=1], 1, 1) = $lang.highlight.ebuild.commentChar or
                       . = $lang.highlight.ebuild.commentChar">
         <span class="Comment"><xsl:value-of select="."/></span>
       </xsl:when>

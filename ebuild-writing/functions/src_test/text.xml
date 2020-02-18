@@ -34,9 +34,9 @@
 <p>The default test phase in EAPI 6 is equivalent to the following:</p>
 <codesample lang="ebuild">
 src_test() {
-	if emake check -n &amp;> /dev/null; then
+	if emake check -n &amp;&gt; /dev/null; then
 		emake check
-	elif emake test -n &amp;> /dev/null; then
+	elif emake test -n &amp;&gt; /dev/null; then
 		emake test
 	fi
 }

@@ -50,7 +50,7 @@ from the plugin files and convert it to Vim help format.
 # problems for us during the unmerge. Fortunately, sed can fix this
 # for us. First, we extract the documentation:
 sed -e '1,/^" HelpExtractorDoc:$/d' \
-	"${S}"/plugin/ZoomWin.vim > ${S}/doc/ZoomWin.txt \
+	"${S}"/plugin/ZoomWin.vim &gt; ${S}/doc/ZoomWin.txt \
 	|| die "help extraction failed"
 # Then we remove the help extraction code from the plugin file:
 sed -i -e '/^" HelpExtractor:$/,$d' "${S}"/plugin/ZoomWin.vim \
@@ -65,7 +65,7 @@ constructs are specific to <c>GNU sed 4</c> <d/> on non-GNU userland archs, the
 guaranteed to be installed as part of <c>@system</c>. This was not
 always the case,
 which is why some packages, particularly those which use <c>sed -i</c>, have
-<c>DEPEND</c> s upon <c>>=sys-apps/sed-4</c>.
+<c>DEPEND</c> s upon <c>&gt;=sys-apps/sed-4</c>.
 </p>
 </body>
 
@@ -82,7 +82,7 @@ sed [ option flags ] \
 	-e 'first command' \
 	-e 'second command' \
 	-e 'and so on' \
-	input-file > output-file \
+	input-file &gt; output-file \
 	|| die "Oops, sed didn't work!"
 </codesample>
 

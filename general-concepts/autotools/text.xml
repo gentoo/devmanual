@@ -479,7 +479,7 @@ man_MANS = glep31check.1
 EXTRA_DIST = glep31check.in
 
 %.1 : %.in
-    @regex_cmd@ -e "s,\@VERSION\@,$(VERSION),g" $? > $@
+    @regex_cmd@ -e "s,\@VERSION\@,$(VERSION),g" $? &gt; $@
 </codesample>
 
 <p>

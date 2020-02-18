@@ -59,7 +59,7 @@
         </span>
       </xsl:when>
 
-      <xsl:when test="$commentOpen != $commentClosed and position() > $commentOpen">
+      <xsl:when test="$commentOpen != $commentClosed and position() &gt; $commentOpen">
         <span class="Comment"><xsl:value-of select="."/></span>
       </xsl:when>
 

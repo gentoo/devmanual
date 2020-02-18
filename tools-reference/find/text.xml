@@ -124,7 +124,7 @@ Useful rules include:
 </table>
 
 <note>
-EAPI>=5 assumes GNU find, so it is safe to use GNU extensions in
+EAPI&gt;=5 assumes GNU find, so it is safe to use GNU extensions in
 ebuild context for those EAPIs.
 </note>
 

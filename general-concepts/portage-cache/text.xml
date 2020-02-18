@@ -19,7 +19,7 @@ So, the following will not work:
 # DO NOT DO THIS!
 if ! has_version "x11-libs/gtk+" ; then
 	DEPEND="${DEPEND}
-		gtk?  ( >=x11-libs/gtk+-2 )
+		gtk?  ( &gt;=x11-libs/gtk+-2 )
 		!gtk? ( =x11-libs/gtk+-1.2* )"
 fi
 </codesample>

@@ -140,7 +140,7 @@ handle this by doing something like:
 </p>
 
 <codesample lang="ebuild">
-RDEPEND="x86? ( fakemedia? ( >=media-libs/fakemedia-1.1 ) )"
+RDEPEND="x86? ( fakemedia? ( &gt;=media-libs/fakemedia-1.1 ) )"
 </codesample>
 
 <p>
@@ -175,7 +175,7 @@ and wouldn't break anything:
 </p>
 
 <codesample lang="ebuild">
-RDEPEND="fakemedia? ( >=media-libs/fakemedia-1-1 )"
+RDEPEND="fakemedia? ( &gt;=media-libs/fakemedia-1-1 )"
 </codesample>
 
 <p>

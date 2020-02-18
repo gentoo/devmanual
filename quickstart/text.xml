@@ -373,17 +373,17 @@ KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="crypt imlib ipv6 ldap nls pda ssl xface"
 
 RDEPEND="=x11-libs/gtk+-2*
-	crypt? ( >=app-crypt/gpgme-0.4.5 )
+	crypt? ( &gt;=app-crypt/gpgme-0.4.5 )
 	imlib? ( media-libs/imlib2 )
-	ldap? ( >=net-nds/openldap-2.0.11 )
+	ldap? ( &gt;=net-nds/openldap-2.0.11 )
 	pda? ( app-pda/jpilot )
 	ssl? ( dev-libs/openssl )
-	xface? ( >=media-libs/compface-1.4 )
+	xface? ( &gt;=media-libs/compface-1.4 )
 	app-misc/mime-types
 	x11-misc/shared-mime-info"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
-	nls? ( >=sys-devel/gettext-0.12.1 )"
+	nls? ( &gt;=sys-devel/gettext-0.12.1 )"
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-namespace.diff \

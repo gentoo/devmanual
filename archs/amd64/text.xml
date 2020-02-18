@@ -183,13 +183,13 @@ configurations.
       2004.3
     </ti>
     <ti>
-      *l->emul*
+      *l-&gt;emul*
     </ti>
     <ti>
       d64
     </ti>
     <ti>
-      *l->lib*
+      *l-&gt;lib*
     </ti>
   </tr>
   <tr>
@@ -197,10 +197,10 @@ configurations.
       2004.3/lib64
     </ti>
     <ti>
-      *l->emul*
+      *l-&gt;emul*
     </ti>
     <ti>
-      *l->64*
+      *l-&gt;64*
     </ti>
     <ti>
       d64
@@ -208,13 +208,13 @@ configurations.
   </tr>
   <tr>
     <ti>
-      >=2005.0
+      &gt;=2005.0
     </ti>
     <ti>
       d32
     </ti>
     <ti>
-      *l->64*
+      *l-&gt;64*
     </ti>
     <ti>
       d64
@@ -222,13 +222,13 @@ configurations.
   </tr>
   <tr>
     <ti>
-      >=2005.0/no-multilib
+      &gt;=2005.0/no-multilib
     </ti>
     <ti>
       d32
     </ti>
     <ti>
-      *l->64*
+      *l-&gt;64*
     </ti>
     <ti>
       d64
@@ -236,7 +236,7 @@ configurations.
   </tr>
   <tr>
     <ti>
-      >=2005.0/no-symlink
+      &gt;=2005.0/no-symlink
     </ti>
     <ti>
       d32
@@ -250,7 +250,7 @@ configurations.
   </tr>
   <tr>
     <ti>
-      >=2005.0/no-symlink/no-lib32
+      &gt;=2005.0/no-symlink/no-lib32
     </ti>
     <ti>
       inexistant
@@ -278,7 +278,7 @@ configurations.
     Directory containing XXbit objects
   </dd>
   <dt>
-    l->foo
+    l-&gt;foo
   </dt>
   <dd>
     Link to foo

@@ -171,7 +171,7 @@ should be specified. A simple example:
 </p>
 
 <codesample lang="ebuild">
-DEPEND=">=dev-libs/openssl-0.9.7d"
+DEPEND="&gt;=dev-libs/openssl-0.9.7d"
 </codesample>
 
 <p>
@@ -193,11 +193,11 @@ Available version specifiers are:
     <th>Meaning</th>
   </tr>
   <tr>
-    <ti><c>>=app-misc/foo-1.23</c></ti>
+    <ti><c>&gt;=app-misc/foo-1.23</c></ti>
     <ti>Version 1.23 or later is required.</ti>
   </tr>
   <tr>
-    <ti><c>>app-misc/foo-1.23</c></ti>
+    <ti><c>&gt;app-misc/foo-1.23</c></ti>
     <ti>A version strictly later than 1.23 is required.</ti>
   </tr>
   <tr>
@@ -366,7 +366,7 @@ To depend on a specific version or version-range within a SLOT we use:
 
 <codesample lang="ebuild">
 DEPEND="qt3? ( ~x11-libs/qt-3.3.8:3 )
-	gtk? ( >=x11-libs/gtk+-2.24.9:2 )
+	gtk? ( &gt;=x11-libs/gtk+-2.24.9:2 )
 </codesample>
 </body>
 
@@ -453,12 +453,12 @@ DEPEND="!build? (
 			x11-libs/libXtst
 			x11-proto/xproto
 			x11-proto/xextproto
-			>=x11-libs/gtk+-2.2
+			&gt;=x11-libs/gtk+-2.2
 			x11-libs/pango
 		)
-		>=media-libs/libart_lgpl-2.1
+		&gt;=media-libs/libart_lgpl-2.1
 	)
-	>=sys-libs/ncurses-5.2-r2
+	&gt;=sys-libs/ncurses-5.2-r2
 	nls? ( sys-devel/gettext )
 )"
 </codesample>
