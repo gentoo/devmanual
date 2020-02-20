@@ -15,6 +15,10 @@ targets. The <c>new*</c> functions take exactly two arguments (except as noted) 
 the first is the source name, the second the name to use when installing.
 </p>
 
+<p>
+The <c>*into</c> functions create the directory if it does not already exist.
+</p>
+
 <table>
   <tr>
     <th>
