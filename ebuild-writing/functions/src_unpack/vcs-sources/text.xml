@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<guide self="ebuild-writing/functions/src_unpack/vcs-sources/">
+<chapter>
+<title>Version Control System (VCS) Sources</title>
+<body>
+
+<p>
+Rather than working with a source tarball, it is possible to use upstream
+source code repositories directly. This can be useful when there is a need to
+test unreleased snapshots on a regular basis. A number of eclasses exists for
+this purpose; see their documentation for a list of available functions and
+variables.
+</p>
+
+<ul>
+  <li><uri link="::eclass-reference/bzr.eclass/"/></li>
+  <li><uri link="::eclass-reference/cvs.eclass/"/></li>
+  <li><uri link="::eclass-reference/darcs.eclass/"/></li>
+  <li><uri link="::eclass-reference/git-r3.eclass/"/></li>
+  <li><uri link="::eclass-reference/mercurial.eclass/"/></li>
+  <li><uri link="::eclass-reference/subversion.eclass/"/></li>
+</ul>
+
+<note>
+VCS ebuilds must be either with empty <c>KEYWORDS</c> or package.masked
+(but <e>not</e> both). Empty <c>KEYWORDS</c> are strongly preferred.
+This applies to "live" ebuilds (<c>-9999</c>) and to ebuilds that extract a
+static revision but still use a version control system for fetching.
+</note>
+
+</body>
+
+<section>
+<title>Disadvantages of VCS Sources</title>
+<body>
+
+<p>
+Note that VCS ebuilds should <b>not</b> generally be added to the tree for the
+following reasons:
+</p>
+
+<ul>
+  <li>
+    Upstream VCS servers tend to be far less reliable than our mirroring
+    system.
+  </li>
+  <li>
+    VCS ebuilds create a very heavy server load <d/> not only are repositories
+    not mirrored, but fetching sources from them is considerably more work for
+    a server than simply serving up a file via HTTP or FTP.
+  </li>
+  <li>
+    Local copies of a repository are several times larger than a tarball of the
+    same sources, and tend to grow over time because they include the history.
+  </li>
+  <li>
+    Many users who are behind strict firewalls cannot use protocols like CVS.
+  </li>
+</ul>
+
+<p>
+It is safer (and better for the user) to make a snapshot instead. For example,
+<c>app-editors/emacs</c> snapshots are made using:
+</p>
+
+<pre>
+$ git archive --prefix=emacs/ HEAD | xz &gt; emacs-${PV}.tar.xz
+</pre>
+
+</body>
+</section>
+
+<section>
+<title>Disadvantages of VCS Live Sources</title>
+<body>
+
+<p>
+VCS ebuilds that work against the latest head (or tip) rather than a specific
+date or revision are even worse candidates for tree inclusion:
+</p>
+
+<ul>
+  <li>
+    You can never be sure whether upstream's source will actually build at any
+    given point; which will most likely cause QA issues.
+  </li>
+  <li>
+    It is extremely difficult to track down bugs when you cannot install the
+    same version of a package as the reporter.
+  </li>
+  <li>
+    Many upstream package maintainers tend to get upset if people aren't using
+    a specific released version.
+  </li>
+</ul>
+
+</body>
+</section>
+
+<section>
+<title>Using CVS Sources</title>
+<body>
+
+<p>
+To use a CVS source, <c>cvs.eclass</c> must be inherited, and then a number of
+variables must be set. The following variables are often useful:
+</p>
+
+<table>
+  <tr>
+    <th>Variable</th>
+    <th>Purpose</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <ti><c>ECVS_SERVER</c></ti>
+    <ti>Server and path</ti>
+    <ti><c>"cvs.sourceforge.net:/cvsroot/vim"</c></ti>
+  </tr>
+  <tr>
+    <ti><c>ECVS_MODULE</c></ti>
+    <ti>Module</ti>
+    <ti><c>"vim"</c></ti>
+  </tr>
+  <tr>
+    <ti><c>ECVS_BRANCH</c></ti>
+    <ti>Branch</ti>
+    <ti><c>"HEAD"</c></ti>
+  </tr>
+  <tr>
+    <ti><c>ECVS_AUTH</c></ti>
+    <ti>Auth method</ti>
+    <ti><c>"ext"</c></ti>
+  </tr>
+  <tr>
+    <ti><c>ECVS_USER</c></ti>
+    <ti>Username</ti>
+    <ti><c>"anoncvs"</c></ti>
+  </tr>
+  <tr>
+    <ti><c>ECVS_PASS</c></ti>
+    <ti>Password</ti>
+    <ti><c>""</c></ti>
+  </tr>
+  <tr>
+    <ti><c>ECVS_TOP_DIR</c></ti>
+    <ti>Unpack location</ti>
+    <ti><c>"${DISTDIR}/cvs-src/${ECVS_MODULE}"</c></ti>
+  </tr>
+</table>
+
+<p>
+See the eclass itself for the full range of options. To perform the actual
+checkout, use the <c>cvs_src_unpack</c> function.
+</p>
+
+<p>
+Here's a simple example, based upon the CVS options in vim.eclass:
+</p>
+
+<codesample lang="ebuild">
+inherit cvs
+
+SRC_URI=""
+
+src_unpack() {
+	ECVS_SERVER="cvs.sourceforge.net:/cvsroot/vim"
+	ECVS_USER="anonymous"
+	ECVS_PASS=""
+	ECVS_AUTH="pserver"
+	if [[ $(get_major_version ) -ge 7 ]] ; then
+		ECVS_MODULE="vim7"
+	else
+		ECVS_MODULE="vim"
+	fi
+	ECVS_TOP_DIR="${DISTDIR}/cvs-src/${ECVS_MODULE}"
+	cvs_src_unpack
+}
+</codesample>
+
+<p>
+Here's another approach, based upon the <c>emacs-cvs</c> ebuild, which relies
+upon the default <c>src_unpack</c> provided in the eclass; this approach is
+simpler but less flexible:
+</p>
+
+<codesample lang="ebuild">
+inherit cvs
+
+ECVS_AUTH="ext"
+CVS_RSH="ssh"
+ECVS_SERVER="savannah.gnu.org:/cvsroot/emacs"
+ECVS_MODULE="emacs"
+ECVS_BRANCH="emacs-unicode-2"
+ECVS_USER="anoncvs"
+ECVS_PASS=""
+ECVS_CVS_OPTIONS="-dP"
+
+# ...and so on. No src_unpack() is specified.
+</codesample>
+
+</body>
+</section>
+
+<section>
+<title>Using Git Sources</title>
+<body>
+
+<todo>
+Write this section.
+</todo>
+
+</body>
+</section>
+
+<section>
+<title>Using Subversion Sources</title>
+<body>
+
+<p>
+To use a Subversion source, <c>subversion.eclass</c> must be inherited, and
+then at least <c>ESVN_REPO_URI</c> must be set. The following variables are
+also noteworthy:
+</p>
+
+<table>
+  <tr>
+    <th>Variable</th>
+    <th>Purpose</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <ti><c>ESVN_REPO_URI</c></ti>
+    <ti>Server and path (http, https, svn)</ti>
+    <ti><c>"svn://svn.example.com/foobar/trunk"</c></ti>
+  </tr>
+  <tr>
+    <ti><c>ESVN_STORE_DIR</c></ti>
+    <ti>Unpack location</ti>
+    <ti><c>ESVN_STORE_DIR="${DISTDIR}/svn-src"</c></ti>
+  </tr>
+  <tr>
+    <ti><c>ESVN_PROJECT</c></ti>
+    <ti>Project name of ebuild</ti>
+    <ti><c>ESVN_PROJECT="${PN/-svn}"</c></ti>
+  </tr>
+  <tr>
+    <ti><c>ESVN_BOOTSTRAP</c></ti>
+    <ti>Bootstrap command or script</ti>
+    <ti><c>ESVN_BOOTSTRAP="autogen.sh"</c></ti>
+  </tr>
+  <tr>
+    <ti><c>ESVN_PATCHES</c></ti>
+    <ti>Patches to apply during bootstrap</ti>
+    <ti><c>ESVN_PATCHES="${FILESDIR}/*.patch"</c></ti>
+  </tr>
+</table>
+
+<p>
+See the eclass itself and <uri link="::eclass-reference/subversion.eclass/"/>
+for the full range of options. To perform the actual checkout, use
+the <c>subversion_src_unpack</c> function, which calls
+both <c>subversion_svn_fetch</c> and <c>subversion_bootstrap</c>
+itself.
+</p>
+
+<p>
+Here is a simple example, based upon the Subversion options in
+<c>litu-svn-20040902.ebuild</c>; this approach is sufficient for most
+Subversion ebuilds:
+</p>
+
+<codesample lang="ebuild">
+inherit subversion
+
+ESVN_REPO_URI="https://tao.uab.es/ion/svn/libtu/trunk"
+ESVN_PROJECT="libtu-snapshot"
+</codesample>
+
+</body>
+</section>
+</chapter>
+</guide>

@@ -125,8 +125,7 @@ The following subsections cover different topics which often occur when writing
 
 </chapter>
 
-<include href="cvs-sources/"/>
-<include href="svn-sources/"/>
+<include href="vcs-sources/"/>
 <include href="rpm-sources/"/>
 <include href="other-formats/"/>
 </guide>
