@@ -23,7 +23,6 @@ This page lists the contributions to the Gentoo Development Guide:
 </author>
 <author name="Tom Martin" email="slarti@gentoo.org">
   <uri link="::appendices/editor-configuration/emacs"/>,
-  <uri link="::ebuild-writing/functions/src_unpack/vcs-sources/#Using Subversion Sources"/>,
   <uri link="::general-concepts/use-flags/#Conflicting USE Flags"/>
 </author>
 <author name="Paul Varner" email="fuzzyray@gentoo.org">
