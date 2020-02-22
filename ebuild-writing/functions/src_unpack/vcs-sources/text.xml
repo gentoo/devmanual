@@ -22,10 +22,11 @@ variables.
 </ul>
 
 <note>
-VCS ebuilds must be either with empty <c>KEYWORDS</c> or package.masked
-(but <e>not</e> both). Empty <c>KEYWORDS</c> are strongly preferred.
-This applies to "live" ebuilds (<c>-9999</c>) and to ebuilds that extract a
-static revision but still use a version control system for fetching.
+VCS ebuilds must be with empty <c>KEYWORDS</c> but <e>not</e> package.masked
+(except if the mask is for an independent reason). Usually the <c>KEYWORDS</c>
+line should be omitted altogether. This applies to "live" ebuilds (<c>-9999</c>)
+and to ebuilds that extract a static revision but still use a version control
+system for fetching.
 </note>
 
 </body>
