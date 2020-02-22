@@ -503,7 +503,7 @@ I could have written the two examples above in more compact form:
 <c>&lt;uri link="::ebuild-writing/file-format/"/&gt;</c> and
 <c>&lt;uri link="::quickstart/#First Ebuild"/&gt;</c> render as
 <uri link="::ebuild-writing/file-format/"/> and
-<uri link="::quickstart#First Ebuild"/>, respectively.
+<uri link="::quickstart/#First Ebuild"/>, respectively.
 </p>
 
 </body>
