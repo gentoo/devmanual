@@ -58,7 +58,7 @@ many non-portable options.
 </body>
 
 <section>
-<title>Chaining with <c>head</c> or <c>tail</c> with <c>sed</c></title>
+<title>Chaining <c>head</c> or <c>tail</c> with <c>sed</c></title>
 <body>
 <p>
 Chaining <c>head</c> or <c>tail</c> with <c>sed</c> is usually
