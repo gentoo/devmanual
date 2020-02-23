@@ -358,7 +358,6 @@
   <!-- TOC Tree -->
   <xsl:template match="contentsTree" name="contentsTree">
     <xsl:param name="depth" select="0"/>
-    <xsl:param name="ulclass"/>
     <xsl:param name="maxdepth">
       <xsl:choose>
         <xsl:when test="@maxdepth"><xsl:value-of select="@maxdepth"/></xsl:when>
@@ -400,7 +399,7 @@
         </xsl:for-each>
       </xsl:when>
       <xsl:otherwise>
-        <ul class="{$ulclass}">
+        <ul>
           <xsl:for-each select="document($doc_self)/guide/include">
             <xsl:variable name="extraction_counter_node">
               <xsl:call-template name="contentsTree">
@@ -531,11 +530,35 @@
                     <ul class="nav navbar-nav">
                       <li><a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'), 'index.html', substring-after(@link, '##'))}"><span class="fa fa-home"/>&#160; Home</a></li>
                       <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><xsl:value-of select="/guide/chapter[1]/title"/> <span class="caret"></span></a>
-                        <xsl:call-template name="contentsTree">
-                          <xsl:with-param name="maxdepth" select="1"/>
-                          <xsl:with-param name="ulclass">dropdown-menu</xsl:with-param>
-                        </xsl:call-template>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <xsl:value-of select="/guide/chapter[1]/title"/>&#160;<span class="caret"></span>
+                        </a>
+                        <xsl:if test="/guide/chapter[1]/section or //contentsTree">
+                          <ul class="dropdown-menu">
+                            <!-- List sections of this chapter first. -->
+                            <xsl:for-each select="/guide/chapter[1]/section">
+                              <xsl:variable name="anchor">
+                                <xsl:call-template name="convert-to-anchor">
+                                  <xsl:with-param name="data" select="title"/>
+                                </xsl:call-template>
+                              </xsl:variable>
+                              <li><a class="reference" href="#{$anchor}"><xsl:value-of select="title"/></a></li>
+                            </xsl:for-each>
+                            <xsl:if test="//contentsTree">
+                              <li class="divider"></li>
+                              <!-- List any sub-documents included at first level.
+                                   We cannot call "contentsTree" directly, because it would
+                                   insert another "ul" element. So, assign it to a variable,
+                                   then copy only the "li" nodes. -->
+                              <xsl:variable name="contents">
+                                <xsl:call-template name="contentsTree">
+                                  <xsl:with-param name="maxdepth" select="1"/>
+                                </xsl:call-template>
+                              </xsl:variable>
+                              <xsl:copy-of select="exslt:node-set($contents)/ul/li"/>
+                            </xsl:if>
+                          </ul>
+                        </xsl:if>
                       </li>
                       <li><xsl:call-template name="findPrevious"/></li>
                       <li><xsl:call-template name="findNext"/></li>
