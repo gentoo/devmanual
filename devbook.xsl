@@ -301,7 +301,10 @@
         </xsl:variable>
         <xsl:choose>
           <xsl:when test="contains(@link, '##')">
-            <a class="{$class}" href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'), '/index.html#', substring-after(@link, '##'))}"><xsl:value-of select="."/></a>
+            <xsl:variable name="slash">
+              <xsl:if test="substring(substring-before(@link, '##'), string-length(substring-before(@link, '##'))) != '/'">/</xsl:if>
+            </xsl:variable>
+            <a class="{$class}" href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'), $slash, 'index.html#', substring-after(@link, '##'))}"><xsl:value-of select="."/></a>
           </xsl:when>
           <xsl:when test="contains(@link, '#')">
             <xsl:variable name="anchor">
