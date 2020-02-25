@@ -40,12 +40,12 @@ pre span.Statement { color: darkred; }
     vertical-align: top;
 }
 
-.w-200 {
-    width: 200px;
+.w-250 {
+    width: 250px;
 }
 
-.max-w-150 {
-    max-width: 150px;
+.max-w-200 {
+    max-width: 200px;
 }
 
 /* compatible to Bootstrap 4 for future migration */
@@ -59,13 +59,13 @@ pre span.Statement { color: darkred; }
 }
 
 /* compatible to Bootstrap 4 for future migration */
-.mr-1 {
-    margin-right: 4px;
+.mr-2 {
+    margin-right: 8px;
 }
 
 /* compatible to Bootstrap 4 for future migration */
-.ml-1 {
-    margin-left: 4px;
+.ml-2 {
+    margin-left: 8px;
 }
 
 /* vertically center the search bar */
