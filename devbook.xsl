@@ -677,7 +677,7 @@
       -->
       <xsl:when test="count(/guide/include) &gt; 0">
         <xsl:variable name="doc" select="/guide/include[1]/@href"/>
-        <a href="{concat($doc, 'index.html')}"><xsl:value-of select="document(concat(/guide/@self, $doc, 'text.xml'))/guide/chapter[1]/title"/> &#160;<span class="fa fa-arrow-right"/></a>
+        <a class="w-200 text-center" href="{concat($doc, 'index.html')}"><span class="truncated-text d-inline-block max-w-150 mr-1"><xsl:value-of select="document(concat(/guide/@self, $doc, 'text.xml'))/guide/chapter[1]/title"/></span><span class="fa fa-arrow-right"/></a>
       </xsl:when>
       <xsl:otherwise>
         <!-- This document's path -->
@@ -710,7 +710,7 @@
                 <xsl:with-param name="append">../</xsl:with-param>
               </xsl:call-template>
             </xsl:variable>
-            <a href="{concat($relative_path_depth_recursion, $relative_path, 'index.html')}"><xsl:value-of select="document(concat($parentItem_actual, 'text.xml'))/guide/chapter[1]/title"/> &#160;<span class="fa fa-arrow-right"/></a>
+            <a class="w-200 text-center" href="{concat($relative_path_depth_recursion, $relative_path, 'index.html')}"> <span class="truncated-text d-inline-block max-w-150 mr-1"><xsl:value-of select="document(concat($parentItem_actual, 'text.xml'))/guide/chapter[1]/title"/></span><span class="fa fa-arrow-right"/></a>
           </xsl:when>
           <xsl:otherwise>
             <!-- We need to recurse downwards; so we need to strip off a directory element off our absolute path to feed
@@ -757,7 +757,7 @@
                * Fully recurse up the node to get the last extremity
              * Otherwise list the parent -->
       <xsl:when test="/guide/@root">
-        <a href="#"><span class="fa fa-arrow-left"/>&#160; <xsl:value-of select="/guide/chapter[1]/title"/></a>
+        <a class="w-200 text-center" href="#"><span class="fa fa-arrow-left"/><span class="truncated-text d-inline-block max-w-150 ml-1"><xsl:value-of select="/guide/chapter[1]/title"/></span></a>
       </xsl:when>
       <xsl:otherwise>
         <!-- This document's path -->
@@ -780,10 +780,10 @@
             </xsl:call-template>
             </xsl:variable>
             <!-- Make a relative <a> link; we need an absolute reference for the XSLT processor though... -->
-            <a href="{concat('../', substring-before($myItem_path, 'text.xml'), 'index.html')}"><span class="fa fa-arrow-left"/>&#160; <xsl:value-of select="document(concat($parentItem_path, $myItem_path))/guide/chapter[1]/title"/></a>
+            <a class="w-200 text-center" href="{concat('../', substring-before($myItem_path, 'text.xml'), 'index.html')}"><span class="fa fa-arrow-left"/><span class="truncated-text d-inline-block max-w-150 ml-1"><xsl:value-of select="document(concat($parentItem_path, $myItem_path))/guide/chapter[1]/title"/></span></a>
           </xsl:when>
           <xsl:otherwise>
-            <a href="../index.html"><span class="fa fa-arrow-left"/>&#160; <xsl:value-of select="document(concat(/guide/@self, '../text.xml'))/guide/chapter[1]/title"/></a>
+            <a class="w-200 text-center" href="../index.html"><span class="fa fa-arrow-left"/><span class="truncated-text d-inline-block max-w-150 ml-1"><xsl:value-of select="document(concat(/guide/@self, '../text.xml'))/guide/chapter[1]/title"/></span></a>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:otherwise>
