@@ -452,7 +452,7 @@
     <xsl:value-of select='$newline'/>
     <html lang="en">
     <head>
-      <title><xsl:value-of select="/guide/chapter[1]/title"/> – Gentoo Development Guide</title>
+      <title><xsl:value-of select="/guide/chapter[1]/title"/> &#x2013; Gentoo Development Guide</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="description" content="The Gentoo Devmanual is a technical manual which covers topics such as writing ebuilds and eclasses, and policies that developers should be abiding by." />
       <xsl:choose>

@@ -10,7 +10,7 @@ IFS='' read -r -d '' HEADER << 'EOF'
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>@TITLE@ - Gentoo Development Guide</title>
+	<title>@TITLE@ &#x2013; Gentoo Development Guide</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="The Gentoo Devmanual is a technical manual which covers topics such as writing ebuilds and eclasses, and policies that developers should be abiding by.">
 	<link href="https://assets.gentoo.org/tyrian/bootstrap.min.css" rel="stylesheet" media="screen">
