@@ -571,20 +571,10 @@
             <nav class="navbar navbar-grey navbar-stick" id="devmanual-actions" role="navigation">
               <div class="container">
                 <div class="row">
-                  <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gw-toolbar">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                  </div>
-                  <div class="collapse navbar-collapse" id="gw-toolbar">
-                    <div class="input-group">
-                      <input type="search" name="search" placeholder="Search" title="Search Gentoo Developer Manual [f]" accesskey="f" id="searchInput" class="form-control" onclick="fetchDocuments()"/>
-                      <div class="input-group-btn">
-                        <input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton btn btn-default" onclick="search()"/>
-                      </div>
+                  <div class="input-group">
+                    <input type="search" name="search" placeholder="Search" title="Search Gentoo Developer Manual [f]" accesskey="f" id="searchInput" class="form-control" onclick="fetchDocuments()"/>
+                    <div class="input-group-btn">
+                      <input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton btn btn-default" onclick="search()"/>
                     </div>
                   </div>
                 </div>
