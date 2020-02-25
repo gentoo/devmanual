@@ -530,9 +530,7 @@
                     <ul class="nav navbar-nav">
                       <li><a href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'), 'index.html', substring-after(@link, '##'))}"><span class="fa fa-home"/>&#160; Home</a></li>
                       <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                          <xsl:value-of select="/guide/chapter[1]/title"/>&#160;<span class="caret"></span>
-                        </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Index&#160;<span class="caret"></span></a>
                         <xsl:if test="/guide/chapter[1]/section or //contentsTree">
                           <ul class="dropdown-menu">
                             <!-- List sections of this chapter first. -->
