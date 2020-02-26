@@ -1,4 +1,5 @@
 *.html
 *.png
+.depend
 documents.js
 eclass-reference/

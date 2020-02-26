@@ -47,19 +47,22 @@ documents.js: bin/build_search_documents.py $(XMLS)
 	rsvg-convert --output=$@ $<
 
 # Secondary expansion allows us to use the automatic variable $@ in
-# the prerequisites. When it is used (and we have no idea when that
-# is, so we assume always) our <include href="foo"> tag induces a
-# dependency on the output of all subdirectories of the current
-# directories. This wacky rule finds all of those subdirectories by
-# looking for text.xml in them, and then replaces "text.xml" in the
-# path with "index.html".
+# the prerequisites.
 #
 # We use the pattern %.html rather than the more-sensible %index.html
 # because the latter doesn't match our top-level index.html target.
 #
 .SECONDEXPANSION:
-%.html: $$(dir $$@)text.xml devbook.xsl xsl/*.xsl $$(subst text.xml,index.html,$$(wildcard $$(dir $$@)*/text.xml))
+%.html: $$(dir $$@)text.xml devbook.xsl xsl/*.xsl
 	xsltproc --param offline "$(OFFLINE)" devbook.xsl $< > $@
+
+# Each HTML file must depend on its XML file with all its descendants
+# (for the contents tree), all its ancestors (for breadcrumbs), and
+# the previous and next documents (for backward and forward links).
+# Generate the list of dependencies with XSLT, which appears to be a
+# better tool for this than make.
+.depend: $(XMLS) depend.xsl devbook.xsl
+	@xsltproc depend.xsl $(XMLS) | sed ':x;s%[^ /]*/\.\./%%;tx' > $@
 
 install: all
 	set -e; \
@@ -89,6 +92,8 @@ tidy: $(HTMLS) $(ECLASS_HTMLS)
 	exit $${status}
 
 clean:
-	@rm -f $(HTMLS) $(IMAGES) documents.js
+	@rm -f $(HTMLS) $(IMAGES) documents.js .depend
 
 .PHONY: all prereq build install validate tidy clean
+
+-include .depend
