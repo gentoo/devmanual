@@ -41,7 +41,7 @@ build: $(HTMLS) $(IMAGES)
 # document in devmanual gets a unique ID, which is used to
 # quickly tie search matches to the corresponding documents.
 documents.js: bin/build_search_documents.py $(XMLS)
-	./bin/build_search_documents.py $(XMLS) > $@
+	@./bin/build_search_documents.py $(XMLS) > $@ && echo "$@ built"
 
 %.png : %.svg
 	rsvg-convert --output=$@ $<
