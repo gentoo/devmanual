@@ -602,10 +602,7 @@
           <div class="row">
             <div class="col-md010">
               <ol class="breadcrumb">
-                <xsl:call-template name="printParentDocs">
-                  <xsl:with-param name="path" select="/guide/@self"/>
-                  <xsl:with-param name="depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
-                </xsl:call-template>
+                <xsl:call-template name="printParentDocs"/>
               </ol>
             </div>
           </div>
@@ -805,7 +802,7 @@
   </xsl:template>
 
   <xsl:template name="printParentDocs">
-    <xsl:param name="depth"/>
+    <xsl:param name="depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/', ''))"/>
     <xsl:choose>
       <xsl:when test="$depth &gt; 0">
         <xsl:variable name="relative_path_depth_recursion">
