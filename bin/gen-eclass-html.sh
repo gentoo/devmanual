@@ -100,8 +100,35 @@ guesscompress() {
 	esac
 }
 
-# We also need the ebuild man page
-for i in $(/usr/bin/qlist eclass-manpages) /usr/share/man/man5/ebuild.5*; do
+usage() {
+	cat <<- EOF >&2
+	Usage: $0 [OPTION]...
+	Convert eclass man pages to HTML.
+
+	  -n    do not build anything, only create a placeholder index
+	  -h    display this help and exit
+	EOF
+}
+
+while getopts 'nh' opt; do
+	case ${opt} in
+		n) NOMAN=true ;;
+		h) usage; exit 0 ;;
+		*) usage; exit 1 ;;
+	esac
+done
+shift $((OPTIND-1))
+
+MANPAGES=()
+[[ -n ${NOMAN} ]] || MANPAGES=(
+	$(/usr/bin/qlist eclass-manpages)
+	# We also need the ebuild man page
+	/usr/share/man/man5/ebuild.5*
+)
+
+[[ -d ${OUTPUTDIR} ]] || mkdir -p "${OUTPUTDIR}" || exit 1
+
+for i in "${MANPAGES[@]}"; do
 	FILEBASE=${i##*/}
 	BASENAME="${FILEBASE%.5*}"
 	[[ ${BASENAME} != "${FILEBASE}" ]] || continue
@@ -150,15 +177,24 @@ installed by emerging <c>app-doc/eclass-manpages</c>.
 <section>
 <title>Contents</title>
 <body>
-<ul class="list-group">
 EOF
 
-for i in $(find $OUTPUTDIR/ -maxdepth 1 -mindepth 1 -type d | sort); do
-	echo "<li><uri link=\"$(basename $i)/index.html\">$(basename $i)</uri></li>" >> ${OUTPUTDIR}/text.xml
-done
+if [[ -n ${NOMAN} ]]; then
+	cat <<- EOF >> "${OUTPUTDIR}"/text.xml
+	<warning>
+	This is only a placeholder. If you see this text in the output document,
+	then the eclass documentation is missing.
+	</warning>
+	EOF
+else
+	echo '<ul class="list-group">' >> "${OUTPUTDIR}"/text.xml
+	for i in $(find "${OUTPUTDIR}" -maxdepth 1 -mindepth 1 -type d | sort); do
+		echo "<li><uri link=\"$(basename $i)/index.html\">$(basename $i)</uri></li>" >> "${OUTPUTDIR}"/text.xml
+	done
+	echo '</ul>' >> "${OUTPUTDIR}"/text.xml
+fi
 
 cat << EOF >> ${OUTPUTDIR}/text.xml
-</ul>
 </body>
 </section>
 </chapter>
