@@ -3,6 +3,8 @@
 # pre1) OOB: The host needs to emerge eclass-manpages on a daily basis.
 # This script should be run before the make operation is performed
 
+set -o pipefail
+
 OUTPUTDIR="eclass-reference"
 
 IFS='' read -r -d '' HEADER << 'EOF'
@@ -121,10 +123,10 @@ shift $((OPTIND-1))
 
 MANPAGES=()
 [[ -n ${NOMAN} ]] || MANPAGES=(
-	$(/usr/bin/qlist eclass-manpages)
+	$(/usr/bin/qlist -e eclass-manpages)
 	# We also need the ebuild man page
 	/usr/share/man/man5/ebuild.5*
-)
+) || exit 1
 
 [[ -d ${OUTPUTDIR} ]] || mkdir -p "${OUTPUTDIR}" || exit 1
 
@@ -135,11 +137,11 @@ for i in "${MANPAGES[@]}"; do
 	DIRNAME="${OUTPUTDIR}/${BASENAME}"
 	FINAL="${DIRNAME}/index.html"
 	DECOMPRESS=$(guesscompress "${i}")
-	[[ -d ${DIRNAME} ]] || mkdir -p ${DIRNAME}
+	[[ -d ${DIRNAME} ]] || mkdir -p "${DIRNAME}" || exit 1
 	# update the dir's mtime to prevent its removal below
-	touch ${DIRNAME}
+	touch "${DIRNAME}" || exit 1
 	# rebuild the man page each time
-	echo -n "${HEADER//@TITLE@/${BASENAME}}" > "${FINAL}"
+	echo -n "${HEADER//@TITLE@/${BASENAME}}" > "${FINAL}" || exit 1
 	# generate html pages and fix hyperlinks for eclass and ebuild man pages
 	${DECOMPRESS} "${i}" | /usr/bin/man2html -r \
 	| sed -e '1,/<BODY>/d;/<\/BODY>/,$d' \
@@ -151,15 +153,15 @@ for i in "${MANPAGES[@]}"; do
 		-e 's:<DL COMPACT>:<DL>:g' \
 		-e 's:<TR VALIGN=top>:<TR>:g' \
 		-e '/<A NAME/{N;s:<A NAME=\(.*\)>.*</A>\(.*<H[1-6]\)>:\2 ID=\1>:}' \
-		>> "${FINAL}"
-	echo -n "${FOOTER}" >> "${FINAL}"
+		>> "${FINAL}" || exit 1
+	echo -n "${FOOTER}" >> "${FINAL}" || exit 1
 done
 
 # Remove old dirs (eclasses that were dropped from the tree)
-find $OUTPUTDIR -mindepth 1 -maxdepth 1 -mtime +1 -exec rm -R {} \;
+find "${OUTPUTDIR}" -mindepth 1 -maxdepth 1 -mtime +1 -exec rm -R {} \;
 
 # build the index, rebuilding it each time
-cat << EOF > $OUTPUTDIR/text.xml
+cat << 'EOF' > "${OUTPUTDIR}"/text.xml || exit 1
 <?xml version="1.0"?>
 <guide self="eclass-reference/">
 <chapter>
@@ -180,21 +182,21 @@ installed by emerging <c>app-doc/eclass-manpages</c>.
 EOF
 
 if [[ -n ${NOMAN} ]]; then
-	cat <<- EOF >> "${OUTPUTDIR}"/text.xml
+	cat <<- 'EOF' >> "${OUTPUTDIR}"/text.xml || exit 1
 	<warning>
 	This is only a placeholder. If you see this text in the output document,
 	then the eclass documentation is missing.
 	</warning>
 	EOF
 else
-	echo '<ul class="list-group">' >> "${OUTPUTDIR}"/text.xml
+	echo '<ul class="list-group">' >> "${OUTPUTDIR}"/text.xml || exit 1
 	for i in $(find "${OUTPUTDIR}" -maxdepth 1 -mindepth 1 -type d | sort); do
-		echo "<li><uri link=\"$(basename $i)/index.html\">$(basename $i)</uri></li>" >> "${OUTPUTDIR}"/text.xml
+		echo "<li><uri link=\"$(basename $i)/index.html\">$(basename $i)</uri></li>" >> "${OUTPUTDIR}"/text.xml || exit 1
 	done
-	echo '</ul>' >> "${OUTPUTDIR}"/text.xml
+	echo '</ul>' >> "${OUTPUTDIR}"/text.xml || exit 1
 fi
 
-cat << EOF >> ${OUTPUTDIR}/text.xml
+cat << 'EOF' >> "${OUTPUTDIR}"/text.xml || exit 1
 </body>
 </section>
 </chapter>
