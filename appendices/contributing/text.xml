@@ -34,8 +34,8 @@ fine too <d/> the formatting can be easily done by someone else (meaning, us).
 </body>
 
 <section>
-  <title>Where to find the sources</title>
-  <body>
+<title>Where to find the sources</title>
+<body>
 
 <p>
 Currently, sources are hosted on
@@ -51,12 +51,18 @@ for those who prefer to submit patches using pull requests.
 
 <p>
 To build the devmanual, simply run <c>make</c> in the top directory of
-the repository. You need <c>xsltproc</c> (from
-<c>dev-libs/libxslt</c>) for the XML to HTML conversion and
-<c>convert</c> (from <c>media-gfx/imagemagick</c>) for the SVG to PNG
-conversion used in some of the figures throughout the document.
+the repository. You need <c>xsltproc</c> (from <c>dev-libs/libxslt</c>)
+for the XML to HTML conversion, <c>xmllint</c> (from <c>dev-libs/libxml2</c>)
+for validation, and <c>rsvg-convert</c> (from <c>gnome-base/librsvg</c>) for
+the SVG to PNG conversion used in some of the figures throughout the document.
 </p>
-  </body>
+
+<p>
+To check if the document's XML is valid, run <c>make validate</c> in the
+top-level directory, which will validate all XML files using <c>xmllint</c>.
+</p>
+
+</body>
 </section>
 
 <section>
