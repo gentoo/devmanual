@@ -233,30 +233,30 @@
     <dd><xsl:apply-templates/></dd>
   </xsl:template>
 
-  <xsl:template match="important">
-    <div class="alert alert-info" role="alert">
-    <strong>Important:</strong>
-    <xsl:apply-templates/>
-    </div>
-  </xsl:template>
-
   <xsl:template match="note">
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-info" role="alert">
     <strong>Note:</strong>
     <xsl:apply-templates/>
     </div>
   </xsl:template>
 
-  <xsl:template match="todo">
-    <div class="alert alert-success" role="alert">
-    <strong>Todo:</strong>
+  <xsl:template match="important">
+    <div class="alert alert-warning" role="alert">
+    <strong>Important:</strong>
     <xsl:apply-templates/>
     </div>
   </xsl:template>
 
   <xsl:template match="warning">
-    <div class="alert alert-warning" role="alert">
+    <div class="alert alert-danger" role="alert">
     <strong>Warning:</strong>
+    <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="todo">
+    <div class="alert alert-info" role="alert">
+    <strong>Todo:</strong>
     <xsl:apply-templates/>
     </div>
   </xsl:template>
