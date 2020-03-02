@@ -2,8 +2,8 @@
 <guide self="ebuild-writing/eapi/">
 <chapter>
 <title>EAPI Usage and Description</title>
-
 <body>
+
 <p>
 The <uri link="https://wiki.gentoo.org/wiki/Project:PMS">Package Manager
 Specification (PMS)</uri> is a standardization effort to ensure that the
@@ -23,11 +23,13 @@ file adheres to.
 <p>
 This section provides usage and descriptions of the different EAPIs.
 </p>
+
 </body>
 
 <section>
 <title>Usage of EAPIs</title>
 <body>
+
 <important>
 An overview about the important features of each EAPI is provided in the
 appendix of the Package Manager Specification.  The two-page leaflet
@@ -77,479 +79,543 @@ Manager Specification for details about them.
 </section>
 
 <section>
-<title>EAPI=5</title>
+<title>EAPI 5</title>
 
 <subsection>
 <title>EAPI 5 Metadata</title>
 <body>
-<ul>
-	<li>
-		<p><b>REQUIRED_USE supports new at-most-one-of operator</b></p>
-		<p>
-		The new <b>at-most-one-of</b> operator consists of the string <c>'??'</c>, and is satisfied if zero or one (but no more) of its child elements is matched.
-		</p>
-	</li>
-	<li>
-		<p><b>SLOT supports optional "sub-slot" part</b></p>
-		<p>
-		The <c>SLOT</c> variable may contain an optional <b>sub-slot</b> part that follows the regular slot and is delimited by a <c>/</c> character. The sub-slot must be a valid slot name. The sub-slot is used to represent cases in which an upgrade to a new version of a package with a different sub-slot may require dependent packages to be rebuilt. When the sub-slot part is omitted from the SLOT definition, the package is considered to have an implicit sub-slot which is equal to the regular slot.
-		</p>
-	</li>
-	<li>
-		<p><b>Slot operators and sub-slots in dependencies</b></p>
-		<p>
-		A slot dependency may contain an optional sub-slot part that follows the regular slot and is delimited by a <c>/</c> character. This can be useful for packages installing pre-built binaries that require a library with a specific soname version which corresponds to the sub-slot. For example:
-		</p>
+
+<dl>
+  <dt>REQUIRED_USE supports new at-most-one-of operator</dt>
+  <dd>
+    The new <b>at-most-one-of</b> operator consists of the string <c>'??'</c>,
+    and is satisfied if zero or one (but no more) of its child elements is
+    matched.
+  </dd>
+  <dt>SLOT supports optional "sub-slot" part</dt>
+  <dd>
+    The <c>SLOT</c> variable may contain an optional <b>sub-slot</b> part that
+    follows the regular slot and is delimited by a <c>/</c> character.
+    The sub-slot must be a valid slot name. The sub-slot is used to represent
+    cases in which an upgrade to a new version of a package with a different
+    sub-slot may require dependent packages to be rebuilt. When the sub-slot
+    part is omitted from the SLOT definition, the package is considered to have
+    an implicit sub-slot which is equal to the regular slot.
+  </dd>
+  <dt>Slot operators and sub-slots in dependencies</dt>
+  <dd>
+    <p>
+    A slot dependency may contain an optional sub-slot part that follows the
+    regular slot and is delimited by a <c>/</c> character. This can be useful
+    for packages installing pre-built binaries that require a library with a
+    specific soname version which corresponds to the sub-slot. For example:
+    </p>
 <codesample lang="ebuild">
 RDEPEND="dev-libs/foo:0/3"
 </codesample>
-		<p>
-		Package dependency specifications can use <b>slot operators</b> to
-		clarify what should happen if the slot and/or sub-slot of a runtime
-		dependency changes:
-		</p>
-		<ul>
-			<li>
-			<c>:*</c> Indicates that any slot value is acceptable. In addition, for runtime dependencies, indicates that the package specifying the dependency will not break if the package matching the dependency is replaced by a different matching package with a different slot and/or sub-slot.
-			</li>
-			<li>
-			<c>:=</c> Indicates that any slot value is acceptable. In addition, for runtime dependencies, indicates that the package specifying the dependency will break unless there is available a package matching the dependency and whose slot and sub-slot are equal to the slot and sub-slot of the best installed version that had matched this dependency at the time when the package specifying this dependency had been installed.
-			</li>
-			<li>
-			<c>:slot=</c> Indicates that only a specific slot value is acceptable, and otherwise behaves identically to the <c>:=</c> operator.
-				<note>
-				use <c>:slot/subslot</c> without a <c>=</c> to depend on a specific slot and sub-slot pair; it's a syntax error to use <c>:slot/subslot=</c> in an ebuild.
-				</note>
-			</li>
-		</ul>
-		<p>
-		The <c>:slot</c> dependency syntax continues to behave like in EAPI=4 or earlier, i.e. it indicates that only the specific slot value is acceptable, but the package will not break when the version matching the runtime dependency is replaced by a version with a different sub-slot.
-		</p>
-		<p>
-		For example:
-		</p>
+    <p>
+    Package dependency specifications can use <b>slot operators</b> to clarify
+    what should happen if the slot and/or sub-slot of a runtime dependency
+    changes:
+    </p>
+    <ul>
+      <li>
+        <c>:*</c> Indicates that any slot value is acceptable. In addition,
+        for runtime dependencies, indicates that the package specifying the
+        dependency will not break if the package matching the dependency is
+        replaced by a different matching package with a different slot and/or
+        sub-slot.
+      </li>
+      <li>
+        <c>:=</c> Indicates that any slot value is acceptable. In addition,
+        for runtime dependencies, indicates that the package specifying the
+        dependency will break unless there is available a package matching
+        the dependency and whose slot and sub-slot are equal to the slot and
+        sub-slot of the best installed version that had matched this dependency
+        at the time when the package specifying this dependency had been
+        installed.
+      </li>
+      <li>
+        <p>
+        <c>:slot=</c> Indicates that only a specific slot value is acceptable,
+        and otherwise behaves identically to the <c>:=</c> operator.
+        </p>
+        <note>
+        use <c>:slot/subslot</c> without a <c>=</c> to depend on a specific
+        slot and sub-slot pair; it's a syntax error to use <c>:slot/subslot=</c>
+        in an ebuild.
+        </note>
+      </li>
+    </ul>
+    <p>
+    The <c>:slot</c> dependency syntax continues to behave like in EAPI=4 or
+    earlier, i.e. it indicates that only the specific slot value is acceptable,
+    but the package will not break when the version matching the runtime
+    dependency is replaced by a version with a different sub-slot.
+    </p>
+    <p>
+    For example:
+    </p>
 <codesample lang="ebuild">
 RDEPEND="dev-libs/foo:2=
-	&gt;=dev-libs/bar-0.9:=
-	media-gfx/baz:*
-	x11-misc/wombat:0"
+    &gt;=dev-libs/bar-0.9:=
+    media-gfx/baz:*
+    x11-misc/wombat:0"
 </codesample>
-		<p>
-		means that the package should be rebuilt when <c>foo:2</c> or <c>&gt;=bar-0.9</c> are upgraded to versions with different subslots, but that changes in subslots of <c>baz</c> or <c>wombat:0</c> should be ignored.
-		</p>
-	</li>
-</ul>
+    <p>
+    means that the package should be rebuilt when <c>foo:2</c> or
+    <c>&gt;=bar-0.9</c> are upgraded to versions with different subslots,
+    but that changes in subslots of <c>baz</c> or <c>wombat:0</c> should be
+    ignored.
+    </p>
+  </dd>
+</dl>
+
 </body>
 </subsection>
 
 <subsection>
 <title>EAPI 5 Profiles</title>
 <body>
-<ul>
-	<li>
-		<p><b>Profile stable USE forcing and masking</b></p>
-		<p>
-		In profile directories with an EAPI supporting stable masking, new USE configuration files are supported: <c>use.stable.mask</c>, <c>use.stable.force</c>, <c>package.use.stable.mask</c> and <c>package.use.stable.force</c>. These files behave similarly to previously supported USE configuration files, except that they only influence packages that are merged due to a stable keyword.
-		</p>
-	</li>
-</ul>
+
+<dl>
+  <dt>Profile stable USE forcing and masking</dt>
+  <dd>
+    In profile directories with an EAPI supporting stable masking, new USE
+    configuration files are supported: <c>use.stable.mask</c>,
+    <c>use.stable.force</c>, <c>package.use.stable.mask</c> and
+    <c>package.use.stable.force</c>. These files behave similarly to previously
+    supported USE configuration files, except that they only influence packages
+    that are merged due to a stable keyword.
+  </dd>
+</dl>
 </body>
 </subsection>
 
 <subsection>
 <title>EAPI 5 Helpers</title>
 <body>
-<ul>
-	<li>
-		<p><b>econf adds --disable-silent-rules</b></p>
-		<p>
-		This option will automatically be passed if <c>--disable-silent-rules</c> occurs in the output of <c>configure --help</c>.
-		</p>
-	</li>
-	<li>
-		<p><b>new* commands can read from standard input</b></p>
-		<p>
-		Standard input is read when the first parameter is <c>-</c> (a hyphen).
-		</p>
-	</li>
-	<li>
-		<p><b>New option --host-root for {has,best}_version</b></p>
-		<p>
-		This option <c>--host-root</c> will cause the query to apply to the host root instead of ROOT.
-		</p>
-	</li>
-	<li>
-		<p><b>New doheader helper function</b></p>
-		<p>
-		Installs the given header files into <c>/usr/include/</c>. If option
-		<c>-r</c> is specified, descends recursively into any directories given.
-		</p>
-	</li>
-	<li>
-		<p><b>New usex helper function</b></p>
-		<!-- We probably need an example here -->
+
+<dl>
+  <dt>econf adds --disable-silent-rules</dt>
+  <dd>
+    This option will automatically be passed if <c>--disable-silent-rules</c>
+    occurs in the output of <c>configure --help</c>.
+  </dd>
+  <dt>new* commands can read from standard input</dt>
+  <dd>
+    Standard input is read when the first parameter is <c>-</c> (a hyphen).
+  </dd>
+  <dt>New option --host-root for {has,best}_version</dt>
+  <dd>
+    This option <c>--host-root</c> will cause the query to apply to the host
+    root instead of ROOT.
+  </dd>
+  <dt>New doheader helper function</dt>
+  <dd>
+    Installs the given header files into <c>/usr/include/</c>. If option
+    <c>-r</c> is specified, descends recursively into any directories given.
+  </dd>
+  <dt>New usex helper function</dt>
+  <dd>
+    <!-- We probably need an example here -->
 <pre>
 USAGE: usex &lt;USE flag&gt; [true output] [false output] [true suffix] [false suffix]
 DESCRIPTION:
 If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
  otherwise echo [false output][false suffix] (defaults to "no").
 </pre>
-	</li>
-</ul>
+  </dd>
+</dl>
+
 </body>
 </subsection>
 
 <subsection>
 <title>EAPI 5 Phases</title>
 <body>
-<ul>
-	<li>
-		<p><b>src_test supports parallel tests</b></p>
-		<p>
-		Unlike older EAPIs, the default <c>src_test</c> implementation will not pass the -j1 option to emake.
-		</p>
-	</li>
-</ul>
+
+<dl>
+  <dt>src_test supports parallel tests</dt>
+  <dd>
+    Unlike older EAPIs, the default <c>src_test</c> implementation will not
+    pass the -j1 option to emake.
+  </dd>
+</dl>
+
 </body>
 </subsection>
 
 <subsection>
 <title>EAPI 5 Variables</title>
 <body>
-<ul>
-	<li>
-		<p><b>EBUILD_PHASE_FUNC</b></p>
-		<p>
-		During execution of an ebuild phase function (such as <c>pkg_setup</c> or <c>src_unpack</c>),
-		the <c>EBUILD_PHASE_FUNC</c> variable will contain the name of the phase function that is currently executing.
-		</p>
-	</li>
-</ul>
+
+<dl>
+  <dt>EBUILD_PHASE_FUNC</dt>
+  <dd>
+    During execution of an ebuild phase function (such as <c>pkg_setup</c> or
+    <c>src_unpack</c>), the <c>EBUILD_PHASE_FUNC</c> variable will contain the
+    name of the phase function that is currently executing.
+  </dd>
+</dl>
+
 </body>
 </subsection>
 </section>
 
 <section>
-<title>EAPI=6</title>
+<title>EAPI 6</title>
 
 <subsection>
 <title>EAPI 6 Bash version</title>
 <body>
-<p>Ebuilds can use features of Bash version 4.2 (was 3.2 before).</p>
+
+<dl>
+  <dt>Bash version</dt>
+  <dd>
+    Ebuilds can use features of Bash version 4.2 (was 3.2 before).
+  </dd>
+</dl>
+
 </body>
 </subsection>
 
 <subsection>
 <title>EAPI 6 Ebuild Environment</title>
 <body>
-<ul>
-	<li>
-		<p><b>Locale settings</b></p>
-		<p>
-			Behaviour of case modification and collation order (<c>LC_CTYPE</c>
-			and <c>LC_COLLATE</c>) are guaranteed to be the same as in the
-			C locale, as far as characters in the ASCII range are concerned.
-		</p>
-	</li>
-	<li>
-		<p><b><c>failglob</c> enabled</b></p>
-		<p>
-			For <c>EAPI=6</c>, the <c>failglob</c> option of bash is set in the global scope of ebuilds. If set, failed pattern matches during filename expansion result in an error when the ebuild is being sourced.
-		</p>
-	</li>
-</ul>
+
+<dl>
+  <dt>Locale settings</dt>
+  <dd>
+    Behaviour of case modification and collation order (<c>LC_CTYPE</c> and
+    <c>LC_COLLATE</c>) are guaranteed to be the same as in the C locale, as far
+    as characters in the ASCII range are concerned.
+  </dd>
+  <dt><c>failglob</c> enabled</dt>
+  <dd>
+    For <c>EAPI=6</c>, the <c>failglob</c> option of bash is set in the global
+    scope of ebuilds. If set, failed pattern matches during filename expansion
+    result in an error when the ebuild is being sourced.
+  </dd>
+</dl>
+
 </body>
 </subsection>
 
 <subsection>
 <title>EAPI 6 Phases</title>
 <body>
-<ul>
-	<li>
-		<p><b>Update default implementation of <c>src_prepare</c></b></p>
-		<p>
-			This phase is no longer a no-op, it supports applying patches via the <c>PATCHES</c> variable and applying user patches via <c>eapply_user</c>. The default <c>src_prepare</c> looks like this:
-		</p>
+
+<dl>
+  <dt>Update default implementation of <c>src_prepare</c></dt>
+  <dd>
+    <p>
+    This phase is no longer a no-op, it supports applying patches via the
+    <c>PATCHES</c> variable and applying user patches via <c>eapply_user</c>.
+    The default <c>src_prepare</c> looks like this:
+    </p>
 <codesample lang="ebuild">
 src_prepare() {
-	if [[ $(declare -p PATCHES 2&gt;/dev/null) == "declare -a"* ]]; then
-		[[ -n ${PATCHES[@]} ]] &amp;&amp; eapply "${PATCHES[@]}"
-	else
-		[[ -n ${PATCHES} ]] &amp;&amp; eapply ${PATCHES}
-	fi
-	eapply_user
+    if [[ $(declare -p PATCHES 2&gt;/dev/null) == "declare -a"* ]]; then
+        [[ -n ${PATCHES[@]} ]] &amp;&amp; eapply "${PATCHES[@]}"
+    else
+        [[ -n ${PATCHES} ]] &amp;&amp; eapply ${PATCHES}
+    fi
+    eapply_user
 }
 </codesample>
-	</li>
-	<li>
-		<p><b>New <c>src_install</c> Phase Function</b></p>
-		<p>
-			This phase uses the new <c>einstalldocs</c> function for installation of documentation. The default <c>src_install</c> looks like this:
-		</p>
+  </dd>
+  <dt>New <c>src_install</c> Phase Function</dt>
+  <dd>
+    <p>
+    This phase uses the new <c>einstalldocs</c> function for installation of
+    documentation. The default <c>src_install</c> looks like this:
+    </p>
 <codesample lang="ebuild">
 src_install() {
-	if [[ -f Makefile ]] || [[ -f GNUmakefile ]] || [[ -f makefile ]]; then
-		emake DESTDIR="${D}" install
-	fi
-	einstalldocs
+    if [[ -f Makefile ]] || [[ -f GNUmakefile ]] || [[ -f makefile ]]; then
+        emake DESTDIR="${D}" install
+    fi
+    einstalldocs
 }
 </codesample>
-	</li>
-</ul>
+  </dd>
+</dl>
+
 </body>
 </subsection>
 
 <subsection>
 <title>EAPI 6 Helpers</title>
 <body>
-<ul>
-	<li>
-		<p><b><c>einstall</c> banned</b></p>
-		<p>
-			The <c>einstall</c> helper has been banned with <c>EAPI=6</c>.
-		</p>
-	</li>
-	<li>
-		<p><b><c>dohtml</c> deprecated</b></p>
-		<p>
-			The <c>dohtml</c> helper has been deprecated with <c>EAPI=6</c>.
-		</p>
-	</li>
-	<li>
-		<p><b><c>nonfatal die</c></b></p>
-		<p>
-			When <c>die</c> or <c>assert</c> are called under the <c>nonfatal</c> command and with the <c>-n</c> option, they will not abort the build process but return with an error.
-		</p>
-	</li>
-	<li>
-		<p><b><c>eapply</c> support</b></p>
-		<p>
-			The <c>eapply</c> command is a simplified substitute for <c>epatch</c> (from <c>eutils.eclass</c>), implemented in the package manager. The patches from its file or directory arguments are applied using patch <c>-p1</c>, but it accepts <c>patch(1)</c> options from GNU patch to override default behavior.
-		</p>
-	</li>
-	<li>
-		<p><b><c>eapply_user</c> support</b></p>
-		<p>
-			The <c>eapply_user</c> command permits the package manager to apply user-provided patches. It must be called from every <c>src_prepare</c> function.
-		</p>
-			<note><c>eapply_user</c> doesn't need to be called explicitly when default <c>src_prepare</c> is called.</note>
-	</li>
-	<li>
-		<p><b><c>econf</c> adds <c>--docdir</c> and <c>--htmldir</c></b></p>
-		<p>
-			Options <c>--docdir</c> and <c>--htmldir</c> are passed to <c>configure</c>, in addition to the existing options.
-		</p>
-	</li>
-	<li>
-		<p><b><c>in_iuse</c> support</b></p>
-		<p>
-			The <c>in_iuse</c> function returns <c>true</c> if the given parameter is available in the ebuilds <c>USE</c>.
-		</p>
-	</li>
-	<li>
-		<p><b><c>unpack</c> changes</b></p>
-		<ul>
-			<li><p><c>unpack</c> supports relative paths without leading <c>./</c> (<c>unpack foo/bar.tar.gz</c> is valid as relative path).</p></li>
-			<li><p><c>unpack</c> supports <c>.txz</c> (xz compressed tarball).</p></li>
-			<li><p><c>unpack</c> matches filename extensions case-insensitively.</p></li>
-		</ul>
-	</li>
-	<li>
-		<p><b><c>einstalldocs</c> support</b></p>
-		<p>
-			The <c>einstalldocs</c> function will install the files specified by the <c>DOCS</c> variable (or a default set of files if <c>DOCS</c> is unset) and by the <c>HTML_DOCS</c> variable.
-		</p>
-	</li>
-	<li>
-		<p><b><c>get_libdir</c> support</b></p>
-		<p>
-			The <c>get_libdir</c> command outputs the <c>lib*</c> directory basename suitable for the current ABI.
-		</p>
-	</li>
-</ul>
+
+<dl>
+  <dt><c>einstall</c> banned</dt>
+  <dd>
+    The <c>einstall</c> helper has been banned with <c>EAPI=6</c>.
+  </dd>
+  <dt><c>dohtml</c> deprecated</dt>
+  <dd>
+    The <c>dohtml</c> helper has been deprecated with <c>EAPI=6</c>.
+  </dd>
+  <dt><c>nonfatal die</c></dt>
+  <dd>
+    When <c>die</c> or <c>assert</c> are called under the <c>nonfatal</c>
+    command and with the <c>-n</c> option, they will not abort the build
+    process but return with an error.
+  </dd>
+  <dt><c>eapply</c> support</dt>
+  <dd>
+    The <c>eapply</c> command is a simplified substitute for <c>epatch</c>
+    (from <c>eutils.eclass</c>), implemented in the package manager.
+    The patches from its file or directory arguments are applied using patch
+    <c>-p1</c>, but it accepts <c>patch(1)</c> options from GNU patch to
+    override default behavior.
+  </dd>
+  <dt><c>eapply_user</c> support</dt>
+  <dd>
+    <p>
+    The <c>eapply_user</c> command permits the package manager to apply
+    user-provided patches. It must be called from every <c>src_prepare</c>
+    function.
+    </p>
+    <note>
+    <c>eapply_user</c> doesn't need to be called explicitly when default
+    <c>src_prepare</c> is called.
+    </note>
+  </dd>
+  <dt><c>econf</c> adds <c>--docdir</c> and <c>--htmldir</c></dt>
+  <dd>
+    Options <c>--docdir</c> and <c>--htmldir</c> are passed to
+    <c>configure</c>, in addition to the existing options.
+  </dd>
+  <dt><c>in_iuse</c> support</dt>
+  <dd>
+    The <c>in_iuse</c> function returns <c>true</c> if the given parameter is
+    available in the ebuilds <c>USE</c>.
+  </dd>
+  <dt><c>unpack</c> changes</dt>
+  <dd>
+    <ul>
+      <li>
+        <c>unpack</c> supports relative paths without leading <c>./</c>
+        (<c>unpack foo/bar.tar.gz</c> is valid as relative path).
+      </li>
+      <li><c>unpack</c> supports <c>.txz</c> (xz compressed tarball).</li>
+      <li><c>unpack</c> matches filename extensions case-insensitively.</li>
+    </ul>
+  </dd>
+  <dt><c>einstalldocs</c> support</dt>
+  <dd>
+    The <c>einstalldocs</c> function will install the files specified by the
+    <c>DOCS</c> variable (or a default set of files if <c>DOCS</c> is unset)
+    and by the <c>HTML_DOCS</c> variable.
+  </dd>
+  <dt><c>get_libdir</c> support</dt>
+  <dd>
+    The <c>get_libdir</c> command outputs the <c>lib*</c> directory basename
+    suitable for the current ABI.
+  </dd>
+</dl>
+
 </body>
 </subsection>
 </section>
 
 <section>
-<title>EAPI=7</title>
+<title>EAPI 7</title>
 
 <subsection>
 <title>EAPI 7 Terminology</title>
 <body>
-<p>Documents may use the following terms to better describe dependency and installation targets.</p>
-<ul>
-	<li>
-		<p><b><c>CHOST</c></b></p>
-		<p>The system that will be running the installed package.</p>
-	</li>
-	<li>
-		<p><b><c>CBUILD</c></b></p>
-		<p>The system used to build packages. When not cross-compiling, CBUILD == CHOST.</p>
-	</li>
-	<li>
-		<p><b><c>CTARGET</c></b></p>
-		<p>Used in certain cross-compliations, often empty value.</p>
-	</li>
-</ul>
+
+<p>
+Documents may use the following terms to better describe dependency and
+installation targets.
+</p>
+
+<dl>
+  <dt><c>CHOST</c></dt>
+  <dd>
+    The system that will be running the installed package.
+  </dd>
+  <dt><c>CBUILD</c></dt>
+  <dd>
+    The system used to build packages. When not cross-compiling,
+    CBUILD == CHOST.
+  </dd>
+  <dt><c>CTARGET</c></dt>
+  <dd>
+    Used in certain cross-compliations, often empty value.
+  </dd>
+</dl>
+
 </body>
 </subsection>
+
 <subsection>
 <title>EAPI 7 Variables</title>
 <body>
-<ul>
-	<li>
-		<p><b><c>PORTDIR</c> and <c>ECLASSDIR</c> are removed</b></p>
-		<p><c>PORTDIR</c> and <c>ECLASSDIR</c> are no longer defined and cannot be used
-		in ebuilds to access these directories.</p>
-	</li>
-	<li>
-		<p><b><c>DESTTREE</c> and <c>INSDESTTREE</c> are removed</b></p>
-		<p>The unintended exported variables <c>PORTDIR</c> and <c>ECLASSDIR</c>
-		cannot be used in ebuilds to manipulate installation paths.
-		Use <c>into</c> or <c>insinto</c>, respectively, instead.</p>
-	</li>
-	<li>
-		<p><b><c>D</c>, <c>ED</c>, <c>ROOT</c>, and <c>EROOT</c> modified</b></p>
-		<p>These variables no longer contain a trailing slash with <c>EAPI=7</c>.</p>
-	</li>
-	<li>
-		<p><b><c>BDEPEND</c> addded</b></p>
-		<p>
-			Previously, all build-time tools and libraries went into the <c>DEPEND</c>.
-			Now, built-time dependencies are split into <c>DEPEND</c> and <c>BDEPEND</c>.
-			The difference is simply that <c>BDEPEND</c> are dependencies to be executed on the CBUILD.
-			<c>DEPEND</c> remains for other dependencies, such as libraries, for the CHOST.
-			This improves the cross-compliation support.
-		</p>
-	</li>
-	<li>
-		<p><b><c>BROOT</c> added</b></p>
-		<p><c>BROOT</c> is the absolute path to the root directory, including any prefix, containing build
-		dependencies satisfied by BDEPEND, typically executable build tools.</p>
-	</li>
-	<li>
-		<p><b><c>SYSROOT</c> and <c>ESYSROOT</c> added</b></p>
-		<p><c>SYSROOT</c> is the location of where dependencies in <c>DEPEND</c> are installed.
-		<c>ESYSROOT</c> is <c>SYSROOT</c> with <c>EPREFIX</c> appended.
-		</p>
-	</li>
-	<li>
-		<p><b><c>ENV_UNSET</c> added</b></p>
-		<p>A whitespace delimited list of variables to be removed from the build environment.</p>
-	</li>
-</ul>
+
+<dl>
+  <dt><c>PORTDIR</c> and <c>ECLASSDIR</c> are removed</dt>
+  <dd>
+    <c>PORTDIR</c> and <c>ECLASSDIR</c> are no longer defined and cannot be
+    used in ebuilds to access these directories.
+  </dd>
+  <dt><c>DESTTREE</c> and <c>INSDESTTREE</c> are removed</dt>
+  <dd>
+    The unintended exported variables <c>PORTDIR</c> and <c>ECLASSDIR</c>
+    cannot be used in ebuilds to manipulate installation paths. Use <c>into</c>
+    or <c>insinto</c>, respectively, instead.
+  </dd>
+  <dt><c>D</c>, <c>ED</c>, <c>ROOT</c>, and <c>EROOT</c> modified</dt>
+  <dd>
+    These variables no longer contain a trailing slash with <c>EAPI=7</c>.
+  </dd>
+  <dt><c>BDEPEND</c> addded</dt>
+  <dd>
+    Previously, all build-time tools and libraries went into the <c>DEPEND</c>.
+    Now, built-time dependencies are split into <c>DEPEND</c> and
+    <c>BDEPEND</c>. The difference is simply that <c>BDEPEND</c> are
+    dependencies to be executed on the CBUILD. <c>DEPEND</c> remains for other
+    dependencies, such as libraries, for the CHOST. This improves the
+    cross-compliation support.
+  </dd>
+  <dt><c>BROOT</c> added</dt>
+  <dd>
+    <c>BROOT</c> is the absolute path to the root directory, including any
+    prefix, containing build dependencies satisfied by BDEPEND, typically
+    executable build tools.
+  </dd>
+  <dt><c>SYSROOT</c> and <c>ESYSROOT</c> added</dt>
+  <dd>
+    <c>SYSROOT</c> is the location of where dependencies in <c>DEPEND</c> are
+    installed. <c>ESYSROOT</c> is <c>SYSROOT</c> with <c>EPREFIX</c> appended.
+  </dd>
+  <dt><c>ENV_UNSET</c> added</dt>
+  <dd>
+    A whitespace delimited list of variables to be removed from the build
+    environment.
+  </dd>
+</dl>
+
 </body>
 </subsection>
+
 <subsection>
 <title>EAPI 7 Metadata</title>
 <body>
-<ul>
-	<li>
-		<p><b>Empty groupings are banned</b></p>
-		<p>Groupings which are empty, such as <c>DEPEND="|| ( ${empty_var} )"</c> will now generate an error.
-		Furthermore, conditions within groupings are more strictly enforced.
-		Eg. <c>REQUIRED_USE="|| ( foo? ( bar ) baz? ( zoinks )"</c> would previously work with <c>USE="-foo -baz"</c> now requires
-		either <c>USE="foo bar"</c> or <c>USE="baz zoinks"</c>.
-		</p>
-	</li>
-</ul>
+
+<dl>
+  <dt>Empty groupings are banned</dt>
+  <dd>
+    Groupings which are empty, such as <c>DEPEND="|| ( ${empty_var} )"</c>
+    will now generate an error. Furthermore, conditions within groupings are
+    more strictly enforced. For example, <c>REQUIRED_USE="|| ( foo? ( bar )
+    baz? ( zoinks )"</c> would previously work with <c>USE="-foo -baz"</c>
+    now requires either <c>USE="foo bar"</c> or <c>USE="baz zoinks"</c>.
+  </dd>
+</dl>
+
 </body>
 </subsection>
+
 <subsection>
 <title>EAPI 7 Profiles</title>
 <body>
-<ul>
-	<li>
-		<p><b><c>package.provided</c> banned</b></p>
-		<p>Profiles may no longer contain a <c>package.provided</c> file with <c>EAPI=7</c>.</p>
-	</li>
-</ul>
+
+<dl>
+  <dt><c>package.provided</c> banned</dt>
+  <dd>
+    Profiles may no longer contain a <c>package.provided</c> file with
+    <c>EAPI=7</c>.
+  </dd>
+</dl>
+
 </body>
 </subsection>
+
 <subsection>
 <title>EAPI 7 Helpers</title>
 <body>
-<ul>
-	<li>
-		<p><b><c>dohtml</c> banned</b></p>
-		<p>
-			The <c>dohtml</c> helper has been banned with <c>EAPI=7</c>.
-		</p>
-	</li>
-	<li>
-		<p><b><c>dolib</c> and <c>libopts</c> banned</b></p>
-		<p>
-			The <c>dolib</c> helper and the associated <c>libopts</c> have been banned with <c>EAPI=7</c>.
-		</p>
-	</li>
-	<li>
-		<p><b><c>has_version</c> and <c>best_version</c> changes</b></p>
-		<p>
-			<c>has_version</c> and <c>best_version</c> now support an optional switch
-			to determine which type of dependencies to check.
-		</p>
-		<ul>
-			<li><p><c>-r</c> (the default) will check runtime dependencies (RDEPEND)</p></li>
-			<li><p><c>-d</c> will check CHOST build-time dependencies (DEPEND)</p></li>
-			<li><p><c>-b</c> will check CBUILD build-time dependencies (BDEPEND)</p></li>
-		</ul>
-	</li>
-	<li>
-		<p><b>Version manipulation and comparision commands</b></p>
-		<p>
-			EAPI=7 introduced three commands for common version number operations.
-		</p>
-		<ul>
-			<li><p><c>ver_cut</c> obtains substrings of a version string</p></li>
-			<li><p><c>ver_rs</c> replaces separators in a version string</p></li>
-			<li><p><c>ver_test</c> compares two versions</p></li>
-		</ul>
-		<p>See <uri link="::ebuild-writing/variables/#Version and Name Formatting Issues"/>
-		for examples of common uses or
-		<uri link="https://dev.gentoo.org/~mgorny/articles/the-ultimate-guide-to-eapi-7.html#version-manipulation-and-comparison-commands">
-		an in-depth look</uri></p>
-	</li>
-	<li>
-		<p><b>New function <c>eqawarn</c></b></p>
-		<p>
-			The <c>eqawarn</c> helper has been added with <c>EAPI=7</c>.
-			This function is to alert developers to a deprecated feature.
-			Previously, this was contained in <c>eutils</c> eclass which is no longer necessary.
-		</p>
-	</li>
-	<li>
-		<p><b>New function <c>dostrip</c></b></p>
-		<p>
-			The <c>dostrip</c> helper has been added with <c>EAPI=7</c>.
-			This function controls whether or not to strip a binary.
-			<c>dostrip -x [file]</c> will exclude a binary from being stripped.
-			Conversely, when combined with RESTRICT=strip, <c>dostrip [file]</c> selects a binary
-			file to be stripped.
-		</p>
-	</li>
-	<li>
-		<p><b><c>die</c> and <c>assert</c> changes</b></p>
-		<p>These commands are now safe to use in a subshell and act as if they were called in the main process.</p>
-	</li>
-	<li>
-		<p><b><c>nonfatal</c> changes</b></p>
-		<p>The <c>nonfatal</c> command now works for shell functions and subprocesses.</p>
-	</li>
-	<li>
-		<p><b><c>domo</c> behaviour changed</b></p>
-		<p><c>domo</c> (for localizations) now ignores the <c>into</c> directives.
-		This follows similar commands like <c>doinfo</c> and <c>doman</c>.</p>
-	</li>
-	<li>
-		<p><b><c>econf</c> changes</b></p>
-		<p>The cross-compilation options <c>--build</c> and <c>--target</c> options
-		to specify <c>CBUILD</c> and <c>CTARGET</c> respectively have been added and are retro-active to all EAPIs.
-		In addition, if the build supports <c>--with-sysroot</c>, the correct value will be passed
-		such that normal and cross-compliations succeed.
-		</p>
-	</li>
-</ul>
+
+<dl>
+  <dt><c>dohtml</c> banned</dt>
+  <dd>
+    The <c>dohtml</c> helper has been banned with <c>EAPI=7</c>.
+  </dd>
+  <dt><c>dolib</c> and <c>libopts</c> banned</dt>
+  <dd>
+    The <c>dolib</c> helper and the associated <c>libopts</c> have been banned
+    with <c>EAPI=7</c>.
+  </dd>
+  <dt><c>has_version</c> and <c>best_version</c> changes</dt>
+  <dd>
+    <p>
+    <c>has_version</c> and <c>best_version</c> now support an optional switch
+    to determine which type of dependencies to check.
+    </p>
+    <ul>
+      <li><c>-r</c> (the default) will check runtime dependencies (RDEPEND)</li>
+      <li><c>-d</c> will check CHOST build-time dependencies (DEPEND)</li>
+      <li><c>-b</c> will check CBUILD build-time dependencies (BDEPEND)</li>
+    </ul>
+  </dd>
+  <dt>Version manipulation and comparision commands</dt>
+  <dd>
+    <p>
+    EAPI=7 introduced three commands for common version number operations.
+    </p>
+    <ul>
+      <li><c>ver_cut</c> obtains substrings of a version string</li>
+      <li><c>ver_rs</c> replaces separators in a version string</li>
+      <li><c>ver_test</c> compares two versions</li>
+    </ul>
+    <p>
+    See <uri link="::ebuild-writing/variables/#Version and Name Formatting Issues"/>
+    for examples of common uses or
+    <uri link="https://dev.gentoo.org/~mgorny/articles/the-ultimate-guide-to-eapi-7.html#version-manipulation-and-comparison-commands">
+    an in-depth look</uri>
+    </p>
+  </dd>
+  <dt>New function <c>eqawarn</c></dt>
+  <dd>
+    The <c>eqawarn</c> helper has been added with <c>EAPI=7</c>. This function
+    is to alert developers to a deprecated feature. Previously, this was
+    contained in <c>eutils</c> eclass which is no longer necessary.
+  </dd>
+  <dt>New function <c>dostrip</c></dt>
+  <dd>
+    The <c>dostrip</c> helper has been added with <c>EAPI=7</c>. This function
+    controls whether or not to strip a binary. <c>dostrip -x [file]</c> will
+    exclude a binary from being stripped. Conversely, when combined with
+    RESTRICT=strip, <c>dostrip [file]</c> selects a binary file to be stripped.
+  </dd>
+  <dt><c>die</c> and <c>assert</c> changes</dt>
+  <dd>
+    These commands are now safe to use in a subshell and act as if they were
+    called in the main process.
+  </dd>
+  <dt><c>nonfatal</c> changes</dt>
+  <dd>
+    The <c>nonfatal</c> command now works for shell functions and subprocesses.
+  </dd>
+  <dt><c>domo</c> behaviour changed</dt>
+  <dd>
+    <c>domo</c> (for localizations) now ignores the <c>into</c> directives.
+    This follows similar commands like <c>doinfo</c> and <c>doman</c>.
+  </dd>
+  <dt><c>econf</c> changes</dt>
+  <dd>
+    The cross-compilation options <c>--build</c> and <c>--target</c> options
+    to specify <c>CBUILD</c> and <c>CTARGET</c> respectively have been added
+    and are retro-active to all EAPIs. In addition, if the build supports
+    <c>--with-sysroot</c>, the correct value will be passed such that normal
+    and cross-compliations succeed.
+  </dd>
+</dl>
+
 </body>
 </subsection>
 </section>

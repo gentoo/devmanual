@@ -342,7 +342,7 @@ The following variables may or must be defined by every ebuild.
     An array or space-delimited list of documentation files or
     directories for the <c>einstalldocs</c> function to install
     recursively. (Requires
-    <uri link="::ebuild-writing/eapi/#EAPI=6">EAPI&gt;=6</uri>.)
+    <uri link="::ebuild-writing/eapi/#EAPI 6">EAPI&gt;=6</uri>.)
     </ti>
   </tr>
 </table>
