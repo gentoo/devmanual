@@ -73,4 +73,17 @@ pre span.Statement { color: darkred; }
     margin-top: 3px;
 }
 
+/*
+ * .fix-links can be used to fix listgroups in text browsers
+ * see https://bugs.gentoo.org/show_bug.cgi?id=711286
+ */
+
+.fix-links > li {
+    padding: 0px;
+}
+
+.fix-links > li > a {
+    border: none;
+}
+
 /* vim: set ts=4 tw=80 et : */

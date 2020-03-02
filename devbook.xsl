@@ -204,14 +204,15 @@
   <xsl:template match="ul">
     <xsl:choose>
       <xsl:when test="@class='list-group'">
-        <div class="list-group">
+        <ul class="list-group fix-links">
           <xsl:for-each select="li">
-            <xsl:apply-templates>
-              <xsl:with-param name="class">list-group-item</xsl:with-param>
-            </xsl:apply-templates>
-            <xsl:value-of select='$newline'/>
+            <li class="list-group-item">
+              <xsl:apply-templates>
+                <xsl:with-param name="class">list-group-item</xsl:with-param>
+              </xsl:apply-templates>
+            </li>
           </xsl:for-each>
-        </div>
+        </ul>
       </xsl:when>
       <xsl:otherwise>
         <ul><xsl:apply-templates/></ul>
