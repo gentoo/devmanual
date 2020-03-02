@@ -77,9 +77,9 @@
 
 <!ELEMENT li            (#PCDATA|%all.class;)*>
 
-<!ELEMENT dl            (dt, dd+)+>
+<!ELEMENT dl            (dt|dd)+>
 <!ELEMENT dt            (#PCDATA|%inline.class;)*>
-<!ELEMENT dd            (#PCDATA|%inline.class;)*>
+<!ELEMENT dd            (#PCDATA|%all.class;)*>
 
 <!ELEMENT b             (#PCDATA|%inline.class;)*>
 <!ELEMENT c             (#PCDATA|%inline.class;)*>
