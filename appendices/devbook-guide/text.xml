@@ -229,7 +229,7 @@ This is a warning.
 We introduced a lot of new tags in the previous section <d/> here's what you
 need to know. The <c>&lt;p&gt;</c> (paragraph), <c>&lt;pre&gt;</c>
 (preformatted block), <c>&lt;codesample&gt;</c> (code block),
-<c>&lt;note&gt;</c>, <c>&lt;warning&gt;</c> and <c>&lt;important&gt;</c> tags
+<c>&lt;note&gt;</c>, <c>&lt;important&gt;</c> and <c>&lt;warning&gt;</c> tags
 all can contain one or more lines of text. Besides the <c>&lt;figure&gt;</c>,
 <c>&lt;table&gt;</c>, <c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c>
 and <c>&lt;dl&gt;</c> elements (which we'll cover in just a bit), these are the
@@ -577,7 +577,7 @@ Both sections are described next.
 <c>&lt;body&gt;</c> (opening tag only) and before <e>every</e>
 <c>&lt;section&gt;</c>, <c>&lt;p&gt;</c>, <c>&lt;pre&gt;</c>,
 <c>&lt;codesample&gt;</c>, <c>&lt;figure&gt;</c>, <c>&lt;table&gt;</c>,
-<c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c>, <c>&lt;dl&gt;</c>, <c>&lt;note&gt;</c>
+<c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c>, <c>&lt;dl&gt;</c>, <c>&lt;note&gt;</c>,
 <c>&lt;important&gt;</c> and <c>&lt;warning&gt;</c> (opening tags only).
 </p>
 
