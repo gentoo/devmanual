@@ -465,18 +465,48 @@ that you must close all tags including list items unlike in HTML.
 
 <p>
 Definition lists (<c>&lt;dl&gt;</c>) are also supported. Please note that
-neither the definition term tag (<c>&lt;dt&gt;</c>) nor the definition data tag
-(<c>&lt;dd&gt;</c>) accept any other block level tag such as paragraphs or
-admonitions. A definition list comprises:
+the definition term tag (<c>&lt;dt&gt;</c>) does not accept any other block
+level tag such as paragraphs or admonitions. A definition list comprises:
 </p>
 
 <dl>
   <dt><c>&lt;dl&gt;</c></dt>
   <dd>A <b>D</b>efinition <b>L</b>ist Tag containing</dd>
   <dt><c>&lt;dt&gt;</c></dt>
-  <dd><b>D</b>efinition <b>T</b>erm Tags,</dd>
+  <dd><b>D</b>efinition <b>T</b>erm Tags</dd>
   <dt><c>&lt;dd&gt;</c></dt>
-  <dd>each followed by one or more <b>D</b>efinition <b>D</b>ata Tags.</dd>
+  <dd>and <b>D</b>efinition <b>D</b>ata Tags.</dd>
+</dl>
+
+<p>
+The following example copied from
+<uri link="https://www.w3.org/TR/REC-html40/struct/lists.html">w3.org</uri>
+shows that lists may also be nested and different list types may be used
+together:
+</p>
+
+<dl>
+  <dt>The ingredients:</dt>
+  <dd>
+    <ul>
+      <li>100 g flour</li>
+      <li>10 g sugar</li>
+      <li>1 cup water</li>
+      <li>2 eggs</li>
+      <li>salt, pepper</li>
+    </ul>
+  </dd>
+  <dt>The procedure:</dt>
+  <dd>
+    <ol>
+      <li>Mix dry ingredients thoroughly.</li>
+      <li>Pour in wet ingredients.</li>
+      <li>Mix for 10 minutes.</li>
+      <li>Bake for one hour at 300 degrees.</li>
+    </ol>
+  </dd>
+  <dt>Notes:</dt>
+  <dd>The recipe may be improved by adding raisins.</dd>
 </dl>
 
 </body>
