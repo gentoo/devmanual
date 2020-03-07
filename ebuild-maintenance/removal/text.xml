@@ -66,7 +66,7 @@ from the tree:
 <pre>
 # cd dev-qt
 # git rm -rf qtphonon
-# git commit --gpg-sign
+# git commit --signoff --gpg-sign
 </pre>
 
 <p>
