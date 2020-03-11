@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <guide self="archs/amd64/">
 <chapter>
-<title>Arch Specific Notes -- AMD64/EM64T</title>
+<title>Arch Specific Notes — AMD64/EM64T</title>
 
 <section>
 <title>Position Independent Code Issues</title>
