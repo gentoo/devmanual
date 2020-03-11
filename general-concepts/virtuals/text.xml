@@ -6,7 +6,7 @@
 <body>
 <p>
 Virtuals are merely packages that are in the category of <c>virtual</c>.  They
-use their dependency string to specify the providers for the virtual and should
+use their dependency string to specify the providers for the virtual and do
 not install any files.  Since they are regular ebuilds, there can be several
 versions of a virtual (which can be helpful when a package may be provided by
 another in some versions, and not others <d/> see the perl virtuals for an
