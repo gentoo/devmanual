@@ -451,13 +451,9 @@ pseudo-protocol.
 One might define a set of "example" mirrors,
 </p>
 
-<!--
-  The following isn't ebuild code, but lang="ebuild" works, and no
-  other language choice would be accurate either.
--->
-<codesample lang="ebuild">
+<pre>
 example https://download.example.com https://mirror1.example.org/example
-</codesample>
+</pre>
 
 <p>
 that can afterwards be referenced through a <c>mirror://</c> URI:
