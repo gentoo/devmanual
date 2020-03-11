@@ -76,8 +76,5 @@ The following subsections cover different topics which often occur when writing
 </chapter>
 
 <include href="configuring/"/>
-<!--<include href="build-environment/"/>
-<include href="building/"/>
-<include href="no-build-system/"/>-->
 </guide>
 
