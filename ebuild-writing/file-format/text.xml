@@ -115,6 +115,18 @@ Overall, this gives us a filename like <c>libfoo-1.2.5b_pre5-r2.ebuild</c>.
 </p>
 
 <p>
+The <uri link ="::ebuild-writing/variables/#Version and Name Formatting Issues">
+EAPI 7 version commands</uri> may be used to manipulate and extract
+ebuild version components.
+</p>
+
+</body>
+
+<subsection>
+<title>Snapshots and live ebuilds</title>
+<body>
+
+<p>
 When packaging a snapshot of a source repository, there are two commonly used formats. The first
 treats the snapshot as a patch to the previous version, and so the ebuild version is in the format
 $(last-released-version)_pYYYYMMDD. Alternatively, the snapshot may be treated as a pre-release to
@@ -128,14 +140,8 @@ The policy for so-called <e>live</e> ebuilds
 is to use <c>9999</c> as the version (or as the last version component).
 </p>
 
-<p>
-The
-<uri link="::eclass-reference/eapi7-ver.eclass">
-eapi7-ver.eclass</uri> may be used to manipulate and extract ebuild
-version components.
-</p>
-
 </body>
+</subsection>
 </section>
 
 <section>
