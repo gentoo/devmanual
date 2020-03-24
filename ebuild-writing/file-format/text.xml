@@ -142,6 +142,27 @@ is to use <c>9999</c> as the version (or as the last version component).
 
 </body>
 </subsection>
+
+<subsection>
+<title>Binary packages</title>
+<body>
+
+<p>
+Gentoo usually builds its packages from source. Exceptionally, a binary package
+can be provided instead (e.g., if upstream does not provide a source).
+Such packages should still follow normal naming conventions and do not need any
+special suffix.
+</p>
+
+<p>
+If a binary package is provided in addition to its open-source based
+equivalent, the name of the former should be suffixed with <c>-bin</c>
+if necessary for distinction. Examples are packages that are heavy on resources
+like CPU time or memory when being built from source.
+</p>
+
+</body>
+</subsection>
 </section>
 
 <section>
