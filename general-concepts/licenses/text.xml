@@ -239,6 +239,15 @@ only do so if the license could be considered 'questionable' or if
 you are unsure as to the meaning of any part of it.
 </p>
 
+<p>
+When adding a new license, it should be checked whether there is an established
+name in the <uri link="https://spdx.org/licenses/">SPDX license list</uri>.
+However, Gentoo does not consider the Software Package Data Exchange to be an
+authoritative standard, so we may sometimes deviate from it, e.g., if their
+"short identifier" is excessively long. Also, we generally don't rename our
+existing identifiers.
+</p>
+
 </body>
 </section>
 
