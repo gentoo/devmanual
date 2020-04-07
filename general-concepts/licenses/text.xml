@@ -82,9 +82,12 @@ Some EULAs may also require the user to fetch distfiles manually, in which case
 <body>
 
 <warning>
-Do not trust the license indicated by GitHub or other sites that use
-automation to guess the license! The information presented may be
-incomplete and/or incorrect.
+Do not trust the license indicated by GitHub or other sites that use automation
+to guess the license! The information presented may be incomplete and/or
+incorrect. The
+<uri link="https://developer.github.com/v3/licenses/#get-the-contents-of-a-repositorys-license">
+GitHub License API</uri> for example can only return a single license for a
+given repository.
 </warning>
 
 <p>
