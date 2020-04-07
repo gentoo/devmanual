@@ -108,8 +108,8 @@ The term <e>pattern</e> refers to the description of text being matched.
 <body>
 
 <p>
-The most common form of <c>sed</c> is to replace all instances of <c>"some text"</c>
-with <c>"different content"</c>. This is done as follows:
+The most common form of <c>sed</c> is to replace all instances of
+<c>some text</c> with <c>different content</c>. This is done as follows:
 </p>
 
 <codesample lang="ebuild">
@@ -125,8 +125,8 @@ flag, only the first match on each line is replaced.
 </note>
 
 <warning>
-The above will replace <c>"irksome texting"</c> with
-<c>"irkdifferent contenting"</c>, which may not be desired.
+The above will replace <c>irksome texting</c> with
+<c>irkdifferent contenting</c>, which may not be desired.
 </warning>
 
 <p>

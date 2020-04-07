@@ -20,9 +20,9 @@ get a newer version marked stable, then please file a bug or ask on IRC.
 </p>
 
 <p>
-You should also not cause an unnecessary downgrade for any "<c>~arch</c>"
-when removing ebuilds <d/> instead, it is best to get the newest version
-marked "<c>~arch</c>" first and then remove redundant versions of the ebuild.
+You should also not cause an unnecessary downgrade for any <c>~arch</c> when
+removing ebuilds <d/> instead, it is best to get the newest version marked
+<c>~arch</c> first and then remove redundant versions of the ebuild.
 </p>
 
 </body>

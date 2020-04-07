@@ -260,7 +260,7 @@ complete -F _foo foo
       If the test returns true, show the available options, <c>${opts}</c>. The -W
       option to <c>compgen</c> tells bash to complete on the word list (string or
       something that evaluates to a string).  In the majority of cases, you'll
-      pass <c>'-- ${cur}'</c> to <c>compgen</c> telling it to only return those
+      pass <c>-- ${cur}</c> to <c>compgen</c> telling it to only return those
       completions that match <c>${cur}</c>.
     </ti>
   </tr>

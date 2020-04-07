@@ -88,7 +88,7 @@ Manager Specification for details about them.
 <dl>
   <dt>REQUIRED_USE supports new at-most-one-of operator</dt>
   <dd>
-    The new <b>at-most-one-of</b> operator consists of the string <c>'??'</c>,
+    The new <b>at-most-one-of</b> operator consists of the string <c>??</c>,
     and is satisfied if zero or one (but no more) of its child elements is
     matched.
   </dd>

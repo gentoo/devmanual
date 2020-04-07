@@ -102,8 +102,8 @@ interface changes.
 <body>
 <p>
 Current versions of portage accept slot and sub-slot names that begin with an
-alphanumeric character or <c>'_'</c>, and contain alphanumerics and <c>'_'</c>,
-<c>'-'</c>, <c>'.'</c>, and <c>'+'</c> characters.
+alphanumeric character or <c>_</c>, and contain alphanumerics and <c>_</c>,
+<c>-</c>, <c>.</c>, and <c>+</c> characters.
 </p>
 
 </body>
