@@ -574,6 +574,57 @@ DEPEND="
 </section>
 
 <section>
+<title>Tips for Checking Dependencies</title>
+<body>
+
+<p>
+It is important to ensure that all the dependencies are complete for your
+package:
+</p>
+
+<dl>
+  <dt>Look at installed binaries/libraries</dt>
+  <dd>
+    Use a tool like <c>scanelf -n</c> (from app-misc/pax-utils) or
+    <c>objdump -p</c> (from sys-devel/binutils) to list <c>DT_NEEDED</c>
+    entries
+  </dd>
+  <dt>Look in <c>configure.ac</c></dt>
+  <dd>
+    Look for checks for packages in here. Things to look out for are pkg-config
+    checks or <c>AM_*</c> functions that check for a specific version.
+  </dd>
+  <dt>Look at included <c>.spec</c> files</dt>
+  <dd>
+    A good indication of dependencies is to look at the included <c>.spec</c>
+    files for relevant deps. However, do not trust them to be the definitive
+    complete list of dependencies.
+  </dd>
+  <dt>Look at the application/library website</dt>
+  <dd>
+    Check the application website for possible dependencies that they suggest
+    are needed
+  </dd>
+  <dt>Read the <c>README</c> and <c>INSTALL</c> for the package</dt>
+  <dd>
+    They usually also contain useful information about building and installing
+    packages
+  </dd>
+  <dt>
+    Remember non-binary dependencies such as pkg-config, doc generation
+    programs, etc.
+  </dt>
+  <dd>
+    Usually the build process requires some dependencies such as intltool,
+    libtool, pkg-config, doxygen, scrollkeeper, gtk-doc, etc. Make sure those
+    are clearly stated.
+  </dd>
+</dl>
+
+</body>
+</section>
+
+<section>
 <title>Implicit System Dependency</title>
 <body>
 
