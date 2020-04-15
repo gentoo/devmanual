@@ -2,16 +2,19 @@
 <guide self="general-concepts/dependencies/">
 <chapter>
 <title>Dependencies</title>
-
 <body>
 
 <p>
 Automatic dependency resolution is one of the most useful features
 provided by <c>emerge</c>.
 </p>
+
 </body>
 
 <section>
+<title>Dependency types</title>
+
+<subsection>
 <title>CHOST vs CBUILD</title>
 <body>
 
@@ -41,9 +44,9 @@ of dependencies are merged.
 </p>
 
 </body>
-</section>
+</subsection>
 
-<section>
+<subsection>
 <title>Build Dependencies</title>
 <body>
 
@@ -67,9 +70,9 @@ In earlier EAPIs, all build dependencies are placed in <c>DEPEND</c>.
 </p>
 
 </body>
-</section>
+</subsection>
 
-<section>
+<subsection>
 <title>Runtime Dependencies</title>
 <body>
 
@@ -91,9 +94,9 @@ Items which are in <c>RDEPEND</c> but not <c>DEPEND</c> could <e>in theory</e> b
 </p>
 
 </body>
-</section>
+</subsection>
 
-<section>
+<subsection>
 <title>Post Dependencies</title>
 <body>
 
@@ -105,39 +108,13 @@ while in general case <c>RDEPEND</c> should be used instead.
 </p>
 
 </body>
+</subsection>
 </section>
 
 <section>
-<title>Implicit System Dependency</title>
-<body>
+<title>Dependency Syntax</title>
 
-<p>
-All packages have an implicit compile-time and runtime dependency upon the
-entire <c>@system</c> set. It is therefore not necessary, nor
-advisable, to
-specify dependencies upon toolchain packages like <c>gcc</c>, <c>libc</c> and
-so on, except where specific versions or packages (for example, <c>glibc</c>
-over <c>uclibc</c>) are required.  Note that this rule also needs consideration
-for packages like <c>flex</c>, <c>zlib</c> and <c>libtool</c>, which aren't in
-the <c>@system</c> set for every profile. For example, the embedded
-profile doesn't have <c>zlib</c> in <c>@system</c>, the <c>libtool</c>
-ABI might
-change and break building order and <c>flex</c> might get removed from the
-<c>@system</c> set in future.
-</p>
-
-<p>
-However, packages which are included in the <c>@system</c> set, or are
-dependencies of <c>@system</c> set packages, should generally include
-a complete dependency list (excluding bootstrap packages). This makes
-<c>emerge -e @system</c>
-possible when installing from a stage 1 or stage 2 tarball.
-</p>
-
-</body>
-</section>
-
-<section>
+<subsection>
 <title>Basic Dependency Syntax</title>
 <body>
 
@@ -159,9 +136,9 @@ When specifying names, the category part should be treated as mandatory.
 </p>
 
 </body>
-</section>
+</subsection>
 
-<section>
+<subsection>
 <title>Version Dependencies</title>
 <body>
 
@@ -179,7 +156,7 @@ This states that at least version 0.9.7d of <c>openssl</c> is required.
 </p>
 </body>
 
-<subsection>
+<subsubsection>
 <title>Version Specifiers</title>
 <body>
 
@@ -222,9 +199,9 @@ Available version specifiers are:
 </table>
 
 </body>
-</subsection>
+</subsubsection>
 
-<subsection>
+<subsubsection>
 <title>Ranged Dependencies</title>
 <body>
 
@@ -244,9 +221,9 @@ asterisk. Also note that when selecting all versions in a specific
 </p>
 
 </body>
-</subsection>
+</subsubsection>
 
-<subsection>
+<subsubsection>
 <title>Blockers</title>
 <body>
 
@@ -343,10 +320,10 @@ newer package that caused the issues.
 </p>
 
 </body>
+</subsubsection>
 </subsection>
-</section>
 
-<section>
+<subsection>
 <title>SLOT Dependencies</title>
 <body>
 
@@ -370,7 +347,7 @@ DEPEND="qt3? ( ~x11-libs/qt-3.3.8:3 )
 </codesample>
 </body>
 
-<subsection>
+<subsubsection>
 <title>Slot Operators</title>
 <body>
 
@@ -407,10 +384,10 @@ RDEPEND="media-libs/cogl:1.0=
 </codesample>
 
 </body>
+</subsubsection>
 </subsection>
-</section>
 
-<section>
+<subsection>
 <title>USE-Conditional Dependencies</title>
 <body>
 
@@ -464,9 +441,9 @@ DEPEND="!build? (
 </codesample>
 
 </body>
-</section>
+</subsection>
 
-<section>
+<subsection>
 <title>Any of Many Dependencies</title>
 <body>
 
@@ -487,7 +464,7 @@ DEPEND="baz? ( || ( app-misc/foo app-misc/bar ) )"
 </codesample>
 </body>
 
-<subsection>
+<subsubsection>
 <title>Any of Many Versus USE</title>
 <body>
 
@@ -509,10 +486,10 @@ flag is not necessary if and only if all of the following hold:
 </ul>
 
 </body>
+</subsubsection>
 </subsection>
-</section>
 
-<section>
+<subsection>
 <title>Built with USE Dependencies</title>
 <body>
 
@@ -567,7 +544,7 @@ There are also shortcuts for conditional situations:
 </table>
 </body>
 
-<subsection>
+<subsubsection>
 <title>Use dependency defaults</title>
 <body>
 
@@ -592,7 +569,36 @@ DEPEND="
 </codesample>
 
 </body>
+</subsubsection>
 </subsection>
+</section>
+
+<section>
+<title>Implicit System Dependency</title>
+<body>
+
+<p>
+All packages have an implicit compile-time and runtime dependency upon the
+entire <c>@system</c> set. It is therefore not necessary, nor advisable, to
+specify dependencies upon toolchain packages like <c>gcc</c>, <c>libc</c> and
+so on, except where specific versions or packages (for example, <c>glibc</c>
+over <c>uclibc</c>) are required. Note that this rule also needs consideration
+for packages like <c>flex</c>, <c>zlib</c> and <c>libtool</c>, which aren't in
+the <c>@system</c> set for every profile. For example, the embedded profile
+doesn't have <c>zlib</c> in <c>@system</c>, the <c>libtool</c> ABI might
+change and break building order and <c>flex</c> might get removed from the
+<c>@system</c> set in future.
+</p>
+
+<p>
+However, packages which are included in the <c>@system</c> set, or are
+dependencies of <c>@system</c> set packages, should generally include
+a complete dependency list (excluding bootstrap packages). This makes
+<c>emerge -e @system</c> possible when installing from a stage 1 or stage 2
+tarball.
+</p>
+
+</body>
 </section>
 
 <section>
