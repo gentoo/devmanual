@@ -67,6 +67,7 @@ metadata.xml:
     allowed:
     <c>&lt;maintainer&gt;</c>,
     <c>&lt;longdescription&gt;</c>,
+    <c>&lt;stabilize-allarches&gt;</c>,
     <c>&lt;slots&gt;</c>,
     <c>&lt;use&gt;</c>, and
     <c>&lt;upstream&gt;</c>.
@@ -116,6 +117,14 @@ metadata.xml:
     <uri link="::ebuild-writing/variables/#Ebuild-defined Variables">
     DESCRIPTION</uri> field in the ebuilds themselves. This tag has
     two optional subtags: <c>&lt;pkg&gt;</c> and <c>&lt;cat&gt;</c>.
+  </ti>
+</tr>
+<tr>
+  <ti><c>&lt;stabilize-allarches&gt;</c></ti>
+  <ti>
+    Indicates an architecture-independent package. An ebuild can be marked
+    stable for all relevant architectures, when it has been tested on only one
+    architecture. This tag must have empty content.
   </ti>
 </tr>
 <tr>
@@ -271,8 +280,8 @@ There are also some attributes that can be used with these tags:
 <tr>
   <ti>restrict</ti>
   <ti>
-    <c>&lt;maintainer&gt;</c>,
-    <c>&lt;longdescription&gt;</c>, <c>&lt;flag&gt;</c>
+    <c>&lt;maintainer&gt;</c>, <c>&lt;longdescription&gt;</c>,
+    <c>&lt;stabilize-allarches&gt;</c>, <c>&lt;flag&gt;</c>
   </ti>
   <ti>
     The restrict attribute allows one to restrict the application of
