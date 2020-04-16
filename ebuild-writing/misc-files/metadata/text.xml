@@ -65,23 +65,13 @@ metadata.xml:
     This is the root element of the <c>metadata.xml</c> file for
     packages. It has no attributes. The following subtags are
     allowed:
-    <c>&lt;longdescription&gt;</c>,
     <c>&lt;maintainer&gt;</c>,
+    <c>&lt;longdescription&gt;</c>,
     <c>&lt;slots&gt;</c>,
     <c>&lt;use&gt;</c>, and
     <c>&lt;upstream&gt;</c>.
     While all the subtags are optional, &lt;upstream&gt; may
     appear at most once.
-  </ti>
-</tr>
-<tr>
-  <ti><c>&lt;longdescription&gt;</c></ti>
-  <ti>
-    This tag contains a description for a category or a package. For
-    packages, it is used to augment the
-    <uri link="::ebuild-writing/variables/#Ebuild-defined Variables">
-    DESCRIPTION</uri> field in the ebuilds themselves. This tag has
-    two optional subtags: <c>&lt;pkg&gt;</c> and <c>&lt;cat&gt;</c>.
   </ti>
 </tr>
 <tr>
@@ -116,6 +106,16 @@ metadata.xml:
     The description tag contains a description of the maintainership, or for 
     example a remark that someone interested can take over the maintainership. 
     It is optional.
+  </ti>
+</tr>
+<tr>
+  <ti><c>&lt;longdescription&gt;</c></ti>
+  <ti>
+    This tag contains a description for a category or a package.
+    For packages, it is used to augment the
+    <uri link="::ebuild-writing/variables/#Ebuild-defined Variables">
+    DESCRIPTION</uri> field in the ebuilds themselves. This tag has
+    two optional subtags: <c>&lt;pkg&gt;</c> and <c>&lt;cat&gt;</c>.
   </ti>
 </tr>
 <tr>
