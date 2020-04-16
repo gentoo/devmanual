@@ -636,8 +636,16 @@ Maintainer-needed, or orphaned, packages have no maintainers
 responsible for them. Per
 <uri link="https://www.gentoo.org/glep/glep-0067.html#case-of-maintainer-needed-packages">
 GLEP 67</uri>, these packages must not contain any &lt;maintainer&gt;
-subtags under &lt;pkgmetadata&gt; in their <c>metadata.xml</c>. By
-convention, a comment line containing the string <c>maintainer-needed</c>
+subtags under &lt;pkgmetadata&gt; in their <c>metadata.xml</c>. A strict test
+for this condition would be:
+</p>
+
+<pre>
+[[ $(xmllint --xpath "count(/pkgmetadata/maintainer)" metadata.xml) -eq 0 ]]
+</pre>
+
+<p>
+By convention, a comment line containing the string <c>maintainer-needed</c>
 is inserted. Other tags which are relevant to the package may be
 present in the metadata. Bugs for these packages must be assigned to
 <c>maintainer-needed@gentoo.org</c>. The QA team periodically generates the
