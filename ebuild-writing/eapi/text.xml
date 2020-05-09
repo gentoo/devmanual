@@ -446,7 +446,7 @@ installation targets.
   </dd>
   <dt><c>CTARGET</c></dt>
   <dd>
-    Used in certain cross-compliations, often empty value.
+    Used in certain cross-compilations, often empty value.
   </dd>
 </dl>
 
@@ -473,14 +473,14 @@ installation targets.
   <dd>
     These variables no longer contain a trailing slash with <c>EAPI=7</c>.
   </dd>
-  <dt><c>BDEPEND</c> addded</dt>
+  <dt><c>BDEPEND</c> added</dt>
   <dd>
     Previously, all build-time tools and libraries went into the <c>DEPEND</c>.
     Now, built-time dependencies are split into <c>DEPEND</c> and
     <c>BDEPEND</c>. The difference is simply that <c>BDEPEND</c> are
     dependencies to be executed on the CBUILD. <c>DEPEND</c> remains for other
     dependencies, such as libraries, for the CHOST. This improves the
-    cross-compliation support.
+    cross-compilation support.
   </dd>
   <dt><c>BROOT</c> added</dt>
   <dd>
@@ -562,7 +562,7 @@ installation targets.
       <li><c>-b</c> will check CBUILD build-time dependencies (BDEPEND)</li>
     </ul>
   </dd>
-  <dt>Version manipulation and comparision commands</dt>
+  <dt>Version manipulation and comparison commands</dt>
   <dd>
     <p>
     EAPI=7 introduced three commands for common version number operations.
@@ -612,7 +612,7 @@ installation targets.
     to specify <c>CBUILD</c> and <c>CTARGET</c> respectively have been added
     and are retro-active to all EAPIs. In addition, if the build supports
     <c>--with-sysroot</c>, the correct value will be passed such that normal
-    and cross-compliations succeed.
+    and cross-compilations succeed.
   </dd>
 </dl>
 
