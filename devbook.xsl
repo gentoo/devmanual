@@ -184,7 +184,7 @@
   </xsl:template>
 
   <xsl:template match="figure">
-    <div class="figure">
+    <div class="figure w-100">
       <div class="image"><img alt="{@short}" src="{@link}"/></div>
       <xsl:if test="@caption">
         <p class="caption"><xsl:value-of select="@caption"/></p>
@@ -204,11 +204,11 @@
   <xsl:template match="ul">
     <xsl:choose>
       <xsl:when test="@class='list-group'">
-        <ul class="list-group fix-links">
+        <ul class="list-group mb-3 fix-links">
           <xsl:for-each select="li">
-            <li class="list-group-item">
+            <li class="list-group-item list-group-item-action">
               <xsl:apply-templates>
-                <xsl:with-param name="class">list-group-item</xsl:with-param>
+                <xsl:with-param name="class">list-group-item list-group-item-action</xsl:with-param>
               </xsl:apply-templates>
             </li>
           </xsl:for-each>
@@ -463,8 +463,7 @@
           <link rel="stylesheet" href="{$relative_path_depth_recursion}offline.css" type="text/css" />
         </xsl:when>
         <xsl:otherwise>
-          <link href="https://assets.gentoo.org/tyrian/bootstrap.min.css" rel="stylesheet" media="screen" />
-          <link href="https://assets.gentoo.org/tyrian/tyrian.min.css" rel="stylesheet" media="screen" />
+          <link href="https://assets.gentoo.org/tyrian/v2/tyrian.min.css" rel="stylesheet" media="screen" />
         </xsl:otherwise>
       </xsl:choose>
       <link rel="stylesheet" href="{$relative_path_depth_recursion}devmanual.css" type="text/css" />
@@ -482,100 +481,107 @@
             </nav>
           </xsl:when>
           <xsl:otherwise>
+
             <div class="site-title">
               <div class="container">
-                <div class="row">
-                  <div class="site-title-buttons">
-                    <div class="btn-group btn-group-sm">
-                      <a href="https://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-fw fa-download"></span> <strong> Get Gentoo!</strong></a>
-                      <div class="btn-group btn-group-sm">
-                        <a class="btn gentoo-org-sites dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
-                          <span class="fa fa-fw fa-map-o"></span> <span class="hidden-xs"> gentoo.org sites </span> <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                          <li><a href="https://www.gentoo.org/" title="Main Gentoo website"><span class="fa fa-home fa-fw"></span> gentoo.org</a></li>
-                          <li><a href="https://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text-o fa-fw"></span> Wiki</a></li>
-                          <li><a href="https://bugs.gentoo.org/" title="Report issues and find common issues"><span class="fa fa-bug fa-fw"></span> Bugs</a></li>
-                          <li><a href="https://forums.gentoo.org/" title="Discuss with the community"><span class="fa fa-comments-o fa-fw"></span> Forums</a></li>
-                          <li><a href="https://packages.gentoo.org/" title="Find software for your Gentoo"><span class="fa fa-hdd-o fa-fw"></span> Packages</a></li>
-                          <li class="divider"></li>
-                          <li><a href="https://planet.gentoo.org/" title="Find out what's going on in the developer community"><span class="fa fa-rss fa-fw"></span> Planet</a></li>
-                          <li><a href="https://archives.gentoo.org/" title="Read up on past discussions"><span class="fa fa-archive fa-fw"></span> Archives</a></li>
-                          <li><a href="https://sources.gentoo.org/" title="Browse our source code"><span class="fa fa-code fa-fw"></span> Sources</a></li>
-                          <li class="divider"></li>
-                          <li><a href="https://infra-status.gentoo.org/" title="Get updates on the services provided by Gentoo"><span class="fa fa-server fa-fw"></span> Infra Status</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
+                <div class="row justify-content-between">
+                  <div class="logo">
                     <a href="/" title="Back to the homepage" class="site-logo">
-                      <object data="https://assets.gentoo.org/tyrian/site-logo.svg" type="image/svg+xml">
-                        <img src="https://assets.gentoo.org/tyrian/site-logo.png" alt="Gentoo Linux Logo" />
-                      </object>
+                      <img src="https://assets.gentoo.org/tyrian/v2/site-logo.png" alt="Gentoo" srcset="https://assets.gentoo.org/tyrian/v2/site-logo.svg"/>
                     </a>
                     <span class="site-label">Development Guide</span>
+                  </div>
+                  <div class="site-title-buttons">
+                    <div class="btn-group btn-group-sm">
+                      <a href="https://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-fw fa-download"></span>
+                        <strong>Get Gentoo!</strong></a>
+                      <div class="btn-group btn-group-sm">
+                        <a class="btn gentoo-org-sites dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+                          <span class="fa fa-fw fa-map-o"></span> <span class="d-none d-sm-inline">gentoo.org sites</span>
+                          <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a class="dropdown-item" href="https://www.gentoo.org/" title="Main Gentoo website"><span class="fa fa-home fa-fw"></span>
+                            gentoo.org</a>
+                          <a class="dropdown-item" href="https://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text-o fa-fw"></span>
+                            Wiki</a>
+                          <a class="dropdown-item" href="https://bugs.gentoo.org/" title="Report issues and find common issues"><span class="fa fa-bug fa-fw"></span>
+                            Bugs</a>
+                          <a class="dropdown-item" href="https://forums.gentoo.org/" title="Discuss with the community"><span class="fa fa-comments-o fa-fw"></span>
+                            Forums</a>
+                          <a class="dropdown-item" href="https://packages.gentoo.org/" title="Find software for your Gentoo"><span class="fa fa-hdd-o fa-fw"></span>
+                            Packages</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="https://planet.gentoo.org/" title="Find out what's going on in the developer community"><span class="fa fa-rss fa-fw"></span>
+                            Planet</a>
+                          <a class="dropdown-item" href="https://archives.gentoo.org/" title="Read up on past discussions"><span class="fa fa-archive fa-fw"></span>
+                            Archives</a>
+                          <a class="dropdown-item" href="https://sources.gentoo.org/" title="Browse our source code"><span class="fa fa-code fa-fw"></span>
+                            Sources</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="https://infra-status.gentoo.org/" title="Get updates on the services provided by Gentoo"><span class="fa fa-server fa-fw"></span>
+                            Infra Status</a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <nav class="tyrian-navbar" role="navigation">
+
+            <nav class="tyrian-navbar navbar navbar-dark navbar-expand-lg bg-primary" role="navigation">
               <div class="container">
-                <div class="row">
-                  <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                  </div>
-                  <div class="collapse navbar-collapse navbar-main-collapse">
-                    <ul class="nav navbar-nav">
-                      <li><a href="{$relative_path_depth_recursion}index.html"><span class="fa fa-home"/>&#160;Home</a></li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Index&#160;<span class="caret"></span></a>
-                        <xsl:if test="/guide/chapter[1]/section or //contentsTree">
-                          <ul class="dropdown-menu">
-                            <!-- List sections of this chapter first. -->
-                            <xsl:for-each select="/guide/chapter[1]/section">
-                              <xsl:variable name="anchor">
-                                <xsl:call-template name="convert-to-anchor">
-                                  <xsl:with-param name="data" select="title"/>
-                                </xsl:call-template>
-                              </xsl:variable>
-                              <li><a class="reference" href="#{$anchor}"><xsl:value-of select="title"/></a></li>
-                            </xsl:for-each>
-                            <xsl:if test="//contentsTree">
-                              <li class="divider"></li>
-                              <!-- List any sub-documents included at first level.
-                                   We cannot call "contentsTree" directly, because it would
-                                   insert another "ul" element. So, assign it to a variable,
-                                   then copy only the "li" nodes. -->
-                              <xsl:variable name="contents">
-                                <xsl:call-template name="contentsTree">
-                                  <xsl:with-param name="maxdepth" select="1"/>
-                                </xsl:call-template>
-                              </xsl:variable>
-                              <xsl:copy-of select="exslt:node-set($contents)/ul/li"/>
-                            </xsl:if>
-                          </ul>
-                        </xsl:if>
-                      </li>
-                      <li><xsl:call-template name="findPrevious"/></li>
-                      <li><xsl:call-template name="findNext"/></li>
-                    </ul>
-                  </div>
+                <div class="navbar-header">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                </div>
+                <div class="collapse navbar-collapse navbar-main-collapse" id="navbar-main-collapse">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="{$relative_path_depth_recursion}index.html"><span class="fa fa-home"/>&#160;Home</a></li>
+
+                    <li class="nav-item dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Index&#160;<span class="caret"></span></a>
+                      <xsl:if test="/guide/chapter[1]/section or //contentsTree">
+                        <ul class="dropdown-menu">
+                          <!-- List sections of this chapter first. -->
+                          <xsl:for-each select="/guide/chapter[1]/section">
+                            <xsl:variable name="anchor">
+                              <xsl:call-template name="convert-to-anchor">
+                                <xsl:with-param name="data" select="title"/>
+                              </xsl:call-template>
+                            </xsl:variable>
+                            <a class="dropdown-item reference" href="#{$anchor}"><xsl:value-of select="title"/></a>
+                          </xsl:for-each>
+                          <xsl:if test="//contentsTree">
+                            <div class="dropdown-divider"></div>
+                            <!-- List any sub-documents included at first level.
+                                 We cannot call "contentsTree" directly, because it would
+                                 insert another "ul" element. So, assign it to a variable,
+                                 then copy only the "li" nodes. -->
+                            <xsl:variable name="contents">
+                              <xsl:call-template name="contentsTree">
+                                <xsl:with-param name="maxdepth" select="1"/>
+                              </xsl:call-template>
+                            </xsl:variable>
+                            <xsl:copy-of select="exslt:node-set($contents)/ul/li"/>
+                          </xsl:if>
+                        </ul>
+                      </xsl:if>
+                    </li>
+                    <li><xsl:call-template name="findPrevious"/></li>
+                    <li><xsl:call-template name="findNext"/></li>
+                  </ul>
                 </div>
               </div>
             </nav>
             <nav class="navbar navbar-grey navbar-stick" id="devmanual-actions" role="navigation">
               <div class="container">
-                <div class="row">
-                  <div class="input-group">
+                <div class="row ml-1 w-100">
+                  <div class="input-group w-100">
                     <input type="search" name="search" placeholder="Search" title="Search Gentoo Developer Manual [f]" accesskey="f" id="searchInput" class="form-control" onclick="fetchDocuments()"/>
-                    <div class="input-group-btn">
-                      <input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton btn btn-default" onclick="search()"/>
+                    <div class="input-group-append">
+                      <input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="bg-white searchButton btn btn-outline-secondary" onclick="search()"/>
                     </div>
                   </div>
                 </div>
@@ -600,8 +606,8 @@
           </xsl:otherwise>
         </xsl:choose>
         <div class="container">
-          <div class="row">
-            <div class="col-md010">
+          <div class="row mt-3">
+            <div class="col-md-12">
               <ol class="breadcrumb">
                 <xsl:call-template name="printParentDocs"/>
               </ol>
@@ -648,8 +654,9 @@
         </div>
       </footer>
       <xsl:if test="not($offline)">
-        <script src="https://assets.gentoo.org/tyrian/jquery.min.js"></script>
-        <script src="https://assets.gentoo.org/tyrian/bootstrap.min.js"></script>
+        <script src="https://assets.gentoo.org/tyrian/v2/jquery-3.3.slim.js"></script>
+        <script src="https://assets.gentoo.org/tyrian/v2/popper.min.js"></script>
+        <script src="https://assets.gentoo.org/tyrian/v2/bootstrap.min.js"></script>
         <script src="https://assets.gentoo.org/lunr/lunr.min.js"></script>
         <script><xsl:text>var documentsSrc = "</xsl:text><xsl:value-of select="$relative_path_depth_recursion"/><xsl:text>documents.js"</xsl:text></script>
         <script src="{$relative_path_depth_recursion}search.js"></script>
@@ -689,7 +696,7 @@
       -->
       <xsl:when test="count(/guide/include) &gt; 0">
         <xsl:variable name="doc" select="/guide/include[1]/@href"/>
-        <a class="w-250 text-center" href="{concat($doc, 'index.html')}"><span class="truncated-text d-inline-block max-w-200 mr-2"><xsl:value-of select="document(concat(/guide/@self, $doc, 'text.xml'))/guide/chapter[1]/title"/></span><span class="fa fa-arrow-right"/></a>
+        <a class="nav-link w-250 text-center" href="{concat($doc, 'index.html')}"><span class="truncated-text d-inline-block max-w-200 mr-2"><xsl:value-of select="document(concat(/guide/@self, $doc, 'text.xml'))/guide/chapter[1]/title"/></span><span class="fa fa-arrow-right"/></a>
       </xsl:when>
       <xsl:otherwise>
         <!-- This document's path -->
@@ -722,7 +729,7 @@
                 <xsl:with-param name="append">../</xsl:with-param>
               </xsl:call-template>
             </xsl:variable>
-            <a class="w-250 text-center" href="{concat($relative_path_depth_recursion, $relative_path, 'index.html')}"> <span class="truncated-text d-inline-block max-w-200 mr-2"><xsl:value-of select="document(concat($parentItem_actual, 'text.xml'))/guide/chapter[1]/title"/></span><span class="fa fa-arrow-right"/></a>
+            <a class="nav-link w-250 text-center" href="{concat($relative_path_depth_recursion, $relative_path, 'index.html')}"> <span class="truncated-text d-inline-block max-w-200 mr-2"><xsl:value-of select="document(concat($parentItem_actual, 'text.xml'))/guide/chapter[1]/title"/></span><span class="fa fa-arrow-right"/></a>
           </xsl:when>
           <xsl:otherwise>
             <!-- We need to recurse downwards; so we need to strip off a directory element off our absolute path to feed
@@ -769,7 +776,7 @@
                * Fully recurse up the node to get the last extremity
              * Otherwise list the parent -->
       <xsl:when test="/guide/@root">
-        <a class="w-250 text-center" href="#"><span class="fa fa-arrow-left"/><span class="truncated-text d-inline-block max-w-200 ml-2"><xsl:value-of select="/guide/chapter[1]/title"/></span></a>
+        <a class="nav-link w-250 text-center" href="#"><span class="fa fa-arrow-left"/><span class="truncated-text d-inline-block max-w-200 ml-2"><xsl:value-of select="/guide/chapter[1]/title"/></span></a>
       </xsl:when>
       <xsl:otherwise>
         <!-- This document's path -->
@@ -792,10 +799,10 @@
             </xsl:call-template>
             </xsl:variable>
             <!-- Make a relative <a> link; we need an absolute reference for the XSLT processor though... -->
-            <a class="w-250 text-center" href="{concat('../', substring-before($myItem_path, 'text.xml'), 'index.html')}"><span class="fa fa-arrow-left"/><span class="truncated-text d-inline-block max-w-200 ml-2"><xsl:value-of select="document(concat($parentItem_path, $myItem_path))/guide/chapter[1]/title"/></span></a>
+            <a class="nav-link w-250 text-center" href="{concat('../', substring-before($myItem_path, 'text.xml'), 'index.html')}"><span class="fa fa-arrow-left"/><span class="truncated-text d-inline-block max-w-200 ml-2"><xsl:value-of select="document(concat($parentItem_path, $myItem_path))/guide/chapter[1]/title"/></span></a>
           </xsl:when>
           <xsl:otherwise>
-            <a class="w-250 text-center" href="../index.html"><span class="fa fa-arrow-left"/><span class="truncated-text d-inline-block max-w-200 ml-2"><xsl:value-of select="document(concat(/guide/@self, '../text.xml'))/guide/chapter[1]/title"/></span></a>
+            <a class="nav-link w-250 text-center" href="../index.html"><span class="fa fa-arrow-left"/><span class="truncated-text d-inline-block max-w-200 ml-2"><xsl:value-of select="document(concat(/guide/@self, '../text.xml'))/guide/chapter[1]/title"/></span></a>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:otherwise>
@@ -813,7 +820,7 @@
           </xsl:call-template>
         </xsl:variable>
 
-        <li><a href="{$relative_path_depth_recursion}index.html"><xsl:value-of select="document(concat(/guide/@self, concat($relative_path_depth_recursion, 'text.xml')))/guide/chapter[1]/title"/></a></li>
+        <li class="breadcrumb-item"><a href="{$relative_path_depth_recursion}index.html"><xsl:value-of select="document(concat(/guide/@self, concat($relative_path_depth_recursion, 'text.xml')))/guide/chapter[1]/title"/></a></li>
 
         <xsl:call-template name="printParentDocs">
           <xsl:with-param name="depth" select="$depth - 1"/>

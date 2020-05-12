@@ -86,4 +86,40 @@ pre span.Statement { color: darkred; }
     border: none;
 }
 
+/* The following code is for backwards compatibility with the
+   visual appearance of Tyrian v1 */
+
+pre {
+    background-color: #f5f5f5;
+    padding: 9.5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.navbar-grey > .container > .row {
+    margin-bottom: 3px;
+}
+
+.dropdown-menu > li {
+    display: block;
+    width: 100%;
+    padding: .185rem 1.25rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+
+.dropdown-menu > li > .reference {
+    color: black;
+}
+
+#mw-searchButton:hover {
+    color: black;
+    background-color: lightgrey!important;
+}
+
 /* vim: set ts=4 tw=80 et : */
