@@ -318,6 +318,14 @@ The following variables may or must be defined by every ebuild.
     </ti>
   </tr>
   <tr>
+    <ti><c>xDEPEND</c></ti>
+    <ti>
+    Other <c>[1char]DEPEND</c> variables are reserved for future. See
+    <uri link="https://wiki.gentoo.org/wiki/Future_EAPI/New_dependency_types"/>
+    for an inspiration how package manager might start using this.
+    </ti>
+  </tr>
+  <tr>
     <ti><c>S</c></ti>
     <ti>
     Path to the temporary build directory, used by
