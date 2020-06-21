@@ -12,7 +12,7 @@ The basic filesystem layout and purpose is as follows:
   <li><c>/bin</c>: Boot-critical applications</li>
   <li><c>/etc</c>: System administrator controlled configuration files</li>
   <li><c>/lib</c>: Boot-critical libraries</li>
-  <li><c>/opt</c>: Binary-only applications.</li>
+  <li><c>/opt</c>: Non-standard layout applications</li>
   <li><c>/sbin</c>: System administrator boot-critical applications</li>
   <li><c>/tmp</c>: Temporary data</li>
   <li><c>/usr</c>: General applications
@@ -45,8 +45,9 @@ Any binary which links against a library under <c>/usr</c> must itself go into
 </p>
 
 <p>
-The <c>/opt</c> top-level should only be used for binary-only applications.
-Binary-only applications must not be installed outside of <c>/opt</c>.
+The <c>/opt</c> top-level should only be used for applications that
+do not conform to the standard filesystem layout. This particularly includes
+prebuilt software packages that expect being installed in a single directory.
 </p>
 
 <p>
