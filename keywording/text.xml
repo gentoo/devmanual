@@ -245,9 +245,13 @@ the arch teams are happy for help, so long as they know what is going on.
 
 <p>
 In order to request stabilization of an ebuild, file a bug to the package's
-maintainer (which may be yourself), and list all secondary maintainers
-in the bug's CC. When the maintainers consider the ebuild to be ready for
-stabilization, they will add the relevant architecture teams to the CC list.
+maintainer (which may be yourself) in the Stabilization component, and list
+all secondary maintainers in the bug's CC. When the maintainers consider the
+ebuild to be ready for stabilization, they will add the relevant architecture
+teams to the CC list. They can do it manually, or they can fill the package
+list field, add the <c>CC-ARCHES</c> keyword, and let
+<uri link="https://dev.gentoo.org/~mgorny/doc/nattka/">NATTkA</uri>
+automatically add arch teams to CC.
 That way teams can remove themselves from the list when they are done, giving
 a clear indication of which teams still have to stabilize a package.
 </p>
