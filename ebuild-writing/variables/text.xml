@@ -806,5 +806,168 @@ REQUIRED_USE="foo? ( !bar !baz ) bar? ( !foo !baz ) baz? ( !foo !bar )"
 </subsection>
 </section>
 
+<section>
+<title>User environment</title>
+<body>
+
+<p>
+The following variables may be set in the user's environment and should be
+respected by all ebuilds. The purpose of each variable within Gentoo is listed
+alongside an example of a valid value. Upstream usage may diverge, but ebuilds
+should ensure that these variables are interpreted consistently within Gentoo.
+The chosen meanings are inspired by a few real and de-facto standards:
+</p>
+
+<ul>
+  <li>
+    <uri link="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html">
+    The POSIX (2018) make specification</uri>
+  </li>
+  <li>
+    <uri link="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html">
+    The GNU make (v4.3) implementation</uri>
+  </li>
+  <li>
+    <uri link="https://www.gnu.org/software/libtool/manual/libtool.html#LT_005fINIT">
+    The GNU libtool (v2.4.6) package</uri>
+  </li>
+</ul>
+
+<p>
+Many of these variables only have an effect if they are invoked directly.
+For example, your compiler driver is usually responsible for assembling object
+files rather than a direct call to <c>${AS}</c>. In that case, setting
+<c>ASFLAGS</c> will have no effect on the build process; instead, you would set
+something like <c>CFLAGS="-Wa,-alh,-L"</c> to tell the C compiler to pass those
+flags to the assembler. The <c>LDFLAGS</c> variable is the exception to this
+rule, as it is intended to be passed to the compiler driver rather than
+<c>${LD}</c>.
+</p>
+
+<table>
+  <tr>
+    <th>Variable</th>
+    <th>Purpose</th>
+    <th>Origin</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <ti><c>AR</c></ti>
+    <ti>
+      <uri link="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/ar.html">
+      ar</uri>-compatible library archiver
+    </ti>
+    <ti>POSIX make</ti>
+    <ti><c>x86_64-pc-linux-gnu-ar</c></ti>
+  </tr>
+  <tr>
+    <ti><c>ARFLAGS</c></ti>
+    <ti>flags for <c>${AR}</c></ti>
+    <ti>POSIX make</ti>
+    <ti><c>-v</c></ti>
+  </tr>
+  <tr>
+    <ti><c>AS</c></ti>
+    <ti>as-compatible assembler</ti>
+    <ti>GNU make</ti>
+    <ti><c>x86_64-pc-linux-gnu-as</c></ti>
+  </tr>
+  <tr>
+    <ti><c>ASFLAGS</c></ti>
+    <ti>flags for <c>${AS}</c></ti>
+    <ti>GNU make</ti>
+    <ti><c>--reduce-memory-overheads</c></ti>
+  </tr>
+  <tr>
+    <ti><c>CC</c></ti>
+    <ti>C compiler driver (also usually used for linking)</ti>
+    <ti>POSIX make</ti>
+    <ti><c>clang-9</c></ti>
+  </tr>
+  <tr>
+    <ti><c>CFLAGS</c></ti>
+    <ti>flags for <c>${CC}</c></ti>
+    <ti>POSIX make</ti>
+    <ti><c>-march=native</c></ti>
+  </tr>
+  <tr>
+    <ti><c>CPPFLAGS</c></ti>
+    <ti>flags for the C preprocessor</ti>
+    <ti>GNU make</ti>
+    <ti><c>-D_GNU_SOURCE</c></ti>
+  </tr>
+  <tr>
+    <ti><c>CXX</c></ti>
+    <ti>C++ compiler driver (also usually used for linking)</ti>
+    <ti>GNU make</ti>
+    <ti><c>clang++</c></ti>
+  </tr>
+  <tr>
+    <ti><c>CXXFLAGS</c></ti>
+    <ti>flags for <c>${CXX}</c></ti>
+    <ti>GNU make</ti>
+    <ti><c>-fvisibility=hidden</c></ti>
+  </tr>
+  <tr>
+    <ti><c>LD</c></ti>
+    <ti>dynamic linker</ti>
+    <ti>GNU libtool</ti>
+    <ti><c>x86_64-pc-linux-gnu-ld</c></ti>
+  </tr>
+  <tr>
+    <ti><c>LDFLAGS</c></ti>
+    <ti>flags for the <e>compiler driver</e> to pass to its linker</ti>
+    <ti>POSIX make</ti>
+    <ti><c>-Wl,-O1 -Wl,--as-needed</c></ti>
+  </tr>
+  <tr>
+    <ti><c>LEX</c></ti>
+    <ti>
+      <uri link="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/lex.html">
+      lex</uri>-compatible lexer
+    </ti>
+    <ti>POSIX make</ti>
+    <ti><c>/usr/bin/flex</c></ti>
+  </tr>
+  <tr>
+    <ti><c>LFLAGS</c></ti>
+    <ti>flags for <c>${LEX}</c></ti>
+    <ti>POSIX make</ti>
+    <ti><c>--8bit --posix-compat</c></ti>
+  </tr>
+  <tr>
+    <ti><c>NM</c></ti>
+    <ti>
+      <uri link="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/nm.html">
+      nm</uri>-compatible symbol extractor
+    </ti>
+    <ti>GNU libtool</ti>
+    <ti><c>x86_64-pc-linux-gnu-nm</c></ti>
+  </tr>
+  <tr>
+    <ti><c>RANLIB</c></ti>
+    <ti>archive index generator</ti>
+    <ti>GNU libtool</ti>
+    <ti><c>x86_64-pc-linux-gnu-ranlib</c></ti>
+  </tr>
+  <tr>
+    <ti><c>YACC</c></ti>
+    <ti>
+      <uri link="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/yacc.html">
+      yacc</uri>-compatible compiler-compiler
+    </ti>
+    <ti>POSIX make</ti>
+    <ti><c>/usr/bin/bison</c></ti>
+  </tr>
+  <tr>
+    <ti><c>YFLAGS</c></ti>
+    <ti>flags for <c>${YACC}</c></ti>
+    <ti>POSIX make</ti>
+    <ti><c>-d</c></ti>
+  </tr>
+</table>
+
+</body>
+</section>
 </chapter>
 </guide>
