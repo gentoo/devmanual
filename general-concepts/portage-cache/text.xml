@@ -60,17 +60,22 @@ solely upon <c>PN</c> are allowed.
 
 <p>
 As an example of a legal and possibly useful conditional inherit, some eclasses
-do:
+or ebuilds do:
 </p>
 
 <codesample lang="ebuild">
-if [[ "${PN##*-}" == "cvs" ]] ; then
-	inherit cvs
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/devmanual.git"
+else
+	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 </codesample>
 
 <p>
-This allows the same eclass to be used for both regular and <c>-cvs</c> packages.
+This allows the same eclass (or the same ebuild "template") to be used for both
+regular and live packages.
 </p>
 </body>
 </section>
