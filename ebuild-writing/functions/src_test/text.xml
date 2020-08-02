@@ -63,6 +63,66 @@ src_test() {
 </section>
 
 <section>
+<title>Supporting test suites in packages</title>
+<body>
+
+<p>
+If the packaged software is equipped with a test suite, it is sensible
+to make the package aware of it. This allows the package manager to
+run the software's unit tests. Packages with a test suite must
+announce the "test" USE flag.
+</p>
+
+<codesample lang="ebuild">
+IUSE="test"
+</codesample>
+
+<p>
+The next important aspect to consider are test-only dependencies, i.e.
+dependencies that are only required to run the test suite. Test-only
+dependencies should be specified in a DEPEND behind a USE flag.
+Please refer to the section on
+<uri link="::general-concepts/dependencies/#Test Dependencies"/>
+for more information.
+</p>
+
+<p>
+Often the default <c>src_test</c> is fine. Sometimes it is necessary
+to remove certain tests from the list if they cannot be used with a
+portage environment. Reasons for such a failure could include:
+</p>
+
+<ul>
+  <li>
+    Needing to work with files which are disallowed by the sandbox.
+  </li>
+  <li>Requiring user input (<c>src_test</c> must not be interactive).</li>
+  <li>Requiring root privileges.</li>
+</ul>
+
+<p>
+Usually, removing the relevant test from the <c>Makefile</c>
+using <c>sed</c> or skipping a particular <c>make</c> target is
+sufficient.
+</p>
+
+<p>
+Try to ensure that tests work properly for your ebuild. A good test
+suite is extremely helpful for arch maintainers.
+Sometimes it is necessary to skip tests entirely. This can be done by
+setting <c>RESTRICT="test"</c> in the ebuild.
+</p>
+
+<note>
+If upstream provides a test suite that doesn't work, consider talking
+to them about getting it fixed. A broken test suite requires developers
+to investigate each test failure in order to determine whether it is
+genuine or indicates a broken test.
+</note>
+</body>
+</section>
+
+<section>
 <title>Tests that require network or service access</title>
 <body>
 <p>
@@ -204,54 +264,6 @@ src_test() {
 	virtx default
 }
 </codesample>
-</body>
-</section>
-
-<section>
-<title>Common <c>src_test</c> Tasks</title>
-<body>
-<p>
-Often the default <c>src_test</c> is fine. Sometimes it is necessary
-to remove certain tests from the list if they cannot be used with a
-portage environment. Reasons for such a failure could include:
-</p>
-
-<ul>
-  <li>
-    Needing to work with files which are disallowed by the sandbox.
-  </li>
-  <li>Requiring user input (src_test must not be interactive).</li>
-  <li>Requiring root privileges.</li>
-</ul>
-
-<p>
-Usually, removing the relevant test from the <c>Makefile</c>
-using <c>sed</c> or skipping a particular <c>make</c> target is
-sufficient.
-</p>
-
-<p>
-Try to ensure that tests work properly for your ebuild. A good test
-suite is extremely helpful for arch maintainers.
-</p>
-
-</body>
-</section>
-
-<section>
-<title>Skipping Tests</title>
-<body>
-<p>
-Sometimes it is necessary to skip tests entirely. This can be done by
-setting <c>RESTRICT="test"</c> in the ebuild.
-</p>
-
-<note>
-If upstream provides a test suite that doesn't work, consider talking
-to them about getting it fixed. A broken test suite requires developers
-to investigate each test failure in order to determine whether it is
-genuine or indicates a broken test.
-</note>
 </body>
 </section>
 
