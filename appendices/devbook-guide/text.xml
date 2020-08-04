@@ -632,6 +632,12 @@ An example for indentation is:
 </codesample>
 
 <p>
+<b>Opening tags</b> with a single attribute may not be split between lines.
+For example, don't put a newline between <c>&lt;uri</c> and its <c>link</c>
+attribute. Break the line before the <c>&lt;uri&gt;</c> tag instead.
+</p>
+
+<p>
 <b>Attributes</b> may not have spaces in between the attribute, the "=" mark,
 and the attribute value. As an example:
 </p>
