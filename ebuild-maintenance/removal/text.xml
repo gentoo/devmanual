@@ -85,5 +85,48 @@ Date:   Tue Oct 3 21:43:03 2017 +1100
 
 </body>
 </section>
+
+<section>
+<title>Removing a virtual package</title>
+<body>
+
+<p>
+Virtual packages are generally removed when they have no more than one
+provider left. The removal is preceded by updating the remaining ebuilds
+not to use the virtual. Since virtuals do not install any files, there
+is little value in proactively forcing them to be uninstalled from user
+systems or unnecessarily informing the user about the fact. Therefore,
+an alternative removal process is recommended.
+</p>
+
+<p>
+In order to remove a virtual package, follow the following procedure:
+</p>
+
+<ol>
+  <li>
+    If the virtual is being removed along with any of its providers,
+    include the virtual in the last-rites mail. However, please
+    do not include it in the <c>package.mask</c> entry as users do not need
+    to be forced to proactively unmerge it. Instead, add it
+    to <c>package.deprecated</c> to warn developers not to depend on it.
+    Wait the time appropriate for the last rites.
+  </li>
+  <li>
+    Update all ebuilds not to reference the virtual. Since there is
+    no urgent need to remove the virtual from user systems
+    and the resulting rebuilds would be unnecessary, do not bump ebuilds
+    when replacing the dependency.
+  </li>
+  <li>
+    Remove the package directly
+  </li>
+  <li>
+    Perform the post-removal cleanup, as with regular packages
+  </li>
+</ol>
+
+</body>
+</section>
 </chapter>
 </guide>
