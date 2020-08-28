@@ -6,7 +6,8 @@
 
 <!ENTITY  % block.class     "p|pre|codesample|note|important|warning|todo
                                 |figure|table|ul|ol|dl">
-<!ENTITY  % inline.class    "b|c|e|d|uri">
+<!ENTITY  % attrib.class    "b|c|e">
+<!ENTITY  % inline.class    "%attrib.class;|d|uri">
 <!ENTITY  % all.class       "%block.class;|%inline.class;">
 
 <!ELEMENT guide         (chapter, include*)>
@@ -21,9 +22,8 @@
 <!ELEMENT subsection    (title, (body|subsubsection), subsubsection*)>
 <!ELEMENT subsubsection (title, body)>
 
-<!-- Title texts are used as anchors, so we shouldn't allow any formatting,
-     but unfortunately it is used in the document. -->
-<!ELEMENT title         (#PCDATA|%inline.class;)*>
+<!-- Title texts are used as anchors, so allow only text attributes -->
+<!ELEMENT title         (#PCDATA|%attrib.class;)*>
 
 <!ELEMENT body          (authors|contentsTree|%block.class;)+>
 
