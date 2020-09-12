@@ -27,15 +27,16 @@ Roughly speaking, there are three kinds of eclass:
 <ul>
   <li>
     Those which provide common functions which are used by many ebuilds (for
-    example, <c>eutils</c>, <c>eapi7-ver</c>, <c>cvs</c>, <c>bash-completion</c>)
+    example, <c>autotools</c>, <c>bash-completion-r1</c>, <c>flag-o-matic</c>,
+    <c>toolchain-funcs</c>
   </li>
   <li>
     Those which provide a basic build system for many similar packages (for
-    example, <c>vim-plugin</c>, <c>kde</c>)
+    example, <c>perl-module</c>, <c>vim-plugin</c>)
   </li>
   <li>
     Those which handle one or a small number of packages with complex build
-    systems (for example, <c>vim</c>, <c>toolchain</c>, <c>kernel-2</c>)
+    systems (for example, <c>kernel-2</c>, <c>toolchain</c>)
   </li>
 </ul>
 
