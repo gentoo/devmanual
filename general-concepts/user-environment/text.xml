@@ -2,15 +2,17 @@
 <guide self="general-concepts/user-environment/">
 <chapter>
 <title>User Environment</title>
-
 <body>
+
 <p>
-User environment variables and <c>make.conf</c> settings get passed on to ebuilds.
-This can be useful <d/> it's how <c>CFLAGS</c> and friends work, for example <d/> but
-it can also result in nasty build-breaking variables like <c>LANG</c> and
-<c>LC_ALL</c> getting through. Currently no sanitisation is performed upon the
-environment.
+User environment variables and
+<c><uri link="::eclass-reference/make.conf/"/></c> settings get passed on
+to ebuilds. This can be useful <d/> it's how <c>CFLAGS</c> and friends work,
+for example <d/> but it can also result in nasty build-breaking variables like
+<c>LANG</c> and <c>LC_ALL</c> getting through. Currently no sanitisation is
+performed upon the environment.
 </p>
+
 </body>
 
 <section>
