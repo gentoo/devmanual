@@ -124,8 +124,9 @@ shift $((OPTIND-1))
 MANPAGES=()
 [[ -n ${NOMAN} ]] || MANPAGES=(
 	$(/usr/bin/qlist -e eclass-manpages)
-	# We also need the ebuild man page
+	# We also need a couple of portage man pages
 	/usr/share/man/man5/ebuild.5*
+	/usr/share/man/man5/make.conf.5*
 ) || exit 1
 
 [[ -d ${OUTPUTDIR} ]] || mkdir -p "${OUTPUTDIR}" || exit 1
@@ -142,10 +143,10 @@ for i in "${MANPAGES[@]}"; do
 	touch "${DIRNAME}" || exit 1
 	# rebuild the man page each time
 	echo -n "${HEADER//@TITLE@/${BASENAME}}" > "${FINAL}" || exit 1
-	# generate html pages and fix hyperlinks for eclass and ebuild man pages
+	# generate html pages and fix hyperlinks for eclass and other man pages
 	${DECOMPRESS} "${i}" | /usr/bin/man2html -r \
 	| sed -e '1,/<BODY>/d;/<\/BODY>/,$d' \
-		-e '/<A HREF=/s:"\.\./man5/\([^"]*eclass\|ebuild\)\.5\.html":"../\1/index.html":g' \
+		-e '/<A HREF=/s:"\.\./man5/\([^"]*eclass\|ebuild\|make\.conf\)\.5\.html":"../\1/index.html":g' \
 		-e 's:<A HREF="\.\./man[^"]*">\([^<>]*\)</A>:\1:g' \
 		-e 's:<A HREF="[^"]*//localhost/[^"]*">\([^<>]*\)</A>:\1:g' \
 		-e 's:<A HREF="[^"]*\${[^"]*">\([^<>]*\)</A>:\1:g' \
