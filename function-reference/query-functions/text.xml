@@ -65,19 +65,17 @@ query variables and similar state.
   </tr>
   <tr>
     <ti>
-      <c>has flag string</c>
+      <c>has word item...</c>
     </ti>
     <ti>
-      Returns true if <c>flag</c> is included in the flag list <c>string</c>
-      (example: <c>if has ccache $FEATURES ; then</c>).
-      The condition is inverted if prefixed with an exclamation mark,
-      <c>!flag</c>.
+      Returns true if <c>word</c> is found in the list of subsequent
+      <c>item</c> arguments (example: <c>if has ccache $FEATURES ; then</c>).
       It is guaranteed that <c>has</c> produces no output.
     </ti>
   </tr>
   <tr>
     <ti>
-      <c>hasq flag string</c>
+      <c>hasq word item...</c>
     </ti>
     <ti>
       Deprecated synonym for <c>has</c>.
@@ -85,10 +83,10 @@ query variables and similar state.
   </tr>
   <tr>
     <ti>
-      <c>hasv flag string</c>
+      <c>hasv word item...</c>
     </ti>
     <ti>
-      As <c>has</c>, echoes <c>flag</c> on success.
+      As <c>has</c>, echoes <c>word</c> on success.
     </ti>
   </tr>
   <tr>
