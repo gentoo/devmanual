@@ -47,28 +47,39 @@ It is <e>not</e> correct to use the <c>${CC}</c> variable for this purpose.
 Sometimes a package will not use the user's <c>${CFLAGS}</c> or <c>${LDFLAGS}</c>.
 This must be worked around, as sometimes these variables are used for specifying
 critical ABI options. In these cases, the build scripts should be modified (for
-example, with <c>sed</c>) to use <c>${CFLAGS}</c> or <c>${LDFLAGS}</c> correctly.
+example, with <c>sed</c> or via a patch) to use <c>${CFLAGS}</c> or
+<c>${LDFLAGS}</c> correctly.
 </p>
+
+<note>
+Try to not substitute the value with <c>sed</c> directly, but instead make the
+build script use the variables. The variables may contain characters such as a
+slash, a comma, or a colon, which are often used with <c>sed</c>, and this would
+break its syntax.
+</note>
 
 <codesample lang="ebuild">
 inherit flag-o-matic toolchain-funcs
+
+src_prepare() {
+	default
+
+	# We have a weird Makefile to work with which ignores our
+	# compiler preferences. yay! Note the single quotes.
+	sed -i -e 's:cc -O2:$(CC) $(CFLAGS) $(LDFLAGS):' Makefile \
+		|| die "sed fix failed. Uh-oh..."
+
+	# non-Makefile example
+	sed -i -e 's/-O2/${CFLAGS}/' build.sh || die
+}
 
 src_compile() {
 	# -Os not happy
 	replace-flags -Os -O2
 
-	# We have a weird build.sh to work with which ignores our
-	# compiler preferences. yay!
-	sed -i -e "s:cc -O2:$(tc-getCC) ${CFLAGS} ${LDFLAGS}:" build.sh \
-		|| die "sed fix failed. Uh-oh..."
-	./build.sh || die "Build failed!"
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 </codesample>
-
-<note>
-When using <c>sed</c> with <c>CFLAGS</c> or <c>LDFLAGS</c>, it is not safe to use
-a comma or a slash as a delimiter. The recommended character is a colon.
-</note>
 
 <p>
 Portage performs a QA check which verifies if LDFLAGS are respected. This QA check
