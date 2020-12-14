@@ -160,7 +160,7 @@ an example <c>&lt;body&gt;</c> element:
 <codesample lang="sgml"><!-- Example of a body element -->
 &lt;p&gt;
 This is a paragraph. &lt;c&gt;/etc/passwd&lt;/c&gt; is a file.
-&lt;uri&gt;https://forums.gentoo.org/&lt;/uri&gt; is my favorite website.
+&lt;uri&gt;https://www.gentoo.org/&lt;/uri&gt; is my favorite website.
 Type &lt;c&gt;ls&lt;/c&gt; if you feel like it. I &lt;e&gt;really&lt;/e&gt; want to go to sleep now.
 &lt;/p&gt;
 
@@ -193,7 +193,7 @@ Now, here's how the <c>&lt;body&gt;</c> element above is rendered:
 
 <p>
 This is a paragraph. <c>/etc/passwd</c> is a file.
-<uri>https://forums.gentoo.org/</uri> is my favorite web site.
+<uri>https://www.gentoo.org/</uri> is my favorite web site.
 Type <c>ls</c> if you feel like it. I <e>really</e> want to go to sleep now.
 </p>
 
@@ -362,12 +362,12 @@ src_install()  {
 The <c>&lt;uri&gt;</c> tag is used to point to files/locations on the Internet.
 It has two forms <d/> the first can be used when you want to have the actual URI
 displayed in the body text, such as this link to
-<uri>https://forums.gentoo.org/</uri>.  To create this link, I typed
-<c>&lt;uri&gt;https://forums.gentoo.org/&lt;/uri&gt;</c>.  The alternate form is
+<uri>https://www.gentoo.org/</uri>. To create this link, I typed
+<c>&lt;uri&gt;https://www.gentoo.org/&lt;/uri&gt;</c>. The alternate form is
 when you want to associate a URI with some other text <d/> for example,
-<uri link="https://forums.gentoo.org/">the Gentoo Forums</uri>.  To create
-<e>this</e> link, I typed <c>&lt;uri link="https://forums.gentoo.org/"&gt;the
-Gentoo Forums&lt;/uri&gt;</c>.
+<uri link="https://www.gentoo.org/">the Gentoo Linux website</uri>. To create
+<e>this</e> link, I typed <c>&lt;uri link="https://www.gentoo.org/"&gt;the
+Gentoo Linux website&lt;/uri&gt;</c>.
 </p>
 
 <p>
@@ -643,8 +643,8 @@ and the attribute value. As an example:
 </p>
 
 <codesample lang="sgml"><!-- Attributes -->
-Wrong  :     &lt;uri link = "https://forums.gentoo.org/"&gt;
-Correct:     &lt;uri link="https://forums.gentoo.org/"&gt;
+Wrong  :     &lt;uri link = "https://www.gentoo.org/"&gt;
+Correct:     &lt;uri link="https://www.gentoo.org/"&gt;
 </codesample>
 
 </body>
@@ -674,8 +674,9 @@ with a capital letter.
 
 <p>
 Try to use <c>&lt;uri&gt;</c> with the <c>link</c> attribute as much as
-possible. In other words, the <uri link="https://forums.gentoo.org/">Gentoo
-Forums</uri> is preferred over <uri>https://forums.gentoo.org/</uri>.
+possible. In other words, the
+<uri link="https://www.gentoo.org/">Gentoo website</uri> is preferred over
+<uri>https://www.gentoo.org/</uri>.
 </p>
 
 </body>
