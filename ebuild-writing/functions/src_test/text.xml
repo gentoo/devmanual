@@ -68,21 +68,11 @@ src_test() {
 
 <p>
 If the packaged software is equipped with a test suite, it is sensible
-to make the package aware of it. This allows the package manager to
-run the software's unit tests. Packages with a test suite must
-announce the "test" USE flag.
-</p>
-
-<codesample lang="ebuild">
-IUSE="test"
-</codesample>
-
-<p>
-The next important aspect to consider are test-only dependencies, i.e.
-dependencies that are only required to run the test suite. Test-only
-dependencies should be specified in a DEPEND behind a USE flag.
-Please refer to the section on
-<uri link="::general-concepts/dependencies/#Test Dependencies"/>
+to run it. Sometimes the package will need additional dependencies for this,
+i.e., dependencies that are only required to run the test suite. Such test-only
+dependencies should be specified in DEPEND or BDEPEND behind a USE flag;
+often, the <c>test</c> USE flag will be used for this. Please refer to the
+section on <uri link="::general-concepts/dependencies/#Test Dependencies"/>
 for more information.
 </p>
 
