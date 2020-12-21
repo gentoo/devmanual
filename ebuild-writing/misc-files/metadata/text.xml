@@ -104,8 +104,8 @@ metadata.xml:
 <tr>
   <ti><c>&lt;description&gt;</c></ti>
   <ti>
-    The description tag contains a description of the maintainership, or for 
-    example a remark that someone interested can take over the maintainership. 
+    The description tag adds important information about the maintainer such as "Tests driver on xyz printer" or "Upstream. Please CC."
+    This tag should not be used to mark that someone is allowed to help maintain the package. 
     It is optional.
   </ti>
 </tr>
