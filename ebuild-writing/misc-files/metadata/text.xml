@@ -223,7 +223,7 @@ metadata.xml:
 <tr>
   <ti><c>&lt;bugs-to&gt;</c></ti>
   <ti>
-    Should contain a place where bugs can be filed, a URL or an e-mail address prefixed
+    Should contain a place where bugs can be filed, an URL or an e-mail address prefixed
     with <c>mailto:</c>. May appear at most once.
   </ti>
 </tr>
