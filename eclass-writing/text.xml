@@ -643,7 +643,7 @@ domacosapp() {
 <body>
 
 <p>
-An eclass may provide default implementations for any of the standard ebuild
+An eclass may provide default implementations for any of the ebuild phase
 functions (<c>src_unpack</c>, <c>pkg_postinst</c> etc). This can be done either as a
 simple function definition (which is not multiple eclass friendly) or using
 <c>EXPORT_FUNCTIONS</c>. Functions given to <c>EXPORT_FUNCTIONS</c> are implemented
@@ -651,7 +651,7 @@ as normal, but have their name prefixed with <c>${ECLASS}_</c>.
 </p>
 
 <important>
-Only 'standard' functions should be specified in <c>EXPORT_FUNCTIONS</c>.
+Only the ebuild phase functions may be specified in <c>EXPORT_FUNCTIONS</c>.
 </important>
 
 <note><c>EXPORT_FUNCTIONS</c> is a function, <e>not</e> a variable.</note>
