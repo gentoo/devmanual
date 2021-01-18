@@ -91,9 +91,16 @@ tidy: $(HTMLS) $(ECLASS_HTMLS)
 	test $${status} -eq 0 && echo "tidy validation successful"; \
 	exit $${status}
 
+dist:
+	COMMITDATE=$$(TZ=UTC git log -1 --pretty="format:%cd" \
+	  --date="format-local:%Y%m%d"); \
+	TARBALL="devmanual-0_pre$${COMMITDATE}.tar.xz"; \
+	echo "Creating tarball: $${TARBALL}"; \
+	git archive --format=tar --prefix=devmanual/ HEAD | xz > $${TARBALL}
+
 clean:
 	@rm -f $(HTMLS) $(IMAGES) documents.js .depend
 
-.PHONY: all prereq build install validate tidy clean
+.PHONY: all prereq build install validate tidy dist clean
 
 -include .depend
