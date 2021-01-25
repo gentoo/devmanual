@@ -56,6 +56,9 @@ documents.js: bin/build_search_documents.py $(XMLS)
 %.html: $$(dir $$@)text.xml devbook.xsl xsl/*.xsl
 	xsltproc --param offline "$(OFFLINE)" devbook.xsl $< > $@
 
+eclass-reference/text.xml:
+	bin/gen-eclass-html.sh
+
 # Each HTML file must depend on its XML file with all its descendants
 # (for the contents tree), all its ancestors (for breadcrumbs), and
 # the previous and next documents (for backward and forward links).
