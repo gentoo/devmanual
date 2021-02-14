@@ -299,10 +299,9 @@ Vulnerability Treatment Policy</uri>
 <body>
 
 <p>
-AMD64, X86: If you are the maintainer of a package that currently has open bugs
-for amd64 or x86 stabilization and own the respectively amd64 or x86 hardware,
-you can do your own testing and keywording of your packages; as long as it is
-not a core system set dependency.
+AMD64, X86: If you are the maintainer of a package and own the respective amd64
+or x86 hardware, you can do your own testing (stabilization and keywording) of
+your packages; as long as it is not a core system set dependency.
 </p>
 
 <p>
