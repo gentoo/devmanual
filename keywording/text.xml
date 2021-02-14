@@ -345,6 +345,13 @@ arches that you would like to stabilize.
 </p>
 
 <p>
+If your package is architecture-independent, you should
+add the <c>&lt;stabilize-allarches&gt;</c> tag to metadata.xml.
+This allows consistency in future stabilizations and saves
+arch teams considerable work.
+</p>
+
+<p>
 The arch teams, when encountering the <c>ALLARCHES</c> keyword, should perform
 their usual set of tests on a single convenient architecture. Then, if
 everything works, stabilize not only the arch that was used during testing,
