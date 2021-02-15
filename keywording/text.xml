@@ -301,7 +301,10 @@ Vulnerability Treatment Policy</uri>
 <p>
 AMD64, X86: If you are the maintainer of a package and own the respective amd64
 or x86 hardware, you can do your own testing (stabilization and keywording) of
-your packages; as long as it is not a core system set dependency.
+your packages; as long as it is not a core system set dependency. Note that
+it is acceptable to test x86 using a
+<uri link="https://wiki.gentoo.org/wiki/Project:AMD64/32-bit_Chroot_Guide">
+specialized environment on amd64</uri>.
 </p>
 
 <p>
