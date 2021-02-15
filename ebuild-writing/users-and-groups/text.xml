@@ -16,9 +16,10 @@ categories.
 First, check the <uri link="https://api.gentoo.org/uid-gid.txt">UID/GID
 assignment list</uri> and choose a free UID/GID in the range between
 101 and 499. If you are adding a user and a group with the same name,
-use the same number for their UID and GID, respectively. When in
-doubt,
-take the next free number from 499 downwards.
+use the same number for their UID and GID, respectively. When in doubt, take
+the next free number from 499 downwards. The helper script
+<c>./bin/used_free_uidgids.sh</c> available in the data/api.git repository can
+be used to find the next available UID or GID.
 </p>
 
 <p>
