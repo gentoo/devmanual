@@ -503,8 +503,8 @@ You need not assign the IUSE variable in your ebuild if it is empty.
 </note>
 
 <p>
-Arch USE flags (<c>sparc</c>, <c>mips</c>, <c>x86-fbsd</c> and so on) should not be
-listed.
+Arch USE flags (<c>sparc</c>, <c>mips</c>, <c>x64-macos</c> and so on) should
+not be listed.
 </p>
 
 </body>
