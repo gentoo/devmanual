@@ -14,7 +14,7 @@ distinction is important.
 <p>
 Most ebuilds specify a <c>KEYWORDS</c> variable. This variable is used to
 indicate the suitability and stability of both the package and the ebuild on
-each given arch (<c>sparc</c>, <c>ppc</c>, <c>x86-obsd</c>, ...).
+each given arch (<c>sparc</c>, <c>ppc</c>, <c>x64-macos</c>, ...).
 </p>
 
 <note>
