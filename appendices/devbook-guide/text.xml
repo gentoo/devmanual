@@ -647,6 +647,13 @@ Wrong  :     &lt;uri link = "https://www.gentoo.org/"&gt;
 Correct:     &lt;uri link="https://www.gentoo.org/"&gt;
 </codesample>
 
+<p>
+<b>Dashes</b> used as in-sentence punctuation <d/> like this <d/> should be
+written as a <c>&lt;d/&gt;</c> tag surrounded by spaces. It would be difficult
+to distinguish a Unicode em-dash from a hyphen when editing the source using a
+fixed-width font.
+</p>
+
 </body>
 </subsection>
 <subsection>

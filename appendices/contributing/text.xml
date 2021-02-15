@@ -135,11 +135,6 @@ amount of depth.
   This is not a formal document. The writing style is intended to be
   professional but readable.
   </li>
-  <li>
-  When using in-sentence hyphens as punctuation <d/> like this <d/> use a space,
-  followed by the <c>&lt;d/&gt;</c> tag. The build system will automatically turn
-  this into a proper Unicode long dash.
-  </li>
 </ul>
 
 </body>
