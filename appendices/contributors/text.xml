@@ -122,6 +122,9 @@ Misc
 <author name="Lucas Ramage" email="ramage.lucas@protonmail.com">
   Search functionality
 </author>
+<author name="Mike Frysinger" email="vapier@gentoo.org">
+  <uri link="::ebuild-writing/misc-files/patches/#Clean Patch Howto"/>
+</author>
 </authors>
 
 </body>
