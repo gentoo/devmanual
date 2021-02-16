@@ -21,6 +21,7 @@ familiar with.
 </chapter>
 
 <include href="new-ebuild/"/>
+<include href="general/"/>
 <include href="git/"/>
 <include href="package-moves/"/>
 <include href="removal/"/>
