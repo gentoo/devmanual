@@ -114,123 +114,189 @@ from the <c>vim</c> patch tarball:
 <title>Clean Patch Howto</title>
 <body>
 
+<p>
+"Clean patch" does not refer to the patch itself (as in the changes it makes to
+the source code). It refers to all the metadata that exists in the patch to
+make it "maintainable".
+</p>
+
+</body>
+
+<subsection>
+<title>Why</title>
+<body>
+
+<p>
+This may take more effort "up front", but the amount of effort that it saves
+for everyone else in the future more than makes up for it. This refers to other
+distributions or upstream maintainers who read the patch, or future Gentoo
+maintainers. By keeping all patches "clean", people can quickly and easily
+assess a patch without searching through many other files.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>File Naming</title>
+<body>
+
+<p>
+Your patch name should be short and to the point. When doing a file listing
+(e.g., <c>ls files/</c>), it's a lot easier to be able to scan for relevant
+patches when they have good keywords in their file names.
+</p>
+
+<p>
+It should also include the package name and the version it was written against.
+This way, people searching for patches or who happen to just stumble across the
+file itself have a clue as to what it's for. Stripping out the <c>${PN}</c>
+(and to a lesser extent, the <c>${PV}</c>) makes the filename significantly
+less useful. The fact the files are typically stored in
+<c>${CATEGORY}/${PN}/files/</c> is irrelevant, because the patch may be used
+outside Gentoo.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>How</title>
+<body>
+
+<p>
+Here's a check list of things to keep in the patch header:
+</p>
+
+<ul>
+  <li>
+    External references
+    <ul>
+      <li>Upstream mailing archives</li>
+      <li>Upstream bug reports</li>
+      <li>Upstream commit links</li>
+      <li>Upstream ChangeLog entries</li>
+      <li>Gentoo bug reports</li>
+    </ul>
+  </li>
+  <li>
+    Short/medium explanation
+    <ul>
+      <li>Why is the patch needed?</li>
+      <li>What is it fixing?</li>
+      <li>Why is it fixing it the way it is?</li>
+      <li>Proposal for better fixes in the future?</li>
+      <li>Is it a stop gap measure (workaround)?</li>
+      <li>How was it regression tested?</li>
+      <li>
+        Examples of before/after behaviour
+        <ul>
+          <li>How to reproduce bug without patch</li>
+          <li>How to show bug is fixed after patch</li>
+          <li>
+            Maybe upstream fixed it in a different way, so this test can be
+            used to show that the patch is no longer needed with newer versions
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    Status
+    <ul>
+      <li>Was it merged/rejected/postponed/etc. upstream?</li>
+      <li>Is it distribution-specific?</li>
+    </ul>
+  </li>
+  <li>
+    Attribution
+    <ul>
+      <li>Who found the bug?</li>
+      <li>Who fixed the bug?</li>
+      <li>Who wrote the patch?</li>
+      <li>Who tested the patch?</li>
+      <li>Who gave advice on the patch?</li>
+    </ul>
+  </li>
+</ul>
+
+<p>
+All this information should be <e>in the patch itself</e>. It should never be
+found in something like the ebuild. If you really want to put a comment next
+to a patch in an ebuild, then this is about the only thing that is OK
+(where 93671 is the Gentoo bug number):
+</p>
+
+<codesample lang="ebuild">
+PATCHES=(
+	"${FILESDIR}"/${P}-dont-umask.patch #93671
+)
+</codesample>
+
+<p>
+When documenting these things, it might be useful to use RFC822/Git-style tags
+to format the metadata. So when documenting the author, use:
+</p>
+
 <pre>
----------------------
-  CLEAN PATCH HOWTO
----------------------
+From: Nice Person &lt;foo@cow.example.com&gt;
+</pre>
 
-when i say "clean patch", i am not referring to the patch itself (as in the
-changes it makes to the source code).  i am referring to all the metadata that
-exists in the patch to make it "maintainable".
+<p>
+Or when documenting relevant URLs, use something like:
+</p>
 
--------
-  WHY
--------
+<pre>
+Bug: https://upstream.example.com/12345
+Bug: https://bugs.gentoo.org/9889
+</pre>
 
-you might be thinking "wow, this looks like effort".  well you best shut your
-brain hole and do it anyways.  seriously though ...
+<p>
+And if you want to note your copyright signoff, slap on a Signed-off-by tag:
+</p>
 
-this may take more effort "up front", but the amount of effort that it saves
-for everyone else in the future more than makes up for it.  i refer to other
-distributions or upstream maintainers that read the patch.  or future Gentoo
-maintainers / developers.  too many hours have i spent staring at a patch
-(whether it be long or tiny) with no documentation and no references as to why
-the changes it is making to a package exist at all.  by keeping all patches
-"clean", people can quickly and easily assess a patch without searching through
-a metric butt ton of other files.
+<pre>
+Signed-off-by: Diligent Developer &lt;larry@gentoo.org&gt;
+</pre>
 
-so make your patch clean in the first place and stop screwing others in ways
-they do not enjoy.  stick with the pleasant methods please.
+<p>
+Finally, your patch should be clear of useless cruft. If it was not taken
+straight from an upstream SCM (<c>git format-patch</c> or <c>svn diff -r #</c>
+or <c>cvs diff -r 1.123 -r 1.124</c>), then the metadata is useless. So delete
+it. This refers to things like the diff command used to produce the patch,
+or the timestamps on the files, local revision info, or other similar spam.
+Note that the context info (the stuff that comes after the <c>@@</c>) should
+be left, as that can be invaluable when applying patches to later versions.
+For example:
+</p>
 
----------------
-  FILE NAMING
----------------
-
-this is quick to do, so let's get it out of the way.  your patch name should be
-short and to the point.  when doing a file listing (e.g. `ls files/`), it's a
-lot easier to be able to scan for relevant patches when they have good keywords
-in their file names.
-
-it should also include the package name and the version it was written against.
-this way people searching for patches or who happen to just stumble across the
-file itself have a clue as to what it's for.  stripping out the $PN (and to a
-lesser extent, the $PV) makes the filename significantly less useful.  the fact
-the files are typically stored in $CATEGORY/$PN/files/ is irrelevant.  we're
-trying to think beyond the Gentoo box here.
-
-it's also more consistent.  consistency matters as minor/pointless deviations
-only serve to slow people down.
-
--------
-  HOW
--------
-
-here's a check list of things to keep in the patch header:
- - external references
-	- upstream mailing archives
-	- upstream bug reports
-	- upstream commit links
-	- upstream changelog entries
-	- Gentoo bug reports
- - short / medium explanation
-	- why is the patch needed ?
-	- what is it fixing ?
-	- why is it fixing it the way it is ?
-	- proposal for better fixes in the future ?
-	- is it a stop gap measure (workaround) ?
-	- how was it regression tested ?
-	- examples of before / after behavior
-		- how to reproduce bug w/out patch
-		- how to show bug is fixed after patch
-		- maybe upstream fixed it in a different way, so this test can be
-		  used to show that the patch is no longer needed w/newer versions
- - status
-	- was it merged/rejected/postponed/etc... upstream ?
-	- is it distribution-specific ?
- - attribution
-	- who found the bug ?
-	- who fixed the bug ?
-	- who wrote the patch ?
-	- who tested the patch ?
-	- who gave advice on the patch ?
-
-all this information should be *in the patch itself*.  it should never ever be
-found in something like the ebuild.  if you really really want to put a comment
-next to a patch in an ebuild, then this is about the only thing that is OK:
-	epatch "${FILESDIR}"/${P}-fatty-cow.patch #12345
-(where 12345 is the Gentoo bug #)
-
-when documenting these things, it might be useful to use RFC822/git style tags
-to format the metadata.  so when documenting the author, use:
-	From: Nice Person &lt;foo@cow.com&gt;
-or when documenting relevant urls, use something like:
-	Project-Bug-URL: http://upstream.tracker.com/12345
-	Gentoo-Bug-URL: http://bugs.gentoo.org/9889
-and if you want to note your approval, slap on a s-o-b tag:
-	Signed-off-by: Diligent Developer &lt;funky-cow-butt@gentoo.org&gt;
-
-finally, your patch should be clear of useless cruft.  if it was not taken
-straight from an upstream SCM (`git format-patch` or `svn diff -r #` or
-`cvs diff -r 1.123 -r 1.124`), then the metadata is useless.  so delete it.
-i'm referring to things like the diff command used to produce the patch, or the
-timestamps on the files, local revision info, or other similar spam. note that
-the context info (the stuff that comes after the @@) should be left as that can
-be invaluable when applying patches to later versions.  for example:
+<pre>
 @@ -80,6 +82,7 @@ case $sys in
                   ^^^^^^^^^^^^ keep this part
-extra points if you make the filename in the ---/+++ section consistent and
-sane.  i.e. remove different leading backup/paths/ and .orig/.new suffixes.
-extra extra points if your patch is in the -p1 format.  this tends to be much
-more standard than any other -p#.  a good suggestion is to use the package
-name / version as the leading portion that gets stripped.
+</pre>
 
-also note that while `patch` uses the timestamp info in order to remove empty
-files automatically, in Gentoo, we apply all patches with -E, so the timestamp
-info does not matter.  if you really want to keep an empty file around though,
-just replace the file with a comment or an empty line or ...
+<p>
+Extra points if you make the filename in the <c>---</c>/<c>+++</c> section
+consistent and sane. That is, remove different leading <c>backup/paths/</c>
+and <c>.orig</c>/<c>.new</c> suffixes. Your patch should be in the <c>-p1</c>
+format because this tends to be much more standard than any other <c>-p#</c>.
+It is also what <c>eapply</c> understands by default. A good suggestion is to
+use either <c>a/</c> and <c>b/</c> (as in <c>git format-patch</c>) or the
+package name/version as the leading portion that gets stripped.
+</p>
 
-if deleting these things yourself sounds like the kind of fun that involves
-nipple clamps and electricity, try this:
+<p>
+Also note that <c>patch</c> uses the timestamp info in order to remove empty
+files automatically. Alternatively, you can specify the <c>-E</c> option with
+<c>eapply</c> if you want to remove an empty file.
+</p>
+
+<p>
+The following function (for your interactive shell, not for the ebuild) will
+help deleting these things:
+</p>
+
+<codesample lang="ebuild">
 scrub_patch() {
 	sed -i \
 		-e '/^index /d' \
@@ -248,22 +314,26 @@ scrub_patch() {
 		-e '/^---/s:\t.*::' \
 		"$@"
 }
+
 scrub_patch some-patch-you-found.patch
+</codesample>
 
-some more info can be found here:
-http://devmanual.gentoo.org/ebuild-writing/misc-files/patches/index.html
+</body>
+</subsection>
 
------------
-  EXAMPLE
------------
+<subsection>
+<title>Examples</title>
+<body>
 
-here we see a simple explanation and a URL for more info (this patch could do
-with some attribution however ...).  no metadata exists from running the `diff`
-command (timestamps, etc...).
-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; man-1.6d-fbsd.patch &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+<p>
+This shows a simple explanation and a URL for more info (this patch could do
+with some attribution however). No metadata exists from running the <c>diff</c>
+command (timestamps, etc.).
+</p>
+
+<pre><!-- man-1.6d-fbsd.patch -->
 Fixes compilation in FreeBSD.
-
-http://bugs.gentoo.org/138123
+https://bugs.gentoo.org/138123
 
 --- man-1.6d/gencat/genlib.c
 +++ man-1.6d/gencat/genlib.c
@@ -276,15 +346,11 @@ http://bugs.gentoo.org/138123
  #include &lt;memory.h&gt;
  static int bcopy(src, dst, length)
  char *src, *dst;
+</pre>
 
-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; man-1.6d-fbsd.patch &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
-
-
-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; util-linux-2.12q-dont-umask.patch &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+<pre><!-- util-linux-2.12q-dont-umask.patch -->
 Don't force umask to 022 or the -o umask option doesn't work.
-
 Patch by Daniel Drake.
-
 https://bugs.gentoo.org/93671
 
 --- mount/mount.c
@@ -298,14 +364,11 @@ https://bugs.gentoo.org/93671
     /* People report that a mount called from init without console
        writes error messages to /etc/mtab
        Let us try to avoid getting fd's 0,1,2 */
-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; util-linux-2.12q-dont-umask.patch &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</pre>
 
-
-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; iproute2-2.6.25.20080417-build.patch &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+<pre><!-- iproute2-2.6.25.20080417-build.patch -->
 Don't let target flags bleed into build flags.
-
 Fix by Bertrand Jacquin.
-
 https://bugs.gentoo.org/226035
 
 --- netem/Makefile
@@ -318,10 +381,10 @@ https://bugs.gentoo.org/226035
  LDLIBS += -lm
 
  all: $(DISTGEN) $(DISTDATA)
-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; iproute2-2.6.25.20080417-build.patch &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
 </pre>
 
 </body>
+</subsection>
 </section>
 </chapter>
 </guide>
