@@ -13,7 +13,6 @@ variables.
 </p>
 
 <ul>
-  <li><uri link="::eclass-reference/bzr.eclass/"/></li>
   <li><uri link="::eclass-reference/cvs.eclass/"/></li>
   <li><uri link="::eclass-reference/darcs.eclass/"/></li>
   <li><uri link="::eclass-reference/git-r3.eclass/"/></li>
