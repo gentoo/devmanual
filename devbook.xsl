@@ -25,47 +25,25 @@
 
   <xsl:template match="chapter">
     <h1 class="first-header"><xsl:apply-templates select="title"/></h1>
-    <xsl:apply-templates select="(body|section)"/>
+    <xsl:apply-templates select="*[not(self::title)]"/>
   </xsl:template>
 
-  <xsl:template match="section">
+  <xsl:template match="section|subsection|subsubsection">
+    <xsl:variable name="level">
+      <xsl:value-of select="number(starts-with(local-name(), 'sub'))
+        + number(starts-with(local-name(), 'subsub')) + 2"/>
+    </xsl:variable>
+    <xsl:variable name="anchor">
+      <xsl:call-template name="convert-to-anchor">
+        <xsl:with-param name="data" select="title"/>
+      </xsl:call-template>
+    </xsl:variable>
     <div class="section">
-      <xsl:variable name="anchor">
-        <xsl:call-template name="convert-to-anchor">
-          <xsl:with-param name="data" select="title"/>
-        </xsl:call-template>
-      </xsl:variable>
-
-      <h2 id="{$anchor}"><xsl:apply-templates select="title"/></h2>
-      <xsl:apply-templates select="(body|subsection)"/>
-    </div>
-  </xsl:template>
-
-  <xsl:template match="subsection">
-    <div class="section">
-      <xsl:variable name="anchor">
-        <xsl:call-template name="convert-to-anchor">
-          <xsl:with-param name="data" select="title"/>
-        </xsl:call-template>
-      </xsl:variable>
-
-      <h3 id="{$anchor}"><xsl:apply-templates select="title"/></h3>
-      <xsl:apply-templates select="(body|subsubsection)"/>
-    </div>
-  </xsl:template>
-
-  <xsl:template match="subsubsection">
-    <div class="section">
-      <xsl:variable name="anchor">
-        <xsl:call-template name="convert-to-anchor">
-          <xsl:with-param name="data" select="title"/>
-        </xsl:call-template>
-      </xsl:variable>
-
-      <h4 id="{$anchor}"><xsl:apply-templates select="title"/></h4>
-      <xsl:apply-templates select="(body)"/>
-
-      <!-- If you need, change here to add more nesting levels -->
+      <xsl:element name="h{$level}">
+        <xsl:attribute name="id"><xsl:value-of select="$anchor"/></xsl:attribute>
+        <xsl:apply-templates select="title"/>
+      </xsl:element>
+      <xsl:apply-templates select="*[not(self::title)]"/>
     </div>
   </xsl:template>
 
