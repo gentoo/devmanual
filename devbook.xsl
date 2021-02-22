@@ -24,7 +24,10 @@
 </xsl:variable>
 
   <xsl:template match="chapter">
-    <h1 class="first-header"><xsl:apply-templates select="title"/></h1>
+    <h1 class="first-header">
+      <xsl:apply-templates select="title"/>
+      <a class="permalink" href=""><span class="fa fa-link"/></a>
+    </h1>
     <xsl:apply-templates select="*[not(self::title)]"/>
   </xsl:template>
 
@@ -42,6 +45,7 @@
       <xsl:element name="h{$level}">
         <xsl:attribute name="id"><xsl:value-of select="$anchor"/></xsl:attribute>
         <xsl:apply-templates select="title"/>
+        <a class="permalink" href="#{$anchor}"><span class="fa fa-link"/></a>
       </xsl:element>
       <xsl:apply-templates select="*[not(self::title)]"/>
     </div>

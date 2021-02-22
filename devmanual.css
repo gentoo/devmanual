@@ -33,6 +33,20 @@ pre span.Constant { color: black; }
 pre span.Comment { color: red; }
 pre span.Statement { color: darkred; }
 
+a.permalink {
+    padding: 0 0.3em;
+    font-size: 90%;
+    text-decoration: none;
+    visibility: hidden;
+}
+
+h1:hover > a.permalink,
+h2:hover > a.permalink,
+h3:hover > a.permalink,
+h4:hover > a.permalink {
+    visibility: visible;
+}
+
 .truncated-text {
     white-space: nowrap;
     overflow: hidden;
