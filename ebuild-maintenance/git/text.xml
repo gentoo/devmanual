@@ -289,9 +289,9 @@ as --force) for the commit.</li>
 When committing <uri link="::ebuild-writing/user-submitted">user
 contributions</uri>, make sure to credit them in your commit message
 with the user's full name and email address. Be aware and respectful
-of their privacy: some users prefer to be only known by a
-nickname. Take advantage of the tags such as <c>Suggested-By</c> or
-<c>Reported-By:</c>when entering such information to the commit
+of their privacy: some users prefer to be only known by a nickname.
+Take advantage of tags such as <c>Suggested-by:</c> or
+<c>Reported-by:</c> when entering such information to the commit
 message.
 </p>
 
