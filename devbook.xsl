@@ -822,17 +822,6 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template name="findParent">
-    <xsl:choose>
-    <xsl:when test="not(/guide/@root)">
-      <a href="../index.html">&#x2191; <xsl:value-of select="document(concat(/guide/@self, '../text.xml'))/guide/chapter[1]/title"/> &#x2191;</a>
-    </xsl:when>
-    <xsl:otherwise>
-      <a href="#">&#x2191; <xsl:value-of select="/guide/chapter[1]/title"/> &#x2191;</a>
-    </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-
   <xsl:template match="author">
     <dt><xsl:value-of select="@name"/><xsl:if test="@email != ''"> &lt;<a href="mailto:{@email}"><xsl:value-of select="@email"/></a>&gt;</xsl:if></dt>
     <dd><xsl:apply-templates/></dd>
