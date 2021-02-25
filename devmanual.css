@@ -34,7 +34,7 @@ pre span.Comment { color: red; }
 pre span.Statement { color: darkred; }
 
 a.permalink {
-    padding: 0 0.3em;
+    margin: 0em 0.3em;
     font-size: 90%;
     text-decoration: none;
     visibility: hidden;
