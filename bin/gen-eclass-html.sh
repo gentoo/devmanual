@@ -47,7 +47,6 @@ IFS='' read -r -d '' HEADER << 'EOF'
 <div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
 <div class="collapse navbar-collapse navbar-main-collapse"><ul class="nav navbar-nav">
 <li><a href="../../index.html"><span class="fa fa-home"></span>&nbsp;Home</a></li>
-<li><a href="../index.html"><span class="fa fa-arrow-up"></span>&nbsp;Eclass Reference</a></li>
 </ul></div>
 </div></div></nav>
 <div class="container"><div class="row"><div class="col-md010">
