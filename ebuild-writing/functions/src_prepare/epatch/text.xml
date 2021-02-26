@@ -97,7 +97,7 @@ your devspace</uri> rather than
 <uri link="::ebuild-writing/variables#Predefined Read-Only Variables">
 ${FILESDIR}</uri> is more appropriate. In these situations, it is
 usually best to compress the patch in question with <c>xz</c> or
-<c>bzip2</c>(as opposed to <c>${FILESDIR}</c> patches, which must not
+<c>bzip2</c> (as opposed to <c>${FILESDIR}</c> patches, which must not
 be compressed). For example, from <c>app-admin/showconsole</c>:
 </p>
 
