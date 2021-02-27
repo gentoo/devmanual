@@ -92,7 +92,8 @@ validate:
 tidy: $(HTMLS) $(ECLASS_HTMLS)
 	@status=0; \
 	for f in $^; do \
-	  output=$$(tidy -q -errors --drop-empty-elements no $${f} 2>&1) \
+	  output=$$(sed 's/href=""/href="index.html"/' $${f} \
+	    | tidy -q -errors --drop-empty-elements no 2>&1) \
 	  || { status=$$?; echo "Failed on $${f}:"; echo "$${output}"; }; \
 	done; \
 	test $${status} -eq 0 && echo "tidy validation successful"; \
