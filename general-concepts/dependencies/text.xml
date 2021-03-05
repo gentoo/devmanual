@@ -17,6 +17,12 @@ checking for changes. Some projects may have different policies <d/> consult
 them if you're not sure.
 </p>
 
+<p>
+Please also see the following section on
+<uri link="::general-concepts/ebuild-revisions"/>
+for how dependencies and revisions interact.
+</p>
+
 </body>
 
 <section>
