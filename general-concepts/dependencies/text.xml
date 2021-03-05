@@ -431,7 +431,9 @@ This can be nested:
 
 <codesample lang="ebuild">
 DEPEND="!build? (
+	&gt;=sys-libs/ncurses-5.2-r2
 	gcj? (
+		&gt;=media-libs/libart_lgpl-2.1
 		gtk? (
 			x11-libs/libXt
 			x11-libs/libX11
@@ -441,9 +443,7 @@ DEPEND="!build? (
 			&gt;=x11-libs/gtk+-2.2
 			x11-libs/pango
 		)
-		&gt;=media-libs/libart_lgpl-2.1
 	)
-	&gt;=sys-libs/ncurses-5.2-r2
 	nls? ( sys-devel/gettext )
 )"
 </codesample>
