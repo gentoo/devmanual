@@ -9,6 +9,14 @@ Automatic dependency resolution is one of the most useful features
 provided by <c>emerge</c>.
 </p>
 
+<p>
+You are encouraged to sort dependencies alphabetically, with unconditional
+dependencies grouped together, then all conditional dependencies. There is an
+exception: you may sort dependencies as per upstream listings if it eases
+checking for changes. Some projects may have different policies <d/> consult
+them if you're not sure.
+</p>
+
 </body>
 
 <section>
