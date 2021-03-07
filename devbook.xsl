@@ -845,4 +845,5 @@
 
 <!-- Local Variables: -->
 <!-- indent-tabs-mode: nil -->
+<!-- fill-column: 120 -->
 <!-- End: -->
