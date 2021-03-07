@@ -597,7 +597,7 @@ parent XML-tags are <c>&lt;tr&gt;</c> (from <c>&lt;table&gt;</c>),
 <c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c> and <c>&lt;dl&gt;</c>. If indentation
 is used, it <e>must</e> be two spaces for each indentation. That means
 <e>no tabs</e> and <e>not</e> more spaces. Besides, tabs are not allowed in
-DevBook XML documents.
+DevBook XML documents (again, except for &lt;pre&gt; and &lt;codesample&gt;).
 </p>
 
 <p>
