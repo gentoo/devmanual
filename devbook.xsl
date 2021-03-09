@@ -32,10 +32,8 @@
   </xsl:template>
 
   <xsl:template match="section|subsection|subsubsection">
-    <xsl:variable name="level">
-      <xsl:value-of select="number(starts-with(local-name(), 'sub'))
-        + number(starts-with(local-name(), 'subsub')) + 2"/>
-    </xsl:variable>
+    <xsl:variable name="level" select="2 + number(starts-with(local-name(), 'sub'))
+                                         + number(starts-with(local-name(), 'subsub'))"/>
     <xsl:variable name="anchor">
       <xsl:call-template name="convert-to-anchor">
         <xsl:with-param name="data" select="title"/>
