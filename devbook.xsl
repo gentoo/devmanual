@@ -670,7 +670,7 @@
         <script src="https://assets.gentoo.org/tyrian/jquery.min.js"></script>
         <script src="https://assets.gentoo.org/tyrian/bootstrap.min.js"></script>
         <script src="https://assets.gentoo.org/lunr/lunr.min.js"></script>
-        <script><xsl:text>var documentsSrc = "</xsl:text><xsl:value-of select="$relative_path_depth_recursion"/><xsl:text>documents.js"</xsl:text></script>
+        <script>var documentsSrc = "<xsl:value-of select="$relative_path_depth_recursion"/>documents.js"</script>
         <script src="{$relative_path_depth_recursion}search.js"></script>
       </xsl:if>
     </body>
