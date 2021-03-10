@@ -12,7 +12,7 @@
 <xsl:import href="xsl/lang.highlight.m4.xsl"/>
 <xsl:import href="xsl/lang.highlight.sgml.xsl"/>
 
-<xsl:output method="html" encoding="UTF-8" indent="yes" omit-xml-declaration="yes"/>
+<xsl:output method="html" version="5" encoding="UTF-8" doctype-system="about:legacy-compat"/>
 
 <!-- When true, disable external assets for offline browsing.
      The parameter can be passed with "xsltproc -\-param offline 1". -->
@@ -465,8 +465,6 @@
       <xsl:with-param name="append">../</xsl:with-param>
     </xsl:call-template>
   </xsl:variable>
-  <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
-  <xsl:value-of select='$newline'/>
   <html lang="en">
     <head>
       <title><xsl:value-of select="/guide/chapter[1]/title"/> &#x2013; Gentoo Development Guide</title>
