@@ -867,7 +867,7 @@
       </xsl:variable>
       <li>
         <a href="{$relative_path_depth_recursion}index.html">
-          <xsl:value-of select="document(concat(/guide/@self, concat($relative_path_depth_recursion, 'text.xml')))/guide/chapter[1]/title"/>
+          <xsl:value-of select="document(concat(/guide/@self, $relative_path_depth_recursion, 'text.xml'))/guide/chapter[1]/title"/>
         </a>
       </li>
       <xsl:call-template name="printParentDocs">
