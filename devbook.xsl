@@ -714,8 +714,6 @@
       </a>
     </xsl:when>
     <xsl:otherwise>
-      <!-- This document's path -->
-      <xsl:variable name="doc_self" select="concat($self, 'text.xml')"/>
       <!-- Turn the absolute path into a relative path so we can find ourselves
            in the parent -->
       <xsl:variable name="path_self" select="concat(str:tokenize($self, '/')[last()], '/')"/>
@@ -810,12 +808,8 @@
       </a>
     </xsl:when>
     <xsl:otherwise>
-      <!-- This document's path -->
-      <xsl:variable name="doc_self" select="concat(/guide/@self, 'text.xml')"/>
       <!-- Turn the absolute path we have into a relative path so we can find
            ourselves in the parent -->
-      <!-- FIXME: Bombproof the doc_self so it still works if it's missing a '/'
-           on the end -->
       <xsl:variable name="path_self" select="concat(str:tokenize(/guide/@self, '/')[last()], '/')"/>
       <xsl:variable name="index_self" select="count(document(concat(/guide/@self, '../text.xml'))/guide/include[@href=$path_self]/preceding-sibling::*)-1"/>
       <xsl:choose>
