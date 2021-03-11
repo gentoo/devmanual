@@ -564,7 +564,7 @@ Both sections are described next.
 
 <p>
 <b>Newlines</b> must be placed immediately after <e>every</e> DevBook XML tag
-(both opening as closing), except for:
+(both opening and closing), except for:
 <c>&lt;title&gt;</c>,
 <c>&lt;th&gt;</c>, <c>&lt;ti&gt;</c>, <c>&lt;li&gt;</c>,
 <c>&lt;dt&gt;</c>, <c>&lt;dd&gt;</c>,
