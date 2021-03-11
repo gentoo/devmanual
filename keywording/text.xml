@@ -348,7 +348,7 @@ arches that you would like to stabilize.
 
 <p>
 If your package is architecture-independent, you should add the
-<c>&lt;stabilize-allarches&gt;</c> tag to metadata.xml. This allows consistency
+<c>&lt;stabilize-allarches/&gt;</c> tag to metadata.xml. This allows consistency
 in future stabilizations and saves arch teams considerable work.
 </p>
 
