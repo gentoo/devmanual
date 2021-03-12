@@ -55,9 +55,9 @@ patches. The filename should be <c>suse-fetchmail-6.2.5.54.1.ebuild</c>.
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit eapi7-ver rpm
+inherit rpm
 
 MY_PV=$(ver_rs 3 '-')
 MY_P=fetchmail-${MY_PV}
