@@ -250,39 +250,6 @@ preserve their whitespace exactly, making them well-suited for code excerpts:
 </body>
 </subsection>
 <subsection>
-<title>&lt;c&gt;, &lt;b&gt;, and &lt;e&gt;</title>
-<body>
-
-<p>
-The <c>&lt;c&gt;</c> element is used to mark up a <e>command</e> or <e>user
-input</e>.  Think of <c>&lt;c&gt;</c> as a way to alert the reader to something
-that they can type in that will perform some kind of action.  For example, all
-the XML tags displayed in this document are enclosed in a <c>&lt;c&gt;</c>
-element because they represent something that the user could type in that is
-not a path.  By using <c>&lt;c&gt;</c> elements, you'll help your readers
-quickly identify commands that they need to type in.  Also, because
-<c>&lt;c&gt;</c> elements are already offset from regular text, <e>it is rarely
-necessary to surround user input with double-quotes</e>. For example, don't
-refer to a "<c>&lt;c&gt;</c>" element like I did in this sentence.  Avoiding
-the use of unnecessary double-quotes makes a document more readable <d/> and
-adorable!
-</p>
-
-<p>
-As you might have guessed, <c>&lt;b&gt;</c> is used to <b>boldface</b> some
-text.
-</p>
-
-<p>
-<c>&lt;e&gt;</c> is used to apply emphasis to a word or phrase; for example:
-I <e>really</e> should use semicolons more often.  As you can see, this text is
-offset from the regular paragraph type for emphasis.  This helps to give your
-prose more <e>punch</e>!
-</p>
-
-</body>
-</subsection>
-<subsection>
 <title>Code samples and colour-coding</title>
 <body>
 
@@ -351,30 +318,6 @@ src_install() {
 	dodoc README tutorial
 }
 </codesample>
-
-</body>
-</subsection>
-<subsection>
-<title>&lt;uri&gt;</title>
-<body>
-
-<p>
-The <c>&lt;uri&gt;</c> tag is used to point to files/locations on the Internet.
-It has two forms <d/> the first can be used when you want to have the actual URI
-displayed in the body text, such as this link to
-<uri>https://www.gentoo.org/</uri>. To create this link, I typed
-<c>&lt;uri&gt;https://www.gentoo.org/&lt;/uri&gt;</c>. The alternate form is
-when you want to associate a URI with some other text <d/> for example,
-<uri link="https://www.gentoo.org/">the Gentoo Linux website</uri>. To create
-<e>this</e> link, I typed <c>&lt;uri link="https://www.gentoo.org/"&gt;the
-Gentoo Linux website&lt;/uri&gt;</c>.
-</p>
-
-<p>
-Please avoid the <uri link="https://en.wikipedia.org/wiki/Click_here">click here
-syndrome</uri> as recommended by the <uri
-link="https://www.w3.org/QA/Tips/noClickHere">W3C</uri>.
-</p>
 
 </body>
 </subsection>
@@ -508,6 +451,63 @@ together:
   <dt>Notes:</dt>
   <dd>The recipe may be improved by adding raisins.</dd>
 </dl>
+
+</body>
+</subsection>
+<subsection>
+<title>&lt;c&gt;, &lt;b&gt;, and &lt;e&gt;</title>
+<body>
+
+<p>
+The <c>&lt;c&gt;</c> element is used to mark up a <e>command</e> or <e>user
+input</e>. Think of <c>&lt;c&gt;</c> as a way to alert the reader to something
+that they can type in that will perform some kind of action. For example,
+all the XML tags displayed in this document are enclosed in a <c>&lt;c&gt;</c>
+element because they represent something that the user could type in that is
+not a path. By using <c>&lt;c&gt;</c> elements, you'll help your readers
+quickly identify commands that they need to type in. Also, because
+<c>&lt;c&gt;</c> elements are already offset from regular text, <e>it is rarely
+necessary to surround user input with double-quotes</e>. For example, don't
+refer to a "<c>&lt;c&gt;</c>" element like I did in this sentence. Avoiding
+the use of unnecessary double-quotes makes a document more readable <d/> and
+adorable!
+</p>
+
+<p>
+As you might have guessed, <c>&lt;b&gt;</c> is used to <b>boldface</b> some
+text.
+</p>
+
+<p>
+<c>&lt;e&gt;</c> is used to apply emphasis to a word or phrase; for example:
+I <e>really</e> should use semicolons more often. As you can see, this text is
+offset from the regular paragraph type for emphasis. This helps to give your
+prose more <e>punch</e>!
+</p>
+
+</body>
+</subsection>
+<subsection>
+<title>&lt;uri&gt;</title>
+<body>
+
+<p>
+The <c>&lt;uri&gt;</c> tag is used to point to files/locations on the Internet.
+It has two forms <d/> the first can be used when you want to have the actual
+URI displayed in the body text, such as this link to
+<uri>https://www.gentoo.org/</uri>. To create this link, I typed
+<c>&lt;uri&gt;https://www.gentoo.org/&lt;/uri&gt;</c>. The alternate form is
+when you want to associate a URI with some other text <d/> for example,
+<uri link="https://www.gentoo.org/">the Gentoo Linux website</uri>. To create
+<e>this</e> link, I typed <c>&lt;uri link="https://www.gentoo.org/"&gt;the
+Gentoo Linux website&lt;/uri&gt;</c>.
+</p>
+
+<p>
+Please avoid the <uri link="https://en.wikipedia.org/wiki/Click_here">click
+here syndrome</uri> as recommended by the
+<uri link="https://www.w3.org/QA/Tips/noClickHere">W3C</uri>.
+</p>
 
 </body>
 </subsection>
