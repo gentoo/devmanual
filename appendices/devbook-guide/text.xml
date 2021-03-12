@@ -24,8 +24,6 @@ documents.
 </section>
 
 <section>
-<title>Devbook XML</title>
-<subsection>
 <title>Basic structure</title>
 <body>
 
@@ -71,7 +69,7 @@ All tags must be closed of course, so the document ends with:
 </codesample>
 
 </body>
-</subsection>
+
 <subsection>
 <title>Sections and subsections</title>
 <body>
@@ -221,8 +219,10 @@ This is a warning.
 
 </body>
 </subsection>
-<subsection>
-<title>The &lt;body&gt; tags</title>
+</section>
+
+<section>
+<title>Body elements</title>
 <body>
 
 <p>
@@ -248,7 +248,7 @@ preserve their whitespace exactly, making them well-suited for code excerpts:
 </codesample>
 
 </body>
-</subsection>
+
 <subsection>
 <title>Code samples and colour-coding</title>
 <body>
@@ -454,6 +454,10 @@ together:
 
 </body>
 </subsection>
+</section>
+
+<section>
+<title>Inline elements</title>
 <subsection>
 <title>&lt;c&gt;, &lt;b&gt;, and &lt;e&gt;</title>
 <body>
