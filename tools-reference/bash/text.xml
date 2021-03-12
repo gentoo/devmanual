@@ -86,8 +86,8 @@ fi
 <body>
 
 <p>
-To do comparisons or file attribute tests, <c>[ ]</c> or <c>[[ ]]</c> blocks are
-needed.
+To do comparisons or file attribute tests, <c>[[ ]]</c> (preferred) or
+<c>[ ]</c> blocks are needed.
 </p>
 
 <codesample lang="ebuild">
