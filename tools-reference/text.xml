@@ -9,6 +9,12 @@ This section provides an overview of various useful standard Unix and Gentoo
 tools and utilities that may be used within ebuilds or when working with
 ebuilds.
 </p>
+
+<p>
+Please keep in mind the need for
+<uri link="::ebuild-writing/error-handling/#The die Function">error handling</uri>
+when using these tools in ebuilds.
+</p>
 </body>
 
 <section>
