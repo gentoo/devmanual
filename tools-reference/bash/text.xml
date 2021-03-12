@@ -120,6 +120,14 @@ all new code.
 </important>
 
 <p>
+POSIX compliance is not a concern for ebuilds, as their interpreter is
+guaranteed to be GNU Bash. POSIX style tests have different semantics
+and using the common forms of tests adheres to the principle of least surprise.
+Most developers will be used to Bash test semantics and behaviour and
+deviating from this in ebuilds may be confusing.
+</p>
+
+<p>
 This is because <c>[[ ]]</c> is a bash syntax construct, whereas <c>[ ]</c> is a
 program which happens to be implemented as an internal <d/> as such, cleaner
 syntax is possible with the former. For a simple illustration, consider:
