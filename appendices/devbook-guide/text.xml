@@ -345,7 +345,7 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-src_install()  {
+src_install() {
 	dobin mg
 	doman mg.1
 	dodoc README tutorial
