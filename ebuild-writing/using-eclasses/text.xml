@@ -26,6 +26,15 @@ link="::general-concepts/portage-cache"/>).
 </p>
 
 <p>
+When using <c>inherit</c>, it is best practice to sort the arguments (eclasses)
+alphabetically. An exception is where the phases exported by an eclass are
+affected by subsequent arguments. For example, <c>multilib-minimal.eclass</c>
+mentions in its
+<uri link="::eclass-reference/multilib-minimal.eclass/">documentation</uri>
+that it should be inherited last because it overrides most phases.
+</p>
+
+<p>
 After inheriting an eclass, its provided functions can be used as
 normal. Here's an example ebuild, <c>foomatic-0.1-r2.ebuild</c>, which
 uses three eclasses:
