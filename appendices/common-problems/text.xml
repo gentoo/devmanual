@@ -57,11 +57,10 @@ in use, there are various alternatives:
   </dt>
   <dd>
     Usually when any of the above are used in global scope, it is to manipulate
-    a version or program name string. These should be avoided in favour of
-    pure <c>bash</c> constructs. The <c>eapi7-ver</c> eclass is often of use here.
-    See <uri link="::ebuild-writing/variables/#Version and Name Formatting Issues"/>,
-    <c>man eapi7-ver.eclass</c> and <uri
-    link="::tools-reference/bash/#Bash Variable Manipulation"/>.
+    a version or program name string. These should be avoided in favour of pure
+    <c>bash</c> constructs. The built-in helpers of EAPI 7 are useful here. See
+    <uri link="::ebuild-writing/variables/#Version and Name Formatting Issues"/>
+    and <uri link="::tools-reference/bash/#Bash Variable Manipulation"/>.
   </dd>
   <dt>
     <c>has_version</c>, <c>best_version</c>
