@@ -57,9 +57,10 @@ Sometimes displaying additional error information beforehand can be useful. Use
 <c>eerror</c> to do this. See <uri link="::ebuild-writing/messages"/>.
 </p>
 
-<p>
-It's best to use <c>|| die</c> too often than too little.
-</p>
+<note>
+You should use <c>die</c> on almost all external commands in ebuilds.
+</note>
+
 </body>
 </section>
 
