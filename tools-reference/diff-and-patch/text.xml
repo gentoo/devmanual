@@ -43,7 +43,7 @@ beginning with EAPI=6, instead — see
 </p>
 
 <p>
-The diff-1 and patch-1 manual pages provide more information.
+The <c>diff(1)</c> and <c>patch(1)</c> manual pages provide more information.
 </p>
 
 </body>
