@@ -779,7 +779,7 @@ output (<c>stdout</c>) as a string.
 
 <note>
 The <c>`command`</c> construct also does this, but should be avoided in
-favour of <c>$(command )</c> for clarity, ease of reading and nesting purposes.
+favour of <c>$(command)</c> for clarity, ease of reading and nesting purposes.
 </note>
 
 <codesample lang="ebuild">
