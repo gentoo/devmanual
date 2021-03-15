@@ -105,7 +105,7 @@ In EAPI 6 and later, filename extensions are matched case-insensitively.
 
 <important>
 Unless the utility needed for unpacking is in the system set, the ebuild must
-specify the necessary build time dependency for it.
+specify the necessary build time dependency (<c>BDEPEND</c>) for it.
 </important>
 
 </body>
