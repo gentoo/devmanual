@@ -19,7 +19,7 @@ If a package is supplied as a .zip file, you should:
 </p>
 
 <ul>
-   <li><c>DEPEND</c> upon <c>app-arch/unzip</c></li>
+   <li><c>BDEPEND</c> upon <c>app-arch/unzip</c></li>
    <li>Use <c>unpack</c> as normal</li>
 </ul>
 
