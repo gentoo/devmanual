@@ -15,9 +15,9 @@ and QA notices.
 <body>
 
 <p>
-The <c>ebuild.sh</c> part of portage includes a number of checks for common
+The <c>ebuild.sh</c> part of Portage includes a number of checks for common
 problems. These can result in a 'QA Notice' message being displayed. You must
-not rely upon portage always generating these messages <d/> they are not a
+not rely upon Portage always generating these messages <d/> they are not a
 substitute for proper testing and QA by developers.
 </p>
 
@@ -126,7 +126,7 @@ inheritance occurring. Most commonly:
 
 <ul>
   <li>
-    When unmerging a package which was installed using an old portage version that
+    When unmerging a package which was installed using an old Portage version that
     did not record inheritance.
   </li>
   <li>
@@ -134,7 +134,7 @@ inheritance occurring. Most commonly:
     link="::general-concepts/overlay/#Overlay and Eclasses"/>.
   </li>
   <li>
-    When working with a stale portage cache.
+    When working with a stale Portage cache.
   </li>
 </ul>
 
@@ -150,7 +150,7 @@ from vapier:
 TEXTREL's ... binary files which contain text relocations ... see
 'prepstrip' for a full description unsafe files ... basically files that
 are setid and writable by Other users i've added the following QA checks to
-portage HEAD (no idea when they'll hit a release): Insecure RUNPATHs ...
+Portage HEAD (no idea when they'll hit a release): Insecure RUNPATHs ...
 binary files which have RUNPATH's encoded in them which are in +t
 directories Executable stacks ... binary files whose stack is marked with
 +x ... will bomb on amd64 for example

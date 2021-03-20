@@ -301,7 +301,7 @@ And of course it also takes care of the <c>ABI</c> variable.
 <p>
 Many Makefiles assume that their libraries should go to <c>/usr/lib</c>, or
 <c>$(prefix)/lib</c>. This assumption can cause a serious mess if <c>/usr/lib</c>
-isn't a symlink to <c>/usr/lib64</c>. To find the bad packages, we have a portage feature
+isn't a symlink to <c>/usr/lib64</c>. To find the bad packages, we have a Portage feature
 called <b>multilib-strict</b>. It will prevent emerge from putting 64bit libraries
 into anything other than <c>(/usr)/lib64</c>.
 </p>
@@ -378,7 +378,7 @@ As you can see, this is just a wrapper that decides which file you need
 depending on the parameter <c>-D</c> given to gcc. You'll probably run into
 some troubles if you try to compile something by hand and forget to append
 <c>-D__x86_64__</c> to your <c>CFLAGS</c>. Of course, this is <b>not necessary</b> when
-using portage. For an explanation, see the <uri link="::archs/amd64/#The ABI Variable"/>
+using Portage. For an explanation, see the <uri link="::archs/amd64/#The ABI Variable"/>
 section.
 </p>
 
@@ -390,7 +390,7 @@ section.
 <body>
 
 <p>
-Whenever portage builds something on amd64, it has to decide whether it should
+Whenever Portage builds something on amd64, it has to decide whether it should
 be 32bit or 64bit. As stated in <uri link="::archs/amd64/#Headers and Multilib"/>
 the <c>__i386__</c> or <c>__x86_64__</c> respectively, is needed in <c>CDEFINE</c>.
 Also, gcc has to know what code it should produce, therefore <c>-m32</c> or <c>-m64</c>

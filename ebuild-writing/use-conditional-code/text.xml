@@ -15,7 +15,7 @@ readable.
 
 <p>
 The <c>if [ "`use foo`" ]</c> and <c>if [ -n "`use foo`" ]</c> forms which are
-occasionally seen in older code must <b>not</b> be used. This is because, since portage-2.1, the 'use' portage helper does not produce any output when the use flag is enabled or disabled so the [ "`use foo`" ] statement is pretty much identical to [ "" ] which always evaluates to false.
+occasionally seen in older code must <b>not</b> be used. This is because, since Portage 2.1, the 'use' Portage helper does not produce any output when the use flag is enabled or disabled so the [ "`use foo`" ] statement is pretty much identical to [ "" ] which always evaluates to false.
 </p>
 
 <note>

@@ -493,7 +493,7 @@ as opposed to a URL. Conversely, email addresses specified in the
   &lt;/maintainer&gt;
   &lt;use&gt;
     &lt;flag name="epydoc"&gt;Build html API documentation with epydoc.&lt;/flag&gt;
-    &lt;flag name="ipc"&gt;Use inter-process communication between portage and running ebuilds.&lt;/flag&gt;
+    &lt;flag name="ipc"&gt;Use inter-process communication between Portage and running ebuilds.&lt;/flag&gt;
     &lt;flag name="pypy2_0"&gt;Use pypy-c2.0 as Python interpreter.&lt;/flag&gt;
     &lt;flag name="python2"&gt;Use python2 as Python interpreter.&lt;/flag&gt;
     &lt;flag name="python3"&gt;Use python3 as Python interpreter.&lt;/flag&gt;

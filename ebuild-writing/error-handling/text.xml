@@ -13,7 +13,7 @@ Decent error handling is important because:
 
 <ul>
   <li>
-  Errors must be detected <e>before</e> portage tries to install a broken or
+  Errors must be detected <e>before</e> Portage tries to install a broken or
   incomplete package onto the live filesystem. If build failures aren't caught,
   a working package could be unmerged and replaced with nothing.
   </li>
@@ -118,7 +118,7 @@ while read file ; do epatch ${file} ; done &lt; list
 <p>
 When using pipes, simple conditionals and tests upon <c>$?</c> will not correctly
 detect errors occurring in anything except the final command in the chain. To get
-around this, <c>bash</c> provides the <c>$PIPESTATUS</c> variable, and portage
+around this, <c>bash</c> provides the <c>$PIPESTATUS</c> variable, and Portage
 provides the <c>assert</c> function to check this variable.
 </p>
 

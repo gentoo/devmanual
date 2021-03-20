@@ -19,7 +19,7 @@ The basic filesystem layout and purpose is as follows:
     <ul>
     <li><c>/usr/bin</c>: Applications</li>
     <li><c>/usr/lib</c>: Libraries</li>
-    <li><c>/usr/local</c>: Non-portage applications. <b>Ebuilds must not install here</b>.</li>
+    <li><c>/usr/local</c>: Non-Portage applications. <b>Ebuilds must not install here</b>.</li>
     <li><c>/usr/sbin</c>: Non-system-critical system administrator applications</li>
     <li><c>/usr/share</c>: Architecture independent application data and documentation</li>
     </ul>
@@ -51,7 +51,7 @@ prebuilt software packages that expect being installed in a single directory.
 </p>
 
 <p>
-The <c>/usr/local</c> hierarchy is for non-portage software. Ebuilds must not
+The <c>/usr/local</c> hierarchy is for non-Portage software. Ebuilds must not
 attempt to put anything in here.
 </p>
 

@@ -20,7 +20,7 @@ reconsider. It is almost always unnecessary.
 </p>
 
 <p>
-First of all, for printing messages in standard portage scripts, you
+First of all, for printing messages in standard Portage scripts, you
 can use the <c>einfo</c>, and <c>eerror</c> functions along with their
 corresponding functions, <c>einfon</c>, <c>eerrorn</c>, etc, which are
 the same as the former, but they won't print the trailing newline

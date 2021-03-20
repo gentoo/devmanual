@@ -282,7 +282,7 @@ The following variables may or must be defined by every ebuild.
   <tr>
     <ti><c>RESTRICT</c></ti>
     <ti>
-    A space-delimited list of portage features to restrict.
+    A space-delimited list of Portage features to restrict.
     Valid values are <c>fetch</c>, <c>mirror</c>, <c>strip</c>, <c>test</c> and
     <c>userpriv</c>. See <c>man 5 ebuild</c> for details.
     </ti>

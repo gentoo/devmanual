@@ -42,12 +42,12 @@ The version section is more complicated. It consists of one or more numbers
 separated by full stop (or period, or dot, or decimal point) characters (eg
 <c>1.2.3</c>, <c>20050108</c>). The final number may have a single letter following it
 (e.g. <c>1.2b</c>). This letter should not be used to indicate 'beta' status <d/>
-portage treats <c>1.2b</c> as being a later version than <c>1.2</c> or <c>1.2a</c>.
+Portage treats <c>1.2b</c> as being a later version than <c>1.2</c> or <c>1.2a</c>.
 </p>
 
 <p>
 There can be a suffix to version indicating the kind of release. In the following table,
-what portage considers to be the 'lowest' version comes first.
+what Portage considers to be the 'lowest' version comes first.
 </p>
 
 <table>

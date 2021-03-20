@@ -94,7 +94,7 @@ For custom Makefiles you often have to write a patch. Try to get upstream to inc
 option like 'V=1' to enable full verbosity.
 </p>
 <note>In case you encounter an affected package which uses a build system not
-controllable by portage or eclasses you should file a bug (preferably with a patch)
+controllable by Portage or eclasses you should file a bug (preferably with a patch)
 and make it block the tracker bug #429308. Solutions above ebuild level are
 preferred.</note>
 </body>
@@ -129,7 +129,7 @@ This flag is not recommended for releases and should always be disabled when enc
   </li>
 </ul>
 <p>
-Turning off "-Werror" we will still see the warnings, but there is no reason that they cause compile failure. Also note that portage already emits QA notices about gcc warnings that can cause runtime breakage.
+Turning off "-Werror" we will still see the warnings, but there is no reason that they cause compile failure. Also note that Portage already emits QA notices about gcc warnings that can cause runtime breakage.
 </p>
 
 <p><b>How to fix</b></p>
@@ -192,7 +192,7 @@ The first two lines <e>must</e> look like this:
 
 <p>
 You should never redefine those variables. Always use MY_P, MY_PN, MY_PV,
-P0, etc. See other ebuilds that do it in portage for more information. Most
+P0, etc. See other ebuilds that do it in Portage for more information. Most
 ebuilds use bash "Parameter Expansion". Please read the man page for bash to
 understand how "Parameter Expansion" works.
 </p>
@@ -507,7 +507,7 @@ $ diff -u some-package-0.1.0.ebuild some-package-0.2.0.ebuild &gt; ~/some-packag
 <body>
 
 <p>
-If you are submitting a new version for a package in portage, make sure the
+If you are submitting a new version for a package in Portage, make sure the
 existing ebuild works and make sure changes are incorporated in the new ebuild
 (such as added documentation.) If there are no required changes to the ebuild
 from the previous version, then don't attach the ebuild. Just say so in the bug

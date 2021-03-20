@@ -123,7 +123,7 @@ shift $((OPTIND-1))
 MANPAGES=()
 [[ -n ${NOMAN} ]] || MANPAGES=(
 	$(/usr/bin/qlist -e eclass-manpages)
-	# We also need a couple of portage man pages
+	# We also need a couple of Portage man pages
 	/usr/share/man/man5/ebuild.5*
 	/usr/share/man/man5/make.conf.5*
 ) || exit 1

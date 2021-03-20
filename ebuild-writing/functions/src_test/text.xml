@@ -51,7 +51,7 @@ src_test() {
 src_test() {
 	cd "${S}"/src/testdir || die
 
-	# Test 49 won't work inside a portage environment
+	# Test 49 won't work inside a Portage environment
 	sed -i -e 's~test49.out~~g' Makefile || die
 
 	# Try to run the non-gui tests only
@@ -79,7 +79,7 @@ for more information.
 <p>
 Often the default <c>src_test</c> is fine. Sometimes it is necessary
 to remove certain tests from the list if they cannot be used with a
-portage environment. Reasons for such a failure could include:
+Portage environment. Reasons for such a failure could include:
 </p>
 
 <ul>
