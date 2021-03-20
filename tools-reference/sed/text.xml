@@ -132,7 +132,12 @@ The above will replace <c>irksome texting</c> with
 <p>
 If the pattern or the replacement string contains the forward slash character,
 it is usually easiest to use a different delimiter. Most punctuation characters
-are allowed, although backslash and any form of brackets should be avoided.
+are allowed, although backslash and any form of brackets should be avoided. You
+should choose your delimiter <b>with care</b> to ensure it cannot appear in any
+strings involved in the subject/replacement. For example, using <c>sed</c> with
+CFLAGS is hazardous because it is user-supplied data (so may contain any
+character), but one should in particular avoid e.g.
+<uri link="https://bugs.gentoo.org/685160">the colon</uri> here.
 </p>
 
 <codesample lang="ebuild">
