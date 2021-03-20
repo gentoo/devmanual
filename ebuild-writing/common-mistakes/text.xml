@@ -284,6 +284,11 @@ part.
 <title>DEPEND is incomplete</title>
 <body>
 
+<note>
+The tips in this section apply to all dependency classes, not just
+<c>DEPEND</c>.
+</note>
+
 <p>
 This is another very common error. The ebuild submitter submits an ebuild
 that "just works" without checking if the dependencies are correct. Here are
@@ -317,7 +322,7 @@ some tips on how to find the correct dependencies.
     programs, etc.</e>
     Usually the build process requires some dependencies such as intltool,
     libtool, pkg-config, doxygen, scrollkeeper, gtk-doc, etc. Make sure those
-    are clearly stated.
+    are clearly stated, usually in <c>BDEPEND</c>.
   </li>
 </ul>
 
