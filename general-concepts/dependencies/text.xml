@@ -347,7 +347,7 @@ the package name, where 'SLOT' is the <c>SLOT</c> of the package wanted:
 </p>
 
 <codesample lang="ebuild">
-DEPEND="qt3? ( x11-libs/qt:3 )
+DEPEND="qt5? ( dev-qt/qtcore:5 )
 	gtk? ( x11-libs/gtk+:2 )
 </codesample>
 
@@ -356,7 +356,7 @@ To depend on a specific version or version-range within a SLOT we use:
 </p>
 
 <codesample lang="ebuild">
-DEPEND="qt3? ( ~x11-libs/qt-3.3.8:3 )
+DEPEND="qt5? ( ~dev-qt/qtcore-5.15.2:5 )
 	gtk? ( &gt;=x11-libs/gtk+-2.24.9:2 )
 </codesample>
 </body>
