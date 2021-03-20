@@ -461,6 +461,12 @@ DEPEND="!build? (
 <title>Any of Many Dependencies</title>
 <body>
 
+<note>
+To ease dependency resolution for Portage, it is recommended that you sort
+the elements in <e>preferred</e> order first. See
+<uri link="https://bugs.gentoo.org/489458">this bug</uri> for more context.
+</note>
+
 <p>
 To depend on either <c>foo</c> or <c>bar</c>:
 </p>
