@@ -32,8 +32,7 @@
 <title>Default <c>pkg_nofetch</c></title>
 <body>
 <codesample lang="ebuild">
-pkg_nofetch()
-{
+pkg_nofetch() {
 	[ -z "${SRC_URI}" ] &amp;&amp; return
 
 	echo "!!! The following are listed in SRC_URI for ${PN}:"

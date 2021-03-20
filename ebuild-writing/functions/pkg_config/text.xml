@@ -32,8 +32,7 @@
 <title>Default <c>pkg_config</c></title>
 <body>
 <codesample lang="ebuild">
-pkg_config()
-{
+pkg_config() {
 	eerror "This ebuild does not have a config function."
 }
 </codesample>

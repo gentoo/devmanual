@@ -36,8 +36,7 @@
 <title>Default <c>pkg_pretend</c></title>
 <body>
 <codesample lang="ebuild">
-pkg_pretend()
-{
+pkg_pretend() {
 	return
 }
 </codesample>

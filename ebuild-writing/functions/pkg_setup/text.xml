@@ -32,8 +32,7 @@
 <title>Default <c>pkg_setup</c></title>
 <body>
 <codesample lang="ebuild">
-pkg_setup()
-{
+pkg_setup() {
 	return
 }
 </codesample>

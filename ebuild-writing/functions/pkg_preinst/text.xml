@@ -32,8 +32,7 @@
 <title>Default <c>pkg_preinst</c></title>
 <body>
 <codesample lang="ebuild">
-pkg_preinst()
-{
+pkg_preinst() {
 	return
 }
 </codesample>

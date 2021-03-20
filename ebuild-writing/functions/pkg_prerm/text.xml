@@ -32,8 +32,7 @@
 <title>Default <c>pkg_prerm</c></title>
 <body>
 <codesample lang="ebuild">
-pkg_prerm()
-{
+pkg_prerm() {
 	return
 }
 </codesample>

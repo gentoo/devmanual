@@ -32,8 +32,7 @@
 <title>Default <c>pkg_postrm</c></title>
 <body>
 <codesample lang="ebuild">
-pkg_postrm()
-{
+pkg_postrm() {
 	return
 }
 </codesample>
