@@ -626,12 +626,12 @@ package:
   </dd>
   <dt>
     Remember non-binary dependencies such as pkg-config, doc generation
-    programs, etc.
+    programs, etc. Such programs would usually belong in <c>BDEPEND</c>.
   </dt>
   <dd>
     Usually the build process requires some dependencies such as intltool,
     libtool, pkg-config, doxygen, scrollkeeper, gtk-doc, etc. Make sure those
-    are clearly stated.
+    are clearly stated. Again, such dependencies usually belong in <c>BDEPEND</c>.
   </dd>
 </dl>
 
