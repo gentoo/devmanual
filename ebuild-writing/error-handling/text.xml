@@ -96,7 +96,7 @@ When using pipes, a subshell is introduced, so the following is unsafe:
 </p>
 
 <codesample lang="ebuild">
-cat list | while read file ; do epatch ${file} ; done
+cat list | while read file ; do eapply ${file} ; done
 </codesample>
 
 <p>
@@ -105,7 +105,7 @@ avoids this problem:
 </p>
 
 <codesample lang="ebuild">
-while read file ; do epatch ${file} ; done &lt; list
+while read file ; do eapply ${file} ; done &lt; list
 </codesample>
 
 </body>
