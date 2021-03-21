@@ -49,6 +49,8 @@ src_configure() {
 <title>Sample <c>src_configure</c></title>
 <body>
 <codesample lang="ebuild">
+inherit flag-o-matic
+
 src_configure() {
 	use sparc &amp;&amp; filter-flags -fomit-frame-pointer
 	append-ldflags -Wl,-z,now
