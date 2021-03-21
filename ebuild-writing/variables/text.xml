@@ -313,7 +313,7 @@ The following variables may or must be defined by every ebuild.
     <ti><c>PDEPEND</c></ti>
     <ti>
     A list of packages to be installed (if possible) after the package
-    is merged. Use this only when <c>RDEPEND</c> would cause cyclic
+    is merged. Use this <e>only</e> when <c>RDEPEND</c> would cause cyclic
     dependencies. See <uri link="::general-concepts/dependencies"/>.
     </ti>
   </tr>
