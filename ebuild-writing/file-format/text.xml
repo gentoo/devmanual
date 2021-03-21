@@ -177,9 +177,18 @@ exact copy of the contents of
 header.txt</uri></c> in the top directory of the Gentoo repository.
 </p>
 
+<p>
+It is good style to have one blank line after the EAPI line and another blank
+line after any inherits.
+</p>
+
 <codesample lang="ebuild">
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=7
+
+inherit foo
 </codesample>
 
 <note>
