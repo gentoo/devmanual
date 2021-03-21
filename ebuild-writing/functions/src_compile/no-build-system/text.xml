@@ -29,8 +29,8 @@ src_compile() {
 	for x in asclock parser symbols config
 	do
 		$(tc-getCC) \
-			${CFLAGS} ${CPPFLAGS} \
-			-I/usr/include \
+			${CPPFLAGS} ${CFLAGS} ${ASFLAGS} \
+			-I"${EPREFIX}"/usr/include \
 			-Dlinux \
 			-D_POSIX_C_SOURCE=199309L \
 			-D_POSIX_SOURCE \
@@ -45,8 +45,8 @@ src_compile() {
 		${LDFLAGS} \
 		-o asclock \
 		asclock.o parser.o symbols.o config.o \
-		-L/usr/lib \
-		-L/usr/lib/X11 \
+		-L"${EPREFIX}"/usr/lib \
+		-L"${EPREFIX}"/usr/lib/X11 \
 		-lXpm -lXext -lX11 || die "link asclock failed"
 }
 </codesample>
