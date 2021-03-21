@@ -348,6 +348,16 @@ Vulnerability Treatment Policy</uri>.
   </li>
 
   <li>
+    <c>arm</c>, <c>arm64</c>: These teams have a strict policy on passing
+    testsuites. You <b>must</b> run test suites for packages with e.g.
+    <c>FEATURES=test</c> for Portage. Keywording or stabilizing packages which
+    fail these tests is avoided but acceptable if the test suite is fragile or
+    failures are known and reported. It is preferred to have to keyword or
+    stabilize more packages on these arches if needed for e.g. test dependencies
+    rather than masking or disabling tests here.
+  </li>
+
+  <li>
     <c>sparc</c>: You must have prior permission from the arch lead. Usually we
     expect you to be on the sparc alias for QA reasons, although other
     arrangements can be made if you will only be working with a small group of
