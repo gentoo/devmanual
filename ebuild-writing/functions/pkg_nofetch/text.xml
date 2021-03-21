@@ -33,13 +33,13 @@
 <body>
 <codesample lang="ebuild">
 pkg_nofetch() {
-	[ -z "${SRC_URI}" ] &amp;&amp; return
+	[[ -z ${A} ]] &amp;&amp; return
 
-	echo "!!! The following are listed in SRC_URI for ${PN}:"
-	for MYFILE in `echo ${SRC_URI}`; do
-		echo "!!!   $MYFILE"
+	elog "The following files cannot be fetched for ${PN}:"
+	local x
+	for x in ${A}; do
+		elog "   ${x}"
 	done
-	return
 }
 </codesample>
 </body>
