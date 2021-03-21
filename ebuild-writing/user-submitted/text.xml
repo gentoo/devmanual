@@ -37,7 +37,7 @@ git commit's <c>--author</c> parameter to explicitly give them credit.
 Users should be encouraged to submit diffs to an existing ebuild if they
 are submitting an upgrade. Doing this will help to avoid re-introduction
 of previously fixed bugs into "new" ebuilds. When not working from a
-diff but from a complete user-submitted ebuild, the <c>diff</c> command
+diff but from a complete user-submitted ebuild, the <c>diff -u</c> command
 should be used to see what has changed; attention should be payed for
 anything from the current ebuild that should appear in the new ebuild,
 or anything in the new ebuild that should be fixed or removed.
