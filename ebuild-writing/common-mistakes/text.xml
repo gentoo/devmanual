@@ -81,22 +81,22 @@ someone reports a bug for your package, the <b>build log must always be verbose.
 <p>
 There are several ways to fix non-verbose build logs depending on the build system:
 </p>
-<p>
-For <c>cmake</c> based build systems it should be sufficient that the ebuild calls
-cmake-utils_src_compile which picks up the cmake-utils.eclass variable 'CMAKE_VERBOSE=1'
-by default. If you call emake directly for whatever reason, you can do 'emake VERBOSE=1'
-(note that cmake-utils_src_compile takes arguments as well which are passed to make).
-</p>
 
-<p>
-For <c>autotools</c> based build systems you can pass '--disable-silent-rules' to econf,
-or use EAPI 5 where that argument is passed automatically. 'emake V=1' should also work.
-</p>
+<ul>
+  <li>For <c>cmake</c> based build systems it should be sufficient that
+  the ebuild calls cmake-utils_src_compile which picks up the cmake-utils.eclass
+  variable 'CMAKE_VERBOSE=1' by default. If you call emake directly for
+  whatever reason, you can do 'emake VERBOSE=1' (note that
+  cmake-utils_src_compile takes arguments as well which are passed to make).</li>
 
-<p>
-For custom Makefiles you often have to write a patch. Try to get upstream to include an
-option like 'V=1' to enable full verbosity.
-</p>
+  <li>For <c>autotools</c> based build systems you can pass
+  '--disable-silent-rules' to econf, or use EAPI 5 where that argument is
+  passed automatically. 'emake V=1' should also work.</li>
+
+  <li>For custom Makefiles you often have to write a patch. Try to get
+  upstream to include an option like 'V=1' to enable full verbosity.</li>
+</ul>
+
 <note>In case you encounter an affected package which uses a build system not
 controllable by Portage or eclasses you should file a bug (preferably with a patch)
 and make it block the tracker bug #429308. Solutions above ebuild level are
