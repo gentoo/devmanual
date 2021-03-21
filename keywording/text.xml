@@ -154,7 +154,10 @@ user system</b>.
 
 <important>
 New packages should be marked as <c>~arch</c> ("testing") only upon
-architectures for which the committing developer has tested.
+architectures for which the committing developer has tested. If proxying
+commits for a non-developer, please ensure they have some relationship
+with the relevant arch teams, or <d/> better yet <d/> ask them to file
+a keywording bug instead for non-<c>amd64</c>/<c>x86</c>.
 </important>
 
 <p>
