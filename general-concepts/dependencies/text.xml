@@ -4,6 +4,12 @@
 <title>Dependencies</title>
 <body>
 
+<note>
+Familiarise yourself with the QA team's
+<uri link="https://projects.gentoo.org/qa/policy-guide/dependencies.html">
+policies on dependencies</uri>.
+</note>
+
 <p>
 Automatic dependency resolution is one of the most useful features
 provided by <c>emerge</c>.
