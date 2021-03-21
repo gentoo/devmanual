@@ -30,7 +30,9 @@ mirrored</uri>, preferably on the Gentoo Infrastructure. When
 mirroring patches, choosing a name that will not cause conflicts is
 important — the <c>${P}</c> prefix is highly recommended
 here. Mirrored patches are often compressed with <c>xz</c> or
-<c>bzip2</c>. Remember to list these patches in <c>SRC_URI</c>.
+<c>bzip2</c>. Remember to list these patches in <c>SRC_URI</c>. Please
+see <uri link="::ebuild-maintenance/new-ebuild/#The files Directory"/>
+for more information.
 </p>
 
 <note>
