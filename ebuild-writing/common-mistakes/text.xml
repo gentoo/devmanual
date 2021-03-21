@@ -120,7 +120,7 @@ for more information and real-life examples/fixes in the Gentoo tree.
 <p><b>Rationale</b></p>
 <p>
 This flag is not recommended for releases and should always be disabled when
-encountered in build-logs, because there are numerous cases where this breaks
+encountered in build logs, because there are numerous cases where this breaks
 without purpose, e.g.:
 </p>
 <ul>
