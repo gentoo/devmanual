@@ -65,7 +65,7 @@ constructs are specific to <c>GNU sed 4</c> <d/> on non-GNU userland archs, the
 guaranteed to be installed as part of <c>@system</c>. This was not
 always the case,
 which is why some packages, particularly those which use <c>sed -i</c>, have
-<c>DEPEND</c> s upon <c>&gt;=sys-apps/sed-4</c>.
+a <c>DEPEND</c> upon <c>&gt;=sys-apps/sed-4</c>.
 </p>
 </body>
 
