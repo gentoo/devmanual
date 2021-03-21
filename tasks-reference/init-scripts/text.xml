@@ -16,7 +16,9 @@ should be handled via entries in <c>/etc/conf.d</c> with the same filename <d />
 <p>
 An overview of the Gentoo init system and how to write init scripts is available
 in the <uri link="https://wiki.gentoo.org/wiki/Handbook:X86/Working/Initscripts#Writing_initscripts">
-Writing Init Scripts section</uri>.
+Writing Init Scripts section</uri> and in the
+<uri link="https://github.com/OpenRC/openrc/blob/master/service-script-guide.md">
+OpenRC documentation</uri>.
 </p>
 
 </body>
