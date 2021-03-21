@@ -525,6 +525,24 @@ GLEP 23</uri> for details.
 </section>
 
 <section>
+<title>RESTRICT</title>
+<body>
+
+<p>
+While Portage may recognise several different <c>RESTRICT</c> tokens, it is
+important that you do not rely on them existing. That is, you should ensure
+your ebuild does not fail if those tokens are not exposed or given a different
+name by another package manager. You can make use of Portage-provided
+<c>RESTRICT</c> tokens, but do not fail hard without them. See
+<uri link="https://projects.gentoo.org/pms/7/pms.html#x1-810008.2.8">
+PMS</uri> for the list of standardised <c>RESTRICT</c> tokens, or the above
+table.
+</p>
+
+</body>
+</section>
+
+<section>
 <title>ROOT</title>
 <body>
 
