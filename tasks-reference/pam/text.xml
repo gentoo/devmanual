@@ -7,7 +7,7 @@
 <p>
 PAM (Pluggable Authentication Modules) is a mechanism which allows different
 applications to authenticate using various specified parameters, using for
-example a passwd/shadow file, a Kerberos server, an LDAP server or an a NT
+example a passwd/shadow file, a Kerberos server, an LDAP server, or an NT
 Domain server (using Samba).
 </p>
 
@@ -115,7 +115,7 @@ The statement is composed of 3 or 4 tokens:
 
 <p>
 There are also other modules which can be used for more complex authentication
-against a database (mysql or postgresql), against an LDAP directory or against
+against a database (mysql or postgresql), against an LDAP directory, or against
 an NT domain (using samba). This is useful on thin or fat clients where the
 users have an unique login for all the machines.  Another place where this is
 useful is a cluster of servers which needs to authenticate against a single
