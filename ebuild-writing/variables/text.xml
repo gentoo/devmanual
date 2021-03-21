@@ -684,6 +684,13 @@ follows.
   </tr>
 </table>
 
+<note>
+A helpful guide to the newer complements of the old <c>versionator.eclass</c>
+functions can be found
+<uri link="https://mgorny.pl/articles/the-ultimate-guide-to-eapi-7.html#replacing-versionator-eclass-uses">
+here</uri>, courtesy of Gentoo developer mgorny.
+</note>
+
 </body>
 </section>
 
