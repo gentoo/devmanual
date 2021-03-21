@@ -126,8 +126,8 @@ without purpose, e.g.:
 </p>
 <ul>
   <li>
-    new warnings on version bumps of GCC/GLIBC the developer was not aware of
-    at the point of coding
+    new warnings on version bumps of GCC/glibc which the developer was not aware
+    of at the point of coding
   </li>
   <li>
     some autoconf checks will fail badly
