@@ -28,7 +28,7 @@ statement. See <uri link="::ebuild-writing/error-handling/#die and Subshells"/>.
 	# USE conditional blocks...
 	if use livecd ; then
 		# remove some extra files for a small livecd install
-		rm -fr "${vimfiles}"/{compiler,doc,ftplugin,indent}
+		rm -fr "${vimfiles}"/{compiler,doc,ftplugin,indent} || die
 	fi
 
 	# Inverse USE conditional blocks...
