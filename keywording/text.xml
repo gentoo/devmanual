@@ -5,6 +5,12 @@
 <body>
 
 <note>
+Familiarise yourself with the QA team's
+<uri link="https://projects.gentoo.org/qa/policy-guide/keywords.html">
+relevant policies</uri>.
+</note>
+
+<note>
 <e>Terminology</e>: The term 'package' refers to an entire directory, for example
 <c>app-editors/vim</c> <d /> it does <e>not</e> refer to a specific version. The terms
 'ebuild' or 'package version' are used when this meaning is intended. This
