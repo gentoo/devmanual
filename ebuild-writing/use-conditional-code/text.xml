@@ -39,11 +39,11 @@ statement. See <uri link="::ebuild-writing/error-handling/#die and Subshells"/>.
 	fi
 
 	# USE conditional statements...
-	use ssl &amp;&amp; epatch "${FILESDIR}/${P}-ssl.patch"
+	use ssl &amp;&amp; eapply "${FILESDIR}/${P}-ssl.patch"
 	use sparc &amp;&amp; filter-flags -fomit-frame-pointer
 
 	# Inverse USE conditional statements...
-	use ncurses || epatch "${FILESDIR}/${P}-no-ncurses.patch"
+	use ncurses || eapply "${FILESDIR}/${P}-no-ncurses.patch"
 </codesample>
 
 <p>
