@@ -31,8 +31,10 @@ this.
 <p>
 The usage of <c>ROOT</c> is only designed to influence the way the package is
 installed (ie. into <c>ROOT</c>) <d/> building and compiling should not depend
-on <c>ROOT</c>. As a consequence of this the usage of <c>ROOT</c> in
-<c>src_*</c> functions is not allowed.
+on <c>ROOT</c>. As a consequence of this, the usage of <c>ROOT</c> in
+<c>src_*</c> functions is not allowed. <c>pkgcheck</c> can now detect some
+such cases via its <c>MisplacedVariable</c> check. See
+<uri link="https://bugs.gentoo.org/775191">this bug</uri> for more information.
 </p>
 
 <p>
