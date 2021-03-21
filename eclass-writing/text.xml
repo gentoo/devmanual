@@ -751,7 +751,7 @@ something like the following:
 
 EXPORT_FUNCTIONS src_compile
 
-DEPEND="&gt;=sys-devel/jmake-2"
+BDEPEND="&gt;=sys-devel/jmake-2"
 
 # @FUNCTION: jmake-configure
 # @USAGE: [additional-args]
