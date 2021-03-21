@@ -364,6 +364,13 @@ but also all of the other arches in CC on the bug. Afterwards, the CC field can
 be cleared and the bug closed if appropriate.
 </p>
 
+<p>
+Note that first-time <c>ALLARCHES</c> stabilizations are done "as normal" <d/>
+i.e. all arch teams test individually as if it was not set. This nuance in the
+procedure is part of why developers should not manually set <c>ALLARCHES</c> in
+bugs, but instead let <c>NATTkA</c> set it automatically based on metadata.xml.
+</p>
+
 </body>
 </subsection>
 </section>
