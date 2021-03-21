@@ -4,6 +4,13 @@
 <title>Ebuild File Format</title>
 
 <body>
+
+<note>
+Familiarise yourself with the QA team's
+<uri link="https://projects.gentoo.org/qa/policy-guide/ebuild-format.html">
+policies on ebuild file format</uri>.
+</note>
+
 <p>
 An ebuild is a <c>bash</c> script which is executed within a special environment.
 Files should be simple text files with a <c>.ebuild</c> extension.
