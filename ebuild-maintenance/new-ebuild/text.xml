@@ -24,9 +24,15 @@ The Gentoo repository should only be used for storing <c>.ebuild</c> files,
 as well as any small companion files, such as patches or sample configuration
 files. These files should have a size of at most 20 KiB and must be placed
 in the <c>mycat/mypkg/files</c> directory, which can be referenced as
-<c>${FILESDIR}</c> from within ebuilds. Larger patch files should be placed
-in your developer space on <c>dev.gentoo.org</c> instead, in order to minimize
-the repository size.
+<c>${FILESDIR}</c> from within ebuilds.
+</p>
+
+<p>
+Larger patches should be placed in your developer space on <c>dev.gentoo.org</c>
+instead of the tree, in order to minimize the repository size.
+Non-developers such as proxied maintainers can host patches at some stable
+location of their own <d/> there is no security issue here as the Manifest
+will record patch checksums at the time of commit.
 </p>
 
 <p>
