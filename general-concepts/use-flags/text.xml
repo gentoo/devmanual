@@ -4,6 +4,13 @@
 <title>USE Flags</title>
 
 <body>
+
+<note>
+Familiarise yourself with the QA team's
+<uri link="https://projects.gentoo.org/qa/policy-guide/use-flags.html">
+relevant policies</uri>.
+</note>
+
 <p>
 <c>USE</c> flags are to control optional dependencies and settings which
 the user may reasonably want to select. For example, <c>app-editors/vim</c>
