@@ -205,7 +205,7 @@ indenting, never inside strings.
 </p>
 
 <p>
-Avoid trailing whitespace: repoman will warn you about this if your
+Avoid trailing whitespace: <c>repoman</c> will warn you about this if your
 ebuild contains trailing or leading whitespace (whitespace instead of
 tabs for indentation) when you commit.
 </p>
