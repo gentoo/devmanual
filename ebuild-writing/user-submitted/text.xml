@@ -29,7 +29,8 @@ commit message format section</uri>, is highly encouraged.
 Note that ebuilds received in the form of git patches or pull requests
 will have the user as the commit author by default, in which case
 including the user information in the commit message explicitly
-may not be necessary.
+may not be necessary. If that is not the case, you may wish to use
+git commit's <c>--author</c> parameter to explicitly give them credit.
 </p>
 
 <p>
