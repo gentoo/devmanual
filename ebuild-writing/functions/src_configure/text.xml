@@ -54,8 +54,8 @@ src_configure() {
 	append-ldflags -Wl,-z,now
 
 	econf \
-		$(use_enable ssl ) \
-		$(use_enable perl perlinterp )
+		$(use_enable ssl) \
+		$(use_enable perl perlinterp)
 }
 </codesample>
 </body>
