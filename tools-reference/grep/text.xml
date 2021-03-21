@@ -55,7 +55,7 @@ of <c>1</c> indicates no matches.
 
 <p>
 See <uri link="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/grep.html">
-IEEE Std 1003.1-2017-grep</uri> for details. The grep-1 manual page on GNU
+IEEE Std 1003.1-2017-grep</uri> for details. The <c>grep(1)</c> manual page on GNU
 systems documents many non-portable additional features.
 </p>
 

@@ -23,7 +23,7 @@ Use of the GNU <c>-c</c> option is unportable and should be avoided.
 <p>
 For full details, see
 <uri link="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/head.html">
-IEEE Std 1003.1-2017-head</uri>. Note that head-1 on GNU systems describes
+IEEE Std 1003.1-2017-head</uri>. Note that <c>head(1)</c> on GNU systems describes
 many non-portable options.
 </p>
 
@@ -52,7 +52,7 @@ tail -n +6 in.txt &gt; out.txt
 <p>
 For full details, see
 <uri link="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/tail.html">
-IEEE Std 1003.1-2017-tail</uri>. Note that tail-1 on GNU systems describes
+IEEE Std 1003.1-2017-tail</uri>. Note that <c>tail(1)</c> on GNU systems describes
 many non-portable options.
 </p>
 </body>

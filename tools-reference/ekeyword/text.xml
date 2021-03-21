@@ -13,7 +13,7 @@ the form <c>sparc</c> (to mark stable), <c>~sparc</c> (to mark
 unstable), <c>-sparc</c> (to mark unavailable) and <c>^sparc</c> (to
 remove the sparc keyword). The special <c>all</c> keyword is useful
 when doing version bumps <d/> <c>ekeyword ~all foo-1.23.ebuild</c>
-will drop all currently present keywords to unstable. See ekeyword-1
+will drop all currently present keywords to unstable. See <c>ekeyword(1)</c>
 for details.
 </p>
 
