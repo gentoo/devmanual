@@ -631,10 +631,11 @@ to read.
 </p>
 
 <p>
-Some ebuilds use calls to <c>sed</c>, <c>awk</c> and / or <c>cut</c> to do this. This
-must <e>not</e> be done for any new code, and should be fixed to use either
-eapi7-ver or bash substitution where possible. Global scope non-bash code is
-highly discouraged.
+Some ebuilds use calls to <c>sed</c>, <c>awk</c> and / or <c>cut</c> to do this.
+This must <e>not</e> be done for any new code and should be fixed to use
+built-in version manipulation commands (for EAPI 7 or later), Bash substitution,
+or in older EAPIs before 7, <c>eapi7-ver</c>. Global scope non-Bash code is
+<e>strongly</e> discouraged.
 </p>
 
 <p>
