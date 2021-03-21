@@ -19,7 +19,8 @@ writing ebuilds.
 <p>
 The <c>static</c> use-flag should only be used to make a binary use static
 linking instead of dynamic linking. It should not be used to make a library
-install static libraries. Instead, the <c>static-libs</c> use-flag is used for this.
+install static libraries. Instead, the <c>static-libs</c> use-flag is used for
+this.
 </p>
 </body>
 </subsection>
@@ -104,32 +105,41 @@ preferred.</note>
 <title>-Werror compiler flag not removed</title>
 <body>
 <p>
-"-Werror" is a flag which turns all warnings into errors and thus will abort compiling if any warning is encountered.
+"-Werror" is a flag which turns all warnings into errors and thus will abort
+compiling if any warning is encountered.
 </p>
 
 <p><b>Rationale</b></p>
 <p>
-This flag is not recommended for releases and should always be disabled when encountered in build-logs, because there are numerous cases where this breaks without purpose, e.g.:
+This flag is not recommended for releases and should always be disabled when
+encountered in build-logs, because there are numerous cases where this breaks
+without purpose, e.g.:
 </p>
 <ul>
   <li>
-    new warnings on version bumps of GCC/GLIBC the developer was not aware of at the point of coding
+    new warnings on version bumps of GCC/GLIBC the developer was not aware of
+    at the point of coding
   </li>
   <li>
     some autoconf checks will fail badly
   </li>
   <li>
-    libraries adding deprecated API warnings although that API is still working/supported
+    libraries adding deprecated API warnings although that API is still
+    working/supported
   </li>
   <li>
-    on less known architectures we may get different/more warnings than on common ones
+    on less known architectures we may get different/more warnings than on
+    common ones
   </li>
   <li>
-    random breakage depending on what distro/architecture/library version/kernel/userland the developer was testing "-Werror" on
+    random breakage depending on what distro/architecture/library
+    version/kernel/userland the developer was testing "-Werror" on
   </li>
 </ul>
 <p>
-Turning off "-Werror" we will still see the warnings, but there is no reason that they cause compile failure. Also note that Portage already emits QA notices about gcc warnings that can cause runtime breakage.
+Turning off "-Werror" we will still see the warnings, but there is no reason
+that they cause compile failure. Also note that Portage already emits QA
+notices about gcc warnings that can cause runtime breakage.
 </p>
 
 <p><b>How to fix</b></p>
@@ -138,10 +148,16 @@ To fix the affected build system you should try the following methods:
 </p>
 <ul>
   <li>
-    remove the compiler flag from the build system, <e>e.g. Makefile.am or configure.ac</e> or even provide a switch (for autotools based build systems that could be "--disable-werror", which is good for sending a patch upstream)
+    remove the compiler flag from the build system, <e>e.g. Makefile.am or
+    configure.ac</e> or even provide a switch (for autotools based build
+    systems that could be "--disable-werror", which is good for sending a patch
+    upstream)
   </li>
   <li>
-    use <e>append-flags -Wno-error</e> (needs flag-o-matic.eclass); for this to work the environment flags have to be respected and placed after build system flags; this method is not preferred as it will disable all "-Werror=specific-warning" flags as well, see next section
+    use <e>append-flags -Wno-error</e> (needs flag-o-matic.eclass); for this
+    to work the environment flags have to be respected and placed after build
+    system flags; this method is not preferred as it will disable all
+    "-Werror=specific-warning" flags as well, see next section
   </li>
 </ul>
 <p>
@@ -150,7 +166,13 @@ Always check that it's really gone in the build log.
 
 <p><b>Specific -Werror=... flags</b></p>
 <p>
-GCC can turn any specific warning into an error. A specific -Werror flag would be "-Werror=implicit-function-declaration" for example and will only affect warnings about implicit function declarations. It's mostly safe to leave these untouched, cause they are pinned to this issue and should not cause random build time breakage. Also, we can expect that upstream did this on purpose to avoid known runtime errors and not just for testing their builds. However you should check the specified warnings yourself or ask other developers if unsure.
+GCC can turn any specific warning into an error. A specific -Werror flag would
+be "-Werror=implicit-function-declaration" for example and will only affect
+warnings about implicit function declarations. It's mostly safe to leave these
+untouched, cause they are pinned to this issue and should not cause random
+build time breakage. Also, we can expect that upstream did this on purpose to
+avoid known runtime errors and not just for testing their builds. However you
+should check the specified warnings yourself or ask other developers if unsure.
 </p>
 
 <p><b>Exceptions</b></p>
