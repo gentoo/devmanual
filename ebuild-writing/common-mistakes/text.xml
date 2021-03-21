@@ -83,11 +83,11 @@ There are several ways to fix non-verbose build logs depending on the build syst
 </p>
 
 <ul>
-  <li>For <c>cmake</c> based build systems it should be sufficient that
-  the ebuild calls cmake-utils_src_compile which picks up the cmake-utils.eclass
+  <li>For <c>cmake</c>-based build systems, it should be sufficient that
+  the ebuild calls cmake_src_compile which picks up the cmake.eclass
   variable 'CMAKE_VERBOSE=1' by default. If you call emake directly for
   whatever reason, you can do 'emake VERBOSE=1' (note that
-  cmake-utils_src_compile takes arguments as well which are passed to make).</li>
+  cmake_src_compile takes arguments as well which are passed to make).</li>
 
   <li>For <c>autotools</c> based build systems you can pass
   '--disable-silent-rules' to econf, or use EAPI 5 where that argument is
