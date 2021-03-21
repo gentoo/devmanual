@@ -86,7 +86,7 @@ use: <c>echo -e "first line\nsecond line\nthird line"</c>.
 
 <p>
 Other escape sequences and additional parameters for the <c>echo</c>
-command are available in the bash man page.
+command are available in the <c>bash(1)</c> man page.
 </p>
 
 </body>

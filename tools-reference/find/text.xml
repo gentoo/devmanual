@@ -207,7 +207,7 @@ is not POSIX, see the table).
 </warning>
 
 <p>
-See find-1 and
+See <c>find(1)</c> and
 <uri link="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/find.html">
 IEEE Std 1003.1-2017-find</uri> for further details and examples.
 </p>
