@@ -594,6 +594,7 @@ you know what you are doing, is to use these functions:
 
 <codesample lang="ebuild">
 inherit eapi7-ver
+
 MY_PN="Foo"
 # Replace the second period separator in PV with -
 MY_PV=$(ver_rs 2 '-')
