@@ -336,26 +336,30 @@ Vulnerability Treatment Policy</uri>.
 <title>Stabilization rules</title>
 <body>
 
-<p>
-AMD64, X86: If you are the maintainer of a package and own the respective amd64
-or x86 hardware, you can do your own testing (stabilization and keywording) of
-your packages; as long as it is not a core system set dependency. Note that
-it is acceptable to test <c>x86</c> using a
-<uri link="https://wiki.gentoo.org/wiki/Project:AMD64/32-bit_Chroot_Guide">
-specialized environment</uri> on <c>amd64</c>.
-</p>
+<ul>
+  <li>
+     <c>amd64</c>, <c>x86</c>: If you are the maintainer of a package and own
+     the respective <c>amd64</c> or <c>x86</c> hardware, you can do your own
+     testing (stabilization and keywording) of your packages; as long as it is
+     not a core system set dependency. Note that it is acceptable to test
+     <c>x86</c> using a
+     <uri link="https://wiki.gentoo.org/wiki/Project:AMD64/32-bit_Chroot_Guide">
+     specialized environment</uri> on <c>amd64</c>.
+  </li>
 
-<p>
-SPARC: You must have prior permission from the arch lead. Usually we expect
-you to be on the sparc alias for QA reasons, although other arrangements
-can be made if you will only be working with a small group of packages.
-</p>
+  <li>
+    <c>sparc</c>: You must have prior permission from the arch lead. Usually we
+    expect you to be on the sparc alias for QA reasons, although other
+    arrangements can be made if you will only be working with a small group of
+    packages.
+  </li>
 
-<p>
-ALPHA: Maintainers may keyword their own packages but are reminded to inform
-the Alpha team if they can help out with testing and keywording packages so
-the team can keep an eye out for possible keywording mistakes.
-</p>
+  <li>
+    <c>alpha</c>: Maintainers may keyword their own packages but are reminded to
+    inform the Alpha team if they can help out with testing and keywording
+    packages so the team can keep an eye out for possible keywording mistakes.
+  </li>
+</ul>
 
 <p>
 Exotic architectures (like <c>hppa</c>, <c>ia64</c>, <c>ppc*</c>, <c>sparc</c>)
