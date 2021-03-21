@@ -100,9 +100,11 @@ There are several ways to fix non-verbose build logs depending on the build syst
 </ul>
 
 <note>In case you encounter an affected package which uses a build system not
-controllable by Portage or eclasses you should file a bug (preferably with a patch)
-and make it block the tracker bug #429308. Solutions above ebuild level are
-preferred.</note>
+controllable by Portage or eclasses, you should file a bug (preferably with
+a patch) and make it block the tracker
+<uri link="https://bugs.gentoo.org/429308">bug 429308</uri>. Solutions above
+ebuild level are preferred.</note>
+
 </body>
 </subsection>
 
