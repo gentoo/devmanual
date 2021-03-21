@@ -4,6 +4,13 @@
 <title>Package and Category <c>metadata.xml</c></title>
 
 <body>
+
+<note>
+Familiarise yourself with the QA team's
+<uri link="https://projects.gentoo.org/qa/policy-guide/other-metadata.html">
+relevant policies</uri>.
+</note>
+
 <p>
 The <c>metadata.xml</c> file is used to specify additional data about a
 package or category.
