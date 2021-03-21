@@ -66,8 +66,8 @@ later. Good things to include in comments are:
     What the patch actually does. Bug numbers are good here.
   </li>
   <li>
-    Where the patch came from. Is it an upstream VCS pull,
-    something from Bugzilla, something you wrote?
+    Where the patch came from. For example, is it from an upstream VCS,
+    something from Bugzilla, or something you wrote?
   </li>
   <li>
     Whether the patch has been sent upstream, if applicable.
