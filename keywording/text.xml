@@ -94,7 +94,7 @@ Do <b>not</b> use the <c>*</c> or <c>~*</c> special keywords in ebuilds.
 <note>
 Usually, "live" ebuilds
 (see <uri link="::ebuild-writing/functions/src_unpack/vcs-sources/"/>)
-do not specify a <c>KEYWORDS</c> variable, or assign the empty string to it.
+do not specify a <c>KEYWORDS</c> variable.
 </note>
 </body>
 
