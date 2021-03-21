@@ -12,8 +12,8 @@ particular profile. This can be useful for various reasons:
 <ul>
   <li>
     Masking hardware-specific feature flags. For example, <c>mmx</c> and <c>sse</c> are
-    only available on x86, <c>altivec</c> is only available on <c>ppc</c> and <c>vis</c> is
-    only available on sparc v9.
+    only available on <c>x86</c>, <c>altivec</c> is only available on <c>ppc</c> and <c>vis</c> is
+    only available on <c>sparc</c> v9.
   </li>
   <li>
     Disabling unavailable soft dependencies. A simple hypothetical example <d /> say
