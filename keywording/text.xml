@@ -168,20 +168,20 @@ archs (there is at least one case of a <c>vim</c> script which only worked on
 </p>
 
 <p>
-Note that most (non-x86) archs expect you to be on the arch team and bugzilla
-alias if you are committing packages with keywords for that arch, and may have
-additional requirements of which you should be aware (on <c>mips</c>, for example,
-there are multiple ABIs and byte orders to consider <d /> a package working on your
-<c>o32</c> box may not work on <c>o64</c> or <c>n32</c>). Contact the individual arch
-teams for details.
+Note that most (non-<c>amd64</c>/<c>x86</c>) archs expect you to be on the
+arch team and bugzilla alias if you are committing packages with keywords for
+that arch, and may have additional requirements of which you should be aware
+(on <c>mips</c>, for example, there are multiple ABIs and byte orders to
+consider <d/> a package working on your <c>o32</c> box may not work on
+<c>o64</c> or <c>n32</c>). Contact the individual arch teams for details.
 </p>
 
 <p>
-It's important to note that alternative arches (like alpha, ia64, s390, sparc,
-hppa, ppc*) are mainly undermanned arches, some of them are slow, they have
-more basic problems and have a small userbase. Just file bugs for these
-architectures when a package is going to be a dependency of a package already
-keyworded.
+It's important to note that alternative arches (like <c>alpha</c>, <c>ia64</c>,
+<c>s390</c>, <c>sparc</c>, <c>hppa</c>, <c>ppc*</c>) are mainly understaffed
+arches, some of them are slow, they have more basic problems and have a small
+userbase. Just file bugs for these architectures when a package is going to be
+a dependency of a package already keyworded.
 </p>
 
 <p>
@@ -253,8 +253,8 @@ teams to the CC list. They can do it manually, or they can fill the package
 list field, add the <c>CC-ARCHES</c> keyword, and let
 <uri link="https://dev.gentoo.org/~mgorny/doc/nattka/">NATTkA</uri>
 automatically add arch teams to CC.
-That way teams can remove themselves from the list when they are done, giving
-a clear indication of which teams still have to stabilize a package.
+That way, teams can remove themselves from the list when they are done, giving
+a clear indication of which teams still remain to stabilize a package.
 </p>
 
 <p>
@@ -290,7 +290,7 @@ for further details):
 <p>
 For security fixes, the "reasonable amount of time" guideline may be relaxed.
 See the <uri link="https://www.gentoo.org/support/security/vulnerability-treatment-policy.html">
-Vulnerability Treatment Policy</uri>
+Vulnerability Treatment Policy</uri>.
 </p>
 
 </body>
@@ -303,9 +303,9 @@ Vulnerability Treatment Policy</uri>
 AMD64, X86: If you are the maintainer of a package and own the respective amd64
 or x86 hardware, you can do your own testing (stabilization and keywording) of
 your packages; as long as it is not a core system set dependency. Note that
-it is acceptable to test x86 using a
+it is acceptable to test <c>x86</c> using a
 <uri link="https://wiki.gentoo.org/wiki/Project:AMD64/32-bit_Chroot_Guide">
-specialized environment on amd64</uri>.
+specialized environment</uri> on <c>amd64</c>.
 </p>
 
 <p>
@@ -321,15 +321,15 @@ the team can keep an eye out for possible keywording mistakes.
 </p>
 
 <p>
-Exotic architectures (like hppa, ia64, ppc*, sparc) are short on manpower,
-so it's best if you avoid opening bugs for stabilization of new packages
-for them, unless it is absolutely necessary (e.g., a reverse dependency
-for your package).
+Exotic architectures (like <c>hppa</c>, <c>ia64</c>, <c>ppc*</c>, <c>sparc</c>)
+are short on help, so it's best if you avoid opening bugs for stabilization
+of new packages for them, unless it is absolutely necessary (e.g., a reverse
+dependency for your package).
 </p>
 
 <p>
-Some architectures (like mips, riscv) do not maintain a stable keyword.
-So packages are not to be marked stable for one of these architectures.
+Some architectures (like <c>mips</c>, <c>riscv</c>) do not maintain a stable
+keyword, so packages are not to be marked stable for one of these architectures.
 </p>
 
 </body>
@@ -341,7 +341,7 @@ So packages are not to be marked stable for one of these architectures.
 
 <p>
 If you maintain an architecture-independent package (data files, icons, pure
-Python, ...) then you may request that your package be stabilized on all arches
+Python, ...), then you may request that your package be stabilized on all arches
 at once. To do this <d/> when you are filing the stabilization bug <d/> please
 add the keyword <c>ALLARCHES</c> in addition to <c>STABLEREQ</c> and CC the
 arches that you would like to stabilize.
