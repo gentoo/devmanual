@@ -38,7 +38,7 @@ Patches included in <c>${FILESDIR}</c> should never be compressed.
 </note>
 
 <warning>
-Starting from EAPI=6 a strip patch level was limited to the <c>-p1</c>.
+Starting from EAPI=6, the patch strip level was limited to the <c>-p1</c>.
 Although it can be overridden with a <c>eapply -p&lt;strip_level&gt;</c>
 command, it is highly recommended to adapt the patch itself to work
 with the <c>-p1</c> default.
