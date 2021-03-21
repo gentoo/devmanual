@@ -5,6 +5,12 @@
 
 <body>
 
+<note>
+Familiarise yourself with the QA team's
+<uri link="https://projects.gentoo.org/qa/policy-guide/installed-files.html">
+relevant policies</uri>.
+</note>
+
 <p>
 When an ebuild runs the <c>src_install</c> phase, it installs an image of the
 package in question from <c>${S}</c> into <c>${D}</c>. Ebuilds must <e>not</e> attempt to
