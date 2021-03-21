@@ -94,6 +94,9 @@ There are several ways to fix non-verbose build logs depending on the build syst
 
   <li>For custom Makefiles you often have to write a patch. Try to get
   upstream to include an option like 'V=1' to enable full verbosity.</li>
+
+  <li>Note that when building Go manually outside of the eclass, you
+  will need GOFLAGS="-x".</li>
 </ul>
 
 <note>In case you encounter an affected package which uses a build system not
