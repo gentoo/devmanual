@@ -44,7 +44,7 @@ pkg_postinst() {
 <body>
 <codesample lang="ebuild">
 pkg_postinst() {
-	if $OLD_FLUXBOX_VERSION ; then
+	if ${OLD_FLUXBOX_VERSION} ; then
 		ewarn "You must restart fluxbox before using the [include] /directory/"
 		ewarn "feature if you are upgrading from an older fluxbox!"
 		ewarn " "
