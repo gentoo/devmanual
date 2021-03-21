@@ -215,8 +215,9 @@ architectures, then you should file a bug or ask on IRC before you upgrade the
 ebuild. If you really need to get the ebuild added in a hurry, for example,
 for a security fix, then you should drop any <c>KEYWORDS</c> which are causing
 problems and CC the relevant architectures on the bug <d/> you <b>must</b> file
-a new bug to the architecture in question regarding this if no bug is already
-available.
+a <uri link="https://projects.gentoo.org/qa/policy-guide/keywords.html#pg0401">
+new bug</uri> to the architecture in question regarding this if no bug is
+already available.
 </p>
 
 <p>
