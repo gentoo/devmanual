@@ -176,13 +176,14 @@ Always check that it's really gone in the build log.
 
 <p><b>Specific -Werror=... flags</b></p>
 <p>
-GCC can turn any specific warning into an error. A specific -Werror flag would
-be "-Werror=implicit-function-declaration" for example and will only affect
-warnings about implicit function declarations. It's mostly safe to leave these
-untouched, cause they are pinned to this issue and should not cause random
-build time breakage. Also, we can expect that upstream did this on purpose to
-avoid known runtime errors and not just for testing their builds. However you
-should check the specified warnings yourself or ask other developers if unsure.
+The compiler (e.g. GCC) can turn any specific warning into an error. A
+specific -Werror flag would be "-Werror=implicit-function-declaration" for
+example and will only affect warnings about implicit function declarations. It's
+mostly safe to leave these untouched, cause they are pinned to this issue and
+should not cause random build time breakage. Also, we can expect that upstream
+did this on purpose to avoid known runtime errors and not just for testing their
+builds. However, you should check the specified warnings yourself or ask other
+developers if unsure.
 </p>
 
 <p><b>Exceptions</b></p>
