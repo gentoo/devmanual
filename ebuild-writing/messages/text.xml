@@ -62,7 +62,7 @@ logged by default.
 <codesample lang="ebuild">
 src_compile() {
 	einfo "Starting a silent compile that takes hours."
-	./build
+	./build || die
 }
 </codesample>
 
