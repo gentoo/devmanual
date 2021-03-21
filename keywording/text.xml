@@ -218,9 +218,9 @@ available.
 
 <p>
 If there are no new dependencies, do not remove keywords if your commit fails
-with repoman <d/> please try a full <c>git pull</c> and if you still have
-problems, then commit with <c>repoman -I</c> and file a bug to the broken
-architecture, noting it in your git commit message.
+with <c>repoman</c> or <c>pkgdev</c> <d/> instead please commit with
+<c>repoman -I</c> and file a bug to the broken architecture, noting it in your
+git commit message.
 </p>
 
 <important>
