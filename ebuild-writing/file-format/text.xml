@@ -137,7 +137,9 @@ is $(upcoming-version)_preYYYYMMDD.
 <p>
 The policy for so-called <e>live</e> ebuilds
 (see <uri link="::ebuild-writing/functions/src_unpack/#src_unpack Actions"/>)
-is to use <c>9999</c> as the version (or as the last version component).
+is to use <c>9999</c> as the version (or as the last version component). For
+packages with more than 4 digits e.g. YYYYMMDD format, <c>99999999</c> is an
+acceptable alternative.
 </p>
 
 </body>
