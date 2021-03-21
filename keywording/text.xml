@@ -38,14 +38,14 @@ The different levels of keyword are:
 
 <dl>
   <dt>
-    <c>arch</c> (<c>x86</c>, <c>ppc-macos</c>)
+    <c>arch</c> (<c>x86</c>, <c>ppc-macos</c>) ("stable")
   </dt>
   <dd>
     Both the package version <e>and</e> the ebuild are widely tested, known to work
     and not have any serious issues on the indicated platform.
   </dd>
   <dt>
-    <c>~arch</c> (<c>~x86</c>, <c>~ppc-macos</c>)
+    <c>~arch</c> (<c>~x86</c>, <c>~ppc-macos</c>) ("testing")
   </dt>
   <dd>
     The package version and the ebuild are believed to work and do not have any
@@ -53,7 +53,7 @@ The different levels of keyword are:
     is considered suitable for <c>arch</c>.
   </dd>
   <dt>
-    No keyword
+    No keyword ("unkeyworded")
   </dt>
   <dd>
     If a package has no keyword for a given arch, it means it is not known
@@ -153,7 +153,7 @@ user system</b>.
 <body>
 
 <important>
-New packages should be marked as <c>~arch</c> only upon
+New packages should be marked as <c>~arch</c> ("testing") only upon
 architectures for which the committing developer has tested.
 </important>
 
@@ -185,7 +185,7 @@ keyworded.
 </p>
 
 <p>
-Do <b>not</b> commit straight to <c>arch</c>.
+Do <b>not</b> commit straight to <c>arch</c> ("stable").
 </p>
 
 </body>
@@ -196,10 +196,10 @@ Do <b>not</b> commit straight to <c>arch</c>.
 <body>
 
 <p>
-When upgrading, drop all existing keywords from <c>arch</c> to <c>~arch</c>, and leave
-any existing <c>~arch</c> keywords intact. This must be done even if you <e>think</e>
-you're just making a trivial fix <d /> there have been several examples of the
-stable tree getting broken this way.
+When upgrading, drop all existing keywords from <c>arch</c> to <c>~arch</c>
+("testing"), and leave any existing <c>~arch</c> keywords intact. This must be
+done even if you <e>think</e> you're just making a trivial fix <d /> there have
+been several examples of the stable tree getting broken this way.
 </p>
 
 <p>
@@ -237,10 +237,11 @@ to do this.
 <body>
 
 <p>
-Stabilization, i.e., moving an ebuild from <c>~arch</c> to <c>arch</c>, is done
-by the relevant architecture teams. If you have access to exotic hardware but
-are not on the arch teams, you may wish to make individual arrangements <d/>
-the arch teams are happy for help, so long as they know what is going on.
+Stabilization, i.e., moving an ebuild from <c>~arch</c> ("testing") to
+<c>arch</c> ("stable"), is done by the relevant architecture teams. If you have
+access to exotic hardware but are not on the arch teams, you may wish to make
+individual arrangements <d/> the arch teams are happy for help, so long as they
+know what is going on.
 </p>
 
 <p>
