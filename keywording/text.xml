@@ -261,6 +261,40 @@ a clear indication of which teams still remain to stabilize a package.
 </p>
 
 <p>
+It is <e>strongly</e>
+<uri link="https://archives.gentoo.org/gentoo-dev/message/cd62f6be924f6a0f76b68a07d33b256a">
+recommended</uri> that <c>NATTkA</c> be used to file keywording
+or stabilization bugs to ensure that arches are not accidentally forgot about;
+the automation removes an often error-prone step in the arch-testing process. Ask
+in #gentoo-dev or on the gentoo-dev mailing list if you need help.
+</p>
+
+<p>
+<c>NATTkA</c> will set the <c>sanity-check</c> field on Bugzilla to either
+<c>-</c> or <c>+</c> depending on whether the package list results in a consistent
+dependency graph. You may need to add more packages or adjust the archs listed
+for each package based on the output the bot posts as a comment on the bug. Please
+note that arch teams may not process or notice bugs with a blank or <c>-</c>
+sanity-check, so please fix this if it occurs <d/> or ask for help to do so.
+</p>
+
+<note>
+Note that sometimes NATTkA may do <e>nothing</e> if it has concluded the package
+list is complete. You may wish to run <c>nattka sanity-check BUG</c> where
+<c>BUG</c> is the bug number you're having an issue with in order to debug the
+issue to receive verbose output.
+</note>
+
+<p>
+You may wish to read NATTkA's
+<uri link="https://github.com/mgorny/nattka#filing-keywordingstabilization-bugs">
+documentation</uri> for help on package list syntax or other information about
+the tool. The documentation details syntax which can be used, such as <c>*</c>
+to represent 'all previously stable arches', or '^' to copy the arches from the
+line(s) above.
+</p>
+
+<p>
 For an ebuild to move to stable, the following guidelines must be met
 (see <uri link="https://www.gentoo.org/glep/glep-0040.html">GLEP 40</uri>
 for further details):
