@@ -48,9 +48,10 @@ examples.
 </p>
 
 <p>
-When committing to git, all developers should use <c>repoman commit</c>
-instead of <c>git commit</c> to submit their ebuilds.  Before committing,
-please run <c>repoman full</c> to make sure you didn't forget something.
+When committing to git, all developers should use <c>repoman commit</c> or
+<c>pkgdev commit</c> with <c>pkgdev push</c> instead of <c>git commit</c> to
+submit their ebuilds.  Before committing, please run <c>repoman full</c> or
+<c>pkgcheck scan</c> to make sure you didn't forget something.
 </p>
 
 </body>
