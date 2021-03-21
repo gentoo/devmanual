@@ -113,6 +113,8 @@ preferred.</note>
 <p>
 "-Werror" is a flag which turns all warnings into errors and thus will abort
 compiling if any warning is encountered.
+See <uri link="https://bugs.gentoo.org/show_bug.cgi?id=werror">bug 260867</uri>
+for more information and real-life examples/fixes in the Gentoo tree.
 </p>
 
 <p><b>Rationale</b></p>
