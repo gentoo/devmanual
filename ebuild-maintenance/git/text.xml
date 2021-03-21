@@ -113,10 +113,10 @@ the historical commits after the initial git commit.
 
 <p>
 The recommended way of committing to the Gentoo repository is to use <c>repoman
-commit</c>. It automatically performs the necessary QA checks on the package
-being committed and has other features helping with the Gentoo workflow.
-However, it is currently limited to creating a single commit to a single
-package.
+commit</c> or <c>pkgdev commit</c> (then <c>pkgdev push</c>). It automatically
+performs the necessary QA checks on the package being committed and has other
+features helping with the Gentoo workflow. However, <c>repoman</c> is currently
+limited to creating a single commit to a single package.
 </p>
 
 <p>
@@ -127,17 +127,18 @@ used. The valid uses of git include:
 <ul>
 <li>creating commits spanning multiple packages and/or multiple areas
 of the Gentoo repository (eclasses, licenses, profiles…),</li>
-<li>amending a commit created via <c>repoman commit</c> with additional files
-or fixups,</li>
-<li>combining multiple commits created via <c>repoman commit</c> using <c>git
-rebase</c>.</li>
+<li>amending a commit created via <c>repoman commit</c> or <c>pkgdev commit</c>
+with additional files or fixups,</li>
+<li>combining multiple commits created via <c>repoman commit</c> or
+<c>pkgdev commit</c> using <c>git rebase</c>.</li>
 </ul>
 
 <p>
-Whenever repoman is not used to commit, you need to manually verify all
-packages affected by the commit using <c>repoman full</c>. Since repoman
-is not aware of staged changes, please make sure that all files are included
-in the commit. Also when not using repoman, you must perform a manual sign-off
+Whenever <c>repoman</c> or <c>pkgdev</c> is not used to commit, you need to
+manually verify all packages affected by the commit using <c>repoman full</c> or
+<c>pkgcheck scan --commits</c>. When using <c>repoman</c>, it won't be aware of
+staged changes, so ensure that all files are included in the commit.
+Also, when using <c>git</c> manually, you must perform a manual sign-off
 to the <uri link="https://www.gentoo.org/glep/glep-0076.html#certificate-of-origin">
 Certificate of Origin</uri> using the <c>-s</c> or <c>--signoff</c> option
 with your git commit commands. Make sure you have read and understand the
@@ -219,8 +220,8 @@ appropriately:
 </p>
 
 <ul>
-<li><c>${CATEGORY}/${PN}:</c>Single Package (Note that <c>repoman commit</c>
-automatically inserts this for you)</li>
+<li><c>${CATEGORY}/${PN}:</c> Single Package (Note that <c>repoman commit</c>
+and <c>pkgdev commit</c> will automatically insert this for you)</li>
 <li><c>${CATEGORY}:</c> Package Category</li>
 <li><c>profiles:</c> Profile Directory</li>
 <li><c>${ECLASS}.eclass:</c> Eclass Directotry</li>
