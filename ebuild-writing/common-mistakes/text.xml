@@ -92,7 +92,7 @@ There are several ways to fix non-verbose build logs depending on the build syst
   '--disable-silent-rules' to econf, or use EAPI 5 where that argument is
   passed automatically. 'emake V=1' should also work.</li>
 
-  <li>For custom Makefiles you often have to write a patch. Try to get
+  <li>For custom Makefiles, you often have to write a patch. Try to get
   upstream to include an option like 'V=1' to enable full verbosity.</li>
 
   <li>Note that when building Go manually outside of the eclass, you
@@ -126,8 +126,8 @@ without purpose, e.g.:
 </p>
 <ul>
   <li>
-    new warnings on version bumps of GCC/glibc which the developer was not aware
-    of at the point of coding
+    new warnings on version bumps of GCC/glibc of which the developer was not
+    aware at the point of coding
   </li>
   <li>
     some autoconf checks will fail badly
@@ -146,9 +146,9 @@ without purpose, e.g.:
   </li>
 </ul>
 <p>
-Turning off "-Werror" we will still see the warnings, but there is no reason
-that they cause compile failure. Also note that Portage already emits QA
-notices about gcc warnings that can cause runtime breakage.
+By turning off "-Werror", we will still see the warnings, but there is no reason
+that they cause compile failure. Note that Portage already emits QA
+notices about GCC warnings that can cause runtime breakage.
 </p>
 
 <p><b>How to fix</b></p>
@@ -178,8 +178,8 @@ Always check that it's really gone in the build log.
 The compiler (e.g. GCC) can turn any specific warning into an error. A
 specific -Werror flag would be "-Werror=implicit-function-declaration" for
 example and will only affect warnings about implicit function declarations. It's
-mostly safe to leave these untouched, cause they are pinned to this issue and
-should not cause random build time breakage. Also, we can expect that upstream
+mostly safe to leave these untouched, because they are pinned to this issue and
+should not cause random build-time breakage. Also, we can expect that upstream
 did this on purpose to avoid known runtime errors and not just for testing their
 builds. However, you should check the specified warnings yourself or ask other
 developers if unsure.
