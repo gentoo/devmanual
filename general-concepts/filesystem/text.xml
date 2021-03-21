@@ -4,6 +4,13 @@
 <title>Filesystem</title>
 
 <body>
+
+<note>
+Familiarise yourself with the QA team's
+<uri link="https://projects.gentoo.org/qa/policy-guide/filesystem.html">
+filesystem layout policy</uri>.
+</note>
+
 <p>
 The basic filesystem layout and purpose is as follows:
 </p>
