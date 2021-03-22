@@ -508,19 +508,28 @@ documentation are:
   </ti>
 </tr>
 <tr>
+  <ti><c>@INCLUDES_EPREFIX</c></ti>
+  <ti>YES</ti>
+  <ti><d/></ti>
   <ti>
-    <c>@INTERNAL</c>
+    Indicates whether the function returns a path with ${EPREFIX} prepended
+    to it.
   </ti>
-  <ti>
-    YES
-  </ti>
-  <ti>
-    <d/>
-  </ti>
+</tr>
+<tr>
+  <ti><c>@INTERNAL</c></ti>
+  <ti>YES</ti>
+  <ti><d/></ti>
   <ti>
     Indicates that the function is internal to the eclass and should
     not be called from outside.
   </ti>
+</tr>
+<tr>
+  <ti><c>@DEPRECATED</c></ti>
+  <ti>YES</ti>
+  <ti>Optionally, the name of a replacement function.</ti>
+  <ti>Declares that this function should no longer be used in ebuilds.</ti>
 </tr>
 <tr>
   <ti>
