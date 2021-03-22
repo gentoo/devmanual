@@ -658,10 +658,10 @@ domacosapp() {
 
 <p>
 An eclass may provide default implementations for any of the ebuild phase
-functions (<c>src_unpack</c>, <c>pkg_postinst</c> etc). This can be done either as a
+functions (<c>src_unpack</c>, <c>pkg_postinst</c>, etc). This can be done either as a
 simple function definition (which is not multiple eclass friendly) or using
 <c>EXPORT_FUNCTIONS</c>. Functions given to <c>EXPORT_FUNCTIONS</c> are implemented
-as normal, but have their name prefixed with <c>${ECLASS}_</c>.
+as normal, but have their name prefixed ("namespaced") with <c>${ECLASS}_</c>.
 </p>
 
 <important>
