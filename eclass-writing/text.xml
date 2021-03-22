@@ -350,61 +350,74 @@ variables are as follows:
   </ti>
 </tr>
 <tr>
+  <ti><c>@PRE_INHERIT</c></ti>
+  <ti>YES</ti>
+  <ti><d/></ti>
   <ti>
-    <c>@DEFAULT_UNSET</c>
+    This tag describes whether the variable must be defined before
+    the eclass is inherited. This is important if any e.g. dependencies
+    are modified in global scope at the point of sourcing.
   </ti>
+</tr>
+<tr>
+  <ti><c>@USER_VARIABLE</c></ti>
+  <ti>YES</ti>
+  <ti><d/></ti>
   <ti>
-    YES
+    This tag describes whether the variable is unsuitable for use in ebuilds,
+    i.e. if it is solely for user consumption via e.g. make.conf or a similar
+    mechanism.
   </ti>
+</tr>
+<tr>
+  <ti><c>@OUTPUT_VARIABLE</c></ti>
+  <ti>YES</ti>
+  <ti><d/></ti>
   <ti>
-    <d/>
+    This tag indicates that the variable's value (which will be set by the eclass)
+    should be read within an ebuild.
   </ti>
+</tr>
+<tr>
+  <ti><c>@DEFAULT_UNSET</c></ti>
+  <ti>YES</ti>
+  <ti><d/></ti>
   <ti>
     Indicates that this variable is unset by default if not set by the
     developer.
   </ti>
 </tr>
 <tr>
+  <ti><c>@INCLUDES_EPREFIX</c></ti>
+  <ti>YES</ti>
+  <ti><d/></ti>
   <ti>
-    <c>@INTERNAL</c>
-  </ti>
-  <ti>
-    YES
-  </ti>
-  <ti>
-    <d/>
-  </ti>
-  <ti>
-    Indicates that the variable is internal to the eclass.
+    Indicates that the variable is a path which has ${EPREFIX} prepended to it.
   </ti>
 </tr>
 <tr>
-  <ti>
-    <c>@REQUIRED</c>
-  </ti>
-  <ti>
-    YES
-  </ti>
-  <ti>
-    <d/>
-  </ti>
-  <ti>
-    Indicates that this variable must be set by the developer.
-  </ti>
+  <ti><c>@INTERNAL</c></ti>
+  <ti>YES</ti>
+  <ti><d/></ti>
+  <ti>Indicates that the variable is internal to the eclass.</ti>
 </tr>
 <tr>
-  <ti>
-    <c>@DESCRIPTION:</c>
-  </ti>
-  <ti>
-    NO
-  </ti>
-  <ti>
-    Multiline freetext.
-  </ti>
-  <ti>
-    Long description for the eclass variable.
-  </ti>
+  <ti><c>@REQUIRED</c></ti>
+  <ti>YES</ti>
+  <ti><d/></ti>
+  <ti>Indicates that this variable must be set by the developer.</ti>
+</tr>
+<tr>
+  <ti><c>@DEPRECATED</c></ti>
+  <ti>YES</ti>
+  <ti>Optionally, the name of any replacement variable.</ti>
+  <ti>Declares that this variable should no longer be used in ebuilds.</ti>
+</tr>
+<tr>
+  <ti><c>@DESCRIPTION:</c></ti>
+  <ti>NO</ti>
+  <ti>Multiline freetext.</ti>
+  <ti>Long description for the eclass variable.</ti>
 </tr>
 </table>
 
