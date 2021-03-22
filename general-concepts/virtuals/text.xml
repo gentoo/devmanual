@@ -34,7 +34,7 @@ RDEPEND="|| ( &gt;=sys-devel/gcc-4.1 dev-libs/boost )"
 </codesample>
 
 <p>
-Looks familar...right?  It should since its going to look just like a regular
+Looks familar...right?  It should since it's going to look just like a regular
 ebuild.
 </p>
 
