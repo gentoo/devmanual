@@ -151,6 +151,14 @@ multiline freetext, the <c>@CODE</c> tag should be used when necessary
 to create unformatted code chunks (such as example code) by placing
 the tag at the beginning and the end.
 </p>
+
+<p>
+Note that <c>pkgcheck</c> can check for issues in eclass documentation.
+You could run e.g. <c>pkgcheck scan -s eclass</c> to check for issues
+in the tree or <c>pkgcheck scan --commits</c> to check for issues
+in your staged git commits.
+</p>
+
 </body>
 </section>
 
