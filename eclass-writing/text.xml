@@ -90,6 +90,17 @@ Committing a broken eclass can kill huge numbers of packages. Since
 A simple way to verify syntax is <c>bash -n foo.eclass</c>.
 </p>
 
+<note>
+Given that updating an eclass will invalidate the cache of all consumer ebuilds,
+it is good etiquette to ping other developers in e.g. <c>#gentoo-dev</c> on IRC
+or informally determine if there are other similar changes (mainly documentation)
+which should be pushed at the same time in order to avoid unnecessary cache
+regeneration within a few hours or days of each other.
+
+The same applies to your own work <d/> please prepare all of your commits and
+batch push them at once where possible.
+</note>
+
 </body>
 </section>
 
