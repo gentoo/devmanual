@@ -568,12 +568,8 @@ using the following tags:
   <th>description</th>
 </tr>
 <tr>
-  <ti>
-    <c>@VARIABLE:</c>
-  </ti>
-  <ti>
-    NO
-  </ti>
+  <ti><c>@VARIABLE:</c></ti>
+  <ti>NO</ti>
   <ti>
     Name of the function-specific variable to which the documentation applies.
   </ti>
@@ -584,61 +580,53 @@ using the following tags:
   </ti>
 </tr>
 <tr>
-  <ti>
-    <c>@DEFAULT_UNSET</c>
-  </ti>
-  <ti>
-    YES
-  </ti>
-  <ti>
-    <d/>
-  </ti>
+  <ti><c>@USER_VARIABLE</c></ti>
+   <ti>YES</ti>
+   <ti><d/></ti>
+   <ti>
+     This tag describes whether the variable is unsuitable for use in ebuilds,
+     i.e. if it is solely for user consumption via e.g. make.conf or a similar
+     mechanism.
+   </ti>
+</tr>
+<tr>
+  <ti><c>@DEFAULT_UNSET</c></ti>
+  <ti>YES</ti>
+  <ti><d/></ti>
   <ti>
     Indicates that this variable is unset by default if not set by the
     developer.
   </ti>
 </tr>
 <tr>
-  <ti>
-    <c>@INTERNAL</c>
-  </ti>
-  <ti>
-    YES
-  </ti>
-  <ti>
-    <d/>
-  </ti>
-  <ti>
-    Indicates that the variable is internal to the eclass function.
-  </ti>
+  <ti><c>@INCLUDES_EPREFIX</c></ti>
+  <ti>YES</ti>
+  <ti><d/></ti>
+  <ti>Indicates that the variable is a path which has ${EPREFIX} prepended.</ti>
 </tr>
 <tr>
-  <ti>
-    <c>@REQUIRED</c>
-  </ti>
-  <ti>
-    YES
-  </ti>
-  <ti>
-    <d/>
-  </ti>
-  <ti>
-    Indicates that this variable must be set by the developer.
-  </ti>
+  <ti><c>@INTERNAL</c></ti>
+  <ti>YES</ti>
+  <ti><d/></ti>
+  <ti>Indicates that the variable is internal to the eclass function.</ti>
 </tr>
 <tr>
-  <ti>
-    <c>@DESCRIPTION:</c>
-  </ti>
-  <ti>
-    NO
-  </ti>
-  <ti>
-    Multiline freetext.
-  </ti>
-  <ti>
-    Long description for the function variable.
-  </ti>
+  <ti><c>@REQUIRED</c></ti>
+  <ti>YES</ti>
+  <ti><d/></ti>
+  <ti>Indicates that this variable must be set by the developer.</ti>
+</tr>
+<tr>
+  <ti><c>@DEPRECATED</c></ti>
+  <ti>YES</ti>
+  <ti>Optionally, the name of any replacement variable.</ti>
+  <ti>Declares that this variable should no longer be used in ebuilds.</ti>
+</tr>
+<tr>
+  <ti><c>@DESCRIPTION:</c></ti>
+  <ti>NO</ti>
+  <ti>Multiline freetext.</ti>
+  <ti>Long description for the function variable.</ti>
 </tr>
 </table>
 
