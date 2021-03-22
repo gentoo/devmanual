@@ -28,7 +28,7 @@ Roughly speaking, there are three kinds of eclass:
   <li>
     Those which provide common functions which are used by many ebuilds (for
     example, <c>autotools</c>, <c>bash-completion-r1</c>, <c>flag-o-matic</c>,
-    <c>toolchain-funcs</c>
+    <c>toolchain-funcs</c>)
   </li>
   <li>
     Those which provide a basic build system for many similar packages (for
