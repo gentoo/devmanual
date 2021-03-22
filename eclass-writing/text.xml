@@ -70,7 +70,10 @@ package, and thus does not typically require changes to be emailed for review.
 
 <p>
 When removing a function or changing the API of an eclass, make sure that
-it doesn't break any ebuilds in the Gentoo repository.
+it doesn't break any ebuilds in the Gentoo repository. Optionally, you may wish
+to do a survey of some (official) overlays like <c>::guru</c>, <c>::musl</c>, or
+<c>::science</c> in order to better understand how it is currently used and
+<d/> where possible <d/> avoid breakage by pinging the maintainers directly.
 </p>
 
 <p>
