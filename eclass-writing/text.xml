@@ -698,7 +698,7 @@ Then an ebuild could do this:
 </p>
 
 <codesample lang="ebuild">
-inherit fnord.eclass
+inherit fnord
 
 src_compile() {
 	do_pre_stuff || die
