@@ -130,6 +130,11 @@ adhere to the following process:</p>
   </li>
 </ol>
 
+<note>
+Before considering removal, please mark the eclass as <c># @DEPRECATED</c>
+to ensure consumers are warned if they are still using the eclass. Do this
+for a period before removing the eclass.
+</note>
 
 </body>
 </section>
