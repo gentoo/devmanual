@@ -157,7 +157,7 @@ New packages should be marked as <c>~arch</c> ("testing") only upon
 architectures for which the committing developer has tested. If proxying
 commits for a non-developer, please ensure they have some relationship
 with the relevant arch teams, or <d/> better yet <d/> ask them to file
-a keywording bug instead for non-<c>amd64/x86</c>.
+a keywording bug instead for non-<c>amd64</c>/<c>x86</c>.
 </important>
 
 <p>
@@ -171,12 +171,12 @@ arches (there is at least one case of a <c>vim</c> script which only worked on
 </p>
 
 <p>
-Note that most (non-<c>amd64/x86</c>) arches expect you to be on the arch team and bugzilla
-alias if you are committing packages with keywords for that arch, and may have
-additional requirements of which you should be aware (on <c>mips</c>, for example,
-there are multiple ABIs and byte orders to consider <d /> a package working on your
-<c>o32</c> box may not work on <c>o64</c> or <c>n32</c>). Contact the individual arch
-teams for details.
+Note that most (non-<c>amd64</c>/<c>x86</c>) arches expect you to be on the
+arch team and bugzilla alias if you are committing packages with keywords for
+that arch, and may have additional requirements of which you should be aware
+(on <c>mips</c>, for example, there are multiple ABIs and byte orders to
+consider <d /> a package working on your <c>o32</c> box may not work on
+<c>o64</c> or <c>n32</c>). Contact the individual arch teams for details.
 </p>
 
 <p>
