@@ -73,7 +73,7 @@ The different levels of keyword are:
 
 <p>
 The <c>-*</c> keyword is special. It is used to indicate package versions which are
-not worth trying to test on unlisted archs. For example, a binary-only package
+not worth trying to test on unlisted arches. For example, a binary-only package
 which is only supported upstream on <c>ppc</c> and <c>x86</c> might use:
 </p>
 
@@ -82,9 +82,9 @@ KEYWORDS="-* ppc x86"
 </codesample>
 
 <p>
-This is different in implication from <c>"ppc x86"</c> <d /> the former implies that
-it will not work on other archs, whereas the latter implies that it has not been
-tested.
+This is different in implication from <c>"ppc x86"</c> <d/> the former implies
+that it will not work on other arches, whereas the latter implies that it has
+not been tested.
 </p>
 
 <p>
@@ -166,12 +166,12 @@ assume that user submitted ebuilds will have correct <c>KEYWORDS</c> <d /> chanc
 they just copied from somewhere else. Do <b>not</b> assume that upstream's
 'supported architectures' list is correct. Do <b>not</b> assume that because your
 code is written in Perl / Python / Java / whatever that it will run on other
-archs (there is at least one case of a <c>vim</c> script which only worked on
+arches (there is at least one case of a <c>vim</c> script which only worked on
 <c>x86</c>).
 </p>
 
 <p>
-Note that most (non-<c>amd64</c>/<c>x86</c>) archs expect you to be on the
+Note that most (non-<c>amd64</c>/<c>x86</c>) arches expect you to be on the
 arch team and bugzilla alias if you are committing packages with keywords for
 that arch, and may have additional requirements of which you should be aware
 (on <c>mips</c>, for example, there are multiple ABIs and byte orders to
@@ -274,7 +274,7 @@ Ask in #gentoo-dev or on the gentoo-dev mailing list if you need help.
 <c>NATTkA</c> will set the <c>sanity-check</c> field on Bugzilla to either
 <c>-</c> or <c>+</c> depending on whether the package list results in a
 consistent dependency graph. You may need to add more packages or adjust the
-archs listed for each package based on the output the bot posts as a comment
+arches listed for each package based on the output the bot posts as a comment
 on the bug. Please note that arch teams may not process or notice bugs with a
 blank or <c>-</c> sanity-check, so please fix this if it occurs <d/> or ask for
 help to do so.
@@ -292,8 +292,8 @@ You may wish to read NATTkA's
 <uri link="https://github.com/mgorny/nattka#filing-keywordingstabilization-bugs">
 documentation</uri> for help on package list syntax or other information about
 the tool. The documentation details syntax which can be used, such as <c>*</c>
-to represent 'all previously stable arches', or '^' to copy the arches from the
-line(s) above.
+to represent "all previously stable arches", or <c>^</c> to copy the arches
+from the line(s) above.
 </p>
 
 <p>
@@ -447,7 +447,7 @@ any given keyword level on any profile. The aim here is:
 </ul>
 
 <p>
-If you would like a particular package version moved to stable on certain archs
+If you would like a particular package version moved to stable on certain arches
 so that you can tidy up, file a bug.
 </p>
 
