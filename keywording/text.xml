@@ -266,17 +266,18 @@ It is <e>strongly</e>
 <uri link="https://archives.gentoo.org/gentoo-dev/message/cd62f6be924f6a0f76b68a07d33b256a">
 recommended</uri> that <c>NATTkA</c> be used to file keywording
 or stabilization bugs to ensure that arches are not accidentally forgot about;
-the automation removes an often error-prone step in the arch-testing process. Ask
-in #gentoo-dev or on the gentoo-dev mailing list if you need help.
+the automation removes an often error-prone step in the arch-testing process.
+Ask in #gentoo-dev or on the gentoo-dev mailing list if you need help.
 </p>
 
 <p>
 <c>NATTkA</c> will set the <c>sanity-check</c> field on Bugzilla to either
-<c>-</c> or <c>+</c> depending on whether the package list results in a consistent
-dependency graph. You may need to add more packages or adjust the arches listed
-for each package based on the output the bot posts as a comment on the bug. Please
-note that arch teams may not process or notice bugs with a blank or <c>-</c>
-sanity-check, so please fix this if it occurs <d/> or ask for help to do so.
+<c>-</c> or <c>+</c> depending on whether the package list results in a
+consistent dependency graph. You may need to add more packages or adjust the
+arches listed for each package based on the output the bot posts as a comment on
+the bug. Please note that arch teams may not process or notice bugs with a
+blank or <c>-</c> sanity-check, so please fix this if it occurs <d/> or ask for
+help to do so.
 </p>
 
 <note>
