@@ -34,6 +34,11 @@ git commit's <c>--author</c> parameter to explicitly give them credit.
 </p>
 
 <p>
+Developers must check for a valid <c>Signed-off-by</c> line either within
+the provided patches by a user or within a comment on e.g. Bugzilla.
+</p>
+
+<p>
 Users should be encouraged to submit diffs to an existing ebuild if they
 are submitting an upgrade. Doing this will help to avoid re-introduction
 of previously fixed bugs into "new" ebuilds. When not working from a
