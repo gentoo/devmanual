@@ -91,9 +91,10 @@ There are several ways to fix non-verbose build logs depending on the build syst
     takes arguments as well which are passed to make).
   </li>
   <li>
-    For <c>autotools</c> based build systems you can pass
-    '--disable-silent-rules' to econf, or use EAPI 5 where that argument is
-    passed automatically. <c>emake V=1</c> should also work.
+    For <c>autotools</c> based build systems, <c>econf</c> automatically
+    passes '--disable-silent-rules' to <c>./configure</c>. If necessary,
+    <c>emake V=1</c> should also work. Note that <c>V=1</c> is not a universal
+    parameter so may not always work.
   </li>
   <li>
     For custom Makefiles, you often have to write a patch. Try to get
