@@ -2,8 +2,8 @@
 <guide self="ebuild-maintenance/git/">
 <chapter>
 <title>Git for Gentoo Developers</title>
-
 <body>
+
 <p>
 This guide covers git usage instructions and policies specific to Gentoo ebuild
 development. It assumes that the readers possess basic git knowledge.
@@ -125,12 +125,18 @@ used. The valid uses of git include:
 </p>
 
 <ul>
-<li>creating commits spanning multiple packages and/or multiple areas
-of the Gentoo repository (eclasses, licenses, profiles…),</li>
-<li>amending a commit created via <c>repoman commit</c> or <c>pkgdev commit</c>
-with additional files or fixups,</li>
-<li>combining multiple commits created via <c>repoman commit</c> or
-<c>pkgdev commit</c> using <c>git rebase</c>.</li>
+  <li>
+    creating commits spanning multiple packages and/or multiple areas of the
+    Gentoo repository (eclasses, licenses, profiles…),
+  </li>
+  <li>
+    amending a commit created via <c>repoman commit</c> or <c>pkgdev commit</c>
+    with additional files or fixups,
+  </li>
+  <li>
+    combining multiple commits created via <c>repoman commit</c> or
+    <c>pkgdev commit</c> using <c>git rebase</c>.
+  </li>
 </ul>
 
 <p>
@@ -138,8 +144,8 @@ Whenever <c>repoman</c> or <c>pkgdev</c> is not used to commit, you need to
 manually verify all packages affected by the commit using <c>repoman full</c> or
 <c>pkgcheck scan --commits</c>. When using <c>repoman</c>, it won't be aware of
 staged changes, so ensure that all files are included in the commit.
-Also, when using <c>git</c> manually, you must perform a manual sign-off
-to the <uri link="https://www.gentoo.org/glep/glep-0076.html#certificate-of-origin">
+Also, when using <c>git</c> manually, you must perform a manual sign-off to the
+<uri link="https://www.gentoo.org/glep/glep-0076.html#certificate-of-origin">
 Certificate of Origin</uri> using the <c>-s</c> or <c>--signoff</c> option
 with your git commit commands. Make sure you have read and understand the
 actual Certificate.
@@ -158,28 +164,26 @@ commits, abiding by the following three rules as much as possible:
 </p>
 
 <ol>
-<li>
-Do not include multiple irrelevant changes in a single commit. However, make
-sure not to split relevant changes unnecessarily. For example, if a version bump
-requires changes in the ebuild, it is correct to perform them in a single
-commit. However, if you are fixing an additional bug that has been present
-in the previous version, the fix belongs in a separate commit.
-</li>
-
-<li>
-Split commits at logical unit boundaries. When updating multiple packages,
-preferably use a single commit for each package. Avoid combining changes
-to ebuilds, eclasses, licenses, profiles etc. in a single commit. However,
-do not split relevant or interdependent changes within a single package.
-</li>
-
-<li>
-Avoid creating commits introducing a temporary breakage. Unless impossible,
-add packages in dependency install order. Add licenses before the packages
-needing them. Commit <c>package.mask</c> and other profile changes before
-ebuilds relying on them. Usually it is also acceptable to include those changes
-along with the commit adding the package.
-</li>
+  <li>
+    Do not include multiple irrelevant changes in a single commit. However,
+    make sure not to split relevant changes unnecessarily. For example, if a
+    version bump requires changes in the ebuild, it is correct to perform them
+    in a single commit. However, if you are fixing an additional bug that has
+    been present in the previous version, the fix belongs in a separate commit.
+  </li>
+  <li>
+    Split commits at logical unit boundaries. When updating multiple packages,
+    preferably use a single commit for each package. Avoid combining changes
+    to ebuilds, eclasses, licenses, profiles etc. in a single commit. However,
+    do not split relevant or interdependent changes within a single package.
+  </li>
+  <li>
+    Avoid creating commits introducing a temporary breakage. Unless impossible,
+    add packages in dependency install order. Add licenses before the packages
+    needing them. Commit <c>package.mask</c> and other profile changes before
+    ebuilds relying on them. Usually it is also acceptable to include those
+    changes along with the commit adding the package.
+  </li>
 </ol>
 
 <p>
@@ -220,13 +224,15 @@ appropriately:
 </p>
 
 <ul>
-<li><c>${CATEGORY}/${PN}:</c> Single Package (Note that <c>repoman commit</c>
-and <c>pkgdev commit</c> will automatically insert this for you)</li>
-<li><c>${CATEGORY}:</c> Package Category</li>
-<li><c>profiles:</c> Profile Directory</li>
-<li><c>${ECLASS}.eclass:</c> Eclass Directotry</li>
-<li><c>licenses:</c> Licenses Directory</li>
-<li><c>metadata:</c> Metadata Directory</li>
+  <li>
+    <c>${CATEGORY}/${PN}:</c> Single Package (Note that <c>repoman commit</c>
+    and <c>pkgdev commit</c> will automatically insert this for you)
+  </li>
+  <li><c>${CATEGORY}:</c> Package Category</li>
+  <li><c>profiles:</c> Profile Directory</li>
+  <li><c>${ECLASS}.eclass:</c> Eclass Directotry</li>
+  <li><c>licenses:</c> Licenses Directory</li>
+  <li><c>metadata:</c> Metadata Directory</li>
 </ul>
 
 <p>
@@ -266,24 +272,31 @@ are optionally used in Gentoo:
 </p>
 
 <ul>
-<li><c>Bug:</c> Use this to reference bugs <e>without</e> closing them.
-The value is a URL to the bug. If multiple bugs need to be referenced,
-each one should be listed in a separate <c>Bug</c> tag. If a bug
-on Gentoo Bugzilla, or an issue or a pull request on GitHub
-is referenced, a reference to the commit will be added
-automatically.</li>
-<li><c>Closes:</c> Use this to reference bugs and close them
-automatically. Alike <c>Bug:</c>, the value is a single URL to the bug,
-and multiple tags can be used to close multiple bugs. If a bug on Gentoo
-Bugzilla, or an issue or a pull request on a GitHub repository
-mirrored by Gentoo is referenced, it will be closed (as fixed)
-automatically with reference to the commit.</li>
-<li><c>Package-Manager:</c> This is automatically inserted by
-<c>repoman commit</c> and it specifies the version of
-<c>sys-apps/portage</c> on the system.</li>
-<li><c>RepoMan-Options:</c> This is automatically inserted by
-<c>repoman commit</c> and records the options passed to repoman (such
-as --force) for the commit.</li>
+  <li>
+    <c>Bug:</c> Use this to reference bugs <e>without</e> closing them.
+    The value is a URL to the bug. If multiple bugs need to be referenced,
+    each one should be listed in a separate <c>Bug</c> tag. If a bug on
+    Gentoo Bugzilla, or an issue or a pull request on GitHub is referenced,
+    a reference to the commit will be added automatically.
+  </li>
+  <li>
+    <c>Closes:</c> Use this to reference bugs and close them automatically.
+    Alike <c>Bug:</c>, the value is a single URL to the bug, and multiple tags
+    can be used to close multiple bugs. If a bug on Gentoo Bugzilla, or an
+    issue or a pull request on a GitHub repository mirrored by Gentoo is
+    referenced, it will be closed (as fixed) automatically with reference
+    to the commit.
+  </li>
+  <li>
+    <c>Package-Manager:</c> This is automatically inserted by
+    <c>repoman commit</c> and it specifies the version of
+    <c>sys-apps/portage</c> on the system.
+  </li>
+  <li>
+    <c>RepoMan-Options:</c> This is automatically inserted by
+    <c>repoman commit</c> and records the options passed to repoman (such as
+    --force) for the commit.
+  </li>
 </ul>
 
 <p>
