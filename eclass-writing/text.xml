@@ -201,7 +201,7 @@ summarizes the available documentation tags:
     NO
   </ti>
   <ti>
-    Name of the eclass being documented.
+    Name of the eclass being documented
   </ti>
   <ti>
     Documents various information about the eclass. Must appear as the
@@ -216,7 +216,7 @@ summarizes the available documentation tags:
     NO
   </ti>
   <ti>
-    One or more name and email pairs.
+    One or more name and email pairs
   </ti>
   <ti>
     List of maintainers for the eclass to be contacted. One line per
@@ -231,7 +231,7 @@ summarizes the available documentation tags:
     YES
   </ti>
   <ti>
-    One or more name and email pairs.
+    One or more name and email pairs
   </ti>
   <ti>
     List of authors for the eclass. One line per author. Must start on
@@ -246,10 +246,10 @@ summarizes the available documentation tags:
     YES
   </ti>
   <ti>
-    Multiline freetext.
+    Multiline freetext
   </ti>
   <ti>
-    Describes how bugs related to this eclass should be reported.
+    Describes how bugs related to this eclass should be reported
   </ti>
 </tr>
 <tr>
@@ -260,10 +260,10 @@ summarizes the available documentation tags:
     YES
   </ti>
   <ti>
-    A URI string.
+    A URI string
   </ti>
   <ti>
-    Points to the URL of the VCS that contains the eclass source.
+    Points to the URL of the VCS that contains the eclass source
   </ti>
 </tr>
 <tr>
@@ -274,7 +274,7 @@ summarizes the available documentation tags:
     NO
   </ti>
   <ti>
-    Single line freetext.
+    Single line freetext
   </ti>
   <ti>
     Contains a short description for the eclass. Must be on the same
@@ -289,10 +289,10 @@ summarizes the available documentation tags:
     YES
   </ti>
   <ti>
-    Multiline freetext.
+    Multiline freetext
   </ti>
   <ti>
-    Long description for the eclass.
+    Long description for the eclass
   </ti>
 </tr>
 <tr>
@@ -303,10 +303,10 @@ summarizes the available documentation tags:
     YES
   </ti>
   <ti>
-    Multiline freetext.
+    Multiline freetext
   </ti>
   <ti>
-    Examples that illustrate various uses of this eclass.
+    Examples that illustrate various uses of this eclass
   </ti>
 </tr>
 </table>
@@ -345,7 +345,7 @@ variables are as follows:
     NO
   </ti>
   <ti>
-    Name of the eclass variable to which the documentation applies.
+    Name of the eclass variable to which the documentation applies
   </ti>
   <ti>
     This tag applies to eclass specific variables that affect the
@@ -371,7 +371,7 @@ variables are as follows:
   <ti>
     This tag describes whether the variable is unsuitable for use in ebuilds,
     i.e. if it is solely for user consumption via e.g. make.conf or a similar
-    mechanism.
+    mechanism
   </ti>
 </tr>
 <tr>
@@ -380,7 +380,7 @@ variables are as follows:
   <ti><d/></ti>
   <ti>
     This tag indicates that the variable's value (which will be set by the
-    eclass) should be read within an ebuild.
+    eclass) should be read within an ebuild
   </ti>
 </tr>
 <tr>
@@ -389,7 +389,7 @@ variables are as follows:
   <ti><d/></ti>
   <ti>
     Indicates that this variable is unset by default if not set by the
-    developer.
+    developer
   </ti>
 </tr>
 <tr>
@@ -397,32 +397,32 @@ variables are as follows:
   <ti>YES</ti>
   <ti><d/></ti>
   <ti>
-    Indicates that the variable is a path which has ${EPREFIX} prepended to it.
+    Indicates that the variable is a path which has ${EPREFIX} prepended to it
   </ti>
 </tr>
 <tr>
   <ti><c>@INTERNAL</c></ti>
   <ti>YES</ti>
   <ti><d/></ti>
-  <ti>Indicates that the variable is internal to the eclass.</ti>
+  <ti>Indicates that the variable is internal to the eclass</ti>
 </tr>
 <tr>
   <ti><c>@REQUIRED</c></ti>
   <ti>YES</ti>
   <ti><d/></ti>
-  <ti>Indicates that this variable must be set by the developer.</ti>
+  <ti>Indicates that this variable must be set by the developer</ti>
 </tr>
 <tr>
   <ti><c>@DEPRECATED</c></ti>
   <ti>YES</ti>
-  <ti>Optionally, the name of any replacement variable.</ti>
-  <ti>Declares that this variable should no longer be used in ebuilds.</ti>
+  <ti>Optionally, the name of any replacement variable</ti>
+  <ti>Declares that this variable should no longer be used in ebuilds</ti>
 </tr>
 <tr>
   <ti><c>@DESCRIPTION:</c></ti>
   <ti>NO</ti>
-  <ti>Multiline freetext.</ti>
-  <ti>Long description for the eclass variable.</ti>
+  <ti>Multiline freetext</ti>
+  <ti>Long description for the eclass variable</ti>
 </tr>
 </table>
 
@@ -459,11 +459,11 @@ documentation are:
     NO
   </ti>
   <ti>
-    Name of the function to which the documentation block applies.
+    Name of the function to which the documentation block applies
   </ti>
   <ti>
     Documents information about an eclass function such as its calling
-    convention etc. Must appear as the first tag in the comment block.
+    convention etc. Must appear as the first tag in the comment block
   </ti>
 </tr>
 <tr>
@@ -474,7 +474,7 @@ documentation are:
     NO
   </ti>
   <ti>
-    List of required and optional arguments to the function.
+    List of required and optional arguments to the function
   </ti>
   <ti>
     List of arguments that the eclass function accepts, specified in
@@ -490,7 +490,7 @@ documentation are:
     <b>*</b>
   </ti>
   <ti>
-    Return value of the function.
+    Return value of the function
   </ti>
   <ti>
     <p>Description for the value returned by the function.</p>
@@ -505,7 +505,7 @@ documentation are:
     YES
   </ti>
   <ti>
-    Multiline freetext.
+    Multiline freetext
   </ti>
   <ti>
     List of contacts for the eclass function. One line per
@@ -518,7 +518,7 @@ documentation are:
   <ti><d/></ti>
   <ti>
     Indicates whether the function returns a path with ${EPREFIX} prepended
-    to it.
+    to it
   </ti>
 </tr>
 <tr>
@@ -527,14 +527,14 @@ documentation are:
   <ti><d/></ti>
   <ti>
     Indicates that the function is internal to the eclass and should
-    not be called from outside.
+    not be called from outside
   </ti>
 </tr>
 <tr>
   <ti><c>@DEPRECATED</c></ti>
   <ti>YES</ti>
-  <ti>Optionally, the name of a replacement function.</ti>
-  <ti>Declares that this function should no longer be used in ebuilds.</ti>
+  <ti>Optionally, the name of a replacement function</ti>
+  <ti>Declares that this function should no longer be used in ebuilds</ti>
 </tr>
 <tr>
   <ti>
@@ -544,7 +544,7 @@ documentation are:
     <b>*</b>
   </ti>
   <ti>
-    Multiline freetext.
+    Multiline freetext
   </ti>
   <ti>
     <p>Long description for the eclass function.</p>
@@ -576,7 +576,7 @@ using the following tags:
   <ti><c>@VARIABLE:</c></ti>
   <ti>NO</ti>
   <ti>
-    Name of the function-specific variable to which the documentation applies.
+    Name of the function-specific variable to which the documentation applies
   </ti>
   <ti>
     This tag applies to variables consumed by specific functions of
@@ -591,7 +591,7 @@ using the following tags:
    <ti>
      This tag describes whether the variable is unsuitable for use in ebuilds,
      i.e. if it is solely for user consumption via e.g. make.conf or a similar
-     mechanism.
+     mechanism
    </ti>
 </tr>
 <tr>
@@ -600,38 +600,38 @@ using the following tags:
   <ti><d/></ti>
   <ti>
     Indicates that this variable is unset by default if not set by the
-    developer.
+    developer
   </ti>
 </tr>
 <tr>
   <ti><c>@INCLUDES_EPREFIX</c></ti>
   <ti>YES</ti>
   <ti><d/></ti>
-  <ti>Indicates that the variable is a path which has ${EPREFIX} prepended.</ti>
+  <ti>Indicates that the variable is a path which has ${EPREFIX} prepended</ti>
 </tr>
 <tr>
   <ti><c>@INTERNAL</c></ti>
   <ti>YES</ti>
   <ti><d/></ti>
-  <ti>Indicates that the variable is internal to the eclass function.</ti>
+  <ti>Indicates that the variable is internal to the eclass function</ti>
 </tr>
 <tr>
   <ti><c>@REQUIRED</c></ti>
   <ti>YES</ti>
   <ti><d/></ti>
-  <ti>Indicates that this variable must be set by the developer.</ti>
+  <ti>Indicates that this variable must be set by the developer</ti>
 </tr>
 <tr>
   <ti><c>@DEPRECATED</c></ti>
   <ti>YES</ti>
-  <ti>Optionally, the name of any replacement variable.</ti>
-  <ti>Declares that this variable should no longer be used in ebuilds.</ti>
+  <ti>Optionally, the name of any replacement variable</ti>
+  <ti>Declares that this variable should no longer be used in ebuilds</ti>
 </tr>
 <tr>
   <ti><c>@DESCRIPTION:</c></ti>
   <ti>NO</ti>
-  <ti>Multiline freetext.</ti>
-  <ti>Long description for the function variable.</ti>
+  <ti>Multiline freetext</ti>
+  <ti>Long description for the function variable</ti>
 </tr>
 </table>
 
