@@ -301,11 +301,11 @@ src_configure() {
 	local myconf
 
 	if use ssl &amp;&amp; use gnutls ; then
-		myconf="${myconf} --enable-ssl --with-ssl=gnutls"
+		myconf+=" --enable-ssl --with-ssl=gnutls"
 	elif use ssl &amp;&amp; ! use gnutls ; then
-		myconf="${myconf} --enable-ssl --with-ssl=openssl"
+		myconf+=" --enable-ssl --with-ssl=openssl"
 	else
-		myconf="${myconf} --disable-ssl"
+		myconf+=" --disable-ssl"
 	fi
 
 	econf \
