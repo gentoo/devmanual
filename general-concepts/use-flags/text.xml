@@ -305,7 +305,7 @@ src_compile() {
 	elif use ssl &amp;&amp; ! use gnutls ; then
 		myconf="${myconf} --enable-ssl --with-ssl=openssl"
 	else
-	myconf="${myconf} --disable-ssl"
+		myconf="${myconf} --disable-ssl"
 	fi
 
 	econf \
