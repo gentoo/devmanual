@@ -300,10 +300,8 @@ GnuTLS is more featureful than OpenSSL, it is favoured:
 src_configure() {
 	local myconf
 
-	if use ssl &amp;&amp; use gnutls ; then
-		myconf+=" --enable-ssl --with-ssl=gnutls"
-	elif use ssl &amp;&amp; ! use gnutls ; then
-		myconf+=" --enable-ssl --with-ssl=openssl"
+	if use ssl; then
+		myconf+=" --enable-ssl --with-ssl=$(usex gnutls gnutls openssl)"
 	else
 		myconf+=" --disable-ssl"
 	fi
