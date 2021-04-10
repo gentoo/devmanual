@@ -281,6 +281,12 @@ help to do so.
 </p>
 
 <note>
+In addition, if you are changing the package list of a bug after it has been
+processed, <d/> i.e. after NATTkA has CCed arches <d/> you should un-CC all
+arches so that NATTkA CCs the new correct set of arches.
+</note>
+
+<note>
 Note that sometimes NATTkA may do <e>nothing</e> if it has concluded the package
 list is complete. You may wish to run <c>nattka sanity-check BUG</c> where
 <c>BUG</c> is the bug number you're having an issue with in order to debug the
