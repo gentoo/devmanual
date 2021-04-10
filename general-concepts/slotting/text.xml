@@ -60,8 +60,8 @@ automatically rebuilt</uri> when the subslot of a runtime dependency changes.
 </p>
 
 <p>
-For example, suppose package <c>foo</c> installs a library whose soname is
-different for different versions. It would be reasonable to use the soname version
+For example, suppose package <c>foo</c> installs a library whose SONAME is
+different for different versions. It would be reasonable to use the SONAME version
 as the sub-slot name:
 </p>
 
