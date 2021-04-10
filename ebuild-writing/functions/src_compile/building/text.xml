@@ -60,7 +60,7 @@ src_prepare() {
 	# We have a weird Makefile to work with which ignores our
 	# compiler preferences. yay!
 	# Note the single quotes (hence the delimiter is not an issue)
-	sed -i -e 's:cc -O2:$(CC) $(CFLAGS) $(LDFLAGS):' Makefile \
+	sed -i -e 's:cc -O2:$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS):' Makefile \
 		|| die "sed fix failed. Uh-oh..."
 }
 
