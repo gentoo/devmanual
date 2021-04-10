@@ -381,6 +381,17 @@ Make sure when you bump a version, the stable KEYWORDS are all marked as
 </body>
 </subsection>
 <subsection>
+<title>Unused flags in IUSE</title>
+<body>
+
+<p>
+Sometimes obsolete USE flags remain in IUSE despite having no function. Remember
+to prune these.
+</p>
+
+</body>
+</subsection>
+<subsection>
 <title>SLOT missing</title>
 <body>
 
