@@ -60,9 +60,110 @@ automatically rebuilt</uri> when the subslot of a runtime dependency changes.
 </p>
 
 <p>
-For example, suppose package <c>foo</c> installs a library whose SONAME is
-different for different versions. It would be reasonable to use the SONAME version
-as the sub-slot name:
+If an ebuild does not explicitly declare a sub-slot, the regular slot is used
+as the value of the sub-slot by default.
+</p>
+
+<p>
+You may wish to review the
+<uri link="https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Subslots">
+QA team's documentation on subslots</uri>.
+</p>
+
+<note>
+Care must be taken when using sub-slots in a library ebuild for the first time.
+Adding sub-slots will trigger rebuilds for all the packages that already use
+slot-operator dependencies (e.g. switching from SLOT="0" to SLOT="0/14" in
+<c>media-libs/libpng</c> and package <c>foo</c> depends on <c>libpng:0=</c>).
+Therefore, it's best if you start using sub-slots in the library when the
+existing library interface changes.
+</note>
+</body>
+
+<subsection>
+<title>ABI breakage</title>
+<body>
+
+<p>
+There are two ways a library can break compatibility with its consumers.
+</p>
+
+<dl>
+  <dd>
+    ABI (Application Binary Interface): this affects binaries built before the
+    change. Applications linked against a library pre-ABI break may not work
+    correctly after the break. These changes are related to internal structure,
+    such as the size of a <c>struct</c> or the type of an argument (e.g.
+    integer width). Fixing this requires a <e>rebuild</e> of all consumers.
+  </dd>
+  <dd>
+    API (Application Programming Interface): this affects consumers at compile
+    time and usually occurs when a library has deprecated and then removed a
+    function. Fixing this requires a <e>code change</e> in consumers.
+  </dd>
+</dl>
+
+<p>
+Note that subslots are not used exclusively for this purpose. While they form
+the majority of uses in the Gentoo tree, subslots may have a meaning that
+is completely divorced from SONAMEs or ABI breakage. Check the usage in the
+relevant packages before using a subslot operator!
+</p>
+
+<p>
+When made aware of ABI breakage, change the subslot. Note that the subslot does
+not have to strictly be the SONAME and therefore could be an arbitrary string
+(following naming rules).
+</p>
+
+<p>
+Be aware that some upstreams may make releases without verifying if binary
+compatibility has been broken in a minor release. You should check using
+tools like <c>dev-util/libabigail</c> or <e>ABI Laboratory</e> (available
+in Gentoo as <c>dev-util/abi-compliance-checker</c> if you prefer the non-web
+version).
+</p>
+
+<p>
+Generally, consumers <e>which link against</e> a library possessing a subslot
+that <e>represents SONAME or binary compatibility</e> should subscribe to
+it (request to be rebuilt when the subslot changes) with <c>:=</c>. Also, see
+the QA Policy Guide for information on
+<uri link="https://projects.gentoo.org/qa/policy-guide/dependencies.html#proactive-use-of-slot-operators">
+proactively subscribing to subslots</uri> before they are defined.
+</p>
+</body>
+
+<subsubsection>
+<title>General naming of a sub-slot</title>
+<body>
+
+<p>
+As a simple rule of thumb, the SONAME is usually a function of the library's
+linking filename <c>libfoo.so</c> and its <b>first version component</b>.
+The remaining version components are useful for ensuring a monotonic upgrade
+path of consumers, but aren't incorporated into the library's SONAME, which in
+this case would be <c>libfoo.so.1</c>.
+</p>
+
+<p>
+The SONAME being incremented implies that the library's ABI has been broken.
+</p>
+
+<p>
+As a result of the aforementioned convention, ebuilds usually expose the current
+ABI version as the subslot. For this <e>libfoo</e> example, if the library is
+<c>libfoo.so.1.2</c>, the ebuild might set:
+</p>
+
+<codesample lang="ebuild">
+SLOT="0/1"
+</codesample>
+
+<p>
+Further, suppose the package <c>foo</c> installs a library whose SONAME is
+different for different versions. It would be reasonable to use the SONAME
+version as the sub-slot name:
 </p>
 
 <ul>
@@ -77,26 +178,42 @@ Other ebuilds that install binaries which link to <c>libfoo-2</c> (or <c>libfoo<
 can then request to be automatically rebuilt when the installed version of
 <c>foo:2</c> or <c>foo:1</c> changes sub-slots <d/> for example, when the user
 upgrades from <c>foo-2.0</c> to <c>foo-2.1</c>.
-If an ebuild does not explicitly declare a sub-slot, the regular slot is used
-as the value of the sub-slot by default.
 </p>
+</body>
+</subsubsection>
+
+<subsubsection>
+<title>Multiple libraries within a single package</title>
+<body>
 
 <p>
-You may wish to review the
-<uri link="https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Subslots">
-QA team's documentation on subslots</uri>.
+A package might need to install several libraries. The canonical example
+of this is <c>media-video/ffmpeg</c>:
 </p>
 
-<note>
-Care must be taken when using sub-slots in a library ebuild for the first time.
-Adding sub-slots will trigger rebuilds for all the packages that already use sub-slot
-dependencies (e.g. Switching from SLOT="0" to SLOT="0/14" in <c>media-libs/libpng</c> and
-package <c>foo</c> depends on <c>libpng:0=</c>).
-Therefore, it's best if you start using sub-slots in the library when the existing library
-interface changes.
-</note>
+<codesample lang="ebuild">
+# Subslot: &lt;libavutil_major&gt;.&lt;libavcodec_major&gt;.&lt;libavformat_major&gt;
+# Since FFmpeg ships several libraries, subslot is kind of limited here.
+# Most consumers will use those three libraries, if a "less used" library
+# changes its soname, consumers will have to be rebuilt the old way
+# (preserve-libs) - which should not be relied upon.
+# If, for example, a package does not link to libavformat and only libavformat
+# changes its ABI then this package will be rebuilt needlessly. Hence, such a
+# package is free _not_ to := depend on FFmpeg but I would strongly encourage
+# doing so since such a case is unlikely.
+SLOT="0/56.58.58"
+</codesample>
+
+<p>
+In such cases, make the subslot a composite of the major SONAMEs of each of
+the installed libraries. This emphasises a point made above <d/> subslots do
+not need to be equal to the exact SONAME of installed libraries, they only need
+to represent in some way ABI compatibility.
+</p>
 
 </body>
+</subsubsection>
+</subsection>
 </section>
 
 <section>
