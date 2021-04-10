@@ -14,6 +14,12 @@ should be handled via entries in <c>/etc/conf.d</c> with the same filename <d />
 </p>
 
 <p>
+Please note that unlike ebuilds, init scripts for OpenRC are expected to be
+POSIX-compliant and must therefore avoid e.g. Bash-specific tests and
+constructs.
+</p>
+
+<p>
 An overview of the Gentoo init system and how to write init scripts is available
 in the <uri link="https://wiki.gentoo.org/wiki/Handbook:X86/Working/Initscripts#Writing_initscripts">
 Writing Init Scripts section</uri> and in the
