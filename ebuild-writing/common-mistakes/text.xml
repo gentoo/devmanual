@@ -477,6 +477,20 @@ at least when the ebuild hits the stable branch.
 </p>
 </body>
 </subsection>
+
+<subsection>
+<title>Not using latest EAPI</title>
+<body>
+
+<p>
+Often, user-submitted ebuilds do not use the latest EAPI and may even
+be several versions behind. EAPIs bring new helper functions and improved
+methods for completing common tasks. It's recommended that submitted ebuilds
+use the latest EAPI possible (subject to eclass constraints) to improve
+the ebuild's quality and ease review.
+</p>
+</body>
+</subsection>
 </section>
 
 
