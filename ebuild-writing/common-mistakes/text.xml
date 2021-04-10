@@ -503,8 +503,29 @@ the ebuild's quality and ease review.
 </p>
 </body>
 </subsection>
-</section>
 
+<subsection>
+<title>Calling pkg-config directly</title>
+<body>
+
+<p>
+You should not call <c>pkg-config</c> directly in ebuilds because this is
+problematic for e.g. cross-compiling. The correct helper respects
+<c>${PKG_CONFIG}</c>. Instead, use <c>tc-getPKG_CONFIG</c> from
+<c>toolchain-funcs.eclass</c>, e.g.
+</p>
+
+<codesample lang="ebuild">
+sed -i -e "s:-lncurses:$($(tc-getPKG_CONFIG) --libs ncurses):" || die
+</codesample>
+
+<p>
+Don't then forget to add <c>virtual/pkgconfig</c> to BDEPEND!
+</p>
+
+</body>
+</subsection>
+</section>
 
 <section>
 <title>Common Ebuild Submission Mistakes</title>
