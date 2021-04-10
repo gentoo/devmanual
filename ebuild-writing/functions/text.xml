@@ -16,6 +16,11 @@ As some phases haven't been introduced from the beginning, you can have a look a
 <uri link="::ebuild-writing/eapi"/> for an overview, what have been introduced in which EAPI.
 </p>
 
+<p>
+Ebuilds should usually define phases in the order they are called,
+as set out above, for readability.
+</p>
+
 <figure short="How the ebuild phase functions are processed" link="diagram.png"/>
 
 <p>
