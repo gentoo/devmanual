@@ -96,8 +96,8 @@ from the <c>vim</c> patch tarball:
 <pre>
 # Detect Gentoo apache files properly. Gentoo bug 83565.
 
---- runtime/filetype.vim.orig   2005-03-25 01:44:12.000000000 +0000
-+++ runtime/filetype.vim        2005-03-25 01:45:15.000000000 +0000
+--- a/runtime/filetype.vim
++++ b/runtime/filetype.vim
 @@ -93,6 +93,9 @@
  " Gentoo apache config file locations (Gentoo bug #76713)
  au BufNewFile,BufRead /etc/apache2/conf/*/* setf apache
