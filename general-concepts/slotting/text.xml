@@ -77,11 +77,14 @@ Other ebuilds that install binaries which link to <c>libfoo-2</c> (or <c>libfoo<
 can then request to be automatically rebuilt when the installed version of
 <c>foo:2</c> or <c>foo:1</c> changes sub-slots <d/> for example, when the user
 upgrades from <c>foo-2.0</c> to <c>foo-2.1</c>.
+If an ebuild does not explicitly declare a sub-slot, the regular slot is used
+as the value of the sub-slot by default.
 </p>
 
 <p>
-If an ebuild does not explicitly declare a sub-slot, the regular slot is used
-as the value of the sub-slot by default.
+You may wish to review the
+<uri link="https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Subslots">
+QA team's documentation on subslots</uri>.
 </p>
 
 <note>
