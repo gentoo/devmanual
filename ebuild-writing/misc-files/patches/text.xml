@@ -294,6 +294,14 @@ files automatically. Alternatively, you can specify the <c>-E</c> option with
 </p>
 
 <p>
+Removed lines should not appear in the patch because they are commented <d/>
+just remove them entirely. Patches show removed lines by prefixing them with
+a <c>-</c>, so no information is lost by simply deleting lines rather than
+commenting them out (which adds noise). This makes the patch shorter and
+more readable.
+</p>
+
+<p>
 The following function (for your interactive shell, not for the ebuild) will
 help deleting these things:
 </p>
