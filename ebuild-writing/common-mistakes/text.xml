@@ -381,6 +381,19 @@ Make sure when you bump a version, the stable KEYWORDS are all marked as
 </body>
 </subsection>
 <subsection>
+<title>Unused flags and eclass inherits</title>
+<body>
+
+<p>
+Sometimes obsolete USE flags remain in IUSE despite having no function, e.g. a
+dependency may have become mandatory but the USE flag remains in IUSE and *DEPEND.
+Similarly, eclasses often become redundant due to changes in the ebuild, or new EAPIs,
+e.g. <c>eutils.eclass</c> should be obsolete in modern EAPIs. Remember to prune these.
+</p>
+
+</body>
+</subsection>
+<subsection>
 <title>SLOT missing</title>
 <body>
 
