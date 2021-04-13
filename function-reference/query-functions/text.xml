@@ -47,7 +47,17 @@ query variables and similar state.
   </tr>
   <tr>
     <ti>
-      <c>use_enable flag str val</c> 
+    <c>usex flag [true output] [false output] [true suffix] [false suffix]</c>
+    </ti>
+    <ti>
+      If <c>flag</c> is enabled, echo [true output][true suffix], otherwise echo [false output][false suffix].
+      If unspecified, true and false outputs are equal to "yes" and "no" respectively. The suffixes
+      default to empty strings.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>use_enable flag str val</c>
     </ti>
     <ti>
       Echoes either <c>--enable-str=val</c> or <c>--disable-str</c> depending upon <c>useq flag</c>.
@@ -61,6 +71,14 @@ query variables and similar state.
     </ti>
     <ti>
       As <c>use_enable</c>, but <c>--with-</c> or <c>--without-</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+    <c>in_iuse flag</c>
+    </ti>
+    <ti>
+      Returns true if the ebuild can use <c>flag</c> in <c>use</c> queries, false otherwise.
     </ti>
   </tr>
   <tr>
