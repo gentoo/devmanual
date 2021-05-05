@@ -170,8 +170,15 @@ a more complete test suite.
 </p>
 
 <p>
-Local server access within the build procedure is additionally
-forbidden for the following reasons:
+It is generally considered acceptable to rely on IPv4 <c>localhost</c>
+being resolvable and available for binding to and connecting to
+the previously bound services.  However, it is not acceptable to connect
+to the daemons run outside the test environment.
+</p>
+
+<p>
+Local server access within the build procedure is forbidden
+for the following reasons:
 </p>
 <ul>
   <li>
