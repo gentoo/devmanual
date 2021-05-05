@@ -178,9 +178,17 @@ a more complete test suite.
 </p>
 
 <p>
-Local server access within the build procedure is additionally
-forbidden for the following reasons:
+It is generally considered acceptable to rely on IPv4 <c>localhost</c> being
+resolvable and available for binding. Tests should only connect to services
+that are started as part of the testsuite. It is not acceptable to connect
+to daemons run outside the test environment.
 </p>
+
+<p>
+Local server access within the build procedure is forbidden for the following
+reasons:
+</p>
+
 <ul>
   <li>
     tests must run reliably independently of whether a particular
