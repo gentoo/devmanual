@@ -276,7 +276,7 @@ The following variables may or must be defined by every ebuild.
     <ti><c>PROPERTIES</c></ti>
     <ti>
     A space-delimited list of properties, with conditional syntax support.
-    <c>interactive</c> is the only valid value for now.
+    <c>interactive</c>, <c>live</c>, and <c>test_network</c> are valid values.
     </ti>
   </tr>
   <tr>
