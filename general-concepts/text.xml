@@ -30,6 +30,7 @@ writing ebuilds or working with the Gentoo repository.
 <include href="git-to-rsync/"/>
 <include href="install-destinations/"/>
 <include href="licenses/"/>
+<include href="mailing-lists/"/>
 <include href="manifest/"/>
 <include href="mirrors/"/>
 <include href="news/"/>
