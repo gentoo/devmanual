@@ -30,7 +30,8 @@ format. This is generally the best format to use when sending patches
 upstream too <d/> however, occasionally you may be asked to provide
 context diffs, which are more portable than unifieds (but don't handle
 conflicts as cleanly). In this case, use <c>-c</c> rather
-than <c>-u</c>.
+than <c>-u</c>. For a verbose guide into patches and patching, see
+<uri link="::ebuild-writing/misc-files/patches"/>.
 </p>
 
 <p>
