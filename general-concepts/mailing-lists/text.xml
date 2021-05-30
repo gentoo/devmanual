@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/mailing-lists/">
+<chapter>
+<title>Mailing Lists</title>
+<body>
+
+<p>
+Mailing lists are the most important communication media in Gentoo.
+They are used to announce events, discuss changes, review code.  Use
+of mailing lists is explicitly required by some of the processes such
+as package last rites.
+</p>
+
+<p>
+The complete list of Gentoo mailing lists can be found in the
+<uri link="https://www.gentoo.org/get-involved/mailing-lists/">mailing
+list</uri> section of the Gentoo website.  All mailing lists are
+archived.  The archives for the public lists can be found on
+the <uri link="https://archives.gentoo.org/">mailing list archives</uri>
+site.  The data from the non-public archives can be provided
+by the Infrastructure team at the request of a developer.
+</p>
+</body>
+
+<section>
+<title>Primary developer mailing lists</title>
+<body>
+
+<p>
+There are five primary lists intended for Gentoo developers
+(and contributors):
+</p>
+
+<ul>
+  <li>gentoo-core — internal non-public Gentoo developer list</li>
+  <li>gentoo-dev — public technical discussion list</li>
+  <li>gentoo-dev-announce — developer announcement list</li>
+  <li>gentoo-nfp — Gentoo Foundation discussion list</li>
+  <li>gentoo-project — public non-technical discussion list</li>
+</ul>
+
+<p>
+Most of the discussions take place on the gentoo-dev and gentoo-project
+mailing lists.  Strictly technical topics (e.g. ebuild development,
+system behavior) go into gentoo-dev, while non-technical topics
+(e.g. organizational matters) go into gentoo-project.  Both lists are
+public and open to everyone.  Developers are strongly encouraged
+to follow these lists.
+</p>
+
+<p>
+The gentoo-nfp list is used for affairs strictly related to the Gentoo
+Foundation.  For example, this includes funding and legal affairs.
+</p>
+
+<p>
+The gentoo-dev-announce is used for important announcements that affect
+developers, for example major policy changes, project news.  This list
+is also used to announce last rites and packages needing new
+maintainers.  gentoo-dev-announce is not meant to accept replies, so
+all messages sent to it must be cross-posted to another mailing list
+and have their Reply-To header set to that list.  Messages without Reply-To
+are rejected, the remaining messages are moderated to prevent accidental
+replies from coming through.
+</p>
+
+<p>
+The gentoo-core mailing list is restricted to developers.
+It is generally used when developers wish to share information regarding
+their personal situation with other developers and to discuss sensitive
+matters that cannot be published at the time.  The list is non-public
+and it is forbidden to publicly discuss messages from -core, forward
+them or cross-post to another mailing list.  All developers are
+subscribed to it.
+</p>
+
+</body>
+</section>
+</chapter>
+</guide>
