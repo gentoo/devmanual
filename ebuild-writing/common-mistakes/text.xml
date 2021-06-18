@@ -411,11 +411,12 @@ SLOT="0"
 <body>
 
 <p>
+Make sure the <c>DESCRIPTION</c> is not overly long. Good descriptions will
+describe the main function of the package in a sentence.
+
 Please check if the <c>HOMEPAGE</c> variable is right and leads users to the
-right page if they want to find out more about the package. And make sure
-the <c>DESCRIPTION</c> is not overly long. Good descriptions will describe
-the main function of the package in a sentence. If no homepage for the package
-is available, set the <c>HOMEPAGE</c> variable to
+right page if they want to find out more about the package. If no homepage for
+the package is available, set the <c>HOMEPAGE</c> variable to
 <c>https://wiki.gentoo.org/wiki/No_homepage</c>. Please also strive to test
 HTTPS support for the site used in <c>HOMEPAGE</c>.
 </p>
