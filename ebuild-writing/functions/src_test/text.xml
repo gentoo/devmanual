@@ -77,6 +77,14 @@ for more information.
 </p>
 
 <p>
+Note that the <c>test</c> USE flag is only necessary if there are
+test dependencies, tests are being built conditionally, or it is desirable
+to vary behaviour based on whether tests will be run (e.g. downloading large
+files in SRC_URI). It is not appropriate to use the flag to simply indicate that
+tests exist and are expected to pass.
+</p>
+
+<p>
 Often the default <c>src_test</c> is fine. Sometimes it is necessary
 to remove certain tests from the list if they cannot be used with a
 Portage environment. Reasons for such a failure could include:
