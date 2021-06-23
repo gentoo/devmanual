@@ -67,6 +67,7 @@ of thumb could be used as a guideline:
   <li>adding a patch to fix a runtime issue,</li>
   <li>installing additional files that could be useful to the user,</li>
   <li>adding a missing runtime dependency to one of the existing blocks,</li>
+  <li>adding a binding subslot operator (:=) to a dependency,</li>
   <li>
     adding a missing build-time dependency that contributed to
     a successfully yet incorrect build (e.g. missing some feature),
