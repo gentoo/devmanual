@@ -619,5 +619,771 @@ installation targets.
 </body>
 </subsection>
 </section>
+
+<section>
+<title>EAPI 8</title>
+<body>
+
+<note>
+This section is based on
+<uri link="https://mgorny.pl/articles/the-ultimate-guide-to-eapi-8.html">
+The ultimate guide to EAPI 8</uri> by Michał Górny.
+</note>
+
+</body>
+
+<subsection>
+<title>EAPI 8 tree layout</title>
+<body>
+
+<dl>
+  <dt>Less strict naming rules for updates directory</dt>
+  <dd>
+    <p>
+    Up to EAPI 7, the files in the <c>profiles/updates</c> directory had to
+    follow strict naming by quarters like <c>2Q-2021</c>, indicating the
+    quarter and the year when they were added. Such a choice of name had the
+    side effect that lexical sorting of filenames was unsuitable.
+    </p>
+
+    <p>
+    In EAPI 8, the naming requirement is removed. Eventually, this will allow
+    switching to a more convenient scheme sorted by year. Different lengths
+    of time periods will also be possible.
+    </p>
+
+    <p>
+    Note that this change actually requires changing the repository EAPI
+    (found in <c>profiles/eapi</c>), so it will not affect Gentoo for at least
+    the next two years.
+    </p>
+  </dd>
+</dl>
+
+</body>
+</subsection>
+<subsection>
+<title>EAPI 8 ebuild format</title>
+<body>
+
+<dl>
+  <dt>Bash version is now 5.0</dt>
+  <dd>
+    <p>
+    The Bash version used for ebuilds is changed from 4.2 to 5.0. This means
+    not only that ebuilds are now permitted to use features provided by the new
+    Bash version but also the <c>BASH_COMPAT</c> value used for the ebuild
+    environment is updated, switching the shell behaviour.
+    </p>
+
+    <p>
+    The only really relevant difference in behaviour is:
+    </p>
+
+    <ul>
+      <li>
+        <p>
+        Quotes are now removed from the RHS argument of a
+        <c>"${var/.../"..."}"</c> substitution:
+        </p>
+
+<pre>
+var=foo
+echo "${var/foo/"bar"}"
+</pre>
+
+        <p>
+        The above snippet yields <c>"bar"</c> in Bash 4.2 but just <c>bar</c>
+        in 4.3+.
+        </p>
+      </li>
+    </ul>
+
+    <p>
+    Potentially interesting new features include:
+    </p>
+
+    <ul>
+      <li>
+        <p>
+        Negative subscripts can now be used to set and unset array elements
+        (Bash 4.3+):
+        </p>
+
+<pre>
+$ foo=( 1 2 3 )
+$ foo[-1]=4
+$ unset 'foo[-2]'
+$ declare -p foo
+declare -a foo=([0]="1" [2]="4")
+</pre>
+
+      </li>
+      <li>
+        <p>
+        Nameref variables are introduced that work as references to other
+        variables (4.3+):
+        </p>
+
+<pre>
+$ foo=( 1 2 3 )
+$ declare -n bar=foo
+$ echo "${bar[@]}"
+1 2 3
+$ bar[0]=4
+$ echo "${foo[@]}"
+4 2 3
+$ declare -n baz=foo[1]
+$ echo "${baz}"
+2
+$ baz=100
+$ echo "${bar[@]}"
+4 100 3
+</pre>
+
+      </li>
+      <li>
+        <p>
+        The <c>[[ -v ... ]]</c> test operator can be used with array indices
+        to test for array elements being set (4.3+). The two following lines
+        are now equivalent:
+        </p>
+
+<pre>
+[[ -n ${foo[3]+1} ]]
+[[ -v foo[3] ]]
+</pre>
+      </li>
+      <li>
+        <p>
+        <c>mapfile</c> (AKA <c>readarray</c>) now accepts a delimiter via
+        <c>-d</c>, with a <c>-t</c> option to strip it from read data
+        (Bash 4.4+). The two following solutions to grab output from
+        <c>find(1)</c> are now equivalent:
+        </p>
+
+<pre>
+# old solution
+local x files=()
+while read -d '' -r x; do
+	files+=( "${x}" )
+done &lt; &lt;(find -print0)
+
+# new solution
+local files=()
+mapfile -d '' -t files &lt; &lt;(find -print0)
+</pre>
+
+      </li>
+      <li>
+        <p>
+        A new set of transformations is available via <c>${foo@...}</c>
+        parameter expansion (4.4+), e.g. to print a value with necessary
+        quoting:
+        </p>
+
+<pre>
+$ var="foo 'bar' baz"
+$ echo "${var@Q}"
+'foo '\''bar'\'' baz'
+</pre>
+
+        <p>
+        For more details, see: <c>info bash</c> or the
+        <uri link="https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html">
+        Bash reference manual</uri>.
+        </p>
+      </li>
+      <li>
+        <p>
+        <c>local -</c> can be used to limit single-letter (mangled via
+        <c>set</c>) shell option changes to the scope of the function, and
+        restore them upon returning from it (4.4+). The following two functions
+        are now equivalent:
+        </p>
+
+<pre>
+# old solution
+func() {
+	local prev_shopt=$(shopt -p -o noglob)
+	set -o noglob
+	${prev_shopt}
+}
+
+# new solution
+func() {
+	local -
+	set -o noglob
+}
+</pre>
+
+        <p>
+        The complete information on all changes and new features can be found
+        in the
+        <uri link="https://git.savannah.gnu.org/cgit/bash.git/tree/NEWS?h=bash-5.0">
+        Bash 5.0 (and earlier) release notes</uri>.
+        </p>
+      </li>
+    </ul>
+  </dd>
+</dl>
+
+</body>
+</subsection>
+<subsection>
+<title>EAPI 8 variables</title>
+<body>
+
+<dl>
+  <dt>Selective fetch/mirror restriction</dt>
+  <dd>
+    <p>
+    Before EAPI 8, fetch and mirror restrictions applied globally. That is,
+    if you needed to apply the respective restriction to at least one distfile,
+    you had to apply it to them all. However, sometimes packages used a
+    combination of proprietary and free distfiles, the latter including e.g.
+    third party patches, artwork. Until now, they had to be mirror-restricted
+    completely.
+    </p>
+
+    <p>
+    EAPI 8 allows undoing fetch and mirror restriction for individual files.
+    To use this, set <c>RESTRICT</c> as before, then use the special
+    <c>fetch+</c> prefix to specify URLs that can be fetched from, or the
+    <c>mirror+</c> prefix to reenable mirroring of individual files.
+    </p>
+
+    <p>
+    Similarly to how the <c>fetch</c> restriction implies a <c>mirror</c>
+    restriction, the <c>mirror</c> override implies a <c>fetch</c> override.
+    </p>
+
+<codesample lang="ebuild">
+EAPI=8
+
+SRC_URI="
+	${P}.tgz
+	fetch+https://example.com/${P}-patch-1.tgz
+	mirror+https://example.com/${P}-fanstuff.tgz"
+
+RESTRICT="fetch"
+</codesample>
+
+    <p>
+    The following table summarises the new behaviour:
+    </p>
+
+    <table>
+      <tr>
+        <th><c>RESTRICT</c></th>
+        <th>URI prefix</th>
+        <th>Fetching</th>
+        <th>Mirroring</th>
+      </tr>
+      <tr>
+        <ti>(none)</ti>
+        <ti>(any)</ti>
+        <ti>allowed</ti>
+        <ti>allowed</ti>
+      </tr>
+      <tr>
+        <ti rowspan="2">mirror</ti>
+        <ti>(none) / fetch+</ti>
+        <ti>allowed</ti>
+        <ti>prohibited</ti>
+      </tr>
+      <tr>
+        <ti>mirror+</ti>
+        <ti>allowed</ti>
+        <ti>allowed</ti>
+      </tr>
+      <tr>
+        <ti rowspan="3">fetch</ti>
+        <ti>(none)</ti>
+        <ti>prohibited</ti>
+        <ti>prohibited</ti>
+      </tr>
+      <tr>
+        <ti>fetch+</ti>
+        <ti>allowed</ti>
+        <ti>prohibited</ti>
+      </tr>
+      <tr>
+        <ti>mirror+</ti>
+        <ti>allowed</ti>
+        <ti>allowed</ti>
+      </tr>
+    </table>
+  </dd>
+
+  <dt>Install-time dependencies (<c>IDEPEND</c>)</dt>
+  <dd>
+    <p>
+    The primary use for install-time dependencies is to specify dependencies
+    that are needed during the <c>pkg_postinst</c> phase and that can be
+    unmerged afterwards. That's pretty much the same as <c>RDEPEND</c>, except
+    for the unmerging part <d/> and uninstalling a few tools did not seem a
+    goal justifying another dependency type.
+    </p>
+
+    <p>
+    With cross-compilation support in EAPI 7, a new dependency type focused
+    on the build host (<c>CBUILD</c>) tools was added <d/> <c>BDEPEND</c>.
+    Unfortunately, this had missed the important use case of running
+    executables installed to the target system when cross-compiling.
+    <c>RDEPEND</c> was no longer a suitable method of pulling in tools for
+    <c>pkg_postinst</c>; and since <c>BDEPEND</c> is not used when installing
+    from a binary package, something new was needed.
+    </p>
+
+    <p>
+    This is where <c>IDEPEND</c> comes in. It is roughly to <c>RDEPEND</c> what
+    <c>BDEPEND</c> is to <c>DEPEND</c>. Similarly to <c>BDEPEND</c>,
+    it specifies packages that must be built for the <c>CBUILD</c> triplet
+    and installed into <c>BROOT</c> (and therefore queried using
+    <c>has_version -b</c>). However, similarly to <c>RDEPEND</c>, it is used
+    when the package is being merged rather than built from source.
+    It is guaranteed to be satisfied throughout <c>pkg_preinst</c> and
+    <c>pkg_postinst</c>, and it can be uninstalled afterwards.
+    </p>
+
+<codesample lang="ebuild">
+EAPI=8
+
+inherit xdg-utils
+
+IDEPEND="dev-util/desktop-file-utils"
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+}
+</codesample>
+
+    <p>
+    In the example provided above, the ebuild needs to be update the icon cache
+    upon being installed or uninstalled. By placing the respective tool in
+    <c>IDEPEND</c>, the ebuild requests it to be available at the time of
+    <c>pkg_postinst</c>. When cross-compiling, the tool will be built for
+    <c>CBUILD</c> and therefore directly executable by the ebuild.
+    </p>
+
+    <p>
+    The dependency types table for EAPI 8 is presented below.
+    </p>
+
+    <table>
+      <tr>
+        <th>Dependency type</th>
+        <th>BDEPEND</th>
+        <th>IDEPEND</th>
+        <th>DEPEND</th>
+        <th>RDEPEND</th>
+        <th>PDEPEND</th>
+      </tr>
+      <tr>
+        <th>Present at</th>
+        <ti>build</ti>
+        <ti>install</ti>
+        <ti>build</ti>
+        <ti>install</ti>
+        <ti>n/a</ti>
+      </tr>
+      <tr>
+        <th>Binary compatible with</th>
+        <ti colspan="2">CBUILD</ti>
+        <ti colspan="3">CHOST</ti>
+      </tr>
+      <tr>
+        <th>Base unprefixed path</th>
+        <ti colspan="2"><c>/</c></ti>
+        <ti>SYSROOT</ti>
+        <ti colspan="2">ROOT</ti>
+      </tr>
+      <tr>
+        <th>Relevant offset-prefix</th>
+        <ti colspan="2">BROOT</ti>
+        <ti>EPREFIX (unless SYSROOT != ROOT)</ti>
+        <ti colspan="2">EPREFIX</ti>
+      </tr>
+      <tr>
+        <th>Path combined with prefix</th>
+        <ti colspan="2">BROOT</ti>
+        <ti>ESYSROOT</ti>
+        <ti colspan="2">EROOT</ti>
+      </tr>
+      <tr>
+        <th>PM query command option</th>
+        <ti colspan="2"><c>-b</c></ti>
+        <ti><c>-d</c></ti>
+        <ti colspan="2"><c>-r</c></ti>
+      </tr>
+    </table>
+  </dd>
+
+  <dt>
+    <c>PROPERTIES</c> and <c>RESTRICT</c> are now accumulated across eclasses
+  </dt>
+  <dd>
+    <p>
+    Up to EAPI 7, <c>PROPERTIES</c> and <c>RESTRICT</c> were treated like
+    regular Bash variables when sourcing eclasses. This meant that if an eclass
+    or an ebuild wanted to modify them, they had to explicitly append to them,
+    e.g. via <c>+=</c>. This was inconsistent with how some other variables
+    (but not all) were handled, and confusing to developers. For example,
+    consider the following snippet:
+    </p>
+
+<codesample lang="ebuild">
+EAPI=7
+
+inherit git-r3
+
+PROPERTIES+=" interactive"
+</codesample>
+
+    <p>
+    Note how you needed to append to <c>PROPERTIES</c> set by git-r3 eclass,
+    otherwise the ebuild would have overwritten it. In EAPI 8, you can finally
+    do the following instead:
+    </p>
+
+<codesample lang="ebuild">
+EAPI=8
+
+inherit git-r3
+
+PROPERTIES="interactive"
+</codesample>
+
+    <p>
+    Now the complete list of metadata variables accumulated across eclasses
+    and ebuilds includes: <c>IUSE</c>, <c>REQUIRED_USE</c>, <c>*DEPEND</c>,
+    <c>PROPERTIES</c>, <c>RESTRICT</c>. Variables that are not treated this way
+    are: <c>EAPI</c>, <c>HOMEPAGE</c>, <c>SRC_URI</c>, <c>LICENSE</c>,
+    <c>KEYWORDS</c>. <c>EAPI</c> and <c>KEYWORDS</c> are not supposed to be set
+    in eclasses; as for the others, there appears to be a valid use case for
+    eclasses providing default values and the ebuilds being able to override
+    them.
+    </p>
+  </dd>
+</dl>
+
+</body>
+</subsection>
+<subsection>
+<title>EAPI 8 phase functions</title>
+<body>
+
+<dl>
+  <dt><c>pkg_*</c> phases now run in a dedicated empty directory</dt>
+  <dd>
+    <p>
+    Before EAPI 8, the initial working directory was specified for <c>src_*</c>
+    phases only. For other phases (i.e. <c>pkg_*</c> phases), ebuilds were not
+    supposed to assume any particular directory. In EAPI 8, these phases are
+    guaranteed to be started in a dedicated empty directory.
+    </p>
+
+    <p>
+    The idea of using an empty directory is pretty simple <d/> if there are no
+    files in it, the risk of unexpected and hard to predict interactions of
+    tools with their current working directory is minimized.
+    </p>
+  </dd>
+
+  <dt>
+    <c>PATCHES</c> no longer permits options
+  </dt>
+  <dd>
+    <p>
+    The <c>eapply</c> invocation in the default <c>src_prepare</c>
+    implementation has been changed to:
+    </p>
+
+<codesample lang="ebuild">
+eapply -- "${PATCHES[@]}"
+</codesample>
+
+    <p>
+    This ensures that all items in the <c>PATCHES</c> variable are treated
+    as path names. As a side effect, it is no longer possible to specify
+    <c>patch</c> options via the <c>PATCHES</c> variable. Such hacks were never
+    used in the Gentoo repository but they have been spotted in
+    user-contributed ebuilds. The following will no longer work:
+    </p>
+
+<codesample lang="ebuild">
+PATCHES=( -p0 "${FILESDIR}"/${P}-foo.patch )
+</codesample>
+
+    <p>
+    Instead, you will need to invoke <c>eapply</c> explicitly, see the example
+    below. Alternatively, rebase the patch level.
+    </p>
+
+<codesample lang="ebuild">
+src_prepare() {
+	eapply -p0 "${FILESDIR}"/${P}-foo.patch
+	eapply_user
+}
+</codesample>
+
+  </dd>
+</dl>
+
+</body>
+</subsection>
+<subsection>
+<title>EAPI 8 commands</title>
+<body>
+
+<dl>
+  <dt>New econf-passed options</dt>
+  <dd>
+    <p>
+    The <c>econf</c> helper has been modified to pass two more options to
+    the configure script if the <c>--help</c> text indicates that they are
+    supported. These are:
+    </p>
+
+    <ul>
+      <li><c>--datarootdir="${EPREFIX}"/usr/share</c></li>
+      <li><c>--disable-static</c></li>
+    </ul>
+
+    <p>
+    The former option defines the base directory that is used to determine
+    locations for system/desktop-specific data files, e.g. .desktop files and
+    various kinds of documentation. This is necessary for ebuilds that override
+    <c>--prefix</c>, as the default path is relative to it.
+    </p>
+
+    <p>
+    The latter option disables building static libraries by default. This is
+    part of the ongoing effort to disable unconditional install of static
+    libraries
+    (<uri link="https://projects.gentoo.org/qa/policy-guide/installed-files.html#pg0302">
+    Gentoo Policy Guide, Installation of static libraries</uri>).
+    </p>
+  </dd>
+
+  <dt><c>dosym -r</c> to create relative symlinks</dt>
+  <dd>
+    <p>
+    Relative symlink targets tend to be more reliable. Consider the two
+    following examples:
+    </p>
+
+<codesample lang="ebuild">
+dosym "${EPREFIX}"/usr/lib/frobnicate/frobnicate /usr/bin/frobnicate
+dosym ../lib/frobnicate/frobnicate /usr/bin/frobnicate
+</codesample>
+
+    <p>
+    The first line creates a symlink using an absolute path. The problem with
+    that is if you mount your Gentoo system in a subdirectory of your root
+    filesystem (e.g. for recovery), the symlink will point at the wrong
+    location. Using relative symlinks (as demonstrated on the second line)
+    guarantees that the symlink will work independently of where the filesystem
+    is mounted.
+    </p>
+
+    <p>
+    There is also fact that you need to explicitly prepend <c>${EPREFIX}</c>
+    to the absolute paths passed as the first argument of <c>dosym</c>. Using
+    a relative target avoids the problem altogether and makes it less likely to
+    forget about the prefix.
+    </p>
+
+    <p>
+    However, in some instances, determining the relative path could be hard or
+    inconvenient. This is especially the case if one (or both) of the paths
+    comes from an external tool. To make it easier, EAPI 8 adds a new <c>-r</c>
+    option that makes <c>dosym</c> create a relative symlink to the specified
+    path (similarly to <c>ln -r</c>):
+    </p>
+
+<codesample lang="ebuild">
+dosym -r /usr/lib/frobnicate/frobnicate /usr/bin/frobnicate
+</codesample>
+
+    <p>
+    Note that in this case, you do not pass <c>${EPREFIX}</c>. The helper
+    determines the <e>logical</e> relative path to the first argument and
+    creates the appropriate relative symlink. It is very important here to
+    understand that this function does not handle physical paths, i.e. it will
+    work only if there are no directory symlinks along the way that would
+    result in <c>..</c> resolving to a different path. For example, the
+    following will not work:
+    </p>
+
+<codesample lang="ebuild">
+dosym bar/foo /usr/lib/foo
+dosym -r /usr/lib/zomg /usr/lib/foo/zomg
+</codesample>
+
+    <p>
+    The logical path from <c>/usr/lib/foo/zomg</c> to <c>/usr/lib/zomg</c> is
+    <c>../zomg</c>. However, since <c>/usr/lib/foo</c> is actually a symlink to
+    <c>/usr/lib/bar/foo</c>, <c>/usr/lib/foo/..</c> resolves to
+    <c>/usr/lib/bar</c>. If you need to account for such directory symlinks,
+    you need to specify the correct path explicitly:
+    </p>
+
+<codesample lang="ebuild">
+dosym bar/foo /usr/lib/foo
+dosym ../../zomg /usr/lib/foo/zomg
+</codesample>
+
+  </dd>
+
+  <dt>
+    <c>insopts</c> and <c>exeopts</c> now apply to <c>doins</c>
+    and <c>doexe</c> only
+  </dt>
+  <dd>
+    <p>
+    In previous EAPIs, there was an inconsistency in how <c>insopts</c> and
+    <c>exeopts</c> applied to various helpers. In particular, the majority of
+    helpers (e.g. <c>dobin</c>, <c>dodoc</c> and so on) ignored the options
+    specified via these helpers but a few did not.
+    </p>
+
+    <p>
+    EAPI 8 changes the behaviour of the following helpers that used to respect
+    <c>insopts</c> or <c>exeopts</c>:
+    </p>
+
+    <ul>
+      <li><c>doconfd</c></li>
+      <li><c>doenvd</c></li>
+      <li><c>doheader</c></li>
+      <li><c>doinitd</c></li>
+    </ul>
+
+    <p>
+    In EAPI 8, they always use the default options. As a result, <c>insopts</c>
+    now only affects <c>doins</c>/<c>newins</c>, and <c>exeopts</c> only
+    affects <c>doexe</c>/<c>newexe</c>. Furthermore, <c>diropts</c> does not
+    affect the directories implicitly created by these helpers.
+    </p>
+  </dd>
+
+  <dt><c>usev</c> now accepts a second argument</dt>
+  <dd>
+    <p>
+    The <c>usev</c> helper was introduced to provide the historical Portage
+    behaviour of outputting the USE flag name on match. In EAPI 8, it has been
+    extended, in order to provide an alternative to three-argument <c>usex</c>
+    with an empty third argument (the two-argument <c>usex</c> variant uses a
+    default of <c>no</c> for the false branch).
+    </p>
+
+    <p>
+    In other words, the following two calls are now equivalent:
+    </p>
+
+<codesample lang="ebuild">
+$(usex foo --enable-foo '')
+$(usev foo --enable-foo)
+</codesample>
+
+    <p>
+    This is particularly useful with custom build systems that accept
+    individual <c>--enable</c> or <c>--disable</c> options but not their
+    counterparts.
+    </p>
+
+    <p>
+    As a result, <c>usev</c> and <c>usex</c> can now be used to achieve all the
+    common (and less common) output needs as summarized in the following table.
+    </p>
+
+    <table>
+      <tr>
+        <th>Variant</th>
+        <th>True</th>
+        <th>False</th>
+      </tr>
+      <tr>
+        <ti>usev <e>flag</e></ti>
+        <ti><e>flag</e></ti>
+        <ti></ti>
+      </tr>
+      <tr>
+        <ti>usev <e>flag</e> <e>true</e></ti>
+        <ti><e>true</e></ti>
+        <ti></ti>
+      </tr>
+      <tr>
+        <ti>usex <e>flag</e></ti>
+        <ti><c>yes</c></ti>
+        <ti><c>no</c></ti>
+      </tr>
+      <tr>
+        <ti>usex <e>flag</e> <e>true</e></ti>
+        <ti><e>true</e></ti>
+        <ti><c>no</c></ti>
+      </tr>
+      <tr>
+        <ti>usex <e>flag</e> <e>true</e> <e>false</e></ti>
+        <ti><e>true</e></ti>
+        <ti><e>false</e></ti>
+      </tr>
+    </table>
+  </dd>
+
+  <dt><c>hasq</c>, <c>hasv</c> and <c>useq</c> functions have been banned</dt>
+  <dd>
+    <p>
+    In its early days, the <c>use</c> helper would print the USE flag name
+    if it matched, in addition to its boolean exit status. Later, a quiet
+    <c>useq</c> and a verbose <c>usev</c> helper were added, and <c>use</c> was
+    made quiet by default. The same changes were applied to <c>has</c>.
+    </p>
+
+    <p>
+    Fast forward to EAPI 7, there are still three variants of <c>use</c>
+    and three variants of <c>has</c>. The base variant that is quiet, the
+    <c>useq</c>/<c>hasq</c> variant that is equivalent to the base variant,
+    and the verbose <c>usev</c>/<c>hasv</c> variant.
+    </p>
+
+    <p>
+    Obviously, adding a second argument to <c>hasv</c> was not possible, so its
+    behaviour would have become inconsistent with <c>usev</c> in EAPI 8. Since 
+    <c>hasv</c> was not used in the Gentoo repository, it has been removed,
+    along with <c>hasq</c> and <c>useq</c> which were considered deprecated
+    since 2011.
+    </p>
+  </dd>
+
+  <dt>unpack removes support for 7-Zip, LHA and RAR formats</dt>
+  <dd>
+    <p>
+    Support for the least commonly used archive formats from <c>unpack</c> has
+    been removed:
+    </p>
+
+    <ul>
+      <li>7-Zip (.7z)</li>
+      <li>LHA (.lha, .lzh)</li>
+      <li>RAR (.rar)</li>
+    </ul>
+
+    <p>
+    Packages using these format for distfiles must now unpack them manually.
+    Using <c>unpacker.eclass</c> is recommended for this.
+    </p>
+  </dd>
+</dl>
+
+</body>
+</subsection>
+</section>
 </chapter>
 </guide>
