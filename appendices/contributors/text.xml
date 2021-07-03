@@ -125,6 +125,10 @@ Misc
 <author name="Mike Frysinger" email="vapier@gentoo.org">
   <uri link="::ebuild-writing/misc-files/patches/#Clean Patch Howto"/>
 </author>
+<author name="Sam James" email="sam@gentoo.org">
+  <uri link="::eclass-writing/"/>,
+  <uri link="::keywording/"/>
+</author>
 </authors>
 
 </body>
