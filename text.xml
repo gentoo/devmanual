@@ -10,6 +10,20 @@ inaccuracies, omissions, typos and the occasional outright lie. The
 intent is to make a handbook giving developers and users correct,
 detailed, up to date technical content.
 </p>
+
+<dl>
+  <dt>Contributors</dt>
+  <dd>
+    Ciaran McCreesh, Grant Goodyear, Aaron Walker, Robert Coie, Tom Martin,
+    Paul Varner, Ilya Volynets-Evenbakh, Diego Pettenò, Fernando J. Pereda,
+    Simon Stelling, Alin Dobre, Joseph Jezak, Ursula Maplehurst, Mark Loeser,
+    Petteri Räty, Ulrich Müller, Mike Pagano, Markus Meier, Markos Chandras,
+    Xavier Neys, Daniel Robbins, Jeremy Olexa, Julian Ospald,
+    Alexandre Rostovtsev, Göktürk Yüksek, Michael Orlitzky, Michał Górny,
+    Brian Evans, Lucas Ramage, Mike Frysinger, Sam James
+  </dd>
+</dl>
+
 <p>
 Contributions are encouraged. See the <uri link="::appendices/contributing"/>
 section for how to get started. If you have any corrections, suggestions or
