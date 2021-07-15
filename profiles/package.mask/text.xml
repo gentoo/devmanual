@@ -15,6 +15,12 @@ of the <c>package.mask</c> file is described in <c>man portage</c>.
 </p>
 
 <p>
+Entries are added chronologically <d/> that is, newer entries
+should be placed towards the top of the file, underneath any initial
+header comment block.
+</p>
+
+<p>
 This file can be used in subprofiles to mask packages only for certain setups.
 </p>
 
