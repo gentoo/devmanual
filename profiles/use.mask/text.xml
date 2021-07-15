@@ -32,7 +32,9 @@ defined purpose.
 </p>
 
 <p>
-Updates to <c>use.mask</c> should be handled via the relevant arch team.
+Updates to <c>use.mask</c> should be handled via the relevant arch team. Any
+additions are sorted chronologically, starting at the top of the file
+(underneath any comment header blocks).
 </p>
 
 <p>
