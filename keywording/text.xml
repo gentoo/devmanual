@@ -402,8 +402,8 @@ keyword, so packages are not to be marked stable for one of these architectures.
 If you maintain an architecture-independent package (data files, icons, pure
 Python, ...), then you may request that your package be stabilized on all arches
 at once. To do this <d/> when you are filing the stabilization bug <d/> please
-add the keyword <c>ALLARCHES</c> in addition to <c>STABLEREQ</c> and CC the
-arches that you would like to stabilize.
+add the keyword <c>ALLARCHES</c> and CC the arches that you would like to
+stabilize.
 </p>
 
 <p>
