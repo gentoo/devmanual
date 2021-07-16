@@ -6,8 +6,12 @@
 <body>
 <p>
 Contributions for this document are very welcome. Whether you've found a typo
-or have written an entire new section, the best way to get in touch is via Bugzilla
-at <uri link="https://bugs.gentoo.org">bugs.gentoo.org</uri>.
+or have written an entire new section, the best way to get in touch is via
+Bugzilla. Please look at the
+<uri link="https://bugs.gentoo.org/buglist.cgi?product=Documentation;component=Devmanual;resolution=---">
+bug list</uri> and file a
+<uri link="https://bugs.gentoo.org/enter_bug.cgi?product=Documentation;component=Devmanual;format=guided">
+new bug</uri>.
 </p>
 
 <p>
