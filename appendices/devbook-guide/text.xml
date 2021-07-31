@@ -54,11 +54,6 @@ one chapter. Its <c>&lt;title&gt;</c> is used to set the title for the entire
 document.
 </p>
 
-<important>
-The <c>&lt;title&gt;</c> element cannot contain any newlines. Make sure it is
-in one line, including its opening and closing tags.
-</important>
-
 <p>
 All tags must be closed of course, so the document ends with:
 </p>
