@@ -172,7 +172,7 @@ a more complete test suite.
 <p>
 It is generally considered acceptable to rely on IPv4 <c>localhost</c>
 being resolvable and available for binding to and connecting to
-the previously bound services.  However, it is not acceptable to connect
+services started within the phase. However, it is not acceptable to connect
 to the daemons run outside the test environment.
 </p>
 
