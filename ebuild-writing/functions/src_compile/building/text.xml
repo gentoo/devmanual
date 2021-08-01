@@ -39,6 +39,15 @@ Other similar functions are available <d/> these are documented in
 <c>man toolchain-funcs.eclass</c>.
 </p>
 
+<p>
+Note that packages should always respect the user's <c>CC</c> preference
+and must not rely on convenience symlinks such as <c>/usr/bin/cc</c>
+or <c>/usr/bin/gcc</c>. A tracker <uri link="https://bugs.gentoo.org/243502">
+bug</uri> exists to document such issues. Additional documentation exists on the
+<uri link="https://wiki.gentoo.org/wiki/Project:Toolchain/use_native_symlinks">
+wiki</uri>.
+</p>
+
 <note>
 It is <e>not</e> correct to use the <c>${CC}</c> variable for this purpose.
 </note>
