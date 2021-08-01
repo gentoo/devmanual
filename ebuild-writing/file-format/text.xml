@@ -135,11 +135,12 @@ algorithm</uri> can be found in PMS.
 <body>
 
 <p>
-When packaging a snapshot of a source repository, there are two commonly used formats. The first
-treats the snapshot as a patch to the previous version, and so the ebuild version is in the format
-$(last-released-version)_pYYYYMMDD. Alternatively, the snapshot may be treated as a pre-release to
-an upcoming version, usually used when a release is anticipated but not out yet. The format for this
-is $(upcoming-version)_preYYYYMMDD.
+When packaging a snapshot of a source repository, there are two commonly used
+formats. The first treats the snapshot as a patch to the previous version, and
+so the ebuild version is in the format $(last-released-version)_pYYYYMMDD.
+Alternatively, the snapshot may be treated as a pre-release to an upcoming
+version, usually used when a release is anticipated but not out yet. The format
+for this is $(upcoming-version)_preYYYYMMDD.
 </p>
 
 <p>
