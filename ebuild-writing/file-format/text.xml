@@ -120,6 +120,14 @@ EAPI 7 version commands</uri> may be used to manipulate and extract
 ebuild version components.
 </p>
 
+<p>
+The formal specification of version
+<uri link="https://projects.gentoo.org/pms/8/pms.html#x1-250003.2">
+format</uri> and the comparison
+<uri link="https://projects.gentoo.org/pms/8/pms.html#x1-260003.3">
+algorithm</uri> can be found in PMS.
+</p>
+
 </body>
 
 <subsection>
