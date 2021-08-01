@@ -14,6 +14,17 @@ writing ebuilds.
 <title>Common Ebuild Writing Mistakes</title>
 
 <subsection>
+<title>Unguarded external calls</title>
+<body>
+<p>
+Calls to external tools should be guarded with <c>|| die</c> (or use
+<c>assert</c>) in almost all cases to allow failure to be detected. See
+<uri link="::ebuild-writing/error-handling"/>.
+</p>
+</body>
+</subsection>
+
+<subsection>
 <title>Invalid use of <c>static</c> use-flag</title>
 <body>
 <p>
