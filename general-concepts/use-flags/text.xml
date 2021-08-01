@@ -97,8 +97,8 @@ Common mistakes include:
 	</li>
 
 	<li>
-	Introducing <c>lto</c> flag to force <c>-flto</c>. This is something user
-	should set directly in flag varibles.
+	Introducing <c>lto</c> flag to force <c>-flto</c>. This is something the user
+	should set directly in flag variables.
 	</li>
 
 	<li>
