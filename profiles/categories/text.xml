@@ -11,6 +11,10 @@ to update and commit this file <e>before</e> making any related commits.
 </p>
 
 <p>
+Please consult the gentoo-dev mailing list before adding a new category.
+</p>
+
+<p>
 The <c>categories</c> file is a straight list. For descriptions, see <uri
 link="::ebuild-writing/misc-files/metadata/#Category Metadata"/>.
 </p>
