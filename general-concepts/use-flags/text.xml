@@ -217,7 +217,7 @@ on USE-ordering in Portage.
 
 EAPI=7
 
-IUSE="foo +bar"
+IUSE="+bar foo"
 </codesample>
 
 </body>
