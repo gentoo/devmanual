@@ -1,19 +1,19 @@
 certificate version 0.1
-pusher Sam James <sam@gentoo.org> 1628904957 +0100
+pusher Sam James <sam@gentoo.org> 1628905383 +0100
 pushee git+ssh://git.gentoo.org/proj/devmanual.git
-nonce 1628904957-91d42de5ea1a0ee3c8f518cb99d496559b464ff0
+nonce 1628905383-67947f3e7be1f01155a9efd4a63875597deb9c4a
 
-1779bc63ec5bce6e0c117b1fe90065e9d1622df0 a5fcdc1cca7e40b489e6e72eb1e7965007aa59bf refs/heads/master
+a5fcdc1cca7e40b489e6e72eb1e7965007aa59bf d0bced7586bcab1a00a8db11baae895bd4f0a646 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQGjBAABCgCNFiEEYOpPv/uDUzOcqtTy9JIoEO6gSDsFAmEXHf5fFIAAAAAALgAo
+iQGjBAABCgCNFiEEYOpPv/uDUzOcqtTy9JIoEO6gSDsFAmEXH6dfFIAAAAAALgAo
 aXNzdWVyLWZwckBub3RhdGlvbnMub3BlbnBncC5maWZ0aGhvcnNlbWFuLm5ldDYw
 RUE0RkJGRkI4MzUzMzM5Q0FBRDRGMkY0OTIyODEwRUVBMDQ4M0IPHHNhbUBnZW50
-b28ub3JnAAoJEPSSKBDuoEg7IE4IAIvmbeALoFWqqqNrrlJ6OsZQ2VOUPiJnpvbl
-PLDr7iZcOISdn4oczDUdn3fx5tA0NaQ7t6J8CGRcspR3W1HbypNS6yp7nQSEpgwi
-i+HihS+Ndy1VVFjbT8HbgW/o2TV/Jaq6RgFouKNdNfhO5yFWkmGLWmJ0BEvODf/S
-2fkjZdzHOHXhLbJjp+P4swMXN6MdlGvRzhIlxKfCVSAWubSyMK47/vmFqw2xFLZ9
-dvCwfiA1h7wsvV0W1swrnVcE+gFWhIR5NaThHjDNYGeODtO+ZgFaxLf8NU7hjwDd
-fUMowcoQIqaEpxRG/wKX+yi6LauFi9fE1KlBRk/zdP1NgOBGwJA=
-=75yh
+b28ub3JnAAoJEPSSKBDuoEg7bz0H/3RH3RhgsKKKEON9C0OL8lKOTEWRjADQbsCZ
+9xEZzF3EL2CNy9tmIXKd4hK2ptkqSln2Z1TXxzoQ7rEOoNfPtWJRr9Yr/zmXrOpW
+hDk1awAMfjNpg2y2hlS7J0F+bvACaauTSzD8tWZsSheYdlkrzuyJ46QJ/VouHFE/
+V0B/Rwsf1UMB4B0NOlUB0OVp3OtrXdrKEgT4DRCOMgFRsp/YkF97bxadaco5w61Y
+CTtNgsPw7qrJgHfxVTUtKU7xeNlmr+l6xwwUuntYXlwAsrP4TeNvPXbN35qByhsR
+jaNZ8TMGz5Ht8p1f3pelkmHapowGWgI05WzaGFwUhvGA9HPpL50=
+=SeO4
 -----END PGP SIGNATURE-----
