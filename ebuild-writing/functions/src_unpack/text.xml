@@ -94,9 +94,6 @@ The <c>unpack</c> function recognizes the following file formats:
   <li><c>*.xz</c>, <c>*.tar.xz</c>, <c>*.txz</c></li>
   <li><c>*.zip</c>, <c>*.ZIP</c>, <c>*.jar</c></li>
   <li><c>*.a</c>, <c>*.deb</c></li>
-  <li><c>*.7z</c>, <c>*.7Z</c></li>
-  <li><c>*.rar</c>, <c>*.RAR</c></li>
-  <li><c>*.LHA</c>, <c>*.LHa</c>, <c>*.lha</c>, <c>*.lzh</c></li>
 </ul>
 
 <p>
