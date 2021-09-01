@@ -789,7 +789,7 @@ jmake_src_compile() {
 
 <p>
 Sometimes an eclass is used incorrectly by an ebuild and the eclass
-knows it is being used incorrectly- the common example is an
+knows it is being used incorrectly <d/> the common example is an
 eclass that only works with a specific set of EAPIs, but is being
 accessed inherited by an ebuild with a different EAPI.
 In those cases, used sparingly as a last resort, it is allowed
