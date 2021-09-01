@@ -194,120 +194,64 @@ summarizes the available documentation tags:
   <th>description</th>
 </tr>
 <tr>
-  <ti>
-    <c>@ECLASS:</c>
-  </ti>
-  <ti>
-    NO
-  </ti>
-  <ti>
-    Name of the eclass being documented
-  </ti>
+  <ti><c>@ECLASS:</c></ti>
+  <ti>NO</ti>
+  <ti>Name of the eclass being documented</ti>
   <ti>
     Documents various information about the eclass. Must appear as the
     first tag in the comment block.
   </ti>
 </tr>
 <tr>
-  <ti>
-    <c>@MAINTAINER:</c>
-  </ti>
-  <ti>
-    NO
-  </ti>
-  <ti>
-    One or more name and email pairs
-  </ti>
+  <ti><c>@MAINTAINER:</c></ti>
+  <ti>NO</ti>
+  <ti>One or more name and email pairs</ti>
   <ti>
     List of maintainers for the eclass to be contacted. One line per
     maintainer. Must start on a newline after the tag.
   </ti>
 </tr>
 <tr>
-  <ti>
-    <c>@AUTHOR:</c>
-  </ti>
-  <ti>
-    YES
-  </ti>
-  <ti>
-    One or more name and email pairs
-  </ti>
+  <ti><c>@AUTHOR:</c></ti>
+  <ti>YES</ti>
+  <ti>One or more name and email pairs</ti>
   <ti>
     List of authors for the eclass. One line per author. Must start on
     a newline after the tag.
   </ti>
 </tr>
 <tr>
-  <ti>
-    <c>@BUGREPORTS:</c>
-  </ti>
-  <ti>
-    YES
-  </ti>
-  <ti>
-    Multiline freetext
-  </ti>
-  <ti>
-    Describes how bugs related to this eclass should be reported
-  </ti>
+  <ti><c>@BUGREPORTS:</c></ti>
+  <ti>YES</ti>
+  <ti>Multiline freetext</ti>
+  <ti>Describes how bugs related to this eclass should be reported</ti>
 </tr>
 <tr>
-  <ti>
-    <c>@VCSURL:</c>
-  </ti>
-  <ti>
-    YES
-  </ti>
-  <ti>
-    A URI string
-  </ti>
-  <ti>
-    Points to the URL of the VCS that contains the eclass source
-  </ti>
+  <ti><c>@VCSURL:</c></ti>
+  <ti>YES</ti>
+  <ti>A URI string</ti>
+  <ti>Points to the URL of the VCS that contains the eclass source</ti>
 </tr>
 <tr>
-  <ti>
-    <c>@BLURB:</c>
-  </ti>
-  <ti>
-    NO
-  </ti>
-  <ti>
-    Single line freetext
-  </ti>
+  <ti><c>@BLURB:</c></ti>
+  <ti>NO</ti>
+  <ti>Single line freetext</ti>
   <ti>
     Contains a short description for the eclass. Must be on the same
     line with the tag.
   </ti>
 </tr>
 <tr>
-  <ti>
-    <c>@DESCRIPTION:</c>
-  </ti>
-  <ti>
-    YES
-  </ti>
-  <ti>
-    Multiline freetext
-  </ti>
-  <ti>
-    Long description for the eclass
-  </ti>
+  <ti><c>@DESCRIPTION:</c></ti>
+  <ti>YES</ti>
+  <ti>Multiline freetext</ti>
+  <ti>Long description for the eclass</ti>
 </tr>
 <tr>
-  <ti>
-    <c>@EXAMPLE:</c>
-  </ti>
-  <ti>
-    YES
-  </ti>
-  <ti>
-    Multiline freetext
-  </ti>
-  <ti>
-    Examples that illustrate various uses of this eclass
-  </ti>
+  <ti><c>@EXAMPLE:</c></ti>
+  <ti>YES</ti>
+  <ti>Multiline freetext</ti>
+  <ti>Examples that illustrate various uses of this eclass</ti>
 </tr>
 </table>
 
@@ -338,15 +282,9 @@ variables are as follows:
   <th>description</th>
 </tr>
 <tr>
-  <ti nowrap="nowrap">
-    <c>@ECLASS-VARIABLE:</c>
-  </ti>
-  <ti>
-    NO
-  </ti>
-  <ti>
-    Name of the eclass variable to which the documentation applies
-  </ti>
+  <ti nowrap="nowrap"><c>@ECLASS-VARIABLE:</c></ti>
+  <ti>NO</ti>
+  <ti>Name of the eclass variable to which the documentation applies</ti>
   <ti>
     This tag applies to eclass specific variables that affect the
     default behavior of the eclass. Read-only variables, which are
@@ -452,30 +390,18 @@ documentation are:
   <th>description</th>
 </tr>
 <tr>
-  <ti>
-    <c>@FUNCTION:</c>
-  </ti>
-  <ti>
-    NO
-  </ti>
-  <ti>
-    Name of the function to which the documentation block applies
-  </ti>
+  <ti><c>@FUNCTION:</c></ti>
+  <ti>NO</ti>
+  <ti>Name of the function to which the documentation block applies</ti>
   <ti>
     Documents information about an eclass function such as its calling
     convention etc. Must appear as the first tag in the comment block
   </ti>
 </tr>
 <tr>
-  <ti>
-    <c>@USAGE:</c>
-  </ti>
-  <ti>
-    NO
-  </ti>
-  <ti>
-    List of required and optional arguments to the function
-  </ti>
+  <ti><c>@USAGE:</c></ti>
+  <ti>NO</ti>
+  <ti>List of required and optional arguments to the function</ti>
   <ti>
     List of arguments that the eclass function accepts, specified in
     the following syntax: <c>&lt;</c>Required arguments<c>&gt;</c>
@@ -483,30 +409,18 @@ documentation are:
   </ti>
 </tr>
 <tr>
-  <ti>
-    <c>@RETURN:</c>
-  </ti>
-  <ti>
-    <b>*</b>
-  </ti>
-  <ti>
-    Return value of the function
-  </ti>
+  <ti><c>@RETURN:</c></ti>
+  <ti><b>*</b></ti>
+  <ti>Return value of the function</ti>
   <ti>
     <p>Description for the value returned by the function.</p>
     <p><b>*</b>: Not optional for functions that return a value.</p>
   </ti>
 </tr>
 <tr>
-  <ti>
-    <c>@MAINTAINER:</c>
-  </ti>
-  <ti>
-    YES
-  </ti>
-  <ti>
-    Multiline freetext
-  </ti>
+  <ti><c>@MAINTAINER:</c></ti>
+  <ti>YES</ti>
+  <ti>Multiline freetext</ti>
   <ti>
     List of contacts for the eclass function. One line per
     maintainer. Must start on a newline after the tag.
@@ -537,15 +451,9 @@ documentation are:
   <ti>Declares that this function should no longer be used in ebuilds</ti>
 </tr>
 <tr>
-  <ti>
-    <c>@DESCRIPTION:</c>
-  </ti>
-  <ti>
-    <b>*</b>
-  </ti>
-  <ti>
-    Multiline freetext
-  </ti>
+  <ti><c>@DESCRIPTION:</c></ti>
+  <ti><b>*</b></ti>
+  <ti>Multiline freetext</ti>
   <ti>
     <p>Long description for the eclass function.</p>
     <p><b>*:</b> Not optional if <c>RETURN:</c> is absent.</p>
