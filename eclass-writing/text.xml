@@ -803,11 +803,12 @@ for an eclass to invoke die from the global scope.  For example:
 # @ECLASS: eapi-die.eclass
 # @MAINTAINER:
 # Gentoo Devmanual Project &lt;devmanual@gentoo.org&gt;
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Calls die when used with an invalid EAPI.
 
-case ${EAPI:-0} in
-	0) die "this eclass doesn't support EAPI 0" ;;
-	*) ;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 </codesample>
 </body>
