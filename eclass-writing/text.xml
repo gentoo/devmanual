@@ -123,7 +123,9 @@ adhere to the following process:</p>
   </li>
   <li>
     Add a one line comment to the eclass, saying exactly <c># @DEAD</c> so that
-    the eclass-manpages package will not attempt to document it.
+    the eclass-manpages package will not attempt to document it. <c>@DEAD</c>
+    must be the first documentation tag in the eclass, i.e. it goes before
+    the <c>@ECLASS</c> tag.
   </li>
   <li>
     Wait for the 30-day period to pass, then remove the eclass from the tree.
