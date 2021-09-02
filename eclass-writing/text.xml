@@ -151,10 +151,11 @@ each block documents an individual element of an eclass.
 
 <p>
 Documentation tags for various eclass elements are explained in their
-respective sections below. Common to all the tags that accept
-multiline freetext, the <c>@CODE</c> tag should be used when necessary
-to create unformatted code chunks (such as example code) by placing
-the tag at the beginning and the end.
+respective sections below. Common to all the tags that accept multiline
+freetext, the <c>@CODE</c> tag should be used when necessary to create
+unformatted code chunks (such as example code) by placing the tag at the
+beginning and the end. The <c>@SUBSECTION</c> tag inserts a subsection
+heading; it is allowed only in the main <c>@DESCRIPTION</c>.
 </p>
 
 <p>
@@ -233,6 +234,21 @@ summarizes the available documentation tags:
   <ti>Points to the URL of the VCS that contains the eclass source</ti>
 </tr>
 <tr>
+  <ti nowrap="nowrap"><c>@SUPPORTED_EAPIS:</c></ti>
+  <ti>YES</ti>
+  <ti>Space-separated list of EAPIs</ti>
+  <ti>List of EAPIs supported by this eclass</ti>
+</tr>
+<tr>
+  <ti><c>@PROVIDES:</c></ti>
+  <ti>YES</ti>
+  <ti>Space-separated list of eclass names</ti>
+  <ti>
+    List of indirectly inherited eclasses whose functions and variables may be
+    used by an ebuild inheriting this eclass
+  </ti>
+</tr>
+<tr>
   <ti><c>@BLURB:</c></ti>
   <ti>NO</ti>
   <ti>Single line freetext</ti>
@@ -240,6 +256,12 @@ summarizes the available documentation tags:
     Contains a short description for the eclass. Must be on the same
     line with the tag.
   </ti>
+</tr>
+<tr>
+  <ti><c>@DEPRECATED:</c></ti>
+  <ti>YES</ti>
+  <ti>Replacement (or "none")</ti>
+  <ti>Declares that this eclass should no longer be used</ti>
 </tr>
 <tr>
   <ti><c>@DESCRIPTION:</c></ti>
