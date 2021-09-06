@@ -69,10 +69,7 @@ of thumb could be used as a guideline:
   <li>adding a missing runtime dependency to one of the existing blocks,</li>
   <li>adding a binding subslot operator (:=) to a dependency,</li>
   <li>updating a dependency with default on/off USE flags,</li>
-  <li>
-    adding a missing build-time dependency that contributed to
-    a successfully yet incorrect build (e.g. missing some feature),
-  </li>
+  <li>fixing an automagic dependency detection from a build system,</li>
   <li>
     restricting a runtime dependency version, unless the <c>:=</c>
     subslot operator is going to trigger a rebuild.
