@@ -877,9 +877,19 @@
   <dd><xsl:apply-templates/></dd>
 </xsl:template>
 
+<xsl:template match="authorlist">
+  <dt><xsl:value-of select="@title"/></dt>
+  <dd>
+    <xsl:for-each select="document(concat(@href, 'text.xml'))//author">
+      <xsl:value-of select="@name"/>
+      <xsl:if test="position() != last()">, </xsl:if>
+    </xsl:for-each>
+  </dd>
+</xsl:template>
+
 <xsl:template match="authors">
   <dl>
-    <xsl:apply-templates select="author"/>
+    <xsl:apply-templates/>
   </dl>
 </xsl:template>
 

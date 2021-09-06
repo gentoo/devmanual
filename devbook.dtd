@@ -27,10 +27,13 @@
 
 <!ELEMENT body          (authors|contentsTree|%block.class;)+>
 
-<!ELEMENT authors       (author)+>
+<!ELEMENT authors       (author+|authorlist+)>
 <!ELEMENT author        (#PCDATA|%inline.class;)*>
 <!ATTLIST author        name  CDATA #REQUIRED
                         email CDATA #IMPLIED>
+<!ELEMENT authorlist    EMPTY>
+<!ATTLIST authorlist    title CDATA #REQUIRED
+                        href  CDATA #REQUIRED>
 
 <!ELEMENT contentsTree  EMPTY>
 <!ATTLIST contentsTree  maxdepth   CDATA #IMPLIED
