@@ -105,7 +105,12 @@ of thumb could be used as a guideline:
     is equivalent to the old code),
   </li>
   <li>
-    a dependency change that is a result of a package move (slot move).
+    a dependency change that is a result of a package move (slot move),
+  </li>
+  <li>
+    a dependency change due to
+    <uri link="::ebuild-maintenance/removal/#removing-a-virtual-package">
+    removal of a virtual package.</uri>
   </li>
 </ul>
 
