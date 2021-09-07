@@ -52,8 +52,9 @@ of thumb could be used as a guideline:
     etc.) and it would not be propagated using other means, then
     the ebuild should be renamed to a new revision. If the package has
     stable keywords, they should be moved to the new revision without
-    dropping. To commit the ebuild, <c>repoman commit
-    --straight-to-stable</c> option should be used.
+    dropping. To commit the ebuild, <c>repoman commit --straight-to-stable</c>
+    option should be used. (Alternatively, <c>pkgdev commit</c> or <c>git
+    commit</c> paired with <c>pkgcheck scan --commits</c>).
   </li>
 
   <li>
