@@ -115,7 +115,7 @@
 		      $data = 'elog' or
 		      $data = 'ewarn' or $data = 'eerror' or $data = 'diropts' or $data = 'dobin' or $data = 'docinto' or $data = 'dodoc' or
 		      $data = 'doexe' or $data = 'dohard' or $data = 'dohtml' or $data = 'doinfo' or $data = 'doins' or $data = 'dolib' or
-		      $data = 'dolib$dataa' or $data = 'dolib$dataso' or $data = 'doman' or $data = 'dosbin' or $data = 'dosym' or $data = 'emake' or
+		      $data = 'dolib.a' or $data = 'dolib.so' or $data = 'doman' or $data = 'dosbin' or $data = 'dosym' or $data = 'emake' or
 		      $data = 'exeinto' or $data = 'exeopts' or $data = 'fowners' or $data = 'fperms' or $data = 'insinto' or $data = 'insopts' or
 		      $data = 'into' or $data = 'libopts' or $data = 'newbin' or $data = 'newexe' or $data = 'newins' or $data = 'newman' or
 		      $data = 'newsbin' or $data = 'prepall' or $data = 'prepalldocs' or $data = 'prepallinfo' or $data = 'prepallman' or
@@ -282,7 +282,7 @@
 
       <!--  games -->
       <xsl:when test="$data = 'egamesconf' or $data = 'egamesinstall' or $data = 'gameswrapper' or $data = 'dogamesbin' or $data = 'dogamessbin' or $data = 'dogameslib' or
-		      $data = 'dogameslib$dataa' or $data = 'dogameslib$dataso' or $data = 'newgamesbin' or $data = 'newgamessbin' or
+		      $data = 'dogameslib.a' or $data = 'dogameslib.so' or $data = 'newgamesbin' or $data = 'newgamessbin' or
 		      $data = 'gamesowners' or $data = 'gamesperms' or $data = 'prepgamesdirs' or $data = 'gamesenv' or $data = 'games_pkg_setup' or
 		      $data = 'games_src_compile' or $data = 'games_pkg_postinst' or $data = 'games_ut_unpack' or $data = 'games_umod_unpack' or
 		      $data = 'games_make_wrapper'">
@@ -326,7 +326,7 @@
 	<span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 
-      <!--  depend$dataapache -->
+      <!--  depend.apache -->
       <xsl:when test="$data = 'need_apache' or $data = 'need_apache1' or $data = 'need_apache2'">
 	<span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
