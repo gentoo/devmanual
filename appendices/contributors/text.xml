@@ -110,7 +110,7 @@ Misc
 <author name="Michał Górny" email="mgorny@gentoo.org">
   <uri link="::general-concepts/"/>,
   <uri link="::ebuild-writing/"/>,
-  <!-- The following is 700+ lines, so keep is as a separate entry -->
+  <!-- The following is 700+ lines, so keep it as a separate entry -->
   <uri link="::ebuild-writing/eapi/#EAPI 8"/>,
   <uri link="::ebuild-maintenance/"/>
 </author>
