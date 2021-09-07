@@ -72,7 +72,11 @@ of thumb could be used as a guideline:
   <li>fixing an automagic dependency detection from a build system,</li>
   <li>
     restricting a runtime dependency version, unless the <c>:=</c>
-    subslot operator is going to trigger a rebuild.
+    subslot operator is going to trigger a rebuild,
+  </li>
+  <li>
+    changing the EAPI (unless changes to the ebuild are trivial, and you can be
+    sure it won't break stable or reverse dependencies).
   </li>
 </ul>
 
