@@ -411,7 +411,7 @@ description.
 
 <codesample lang="sgml">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
 &lt;pkgmetadata&gt;
   &lt;maintainer type="project"&gt;
     &lt;email&gt;office@gentoo.org&lt;/email&gt;
@@ -477,7 +477,7 @@ as opposed to a URL. Conversely, email addresses specified in the
 
 <codesample lang="sgml">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
 &lt;pkgmetadata&gt;
   &lt;upstream&gt;
     &lt;bugs-to&gt;mailto:dev-portage@gentoo.org&lt;/bugs-to&gt;
@@ -536,7 +536,7 @@ is demonstrated.
 
 <codesample lang="sgml">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
 &lt;pkgmetadata&gt;
   &lt;maintainer restrict="&amp;gt;=sys-boot/grub-2" type="person"&gt;
     &lt;email&gt;floppym@gentoo.org&lt;/email&gt;
@@ -595,7 +595,7 @@ specified in the <c>&lt;subslots&gt;</c> tag.
 
 <codesample lang="sgml">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
 &lt;pkgmetadata&gt;
   &lt;maintainer type="project"&gt;
     &lt;email&gt;base-system@gentoo.org&lt;/email&gt;
@@ -656,7 +656,7 @@ part of the QA reports.
 
 <codesample lang="sgml">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
 &lt;pkgmetadata&gt;
   &lt;!-- maintainer-needed --&gt;
   &lt;upstream&gt;
@@ -691,7 +691,7 @@ English and optionally in other languages). A typical example:
 
 <codesample lang="sgml">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd"&gt;
+&lt;!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
 &lt;catmetadata&gt;
   &lt;longdescription lang="en"&gt;
     The app-vim category contains plugins and syntax file
