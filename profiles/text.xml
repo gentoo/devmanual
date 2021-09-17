@@ -9,7 +9,9 @@ This section provides details on the <c>profiles/</c> directory. All of these
 files are also documented in <c>man portage</c>, but the canonical reference
 for profiles is within
 <uri link="https://projects.gentoo.org/pms/8/pms.html#x1-320004.4">PMS</uri>.
+</p>
 
+<p>
 Portage-specific behaviour must not be relied upon in the repository.
 </p>
 </body>
