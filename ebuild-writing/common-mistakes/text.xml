@@ -416,7 +416,9 @@ SLOT="0"
 <p>
 Make sure the <c>DESCRIPTION</c> is not overly long. Good descriptions will
 describe the main function of the package in a sentence.
+</p>
 
+<p>
 Please check if the <c>HOMEPAGE</c> variable is right and leads users to the
 right page if they want to find out more about the package. If no homepage for
 the package is available, set the <c>HOMEPAGE</c> variable to
