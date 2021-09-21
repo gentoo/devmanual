@@ -145,10 +145,9 @@ manually verify all packages affected by the commit using <c>repoman full</c> or
 <c>pkgcheck scan --commits</c>. When using <c>repoman</c>, it won't be aware of
 staged changes, so ensure that all files are included in the commit.
 Also, when using <c>git</c> manually, you must perform a manual sign-off to the
-<uri link="https://www.gentoo.org/glep/glep-0076.html#certificate-of-origin">
-Certificate of Origin</uri> using the <c>-s</c> or <c>--signoff</c> option
-with your git commit commands. Make sure you have read and understand the
-actual Certificate.
+<uri link="::general-concepts/copyright-policy/#Certificate of origin"/> using
+the <c>-s </c> or <c>--signoff</c> option with your git commit commands. Make
+sure you have read and understand the actual certificate.
 </p>
 
 </body>
