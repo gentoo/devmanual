@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<guide self="general-concepts/copyright-policy/">
+<chapter>
+<title>Gentoo's copyright policy</title>
+<body>
+
+<p>
+<uri link="https://www.gentoo.org/glep/glep-0076.html">GLEP-76</uri> defines
+copyright and license policies for Gentoo Linux. 
+</p>
+
+<p>
+Every Gentoo project must abide by the
+<uri link="https://www.gentoo.org/get-started/philosophy/social-contract.html">
+Gentoo Social Contract</uri> and release its work under one or more of
+<uri link="https://www.gentoo.org/glep/glep-0076.html#licensing-of-gentoo-projects">
+predetermined licenses</uri>. Exceptions may be granted by the Gentoo
+Foundation per-case basis.
+</p>
+
+</body>
+
+<section>
+<title>Certificate of Origin</title>
+<body>
+
+<p>
+Per Gentoo's <uri link="https://www.gentoo.org/glep/glep-0076.html">GLEP 76
+(Copyright Policy GLEP)</uri>, you must sign-off all your commits to any
+Gentoo-hosted repository with accordance to the
+<uri link="https://www.gentoo.org/glep/glep-0076.html#certificate-of-origin">
+copyright policy</uri>. 
+</p>
+
+<p>
+When committing work authored by someone else, e.g. a Bugzilla patch, or GitHub
+pull request, a sign-off from the original author is always strongly
+recommended, in order to indicate that the author acknowledges Gentoo's
+copyright policy. However, it is not mandatory for every case. Please refer to
+the example list below when determining whether a sign-off from the original
+author is, or is not required. The list below serves as a general guideline.
+</p>
+</body>
+
+<subsection>
+<title>Examples for general guideline</title>
+<body>
+
+<dl>
+  <dt>A contribution with a Signed-off-by line by its author</dt>
+  <dd>
+    Can be accepted, because the author confirmed that it is under a free
+    software license. The committer adds another S-o-b line and certifies the
+    commit under point 4 of the 
+    <uri link="https://www.gentoo.org/glep/glep-0076.html#certificate-of-origin">
+    GCO</uri>.
+    <note>
+    Use common sense here, especially if you don't know the contributor. If the
+    contribution was taken from somewhere else and the contributor doesn't have
+    the right to distribute it under a free software license, you as the
+    committer might get into trouble. So in this situation, do your best to
+    check repositories for matching code, and whether they hold any special
+    copyright claims.
+    </note>
+  </dd>
+  <dt>
+    A contribution without a S-o-b line and of significant size, but with an
+    independent indication of its license (e.g. copyright and license notices
+    in the file's header)
+  </dt>
+  <dd>
+    Can be accepted. The committer adds a S-o-b line and certifies the commit
+    under GCO point 2.
+  </dd>
+  <dt>
+    A contribution without a S-o-b line but not
+    <uri link="https://www.gnu.org/prep/maintain/html_node/Legally-Significant.html">
+    "legally significant"</uri> (by the FSF's 15-lines rule of thumb)
+  </dt>
+  <dd>
+    Can be accepted. The committer adds a S-o-b line and certifies the commit
+    under GCO point 2.
+  </dd>
+  <dt>
+    A contribution without a S-o-b line and of significant size, without any
+    other indication of its license
+  </dt>
+  <dd>
+    Can <e>not</e> be accepted. There's no indication that the author has
+    released their work under a free license, therefore it must not be
+    distributed by Gentoo.
+  </dd>
+</dl>
+</body>
+</subsection>
+
+</section>
+</chapter>
+</guide>
