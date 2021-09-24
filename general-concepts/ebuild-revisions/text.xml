@@ -111,8 +111,8 @@ of thumb could be used as a guideline:
   </li>
   <li>
     a dependency change due to
-    <uri link="::ebuild-maintenance/removal/#removing-a-virtual-package">
-    removal of a virtual package.</uri>
+    <uri link="::ebuild-maintenance/removal/#Removing a virtual package">
+    removal of a virtual package</uri>.
   </li>
 </ul>
 
