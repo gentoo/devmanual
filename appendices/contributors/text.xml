@@ -63,6 +63,7 @@ Misc
 </author>
 <author name="Ulrich Müller" email="ulm@gentoo.org">
   <uri link="::quickstart/"/>,
+  <uri link="::general-concepts/copyright-policy/"/>,
   <uri link="::general-concepts/virtuals/"/>,
   <uri link="::ebuild-writing/"/>,
   <uri link="::ebuild-maintenance/"/>,
@@ -128,6 +129,9 @@ Misc
 <author name="Sam James" email="sam@gentoo.org">
   <uri link="::eclass-writing/"/>,
   <uri link="::keywording/"/>
+</author>
+<author name="Joonas Niilola" email="juippis@gentoo.org">
+  <uri link="::general-concepts/copyright-policy/"/>
 </author>
 </authors>
 
