@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <guide self="general-concepts/copyright-policy/">
 <chapter>
-<title>Gentoo's copyright policy</title>
+<title>Copyright Policy</title>
 <body>
 
 <p>
@@ -25,8 +25,8 @@ Foundation per-case basis.
 <body>
 
 <p>
-Per Gentoo's <uri link="https://www.gentoo.org/glep/glep-0076.html">GLEP 76
-(Copyright Policy GLEP)</uri>, you must sign-off all your commits to any
+Per <uri link="https://www.gentoo.org/glep/glep-0076.html">GLEP 76
+(Copyright Policy)</uri>, you must sign-off all your commits to any
 Gentoo-hosted repository with accordance to the
 <uri link="https://www.gentoo.org/glep/glep-0076.html#certificate-of-origin">
 copyright policy</uri>.
@@ -53,7 +53,7 @@ author is, or is not required. The list below serves as a general guideline.
     software license. The committer adds another S-o-b line and certifies the
     commit under point 4 of the
     <uri link="https://www.gentoo.org/glep/glep-0076.html#certificate-of-origin">
-    GCO</uri>.
+    Certificate of Origin</uri>.
     <note>
     Use common sense here, especially if you don't know the contributor. If the
     contribution was taken from somewhere else and the contributor doesn't have
@@ -70,7 +70,7 @@ author is, or is not required. The list below serves as a general guideline.
   </dt>
   <dd>
     Can be accepted. The committer adds a S-o-b line and certifies the commit
-    under GCO point 2.
+    under point 2 of the Certificate of Origin.
   </dd>
   <dt>
     A contribution without a S-o-b line but not
@@ -79,7 +79,7 @@ author is, or is not required. The list below serves as a general guideline.
   </dt>
   <dd>
     Can be accepted. The committer adds a S-o-b line and certifies the commit
-    under GCO point 2.
+    under point 2 of the Certificate of Origin.
   </dd>
   <dt>
     A contribution without a S-o-b line and of significant size, without any
