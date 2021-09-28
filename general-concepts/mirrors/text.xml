@@ -42,8 +42,8 @@ This should not be used in new ebuilds.
 <p>
 There is also <c>RESTRICT="fetch"</c>, which prevents Portage from trying to
 fetch anything manually. The <uri link="::ebuild-writing/functions/pkg_nofetch">
-pkg_nofetch</uri> function will be called if any <c>SRC_URI</c> components cannot be
-found. This should only be used if a license requires it.
+pkg_nofetch</uri> function will be called if any <c>SRC_URI</c> components
+cannot be found. This should only be used if a license requires it.
 </p>
 </body>
 </subsection>
@@ -100,15 +100,16 @@ devspace.
 </p>
 
 <p>
-Previous policy was to use <c>mirror://gentoo</c> directly, but this is now deprecated, as that
-wouldn't allow to have long-term availability and traceability of the source files, which might be a
-requirement of the license.
+Previous policy was to use <c>mirror://gentoo</c> directly, but this is now
+prohibited, as that wouldn't allow to have long-term availability and
+traceability of the source files, which might be a requirement of the license.
 </p>
 
 <p>
-When you upload the file to <c>dev.gentoo.org:~/public_html</c>, you must ensure that it, and its
-parent directories, are world-readable. An example <c>SRC_URI</c> referencing
-a distfile mirrored this way is as follows:
+When you upload the distfile to <c>dev.gentoo.org:~/public_html</c>, ensure that
+your file and its parent directories have the correct permissions, so they're
+accessible. An example <c>SRC_URI</c> referencing a distfile mirrored this way
+is as follows:
 </p>
 
 <codesample lang="ebuild">
@@ -119,25 +120,14 @@ SRC_URI="https://dev.gentoo.org/~myname/distfiles/${P}.tar.gz"
 where <c>myname</c> refers to the username of the developer.
 </p>
 
+<p>
+If the upstream download location for a package uses a non-standard TCP port
+(anything other than 21, 80 or 443), you <e>must</e> manually mirror the files.
+Not doing so can cause all kinds of problems with strict firewalls.
+</p>
+
 </body>
 </subsection>
-</section>
-
-<section>
-<title>Gentoo Mirrors</title>
-
-<body>
-<p>
-To manually upload a file to <c>mirror://gentoo</c>, <c>scp</c> it to
-<c>dev.gentoo.org:/space/distfiles-local</c>. The file should appear
-on the mirrors within four hours (note that this is <e>less
-frequent</e> than <uri link="::general-concepts/git-to-rsync"/>).
-
-If the upstream download location for a package uses a non-standard TCP port
-(anything other than 21, 80 or 443), you <e>must</e> manually mirror the files. Not
-doing so can cause all kinds of problems with strict firewalls.
-</p>
-</body>
 </section>
 
 <section>
