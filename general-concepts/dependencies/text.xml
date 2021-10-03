@@ -305,6 +305,12 @@ the package from source, and may not apply once the package is installed
 or when it is installed from a binary package.
 </p>
 
+<p>
+The most common use for strong blockers is where another package simply
+being installed causes a build failure. Strong blockers are not to be used
+to prevent just file collisions.
+</p>
+
 <note>
 If both weak and strong blockers match a given package, the strong blocker
 takes precedence.
