@@ -63,6 +63,12 @@ and end up breaking something, expect to be in a lot of trouble.
 </p>
 
 <p>
+Note that you should also, when sending your patch, CC any maintainers of the
+eclass listed in the <c>@MAINTAINER</c> tag. You may want to contact them
+ahead of time and get their opinions too.
+</p>
+
+<p>
 The exceptions to this rule are updates to per-package eclasses. For example,
 the <c>apache-2</c> eclass is only used by the <c>www-servers/apache</c>
 package, and thus does not typically require changes to be emailed for review.
