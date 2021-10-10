@@ -84,7 +84,7 @@
     </xsl:if>
     <xsl:if test="@nowrap">
       <!-- Disable word wrapping for this table item. Usage: <ti nowrap="nowrap"> -->
-      <xsl:attribute name="nowrap"><xsl:value-of select="@nowrap"/></xsl:attribute>
+      <xsl:attribute name="style">white-space:<xsl:value-of select="@nowrap"/></xsl:attribute>
     </xsl:if>
     <xsl:apply-templates/>
   </td>

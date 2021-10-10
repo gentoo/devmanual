@@ -86,7 +86,7 @@ validate:
 	@xmllint --noout --dtdvalid devbook.dtd $(XMLS) \
 	  && echo "xmllint validation successful"
 
-# Run app-text/tidy-html5 on the output to detect mistakes.
+# Run app-text/htmltidy on the output to detect mistakes.
 # We have to loop through them because otherwise tidy won't
 # tell you which file contains a mistake.
 tidy: $(HTMLS) $(ECLASS_HTMLS)
