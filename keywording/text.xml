@@ -201,9 +201,11 @@ Do <b>not</b> commit straight to <c>arch</c> ("stable").
 
 <p>
 When upgrading, drop all existing keywords from <c>arch</c> to <c>~arch</c>
-("testing"), and leave any existing <c>~arch</c> keywords intact. This must be
-done even if you <e>think</e> you're just making a trivial fix <d /> there have
-been several examples of the stable tree getting broken this way.
+("testing"), and leave any existing <c>~arch</c> keywords intact. It's easiest
+and safest to use <c>ekeyword ~all my-new-version.ebuild</c> from the <c>
+app-portage/gentoolkit</c> package. This must be done even if you <e>think</e>
+you're just making a trivial fix <d /> there have been several examples of the
+stable tree getting broken this way.
 </p>
 
 <p>
