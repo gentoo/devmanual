@@ -99,6 +99,8 @@ tidy: $(HTMLS) $(ECLASS_HTMLS)
 	test $${status} -eq 0 && echo "tidy validation successful"; \
 	exit $${status}
 
+check: validate tidy
+
 dist:
 	COMMITDATE=$$(TZ=UTC git log -1 --pretty="format:%cd" \
 	  --date="format-local:%Y%m%d"); \
@@ -109,6 +111,6 @@ dist:
 clean:
 	@rm -f $(HTMLS) $(IMAGES) documents.js .depend
 
-.PHONY: all prereq build install validate tidy dist clean
+.PHONY: all prereq build install check validate tidy dist clean
 
 -include .depend
