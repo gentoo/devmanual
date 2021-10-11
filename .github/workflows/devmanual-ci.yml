@@ -1,0 +1,26 @@
+name: Devmanual CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # no gentoo :(
+    steps:
+    - uses: actions/checkout@v2
+    - name: install prerequisites
+      # librsvg2-bin for rsvg-convert
+      # xsltproc for xsltproc
+      # libxml2-utils for xmllint
+      # tidy for tidy
+      run: >
+        sudo apt install -y librsvg2-bin xsltproc libxml2-utils tidy
+        fonts-open-sans
+    - name: make
+      run: make
+    - name: make check
+      run: make check
