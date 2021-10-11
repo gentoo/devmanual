@@ -68,7 +68,7 @@ eclass-reference/text.xml:
 # the previous and next documents (for backward and forward links).
 # Generate the list of dependencies with XSLT, which appears to be a
 # better tool for this than make.
-.depend: $(XMLS) depend.xsl devbook.xsl
+.depend: $(XMLS) eclass-reference/text.xml depend.xsl devbook.xsl
 	@xsltproc depend.xsl $(XMLS) | sed ':x;s%[^ /]*/\.\./%%;tx' > $@
 
 install: all
