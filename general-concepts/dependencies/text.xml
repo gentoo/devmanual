@@ -34,15 +34,15 @@ for how dependencies and revisions interact.
 
 <p>
 In order to avoid ambiguity, we use the following terms to indicate different
-systems when cross-compiling:
+systems when cross-compiling.  They serve as a shorthand for an overall system
+in addition to their literal value (e.g. $CHOST).
 </p>
 
 <dl>
   <dt>CBUILD</dt>
   <dd>
     The system on which the build is performed.  Dependencies that apply
-    to the CBUILD system can be executed during build time.  When
-    cross-compiling, they are not installed into the system being built.
+    to the CBUILD system can be executed during build time.
   </dd>
 
   <dt>CHOST</dt>
@@ -53,8 +53,15 @@ systems when cross-compiling:
 </dl>
 
 <p>
-When not cross-compiling, CBUILD and CHOST have the same value and both classes
-of dependencies are merged.
+When cross-compiling, CBUILD and CHOST are naturally different, as are the
+actual install paths for the different types of dependencies.
+</p>
+
+<p>
+Note however that, while cross-compiling is used to help explain these concepts,
+it is not strictly required.  CBUILD and CHOST could target the exact same
+hardware, but be installed into distinct SYSROOT/ROOT paths.  The dependency
+distinctions still apply even if it isn't, strictly speaking, cross-compiling.
 </p>
 
 </body>
