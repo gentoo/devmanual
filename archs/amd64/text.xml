@@ -129,27 +129,14 @@ To understand how this is done in the ebuild, read
 </subsection>
 
 <subsection>
-<title>The <c>emul-linux-x86-*</c> packages</title>
+<title>32bit compatibility</title>
 <body>
 
 <p>
 As you read above, 32bit applications must be linked against 32bit libraries.
-For that, we've put together the most used libraries and stuck them into the
-so-called <c>emul-linux-x86</c> packages, which are located in the
-<c>app-emulation</c> category. The current list of all the <c>emul-linux-x86</c>
-packages, can be found <uri link="https://dev.gentoo.org/~pacho/emul.html">here.</uri>
+For that, we've made the most common libraries as multilib (via <c>ABI</c>
+variable and <c>multilib.eclass</c>).
 </p>
-
-<p>
-These packages only provide pre-compiled libraries. Currently, the
-archives are assembled manually, which is the main reason to keep the packages
-as tidy as possible. Do not include libraries that aren't commonly used.
-</p>
-
-<note>
-  The emul-packages might conflict with their native images, but only in
-  uncritical locations like <c>/usr/share</c> which are arch-independent anyway.
-</note>
 
 </body>
 </subsection>
