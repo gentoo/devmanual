@@ -143,141 +143,66 @@ variable and <c><uri link="::eclass-reference/multilib.eclass/"/></c>).
 </subsection>
 
 <subsection>
-<title><c>Libdir</c> Links</title>
+<title>Libdir links</title>
 <body>
 
 <p>
-Currently, we provide several profiles, each with its own combination of <c>libdir</c>
-configurations.
+Currently, we provide several profiles, each with its own combination of
+<c>libdir</c> configurations. Table entries x86, amd64, etc. indicate that
+the directory contains objects for this ABI; entries with an arrow indicate
+a symlink to the respective directory.
 </p>
 
 <table>
   <tr>
-    <th>
-      Profile
-    </th>
-    <th>
-      lib32
-    </th>
-    <th>
-      lib
-    </th>
-    <th>
-      lib64
-    </th>
+    <th>Profile</th>
+    <th>lib</th>
+    <th>lib32</th>
+    <th>lib64</th>
+    <th>libx32</th>
   </tr>
   <tr>
-    <ti>
-      2004.3
-    </ti>
-    <ti>
-      *l-&gt;emul*
-    </ti>
-    <ti>
-      d64
-    </ti>
-    <ti>
-      *l-&gt;lib*
-    </ti>
+    <ti>17.0</ti>
+    <ti>-&gt; lib64</ti>
+    <ti>x86</ti>
+    <ti>amd64</ti>
+    <ti>non-existent</ti>
   </tr>
   <tr>
-    <ti>
-      2004.3/lib64
-    </ti>
-    <ti>
-      *l-&gt;emul*
-    </ti>
-    <ti>
-      *l-&gt;64*
-    </ti>
-    <ti>
-      d64
-    </ti>
+    <ti>17.0/no-multilib</ti>
+    <ti>-&gt; lib64</ti>
+    <ti>non-existent</ti>
+    <ti>amd64</ti>
+    <ti>non-existent</ti>
   </tr>
   <tr>
-    <ti>
-      &gt;=2005.0
-    </ti>
-    <ti>
-      d32
-    </ti>
-    <ti>
-      *l-&gt;64*
-    </ti>
-    <ti>
-      d64
-    </ti>
+    <ti>17.0/x32</ti>
+    <ti>-&gt; libx32</ti>
+    <ti>x86</ti>
+    <ti>amd64</ti>
+    <ti>x32</ti>
   </tr>
   <tr>
-    <ti>
-      &gt;=2005.0/no-multilib
-    </ti>
-    <ti>
-      d32
-    </ti>
-    <ti>
-      *l-&gt;64*
-    </ti>
-    <ti>
-      d64
-    </ti>
+    <ti>17.1</ti>
+    <ti>x86</ti>
+    <ti>non-existent</ti>
+    <ti>amd64</ti>
+    <ti>non-existent</ti>
   </tr>
   <tr>
-    <ti>
-      &gt;=2005.0/no-symlink
-    </ti>
-    <ti>
-      d32
-    </ti>
-    <ti>
-      d
-    </ti>
-    <ti>
-      d64
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      &gt;=2005.0/no-symlink/no-lib32
-    </ti>
-    <ti>
-      inexistant
-    </ti>
-    <ti>
-      d32
-    </ti>
-    <ti>
-      d64
-    </ti>
+    <ti>17.1/no-multilib</ti>
+    <ti>n/a</ti>
+    <ti>non-existent</ti>
+    <ti>amd64</ti>
+    <ti>non-existent</ti>
   </tr>
 </table>
 
-<dl>
-  <dt>
-    d
-  </dt>
-  <dd>
-    Directory containing mixed-bit objects
-  </dd>
-  <dt>
-    dXX
-  </dt>
-  <dd>
-    Directory containing XXbit objects
-  </dd>
-  <dt>
-    l-&gt;foo
-  </dt>
-  <dd>
-    Link to foo
-  </dd>
-</dl>
-
 <p>
-To always get the right path, you should use the function <c>$(get_libdir)</c>
-from <c><uri link="::eclass-reference/multilib.eclass/"/></c>. It will always
-return the correct directory, on all arches. And of course it also takes care
-of the <c>ABI</c> variable.
+To always get the right path, you should use <c>$(get_libdir)</c> which is
+available as a package manager function since EAPI 6. It will always return
+the correct directory, on all arches. And of course it also takes care of
+the <c>ABI</c> variable.
 </p>
 
 </body>
@@ -307,13 +232,10 @@ this behaviour is controlled by the <c>MULTILIB_STRICT_EXEMPT</c> variable in
 <body>
 
 <p>
-In most cases, it's sufficient to use the <c>$(get_libdir)</c> function from
-<c><uri link="::eclass-reference/multilib.eclass/"/></c>:
+In most cases, it's sufficient to use the <c>$(get_libdir)</c> function:
 </p>
 
 <codesample lang="ebuild">
-inherit multilib
-
 src_compile() {
 	econf \
 		--libdir=/usr/$(get_libdir)
