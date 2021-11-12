@@ -69,8 +69,9 @@ doesn't help upstream at all.
 
 <p>
 Another bad idea is to (ab)use <c>append-flags</c> function from
-<c>flag-o-matic.eclass</c>. Applying <c>-fPIC</c> on all objects should not be
-done.  It should only be applied to shared objects.
+<c><uri link="::eclass-reference/flag-o-matic.eclass/"/></c>.
+Applying <c>-fPIC</c> on all objects should not be done. It should only be
+applied to shared objects.
 </p>
 
 </body>
@@ -135,7 +136,7 @@ To understand how this is done in the ebuild, read
 <p>
 As you read above, 32bit applications must be linked against 32bit libraries.
 For that, we've made the most common libraries as multilib (via <c>ABI</c>
-variable and <c>multilib.eclass</c>).
+variable and <c><uri link="::eclass-reference/multilib.eclass/"/></c>).
 </p>
 
 </body>
@@ -273,9 +274,10 @@ configurations.
 </dl>
 
 <p>
-To always get the right path, you should use the function <c>$(get_libdir)</c> from
-<c>multilib.eclass</c>. It will always return the correct directory, on all arches.
-And of course it also takes care of the <c>ABI</c> variable.
+To always get the right path, you should use the function <c>$(get_libdir)</c>
+from <c><uri link="::eclass-reference/multilib.eclass/"/></c>. It will always
+return the correct directory, on all arches. And of course it also takes care
+of the <c>ABI</c> variable.
 </p>
 
 </body>
@@ -306,7 +308,7 @@ this behaviour is controlled by the <c>MULTILIB_STRICT_EXEMPT</c> variable in
 
 <p>
 In most cases, it's sufficient to use the <c>$(get_libdir)</c> function from
-<c>multilib.eclass</c>:
+<c><uri link="::eclass-reference/multilib.eclass/"/></c>:
 </p>
 
 <codesample lang="ebuild">
