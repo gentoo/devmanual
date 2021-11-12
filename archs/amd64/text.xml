@@ -232,21 +232,9 @@ this behaviour is controlled by the <c>MULTILIB_STRICT_EXEMPT</c> variable in
 <body>
 
 <p>
-In most cases, it's sufficient to use the <c>$(get_libdir)</c> function:
+In most cases, default <c>econf</c> behaviour is sufficient, because it will
+pass the correct <c>--libdir</c> option to <c>configure</c>.
 </p>
-
-<codesample lang="ebuild">
-src_compile() {
-	econf \
-		--libdir=/usr/$(get_libdir)
-
-	emake || die
-}
-
-src_install() {
-    emake DESTDIR="${D}" install || die
-}
-</codesample>
 
 <p>
 Some packages provide really bad Makefiles which hard-code <c>/usr/lib</c>. Those
