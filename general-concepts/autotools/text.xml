@@ -116,23 +116,28 @@ either <c>Makefile.am</c> or <c>configure.ac</c>:
 </p>
 
 <codesample lang="ebuild">
-EAPI=5
+EAPI=8
 
+WANT_AUTOCONF=2.5
+WANT_AUTOMAKE=1.9
 inherit autotools
 
+IUSE="nls"
+
+BDEPEND="nls? ( sys-devel/gettext )"
+
 src_prepare() {
+	default
+
 	# Remove problematic LDFLAGS declaration
 	sed -i -e '/^LDFLAGS/d' src/Makefile.am || die
 
 	# Rerun autotools
-	einfo "Regenerating autotools files..."
-	WANT_AUTOCONF=2.5 eautoconf
-	WANT_AUTOMAKE=1.9 eautomake
+	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	econf $(use_enable nls)
-	emake
 }
 </codesample>
 
@@ -591,10 +596,17 @@ In the first case you usually want to do something like:
 </p>
 
 <codesample lang="ebuild">
-einfo "Regenerating autotools files..."
-cp "${WORKDIR}/gentoo-m4" "${S}/m4" || die "m4 copy failed"
-WANT_AUTOCONF="2.5" aclocal -I "${S}/m4" || die "aclocal failed"
-WANT_AUTOCONF="2.5" autoconf || die "autoconf failed"
+WANT_AUTOCONF="2.5"
+inherit autotools
+
+src_prepare() {
+	default
+
+	einfo "Regenerating autotools files..."
+	cp "${WORKDIR}/gentoo-m4" "${S}/m4" || die "m4 copy failed"
+	eaclocal -I "${S}/m4"
+	eautoconf
+}
 </codesample>
 
 <p>
@@ -602,9 +614,16 @@ and so on. In the second case you can simplify it in this way:
 </p>
 
 <codesample lang="ebuild">
-einfo "Regenerating autotools files..."
-WANT_AUTOCONF="2.5" aclocal -I "${WORKDIR}/gentoo-m4" || die "aclocal failed"
-WANT_AUTOCONF="2.5" autoconf || die "autoconf failed"
+WANT_AUTOCONF="2.5"
+inherit autotools
+
+src_prepare() {
+	default
+
+	einfo "Regenerating autotools files..."
+	eaclocal -I "${WORKDIR}/gentoo-m4"
+	eautoconf
+}
 </codesample>
 
 <p>
