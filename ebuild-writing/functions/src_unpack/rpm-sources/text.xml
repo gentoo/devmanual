@@ -28,7 +28,7 @@ src_unpack() {
 	rpm_src_unpack ${A}
 	cd "${S}"
 
-	use ssl &amp;&amp; epatch "${FILESDIR}/${PV}/${P}-ssl.patch"
+	use ssl &amp;&amp; eapply "${FILESDIR}/${PV}/${P}-ssl.patch"
 }
 </codesample>
 
@@ -55,16 +55,17 @@ patches. The filename should be <c>suse-fetchmail-6.2.5.54.1.ebuild</c>.
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit eapi7-ver rpm
+inherit rpm
 
 MY_PV=$(ver_rs 3 '-')
 MY_P=fetchmail-${MY_PV}
 
-SRC_URI="https://suse.osuosl.org/suse/i386/9.2/suse/src/${MY_P}.src.rpm"
 DESCRIPTION="SuSE 9.2 Fetchmail Source Package"
 HOMEPAGE="https://www.suse.com"
+SRC_URI="https://suse.osuosl.org/suse/i386/9.2/suse/src/${MY_P}.src.rpm"
+S=${WORKDIR}/fetchmail-$(ver_cut 1-3)
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"
@@ -75,14 +76,12 @@ RESTRICT="mirror"
 # Need to test if the file can be unpacked with rpmoffset and cpio
 # If it can't then set:
 
-#DEPEND="app-arch/rpm"
+#BDEPEND="app-arch/rpm"
 
 # To force the use of rpmoffset and cpio instead of rpm2cpio from
 # app-arch/rpm, then set the following:
 
 #USE_RPMOFFSET_ONLY=1
-
-S=${WORKDIR}/fetchmail-$(ver_cut 1-3)
 
 src_unpack() {
     rpm_src_unpack ${A}
