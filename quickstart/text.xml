@@ -257,8 +257,9 @@ for some more complex examples.
 
 <body>
 <p>
-Often we need to apply patches. This is done in the <c>src_prepare</c>
-function using the <c>eapply</c> helper function. To use <c>eapply</c>
+Often we need to apply patches. This is done either by defining the
+<c>PATCHES</c> array in global scope or in the <c>src_prepare</c> function
+using the <c>eapply</c> helper function. To use <c>eapply</c>,
 one must use EAPI 7. Here's <c>app-misc/detox/detox-1.1.0.ebuild</c>:
 </p>
 
@@ -266,7 +267,7 @@ one must use EAPI 7. Here's <c>app-misc/detox/detox-1.1.0.ebuild</c>:
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="detox safely removes spaces and strange characters from filenames"
 HOMEPAGE="http://detox.sourceforge.net/"
@@ -387,11 +388,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-util/pkgconfig
 	nls? ( &gt;=sys-devel/gettext-0.12.1 )"
 
-src_prepare() {
-	eapply "${FILESDIR}"/${PN}-namespace.diff \
-		"${FILESDIR}"/${PN}-procmime.diff
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-namespace.patch
+	"${FILESDIR}"/${PN}-procmime.patch
+)
 
 src_configure() {
 	econf \
