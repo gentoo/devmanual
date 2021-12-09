@@ -241,10 +241,12 @@ and installing common documentation files works correctly for the package.
 </p>
 
 <p>
-The <c>DEPEND</c> and <c>RDEPEND</c> variables are how Portage determines which
-packages are needed to build and run the package. The <c>DEPEND</c> variable lists
-compile-time dependencies, and the <c>RDEPEND</c> lists runtime dependencies. See
-<uri link="::general-concepts/dependencies"/> for some more complex examples.
+The <c>BDEPEND</c>, <c>DEPEND</c> and <c>RDEPEND</c> variables are how Portage
+determines which packages are needed to build and run the package. The
+<c>BDEPEND</c> variable lists build-time (executable) dependencies,
+<c>DEPEND</c> variable lists compile-time dependencies, and the <c>RDEPEND</c>
+lists runtime dependencies. See <uri link="::general-concepts/dependencies"/>
+for some more complex examples.
 </p>
 
 </body>
