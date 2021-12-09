@@ -605,7 +605,7 @@ domacosapp() {
 	[[ -z "${1}" ]] &amp;&amp; die "usage: domacosapp &lt;file&gt; [new file]"
 	if use ppc-macos ; then
 		insinto /Applications
-		newins "$1" "${2:-${1}}" || die "Failed to install ${1}"
+		newins "$1" "${2:-${1}}"
 	fi
 }
 </codesample>
