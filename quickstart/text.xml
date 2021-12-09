@@ -37,7 +37,7 @@ can see real ebuilds in the main tree).
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Exuberant ctags generates tags files for quick source navigation"
 HOMEPAGE="https://ctags.io/ https://github.com/universal-ctags/ctags"
@@ -206,7 +206,7 @@ Here's <c>app-misc/detox/detox-1.1.1.ebuild</c>:
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="detox safely removes spaces and strange characters from filenames"
 HOMEPAGE="http://detox.sourceforge.net/"
@@ -219,7 +219,7 @@ KEYWORDS="~hppa ~mips sparc x86"
 RDEPEND="dev-libs/popt"
 DEPEND="${RDEPEND}
 	sys-devel/flex
-	sys-devel/bison"
+BDEPEND="sys-devel/bison"
 
 src_configure() {
 	econf --with-popt
@@ -276,8 +276,8 @@ KEYWORDS="~hppa ~mips ~sparc ~x86"
 
 RDEPEND="dev-libs/popt"
 DEPEND="${RDEPEND}
-	sys-devel/flex
-	sys-devel/bison"
+	sys-devel/flex"
+BDEPEND="sys-devel/bison"
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-destdir.patch \
@@ -320,7 +320,7 @@ replacement iconv for <c>libc</c> implementations which don't have their own.
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="GNU charset conversion library for libc which doesn't implement it"
 HOMEPAGE="https://www.gnu.org/software/libiconv/"
@@ -359,7 +359,7 @@ Another more complicated example, this time based upon
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop
 
@@ -369,7 +369,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="crypt imlib ipv6 ldap nls pda ssl xface"
 
 RDEPEND="=x11-libs/gtk+-2*
@@ -381,8 +381,8 @@ RDEPEND="=x11-libs/gtk+-2*
 	xface? ( &gt;=media-libs/compface-1.4 )
 	app-misc/mime-types
 	x11-misc/shared-mime-info"
-DEPEND="${RDEPEND}
-	dev-util/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="dev-util/pkgconfig
 	nls? ( &gt;=sys-devel/gettext-0.12.1 )"
 
 src_prepare() {
