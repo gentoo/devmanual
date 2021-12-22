@@ -103,9 +103,10 @@ The <c>*into</c> functions create the directory if it does not already exist.
       <c>dobin</c>
     </ti>
     <ti>
-      Install a binary into <c>/usr/bin</c>, set the file mode to 0755
-      and set the ownership to superuser or its equivalent on the
-      system or installation at hand.
+      Install a binary into subdirectory <c>bin</c> of the location provided
+      by <c>into</c> (resulting in <c>/usr/bin</c> by default) with mode 0755
+      and with ownership set to superuser or its equivalent on the system or
+      installation at hand
     </ti>
   </tr>
   <tr>
