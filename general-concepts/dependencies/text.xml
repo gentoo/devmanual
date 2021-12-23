@@ -387,18 +387,19 @@ or <uri link="::general-concepts/slotting#Sub-Slots">sub-slot</uri>:
 
 <ul>
   <li>
-    <c>:=</c> means that any slot is acceptable, and that your package should be
-    rebuilt if the version best matching the runtime dependency is updated to a
-    version with a different slot or subslot;
+    <c>:=</c> means that any slot is acceptable. Additionally indicates that
+    your package should be rebuilt if the version best matching the runtime
+    dependency is updated to a version with a different slot or subslot.
   </li>
   <li>
-    <c>:*</c> means that any slot is acceptable, and explicitly declares that
-    changes in the slot or sub-slot can be ignored;
+    <c>:*</c> means that any slot is acceptable. Furthermore, this slot
+    operator explicitly declares that changes in the slot or sub-slot can be
+    ignored.
   </li>
   <li>
-    <c>:SLOT=</c> means that only the 'SLOT' slot is acceptable, and that your
-    package should be rebuilt if the version matching the runtime dependency is
-    updated to another version with this slot but with a different subslot;
+    <c>:SLOT=</c> means that only the 'SLOT' slot is acceptable. It otherwise
+    behaves identically to the <c>:=</c> operator. That is, the package must be
+    rebuilt if the sub-slot of the dependency changes.
   </li>
   <li>
     <c>:SLOT</c> means that only the 'SLOT' slot is acceptable, and that changes
