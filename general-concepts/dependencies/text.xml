@@ -421,6 +421,35 @@ RDEPEND="media-libs/cogl:1.0=
 	gnutls? ( &gt;=net-libs/gnutls-2.8:= )"
 </codesample>
 
+<p>
+means that only the '1.0' slot is acceptable for <c>media-libs/cogl</c> and
+that sub-slot changes of <c>media-libs/cogl</c> will cause a rebuild of the
+dependent package. It furthermore means that every slot of
+<c>net-libs/gnutls</c> is acceptable but any slot change is causing a rebuild.
+</p>
+
+<p>
+The <c>:slot</c> dependency syntax continues to behave like in EAPI=4 or
+earlier, i.e. it indicates that only the specific slot value is acceptable and
+that the package will not break when the currently installed version of the
+dependency is replaced by a version with a different sub-slot.
+</p>
+<p>
+For example:
+</p>
+<codesample lang="ebuild">
+RDEPEND="dev-libs/foo:2=
+    &gt;=dev-libs/bar-0.9:=
+    media-gfx/baz:*
+    x11-misc/wombat:0"
+</codesample>
+<p>
+means that the package should be rebuilt when <c>foo:2</c> or
+<c>&gt;=bar-0.9</c> are upgraded to versions with different subslots,
+but that changes in subslots of <c>baz</c> or <c>wombat:0</c> should be
+ignored.
+</p>
+
 </body>
 </subsubsection>
 </subsection>
