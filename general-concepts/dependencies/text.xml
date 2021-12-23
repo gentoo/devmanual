@@ -386,19 +386,29 @@ or <uri link="::general-concepts/slotting#Sub-Slots">sub-slot</uri>:
 </p>
 
 <ul>
-  <li><c>:=</c> means that any slot is acceptable, and that your package should be
-  rebuilt if the version best matching the runtime dependency is updated to a
-  version with a different slot or subslot;</li>
-  <li><c>:*</c> means that any slot is acceptable, and explicitly declares that
-  changes in the slot or sub-slot can be ignored;</li>
-  <li><c>:SLOT=</c> means that only the 'SLOT' slot is acceptable, and that your
-  package should be rebuilt if the version matching the runtime dependency is
-  updated to another version with this slot but with a different subslot;</li>
-  <li><c>:SLOT</c> means that only the 'SLOT' slot is acceptable, and that changes
-  in the sub-slot can be ignored (like in previous EAPIs).</li>
-  <li><c>:SLOT/SUBSLOT</c> means a dependency on a specific slot and sub-slot pair,
-  which can be useful for packages installing pre-built binaries that require a
-  library with a particular soname version corresponding to the sub-slot.</li>
+  <li>
+    <c>:=</c> means that any slot is acceptable, and that your package should be
+    rebuilt if the version best matching the runtime dependency is updated to a
+    version with a different slot or subslot;
+  </li>
+  <li>
+    <c>:*</c> means that any slot is acceptable, and explicitly declares that
+    changes in the slot or sub-slot can be ignored;
+  </li>
+  <li>
+    <c>:SLOT=</c> means that only the 'SLOT' slot is acceptable, and that your
+    package should be rebuilt if the version matching the runtime dependency is
+    updated to another version with this slot but with a different subslot;
+  </li>
+  <li>
+    <c>:SLOT</c> means that only the 'SLOT' slot is acceptable, and that changes
+    in the sub-slot can be ignored (like in previous EAPIs).
+  </li>
+  <li>
+    <c>:SLOT/SUBSLOT</c> means a dependency on a specific slot and sub-slot pair,
+    which can be useful for packages installing pre-built binaries that require a
+    library with a particular soname version corresponding to the sub-slot.
+  </li>
 </ul>
 
 <p>
