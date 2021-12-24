@@ -445,9 +445,9 @@ RDEPEND="dev-libs/foo:2=
 </codesample>
 <p>
 means that the package should be rebuilt when <c>foo:2</c> or
-<c>&gt;=bar-0.9</c> are upgraded to versions with different subslots,
-but that changes in subslots of <c>baz</c> or <c>wombat:0</c> should be
-ignored.
+<c>&gt;=bar-0.9</c> are upgraded to versions with different subslots. On the
+other hand, changes in slot or sub-slots of <c>baz</c> should be ignored, and
+sub-slot changes of <c>wombat:0</c> should be ignored.
 </p>
 
 </body>
