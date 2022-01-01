@@ -35,12 +35,13 @@ the following must be noted:
 <body>
 
 <p>
-Moving or renaming a package requires several operations. Firstly, verify that
-the ebuilds will continue to work correctly after the move. If the category
-changes, you must verify all <c>${CATEGORY}</c> uses. If the package name
-changes, you must verify <c>${PN}</c>, <c>${P}</c>, etc. Whenever the old value
-is necessary, substitute the variable reference with the verbatim text, so that
-it won't get affected by the move. Commit the changes separately before moving
+Moving or renaming a package (sometimes called a "pkgmove" or just "move")
+requires several operations. Firstly, verify that the ebuilds will continue to
+work correctly after the move. If the category changes, you must verify all
+<c>${CATEGORY}</c> uses. If the package name changes, you must verify
+<c>${PN}</c>, <c>${P}</c>, etc. Whenever the old value is necessary,
+substitute the variable reference with the verbatim text, so that it won't get
+affected by the move. Commit the changes separately before moving
 the package.
 </p>
 
@@ -92,7 +93,7 @@ during the update.
 <body>
 
 <p>
-The process for changing the ebuild's SLOT is very similar to the
+The process for changing the ebuild's SLOT (a "slotmove") is very similar to the
 previous process.  Besides changing the SLOT in the ebuild file, you
 also need to create a new entry in <c>profiles/updates/</c> in
 the Gentoo repository in the following format:
