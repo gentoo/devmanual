@@ -83,6 +83,15 @@ governing their use of newer EAPIs, as does the
 <uri link="https://dev.gentoo.org/~mgorny/python-guide/package-maintenance.html#porting-packages-to-a-new-eapi">Python project</uri>.
 </p>
 
+<p>
+It is also convention that blockers within ebuilds are retained for at least
+2 years after the last ebuild matching the block is removed from the tree to
+avoid file collisions for users upgrading older systems. <c>pkgcheck</c> has
+a warning for this called <c>OutdatedBlocker</c> (or even
+<c>NonexistentBlocker</c> for when the match is from pre-git times if using
+a non-grafted repository).
+</p>
+
 </body>
 </subsection>
 </section>
