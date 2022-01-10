@@ -62,8 +62,29 @@ EAPI-conditional code)
 When writing new ebuilds developers can choose whatever EAPI they think
 is the best.  Using the features of the latest EAPI is encouraged.
 </p>
+</body>
+
+<subsection>
+<title>Upgrade path</title>
+<body>
+
+<p>
+Gentoo policy is to support upgrades for installations at least a year old
+with no/little intervention and up to two years old with minor intervention. To
+achieve this, developers must avoid using the latest EAPI in ebuilds within
+the <c>@system</c> set (see <uri link="::general-concepts/dependencies/#implicit-system-dependency"/>)
+or its dependencies.
+</p>
+
+<p>
+The Base System project has
+<uri link="https://wiki.gentoo.org/wiki/Project:Base#Rules_and_limitations">rules</uri>
+governing their use of newer EAPIs, as does the
+<uri link="https://dev.gentoo.org/~mgorny/python-guide/package-maintenance.html#porting-packages-to-a-new-eapi">Python project</uri>.
+</p>
 
 </body>
+</subsection>
 </section>
 
 <section>
