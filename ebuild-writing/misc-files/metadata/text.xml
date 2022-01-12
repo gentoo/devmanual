@@ -132,7 +132,8 @@ metadata.xml:
   <ti>
     This tag describes the
     <uri link="::general-concepts/slotting">slots</uri> of a package.
-    It has two optional subtags: &lt;slot&gt; and &lt;subslots&gt;.
+    It has two optional subtags:
+    <c>&lt;slot&gt;</c> and <c>&lt;subslots&gt;</c>.
   </ti>
 </tr>
 <tr>
@@ -172,17 +173,17 @@ metadata.xml:
   <ti><c>&lt;upstream&gt;</c></ti>
   <ti>
     This tag contains information about the upstream developers/project.
-    It supports multiple optional subtags: &lt;maintainer&gt;,
-    &lt;changelog&gt;, &lt;doc&gt;, &lt;bugs-to&gt;,
-    and &lt;remote-id&gt;.
+    It supports multiple optional subtags: <c>&lt;maintainer&gt;</c>,
+    <c>&lt;changelog&gt;</c>, <c>&lt;doc&gt;</c>,
+    <c>&lt;bugs-to&gt;,</c>, and <c>&lt;remote-id&gt;</c>.
   </ti>
 </tr>
 <tr>
   <ti><c>&lt;maintainer&gt;</c></ti>
   <ti>
     Provides information about the upstream maintainer. It requires a
-    &lt;name&gt; subtag to be specified, supports an optional
-    &lt;email&gt; subtag and an optional <c>status</c> attribute.
+    <c>&lt;name&gt;</c> subtag to be specified, supports an optional
+    <c>&lt;email&gt;</c> subtag and an optional <c>status</c> attribute.
     Note that the <c>type</c> attribute <e>must not</e> be specified
     for upstream maintainers.
   </ti>
@@ -217,7 +218,7 @@ metadata.xml:
     found. The link must not point to any third party documentation and must be
     version independent. If the documentation is available in more than one language,
     a lang attribute can be used which follows the same rules as the one for
-    &lt;longdescription&gt;.
+    <c>&lt;longdescription&gt;</c>.
   </ti>
 </tr>
 <tr>
@@ -301,12 +302,12 @@ There are also some attributes that can be used with these tags:
     <c>&lt;flag&gt;</c>, <c>&lt;slot&gt;</c>
   </ti>
   <ti>
-    When this attribute is required on the &lt;flag&gt; tag, it
+    When this attribute is required on the <c>&lt;flag&gt;</c> tag, it
     simply contains the name of the USE flag. For the
-    &lt;slot&gt; tag, it specifies the
+    <c>&lt;slot&gt;</c> tag, it specifies the
     <uri link="::general-concepts/slotting/#Slot Names">
     slot name</uri> to which it applies. A slot name of <c>*</c>
-    allows for a single &lt;slot&gt; tag to match all the slots of a
+    allows for a single <c>&lt;slot&gt;</c> tag to match all the slots of a
     package, in which case no other slot tags may be present.
   </ti>
 </tr>
@@ -320,7 +321,7 @@ There are also some attributes that can be used with these tags:
     one of <c>"active"</c> or <c>"inactive"</c>. This attribute is not
     mandatory. The absence of it shall be interpreted as
     <c>"unknown"</c>. Please note that this attribute is only allowed
-    for the &lt;maintainer&gt; subtags of the &lt;upstream&gt;
+    for the <c>&lt;maintainer&gt;</c> subtags of the <c>&lt;upstream&gt;</c>
     element!
   </ti>
 </tr>
@@ -405,7 +406,7 @@ presented. It is a simplified version of <c>metadata.xml</c> for
 the package <c>app-office/libreoffice</c>. The package
 maintainer is identified by the email address <c>office@gentoo.org</c>
 with the name <c>Gentoo Office Project</c> as specified in the
-optional &lt;name&gt; subtag. It also provides a long package
+optional <c>&lt;name&gt;</c> subtag. It also provides a long package
 description.
 </p>
 
@@ -470,9 +471,9 @@ The second example is formed after the <c>metadata.xml</c> of
 is a developer and the other is a project. It illustrates how local
 USE flag descriptions are specified and also contains an upstream
 element. It is also worth pointing out the use of <c>mailto:</c>
-prefix in &lt;bugs-to&gt; tag due to the presence of an email address
+prefix in <c>&lt;bugs-to&gt;</c> tag due to the presence of an email address
 as opposed to a URL. Conversely, email addresses specified in the
-&lt;email&gt; tags require no such prefix.
+<c>&lt;email&gt;</c> tags require no such prefix.
 </p>
 
 <codesample lang="sgml">
@@ -524,9 +525,9 @@ project. Note the use of "&amp;gt;" as opposed to "&gt;" in
 <p>
 The example also uses the <c>&lt;pkg&gt;</c> tag in USE flag
 descriptions. Slot dependency specifiers are not allowed inside
-&lt;pkg&gt;, therefore the notation
-&lt;pkg&gt;sys-boot/grub&lt;/pkg&gt;<c>:2</c> is adopted as opposed to
-&lt;pkg&gt;sys-boot/grub<c>:2</c>&lt;/pkg&gt;.
+<c>&lt;pkg&gt;</c>, therefore the notation
+<c>&lt;pkg&gt;sys-boot/grub&lt;/pkg&gt;:2</c> is adopted as opposed to
+<c>&lt;pkg&gt;sys-boot/grub:2&lt;/pkg&gt;</c>.
 </p>
 
 <p>
@@ -635,9 +636,9 @@ specified in the <c>&lt;subslots&gt;</c> tag.
 Maintainer-needed, or orphaned, packages have no maintainers
 responsible for them. Per
 <uri link="https://www.gentoo.org/glep/glep-0067.html#case-of-maintainer-needed-packages">
-GLEP 67</uri>, these packages must not contain any &lt;maintainer&gt;
-subtags under &lt;pkgmetadata&gt; in their <c>metadata.xml</c>. A strict test
-for this condition would be:
+GLEP 67</uri>, these packages must not contain any <c>&lt;maintainer&gt;</c>
+subtags under <c>&lt;pkgmetadata&gt;</c> in their <c>metadata.xml</c>. A strict
+test for this condition would be:
 </p>
 
 <pre>
