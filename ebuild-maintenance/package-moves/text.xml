@@ -47,7 +47,7 @@ the package.
 
 <p>
 Afterwards, move the package files using <c>git mv</c>. Add the move entry
-to <c>profiles/updates/</c>, in the following format:
+to <c>profiles/updates/</c> in the following format:
 </p>
 
 <pre>
@@ -96,8 +96,8 @@ during the update.
 <body>
 
 <p>
-The process for changing the ebuild's SLOT (a "slotmove") is very similar to the
-previous process.  Besides changing the SLOT in the ebuild file, you
+The process for changing the ebuild's <c>SLOT</c> (a "slotmove") is very similar to the
+previous process.  Besides changing the <c>SLOT</c> in the ebuild file, you
 also need to create a new entry in <c>profiles/updates/</c> in
 the Gentoo repository in the following format:
 </p>
