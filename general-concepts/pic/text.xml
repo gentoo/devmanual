@@ -5,9 +5,9 @@
 
 <body>
 <p>
-On some architectures, shared libraries must be built with -fPIC. On x86 and others, shared libraries may build without -fPIC. This can be wasteful and potentially cause a performance hit.
+On some architectures, shared libraries must be built with -fPIC. On <c>x86</c> and others, shared libraries may build without -fPIC. This can be wasteful and potentially cause a performance hit.
 </p>
-<p>If you encounter a package that is not building shared libraries with -fPIC, patch the Makefile to build only the shared libraries with -fPIC. More information on PIC is available at the <uri link="https://wiki.gentoo.org/wiki/Project:Hardened/Position_Independent_Code_internals">PIC internals</uri> wiki page. If you are unsure, please ask in a public developer forum (like the gentoo-dev mailing list or #gentoo-dev irc channel) for help.
+<p>If you encounter a package that is not building shared libraries with -fPIC, patch the Makefile to build only the shared libraries with -fPIC. More information on PIC is available at the <uri link="https://wiki.gentoo.org/wiki/Project:Hardened/Position_Independent_Code_internals">PIC internals</uri> wiki page. If you are unsure, please ask in a public developer forum (like the <c>gentoo-dev</c> mailing list or <c>#gentoo-dev</c> IRC channel) for help.
 </p>
 </body>
 
