@@ -139,6 +139,12 @@ packages.
 </p>
 
 <p>
+It is good practice to file a bug for ebuilds listed in <c>package.mask</c> to
+allow feedback to be gathered in one location and to reduce the chance of
+forgetting about it. Mention the bug number in the mask message.
+</p>
+
+<p>
 The only time it is acceptable for a user to see the <c>Possibly a DEPEND
 problem</c> error message is if they have manually changed visibility levels for
 a package (for example, through <c>/etc/portage/</c>) and have missed a
