@@ -633,8 +633,8 @@ specified in the <c>&lt;subslots&gt;</c> tag.
 <body>
 
 <p>
-Maintainer-needed, or orphaned, packages have no maintainers
-responsible for them. Per
+Maintainer-needed ("orphaned") packages have no maintainers responsible for
+them. Per
 <uri link="https://www.gentoo.org/glep/glep-0067.html#case-of-maintainer-needed-packages">
 GLEP 67</uri>, these packages must not contain any <c>&lt;maintainer&gt;</c>
 subtags under <c>&lt;pkgmetadata&gt;</c> in their <c>metadata.xml</c>. A strict
