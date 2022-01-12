@@ -479,11 +479,6 @@ as opposed to a URL. Conversely, email addresses specified in the
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd"&gt;
 &lt;pkgmetadata&gt;
-  &lt;upstream&gt;
-    &lt;bugs-to&gt;mailto:dev-portage@gentoo.org&lt;/bugs-to&gt;
-    &lt;changelog&gt;https://gitweb.gentoo.org/proj/portage.git/plain/RELEASE-NOTES&lt;/changelog&gt;
-    &lt;doc&gt;https://wiki.gentoo.org/wiki/Handbook:AMD64/Working/Portage&lt;/doc&gt;
-  &lt;/upstream&gt;
   &lt;maintainer type="person"&gt;
     &lt;email&gt;larry@gentoo.org&lt;/email&gt;
     &lt;name&gt;Larry the Cow&lt;/name&gt;
@@ -502,6 +497,11 @@ as opposed to a URL. Conversely, email addresses specified in the
       installing files. Usually only required for hardened systems.
     &lt;/flag&gt;
   &lt;/use&gt;
+  &lt;upstream&gt;
+    &lt;bugs-to&gt;mailto:dev-portage@gentoo.org&lt;/bugs-to&gt;
+    &lt;changelog&gt;https://gitweb.gentoo.org/proj/portage.git/plain/RELEASE-NOTES&lt;/changelog&gt;
+    &lt;doc&gt;https://wiki.gentoo.org/wiki/Handbook:AMD64/Working/Portage&lt;/doc&gt;
+  &lt;/upstream&gt;
 &lt;/pkgmetadata&gt;
 </codesample>
 
