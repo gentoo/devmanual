@@ -189,7 +189,10 @@ a dependency of a package already keyworded.
 </p>
 
 <p>
-Do <b>not</b> commit straight to <c>arch</c> ("stable").
+Do <b>not</b> commit straight to <c>arch</c> ("stable"). If it is necessary
+to do so, when using <c>repoman</c>, use
+<c>repoman commit --straight-to-stable</c> and <b>not</b> <c>--force</c> as
+this disables other QA checks.
 </p>
 
 </body>
