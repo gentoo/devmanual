@@ -244,6 +244,29 @@ to do this.
 <body>
 
 <p>
+If a package has stable keywords, maintainers should regularly (subject to the
+rules below) file stabilization bugs for their packages, ideally approximately
+every 30 days after a new version is added. If a bug report for stabilization
+is filed by somebody else, the maintainer should respond with an
+acknowledgement ("ACK") if the ebuild is ready, and a negative
+acknowledgement ("NAK") if not.
+</p>
+
+<p>
+Previous stable keywords should not be dropped without good cause and it is
+courteous to ping members of the relevant arch team first. Maintainers must not
+drop stable keywords simply because they don't have access to a platform: this
+is what Gentoo's arch teams are here for.
+</p>
+
+<p>
+By convention, these bugs are assigned to package maintainers, but the only
+action expected from maintainers is to acknowledge or reject the
+stabilization rather than carry out additional testing on each required
+architecture themselves.
+</p>
+
+<p>
 Stabilization, i.e., moving an ebuild from <c>~arch</c> ("testing") to
 <c>arch</c> ("stable"), is done by the relevant architecture teams. If you have
 access to exotic hardware but are not on the arch teams, you may wish to make
