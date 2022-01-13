@@ -16,8 +16,8 @@ If you encounter a package that is not building shared libraries with
 <c>-fPIC</c>. More information on PIC is available at the
 <uri link="https://wiki.gentoo.org/wiki/Project:Hardened/Position_Independent_Code_internals">
 PIC internals</uri> wiki page. If you are unsure, please ask in a public
-developer forum (like the <c>gentoo-dev</c> mailing list or <c>#gentoo-dev</c>
-IRC channel) for help.
+developer forum (like the <c>gentoo-dev</c> mailing list or the
+<c>#gentoo-dev</c> IRC channel) for help.
 </p>
 
 </body>
