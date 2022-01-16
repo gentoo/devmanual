@@ -83,8 +83,8 @@ install: all
 	fi
 
 validate:
-	@xmllint --noout --dtdvalid devbook.dtd $(XMLS) \
-	  && echo "xmllint validation successful"
+	@xmllint --noout --dtdvalid devbook.dtd $(XMLS)
+	@echo "xmllint validation successful"
 
 # Run app-text/htmltidy on the output to detect mistakes.
 # We have to loop through them because otherwise tidy won't
@@ -96,8 +96,8 @@ tidy: $(HTMLS) $(ECLASS_HTMLS)
 	    | tidy -q -errors --drop-empty-elements no 2>&1) \
 	  || { status=$$?; echo "Failed on $${f}:"; echo "$${output}"; }; \
 	done; \
-	test $${status} -eq 0 && echo "tidy validation successful"; \
 	exit $${status}
+	@echo "tidy validation successful"
 
 check: validate tidy
 
