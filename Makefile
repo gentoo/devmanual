@@ -82,9 +82,15 @@ install: all
 	  install -m 644 $(JS_FILES) "$(DESTDIR)$(htmldir)"/; \
 	fi
 
-validate:
-	@xmllint --noout --dtdvalid devbook.dtd $(XMLS)
+# Not all versions of xmllint support --quiet, so test for it first
+validate: devbook.rng
+	@opt=--quiet; xmllint --help 2>&1 | grep -q -- --quiet || opt=; \
+	xmllint --noout $${opt} --relaxng $< $(XMLS)
 	@echo "xmllint validation successful"
+
+%.rng: %.rnc
+	trang -I rnc -O rng $< $@
+	sed -i -e '2s/^/<!-- Auto-generated from $<; do not edit! -->\n/' $@
 
 # Run app-text/htmltidy on the output to detect mistakes.
 # We have to loop through them because otherwise tidy won't

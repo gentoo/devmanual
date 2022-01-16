@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Auto-generated from devbook.rnc; do not edit! -->
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!--
+    Copyright 2022 Gentoo Authors
+    Distributed under the terms of the MIT license
+    or the CC-BY-SA-4.0 license (dual-licensed)
+  -->
+  <!--
+    RELAX NG schema for the Gentoo Devmanual
+    Based on common.dtd from GuideXML
+  -->
+  <define name="block.class">
+    <choice>
+      <ref name="p"/>
+      <ref name="pre"/>
+      <ref name="codesample"/>
+      <ref name="note"/>
+      <ref name="important"/>
+      <ref name="warning"/>
+      <ref name="todo"/>
+      <ref name="figure"/>
+      <ref name="table"/>
+      <ref name="ul"/>
+      <ref name="ol"/>
+      <ref name="dl"/>
+    </choice>
+  </define>
+  <define name="attrib.class">
+    <choice>
+      <text/>
+      <ref name="b"/>
+      <ref name="c"/>
+      <ref name="e"/>
+    </choice>
+  </define>
+  <define name="inline.class">
+    <choice>
+      <ref name="attrib.class"/>
+      <ref name="d"/>
+      <ref name="uri"/>
+    </choice>
+  </define>
+  <define name="attrib">
+    <zeroOrMore>
+      <ref name="attrib.class"/>
+    </zeroOrMore>
+  </define>
+  <define name="inline">
+    <zeroOrMore>
+      <ref name="inline.class"/>
+    </zeroOrMore>
+  </define>
+  <define name="all">
+    <zeroOrMore>
+      <choice>
+        <ref name="block.class"/>
+        <ref name="inline.class"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+  <start>
+    <ref name="guide"/>
+  </start>
+  <define name="guide">
+    <element name="guide">
+      <choice>
+        <attribute name="root">
+          <value>true</value>
+        </attribute>
+        <attribute name="self"/>
+      </choice>
+      <ref name="chapter"/>
+      <zeroOrMore>
+        <ref name="include"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="include">
+    <element name="include">
+      <attribute name="href"/>
+    </element>
+  </define>
+  <define name="chapter">
+    <element name="chapter">
+      <ref name="title"/>
+      <choice>
+        <ref name="body"/>
+        <ref name="section"/>
+      </choice>
+      <zeroOrMore>
+        <ref name="section"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="section">
+    <element name="section">
+      <ref name="title"/>
+      <choice>
+        <ref name="body"/>
+        <ref name="subsection"/>
+      </choice>
+      <zeroOrMore>
+        <ref name="subsection"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="subsection">
+    <element name="subsection">
+      <ref name="title"/>
+      <choice>
+        <ref name="body"/>
+        <ref name="subsubsection"/>
+      </choice>
+      <zeroOrMore>
+        <ref name="subsubsection"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="subsubsection">
+    <element name="subsubsection">
+      <ref name="title"/>
+      <ref name="body"/>
+    </element>
+  </define>
+  <!-- Title texts are used as anchors, so allow only text attributes -->
+  <define name="title">
+    <element name="title">
+      <ref name="attrib"/>
+    </element>
+  </define>
+  <define name="body">
+    <element name="body">
+      <oneOrMore>
+        <choice>
+          <ref name="authors"/>
+          <ref name="contentsTree"/>
+          <ref name="block.class"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="authors">
+    <element name="authors">
+      <choice>
+        <oneOrMore>
+          <ref name="author"/>
+        </oneOrMore>
+        <oneOrMore>
+          <ref name="authorlist"/>
+        </oneOrMore>
+      </choice>
+    </element>
+  </define>
+  <define name="author">
+    <element name="author">
+      <attribute name="name"/>
+      <optional>
+        <attribute name="email"/>
+      </optional>
+      <ref name="inline"/>
+    </element>
+  </define>
+  <define name="authorlist">
+    <element name="authorlist">
+      <attribute name="title"/>
+      <attribute name="href"/>
+    </element>
+  </define>
+  <define name="contentsTree">
+    <element name="contentsTree">
+      <optional>
+        <attribute name="maxdepth">
+          <data type="unsignedInt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="root"/>
+      </optional>
+      <optional>
+        <attribute name="extraction"/>
+      </optional>
+    </element>
+  </define>
+  <define name="p">
+    <element name="p">
+      <ref name="inline"/>
+    </element>
+  </define>
+  <define name="pre">
+    <element name="pre">
+      <text/>
+    </element>
+  </define>
+  <define name="codesample">
+    <element name="codesample">
+      <attribute name="lang">
+        <choice>
+          <value>c</value>
+          <value>ebuild</value>
+          <value>make</value>
+          <value>m4</value>
+          <value>sgml</value>
+        </choice>
+      </attribute>
+      <optional>
+        <attribute name="numbering">
+          <value>lines</value>
+        </attribute>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="note">
+    <element name="note">
+      <ref name="inline"/>
+    </element>
+  </define>
+  <define name="important">
+    <element name="important">
+      <ref name="inline"/>
+    </element>
+  </define>
+  <define name="warning">
+    <element name="warning">
+      <ref name="inline"/>
+    </element>
+  </define>
+  <define name="todo">
+    <element name="todo">
+      <ref name="inline"/>
+    </element>
+  </define>
+  <define name="figure">
+    <element name="figure">
+      <attribute name="link"/>
+      <optional>
+        <attribute name="short"/>
+      </optional>
+      <optional>
+        <attribute name="caption"/>
+      </optional>
+    </element>
+  </define>
+  <define name="table">
+    <element name="table">
+      <oneOrMore>
+        <ref name="tr"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="tr">
+    <element name="tr">
+      <oneOrMore>
+        <choice>
+          <ref name="th"/>
+          <ref name="ti"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="th">
+    <element name="th">
+      <optional>
+        <attribute name="colspan">
+          <data type="unsignedInt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="rowspan">
+          <data type="unsignedInt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="align">
+          <choice>
+            <value>left</value>
+            <value>center</value>
+            <value>right</value>
+          </choice>
+        </attribute>
+      </optional>
+      <ref name="inline"/>
+    </element>
+  </define>
+  <define name="ti">
+    <element name="ti">
+      <optional>
+        <attribute name="colspan">
+          <data type="unsignedInt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="rowspan">
+          <data type="unsignedInt"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="nowrap">
+          <value>nowrap</value>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="align">
+          <choice>
+            <value>left</value>
+            <value>center</value>
+            <value>right</value>
+          </choice>
+        </attribute>
+      </optional>
+      <ref name="all"/>
+    </element>
+  </define>
+  <define name="ul">
+    <element name="ul">
+      <optional>
+        <attribute name="class">
+          <value>list-group</value>
+        </attribute>
+      </optional>
+      <oneOrMore>
+        <ref name="li"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="ol">
+    <element name="ol">
+      <oneOrMore>
+        <ref name="li"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="li">
+    <element name="li">
+      <ref name="all"/>
+    </element>
+  </define>
+  <define name="dl">
+    <element name="dl">
+      <oneOrMore>
+        <choice>
+          <ref name="dt"/>
+          <ref name="dd"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="dt">
+    <element name="dt">
+      <ref name="inline"/>
+    </element>
+  </define>
+  <define name="dd">
+    <element name="dd">
+      <ref name="all"/>
+    </element>
+  </define>
+  <define name="b">
+    <element name="b">
+      <ref name="inline"/>
+    </element>
+  </define>
+  <define name="c">
+    <element name="c">
+      <ref name="inline"/>
+    </element>
+  </define>
+  <define name="e">
+    <element name="e">
+      <ref name="inline"/>
+    </element>
+  </define>
+  <define name="d">
+    <element name="d">
+      <empty/>
+    </element>
+  </define>
+  <define name="uri">
+    <element name="uri">
+      <choice>
+        <!-- uri can have either an URI in the body text or a link attribute -->
+        <data type="anyURI"/>
+        <group>
+          <attribute name="link"/>
+          <ref name="inline"/>
+        </group>
+      </choice>
+    </element>
+  </define>
+</grammar>

@@ -1,0 +1,113 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the MIT license
+# or the CC-BY-SA-4.0 license (dual-licensed)
+
+# RELAX NG schema for the Gentoo Devmanual
+# Based on common.dtd from GuideXML
+
+block.class = p | pre | codesample | note | important | warning | todo
+| figure | table | ul | ol | dl
+attrib.class = text | b | c | e
+inline.class = attrib.class | d | uri
+
+attrib = attrib.class*
+inline = inline.class*
+all = (block.class | inline.class)*
+
+start = guide
+
+guide = element guide {
+  (attribute root { "true" } | attribute self { text }),
+  chapter,
+  \include*
+}
+
+\include = element include { attribute href { text } }
+
+chapter = element chapter { title, (body | section), section* }
+section = element section { title, (body | subsection), subsection* }
+subsection =
+  element subsection { title, (body | subsubsection), subsubsection* }
+subsubsection = element subsubsection { title, body }
+
+# Title texts are used as anchors, so allow only text attributes
+title = element title { attrib }
+
+body = element body { (authors | contentsTree | block.class)+ }
+
+authors = element authors { author+ | authorlist+ }
+
+author = element author {
+  attribute name { text },
+  attribute email { text }?,
+  inline
+}
+
+authorlist = element authorlist {
+  attribute title { text },
+  attribute href { text }
+}
+
+contentsTree = element contentsTree {
+  attribute maxdepth { xsd:unsignedInt }?,
+  attribute root { text }?,
+  attribute extraction { text }?
+}
+
+p = element p { inline }
+
+pre = element pre { text }
+
+codesample = element codesample {
+  attribute lang { "c" | "ebuild" | "make" | "m4" | "sgml" },
+  attribute numbering { "lines" }?,
+  text
+}
+
+note = element note { inline }
+important = element important { inline }
+warning = element warning { inline }
+todo = element todo { inline }
+
+figure = element figure {
+  attribute link { text },
+  attribute short { text }?,
+  attribute caption { text }?
+}
+
+table = element table { tr+ }
+tr = element tr { (th | ti)+ }
+
+th = element th {
+  attribute colspan { xsd:unsignedInt }?,
+  attribute rowspan { xsd:unsignedInt }?,
+  attribute align { "left" | "center" | "right" }?,
+  inline
+}
+
+ti = element ti {
+  attribute colspan { xsd:unsignedInt }?,
+  attribute rowspan { xsd:unsignedInt }?,
+  attribute nowrap { "nowrap" }?,
+  attribute align { "left" | "center" | "right" }?,
+  all
+}
+
+ul = element ul { attribute class { "list-group" }?, li+ }
+ol = element ol { li+ }
+li = element li { all }
+
+dl = element dl { (dt | dd)+ }
+dt = element dt { inline }
+dd = element dd { all }
+
+b = element b { inline }
+c = element c { inline }
+e = element e { inline }
+d = element d { empty }
+
+uri = element uri {
+  # uri can have either an URI in the body text or a link attribute
+  xsd:anyURI
+  | (attribute link { text }, inline)
+}
