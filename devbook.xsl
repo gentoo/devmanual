@@ -82,9 +82,12 @@
     <xsl:if test="@rowspan">
       <xsl:attribute name="rowspan"><xsl:value-of select="@rowspan"/></xsl:attribute>
     </xsl:if>
-    <xsl:if test="@nowrap">
-      <!-- Disable word wrapping for this table item. Usage: <ti nowrap="nowrap"> -->
-      <xsl:attribute name="style">white-space:<xsl:value-of select="@nowrap"/></xsl:attribute>
+    <xsl:if test="@nowrap or @align">
+      <xsl:attribute name="style">
+        <!-- Disable word wrapping for this table item. Usage: <ti nowrap="nowrap"> -->
+        <xsl:if test="@nowrap">white-space:<xsl:value-of select="@nowrap"/>;</xsl:if>
+        <xsl:if test="@align">text-align:<xsl:value-of select="@align"/>;</xsl:if>
+      </xsl:attribute>
     </xsl:if>
     <xsl:apply-templates/>
   </td>
@@ -95,16 +98,21 @@
   <th>
     <xsl:if test="@colspan">
       <xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
-      <!-- Center only when item spans several columns as
-           centering all <th> might disrupt some pages.
-           We might want to use a plain html <th> tag later.
-           Tip: to center a single-cell title, use <th colspan="1">
-      -->
-      <xsl:attribute name="style">text-align:center</xsl:attribute>
     </xsl:if>
     <xsl:if test="@rowspan">
       <xsl:attribute name="rowspan"><xsl:value-of select="@rowspan"/></xsl:attribute>
     </xsl:if>
+    <xsl:choose>
+      <xsl:when test="@align">
+        <xsl:attribute name="style">text-align:<xsl:value-of select="@align"/>;</xsl:attribute>
+      </xsl:when>
+      <xsl:when test="@colspan">
+        <!-- Center only when item spans several columns as
+             centering all <th> might disrupt some pages.
+        -->
+        <xsl:attribute name="style">text-align:center;</xsl:attribute>
+      </xsl:when>
+    </xsl:choose>
     <xsl:apply-templates/>
   </th>
 </xsl:template>
