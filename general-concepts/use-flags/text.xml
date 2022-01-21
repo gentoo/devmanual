@@ -203,6 +203,18 @@ Add <c>+</c> or <c>-</c> before the name of the use flag in <c>IUSE</c> to turn
 it on or off by default.
 </p>
 
+<p>
+IUSE defaults should be used sparingly. Reasons to exclude/default-disable a
+feature may include e.g. large build time for a dependency, or a
+configuration that the Gentoo maintainer is unable to test at runtime.
+</p>
+
+<p>
+The IUSE defaults for a package should not leave a package in a non-functional
+state or lacking important, common functionality. Consulting upstream
+documentation may be useful for assessing this.
+</p>
+
 <important>
 Adding <c>-</c> before a flag in <c>IUSE</c> is pretty much useless, as it will
 neither override the user configuration (<c>make.conf</c>) nor the profile
