@@ -12,9 +12,10 @@ the following must be noted:
 
 <ol>
   <li>
-    Updates are <e>not one-shot</e> operations and they are not stateful. All
-    updates can be reapplied multiple times to the same system, and all old
-    updates are applied to fresh Gentoo installations.
+    <uri link="::profiles/updates/">Updates</uri> are <e>not one-shot</e>
+    operations and they are not stateful. All updates can be reapplied multiple
+    times to the same system, and all old updates are applied to fresh Gentoo
+    installations.
   </li>
   <li>
     Once an update entry is created, the old package name (or slot) cannot be
