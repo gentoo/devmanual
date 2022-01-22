@@ -101,8 +101,8 @@ this directory; any files bigger than 20KB-or-so should go to the
 mirrors to lower the amount of (unneeded) files our users have to
 download. You may want to consider naming patches you create yourself
 just to get your package to build with a version-specific name, such
-as <c>mypkg-1.0-gentoo.diff</c>, or more
-simply, <c>1.0-gentoo.diff</c>.  Also note that the
+as <c>mypkg-1.0-gentoo.patch</c>, or more
+simply, <c>1.0-gentoo.patch</c>.  Also note that the
 <c>gentoo</c> extension informs people that this patch was created
 by us, the Gentoo Linux developers, rather than having been grabbed from a
 mailing list or somewhere else. Again, you should not compress these
