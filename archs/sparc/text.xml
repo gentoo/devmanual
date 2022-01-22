@@ -10,6 +10,20 @@ hardware (Sun UltraSparc systems with <c>v9</c> CPUs). <c>v8</c> processors
 and 2.4 kernels should still work with Gentoo, but they are no longer supported
 by the Gentoo/SPARC team.
 </p>
+
+<p>
+SPARC systems are notoriously strict on aligned access: this is the most common
+type of bug seen on SPARC (other than big-endian related issues), causing a
+<c>SIGBUS</c> signal to be sent to the errant process. Known issues should be
+linked to
+<uri link="https://bugs.gentoo.org/371525">the related tracker bug</uri>.
+</p>
+
+<p>
+This is usually due to supposedly clever pointer casts and type punning tricks
+by the code authors.
+</p>
+
 </body>
 
 <section>
