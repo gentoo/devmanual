@@ -360,7 +360,8 @@ When slots are not needed, use <c>SLOT="0"</c>. Do <b>not</b> use
 </p>
 
 <p>
-See <uri link="::general-concepts/slotting/" /> for more information on this variable.
+See <uri link="::general-concepts/slotting/" /> for more information on this
+variable and see <uri link="::ebuild-maintenance/package-moves/" />.
 </p>
 
 </body>
