@@ -379,6 +379,11 @@ Vulnerability Treatment Policy</uri>.
 <title>Stabilization rules</title>
 <body>
 
+<p>
+These are rules for stabilizing packages <e>by yourself</e> on a particular
+architecture, <e>not</e> for filing bugs to request arch teams to handle it.
+</p>
+
 <ul>
   <li>
      <c>amd64</c>, <c>x86</c>: If you are the maintainer of a package and own
