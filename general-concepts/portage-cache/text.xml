@@ -12,6 +12,11 @@ these variables must be either static or generated using only unchanging
 </p>
 
 <p>
+The cache, when generated, must be identical independent of the used machine
+or environment. This concept is referred to as <e>metadata invariance</e>.
+</p>
+
+<p>
 So, the following will not work:
 </p>
 
