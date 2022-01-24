@@ -239,6 +239,16 @@ with <c>repoman</c> or <c>pkgdev</c> <d/> instead please commit with
 git commit message.
 </p>
 
+<p>
+Note that it is preferred to drop keywords on the package and request
+rekeywording of it together with its new dependencies within the same bug to
+allow the new code path(s) in your package to be tested. This won't happen if
+the new dependency is requested for keywording by itself and
+<c>package.use.mask</c> is used to mask the relevant new USE flag: only the
+new package dependency will be tested by arch testers. Also, the mask has to be
+manually removed during the testing process, which is cumbersome.
+</p>
+
 <important>
 When committing, make sure that you reference any bugs in the commit message.
 See <uri link="::ebuild-maintenance/git/#Git Commit Message Format"/> for how
