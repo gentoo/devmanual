@@ -141,13 +141,6 @@ src_configure() {
 }
 </codesample>
 
-<p>
-The <c>einfo</c> message before running autotools is not mandatory. However, these
-steps can sometimes take a while and may produce no output, so it may make sense
-to let the user know that something is still happening. See
-<uri link="::ebuild-writing/messages"/>.
-</p>
-
 </body>
 </section>
 
