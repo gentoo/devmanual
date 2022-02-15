@@ -488,6 +488,67 @@ list does not outweigh the burden of maintaining it.
 
 </body>
 </subsection>
+
+
+<subsection>
+<title>Lifting restrictions</title>
+<body>
+
+<p>
+In EAPI 8, individual items in <c>SRC_URI</c> can be exempted from automatic
+mirroring and fetching restrictions (imposed by <c>RESTRICT="mirror"</c> and
+<c>RESTRICT="fetch"</c>) by prefixing the addresses with <c>mirror+</c> or
+<c>fetch+</c>.  For example, in the following ebuild,
+</p>
+
+<codesample lang="ebuild">
+EAPI="8"
+
+SRC_URI="${P}.tar.gz
+	mirror+https://dev.gentoo.org/~larry/distfiles/${P}-addons.tar.gz"
+
+RESTRICT="fetch"
+</codesample>
+
+<p>
+Portage will be prevented from trying to fetch <c>${P}.tar.gz</c> as expected,
+but the <c>${P}-patches.tar.gz</c> file will be mirrored and fetched by Portage
+without restriction.
+</p>
+
+<p>
+The following table shows the effects of the prefixes when <c>RESTRICT="mirror"</c> and <c>RESTRICT="fetch"</c> are set:
+</p>
+
+<table>
+<tr>
+<th></th>
+<th><e>(no prefix)</e></th>
+<th><c>fetch+</c></th>
+<th><c>mirror+</c></th>
+</tr>
+<tr>
+<th><e>(no RESTRICT)</e></th>
+<ti>fetch &amp; mirror</ti>
+<ti>fetch &amp; mirror</ti>
+<ti>fetch &amp; mirror</ti>
+</tr>
+<tr>
+<th><c>RESTRICT="mirror"</c></th>
+<ti>fetch only</ti>
+<ti>fetch only</ti>
+<ti>fetch &amp; mirror</ti>
+</tr>
+<tr>
+<th><c>RESTRICT="fetch"</c></th>
+<ti>unfetchable</ti>
+<ti>fetch only</ti>
+<ti>fetch &amp; mirror</ti>
+</tr>
+</table>
+
+</body>
+</subsection>
 </section>
 
 <section>
