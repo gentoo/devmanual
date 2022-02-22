@@ -77,6 +77,12 @@ the project lead.
 </p>
 
 <p>
+If the project has an official IRC channel listed on its project page,
+developers should join the channel if possible to facilitate
+coordination and collaboration.
+</p>
+
+<p>
 Developers should remember to add themselves to the alias by editing
 <c>/var/mail/alias/misc/&lt;alias name&gt;</c> on
 dev.gentoo.org. For example, the alias for the Devmanual project is
