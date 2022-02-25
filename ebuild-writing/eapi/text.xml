@@ -80,7 +80,7 @@ or its dependencies.
 The Base System project has
 <uri link="https://wiki.gentoo.org/wiki/Project:Base#Rules_and_limitations">rules</uri>
 governing their use of newer EAPIs, as does the
-<uri link="https://dev.gentoo.org/~mgorny/python-guide/package-maintenance.html#porting-packages-to-a-new-eapi">Python project</uri>.
+<uri link="https://projects.gentoo.org/python/guide/package-maintenance.html#porting-packages-to-a-new-eapi">Python project</uri>.
 </p>
 
 <p>
