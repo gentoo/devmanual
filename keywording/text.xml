@@ -430,6 +430,36 @@ stable for one of these architectures.
 </subsection>
 
 <subsection>
+<title>Keeping track of pending stabilizations</title>
+<body>
+
+<p>
+Maintainers need some method or system to organize and start pending
+stabilizations once they become due.
+</p>
+
+<p>
+There are several tools available that can help with this:
+</p>
+
+<ul>
+  <li>
+    Use <c>imlate</c> from app-portage/gentoolkit
+  </li>
+  <li>
+    Use packages.gentoo.org's maintainer pages (which have a Stabilization
+    tab)
+  </li>
+  <li>
+    Use <c>pkgcheck</c>'s <c>StableRequest</c> check, e.g.
+      <c>grep -ri "larry@" */*/metadata.xml -l | cut -d'/' -f1-2 | xargs pkgcheck scan -k StableRequest</c>
+  </li>
+</ul>
+
+</body>
+</subsection>
+
+<subsection>
 <title>Simultaneous stabilization on all architectures</title>
 <body>
 
