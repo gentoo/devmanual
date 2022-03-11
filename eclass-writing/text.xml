@@ -88,8 +88,7 @@ If there is an existing maintainer for an eclass (this is usually the case), you
 </p>
 
 <warning>
-Committing a broken eclass can kill huge numbers of packages. Since
-<c>repoman</c> is not eclass-aware, be very sure you do proper testing.
+Committing a broken eclass can kill huge numbers of packages.
 </warning>
 
 <p>
