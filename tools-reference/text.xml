@@ -35,9 +35,6 @@ when using these tools in ebuilds.
 <include href="find/"/>
 <include href="grep/"/>
 <include href="head-and-tail/"/>
-<!--
-<include href="repoman/"/>
--->
 <include href="sed/"/>
 <include href="sort/"/>
 <include href="tr/"/>

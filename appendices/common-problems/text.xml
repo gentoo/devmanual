@@ -161,7 +161,7 @@ directories Executable stacks ... binary files whose stack is marked with
 </section>
 
 <section>
-<title>Handling <c>repoman</c> Messages</title>
+<title>Handling <c>pkgcheck</c> Messages</title>
 <body>
 
 <todo>

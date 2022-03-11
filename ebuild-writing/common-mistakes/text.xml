@@ -457,8 +457,8 @@ the guidelines to use TABS rather than spaces. So <e>please</e> use tabs!
 <body>
 
 <p>
-Remember to run <c>repoman</c> or <c>pkgcheck</c> over your ebuilds so it can
-tell you if there is trailing whitespace at the end of lines or on empty lines.
+Remember to run <c>pkgcheck</c> over your ebuilds so it can tell you if there
+is trailing whitespace at the end of lines or on empty lines.
 </p>
 
 </body>

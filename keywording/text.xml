@@ -195,10 +195,7 @@ a dependency of a package already keyworded.
 </p>
 
 <p>
-Do <b>not</b> commit straight to <c>arch</c> ("stable"). If it is necessary
-to do so, when using <c>repoman</c>, use
-<c>repoman commit --straight-to-stable</c> and <b>not</b> <c>--force</c> as
-this disables other QA checks.
+Do <b>not</b> commit straight to <c>arch</c> ("stable").
 </p>
 
 </body>
@@ -230,13 +227,6 @@ problems and CC the relevant architectures on the bug <d/> you <b>must</b> file
 a <uri link="https://projects.gentoo.org/qa/policy-guide/keywords.html#pg0401">
 new bug</uri> to the architecture in question regarding this if no bug is
 already available.
-</p>
-
-<p>
-If there are no new dependencies, do not remove keywords if your commit fails
-with <c>repoman</c> or <c>pkgdev</c> <d/> instead please commit with
-<c>repoman -I</c> and file a bug to the broken architecture, noting it in your
-git commit message.
 </p>
 
 <p>

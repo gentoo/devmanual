@@ -112,11 +112,10 @@ the historical commits after the initial git commit.
 <body>
 
 <p>
-The recommended way of committing to the Gentoo repository is to use <c>repoman
-commit</c> or <c>pkgdev commit</c> (then <c>pkgdev push</c>). It automatically
-performs the necessary QA checks on the package being committed and has other
-features helping with the Gentoo workflow. However, <c>repoman</c> is currently
-limited to creating a single commit to a single package.
+The recommended way of committing to the Gentoo repository is to use <c>pkgdev
+commit</c> (then <c>pkgdev push</c>). It automatically performs the necessary
+QA checks on the package being committed and has other features helping with
+the Gentoo workflow.
 </p>
 
 <p>
@@ -130,21 +129,19 @@ used. The valid uses of git include:
     Gentoo repository (eclasses, licenses, profiles…),
   </li>
   <li>
-    amending a commit created via <c>repoman commit</c> or <c>pkgdev commit</c>
-    with additional files or fixups,
+    amending a commit created via <c>pkgdev commit</c> with additional files
+    or fixups,
   </li>
   <li>
-    combining multiple commits created via <c>repoman commit</c> or
-    <c>pkgdev commit</c> using <c>git rebase</c>.
+    combining multiple commits created via <c>pkgdev commit</c> using
+    <c>git rebase</c>.
   </li>
 </ul>
 
 <p>
-Whenever <c>repoman</c> or <c>pkgdev</c> is not used to commit, you need to
-manually verify all packages affected by the commit using <c>repoman full</c> or
-<c>pkgcheck scan --commits</c>. When using <c>repoman</c>, it won't be aware of
-staged changes, so ensure that all files are included in the commit.
-Also, when using <c>git</c> manually, you must perform a manual sign-off to the
+Whenever <c>pkgdev</c> is not used to commit, you need to manually verify all
+packages affected by the commit using <c>pkgcheck scan --commits</c>. Also,
+when using <c>git</c> manually, you must perform a manual sign-off to the
 <uri link="::general-concepts/copyright-policy/#Certificate of origin"/> using
 the <c>-s </c> or <c>--signoff</c> option with your git commit commands. Make
 sure you have read and understand the actual certificate.
@@ -224,8 +221,8 @@ appropriately:
 
 <ul>
   <li>
-    <c>${CATEGORY}/${PN}:</c> Single Package (Note that <c>repoman commit</c>
-    and <c>pkgdev commit</c> will automatically insert this for you)
+    <c>${CATEGORY}/${PN}:</c> Single Package (Note that <c>pkgdev commit</c>
+    will automatically insert this for you)
   </li>
   <li><c>${CATEGORY}:</c> Package Category</li>
   <li><c>profiles:</c> Profile Directory</li>
@@ -286,15 +283,11 @@ are optionally used in Gentoo:
     referenced, it will be closed (as fixed) automatically with reference
     to the commit.
   </li>
-  <li>
-    <c>Package-Manager:</c> This is automatically inserted by
-    <c>repoman commit</c> and it specifies the version of
-    <c>sys-apps/portage</c> on the system.
+  <li>  
+    <c>Package-Manager:</c> Used by repoman to indicate Portage version
   </li>
   <li>
-    <c>RepoMan-Options:</c> This is automatically inserted by
-    <c>repoman commit</c> and records the options passed to repoman (such as
-    --force) for the commit.
+    <c>RepoMan-Options:</c> Used by repoman to indicate repoman options
   </li>
 </ul>
 

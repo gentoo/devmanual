@@ -214,9 +214,9 @@ indenting, never inside strings.
 </p>
 
 <p>
-Avoid trailing whitespace: <c>repoman</c> or <c>pkgcheck</c> will warn you about
-this if your ebuild contains trailing or leading whitespace (whitespace instead
-of tabs for indentation) when you commit.
+Avoid trailing whitespace: <c>pkgcheck</c> will warn you about this if your
+ebuild contains trailing or leading whitespace (whitespace instead of tabs for
+indentation) when you commit.
 </p>
 
 <p>

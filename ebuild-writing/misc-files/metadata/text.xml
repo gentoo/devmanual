@@ -372,7 +372,7 @@ using the <c>app-portage/metagen</c> tool.
 </p>
 
 <p>
-Commits of package metadata files are handled by <c>repoman</c> as
+Commits of package metadata files are handled by <c>pkgdev</c> as
 part of regular package maintenance.
 </p>
 
