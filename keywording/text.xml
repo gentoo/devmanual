@@ -411,24 +411,19 @@ architecture, <e>not</e> for filing bugs to request arch teams to handle it.
     arrangements can be made if you will only be working with a small group of
     packages.
   </li>
-
-  <li>
-    <c>alpha</c>: Maintainers may keyword their own packages but are reminded to
-    inform the Alpha team if they can help out with testing and keywording
-    packages so the team can keep an eye out for possible keywording mistakes.
-  </li>
 </ul>
 
 <p>
-Exotic architectures (like <c>hppa</c>, <c>ia64</c>, <c>ppc*</c>, <c>sparc</c>)
+Exotic architectures (like <c>hppa</c>, <c>ppc*</c>, <c>sparc</c>)
 are short on help, so it's best if you avoid opening bugs for stabilization
 of new packages for them, unless it is absolutely necessary (e.g., a reverse
 dependency for your package).
 </p>
 
 <p>
-Some architectures (like <c>mips</c>, <c>riscv</c>) do not maintain a stable
-keyword, so packages are not to be marked stable for one of these architectures.
+Some architectures (<c>alpha</c>, <c>ia64</c>, <c>mips</c>, <c>riscv</c>,
+<c>s390</c>) do not maintain a stable keyword, so packages are not to be marked
+stable for one of these architectures.
 </p>
 
 </body>
