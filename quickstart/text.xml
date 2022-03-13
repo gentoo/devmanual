@@ -320,7 +320,7 @@ replacement iconv for <c>libc</c> implementations which don't have their own.
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -334,7 +334,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="nls"
 
-DEPEND="!sys-libs/glibc"
+RDEPEND="!sys-libs/glibc"
+DEPEND="${RDEPEND}"
 
 src_configure() {
 	econf $(use_enable nls)
