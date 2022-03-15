@@ -15,6 +15,23 @@ of the <c>package.mask</c> file is described in <c>man portage</c>.
 </p>
 
 <p>
+Development or unstable (per upstream declaration/categorization) versions of
+packages should usually be masked in <c>package.mask</c>. Upstreams may not
+deem such releases to be ready for general distribution (or safe to use), or
+may not be expecting bug reports from the wider userbase yet. The default
+should generally be to mask such versions, but it is acceptable to not mask
+in some circumstances <d/> e.g. upstream make very infrequent releases, the
+changes are safe (reviewed by the Gentoo maintainer), and perhaps other
+distributions are shipping the same new version.
+</p>
+
+<p>
+Overall, masking something and unmasking if it turns out to be stable is
+safer (and leads to a better user experience) than the inverse (pushing
+unmasked and breakage occurring).
+</p>
+
+<p>
 Entries are added chronologically <d/> that is, newer entries
 should be placed towards the top of the file, underneath any initial
 header comment block.
