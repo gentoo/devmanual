@@ -708,7 +708,7 @@ jmake-build() {
 	jmake dep &amp;&amp; jmake build "$@"
 }
 
-# @FUNCTION: jmake-src_compile
+# @FUNCTION: jmake_src_compile
 # @DESCRIPTION:
 # Calls jmake-configure() and jmake-build() to compile a jmake project.
 jmake_src_compile() {
