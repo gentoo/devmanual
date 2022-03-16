@@ -728,7 +728,7 @@ jmake_src_compile() {
 Sometimes an eclass is used incorrectly by an ebuild and the eclass
 knows it is being used incorrectly <d/> the common example is an
 eclass that only works with a specific set of EAPIs, but is being
-accessed inherited by an ebuild with a different EAPI.
+accessed (inherited) by an ebuild with a different EAPI.
 In those cases, used sparingly as a last resort, it is allowed
 for an eclass to invoke die from the global scope.  For example:
 </p>
