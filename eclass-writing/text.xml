@@ -311,7 +311,7 @@ variables are as follows:
   <th>description</th>
 </tr>
 <tr>
-  <ti nowrap="nowrap"><c>@ECLASS-VARIABLE:</c></ti>
+  <ti nowrap="nowrap"><c>@ECLASS_VARIABLE:</c></ti>
   <ti>Yes</ti>
   <ti>Name of the eclass variable to which the documentation applies</ti>
   <ti>
