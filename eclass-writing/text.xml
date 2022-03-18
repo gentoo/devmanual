@@ -667,9 +667,10 @@ src_compile() {
 <body>
 
 <p>
-A simple eclass which defines a number of functions and default <c>src_confgure</c> and
-<c>src_compile</c> for the (hypothetical) <c>jmake</c> build system might look
-something like the following:
+Here is an example of how a simple eclass for a hypothetical <c>jmake</c> build
+system might look. The eclass defines a few functions, along with default
+implementations for the <c>src_configure</c> and <c>src_compile</c> phase
+functions.
 </p>
 
 <codesample lang="ebuild">
