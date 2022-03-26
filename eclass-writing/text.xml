@@ -138,7 +138,7 @@ adhere to the following process:</p>
 </ol>
 
 <note>
-Before considering removal, please mark the eclass as <c># @DEPRECATED</c>
+Before considering removal, please mark the eclass as <c># @DEPRECATED:</c>
 to ensure consumers are warned if they are still using the eclass. Do this
 for a period before removing the eclass.
 </note>
@@ -380,7 +380,7 @@ variables are as follows:
   <ti>Indicates that this variable must be set by the developer</ti>
 </tr>
 <tr>
-  <ti><c>@DEPRECATED</c></ti>
+  <ti><c>@DEPRECATED:</c></ti>
   <ti>No</ti>
   <ti>Optionally, the name of any replacement variable</ti>
   <ti>Declares that this variable should no longer be used in ebuilds</ti>
@@ -474,7 +474,7 @@ documentation are:
   </ti>
 </tr>
 <tr>
-  <ti><c>@DEPRECATED</c></ti>
+  <ti><c>@DEPRECATED:</c></ti>
   <ti>No</ti>
   <ti>Optionally, the name of a replacement function</ti>
   <ti>Declares that this function should no longer be used in ebuilds</ti>
@@ -559,7 +559,7 @@ using the following tags:
   <ti>Indicates that this variable must be set by the developer</ti>
 </tr>
 <tr>
-  <ti><c>@DEPRECATED</c></ti>
+  <ti><c>@DEPRECATED:</c></ti>
   <ti>No</ti>
   <ti>Optionally, the name of any replacement variable</ti>
   <ti>Declares that this variable should no longer be used in ebuilds</ti>
