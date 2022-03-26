@@ -75,7 +75,7 @@ IFS='' read -r -d '' FOOTER << 'EOF'
 <li><a href="https://www.facebook.com/gentoo.org" title="Gentoo on Facebook"><span class="fa fa-facebook fa-fw"></span></a></li>
 </ul></div>
 <div class="col-xs-10 col-sm-9 col-md-10">
-<strong>Copyright (C) 2001-2021 Gentoo Authors</strong><br><small>
+<strong>Copyright (C) 2001-2022 Gentoo Authors</strong><br><small>
                 Gentoo is a trademark of the Gentoo Foundation, Inc.
                 The text of this document is distributed under the
                 <a href="https://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License, version 2</a>.
