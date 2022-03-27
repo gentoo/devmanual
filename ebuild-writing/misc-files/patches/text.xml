@@ -113,6 +113,65 @@ from the <c>vim</c> patch tarball:
 </section>
 
 <section>
+<title>Conditional patching</title>
+<body>
+
+<p>
+Patching is ideally only done to make the package in question build properly,
+and should not be done to modify the runtime behaviour of the package. This is
+what USE flags and features of the package are for. As such, it is preferable to
+apply patches unconditionally and avoid conditional patching.
+</p>
+
+<p>
+There are a number of reasons to avoid conditional patching:
+</p>
+
+<ul>
+  <li>
+    It may go unnoticed that a patch fails to apply, if a package is not being
+    tested with a given flag
+  </li>
+  <li>
+    More variance is introduced and problems with a package can become much more
+    difficult to debug
+  </li>
+  <li>
+    Patches should preferably be upstreamed, but conditional patches cannot
+  </li>
+</ul>
+
+<p>
+Consider the following example <c>src_prepare()</c> implementation:
+</p>
+
+<codesample lang="ebuild">
+src_prepare() {
+	if use threads; then
+		PATCHES+=( "${FILESDIR}"/${P}-mt.patch )
+	fi
+	default
+}
+</codesample>
+
+<p>
+As this patch is only applied when <c>USE="threads"</c> is set, any developer
+creating new versions of this package might not detect whether the patch applies
+successfully if they don't test with the same flag.
+</p>
+
+<p>
+Although conditional patching is discouraged it can be unavoidable and as such,
+it is not considered a banned practice, but, to the extent possible, patches
+should be written such that they affect behaviour correctly based on e.g. build
+time definitions and configuration options rather than USE flags directly. This
+allows them to be applied unconditionally.
+</p>
+
+</body>
+</section>
+
+<section>
 <title>Clean Patch Howto</title>
 <body>
 
