@@ -36,6 +36,8 @@ git commit's <c>--author</c> parameter to explicitly give them credit.
 <p>
 Developers must check for a valid <c>Signed-off-by</c> line either within
 the provided patches by a user or within a comment on e.g. Bugzilla.
+See <uri link="::general-concepts/copyright-policy/#Certificate of Origin"/>
+for details.
 </p>
 
 <p>
