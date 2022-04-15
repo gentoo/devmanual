@@ -638,11 +638,11 @@ eclass-defined defaults <d/> for example, say we had <c>fnord.eclass</c>:
 </p>
 
 <codesample lang="ebuild">
-EXPORT_FUNCTIONS src_compile
-
 fnord_src_compile() {
 	do_stuff || die
 }
+
+EXPORT_FUNCTIONS src_compile
 </codesample>
 
 <p>
@@ -659,6 +659,115 @@ src_compile() {
 }
 </codesample>
 
+<p>
+Eclasses may inherit other eclasses to make use of their functionality, and
+historically there have been instances of eclasses calling
+<c>EXPORT_FUNCTIONS</c> and then inheriting another eclass. As inherited
+eclasses may also execute <c>EXPORT_FUNCTIONS</c>, it was not fully defined
+which defaults should take effect. The general recommendation is now that
+eclasses should not inherit other eclasses <e>after</e> calling
+<c>EXPORT_FUNCTIONS</c>.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Inherit guards</title>
+<body>
+
+<p>
+It is common practice to surround the main contents of an eclass with an
+"inherit guard". Much like header guards known from C, inherit guards help
+ensure that an eclass can be inherited multiple times and have its functions and
+variables defined only once. An inherit guard is only needed for an eclass that
+can be inherited more than once.
+</p>
+
+<p>
+A typical inherit guard looks as follows (for a hypothetical <c>foo.eclass</c>):
+</p>
+
+<codesample lang="ebuild">
+if [[ -z ${_FOO_ECLASS} ]]; then
+_FOO_ECLASS=1
+
+# Variables and functions go here
+
+fi
+</codesample>
+
+<p>
+When it comes to <c>EXPORT_FUNCTIONS</c> and inherit guards, the call to
+<c>EXPORT_FUNCTIONS</c> must be placed at the very end of the eclass
+<e>outside</e> any inherit guards, like this:
+</p>
+
+<codesample lang="ebuild">
+if [[ -z ${_FOO_ECLASS} ]]; then
+_FOO_ECLASS=1
+
+foo_src_compile() {
+	...
+}
+fi
+
+EXPORT_FUNCTIONS src_compile
+</codesample>
+
+<p>
+This helps to ensure that the last inherited eclass gets to define the default
+phase functions. Consider two eclasses <c>foo.eclass</c> and <c>bar.eclass</c>
+that define the same default phase function via <c>EXPORT_FUNCTIONS</c>. If an
+ebuild inherits both as <c>inherit foo bar</c>, then the default phases are
+defined by <c>bar.eclass</c>. If <c>foo.eclass</c> is then modified to inherit
+<c>bar</c> as well, then the ebuild's default functions could suddenly become
+those from <c>foo</c> if <c>EXPORT_FUNCTIONS</c> was placed inside the inherit
+guard.
+</p>
+
+<note>
+The rule of thumb here is: put the call (if any) to <c>EXPORT_FUNCTIONS</c> in
+the last line of an eclass, outside of any inherit guards.
+</note>
+
+<warning>
+Old eclasses may put <c>EXPORT_FUNCTIONS</c> in other places, even before
+<c>inherit</c>. They should <e>not</e> blindly be updated to follow the
+recommended pattern here, as it could result in significant breakage.
+</warning>
+
+</body>
+</section>
+
+<section>
+<title>Handling incorrect usage of an eclass</title>
+<body>
+
+<p>
+Sometimes an eclass is used incorrectly by an ebuild and the eclass
+knows it is being used incorrectly <d/> the common example is an
+eclass that only works with a specific set of EAPIs, but is being
+accessed (inherited) by an ebuild with a different EAPI.
+In those cases, used sparingly as a last resort, it is allowed
+for an eclass to invoke die from the global scope.  For example:
+</p>
+
+<codesample lang="ebuild">
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# @ECLASS: eapi-die.eclass
+# @MAINTAINER:
+# Gentoo Devmanual Project &lt;devmanual@gentoo.org&gt;
+# @SUPPORTED_EAPIS: 7 8
+# @BLURB: Calls die when used with an invalid EAPI.
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+</codesample>
 </body>
 </section>
 
@@ -674,7 +783,7 @@ functions.
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: jmake.eclass
@@ -688,7 +797,13 @@ functions.
 # (hypothetical) jmake build system along with default src_configure and
 # src_compile phase functions
 
-EXPORT_FUNCTIONS src_configure src_compile
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_JMAKE_ECLASS} ]]; then
+_JMAKE_ECLASS=1
 
 BDEPEND="&gt;=sys-devel/jmake-2"
 
@@ -725,40 +840,13 @@ jmake-build() {
 jmake_src_compile() {
 	jmake-build || die "build failed"
 }
+fi
+
+EXPORT_FUNCTIONS src_configure src_compile
 </codesample>
 
 </body>
 </section>
 
-<section>
-<title>Handling incorrect usage of an eclass</title>
-<body>
-
-<p>
-Sometimes an eclass is used incorrectly by an ebuild and the eclass
-knows it is being used incorrectly <d/> the common example is an
-eclass that only works with a specific set of EAPIs, but is being
-accessed (inherited) by an ebuild with a different EAPI.
-In those cases, used sparingly as a last resort, it is allowed
-for an eclass to invoke die from the global scope.  For example:
-</p>
-
-<codesample lang="ebuild">
-# Copyright 1999-2021 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# @ECLASS: eapi-die.eclass
-# @MAINTAINER:
-# Gentoo Devmanual Project &lt;devmanual@gentoo.org&gt;
-# @SUPPORTED_EAPIS: 7 8
-# @BLURB: Calls die when used with an invalid EAPI.
-
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-</codesample>
-</body>
-</section>
 </chapter>
 </guide>
