@@ -178,6 +178,11 @@ This is important.
 &lt;warning&gt;
 This is a warning.
 &lt;/warning&gt;
+
+&lt;todo&gt;
+Text inside a &lt;c&gt;todo&lt;/c&gt; element will appear in the
+&lt;uri link="::appendices/todo-list/"/&gt;.
+&lt;/todo&gt;
 </codesample>
 
 <p>
@@ -212,6 +217,11 @@ This is important.
 This is a warning.
 </warning>
 
+<todo>
+Text inside a <c>todo</c> element will appear in the
+<uri link="::appendices/todo-list/"/>.
+</todo>
+
 </body>
 </subsection>
 </section>
@@ -224,15 +234,16 @@ This is a warning.
 We introduced a lot of new tags in the previous section <d/> here's what you
 need to know. The <c>&lt;p&gt;</c> (paragraph), <c>&lt;pre&gt;</c>
 (preformatted block), <c>&lt;codesample&gt;</c> (code block),
-<c>&lt;note&gt;</c>, <c>&lt;important&gt;</c> and <c>&lt;warning&gt;</c> tags
-all can contain one or more lines of text. Besides the <c>&lt;figure&gt;</c>,
-<c>&lt;table&gt;</c>, <c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c>
-and <c>&lt;dl&gt;</c> elements (which we'll cover in just a bit), these are the
-only tags that should appear immediately inside a <c>&lt;body&gt;</c> element.
-Another thing <d/> these tags <e>should not</e> be stacked <d/> in other words,
-don't put a <c>&lt;note&gt;</c> element inside a <c>&lt;p&gt;</c> element. As
-you might guess, the <c>&lt;pre&gt;</c> and <c>&lt;codesample&gt;</c> elements
-preserve their whitespace exactly, making them well-suited for code excerpts:
+<c>&lt;note&gt;</c>, <c>&lt;important&gt;</c>, <c>&lt;warning&gt;</c> and
+<c>&lt;todo&gt;</c> tags all can contain one or more lines of text.
+Besides the <c>&lt;figure&gt;</c>, <c>&lt;table&gt;</c>, <c>&lt;ul&gt;</c>,
+<c>&lt;ol&gt;</c> and <c>&lt;dl&gt;</c> elements (which we'll cover in just
+a bit), these are the only tags that should appear immediately inside a
+<c>&lt;body&gt;</c> element. Another thing <d/> these tags <e>should not</e>
+be stacked <d/> in other words, don't put a <c>&lt;note&gt;</c> element inside
+a <c>&lt;p&gt;</c> element. As you might guess, the <c>&lt;pre&gt;</c> and
+<c>&lt;codesample&gt;</c> elements preserve their whitespace exactly, making
+them well-suited for code excerpts:
 </p>
 
 <codesample lang="sgml"><!-- Named &lt;pre&gt; -->
