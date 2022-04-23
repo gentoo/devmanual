@@ -631,7 +631,9 @@ package:
   <dd>
     Use a tool like <c>scanelf -n</c> (from app-misc/pax-utils) or
     <c>objdump -p</c> (from sys-devel/binutils) to list <c>DT_NEEDED</c>
-    entries
+    entries. 
+    app-portage/iwdevtools and portage's own <c>qa-unresolved-soname-deps</c>
+    <b>FEATURE</b> can help finding these.
   </dd>
   <dt>Look in <c>configure.ac</c></dt>
   <dd>
@@ -647,12 +649,12 @@ package:
   <dt>Look at the application/library website</dt>
   <dd>
     Check the application website for possible dependencies that they suggest
-    are needed
+    are needed.
   </dd>
   <dt>Read the <c>README</c> and <c>INSTALL</c> for the package</dt>
   <dd>
     They usually also contain useful information about building and installing
-    packages
+    packages.
   </dd>
   <dt>
     Remember non-binary dependencies such as pkg-config, doc generation
@@ -663,6 +665,12 @@ package:
     libtool, pkg-config, doxygen, scrollkeeper, gtk-doc, etc. Make sure those
     are clearly stated. Again, such dependencies usually belong in
     <c>BDEPEND</c>.
+  </dd>
+  <dt>Testing in chroots, containers and virtual machines</dt>
+  <dd>
+    A sure-way to find missing dependencies is to test your ebuild in a
+    deprived environment. Chroots, containers, virtual machines and
+    dev-util/ebuildtester can achieve this.
   </dd>
 </dl>
 
