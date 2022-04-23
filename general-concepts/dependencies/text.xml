@@ -783,5 +783,22 @@ There are three kinds of circular dependencies:
 
 </body>
 </section>
+
+<section>
+<title>Indirect dependencies</title>
+<body>
+
+<p>
+Always list each direct dependency that your package needs to build and run
+correctly. Do not rely on dependency chains to meet the dependency
+requirements. For example, a package needs <c>dep1</c> and <c>dep2</c>, but
+<c>dep1</c> also depends on <c>dep2</c>. You might consider just adding
+<c>dep1</c> since it currently pulls <c>dep2</c> too, but in the future,
+<c>dep1</c> might drop <c>dep2</c> as a dependency, or make it conditional with
+USE flags. This would then break building your ebuild.
+</p> 
+
+</body>
+</section>
 </chapter>
 </guide>
