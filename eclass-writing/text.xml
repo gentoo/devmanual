@@ -172,6 +172,12 @@ in the tree or <c>pkgcheck scan --commits</c> to check for issues
 in your staged git commits.
 </p>
 
+<note>
+In eclass documentation, two spaces should be used after the end of each
+sentence (unless it is followed by a newline). This will help <c>groff</c>
+to properly break lines when generating eclass manpages.
+</note>
+
 </body>
 </section>
 
@@ -597,9 +603,9 @@ a single function, <c>domacosapp</c>.
 # @FUNCTION: domacosapp
 # @USAGE: &lt;app-file&gt; [new-file]
 # @DESCRIPTION:
-# Install the given .app file into the appropriate location. If
+# Install the given .app file into the appropriate location.  If
 # [new-file] is given, it will be used as the new (installed) name of
-# the file. Otherwise &lt;app-file&gt; is installed as-is.
+# the file.  Otherwise &lt;app-file&gt; is installed as-is.
 domacosapp() {
 	[[ -z "${1}" ]] &amp;&amp; die "usage: domacosapp &lt;file&gt; [new file]"
 	if use ppc-macos ; then
