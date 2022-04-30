@@ -801,7 +801,7 @@ functions.
 # @DESCRIPTION:
 # Demonstrates EXPORT_FUNCTIONS and defines simple wrappers for the
 # (hypothetical) jmake build system along with default src_configure and
-# src_compile phase functions
+# src_compile phase functions.
 
 case ${EAPI} in
 	7|8) ;;
@@ -825,7 +825,7 @@ jmake-configure() {
 # @FUNCTION: jmake_src_configure
 # @USAGE: [additional-args]
 # @DESCRIPTION:
-# Calls jmake-configure() to configure a jmake project. Passes all arguments
+# Calls jmake-configure() to configure a jmake project.  Passes all arguments
 # through to the appropriate "jmake configure" command.
 jmake_src_configure() {
 	jmake-configure "$@" || die "configure failed"
