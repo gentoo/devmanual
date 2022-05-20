@@ -198,7 +198,7 @@ following are available:
       <c>=~</c>
     </ti>
     <ti>
-      String regular expression match (<b>bash 3 only</b>, not currently allowed in ebuilds)
+      String regular expression match
     </ti>
   </tr>
 </table>
