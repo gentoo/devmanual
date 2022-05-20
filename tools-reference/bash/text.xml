@@ -153,54 +153,30 @@ following are available:
 </p>
 
 <table>
-  <tr>
-    <th>
-      Operator
-    </th>
-    <th>
-      Purpose
-    </th>
-  </tr>
-  <tr>
-    <ti>
-      <c>==</c> (also <c>=</c>)
-    </ti>
-    <ti>
-      String equality
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>!=</c>
-    </ti>
-    <ti>
-      String inequality
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>&lt;</c>
-    </ti>
-    <ti>
-      String lexiographic comparison (before)
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>&gt;</c>
-    </ti>
-    <ti>
-      String lexiographic comparison (after)
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>=~</c>
-    </ti>
-    <ti>
-      String regular expression match
-    </ti>
-  </tr>
+<tr>
+  <th>Operator</th>
+  <th>Purpose</th>
+</tr>
+<tr>
+  <ti><c>==</c> (also <c>=</c>)</ti>
+  <ti>String equality</ti>
+</tr>
+<tr>
+  <ti><c>!=</c></ti>
+  <ti>String inequality</ti>
+</tr>
+<tr>
+  <ti><c>&lt;</c></ti>
+  <ti>String lexiographic comparison (before)</ti>
+</tr>
+<tr>
+  <ti><c>&gt;</c></ti>
+  <ti>String lexiographic comparison (after)</ti>
+</tr>
+<tr>
+  <ti><c>=~</c></ti>
+  <ti>String regular expression match</ti>
+</tr>
 </table>
 
 </body>
@@ -216,30 +192,18 @@ available:
 </p>
 
 <table>
-  <tr>
-    <th>
-      Operator
-    </th>
-    <th>
-      Purpose
-    </th>
-  </tr>
-  <tr>
-    <ti>
-      <c>-z "string"</c>
-    </ti>
-    <ti>
-      String has zero length
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-n "string"</c>
-    </ti>
-    <ti>
-      String has non-zero length
-    </ti>
-  </tr>
+<tr>
+  <th>Operator</th>
+  <th>Purpose</th>
+</tr>
+<tr>
+  <ti><c>-z "string"</c></ti>
+  <ti>String has zero length</ti>
+</tr>
+<tr>
+  <ti><c>-n "string"</c></ti>
+  <ti>String has non-zero length</ti>
+</tr>
 </table>
 
 </body>
@@ -255,62 +219,34 @@ following are available:
 </p>
 
 <table>
-  <tr>
-    <th>
-      Operator
-    </th>
-    <th>
-      Purpose
-    </th>
-  </tr>
-  <tr>
-    <ti>
-      <c>-eq</c>
-    </ti>
-    <ti>
-      Integer equality
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-ne</c>
-    </ti>
-    <ti>
-      Integer inequality
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-lt</c>
-    </ti>
-    <ti>
-      Integer less than
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-le</c>
-    </ti>
-    <ti>
-      Integer less than or equal to
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-gt</c>
-    </ti>
-    <ti>
-      Integer greater than
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-ge</c>
-    </ti>
-    <ti>
-      Integer greater than or equal to
-    </ti>
-  </tr>
+<tr>
+  <th>Operator</th>
+  <th>Purpose</th>
+</tr>
+<tr>
+  <ti><c>-eq</c></ti>
+  <ti>Integer equality</ti>
+</tr>
+<tr>
+  <ti><c>-ne</c></ti>
+  <ti>Integer inequality</ti>
+</tr>
+<tr>
+  <ti><c>-lt</c></ti>
+  <ti>Integer less than</ti>
+</tr>
+<tr>
+  <ti><c>-le</c></ti>
+  <ti>Integer less than or equal to</ti>
+</tr>
+<tr>
+  <ti><c>-gt</c></ti>
+  <ti>Integer greater than</ti>
+</tr>
+<tr>
+  <ti><c>-ge</c></ti>
+  <ti>Integer greater than or equal to</ti>
+</tr>
 </table>
 
 </body>
@@ -326,182 +262,94 @@ available (lifted from <c>man bash</c>):
 </p>
 
 <table>
-  <tr>
-    <th>
-      Operator
-    </th>
-    <th>
-      Purpose
-    </th>
-  </tr>
-  <tr>
-    <ti>
-      <c>-a file</c>
-    </ti>
-    <ti>
-      Exists (use <c>-e</c> instead)
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-b file</c>
-    </ti>
-    <ti>
-      Exists and is a block special file
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-c file</c>
-    </ti>
-    <ti>
-      Exists and is a character special file
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-d file</c>
-    </ti>
-    <ti>
-      Exists and is a directory
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-e file</c>
-    </ti>
-    <ti>
-      Exists
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-f file</c>
-    </ti>
-    <ti>
-      Exists and is a regular file
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-g file</c>
-    </ti>
-    <ti>
-      Exists and is set-group-id
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-h file</c>
-    </ti>
-    <ti>
-      Exists and is a symbolic link
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-k file</c>
-    </ti>
-    <ti>
-      Exists and its sticky bit is set
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-p file</c>
-    </ti>
-    <ti>
-      Exists and is a named pipe (FIFO)
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-r file</c>
-    </ti>
-    <ti>
-      Exists and is readable
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-s file</c>
-    </ti>
-    <ti>
-      Exists and has a size greater than zero
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-t fd</c>
-    </ti>
-    <ti>
-      Descriptor fd is open and refers to a terminal
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-u file</c>
-    </ti>
-    <ti>
-      Exists and its set-user-id bit is set
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-w file</c>
-    </ti>
-    <ti>
-      Exists and is writable
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-x file</c>
-    </ti>
-    <ti>
-      Exists and is executable
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-O file</c>
-    </ti>
-    <ti>
-      Exists and is owned by the effective user id
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-G file</c>
-    </ti>
-    <ti>
-      Exists and is owned by the effective group id
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-L file</c>
-    </ti>
-    <ti>
-      Exists and is a symbolic link
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-S file</c>
-    </ti>
-    <ti>
-      Exists and is a socket
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-N file</c>
-    </ti>
-    <ti>
-      Exists and has been modified since it was last read
-    </ti>
-  </tr>
+<tr>
+  <th>Operator</th>
+  <th>Purpose</th>
+</tr>
+<tr>
+  <ti><c>-a file</c></ti>
+  <ti>Exists (use <c>-e</c> instead)</ti>
+</tr>
+<tr>
+  <ti><c>-b file</c></ti>
+  <ti>Exists and is a block special file</ti>
+</tr>
+<tr>
+  <ti><c>-c file</c></ti>
+  <ti>Exists and is a character special file</ti>
+</tr>
+<tr>
+  <ti><c>-d file</c></ti>
+  <ti>Exists and is a directory</ti>
+</tr>
+<tr>
+  <ti><c>-e file</c></ti>
+  <ti>Exists</ti>
+</tr>
+<tr>
+  <ti><c>-f file</c></ti>
+  <ti>Exists and is a regular file</ti>
+</tr>
+<tr>
+  <ti><c>-g file</c></ti>
+  <ti>Exists and is set-group-id</ti>
+</tr>
+<tr>
+  <ti><c>-h file</c></ti>
+  <ti>Exists and is a symbolic link</ti>
+</tr>
+<tr>
+  <ti><c>-k file</c></ti>
+  <ti>Exists and its sticky bit is set</ti>
+</tr>
+<tr>
+  <ti><c>-p file</c></ti>
+  <ti>Exists and is a named pipe (FIFO)</ti>
+</tr>
+<tr>
+  <ti><c>-r file</c></ti>
+  <ti>Exists and is readable</ti>
+</tr>
+<tr>
+  <ti><c>-s file</c></ti>
+  <ti>Exists and has a size greater than zero</ti>
+</tr>
+<tr>
+  <ti><c>-t fd</c></ti>
+  <ti>Descriptor fd is open and refers to a terminal</ti>
+</tr>
+<tr>
+  <ti><c>-u file</c></ti>
+  <ti>Exists and its set-user-id bit is set</ti>
+</tr>
+<tr>
+  <ti><c>-w file</c></ti>
+  <ti>Exists and is writable</ti>
+</tr>
+<tr>
+  <ti><c>-x file</c></ti>
+  <ti>Exists and is executable</ti>
+</tr>
+<tr>
+  <ti><c>-O file</c></ti>
+  <ti>Exists and is owned by the effective user id</ti>
+</tr>
+<tr>
+  <ti><c>-G file</c></ti>
+  <ti>Exists and is owned by the effective group id</ti>
+</tr>
+<tr>
+  <ti><c>-L file</c></ti>
+  <ti>Exists and is a symbolic link</ti>
+</tr>
+<tr>
+  <ti><c>-S file</c></ti>
+  <ti>Exists and is a socket</ti>
+</tr>
+<tr>
+  <ti><c>-N file</c></ti>
+  <ti>Exists and has been modified since it was last read</ti>
+</tr>
 </table>
 
 </body>
@@ -517,41 +365,25 @@ following are available (lifted from <c>man bash</c>):
 </p>
 
 <table>
-  <tr>
-    <th>
-      Operator
-    </th>
-    <th>
-      Purpose
-    </th>
-  </tr>
-  <tr>
-    <ti>
-      <c>file1 -nt file2</c>
-    </ti>
-    <ti>
-      file1 is newer (according to modification date) than
-      file2, or if file1 exists and file2 does not.
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>file1 -ot file2</c>
-    </ti>
-    <ti>
-      file1 is older than file2, or if file2 exists and
-      file1 does not.
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>file1 -ef file2</c>
-    </ti>
-    <ti>
-      file1 and file2 refer to the same device and inode
-      numbers.
-    </ti>
-  </tr>
+<tr>
+  <th>Operator</th>
+  <th>Purpose</th>
+</tr>
+<tr>
+  <ti><c>file1 -nt file2</c></ti>
+  <ti>
+    file1 is newer (according to modification date) than file2,
+    or if file1 exists and file2 does not.
+  </ti>
+</tr>
+<tr>
+  <ti><c>file1 -ot file2</c></ti>
+  <ti>file1 is older than file2, or if file2 exists and file1 does not.</ti>
+</tr>
+<tr>
+  <ti><c>file1 -ef file2</c></ti>
+  <ti>file1 and file2 refer to the same device and inode numbers.</ti>
+</tr>
 </table>
 
 </body>
@@ -568,39 +400,23 @@ These are used <e>outside</e> of the <c>[[ ]]</c> blocks. For operator precedenc
 </p>
 
 <table>
-  <tr>
-    <th>
-      Construct
-    </th>
-    <th>
-      Effect
-    </th>
-  </tr>
-  <tr>
-    <ti>
-      <c>first || second</c>
-    </ti>
-    <ti>
-      first <e>or</e> second (short circuit)
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>
-        first &amp;&amp; second</c>
-    </ti>
-    <ti>
-      first <e>and</e> second (short circuit)
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>! condition</c>
-    </ti>
-    <ti>
-      <e>not</e> condition
-    </ti>
-  </tr>
+<tr>
+  <th>Construct</th>
+  <th>Effect</th>
+</tr>
+<tr>
+  <ti><c>first || second</c></ti>
+  <ti>first <e>or</e> second (short circuit)</ti>
+</tr>
+<tr>
+  <ti><c>
+first &amp;&amp; second</c></ti>
+  <ti>first <e>and</e> second (short circuit)</ti>
+</tr>
+<tr>
+  <ti><c>! condition</c></ti>
+  <ti><e>not</e> condition</ti>
+</tr>
 </table>
 
 
@@ -878,160 +694,88 @@ operators are supported (the table is in order of precedence, highest first):
 </p>
 
 <table>
-  <tr>
-    <th>
-      Operators
-    </th>
-    <th>
-      Effect
-    </th>
-  </tr>
-  <tr>
-    <ti>
-      <c>var++</c>, <c>var--</c>
-    </ti>
-    <ti>
-      Variable post-increment, post-decrement
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>++var</c>, <c>--var</c>
-    </ti>
-    <ti>
-      Variable pre-increment, pre-decrement
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>-</c>, <c>+</c>
-    </ti>
-    <ti>
-      Unary minus and plus
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>!</c>, <c>~</c>
-    </ti>
-    <ti>
-      Logical negation, bitwise negation
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>**</c>
-    </ti>
-    <ti>
-      Exponentiation
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>*</c>, <c>/</c>, <c>%</c>
-    </ti>
-    <ti>
-      Multiplication, division, remainder
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>+</c>, <c>-</c>
-    </ti>
-    <ti>
-      Addition, subtraction
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>&lt;&lt;</c>, <c>&gt;&gt;</c>
-    </ti>
-    <ti>
-      Left, right bitwise shifts
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>&lt;=</c>, <c>&gt;=</c>, <c>&lt;</c>, <c>&gt;</c>
-    </ti>
-    <ti>
-      Comparison: less than or equal to, greater than or
-      equal to, strictly less than, strictly greater than
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>==</c>, <c>!=</c>
-    </ti>
-    <ti>
-      Equality, inequality
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>&amp;</c>
-    </ti>
-    <ti>
-      Bitwise AND
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>^</c>
-    </ti>
-    <ti>
-      Bitwise exclusive OR
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>|</c>
-    </ti>
-    <ti>
-      Bitwise OR
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>&amp;&amp;</c>
-    </ti>
-    <ti>
-      Logical AND
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>||</c>
-    </ti>
-    <ti>
-      Logical OR
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>expr ? expr : expr</c>
-    </ti>
-    <ti>
-      Conditional operator
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>=</c>, <c>*=</c>, <c>/=</c>, <c>%=</c>, <c>+=</c>, <c>-=</c>, <c>&lt;&lt;=</c>,
-      <c>&gt;&gt;=</c>, <c>&amp;=</c>, <c>^=</c>, <c>|=</c>
-    </ti>
-    <ti>
-      Assignment
-    </ti>
-  </tr>
-  <tr>
-    <ti>
-      <c>expr1 , expr2</c>
-    </ti>
-    <ti>
-      Multiple statements
-    </ti>
-  </tr>
+<tr>
+  <th>Operators</th>
+  <th>Effect</th>
+</tr>
+<tr>
+  <ti><c>var++</c>, <c>var--</c></ti>
+  <ti>Variable post-increment, post-decrement</ti>
+</tr>
+<tr>
+  <ti><c>++var</c>, <c>--var</c></ti>
+  <ti>Variable pre-increment, pre-decrement</ti>
+</tr>
+<tr>
+  <ti><c>-</c>, <c>+</c></ti>
+  <ti>Unary minus and plus</ti>
+</tr>
+<tr>
+  <ti><c>!</c>, <c>~</c></ti>
+  <ti>Logical negation, bitwise negation</ti>
+</tr>
+<tr>
+  <ti><c>**</c></ti>
+  <ti>Exponentiation</ti>
+</tr>
+<tr>
+  <ti><c>*</c>, <c>/</c>, <c>%</c></ti>
+  <ti>Multiplication, division, remainder</ti>
+</tr>
+<tr>
+  <ti><c>+</c>, <c>-</c></ti>
+  <ti>Addition, subtraction</ti>
+</tr>
+<tr>
+  <ti><c>&lt;&lt;</c>, <c>&gt;&gt;</c></ti>
+  <ti>Left, right bitwise shifts</ti>
+</tr>
+<tr>
+  <ti><c>&lt;=</c>, <c>&gt;=</c>, <c>&lt;</c>, <c>&gt;</c></ti>
+  <ti>
+    Comparison: less than or equal to, greater than or equal to,
+    strictly less than, strictly greater than
+  </ti>
+</tr>
+<tr>
+  <ti><c>==</c>, <c>!=</c></ti>
+  <ti>Equality, inequality</ti>
+</tr>
+<tr>
+  <ti><c>&amp;</c></ti>
+  <ti>Bitwise AND</ti>
+</tr>
+<tr>
+  <ti><c>^</c></ti>
+  <ti>Bitwise exclusive OR</ti>
+</tr>
+<tr>
+  <ti><c>|</c></ti>
+  <ti>Bitwise OR</ti>
+</tr>
+<tr>
+  <ti><c>&amp;&amp;</c></ti>
+  <ti>Logical AND</ti>
+</tr>
+<tr>
+  <ti><c>||</c></ti>
+  <ti>Logical OR</ti>
+</tr>
+<tr>
+  <ti><c>expr ? expr : expr</c></ti>
+  <ti>Conditional operator</ti>
+</tr>
+<tr>
+  <ti>
+    <c>=</c>, <c>*=</c>, <c>/=</c>, <c>%=</c>, <c>+=</c>, <c>-=</c>,
+    <c>&lt;&lt;=</c>, <c>&gt;&gt;=</c>, <c>&amp;=</c>, <c>^=</c>, <c>|=</c>
+  </ti>
+  <ti>Assignment</ti>
+</tr>
+<tr>
+  <ti><c>expr1 , expr2</c></ti>
+  <ti>Multiple statements</ti>
+</tr>
 </table>
 
 <note>
