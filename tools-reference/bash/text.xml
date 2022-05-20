@@ -167,11 +167,11 @@ following are available:
 </tr>
 <tr>
   <ti><c>&lt;</c></ti>
-  <ti>String lexiographic comparison (before)</ti>
+  <ti>String lexicographic comparison (before)</ti>
 </tr>
 <tr>
   <ti><c>&gt;</c></ti>
-  <ti>String lexiographic comparison (after)</ti>
+  <ti>String lexicographic comparison (after)</ti>
 </tr>
 <tr>
   <ti><c>=~</c></ti>
