@@ -360,8 +360,8 @@ available (lifted from <c>man bash</c>):
 <body>
 
 <p>
-The general form of a file comparison is <c>"file1" -operator "file2"</c>. The
-following are available (lifted from <c>man bash</c>):
+The general form of a file comparison is <c>"file1" -operator "file2"</c>.
+The following are available:
 </p>
 
 <table>
@@ -373,16 +373,16 @@ following are available (lifted from <c>man bash</c>):
   <ti><c>file1 -nt file2</c></ti>
   <ti>
     file1 is newer (according to modification date) than file2,
-    or if file1 exists and file2 does not.
+    or file1 exists and file2 does not
   </ti>
 </tr>
 <tr>
   <ti><c>file1 -ot file2</c></ti>
-  <ti>file1 is older than file2, or if file2 exists and file1 does not.</ti>
+  <ti>file1 is older than file2, or file2 exists and file1 does not</ti>
 </tr>
 <tr>
   <ti><c>file1 -ef file2</c></ti>
-  <ti>file1 and file2 refer to the same device and inode numbers.</ti>
+  <ti>file1 is a hard link to file2</ti>
 </tr>
 </table>
 
