@@ -273,9 +273,9 @@ There are also some attributes that can be used with these tags:
     In every case where a description is required, there must be at
     <e>least</e> an english description.  If an additional description in
     another language is given, this attribute is used to specify the language
-    used.  The format is the two-character language code as defined by the <uri
-    link="https://www.w3.org/WAI/ER/IG/ert/iso639.htm#2letter">ISO-639-1</uri>
-    norm.
+    used. The format is an IETF language tag as defined by the
+    <uri link="https://tools.ietf.org/rfc/bcp/bcp47.txt">BCP 47</uri>
+    specification. Most often, this will be a two-character language code.
   </ti>
 </tr>
 <tr>
