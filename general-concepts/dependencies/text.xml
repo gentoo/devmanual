@@ -631,7 +631,7 @@ package:
   <dd>
     Use a tool like <c>scanelf -n</c> (from app-misc/pax-utils) or
     <c>objdump -p</c> (from sys-devel/binutils) to list <c>DT_NEEDED</c>
-    entries. 
+    entries.
     app-portage/iwdevtools and portage's own <c>qa-unresolved-soname-deps</c>
     <b>FEATURE</b> can help finding these.
   </dd>
@@ -804,7 +804,7 @@ requirements. For example, a package needs <c>dep1</c> and <c>dep2</c>, but
 <c>dep1</c> since it currently pulls <c>dep2</c> too, but in the future,
 <c>dep1</c> might drop <c>dep2</c> as a dependency, or make it conditional with
 USE flags. This would then break building your ebuild.
-</p> 
+</p>
 
 </body>
 </section>
