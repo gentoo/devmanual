@@ -285,15 +285,12 @@ There are also some attributes that can be used with these tags:
     <c>&lt;stabilize-allarches&gt;</c>, <c>&lt;flag&gt;</c>
   </ti>
   <ti>
-    The restrict attribute allows one to restrict the application of
-    certain tags to certain versions of a package. When this attribute
-    is used, other tags with or without the restrict attribute must be
-    present to cover all the versions of the package. A tag without
-    the restrict attribute serves as the default. The format of the
-    restrict attribute is that of a EAPI=0 package dependency specification
-    (i.e., USE-conditional or slot dependendencies are not allowed).
-    Since <c>&lt;</c> and <c>&gt;</c> are special characters in XML,
-    they must be escaped using <c>&amp;lt;</c> and <c>&amp;gt;</c>.
+    The restrict attribute allows one to restrict the application of certain
+    tags to certain versions of a package. The format of the restrict attribute
+    is that of a EAPI 0 package dependency specification (i.e. USE-conditional
+    or slot dependendencies are not allowed). Since <c>&lt;</c> and <c>&gt;</c>
+    are special characters in XML, they must be escaped using <c>&amp;lt;</c>
+    and <c>&amp;gt;</c>.
   </ti>
 </tr>
 <tr>
