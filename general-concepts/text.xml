@@ -26,7 +26,6 @@ writing ebuilds or working with the Gentoo repository.
 <include href="dependencies/"/>
 <include href="ebuild-revisions/"/>
 <include href="emerge-and-ebuild/"/>
-<include href="features/"/>
 <include href="filesystem/"/>
 <include href="git-to-rsync/"/>
 <include href="install-destinations/"/>
