@@ -667,18 +667,65 @@ The <c>pattern</c> may contain a number of special metacharacters for pattern
 matching.
 </p>
 
-<todo>
-tables of bash metachars
-</todo>
+<table>
+<tr>
+  <th>Character</th>
+  <th>Meaning</th>
+</tr>
+<tr>
+  <ti><c>*</c></ti>
+  <ti>Matches any string, including the null string</ti>
+</tr>
+<tr>
+  <ti><c>?</c></ti>
+  <ti>Matches any single character</ti>
+</tr>
+<tr>
+  <ti><c>[...]</c></ti>
+  <ti>Matches any one of the enclosed characters</ti>
+</tr>
+</table>
+
+<p>
+Refer to the
+<uri link="https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html">
+Bash Reference Manual</uri> for further details and caveats regarding these
+characters.
+</p>
 
 <p>
 If the <c>extglob</c> shell option is enabled, a number of additional constructs
-are available. These can be <e>extremely</e> useful sometimes.
+are available. These can be <e>extremely</e> useful sometimes. In the following
+table, a <c>pattern-list</c> is a list of one or more patterns separated by
+<c>|</c>.
 </p>
 
-<todo>
-table of extra bash goodies
-</todo>
+<table>
+<tr>
+  <th>Construct</th>
+  <th>Meaning</th>
+</tr>
+<tr>
+  <ti><c>?(pattern-list)</c></ti>
+  <ti>Matches zero or one occurrence of the given patterns</ti>
+</tr>
+<tr>
+  <ti><c>*(pattern-list)</c></ti>
+  <ti>Matches zero or more occurrences of the given patterns</ti>
+</tr>
+<tr>
+  <ti><c>+(pattern-list)</c></ti>
+  <ti>Matches one or more occurrences of the given patterns</ti>
+</tr>
+<tr>
+  <ti><c>@(pattern-list)</c></ti>
+  <ti>Matches one of the given patterns</ti>
+</tr>
+<tr>
+  <ti><c>!(pattern-list)</c></ti>
+  <ti>Matches anything except one of the given patterns</ti>
+</tr>
+</table>
 
 </body>
 </subsection>
