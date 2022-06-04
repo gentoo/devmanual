@@ -70,10 +70,21 @@
         </attribute>
         <attribute name="self"/>
       </choice>
+      <optional>
+        <ref name="license"/>
+      </optional>
       <ref name="chapter"/>
       <zeroOrMore>
         <ref name="include"/>
       </zeroOrMore>
+    </element>
+  </define>
+  <define name="license">
+    <element name="license">
+      <choice>
+        <value>CC-BY-SA-4.0</value>
+        <value>GPL-2</value>
+      </choice>
     </element>
   </define>
   <define name="include">

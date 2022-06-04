@@ -636,7 +636,7 @@
       </header>
       <main>
         <div class="container">
-          <xsl:apply-templates/>
+          <xsl:apply-templates select="/guide/chapter"/>
         </div>
       </main>
       <footer>
@@ -666,8 +666,7 @@
                 Gentoo is a trademark of the Gentoo Foundation, Inc.
                 The text of this document is distributed under the
                 <xsl:choose>
-                  <!-- Eclasses are GPL-2, so we need a different footer -->
-                  <xsl:when test="starts-with(/guide/@self, 'eclass-reference/') and $relative_path_depth &gt;= 2">
+                  <xsl:when test="/guide/license = 'GPL-2'">
                     <a href="https://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License, version 2</a>.
                   </xsl:when>
                   <xsl:otherwise>

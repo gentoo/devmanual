@@ -18,9 +18,12 @@ start = guide
 
 guide = element guide {
   (attribute root { "true" } | attribute self { text }),
+  license?,
   chapter,
   \include*
 }
+
+license = element license { "CC-BY-SA-4.0" | "GPL-2" }
 
 \include = element include { attribute href { text } }
 
