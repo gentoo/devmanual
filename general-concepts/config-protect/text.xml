@@ -2,28 +2,29 @@
 <guide self="general-concepts/config-protect/">
 <chapter>
 <title>Configuration File Protection</title>
-
 <body>
+
 <p>
-  Portage includes a system for configuration file protection which means ebuilds
-  don't have to worry about accidentally clobbering files in <c>/etc</c>. This is
-  known as 'protection', and it is controlled by the <c>CONFIG_PROTECT</c> and
-  <c>CONFIG_PROTECT_MASK</c> variables.
+Portage includes a system for configuration file protection which means ebuilds
+don't have to worry about accidentally clobbering files in <c>/etc</c>. This is
+known as 'protection', and it is controlled by the <c>CONFIG_PROTECT</c> and
+<c>CONFIG_PROTECT_MASK</c> variables.
 </p>
 
 <p>
-  Any directory which is listed in <c>CONFIG_PROTECT</c> (and any subdirectories
-  thereof), except for any which are listed in <c>CONFIG_PROTECT_MASK</c> (and
-  subdirectories) are automatically 'protected' by Portage when copying an image
-  from <c>DESTDIR</c> to <c>ROOT</c>. Rather than installing protected files directly,
-  Portage will install them as <c>._cfg0000_filename</c>. These can then be processed
-  by the <c>etc-update</c> or <c>dispatch-conf</c> files at the user's discretion.
+Any directory which is listed in <c>CONFIG_PROTECT</c> (and any subdirectories
+thereof), except for any which are listed in <c>CONFIG_PROTECT_MASK</c> (and
+subdirectories) are automatically 'protected' by Portage when copying an image
+from <c>DESTDIR</c> to <c>ROOT</c>. Rather than installing protected files
+directly, Portage will install them as <c>._cfg0000_filename</c>. These can
+then be processed by the <c>etc-update</c> or <c>dispatch-conf</c> files at
+the user's discretion.
 </p>
 
 <p>
-  Packages must <b>not</b> attempt to override this system via <c>pkg_postinst</c> or
-  similar. If you need a file renamed, removed or changed in a particular way, you
-  should display a message informing the user.
+Packages must <b>not</b> attempt to override this system via <c>pkg_postinst</c>
+or similar. If you need a file renamed, removed or changed in a particular way,
+you should display a message informing the user.
 </p>
 
 <p>
