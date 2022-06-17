@@ -379,7 +379,7 @@
   <define name="uri">
     <element name="uri">
       <choice>
-        <!-- uri can have either an URI in the body text or a link attribute -->
+        <!-- uri can have either a URI in the body text or a link attribute -->
         <data type="anyURI"/>
         <group>
           <attribute name="link"/>
