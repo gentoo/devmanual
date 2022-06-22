@@ -145,17 +145,6 @@ you see this notice locally. If you see this notice when working with a pure
 <c>emerge sync</c> over <c>rsync</c> setup, it is probably a genuine issue.
 </p>
 
-<todo>
-from vapier:
-TEXTREL's ... binary files which contain text relocations ... see
-'prepstrip' for a full description unsafe files ... basically files that
-are setid and writable by Other users i've added the following QA checks to
-Portage HEAD (no idea when they'll hit a release): Insecure RUNPATHs ...
-binary files which have RUNPATH's encoded in them which are in +t
-directories Executable stacks ... binary files whose stack is marked with
-+x ... will bomb on amd64 for example
-</todo>
-
 </body>
 </subsection>
 </section>
