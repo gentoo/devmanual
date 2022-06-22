@@ -223,28 +223,28 @@
 
 <xsl:template match="note">
   <div class="alert alert-info" role="alert">
-    <strong>Note:</strong>
+    <strong>Note:</strong><xsl:text> </xsl:text>
     <xsl:apply-templates/>
   </div>
 </xsl:template>
 
 <xsl:template match="important">
   <div class="alert alert-warning" role="alert">
-    <strong>Important:</strong>
+    <strong>Important:</strong><xsl:text> </xsl:text>
     <xsl:apply-templates/>
   </div>
 </xsl:template>
 
 <xsl:template match="warning">
   <div class="alert alert-danger" role="alert">
-    <strong>Warning:</strong>
+    <strong>Warning:</strong><xsl:text> </xsl:text>
     <xsl:apply-templates/>
   </div>
 </xsl:template>
 
 <xsl:template match="todo">
   <div class="alert alert-info" role="alert">
-    <strong>Todo:</strong>
+    <strong>Todo:</strong><xsl:text> </xsl:text>
     <xsl:apply-templates/>
   </div>
 </xsl:template>
