@@ -893,10 +893,11 @@ write this
 <body>
 
 <p>
-The author recommends <e>Mastering Regular Expressions</e> by Jeffrey E. F. Friedl
-for those who wish to learn more about regexes. This text is remarkably devoid
-of phrases like "let <c>t</c> be a finite contiguous sequence such that <c>t[n] ∈ ∑
-∀ n</c>", and was <e>not</e> written by someone whose pay cheque depended upon them being
+The author recommends <uri link="::appendices/further-reading/#Books">
+<e>Mastering Regular Expressions</e> by Jeffrey E. F. Friedl</uri> for those who
+wish to learn more about regexes. This text is remarkably devoid of phrases like
+"let <c>t</c> be a finite contiguous sequence such that <c>t[n] ∈ ∑ ∀ n</c>",
+and was <e>not</e> written by someone whose pay cheque depended upon them being
 able to express simple concepts with pages upon pages of mathematical and Greek
 symbols.
 </p>
