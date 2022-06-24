@@ -63,6 +63,8 @@ eclass-reference/text.xml:
 	@echo "Creating a placeholder index as fallback." >&2
 	bin/gen-eclass-html.sh -n
 
+appendices/todo-list/index.html: $(XMLS)
+
 # Each HTML file must depend on its XML file with all its descendants
 # (for the contents tree), all its ancestors (for breadcrumbs), and
 # the previous and next documents (for backward and forward links).
