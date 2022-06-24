@@ -12,10 +12,30 @@ copyright and license policies for Gentoo Linux.
 <p>
 Every Gentoo project must abide by the
 <uri link="https://www.gentoo.org/get-started/philosophy/social-contract.html">
-Gentoo Social Contract</uri> and release its work under one or more of
-<uri link="https://www.gentoo.org/glep/glep-0076.html#licensing-of-gentoo-projects">
-predetermined licenses</uri>. Exceptions may be granted by the Gentoo
-Foundation per-case basis.
+Gentoo Social Contract</uri> and release its work under one or more of the
+following licenses:
+</p>
+
+<ul>
+  <li>
+    The <uri link="https://www.gnu.org/licenses/gpl-2.0.html">
+    GNU General Public License, version 2 or later</uri> (GPL-2+)
+  </li>
+  <li>
+    The <uri link="https://creativecommons.org/licenses/by-sa/4.0/">
+    Creative Commons Attribution-ShareAlike 4.0 International License</uri>
+    (CC-BY-SA-4.0), only for documentation
+  </li>
+  <li>
+    Any
+    <uri link="https://www.gnu.org/licenses/license-list.en.html#GPLCompatibleLicenses">
+    GPL-compatible free software license</uri>
+  </li>
+</ul>
+
+<p>
+Exceptions for other (GPL-incompatible) free software licenses may be granted
+by the Gentoo Foundation on a case-by-case basis.
 </p>
 
 </body>
