@@ -5,7 +5,7 @@
 <body>
 
 <p>
-<uri link="https://www.gentoo.org/glep/glep-0076.html">GLEP-76</uri> defines
+<uri link="https://www.gentoo.org/glep/glep-0076.html">GLEP 76</uri> defines
 copyright and license policies for Gentoo Linux.
 </p>
 
@@ -25,9 +25,8 @@ Foundation per-case basis.
 <body>
 
 <p>
-Per <uri link="https://www.gentoo.org/glep/glep-0076.html">GLEP 76
-(Copyright Policy)</uri>, you must sign-off all your commits to any
-Gentoo-hosted repository with accordance to the
+Per GLEP 76, you must sign-off all your commits to any Gentoo-hosted repository
+with accordance to the
 <uri link="https://www.gentoo.org/glep/glep-0076.html#certificate-of-origin">
 copyright policy</uri>.
 </p>
