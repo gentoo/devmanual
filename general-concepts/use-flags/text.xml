@@ -310,17 +310,17 @@ GnuTLS is more featureful than OpenSSL, it is favoured:
 
 <codesample lang="ebuild">
 src_configure() {
-	local myconf
+	local myconf=()
 
 	if use ssl; then
-		myconf+=" --enable-ssl --with-ssl=$(usex gnutls gnutls openssl)"
+		myconf+=( --enable-ssl --with-ssl="$(usex gnutls gnutls openssl)" )
 	else
-		myconf+=" --disable-ssl"
+		myconf+=( --disable-ssl )
 	fi
 
 	econf \
 		# Other stuff
-		${myconf}
+		"${myconf[@]}"
 }
 </codesample>
 
