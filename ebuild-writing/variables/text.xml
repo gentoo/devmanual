@@ -185,6 +185,57 @@ for these variables when writing ebuilds.
 </table>
 
 </body>
+
+<subsection>
+<title>ROOT</title>
+<body>
+
+<p>
+The idea behind <c>ROOT</c> is that one can build a system with
+<c>ROOT=/somewhere</c> and then chroot into it or tar up
+<c>/somewhere</c> as a system image. It is not designed to allow the
+user to run <c>/somewhere/usr/bin/foo</c>.
+</p>
+
+<p>
+Ebuilds may reference <c>ROOT</c> only during <c>pkg_*</c> phases. It
+can't be used correctly in <c>src_*</c> phases, since <c>ROOT</c> may
+be different when merging a binary package. For example, a binary
+package may be built with <c>ROOT=/</c> and then installed onto a
+system using <c>ROOT=/somewhere</c>.
+</p>
+
+<p>
+When building a package, <c>ROOT</c> should not be used to satisfy the
+required dependencies on libraries, headers files etc. Instead, the
+files on the build system should be specified using <c>/</c>.
+</p>
+
+<p>
+In a cross compiling environment, ebuilds must not call any of the
+binaries inside <c>ROOT</c> since they may not be executable on the
+build system.
+</p>
+
+<p>
+Below is an example of an ebuild that uses <c>ROOT</c> in
+<c>pkg_postinst()</c> to conditionally print an error message if an
+old and obsolete configuration file still exists:
+</p>
+
+<codesample lang="ebuild">
+pkg_postinst() {
+	if [[ -e "${ROOT}/etc/oldconfig" ]]; then
+		ewarn "You still have the obsolete config file "
+		ewarn "    ${ROOT}/etc/oldconfig."
+		ewarn "Please migrate your settings to ${ROOT}/etc/newconfig"
+		ewarn "and remove ${ROOT}/etc/oldconfig."
+	fi
+}
+</codesample>
+
+</body>
+</subsection>
 </section>
 
 <section>
@@ -348,45 +399,11 @@ The following variables may or must be defined by every ebuild.
 </table>
 
 </body>
-</section>
-
-<section>
-<title>SLOT</title>
-<body>
-
-<p>
-When slots are not needed, use <c>SLOT="0"</c>. Do <b>not</b> use
-<c>SLOT=""</c>, because the variable must not be empty.
-</p>
-
-<p>
-See <uri link="::general-concepts/slotting/" /> for more information on this
-variable and see <uri link="::ebuild-maintenance/package-moves/" />.
-</p>
-
-</body>
-</section>
-
-<section>
-<title>KEYWORDS</title>
-<body>
-
-<p>
-The only valid construct involving a <c>*</c> inside <c>KEYWORDS</c> is a <c>-*</c>. Do
-<b>not</b> use <c>KEYWORDS="*"</c> or <c>KEYWORDS="~*"</c>.
-</p>
-
-<p>
-See <uri link="::keywording/"/> for how to handle this variable.
-</p>
-
-</body>
-</section>
-
-<section>
-<title>SRC_URI</title>
 
 <subsection>
+<title>SRC_URI</title>
+
+<subsubsection>
 <title>Conditional Sources</title>
 <body>
 
@@ -405,9 +422,9 @@ SRC_URI="https://example.com/files/${P}-core.tar.bz2
 </codesample>
 
 </body>
-</subsection>
+</subsubsection>
 
-<subsection>
+<subsubsection>
 <title>Renaming Sources</title>
 <body>
 
@@ -430,9 +447,9 @@ SRC_URI="https://example.com/files/${PV}.tar.gz -&gt; ${P}.tar.gz"
 </codesample>
 
 </body>
-</subsection>
+</subsubsection>
 
-<subsection>
+<subsubsection>
 <title>Third-party mirrors</title>
 <body>
 
@@ -487,9 +504,9 @@ list does not outweigh the burden of maintaining it.
 </p>
 
 </body>
-</subsection>
+</subsubsection>
 
-<subsection>
+<subsubsection>
 <title>Lifting restrictions</title>
 <body>
 
@@ -547,10 +564,57 @@ The following table shows the effects of the prefixes when <c>RESTRICT="mirror"<
 </table>
 
 </body>
+</subsubsection>
 </subsection>
-</section>
 
-<section>
+<subsection>
+<title>LICENSE</title>
+<body>
+
+<p>
+It is possible to specify multiple <c>LICENSE</c> entries, and entries which only
+apply if a particular <c>USE</c> flag is set. The format is the same as for
+<c>DEPEND</c>. See <uri link="https://www.gentoo.org/glep/glep-0023.html">
+GLEP 23</uri> for details.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>SLOT</title>
+<body>
+
+<p>
+When slots are not needed, use <c>SLOT="0"</c>. Do <b>not</b> use
+<c>SLOT=""</c>, because the variable must not be empty.
+</p>
+
+<p>
+See <uri link="::general-concepts/slotting/" /> for more information on this
+variable and see <uri link="::ebuild-maintenance/package-moves/" />.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>KEYWORDS</title>
+<body>
+
+<p>
+The only valid construct involving a <c>*</c> inside <c>KEYWORDS</c> is a <c>-*</c>. Do
+<b>not</b> use <c>KEYWORDS="*"</c> or <c>KEYWORDS="~*"</c>.
+</p>
+
+<p>
+See <uri link="::keywording/"/> for how to handle this variable.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
 <title>IUSE</title>
 <body>
 
@@ -568,23 +632,77 @@ not be listed.
 </p>
 
 </body>
-</section>
+</subsection>
 
-<section>
-<title>LICENSE</title>
+<subsection>
+<title>REQUIRED_USE</title>
 <body>
-
 <p>
-It is possible to specify multiple <c>LICENSE</c> entries, and entries which only
-apply if a particular <c>USE</c> flag is set. The format is the same as for
-<c>DEPEND</c>. See <uri link="https://www.gentoo.org/glep/glep-0023.html">
-GLEP 23</uri> for details.
+The <c>REQUIRED_USE</c> variable contains a list of assertions that must be
+met by the configuration of USE flags to be valid for this ebuild. In order
+to be matched, a USE flag in a terminal element must be enabled
+(or disabled if it has an exclamation mark prefix).
 </p>
 
-</body>
-</section>
+<p>
+Essentially, <c>REQUIRED_USE</c> is an analogue of <c>DEPEND</c> style syntax.
+For example, to state that some combination is forbidden, i.e. "if foo is set,
+bar must be unset":
+</p>
 
-<section>
+<codesample lang="ebuild">
+REQUIRED_USE="foo? ( !bar )"
+</codesample>
+<p>
+To state "if foo is set, then at least one of bar, baz, and quux must be activated":
+</p>
+<codesample lang="ebuild">
+REQUIRED_USE="foo? ( || ( bar baz quux ) )"
+</codesample>
+<p>
+To state "exactly one of foo, bar, or baz must be set, but not several":
+</p>
+<codesample lang="ebuild">
+REQUIRED_USE="^^ ( foo bar baz )"
+</codesample>
+<p>
+Note that the last relationship is that of an Exclusive OR (XOR).
+While an XOR could be formed from usual DEPEND syntax,
+a specific ^^ operator has been added for this case.
+</p>
+<p>
+Finally, to state "at least one of foo, bar, or baz must be set":
+</p>
+<codesample lang="ebuild">
+REQUIRED_USE="|| ( foo bar baz )"
+</codesample>
+<important>
+See section <uri link="::general-concepts/use-flags/#Conflicting USE Flags"/>
+for when (and when not) to use <c>REQUIRED_USE</c>.
+</important>
+</body>
+
+<subsubsection>
+<title>EAPI 5</title>
+<body>
+<p>
+EAPI 5 added an additional case to simplify conflicting USE flags.
+</p>
+<p>
+To state "zero or one of foo, bar, or baz must be set, but not several":
+</p>
+<codesample lang="ebuild">
+REQUIRED_USE="?? ( foo bar baz )"
+</codesample>
+<p>In the previous EAPI, this would be the same as:</p>
+<codesample lang="ebuild">
+REQUIRED_USE="foo? ( !bar !baz ) bar? ( !foo !baz ) baz? ( !foo !bar )"
+</codesample>
+</body>
+</subsubsection>
+</subsection>
+
+<subsection>
 <title>RESTRICT</title>
 <body>
 
@@ -600,57 +718,7 @@ table.
 </p>
 
 </body>
-</section>
-
-<section>
-<title>ROOT</title>
-<body>
-
-<p>
-The idea behind <c>ROOT</c> is that one can build a system with
-<c>ROOT=/somewhere</c> and then chroot into it or tar up
-<c>/somewhere</c> as a system image. It is not designed to allow the
-user to run <c>/somewhere/usr/bin/foo</c>.
-</p>
-
-<p>
-Ebuilds may reference <c>ROOT</c> only during <c>pkg_*</c> phases. It
-can't be used correctly in <c>src_*</c> phases, since <c>ROOT</c> may
-be different when merging a binary package. For example, a binary
-package may be built with <c>ROOT=/</c> and then installed onto a
-system using <c>ROOT=/somewhere</c>.
-</p>
-
-<p>
-When building a package, <c>ROOT</c> should not be used to satisfy the
-required dependencies on libraries, headers files etc. Instead, the
-files on the build system should be specified using <c>/</c>.
-</p>
-
-<p>
-In a cross compiling environment, ebuilds must not call any of the
-binaries inside <c>ROOT</c> since they may not be executable on the
-build system.
-</p>
-
-<p>
-Below is an example of an ebuild that uses <c>ROOT</c> in
-<c>pkg_postinst()</c> to conditionally print an error message if an
-old and obsolete configuration file still exists:
-</p>
-
-<codesample lang="ebuild">
-pkg_postinst() {
-	if [[ -e "${ROOT}/etc/oldconfig" ]]; then
-		ewarn "You still have the obsolete config file "
-		ewarn "    ${ROOT}/etc/oldconfig."
-		ewarn "Please migrate your settings to ${ROOT}/etc/newconfig"
-		ewarn "and remove ${ROOT}/etc/oldconfig."
-	fi
-}
-</codesample>
-
-</body>
+</subsection>
 </section>
 
 <section>
@@ -823,74 +891,6 @@ have no direct correlation with the expected string should be avoided.
 </ul>
 
 </body>
-</section>
-
-<section>
-<title>REQUIRED_USE</title>
-<body>
-<p>
-The <c>REQUIRED_USE</c> variable contains a list of assertions that must be
-met by the configuration of USE flags to be valid for this ebuild. In order
-to be matched, a USE flag in a terminal element must be enabled
-(or disabled if it has an exclamation mark prefix).
-</p>
-
-<p>
-Essentially, <c>REQUIRED_USE</c> is an analogue of <c>DEPEND</c> style syntax.
-For example, to state that some combination is forbidden, i.e. "if foo is set,
-bar must be unset":
-</p>
-
-<codesample lang="ebuild">
-REQUIRED_USE="foo? ( !bar )"
-</codesample>
-<p>
-To state "if foo is set, then at least one of bar, baz, and quux must be activated":
-</p>
-<codesample lang="ebuild">
-REQUIRED_USE="foo? ( || ( bar baz quux ) )"
-</codesample>
-<p>
-To state "exactly one of foo, bar, or baz must be set, but not several":
-</p>
-<codesample lang="ebuild">
-REQUIRED_USE="^^ ( foo bar baz )"
-</codesample>
-<p>
-Note that the last relationship is that of an Exclusive OR (XOR).
-While an XOR could be formed from usual DEPEND syntax,
-a specific ^^ operator has been added for this case.
-</p>
-<p>
-Finally, to state "at least one of foo, bar, or baz must be set":
-</p>
-<codesample lang="ebuild">
-REQUIRED_USE="|| ( foo bar baz )"
-</codesample>
-<important>
-See section <uri link="::general-concepts/use-flags/#Conflicting USE Flags"/>
-for when (and when not) to use <c>REQUIRED_USE</c>.
-</important>
-</body>
-
-<subsection>
-<title>EAPI 5</title>
-<body>
-<p>
-EAPI 5 added an additional case to simplify conflicting USE flags.
-</p>
-<p>
-To state "zero or one of foo, bar, or baz must be set, but not several":
-</p>
-<codesample lang="ebuild">
-REQUIRED_USE="?? ( foo bar baz )"
-</codesample>
-<p>In the previous EAPI, this would be the same as:</p>
-<codesample lang="ebuild">
-REQUIRED_USE="foo? ( !bar !baz ) bar? ( !foo !baz ) baz? ( !foo !bar )"
-</codesample>
-</body>
-</subsection>
 </section>
 
 <section>
