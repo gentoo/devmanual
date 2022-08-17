@@ -722,6 +722,41 @@ table.
 </section>
 
 <section>
+<title>Variables reserved for the package manager</title>
+<body>
+
+<p>
+Variables and functions that begin with any of the following strings (ignoring
+case) are reserved for package manager use. Ebuilds must neither use them nor
+rely upon them:
+</p>
+
+<ul>
+  <li><c>__</c> (two underscores)</li>
+  <li><c>abort</c></li>
+  <li><c>dyn</c></li>
+  <li><c>prep</c></li>
+</ul>
+
+<p>
+The same applies to functions and variables that contain any of the following
+strings (ignoring case):
+</p>
+
+<ul>
+  <li>
+    <c>ebuild</c> (unless immediately preceded by another letter, and except
+    for the <c>EBUILD_PHASE</c> and <c>EBUILD_PHASE_FUNC</c> variables)
+  </li>
+  <li><c>hook</c></li>
+  <li><c>paludis</c></li>
+  <li><c>portage</c></li>
+</ul>
+
+</body>
+</section>
+
+<section>
 <title>Version and Name Formatting Issues</title>
 <body>
 
