@@ -225,8 +225,8 @@ old and obsolete configuration file still exists:
 
 <codesample lang="ebuild">
 pkg_postinst() {
-	if [[ -e "${ROOT}/etc/oldconfig" ]]; then
-		ewarn "You still have the obsolete config file "
+	if [[ -e ${ROOT}/etc/oldconfig ]]; then
+		ewarn "You still have the obsolete config file"
 		ewarn "    ${ROOT}/etc/oldconfig."
 		ewarn "Please migrate your settings to ${ROOT}/etc/newconfig"
 		ewarn "and remove ${ROOT}/etc/oldconfig."
