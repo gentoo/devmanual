@@ -103,8 +103,14 @@ of thumb could be used as a guideline:
     (unless it is also a runtime dependency),
   </li>
   <li>
-    adding a new USE flag or removing an existing one (since change
-    in USE flags is going to trigger <c>--changed-use</c> rebuild),
+    adding a new USE flag if it controls a USE-dependency where the
+    functionality was hard-disabled in the build system before,
+  </li>
+  <li>
+    removing an existing USE flag if it controls a USE-dependency where the
+    functionality is now disabled entirely, rather than always being enabled
+    (since the change in USE flags is going to trigger a <c>--changed-use</c>
+    rebuild),
   </li>
   <li>
     a trivial stylistic / ebuild code change (as long as the new code
