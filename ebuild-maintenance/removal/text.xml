@@ -113,10 +113,8 @@ In order to remove a virtual package, follow the following procedure:
     Wait the time appropriate for the last rites.
   </li>
   <li>
-    Update all ebuilds not to reference the virtual. Since there is
-    no urgent need to remove the virtual from user systems
-    and the resulting rebuilds would be unnecessary, do not bump ebuilds
-    when replacing the dependency.
+    Update all ebuilds not to reference the virtual, following normal
+    <uri link="::general-concepts/ebuild-revisions/"/> policy
   </li>
   <li>
     Remove the package directly
