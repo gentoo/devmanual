@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <guide self="profiles/use.desc/">
 <chapter>
 <title>Profiles <c>use.desc</c> and <c>use.local.desc</c> Files</title>

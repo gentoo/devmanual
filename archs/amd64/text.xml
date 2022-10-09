@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <guide self="archs/amd64/">
 <chapter>
 <title>Arch Specific Notes — AMD64/EM64T</title>

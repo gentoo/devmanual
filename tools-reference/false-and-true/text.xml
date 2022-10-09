@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <guide self="tools-reference/false-and-true/">
 <chapter>
 <title><c>false</c> and <c>true</c> — Generating Return Codes</title>

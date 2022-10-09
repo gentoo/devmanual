@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/using-eclasses/">
 <chapter>
 <title>Using Eclasses</title>
