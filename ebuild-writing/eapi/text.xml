@@ -1072,7 +1072,7 @@ EAPI=7
 
 inherit git-r3
 
-PROPERTIES+=" interactive"
+PROPERTIES+=" live"
 </codesample>
 
     <p>
@@ -1086,7 +1086,7 @@ EAPI=8
 
 inherit git-r3
 
-PROPERTIES="interactive"
+PROPERTIES="live"
 </codesample>
 
     <p>
