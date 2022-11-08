@@ -89,7 +89,7 @@ of thumb could be used as a guideline:
     (e.g. <c>-Wformat</c> or <c>-Wimplicit-function-declaration</c> fixes);
     the package may have been miscompiled, or the change is substantial
     (if adding a huge patch to fix a problem, the chances of an unexpected
-    issue being introduced by it are larger).
+    issue being introduced by it are greater).
   </li>
   <li>adding a trivial documentation fix,</li>
   <li>
@@ -99,7 +99,8 @@ of thumb could be used as a guideline:
     is expected soon),
   </li>
   <li>
-    adding a missing build-time dependency that caused a build failure,
+    adding a missing build-time dependency that caused a build failure
+    (unless it is also a runtime dependency),
   </li>
   <li>
     adding a new USE flag or removing an existing one (since change
