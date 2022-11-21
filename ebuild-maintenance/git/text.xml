@@ -90,9 +90,9 @@ graft it into the repository:
 </p>
 
 <pre>
-git remote add history https://anongit.gentoo.org/git/repo/gentoo/historical.git/
+git remote add history https://anongit.gentoo.org/git/archive/repo/gentoo-2.git
 git fetch history
-git replace --graft 56bd759df1d0c750a065b8c845e93d5dfa6b549d history/master
+git replace --graft 56bd759df1d0c750a065b8c845e93d5dfa6b549d cvs-final-2015-08-08
 </pre>
 
 <p>
