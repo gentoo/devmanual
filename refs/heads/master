@@ -1,15 +1,15 @@
 certificate version 0.1
-pusher Sam James <sam@gentoo.org> 1668064627 +0000
+pusher Sam James <sam@gentoo.org> 1669090667 +0000
 pushee git+ssh://git.gentoo.org/proj/devmanual.git
-nonce 1668064627-6cbb9eb09baec83f746bed9ff8ecbedd0456a4b0
+nonce 1669090667-9b7bb74252540b41e4bc70a583b2a8a7ac77007c
 
-960cd5a52ec51120330ee4b099e89c58f61ee3a8 ce68316d173482f9b82fb3255b1a657c08c80c56 refs/heads/master
+ce68316d173482f9b82fb3255b1a657c08c80c56 8db9349ee61829e0f17a98619989f94238cafabb refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iOUEABYKAI0WIQQlpruI3Zt2TGtVQcJzhAn1IN+RkAUCY2ylc18UgAAAAAAuAChp
+iOUEABYKAI0WIQQlpruI3Zt2TGtVQcJzhAn1IN+RkAUCY3xNa18UgAAAAAAuAChp
 c3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0MjVB
 NkJCODhERDlCNzY0QzZCNTU0MUMyNzM4NDA5RjUyMERGOTE5MA8cc2FtQGdlbnRv
-by5vcmcACgkQc4QJ9SDfkZDZLQD/ccd38pMb6htrlspamW0uKfrVaPHaoz4dVhJ9
-fPdTjFgA/1vW2dZJtmpbn4LwmJkO/84h3H4ORAe6Pr2sjqGE4PEF
-=E37A
+by5vcmcACgkQc4QJ9SDfkZCU+AD+MQ+dqtMBrjnJYzfvfxLkFabav/qSvRUuCG2x
+hK0lTmYBALT1KBnL91g1zzhufi80CWVCd2hfPm3MAs7rKfQRK6UI
+=PgV7
 -----END PGP SIGNATURE-----
