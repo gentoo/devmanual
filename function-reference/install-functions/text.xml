@@ -431,6 +431,7 @@ The <c>*into</c> functions create the directory if it does not already exist.
       Normally executed to exclude from stripping.
       Eg. <c>dostrip -x /path/to/important.so</c>.  May also be used to include binaries
       to strip when <c>RESTRICT=strip</c> without the -x option.
+      Provided paths are relative to <c>${ED}</c>, even if they begin with a slash.
     </ti>
   </tr>
 </table>
