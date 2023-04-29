@@ -427,11 +427,11 @@ The <c>*into</c> functions create the directory if it does not already exist.
       <c>dostrip</c>
     </ti>
     <ti>
-      Introduced with EAPI=7, controls the stripping of executables.
-      Normally executed to exclude from stripping.
-      Eg. <c>dostrip -x /path/to/important.so</c>.  May also be used to include binaries
-      to strip when <c>RESTRICT=strip</c> without the -x option.
-      Provided paths are relative to <c>${ED}</c>, even if they begin with a slash.
+      Controls stripping of executables. Normally used to exclude from
+      stripping, e.g. <c>dostrip -x /usr/$(get_libdir)/important.so</c>.
+      May also be used without the <c>-x</c> option to include binaries to
+      strip when <c>RESTRICT=strip</c> is set. Provided paths are relative
+      to <c>${ED}</c>, even if they begin with a slash.
     </ti>
   </tr>
 </table>
