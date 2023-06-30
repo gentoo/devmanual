@@ -795,34 +795,35 @@ BDEPEND="&gt;=sys-devel/jmake-2"
 # @DESCRIPTION:
 # Passes all arguments through to the appropriate "jmake configure"
 # command.
-jmake-configure() {
+jmake_configure() {
 	jmake configure --prefix=/usr "$@"
 }
 
 # @FUNCTION: jmake_src_configure
 # @USAGE: [additional-args]
 # @DESCRIPTION:
-# Calls jmake-configure() to configure a jmake project.  Passes all
+# Calls jmake_configure() to configure a jmake project.  Passes all
 # arguments through to the appropriate "jmake configure" command.
 jmake_src_configure() {
-	jmake-configure "$@" || die "configure failed"
+	jmake_configure "$@" || die "configure failed"
 }
 
-# @FUNCTION: jmake-build
+# @FUNCTION: jmake_build
 # @USAGE: [additional-args]
 # @DESCRIPTION:
 # First builds all dependencies, and then passes through its arguments
 # to the appropriate "jmake build" command.
-jmake-build() {
+jmake_build() {
 	jmake dep &amp;&amp; jmake build "$@"
 }
 
 # @FUNCTION: jmake_src_compile
 # @DESCRIPTION:
-# Calls jmake-build() to compile a jmake project.
+# Calls jmake_build() to compile a jmake project.
 jmake_src_compile() {
-	jmake-build || die "build failed"
+	jmake_build || die "build failed"
 }
+
 fi
 
 EXPORT_FUNCTIONS src_configure src_compile
