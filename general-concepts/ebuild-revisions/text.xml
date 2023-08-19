@@ -75,6 +75,10 @@ of thumb could be used as a guideline:
     subslot operator is going to trigger a rebuild,
   </li>
   <li>
+    updating the license, if any of the affected licenses is either non-free or
+    is about to be removed,
+  </li>
+  <li>
     changing the EAPI (unless changes to the ebuild are trivial, and you can be
     sure it won't break stable or reverse dependencies).
   </li>
