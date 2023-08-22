@@ -82,10 +82,10 @@ instead, or controlled by a flag such as <c>minimal</c>.
 </p>
 
 <p>
-You should not introduce USE flags that merely manipulate <c>CFLAGS</c>,
-<c>FEATURES</c> or similar variables configured directly by the user. Instead,
-packages should avoid manipulating them at all, and let users set them directly.
-Common mistakes include:
+You should not introduce USE flags that manipulate compiler flags or similar
+variables configured directly by the user (e.g. <c>-O3</c>, <c>-flto</c>).
+Instead, packages should avoid manipulating them at all, and let users set
+them directly. Common mistakes include:
 </p>
 
 <ol>
@@ -114,7 +114,8 @@ There might be corner cases where these rules do not apply. For example, a few
 upstreams require users to use specific <c>CFLAGS</c> and reject bug reports
 against builds using other values. In this case, it is customary to strip flags
 by default and provide <c>custom-cflags</c> flag to allow users to force their
-preferred flags.
+preferred flags. Another exception are <c>CFLAGS</c> that enable/disable
+features at compile time (via pre-processor macros).
 </p>
 </body>
 </section>
