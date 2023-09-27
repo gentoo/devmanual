@@ -702,7 +702,7 @@ package:
   <dd>
     A sure-way to find missing dependencies is to test your ebuild in a
     deprived environment. Chroots, containers, virtual machines and
-    dev-util/ebuildtester can achieve this.
+    <c>dev-util/ebuildtester</c> can achieve this.
   </dd>
 </dl>
 
