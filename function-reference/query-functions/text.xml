@@ -39,10 +39,11 @@ query variables and similar state.
   </tr>
   <tr>
     <ti>
-      <c>usev flagname</c>
+      <c>usev flagname [true output]</c>
     </ti>
     <ti>
-      As <c>use</c>, echoes <c>flagname</c> upon success.
+      As <c>use</c>, but also echoes <c>flagname</c> upon success. In EAPI 8
+      and later, echoes the second argument instead, if it is specified.
     </ti>
   </tr>
   <tr>
