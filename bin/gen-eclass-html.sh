@@ -70,10 +70,15 @@ IFS='' read -r -d '' FOOTER << 'EOF'
             </div>
 </div>
 <div class="row">
-<div class="col-xs-2 col-sm-3 col-md-2"><ul class="footerlinks three-icons">
+<div class="col-xs-2 col-sm-3 col-md-2">
+<ul class="footerlinks three-icons">
 <li><a href="https://twitter.com/gentoo" title="@Gentoo on Twitter"><span class="fa fa-twitter fa-fw"></span></a></li>
 <li><a href="https://www.facebook.com/gentoo.org" title="Gentoo on Facebook"><span class="fa fa-facebook fa-fw"></span></a></li>
-</ul></div>
+</ul>
+<div class="text-center">
+<a href="https://wiki.gentoo.org/wiki/Foundation:Privacy_Policy">Privacy Policy</a>
+</div>
+</div>
 <div class="col-xs-10 col-sm-9 col-md-10">
 <strong>Copyright (C) 2001-2023 Gentoo Authors</strong><br><small>
                 Gentoo is a trademark of the Gentoo Foundation, Inc.

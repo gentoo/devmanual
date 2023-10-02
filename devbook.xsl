@@ -658,6 +658,9 @@
                   <li><a href="https://twitter.com/gentoo" title="@Gentoo on Twitter"><span class="fa fa-twitter fa-fw"></span></a></li>
                   <li><a href="https://www.facebook.com/gentoo.org" title="Gentoo on Facebook"><span class="fa fa-facebook fa-fw"></span></a></li>
                 </ul>
+		<div class="text-center">
+		  <a href="https://wiki.gentoo.org/wiki/Foundation:Privacy_Policy">Privacy Policy</a>
+		</div>
               </xsl:if>
             </div>
             <div class="col-xs-10 col-sm-9 col-md-10">
