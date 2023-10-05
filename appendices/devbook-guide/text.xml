@@ -11,7 +11,7 @@
 The DevBook XML syntax is lightweight yet expressive, so that it is easy to
 learn yet also provides all the features we need for the creation of web
 documentation.  The number of tags is kept to a minimum <d/> just those we need.
-This makes it easy to transform guide into other formats, such as DocBook
+This makes it easy to transform DevBook XML into other formats, such as DocBook
 XML/SGML or web-ready HTML.
 </p>
 
