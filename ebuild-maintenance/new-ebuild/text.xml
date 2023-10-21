@@ -8,15 +8,16 @@
 <body>
 
 <p>
-Before writing a new ebuild, check
-<uri link="https://bugs.gentoo.org/">bugs.gentoo.org</uri>
-to see if an ebuild has already been written for the package, but has not yet
-been added to the Gentoo repository.  Go to <uri
-link="https://bugs.gentoo.org/">bugs.gentoo.org</uri>, choose query and select
-Advanced Search; as product select <e>Gentoo Linux</e>, as component select
-<e>ebuilds</e>.  In the search field put the name of the ebuild and as status
-select all possible fields, then submit the query. For you lazy people, click
-<uri link="https://bugs.gentoo.org/query.cgi?format=advanced&amp;product=Gentoo%20Linux&amp;component=New%20Ebuilds&amp;bug_Status=UNCONFIRMED&amp;bug_status=CONFIRMED&amp;bug_status=IN_PROGRESS&amp;bug_status=RESOLVED&amp;bug_status=VERIFIED">here</uri>.
+Before writing a new ebuild, check <uri link="https://bugs.gentoo.org/">
+bugs.gentoo.org</uri> to see if an ebuild has already been written for
+the package, but has not yet been added to the Gentoo repository. Go to
+<uri link="https://bugs.gentoo.org/">bugs.gentoo.org</uri>, choose query and
+select Advanced Search; as product select <e>Gentoo Linux</e>, as component
+select <e>New packages</e>. In the search field put the name of the ebuild and
+as status and resolution select all possible fields, then submit the query.
+For you lazy people, here is a
+<uri link="https://bugs.gentoo.org/query.cgi?format=advanced&amp;product=Gentoo%20Linux&amp;component=New%20packages">
+Bugzilla advanced search</uri> link.
 </p>
 
 <p>
