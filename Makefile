@@ -43,6 +43,9 @@ build: $(HTMLS) $(IMAGES)
 documents.js: bin/build_search_documents.py $(XMLS)
 	@python3 bin/build_search_documents.py $(XMLS) > $@ && echo "$@ built"
 
+%.svg : %.dot
+	dot -T svg -o $@ $<
+
 %.png : %.svg
 	rsvg-convert --output=$@ $<
 

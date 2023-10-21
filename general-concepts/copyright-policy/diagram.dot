@@ -1,0 +1,43 @@
+// Copyright 2023 Gentoo Authors
+// Distributed under the terms of the CC-BY-SA-4.0 license
+
+digraph g {
+  size = "8!,2";
+  node [ penwidth = 2; fontname = "Open Sans" ];
+  edge [ penwidth = 2; fontname = "Open Sans" ];
+
+  start   [ width = 1.4; height = 0.9; label = "Start" ];
+
+  signoff [ shape = diamond; width = 2.4; height = 1.3;
+            style = filled; fillcolor = "cyan";
+            label = "Signed-off-by?" ];
+  size    [ shape = diamond; width = 2.4; height = 1.3;
+            style = filled; fillcolor = "cyan";
+            label = "Tiny\ncontribution?" ];
+  license [ shape = diamond; width = 2.4; height = 1.3;
+            style = filled; fillcolor = "cyan";
+            label = "Contains\nlicense notice?" ];
+
+  accept4 [ shape = rect; width = 1.6; height = 0.8;
+            style = filled; fillcolor = "lime";
+            label = "Accept\n(GCO point 4)" ];
+  accept2 [ shape = rect; width = 1.6; height = 0.8;
+            style = filled; fillcolor = "lime";
+            label = "Accept\n(GCO point 2)" ];
+  reject  [ shape = rect; width = 1.6; height = 0.7;
+            style = filled; fillcolor = "red";
+            label = "Do not accept" ];
+
+  start     -> signoff;
+
+  signoff:s -> accept4 [ label = "  Yes  " ];
+  signoff   -> size    [ label = "  No  "  ];
+
+  size:s    -> accept2 [ label = "  Yes  " ];
+  size      -> license [ label = "  No  "  ];
+
+  license:s -> accept2 [ label = "  Yes  " ];
+  license   -> reject  [ label = "  No  "  ];
+
+  { rank = same; start; signoff; size; license; reject; }
+}

@@ -62,54 +62,83 @@ author is, or is not required. The list below serves as a general guideline.
 </body>
 
 <subsection>
-<title>Examples for general guideline</title>
+<title>General guideline</title>
 <body>
 
-<dl>
-  <dt>A contribution with a Signed-off-by line by its author</dt>
-  <dd>
-    Can be accepted, because the author confirmed that it is under a free
-    software license. The committer adds another S-o-b line and certifies the
-    commit under point 4 of the
+<figure link="diagram.png" short="When can a contribution be accepted?"
+        caption="Flowchart showing the steps for accepting a contribution" />
+
+<p>
+When can a contribution be accepted?
+</p>
+
+<ol type="1">
+  <li>
+    <p>
+    When signed off by its author (i.e. with a <c>Signed-off-by</c> line):
+    </p>
+    <p>
+    Can be accepted, because the author has confirmed that it is under a free
+    software license. The committer adds another <c>Signed-off-by</c> line and
+    certifies the commit under point 4 of the
     <uri link="https://www.gentoo.org/glep/glep-0076.html#certificate-of-origin">
     Certificate of Origin</uri>.
+    </p>
     <note>
-    Use common sense here, especially if you don't know the contributor. If the
-    contribution was taken from somewhere else and the contributor doesn't have
-    the right to distribute it under a free software license, you as the
-    committer might get into trouble. So in this situation, do your best to
-    check repositories for matching code, and whether they hold any special
-    copyright claims.
+    Use common sense here, especially if you don't know the contributor.
+    If the contribution was taken from somewhere else and the contributor
+    doesn't have the right to distribute it under a free software license,
+    you as the committer might get into trouble. So in this situation, do your
+    best to check repositories for matching code, and whether they hold any
+    special copyright claims.
     </note>
-  </dd>
-  <dt>
-    A contribution without a S-o-b line and of significant size, but with an
-    independent indication of its license (e.g. copyright and license notices
-    in the file's header)
-  </dt>
-  <dd>
-    Can be accepted. The committer adds a S-o-b line and certifies the commit
-    under point 2 of the Certificate of Origin.
-  </dd>
-  <dt>
-    A contribution without a S-o-b line but not
-    <uri link="https://www.gnu.org/prep/maintain/html_node/Legally-Significant.html">
-    "legally significant"</uri> (by the FSF's 15-lines rule of thumb)
-  </dt>
-  <dd>
-    Can be accepted. The committer adds a S-o-b line and certifies the commit
-    under point 2 of the Certificate of Origin.
-  </dd>
-  <dt>
-    A contribution without a S-o-b line and of significant size, without any
-    other indication of its license
-  </dt>
-  <dd>
-    Can <e>not</e> be accepted. There's no indication that the author has
-    released their work under a free license, therefore it must not be
-    distributed by Gentoo.
-  </dd>
-</dl>
+  </li>
+  <li>
+    <p>
+    When <e>not</e> signed off:
+    </p>
+    <ol type="a">
+      <li>
+        <p>
+        If the contribution is not of
+        <uri link="https://www.gnu.org/prep/maintain/html_node/Legally-Significant.html">
+        "legally significant"</uri> size (by the FSF's 15-lines rule of thumb):
+        </p>
+        <p>
+        Can be accepted. The committer adds a <c>Signed-off-by</c> line and
+        certifies the commit under point 2 of the Certificate of Origin.
+        </p>
+      </li>
+      <li>
+        <p>
+        If the contribution is of significant size, and
+        </p>
+        <ol type="i">
+          <li>
+            <p>
+            with an independent indication of its license (e.g. copyright and
+            license notices in the file's header):
+            </p>
+            <p>
+            Can be accepted. The committer adds a <c>Signed-off-by</c> line and
+            certifies the commit under point 2 of the Certificate of Origin.
+            </p>
+          </li>
+          <li>
+            <p>
+            <e>without</e> any other indication of its license:
+            </p>
+            <p>
+            Can <e>not</e> be accepted. There's no indication that the author
+            has released their work under a free license, therefore it must not
+            be distributed by Gentoo.
+            </p>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ol>
 </body>
 </subsection>
 
