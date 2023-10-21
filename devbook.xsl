@@ -186,7 +186,12 @@
 </xsl:template>
 
 <xsl:template match="ol">
-  <ol><xsl:apply-templates/></ol>
+  <ol>
+    <xsl:if test="@type">
+      <xsl:attribute name="type"><xsl:value-of select="@type"/></xsl:attribute>
+    </xsl:if>
+    <xsl:apply-templates/>
+  </ol>
 </xsl:template>
 
 <xsl:template match="ul">

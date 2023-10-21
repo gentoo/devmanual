@@ -2,7 +2,7 @@
 <!-- Auto-generated from devbook.rnc; do not edit! -->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <!--
-    Copyright 2022 Gentoo Authors
+    Copyright 2022-2023 Gentoo Authors
     Distributed under the terms of the MIT license
     or the CC-BY-SA-4.0 license (dual-licensed)
   -->
@@ -326,6 +326,17 @@
   </define>
   <define name="ol">
     <element name="ol">
+      <optional>
+        <attribute name="type">
+          <choice>
+            <value>1</value>
+            <value>A</value>
+            <value>a</value>
+            <value>I</value>
+            <value>i</value>
+          </choice>
+        </attribute>
+      </optional>
       <oneOrMore>
         <ref name="li"/>
       </oneOrMore>
