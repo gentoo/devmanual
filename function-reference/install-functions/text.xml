@@ -278,11 +278,16 @@ The <c>*into</c> functions create the directory if it does not already exist.
       <c>dosym</c>
     </ti>
     <ti>
-      Create a symlink to the target specified as the first parameter,
-      at the path specified by the second parameter. Note that
-      the target is interpreted <e>verbatim</e>; it needs to either
-      specify a relative path or an absolute path including
-      <c>${EPREFIX}</c>.
+      <p>
+      Create a symlink to the target specified as the first parameter, at the
+      path specified by the second parameter. With option <c>-r</c> (EAPI 8),
+      an absolute path specified for the target will be converted to a path
+      relative to the link location.
+      </p>
+      <p>
+      Note: Without option <c>-r</c>, an absolute link target is interpreted
+      <e>verbatim</e>, i.e. it must include <c>${EPREFIX}</c> when applicable.
+      </p>
     </ti>
   </tr>
   <tr>
