@@ -188,7 +188,17 @@
 <xsl:template match="ol">
   <ol>
     <xsl:if test="@type">
-      <xsl:attribute name="type"><xsl:value-of select="@type"/></xsl:attribute>
+      <xsl:attribute name="style">
+        <xsl:text>list-style-type:</xsl:text>
+        <xsl:choose>
+          <xsl:when test="@type = '1'">decimal</xsl:when>
+          <xsl:when test="@type = 'A'">upper-alpha</xsl:when>
+          <xsl:when test="@type = 'a'">lower-alpha</xsl:when>
+          <xsl:when test="@type = 'I'">upper-roman</xsl:when>
+          <xsl:when test="@type = 'i'">lower-roman</xsl:when>
+          <xsl:otherwise><xsl:value-of select="@type"/></xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
     </xsl:if>
     <xsl:apply-templates/>
   </ol>
