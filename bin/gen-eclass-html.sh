@@ -127,7 +127,6 @@ shift $((OPTIND-1))
 
 MANPAGES=()
 [[ -n ${NOMAN} ]] || MANPAGES=(
-	$(/usr/bin/qlist -e eclass-manpages)
 	# We also need a couple of Portage man pages
 	/usr/share/man/man5/ebuild.5*
 	/usr/share/man/man5/make.conf.5*
@@ -162,9 +161,6 @@ for i in "${MANPAGES[@]}"; do
 		>> "${FINAL}" || exit 1
 	echo -n "${FOOTER}" >> "${FINAL}" || exit 1
 done
-
-# Remove old dirs (eclasses that were dropped from the tree)
-find "${OUTPUTDIR}" -mindepth 1 -maxdepth 1 -mtime +1 -exec rm -R {} \;
 
 # build the index, rebuilding it each time
 cat << 'EOF' > "${OUTPUTDIR}"/text.xml || exit 1

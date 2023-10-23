@@ -1,10 +1,14 @@
+GENTOO_REPO ?= /var/db/repos/gentoo
+
 # Run a single "find" pass to get a list of all files (with the .git
 # directory excluded), then filter out what we need.
 ALL_FILES := $(shell find . -name .git -prune -o -type f -print)
-XMLS := $(filter %/text.xml,$(ALL_FILES))
+XMLS := $(filter-out ./eclass-reference/%/text.xml,$(filter %/text.xml,$(ALL_FILES)))
 SVGS := $(filter %.svg,$(ALL_FILES))
 HTMLS := $(subst text.xml,index.html,$(XMLS))
-ECLASS_HTMLS := $(filter ./eclass-reference/%/index.html,$(ALL_FILES))
+ALL_ECLASSES := $(shell find $(GENTOO_REPO)/eclass/*.eclass -type f -print)
+ECLASS_XMLS := $(patsubst $(GENTOO_REPO)/eclass/%,./eclass-reference/%/text.xml,$(ALL_ECLASSES))
+ECLASS_HTMLS := $(subst text.xml,index.html,$(ECLASS_XMLS))
 IMAGES := $(patsubst %.svg,%.png,$(SVGS))
 
 CSS_FILES = devmanual.css offline.css
@@ -21,6 +25,9 @@ OFFLINE = 0
 all: prereq validate build documents.js
 
 prereq:
+	@type pmaint >/dev/null 2>&1 || \
+	{ echo "sys-apps/pkgcore required" >&2;\
+	  exit 1; }
 	@type rsvg-convert >/dev/null 2>&1 || \
 	{ echo "gnome-base/librsvg required" >&2;\
 	  exit 1; }
@@ -34,7 +41,7 @@ prereq:
 	{ echo "media-fonts/open-sans is required" >&2;\
 	  exit 1; }
 
-build: $(HTMLS) $(IMAGES)
+build: $(HTMLS) $(ECLASS_HTMLS) eclass-reference/index.html $(IMAGES)
 
 # We need to parse all the XMLs every time, not just the ones
 # that are newer than the target. This is because each search
@@ -59,12 +66,11 @@ documents.js: bin/build_search_documents.py $(XMLS)
 %.html: $$(dir $$@)text.xml devbook.xsl xsl/*.xsl
 	xsltproc --param offline "$(OFFLINE)" devbook.xsl $< > $@
 
-eclass-reference/text.xml:
-	@echo "*** Warning: No eclass documentation found." >&2
-	@echo "Install app-doc/eclass-manpages and" >&2
-	@echo "run bin/gen-eclass-html.sh before calling make." >&2
-	@echo "Creating a placeholder index as fallback." >&2
-	bin/gen-eclass-html.sh -n
+eclass-reference/text.xml: $(ECLASS_XMLS) bin/gen-eclass-html.sh
+	bin/gen-eclass-html.sh
+
+$(ECLASS_XMLS) &: $(ALL_ECLASSES)
+	pmaint eclass -f devbook -o "eclass-reference/{eclass}.eclass/text.xml" $^
 
 appendices/todo-list/index.html: $(XMLS)
 
@@ -88,7 +94,7 @@ install: all
 	fi
 
 # Not all versions of xmllint support --quiet, so test for it first
-validate: devbook.rng
+validate: devbook.rng $(ECLASS_XMLS)
 	@opt=--quiet; xmllint --help 2>&1 | grep -q -- --quiet || opt=; \
 	xmllint --noout $${opt} --relaxng $< $(XMLS)
 	@echo "xmllint validation successful"
@@ -120,7 +126,7 @@ dist:
 	git archive --format=tar --prefix=devmanual/ HEAD | xz > $${TARBALL}
 
 clean:
-	@rm -f $(HTMLS) $(IMAGES) documents.js .depend
+	@rm -f $(HTMLS) $(IMAGES) $(ECLASS_HTMLS) $(ECLASS_XMLS) documents.js .depend
 
 .PHONY: all prereq build install check validate tidy dist clean
 
