@@ -39,6 +39,42 @@ action from developers.
 </p>
 </body>
 </subsection>
+
+<subsection>
+<title>Updating <c>Manifest</c> files</title>
+<body>
+
+<p>
+Updating existing entries within a manifest must be done with care. Upstream
+changing the tarball in-place without a new filename could be an innocent
+respin of the tarball, or it could indicate either the previous or the new
+tarball is malicious.
+</p>
+
+<p>
+Developers should diff the old and new versions of the distfile, comparing
+the two, and note the differences in the commit message updating the
+<c>Manifest</c> to indicate both what happened (if any context is known) and
+also what differences between the two distfiles have been ascertained.
+</p>
+
+<p>
+Please note that if upstream made any changes affecting the built
+package or it had substantial differences, you need to also bump the ebuild's
+revision. Finally, remember to remove the ebuilds that are associated with the
+old distfile, or regenerate their checksums in <c>Manifest</c>, if there
+are any. This is necessary because these ebuilds will cause checksum
+mismatch errors as the checksum recorded in the manifest file no
+longer matches the computed checksum of the fetched distfile.
+</p>
+
+<p>
+Special care is also required with regard to
+<uri link="::general-concepts/mirrors/#Replacing Automatically Mirrored Files">
+mirrors</uri>.
+</p>
+</body>
+</subsection>
 </section>
 </chapter>
 </guide>
