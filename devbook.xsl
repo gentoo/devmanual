@@ -326,7 +326,10 @@
       </xsl:variable>
       <xsl:variable name="path">
         <xsl:value-of select="substring-after($link_address, '::')"/>
-        <xsl:if test="substring($link_address, string-length($link_address)) != '/'">/</xsl:if>
+        <xsl:if test="substring($link_address, string-length($link_address)) != '/'">
+          <xsl:message>Warning: No terminating slash in link (<xsl:value-of select="@link"/>)</xsl:message>
+          <xsl:text>/</xsl:text>
+        </xsl:if>
       </xsl:variable>
       <xsl:variable name="path_rel">
         <xsl:call-template name="relative-path">
