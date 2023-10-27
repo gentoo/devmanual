@@ -54,7 +54,7 @@ the <uri link="::eclass-reference/">eclass reference</uri> when in doubt.
 
 <p>
 Sometimes displaying additional error information beforehand can be useful. Use
-<c>eerror</c> to do this. See <uri link="::ebuild-writing/messages"/>.
+<c>eerror</c> to do this. See <uri link="::ebuild-writing/messages/"/>.
 </p>
 
 <note>

@@ -131,7 +131,7 @@ metadata.xml:
   <ti><c>&lt;slots&gt;</c></ti>
   <ti>
     This tag describes the
-    <uri link="::general-concepts/slotting">slots</uri> of a package.
+    <uri link="::general-concepts/slotting/">slots</uri> of a package.
     It has two optional subtags:
     <c>&lt;slot&gt;</c> and <c>&lt;subslots&gt;</c>.
   </ti>
@@ -342,8 +342,7 @@ There are also some attributes that can be used with these tags:
     Defines the type of the maintainer for a package. There are only
     two valid values: <c>"person"</c> and <c>"project"</c>. The latter
     denotes an official
-    <uri link="::general-concepts/projects">
-    Gentoo project</uri>.
+    <uri link="::general-concepts/projects/">Gentoo project</uri>.
   </ti>
 </tr>
 

@@ -21,7 +21,7 @@ form a project hierarchy.
 <p>
 A package maintained by a project needs to have the
 project explicitly listed as a maintainer in its
-<uri link="::ebuild-writing/misc-files/metadata">metadata.xml</uri>.
+<uri link="::ebuild-writing/misc-files/metadata/">metadata.xml</uri>.
 The full listing of all the projects can be found on
 <uri link="https://api.gentoo.org/metastructure/projects.xml">
 api.gentoo.org</uri> or on the

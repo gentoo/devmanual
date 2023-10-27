@@ -62,7 +62,7 @@ and update them. These include:
 
 <ul>
   <li>
-    <uri link="::general-concepts/dependencies">dependencies</uri>,
+    <uri link="::general-concepts/dependencies/">dependencies</uri>,
     <c>optfeature.eclass</c> uses, <c>has_version</c> and <c>best_version</c>
     uses in other ebuilds and eclasses
   </li>

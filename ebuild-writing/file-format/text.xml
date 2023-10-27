@@ -102,12 +102,13 @@ No integer part of the version may be longer than 18 digits.
 </p>
 
 <p>
-Finally, version may have a Gentoo revision number in the form <c>-r1</c>. The initial
-Gentoo version should have no revision suffix, the first revision should be
-<c>-r1</c>, the second <c>-r2</c> and so on. See <uri link="::general-concepts/ebuild-revisions"/>.
-Revision numbers are distinguished from patch releases by revision bumps being
-changes by Gentoo developers, while patch releases are new releases by upstream (with the exception
-of snapshots, see below).
+Finally, version may have a Gentoo revision number in the form <c>-r1</c>.
+The initial Gentoo version should have no revision suffix, the first revision
+should be <c>-r1</c>, the second <c>-r2</c> and so on.
+See <uri link="::general-concepts/ebuild-revisions/"/>. Revision numbers are
+distinguished from patch releases by revision bumps being changes by Gentoo
+developers, while patch releases are new releases by upstream (with the
+exception of snapshots, see below).
 </p>
 
 <p>

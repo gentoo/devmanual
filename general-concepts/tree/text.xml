@@ -41,7 +41,7 @@ The basic layout of the Gentoo repository is as follows:
   Metadata directory, <c>metadata/</c>. Most of the listed contents
   are not kept directly in the main git tree but instead
   auto-generated or included from other repositories as part of the
-  <uri link="::general-concepts/git-to-rsync">Git to Rsync</uri>
+  <uri link="::general-concepts/git-to-rsync/">Git to Rsync</uri>
   process.
   <ul>
     <li>

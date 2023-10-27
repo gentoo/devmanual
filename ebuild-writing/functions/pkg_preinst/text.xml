@@ -62,7 +62,7 @@ There are a few things that are often done in <c>pkg_preinst</c>:
   <li>
   Adding users and groups. However, since <c>pkg_preinst</c> may be called 
   after <c>src_compile</c>, <c>pkg_setup</c> is the more suitable location for
-  user creation <d/> see <uri link="::ebuild-writing/users-and-groups"/>.
+  user creation <d/> see <uri link="::ebuild-writing/users-and-groups/"/>.
   </li>
   <li>
   Modifying the install image for a particular system. This function
@@ -71,9 +71,9 @@ There are a few things that are often done in <c>pkg_preinst</c>:
   configuration file updating <d/> a <c>pkg_preinst</c> could check a
   configuration file in <c>${ROOT}/etc/</c> and create a smart updated
   version in <c>${D}/etc/</c> (see
-  <uri link="::general-concepts/install-destinations"/>) rather than
+  <uri link="::general-concepts/install-destinations/"/>) rather than
   always trying to install the default configuration file (remember
-  <uri link="::general-concepts/config-protect"/>).
+  <uri link="::general-concepts/config-protect/"/>).
   </li>
 </ul>
 </body>

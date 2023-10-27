@@ -102,8 +102,8 @@ for these variables when writing ebuilds.
     <ti><c>ROOT</c></ti>
     <ti>
       The absolute path to the root directory into which the package is to be
-      merged. Only allowed in pkg_* phases. See
-      <uri link="::ebuild-writing/variables#ROOT"/>
+      merged. Only allowed in pkg_* phases.
+      See <uri link="::ebuild-writing/variables/#ROOT"/>
     </ti>
   </tr>
   <tr>
@@ -254,7 +254,7 @@ The following variables may or must be defined by every ebuild.
   <tr>
     <ti><c>EAPI</c></ti>
     <ti>
-    The EAPI. See <uri link="::ebuild-writing/eapi"/>.
+    The EAPI. See <uri link="::ebuild-writing/eapi/"/>.
     </ti>
   </tr>
   <tr>
@@ -282,7 +282,7 @@ The following variables may or must be defined by every ebuild.
     <ti>
     A list of source URIs for the package. Can contain
     <c>USE</c>-conditional parts, see
-    <uri link="::ebuild-writing/variables#SRC_URI"/>.
+    <uri link="::ebuild-writing/variables/#SRC_URI"/>.
     </ti>
   </tr>
   <tr>
@@ -290,20 +290,20 @@ The following variables may or must be defined by every ebuild.
     <ti>
     The package's license, corresponding exactly (including case)
     to a file in <c>licenses/</c>. Mandatory (except for virtuals).
-    See <uri link="::ebuild-writing/variables#LICENSE"/>.
+    See <uri link="::ebuild-writing/variables/#LICENSE"/>.
     </ti>
   </tr>
   <tr>
     <ti><c>SLOT</c></ti>
     <ti>
     The package's <c>SLOT</c>. Mandatory.
-    See <uri link="::ebuild-writing/variables#SLOT"/>.
+    See <uri link="::ebuild-writing/variables/#SLOT"/>.
     </ti>
   </tr>
   <tr>
     <ti><c>KEYWORDS</c></ti>
     <ti>
-    See <uri link="::ebuild-writing/variables#KEYWORDS"/> and
+    See <uri link="::ebuild-writing/variables/#KEYWORDS"/> and
     <uri link="::keywording/"/>.
     </ti>
   </tr>
@@ -311,8 +311,8 @@ The following variables may or must be defined by every ebuild.
     <ti><c>IUSE</c></ti>
     <ti>
     A list of all <c>USE</c> flags (excluding arch flags, but
-    including <c>USE_EXPAND</c> flags) used within the ebuild. See
-    <uri link="::ebuild-writing/variables#IUSE"/>.
+    including <c>USE_EXPAND</c> flags) used within the ebuild.
+    See <uri link="::ebuild-writing/variables/#IUSE"/>.
     </ti>
   </tr>
   <tr>
@@ -341,23 +341,23 @@ The following variables may or must be defined by every ebuild.
   <tr>
     <ti><c>DEPEND</c></ti>
     <ti>
-    A list of the package's build dependencies.  See
-    <uri link="::general-concepts/dependencies"/>.
+    A list of the package's build dependencies.
+    See <uri link="::general-concepts/dependencies/"/>.
     Starting with EAPI-7, applies to CHOST only.
     </ti>
   </tr>
   <tr>
     <ti><c>BDEPEND</c></ti>
     <ti>
-    (EAPI=7) A list of the package's CBUILD build dependencies.  See
-    <uri link="::general-concepts/dependencies"/>.
+    (EAPI=7) A list of the package's CBUILD build dependencies.
+    See <uri link="::general-concepts/dependencies/"/>.
     </ti>
   </tr>
   <tr>
     <ti><c>RDEPEND</c></ti>
     <ti>
-    A list of the package's runtime dependencies. See
-    <uri link="::general-concepts/dependencies"/>.
+    A list of the package's runtime dependencies.
+    See <uri link="::general-concepts/dependencies/"/>.
     </ti>
   </tr>
   <tr>
@@ -365,7 +365,7 @@ The following variables may or must be defined by every ebuild.
     <ti>
     A list of packages to be installed (if possible) after the package
     is merged. Use this <e>only</e> when <c>RDEPEND</c> would cause cyclic
-    dependencies. See <uri link="::general-concepts/dependencies"/>.
+    dependencies. See <uri link="::general-concepts/dependencies/"/>.
     </ti>
   </tr>
   <tr>
@@ -498,7 +498,7 @@ There are two valid cases for using <c>thirdpartymirrors</c>:
 
 <p>
 In any other case, the primary location must be used instead. The distfiles
-will be <uri link="::general-concepts/mirrors">mirrored onto Gentoo
+will be <uri link="::general-concepts/mirrors/">mirrored onto Gentoo
 infrastructure</uri>; in that case, the benefit to using third-party mirror
 list does not outweigh the burden of maintaining it.
 </p>

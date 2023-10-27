@@ -52,7 +52,7 @@ When removing packages follow these steps:
   <li>Remove package.mask and any package.use.mask entries</li>
   <li>
     Remove the <c>&lt;pkg&gt;</c> tags referencing this package in the
-    <uri link="::ebuild-writing/misc-files/metadata">metadata.xml</uri>
+    <uri link="::ebuild-writing/misc-files/metadata/">metadata.xml</uri>
     files of other packages.
   </li>
   <li>Close open bugs as WONTFIX</li>

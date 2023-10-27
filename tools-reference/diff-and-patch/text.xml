@@ -31,7 +31,7 @@ upstream too <d/> however, occasionally you may be asked to provide
 context diffs, which are more portable than unifieds (but don't handle
 conflicts as cleanly). In this case, use <c>-c</c> rather
 than <c>-u</c>. For a verbose guide into patches and patching, see
-<uri link="::ebuild-writing/misc-files/patches"/>.
+<uri link="::ebuild-writing/misc-files/patches/"/>.
 </p>
 
 <p>
@@ -40,7 +40,7 @@ where <c>X</c> is a number representing the number of path components
 which must be removed (typically this is <c>0</c> or <c>1</c>). Within
 ebuilds, use the <c>epatch</c> function, or <c>eapply</c> function
 beginning with EAPI=6, instead — see
-<uri link="::ebuild-writing/functions/src_prepare/epatch"/>.
+<uri link="::ebuild-writing/functions/src_prepare/epatch/"/>.
 </p>
 
 <p>

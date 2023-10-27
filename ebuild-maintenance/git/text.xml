@@ -292,7 +292,7 @@ are optionally used in Gentoo:
 </ul>
 
 <p>
-When committing <uri link="::ebuild-writing/user-submitted">user
+When committing <uri link="::ebuild-writing/user-submitted/">user
 contributions</uri>, make sure to credit them in your commit message
 with the user's full name and email address. Be aware and respectful
 of their privacy: some users prefer to be only known by a nickname.

@@ -100,8 +100,8 @@ for security reasons. If this message is shown, you have a couple of options:
     linking. This solution is preferred.
   </li>
   <li>
-    Use <c>append-ldflags</c> (see <uri
-    link="::ebuild-writing/functions/src_compile/build-environment#Adding Additional Flags"/>)
+    Use <c>append-ldflags</c> (see
+    <uri link="::ebuild-writing/functions/src_compile/build-environment/#Adding Additional Flags"/>)
     to add <c>-Wl,-z,now</c>. This will affect <e>all</e> binaries installed, not just the setXid ones.
   </li>
 </ul>

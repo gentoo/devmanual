@@ -5,8 +5,9 @@
 
 <body>
 <todo>
-This is too long for <uri link="::general-concepts"/>. It needs to be split up and
-moved somewhere, either to a top-level of its own or into <uri link="::appendices/"/>.
+This is too long for <uri link="::general-concepts/"/>. It needs to be split up
+and moved somewhere, either to a top-level of its own or into
+<uri link="::appendices/"/>.
 </todo>
 
 <p>
@@ -495,10 +496,10 @@ This is handled via the macro <c>AC_SUBST(VARNAME)</c> in <c>configure.ac</c>.
 <p>
 Sometimes, badly behaved <c>Makefile.am</c> files will override user variables such
 as <c>CFLAGS</c>. This must not be allowed <d/> see
-<uri link="::general-concepts/user-environment#Not Filtering Variables"/>. There
-are separate special variables which should be used in these situations <d/> for
-setting <c>CFLAGS</c>. for example, a <c>Makefile.am</c> should use <c>AM_CFLAGS</c> so
-that user preferences are not ignored.
+<uri link="::general-concepts/user-environment/#Not Filtering Variables"/>.
+There are separate special variables which should be used in these situations
+<d/> for setting <c>CFLAGS</c>. for example, a <c>Makefile.am</c> should use
+<c>AM_CFLAGS</c> so that user preferences are not ignored.
 </p>
 
 <p>

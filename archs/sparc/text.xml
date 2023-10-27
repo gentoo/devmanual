@@ -55,8 +55,8 @@ buses.
 
 <note>
 This section is in addition to the guidelines in
-<uri link="::keywording#Keywording on Upgrades"/>. It discusses <e>additional</e>
-requirements for the SPARC architecture.
+<uri link="::keywording/#Keywording on Upgrades"/>. It discusses
+<e>additional</e> requirements for the SPARC architecture.
 </note>
 
 <p>
@@ -116,7 +116,7 @@ code. Depending upon the application, this can be anywhere up to five times
 slower than <c>v9</c> code when running on an UltraSparc <d/> cryptographic and
 graphics applications which make heavy use of integer multiplication and
 division are especially badly hit. For this reason, the comments in
-<uri link="::general-concepts/user-environment#Not Filtering Variables"/>
+<uri link="::general-concepts/user-environment/#Not Filtering Variables"/>
 are especially important on SPARC.
 </p>
 

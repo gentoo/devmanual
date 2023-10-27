@@ -41,7 +41,7 @@ possible that the user may have <c>foo-2.0</c> installed and no <c>foo-1.x</c> a
 
 <p>
 To <c>DEPEND</c> upon a package in a specific slot, refer to
-<uri link="::general-concepts/dependencies#SLOT Dependencies" />.
+<uri link="::general-concepts/dependencies/#SLOT Dependencies"/>.
 </p>
 </body>
 
@@ -55,7 +55,7 @@ but it's undesirable or inconvenient to allow some of these versions to be insta
 simultaneously. In <c>EAPI=5</c> and higher, this situation can be handled by
 using sub-slots, which are delimited from the regular slot by a <c>/</c> character,
 as in <c>SLOT="slot/subslot"</c>. Packages can
-<uri link="::general-concepts/dependencies#Slot Operators">request to be
+<uri link="::general-concepts/dependencies/#Slot Operators">request to be
 automatically rebuilt</uri> when the subslot of a runtime dependency changes.
 </p>
 

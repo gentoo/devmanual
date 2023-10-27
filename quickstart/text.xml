@@ -13,8 +13,9 @@ idea of how ebuilds work.
 </p>
 
 <p>
-For proper coverage of all the ins and outs, see <uri link="::ebuild-writing"/>.
-The <uri link="::general-concepts"/> chapter will also be of use.
+For proper coverage of all the ins and outs,
+see <uri link="::ebuild-writing/"/>.
+The <uri link="::general-concepts/"/> chapter will also be of use.
 </p>
 
 <p>
@@ -73,8 +74,8 @@ At the top of the ebuild is a header block. This is present in all ebuilds.
 </p>
 
 <p>
-Ebuilds are indented using tabs, with each tab representing four places. See
-<uri link="::ebuild-writing/file-format"/>.
+Ebuilds are indented using tabs, with each tab representing four places.
+See <uri link="::ebuild-writing/file-format/"/>.
 </p>
 </body>
 </subsection>
@@ -89,7 +90,7 @@ the ebuild and package in question.
 </p>
 
 <p>
-The <c>EAPI</c> of the ebuild, see <uri link="::ebuild-writing/eapi"/>.
+The <c>EAPI</c> of the ebuild, see <uri link="::ebuild-writing/eapi/"/>.
 </p>
 
 <p>
@@ -118,14 +119,14 @@ or (at your option) any later version).
 <p>
 The <c>SLOT</c> variable tells Portage which slot this package installs to.
 If you've not seen slots before, either just use <c>"0"</c> or read
-<uri link="::general-concepts/slotting"/>.
+<uri link="::general-concepts/slotting/"/>.
 </p>
 
 <p>
 The <c>KEYWORDS</c> variable is set to archs upon which this ebuild has been
 tested. We use <c>~</c> keywords for newly written ebuilds <d/> packages are not
-committed straight to stable, even if they seem to work. See <uri link="::keywording"/> for
-details.
+committed straight to stable, even if they seem to work.
+See <uri link="::keywording/"/> for details.
 </p>
 </body>
 </subsection>
@@ -147,8 +148,8 @@ The <c>src_install</c> function is called by Portage when it wants
 to <e>install</e> the package. A slight subtlety here <d/> rather than
 installing straight to the live filesystem, we must install to a
 special location which is given by the <c>${D}</c> variable (Portage sets
-this <d/> see <uri link="::general-concepts/install-destinations"/> and
-<uri link="::general-concepts/sandbox"/>).
+this <d/> see <uri link="::general-concepts/install-destinations/"/> and
+<uri link="::general-concepts/sandbox/"/>).
 </p>
 
 <note>
@@ -164,7 +165,8 @@ files into the relevant part of <c>/usr/share/doc</c>.
 </p>
 
 <p>
-Ebuilds can define other functions (see <uri link="::ebuild-writing/functions"/>).
+Ebuilds can define other functions
+(see <uri link="::ebuild-writing/functions/"/>).
 In all cases, Portage provides a reasonable default implementation which
 quite often does the 'right thing'. There was no need to define
 <c>src_unpack</c> and <c>src_compile</c> functions here, for example
@@ -193,7 +195,7 @@ failed.
 <p>
 In the ctags example, we didn't tell Portage about any dependencies. As it
 happens, that's ok, because ctags only needs a basic toolchain to compile and
-run (see <uri link="::general-concepts/dependencies#Implicit System Dependency"/>
+run (see <uri link="::general-concepts/dependencies/#Implicit System Dependency"/>
 for why we don't need to depend upon those explicitly). However, life is rarely
 that simple.
 </p>
@@ -231,7 +233,7 @@ Again, you can see the ebuild header and the various informational variables. In
 <c>SRC_URI</c>, <c>${PN}</c> is used to get the package's
 name <e>without</e> the version suffix (there are more of these
 variables <d/> see
-<uri link="::ebuild-writing/variables#Predefined Read-Only Variables"/>).
+<uri link="::ebuild-writing/variables/#Predefined Read-Only Variables"/>).
 </p>
 
 <p>
@@ -245,7 +247,7 @@ The <c>BDEPEND</c>, <c>DEPEND</c>, and <c>RDEPEND</c> variables are how Portage
 determines which packages are needed to build and run the package. The
 <c>BDEPEND</c> variable lists build-time (executable) dependencies,
 <c>DEPEND</c> variable lists compile-time dependencies, and the <c>RDEPEND</c>
-lists runtime dependencies. See <uri link="::general-concepts/dependencies"/>
+lists runtime dependencies. See <uri link="::general-concepts/dependencies/"/>
 for some more complex examples.
 </p>
 
@@ -298,8 +300,8 @@ Note the <c>${FILESDIR}/${P}-destdir.patch</c> <d/> this refers to
 <c>detox-1.1.0-destdir.patch</c>, which lives in the <c>files/</c>
 subdirectory in the Gentoo repository. Larger patch files must go on your
 developer's space at <c>dev.gentoo.org</c> rather than in <c>files/</c> or
-mirrors <d/> see <uri link="::general-concepts/mirrors#Gentoo Mirrors"/> and <uri
-link="::ebuild-writing/functions/src_prepare/epatch/"/>.
+mirrors <d/> see <uri link="::general-concepts/mirrors/#Gentoo Mirrors"/> and
+<uri link="::ebuild-writing/functions/src_prepare/epatch/"/>.
 </p>
 
 <p>
