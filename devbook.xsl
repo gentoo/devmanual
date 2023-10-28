@@ -290,30 +290,60 @@
   <xsl:value-of select="translate($lcdata, translate($lcdata, $allowed, ''), '')"/>
 </xsl:template>
 
+<xsl:template name="relative-path">
+  <xsl:param name="path"/>
+  <xsl:param name="self"/>
+  <xsl:choose>
+    <xsl:when test="$path = '' or $self = '' or substring-before($path, '/') != substring-before($self, '/')">
+      <xsl:call-template name="str:repeatString">
+        <xsl:with-param name="count" select="string-length($self) - string-length(translate($self, '/', ''))"/>
+        <xsl:with-param name="append">../</xsl:with-param>
+      </xsl:call-template>
+      <xsl:value-of select="$path"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:call-template name="relative-path">
+        <xsl:with-param name="path" select="substring-after($path, '/')"/>
+        <xsl:with-param name="self" select="substring-after($self, '/')"/>
+      </xsl:call-template>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
 <xsl:template match="uri">
   <xsl:param name="class" />
   <xsl:choose>
+    <!-- Intra-document reference -->
     <xsl:when test="starts-with(@link, '::')">
-      <!-- Ideally we would work out how many levels to nest down to save
-           a few bytes but going down to root level works just as well
-           (and is faster). -->
-      <xsl:variable name="relative_path_depth"
-                    select="string-length(/guide/@self) - string-length(translate(/guide/@self, '/' , ''))"/>
-      <xsl:variable name="relative_path_depth_recursion">
-        <xsl:call-template name="str:repeatString">
-          <xsl:with-param name="count" select="$relative_path_depth"/>
-          <xsl:with-param name="append">../</xsl:with-param>
+      <xsl:variable name="link_address">
+        <xsl:choose>
+          <xsl:when test="contains(@link, '#')">
+            <xsl:value-of select="substring-before(@link, '#')"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="@link"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <xsl:variable name="path">
+        <xsl:value-of select="substring-after($link_address, '::')"/>
+        <xsl:if test="substring($link_address, string-length($link_address)) != '/'">/</xsl:if>
+      </xsl:variable>
+      <xsl:variable name="path_rel">
+        <xsl:call-template name="relative-path">
+          <xsl:with-param name="path" select="$path"/>
+          <xsl:with-param name="self" select="/guide/@self"/>
         </xsl:call-template>
+      </xsl:variable>
+      <xsl:variable name="path_html">
+        <!-- Omit index.html if referencing an anchor in the same file. -->
+        <xsl:if test="$path_rel != ''">
+          <xsl:value-of select="concat($path_rel, 'index.html')"/>
+        </xsl:if>
       </xsl:variable>
       <xsl:choose>
         <xsl:when test="contains(@link, '##')">
-          <xsl:variable name="slash">
-            <xsl:if test="substring(substring-before(@link, '##'),
-                          string-length(substring-before(@link, '##'))) != '/'">/</xsl:if>
-          </xsl:variable>
-          <a class="{$class}"
-             href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '##'), '::'),
-                   $slash, 'index.html#', substring-after(@link, '##'))}">
+          <a class="{$class}" href="{concat($path_html, '#', substring-after(@link, '##'))}">
             <xsl:value-of select="."/>
           </a>
         </xsl:when>
@@ -323,62 +353,42 @@
               <xsl:with-param name="data" select="substring-after(@link, '#')"/>
             </xsl:call-template>
           </xsl:variable>
-          <xsl:variable name="slash">
-            <xsl:if test="substring(substring-before(@link, '#'),
-                          string-length(substring-before(@link, '#'))) != '/'">/</xsl:if>
-          </xsl:variable>
-          <xsl:choose>
-            <xsl:when test=". != ''">
-              <a class="{$class}"
-                 href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '#'), '::'),
-                       $slash, 'index.html#', $anchor)}">
+          <a class="{$class}" href="{concat($path_html, '#', $anchor)}">
+            <xsl:choose>
+              <xsl:when test=". != ''">
                 <xsl:value-of select="."/>
-              </a>
-            </xsl:when>
-            <xsl:otherwise>
-              <a class="{$class}"
-                 href="{concat($relative_path_depth_recursion, substring-after(substring-before(@link, '#'), '::'),
-                       $slash, 'index.html#', $anchor)}">
+              </xsl:when>
+              <xsl:otherwise>
                 <xsl:value-of select="substring-after(@link, '#')"/>
-              </a>
-            </xsl:otherwise>
-          </xsl:choose>
+              </xsl:otherwise>
+            </xsl:choose>
+          </a>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:variable name="slash">
-            <xsl:if test="substring(@link, string-length(@link)) != '/'">/</xsl:if>
-          </xsl:variable>
-          <xsl:choose>
-            <xsl:when test=". != ''">
-              <a class="{$class}"
-                 href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), $slash, 'index.html')}">
+          <a class="{$class}" href="{$path_html}">
+            <xsl:choose>
+              <xsl:when test=". != ''">
                 <xsl:value-of select="."/>
-              </a>
-            </xsl:when>
-            <xsl:when test="starts-with(@link, '::eclass-reference/')
-                            and substring-after(@link, '::eclass-reference/') != ''">
-              <!-- Eclass reference pages are generated with man2html,
-                   so there isn't any text.xml that could be loaded.
-                   Use the name of the eclass as link text. #442194 -->
-              <a class="{$class}"
-                 href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), $slash, 'index.html')}">
-                <xsl:value-of select="substring-before(concat(substring-after(@link, '::eclass-reference/'), $slash), '/')"/>
-              </a>
-            </xsl:when>
-            <xsl:otherwise>
-              <a class="{$class}"
-                 href="{concat($relative_path_depth_recursion, substring-after(@link, '::'), $slash, 'index.html')}">
-                <xsl:value-of select="document(concat(/guide/@self, $relative_path_depth_recursion,
-                                      substring-after(@link, '::'), '/text.xml'))/guide/chapter[1]/title"/>
-              </a>
-            </xsl:otherwise>
-          </xsl:choose>
+              </xsl:when>
+              <xsl:when test="starts-with($path, 'eclass-reference/') and substring-after($path, '/') != ''">
+                <!-- Eclass reference pages are generated with man2html,
+                     so there isn't any text.xml that could be loaded.
+                     Use the name of the eclass as link text. #442194 -->
+                <xsl:value-of select="substring-before(substring-after($path, '/'), '/')"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="document(concat($path, 'text.xml'))/guide/chapter[1]/title"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </a>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:when>
+    <!-- External reference, URI in link attribute -->
     <xsl:when test="@link">
       <a class="{$class}" href="{@link}"><xsl:value-of select="."/></a>
     </xsl:when>
+    <!-- External reference, URI in body text -->
     <xsl:when test="contains(., '://')">
       <a class="{$class}" href="{.}"><xsl:value-of select="."/></a>
     </xsl:when>
