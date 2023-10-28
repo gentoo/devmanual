@@ -311,7 +311,6 @@
 </xsl:template>
 
 <xsl:template match="uri">
-  <xsl:param name="class" />
   <xsl:choose>
     <!-- Intra-document reference -->
     <xsl:when test="starts-with(@link, '::')">
@@ -343,7 +342,7 @@
       </xsl:variable>
       <xsl:choose>
         <xsl:when test="contains(@link, '##')">
-          <a class="{$class}" href="{concat($path_html, '#', substring-after(@link, '##'))}">
+          <a href="{concat($path_html, '#', substring-after(@link, '##'))}">
             <xsl:value-of select="."/>
           </a>
         </xsl:when>
@@ -353,7 +352,7 @@
               <xsl:with-param name="data" select="substring-after(@link, '#')"/>
             </xsl:call-template>
           </xsl:variable>
-          <a class="{$class}" href="{concat($path_html, '#', $anchor)}">
+          <a href="{concat($path_html, '#', $anchor)}">
             <xsl:choose>
               <xsl:when test=". != ''">
                 <xsl:value-of select="."/>
@@ -365,7 +364,7 @@
           </a>
         </xsl:when>
         <xsl:otherwise>
-          <a class="{$class}" href="{$path_html}">
+          <a href="{$path_html}">
             <xsl:choose>
               <xsl:when test=". != ''">
                 <xsl:value-of select="."/>
@@ -386,15 +385,15 @@
     </xsl:when>
     <!-- External reference, URI in link attribute -->
     <xsl:when test="@link">
-      <a class="{$class}" href="{@link}"><xsl:value-of select="."/></a>
+      <a href="{@link}"><xsl:value-of select="."/></a>
     </xsl:when>
     <!-- External reference, URI in body text -->
     <xsl:when test="contains(., '://')">
-      <a class="{$class}" href="{.}"><xsl:value-of select="."/></a>
+      <a href="{.}"><xsl:value-of select="."/></a>
     </xsl:when>
     <xsl:otherwise>
       <xsl:message>Error: No link target (<xsl:value-of select="."/>)</xsl:message>
-      <a class="{$class}"><xsl:value-of select="."/></a>
+      <a><xsl:value-of select="."/></a>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
