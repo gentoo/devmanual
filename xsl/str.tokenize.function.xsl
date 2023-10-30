@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- This is the EXSLT implementation of str:tokenize by Jeni Tennison,
      I've modified it to keep the tokens since we need them - plasmaroo -->
 
@@ -12,7 +12,7 @@
                 xmlns="http://www.w3.org/1999/xhtml">
 
 <func:function name="str:tokenize_plasmaroo">
-	<xsl:param name="string" select="''" />
+  <xsl:param name="string" select="''" />
   <xsl:param name="delimiters" select="' &#x9;&#xA;'" />
   <xsl:choose>
     <xsl:when test="not($string)">
@@ -70,7 +70,10 @@
         </xsl:call-template>
         <xsl:value-of select="$delimiter"/>
       </xsl:if>
-      <delimiter><xsl:attribute name="delimiter"><xsl:value-of select="$delimiter"/></xsl:attribute><xsl:value-of select="$delimiter"/></delimiter>
+      <delimiter>
+        <xsl:attribute name="delimiter"><xsl:value-of select="$delimiter"/></xsl:attribute>
+        <xsl:value-of select="$delimiter"/>
+      </delimiter>
       <xsl:call-template name="str:_tokenize-delimiters">
         <xsl:with-param name="string" select="substring-after($string, $delimiter)"/>
         <xsl:with-param name="delimiters" select="$delimiters"/>
@@ -86,3 +89,8 @@
 </xsl:template>
 
 </xsl:stylesheet>
+
+<!-- Local Variables: -->
+<!-- indent-tabs-mode: nil -->
+<!-- fill-column: 120 -->
+<!-- End: -->

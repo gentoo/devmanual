@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
   xmlns:str="http://exslt.org/strings"
   xmlns:exslt="http://exslt.org/common"
@@ -31,11 +32,11 @@
     <xsl:variable name="quotePos" select="count(../*[@delimiter='&quot;' and position() &lt; $myPos])"/>
     <xsl:variable name="tagPosOpen" select="count(../*[@delimiter='&lt;' and position() &lt; $myPos])"/>
     <xsl:variable name="tagPosClosed" select="count(../*[@delimiter='&gt;' and position() &lt; $myPos])"/>
-    
+
     <xsl:choose>
       <!-- Highlight a quote -->
       <xsl:when test=". = '&quot;'">
-	<span class="Statement">&quot;</span>
+        <span class="Statement">&quot;</span>
       </xsl:when>
 
       <!-- If we're inside quotes stop here -->
@@ -48,7 +49,7 @@
       <xsl:when test="contains(., '=') and $tagPosOpen != $tagPosClosed">
         <span class="Identifier"><xsl:value-of select="substring-before(., '=')"/></span>
         <span class="Constant">=</span>
-        <xsl:call-template name="lang.highlight.sgml.subtokenate">      
+        <xsl:call-template name="lang.highlight.sgml.subtokenate">
           <xsl:with-param name="data" select="substring-after(., '=')"/>
         </xsl:call-template>
       </xsl:when>
@@ -60,11 +61,16 @@
       <!-- No match return -->
       <xsl:otherwise>
         <xsl:call-template name="lang.highlight.sgml.subtokenate">
-	  <xsl:with-param name="data" select="."/>
-	</xsl:call-template>
+          <xsl:with-param name="data" select="."/>
+        </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
     </xsl:for-each>
   </xsl:template>
 
 </xsl:stylesheet>
+
+<!-- Local Variables: -->
+<!-- indent-tabs-mode: nil -->
+<!-- fill-column: 120 -->
+<!-- End: -->

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
   xmlns:str="http://exslt.org/strings"
   xmlns:exslt="http://exslt.org/common"
@@ -46,7 +47,7 @@
     <xsl:choose>
       <!-- Highlight a quote -->
       <xsl:when test=". = '&quot;'">
-	<span class="Statement">&quot;</span>
+        <span class="Statement">&quot;</span>
       </xsl:when>
 
       <!-- If we're inside quotes stop here -->
@@ -66,12 +67,17 @@
       <!-- No match return -->
       <xsl:otherwise>
         <xsl:call-template name="lang.highlight.c.subtokenate">
-	  <xsl:with-param name="data" select="."/>
-	  <xsl:with-param name="inPreProc" select="$macroLine"/>
-	</xsl:call-template>
+          <xsl:with-param name="data" select="."/>
+          <xsl:with-param name="inPreProc" select="$macroLine"/>
+        </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
     </xsl:for-each>
   </xsl:template>
 
 </xsl:stylesheet>
+
+<!-- Local Variables: -->
+<!-- indent-tabs-mode: nil -->
+<!-- fill-column: 120 -->
+<!-- End: -->

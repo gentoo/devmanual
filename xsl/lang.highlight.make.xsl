@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
   xmlns:str="http://exslt.org/strings"
   xmlns:exslt="http://exslt.org/common"
@@ -39,7 +40,7 @@
 
       <!-- sh grammar -->
       <xsl:when test="$data = '$?' or $data = '&gt;' or $data = '$@' or $data = ':'">
-	<span class="Identifier"><xsl:value-of select="$data"/></span>
+        <span class="Identifier"><xsl:value-of select="$data"/></span>
       </xsl:when>
 
       <!-- No match return -->
@@ -59,7 +60,7 @@
     <xsl:for-each select="exslt:node-set($tokenizedData)">
     <xsl:variable name="myPos" select="position()"/>
     <xsl:variable name="quotePos" select="count(../*[@delimiter='&quot;' and position() &lt; $myPos])"/>
-    
+
     <xsl:choose>
       <xsl:when test="../*[position()=3] = '=' and $myPos = 1">
         <span class="Type"><xsl:value-of select="."/></span>
@@ -67,7 +68,7 @@
 
       <!-- Highlight a quote -->
       <xsl:when test=". = '&quot;'">
-	<span class="Statement">&quot;</span>
+        <span class="Statement">&quot;</span>
       </xsl:when>
 
       <!-- If we're inside quotes stop here -->
@@ -81,7 +82,7 @@
       </xsl:when>
 
       <!-- Highlight variable assignments;
-		@regexp = [\w]=["']{...}['"] -->
+           @regexp = [\w]=["']{...}['"] -->
       <xsl:when test="contains(., '=')">
         <xsl:call-template name="lang.highlight.make.subtokenate">
           <xsl:with-param name="data" select="substring-before(., '=')"/>
@@ -95,11 +96,16 @@
       <!-- No match return -->
       <xsl:otherwise>
         <xsl:call-template name="lang.highlight.make.subtokenate">
-	  <xsl:with-param name="data" select="."/>
-	</xsl:call-template>
+          <xsl:with-param name="data" select="."/>
+        </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
     </xsl:for-each>
   </xsl:template>
 
 </xsl:stylesheet>
+
+<!-- Local Variables: -->
+<!-- indent-tabs-mode: nil -->
+<!-- fill-column: 120 -->
+<!-- End: -->
