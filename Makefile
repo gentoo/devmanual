@@ -74,7 +74,7 @@ appendices/todo-list/index.html: $(XMLS)
 # Generate the list of dependencies with XSLT, which appears to be a
 # better tool for this than make.
 .depend: $(XMLS) eclass-reference/text.xml depend.xsl devbook.xsl
-	@xsltproc depend.xsl $(XMLS) | sed ':x;s%[^ /]*/\.\./%%;tx' > $@
+	@xsltproc depend.xsl $(XMLS) > $@
 
 install: all
 	set -e; \

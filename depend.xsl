@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+  xmlns:str="http://exslt.org/strings"
   xmlns:exslt="http://exslt.org/common"
-  extension-element-prefixes="exslt xsl"
-  exclude-result-prefixes="exslt xsl">
+  extension-element-prefixes="str exslt xsl"
+  exclude-result-prefixes="str exslt xsl">
 
 <xsl:import href="devbook.xsl"/>
 <xsl:output method="text"/>
@@ -20,12 +21,18 @@
   <xsl:variable name="self" select="/guide/@self"/>
   <xsl:value-of select="concat($self, 'index.html:')"/>
   <xsl:for-each select="exslt:node-set($refs)//a/@href[. != '#']">
-    <!-- At this point, the path can contain ".." components and
-         should be canonicalised, but string processing in XPath 1.0
-         sucks (no pattern matching!). It is easier to pipe the output
-         through sed instead. -->
-    <xsl:value-of select="concat(' ', $self,
-        substring-before(., 'index.html'), 'text.xml')"/>
+    <xsl:text> </xsl:text>
+    <xsl:variable name="path" select="substring-before(., 'index.html')"/>
+    <!-- At this point, $path can start with zero or more ".." components
+         and is relative to $self. Convert it to an absolute path. -->
+    <xsl:variable name="up" select="count(str:tokenize($path, '/')[. = '..'])"/>
+    <xsl:for-each select="str:tokenize($self, '/')[position() &lt;= last() - $up]">
+      <xsl:value-of select="concat(., '/')"/>
+    </xsl:for-each>
+    <xsl:for-each select="str:tokenize($path, '/')[position() &gt; $up]">
+      <xsl:value-of select="concat(., '/')"/>
+    </xsl:for-each>
+    <xsl:text>text.xml</xsl:text>
   </xsl:for-each>
   <xsl:value-of select="$newline"/>
 </xsl:template>
