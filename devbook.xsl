@@ -290,12 +290,18 @@
   <xsl:value-of select="translate($lcdata, translate($lcdata, $allowed, ''), '')"/>
 </xsl:template>
 
+<xsl:template name="repeat-string">
+  <xsl:param name="count"/>
+  <xsl:param name="append"/>
+  <xsl:value-of select="str:padding($count * string-length($append), $append)"/>
+</xsl:template>
+
 <xsl:template name="relative-path">
   <xsl:param name="path"/>
   <xsl:param name="self"/>
   <xsl:choose>
     <xsl:when test="$path = '' or $self = '' or substring-before($path, '/') != substring-before($self, '/')">
-      <xsl:call-template name="str:repeatString">
+      <xsl:call-template name="repeat-string">
         <xsl:with-param name="count" select="string-length($self) - string-length(translate($self, '/', ''))"/>
         <xsl:with-param name="append">../</xsl:with-param>
       </xsl:call-template>
@@ -418,7 +424,7 @@
   </xsl:param>
   <xsl:param name="path_rel">
     <xsl:if test="$depth = 0 and $path = '' and /guide/@self != ''">
-      <xsl:call-template name="str:repeatString">
+      <xsl:call-template name="repeat-string">
         <xsl:with-param name="count"
                         select="string-length(/guide/@self) - string-length(translate(/guide/@self, '/' , ''))"/>
         <xsl:with-param name="append">../</xsl:with-param>
@@ -495,7 +501,7 @@
   <xsl:variable name="relative_path_depth"
                 select="string-length(/guide/@self) - string-length(translate(/guide/@self, '/' , ''))"/>
   <xsl:variable name="relative_path_depth_recursion">
-    <xsl:call-template name="str:repeatString">
+    <xsl:call-template name="repeat-string">
       <xsl:with-param name="count" select="$relative_path_depth"/>
       <xsl:with-param name="append">../</xsl:with-param>
     </xsl:call-template>
@@ -721,24 +727,6 @@
   </html>
 </xsl:template>
 
-<xsl:template name="str:repeatString">
-  <xsl:param name="string"/>
-  <xsl:param name="count"/>
-  <xsl:param name="append"/>
-  <xsl:choose>
-    <xsl:when test="$count != 0">
-      <xsl:call-template name="str:repeatString">
-        <xsl:with-param name="string" select="concat($string, $append)"/>
-        <xsl:with-param name="count" select="$count - 1"/>
-        <xsl:with-param name="append" select="$append"/>
-      </xsl:call-template>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:value-of select="$string"/>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
 <xsl:template name="findNext">
   <xsl:param name="self" select="/guide/@self"/>
   <xsl:choose>
@@ -884,7 +872,7 @@
   <xsl:choose>
     <xsl:when test="$depth &gt; 0">
       <xsl:variable name="relative_path_depth_recursion">
-        <xsl:call-template name="str:repeatString">
+        <xsl:call-template name="repeat-string">
           <xsl:with-param name="count" select="$depth"/>
           <xsl:with-param name="append">../</xsl:with-param>
         </xsl:call-template>
