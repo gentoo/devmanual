@@ -774,28 +774,16 @@
         <!-- If we have an item after us, or we are at the root node
              (termination condition) we need to not recurse any further... -->
         <xsl:when test="$parentItem_lookup != '' or document(concat($self, '../text.xml'))/guide/@root">
-          <xsl:variable name="parentItem_actual">
-            <xsl:choose>
-              <xsl:when test="$parentItem_next = ''"></xsl:when>
-              <xsl:otherwise><xsl:value-of select="$parentItem_next"/></xsl:otherwise>
-            </xsl:choose>
-          </xsl:variable>
-          <!-- This is where we do a little trickery. To count how many levels
-               we need to go down, we count how far up we currently are
-               (remember that the absolute link we get is relative to /...)
-               and hence we can build a relative link... -->
-          <xsl:variable name="relative_path" select="$parentItem_actual"/>
-          <xsl:variable name="relative_path_depth"
-                        select="string-length(/guide/@self) - string-length(translate(/guide/@self, '/' , ''))"/>
-          <xsl:variable name="relative_path_depth_recursion">
-            <xsl:call-template name="str:repeatString">
-              <xsl:with-param name="count" select="$relative_path_depth"/>
-              <xsl:with-param name="append">../</xsl:with-param>
+          <!-- Compute a relative path for the link. -->
+          <xsl:variable name="path_rel">
+            <xsl:call-template name="relative-path">
+              <xsl:with-param name="path" select="$parentItem_next"/>
+              <xsl:with-param name="self" select="/guide/@self"/>
             </xsl:call-template>
           </xsl:variable>
-          <a class="w-250 text-center" href="{concat($relative_path_depth_recursion, $relative_path, 'index.html')}">
+          <a class="w-250 text-center" href="{concat($path_rel, 'index.html')}">
             <span class="truncated-text d-inline-block max-w-200 mr-2">
-              <xsl:value-of select="document(concat($parentItem_actual, 'text.xml'))/guide/chapter[1]/title"/>
+              <xsl:value-of select="document(concat($parentItem_next, 'text.xml'))/guide/chapter[1]/title"/>
             </span>
             <span class="fa fa-arrow-right"/>
           </a>
@@ -803,11 +791,9 @@
         <xsl:otherwise>
           <!-- We need to recurse downwards; so we need to strip off a directory
                element off our absolute path to feed into the next iteration... -->
-          <xsl:variable name="relative_path_depth"
-                        select="string-length($self) - string-length(translate($self, '/' , ''))"/>
           <xsl:variable name="relative_path_fixed">
-            <xsl:for-each select="str:tokenize_plasmaroo($self, '/')[position() &lt; (($relative_path_depth - 1)*2 + 1)]">
-              <xsl:value-of select="."/>
+            <xsl:for-each select="str:tokenize($self, '/')[position() &lt; last()]">
+              <xsl:value-of select="concat(., '/')"/>
             </xsl:for-each>
           </xsl:variable>
           <xsl:call-template name="findNext">
