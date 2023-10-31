@@ -431,6 +431,7 @@
       </xsl:call-template>
     </xsl:if>
   </xsl:param>
+  <xsl:param name="orig_self" select="/guide/@self"/>
   <xsl:param name="extraction" select="@extraction"/>
   <xsl:param name="extraction_counting"/>
 
@@ -446,6 +447,7 @@
               <xsl:with-param name="maxdepth" select="$maxdepth"/>
               <xsl:with-param name="path" select="concat($path, @href)"/>
               <xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
+              <xsl:with-param name="orig_self" select="$orig_self"/>
               <xsl:with-param name="extraction" select="$extraction"/>
               <xsl:with-param name="extraction_counting" select="1"/>
             </xsl:call-template>
@@ -461,6 +463,7 @@
                 <xsl:with-param name="maxdepth" select="$maxdepth"/>
                 <xsl:with-param name="path" select="concat($path, @href)"/>
                 <xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
+                <xsl:with-param name="orig_self" select="$orig_self"/>
                 <xsl:with-param name="extraction" select="$extraction"/>
                 <xsl:with-param name="extraction_counting" select="1"/>
               </xsl:call-template>
@@ -474,10 +477,18 @@
                   <xsl:value-of select="document(concat($path, @href, 'text.xml'))/guide/chapter[1]/title"/>
                 </a>
                 <xsl:if test="$extraction != ''">
+                  <!-- If the extracted element from the other document contains
+                       any internal references, relative links would be based on
+                       the wrong start location. So we must replace /guide/@self
+                       by our own copy. Bug #916523. -->
+                  <xsl:variable name="document_tree">
+                    <guide self="{$orig_self}">
+                      <xsl:copy-of select="document(concat($path, @href, 'text.xml'))/guide/*"/>
+                    </guide>
+                  </xsl:variable>
                   <ul>
-                    <xsl:for-each select="document(concat($path, @href, 'text.xml'))//*[name()=$extraction]">
-                      <xsl:variable name="extraction_id" select="position()"/>
-                      <li><xsl:apply-templates select="(//*[name()=$extraction])[position()=$extraction_id]"/></li>
+                    <xsl:for-each select="exslt:node-set($document_tree)//*[name()=$extraction]">
+                      <li><xsl:apply-templates select="."/></li>
                     </xsl:for-each>
                   </ul>
                 </xsl:if>
@@ -486,6 +497,7 @@
                   <xsl:with-param name="maxdepth" select="$maxdepth"/>
                   <xsl:with-param name="path" select="concat($path, @href)"/>
                   <xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
+                  <xsl:with-param name="orig_self" select="$orig_self"/>
                   <xsl:with-param name="extraction" select="$extraction"/>
                 </xsl:call-template>
               </li>
