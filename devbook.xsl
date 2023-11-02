@@ -269,7 +269,7 @@
 </xsl:template>
 
 <xsl:template match="d">
-  <xsl:text>&#8212;</xsl:text>
+  <xsl:text>&#x2014;</xsl:text> <!-- em dash -->
 </xsl:template>
 
 <xsl:template match="e">
@@ -587,10 +587,10 @@
                   <div class="collapse navbar-collapse navbar-main-collapse">
                     <ul class="nav navbar-nav">
                       <li>
-                        <a href="{$relative_path_depth_recursion}index.html"><span class="fa fa-home"/>&#160;Home</a>
+                        <a href="{$relative_path_depth_recursion}index.html"><span class="fa fa-home"/>&#xa0;Home</a>
                       </li>
                       <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Index&#160;<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Index&#xa0;<span class="caret"></span></a>
                         <xsl:if test="/guide/chapter[1]/section or //contentsTree">
                           <ul class="dropdown-menu">
                             <!-- List sections of this chapter first. -->
