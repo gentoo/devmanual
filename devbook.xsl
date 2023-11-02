@@ -809,12 +809,12 @@
   <!-- This function recurses forward down nodes stopping at the very last include... -->
   <xsl:param name="root"/>
   <xsl:param name="path"/>
-  <xsl:variable name="include" select="document(concat($root, $path))/guide/include[last()]/@href"/>
+  <xsl:variable name="include" select="document(concat($root, $path, 'text.xml'))/guide/include[last()]/@href"/>
   <xsl:choose>
     <xsl:when test="$include">
       <xsl:call-template name="getLastNode">
         <xsl:with-param name="root" select="$root"/>
-        <xsl:with-param name="path" select="concat(substring-before($path, 'text.xml'), $include, 'text.xml')"/>
+        <xsl:with-param name="path" select="concat($path, $include)"/>
       </xsl:call-template>
     </xsl:when>
     <xsl:otherwise>
@@ -854,15 +854,15 @@
           <xsl:variable name="myItem_path">
             <xsl:call-template name="getLastNode">
               <xsl:with-param name="root" select="$parentItem_path"/>
-              <xsl:with-param name="path" select="concat($parentItem_next, 'text.xml')"/>
+              <xsl:with-param name="path" select="$parentItem_next"/>
             </xsl:call-template>
           </xsl:variable>
           <!-- Make a relative <a> link; we need an absolute reference
                for the XSLT processor though... -->
-          <a class="w-250 text-center" href="{concat('../', substring-before($myItem_path, 'text.xml'), 'index.html')}">
+          <a class="w-250 text-center" href="{concat('../', $myItem_path, 'index.html')}">
             <span class="fa fa-arrow-left"/>
             <span class="truncated-text d-inline-block max-w-200 ml-2">
-              <xsl:value-of select="document(concat($parentItem_path, $myItem_path))/guide/chapter[1]/title"/>
+              <xsl:value-of select="document(concat($parentItem_path, $myItem_path, 'text.xml'))/guide/chapter[1]/title"/>
             </span>
           </a>
         </xsl:when>
