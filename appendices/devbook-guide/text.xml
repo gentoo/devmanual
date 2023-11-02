@@ -578,6 +578,8 @@ Both sections are described next.
 <c>&lt;codesample&gt;</c>, <c>&lt;figure&gt;</c>, <c>&lt;table&gt;</c>,
 <c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c>, <c>&lt;dl&gt;</c>, <c>&lt;note&gt;</c>,
 <c>&lt;important&gt;</c> and <c>&lt;warning&gt;</c> (opening tags only).
+An exception to this rule applies to tags that are located within list items
+or table cells.
 </p>
 
 <p>
