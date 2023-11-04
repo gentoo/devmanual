@@ -11,6 +11,11 @@
   <xsl:variable name="lang.highlight.ebuild.variable-end">}</xsl:variable>
   <xsl:variable name="lang.highlight.ebuild.commentChar">#</xsl:variable>
 
+  <xsl:variable name="shell-keywords">
+    ; if then fi -ge -lt -le -gt elif else eval unset sed rm cat [[ ]] while do read done make echo cd local return for
+    case esac in -n [ ] -z -f &lt;&lt;- &gt; EOF
+  </xsl:variable>
+
   <xsl:variable name="pkg-mgr-keywords">
     <!-- Package manager commands in EAPI 0 (excluding commands banned in later EAPIs) -->
     assert best_version debug-print debug-print-function debug-print-section die diropts dobin docinto doconfd dodir
@@ -184,14 +189,9 @@
         </xsl:choose>
       </xsl:when>
 
-      <!-- Functioney highlighing -->
+      <!-- Function highlighting -->
       <!-- sh grammar -->
-      <xsl:when test="$data = ';' or $data = 'if' or $data = 'then' or $data = 'fi' or $data = '-ge' or $data = '-lt' or $data = '-le' or
-                      $data = '-gt' or $data = 'elif' or $data = 'else' or $data = 'eval' or $data = 'unset' or $data = 'sed' or
-                      $data = 'rm' or $data = 'cat' or $data = '[[' or $data = ']]' or $data = 'while' or $data = 'do' or $data = 'read' or
-                      $data = 'done' or $data = 'make' or $data = 'echo' or $data = 'cd' or $data = 'local' or $data = 'return' or
-                      $data = 'for' or $data = 'case' or $data = 'esac' or $data = 'in' or $data = '-n' or $data = '[' or $data = ']' or
-                      $data = '-z' or $data = '-f' or $data = '&lt;&lt;-' or $data = '&gt;' or $data = 'EOF'">
+      <xsl:when test="str:tokenize($shell-keywords)[$data = .]">
         <span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 
@@ -221,7 +221,8 @@
     <!-- Scan for comments. If a comment is found then this is a positional
          index that is non-zero that refers to the last node that is not
          a comment. -->
-    <xsl:variable name="commentSeeker" select="count(str:tokenize_plasmaroo(substring-before($data, concat(' ', $lang.highlight.ebuild.commentChar))))"/>
+    <xsl:variable name="commentSeeker" select="count(str:tokenize_plasmaroo(substring-before($data,
+                                               concat(' ', $lang.highlight.ebuild.commentChar))))"/>
 
     <!-- Scan for quotes... -->
     <xsl:for-each select="exslt:node-set($tokenizedData)">
@@ -232,7 +233,8 @@
       <!-- See if we should be processing comments by now; we need to test for
            two possible cases:  * commentSeeker != 0 (so we have a comment), or,
                                 * the first token is a "#" -->
-      <xsl:when test="($commentSeeker != 0 and position() &gt; $commentSeeker) or substring(../*[position()=1], 1, 1) = $lang.highlight.ebuild.commentChar or
+      <xsl:when test="($commentSeeker != 0 and position() &gt; $commentSeeker) or
+                      substring(../*[position()=1], 1, 1) = $lang.highlight.ebuild.commentChar or
                       . = $lang.highlight.ebuild.commentChar">
         <span class="Comment"><xsl:value-of select="."/></span>
       </xsl:when>
