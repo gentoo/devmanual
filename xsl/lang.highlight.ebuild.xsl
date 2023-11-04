@@ -11,6 +11,91 @@
   <xsl:variable name="lang.highlight.ebuild.variable-end">}</xsl:variable>
   <xsl:variable name="lang.highlight.ebuild.commentChar">#</xsl:variable>
 
+  <xsl:variable name="pkg-mgr-keywords">
+    <!-- Package manager commands in EAPI 0 (excluding commands banned in later EAPIs) -->
+    assert best_version debug-print debug-print-function debug-print-section die diropts dobin docinto doconfd dodir
+    dodoc doenvd doexe doinfo doinitd doins dolib.a dolib.so doman domo dosbin dosym ebegin econf eend eerror einfo
+    einfon elog emake ewarn exeinto exeopts EXPORT_FUNCTIONS fowners fperms has has_version inherit insinto insopts into
+    keepdir newbin newconfd newdoc newenvd newexe newinitd newins newlib.a newlib.so newman newsbin unpack use usev
+    use_enable use_with
+    <!-- EAPI 4 -->
+    docompress nonfatal
+    <!-- EAPI 5 -->
+    doheader newheader usex
+    <!-- EAPI 6 -->
+    eapply eapply_user einstalldocs get_libdir in_iuse
+    <!-- EAPI 7 -->
+    dostrip eqawarn ver_cut ver_rs ver_test
+    <!-- EAPI 8: no new commands -->
+    <!-- Sandbox -->
+    adddeny addpredict addread addwrite
+    <!-- Phase functions -->
+    pkg_pretend pkg_setup pkg_preinst pkg_postinst pkg_prerm pkg_postrm pkg_config pkg_info pkg_nofetch src_unpack
+    src_prepare src_configure src_compile src_test src_install
+    <!-- Default phase functions -->
+    default default_pkg_nofetch default_src_unpack default_src_prepare default_src_configure default_src_compile
+    default_src_test default_src_install
+  </xsl:variable>
+
+  <xsl:variable name="eclass-keywords">
+    <!-- autotools -->
+    autotools_check_macro autotools_m4dir_include autotools_m4sysdir_include config_rpath_update eaclocal
+    eaclocal_amflags eautoconf eautoheader eautomake eautopoint eautoreconf
+    <!-- bash-completion-r1 -->
+    bashcomp_alias dobashcomp get_bashcompdir newbashcomp
+    <!-- cmake -->
+    cmake_build cmake_comment_add_subdirectory cmake_run_in cmake_src_compile cmake_src_configure cmake_src_install
+    cmake_src_prepare cmake_src_test cmake_use_find_package
+    <!-- desktop -->
+    doicon domenu make_desktop_entry make_session_desktop newicon newmenu
+    <!-- epatch -->
+    epatch
+    <!-- flag-o-matic -->
+    all-flag-vars append-atomic-flags append-cflags append-cppflags append-cxxflags append-fflags append-flags
+    append-ldflags append-lfs-flags append-libs filter-flags filter-ldflags filter-lfs-flags filter-lto filter-mfpmath
+    get-flag is-flag is-flagq is-ldflag is-ldflagq no-as-needed raw-ldflags replace-cpu-flags replace-flags
+    replace-sparc64-flags strip-flags strip-unsupported-flags test-compile test-flag-CC test-flag-CCLD test-flag-CXX
+    test-flag-F77 test-flag-FC test-flags test-flags-CC test-flags-CCLD test-flags-CXX test-flags-F77 test-flags-FC
+    test_version_info
+    <!-- git-r3 -->
+    git-r3_checkout git-r3_fetch git-r3_peek_remote_ref git-r3_pkg_needrebuild git-r3_src_fetch git-r3_src_unpack
+    pkg_needrebuild
+    <!-- meson -->
+    meson_feature meson_install meson_src_compile meson_src_configure meson_src_install meson_src_test meson_use
+    <!-- multilib -->
+    get_abi_CFLAGS get_abi_CHOST get_abi_CTARGET get_abi_FAKE_TARGETS get_abi_LDFLAGS get_abi_LIBDIR get_all_abis
+    get_all_libdirs get_exeext get_install_abis get_libname get_modname has_multilib_profile is_final_abi multilib_env
+    multilib_toolchain_setup number_abis
+    <!-- ninja-utils -->
+    eninja get_NINJAOPTS
+    <!-- readme.gentoo-r1 -->
+    readme.gentoo_create_doc readme.gentoo_print_elog
+    <!-- rpm -->
+    rpm_spec_epatch rpm_src_unpack rpm_unpack srcrpm_unpack
+    <!-- toolchain-funcs -->
+    clang-fullversion clang-major-version clang-micro-version clang-minor-version clang-version econf_build
+    gcc-fullversion gcc-major-version gcc-micro-version gcc-minor-version gcc-specs-directive gcc-specs-nostrict
+    gcc-specs-now gcc-specs-pie gcc-specs-relro gcc-specs-ssp gcc-specs-ssp-to-all gcc-specs-stack-check gcc-version
+    gen_usr_ldscript tc-arch tc-arch-kernel tc-check-openmp tc-cpp-is-true tc-detect-is-softfloat
+    tc-enables-cxx-assertions tc-enables-fortify-source tc-enables-pie tc-enables-ssp tc-enables-ssp-all
+    tc-enables-ssp-strong tc-endian tc-env_build tc-export tc-export_build_env tc-get-c-rtlib tc-get-compiler-type
+    tc-get-cxx-stdlib tc-getAR tc-getAS tc-getBUILD_AR tc-getBUILD_AS tc-getBUILD_CC tc-getBUILD_CPP tc-getBUILD_CXX
+    tc-getBUILD_LD tc-getBUILD_NM tc-getBUILD_OBJCOPY tc-getBUILD_PKG_CONFIG tc-getBUILD_PROG tc-getBUILD_RANLIB
+    tc-getBUILD_READELF tc-getBUILD_STRINGS tc-getBUILD_STRIP tc-getCC tc-getCPP tc-getCXX tc-getDLLWRAP tc-getF77
+    tc-getFC tc-getGCJ tc-getGO tc-getLD tc-getNM tc-getOBJCOPY tc-getOBJDUMP tc-getPKG_CONFIG tc-getPROG tc-getRANLIB
+    tc-getRC tc-getREADELF tc-getSTRINGS tc-getSTRIP tc-getTARGET_CPP tc-has-tls tc-is-clang tc-is-cross-compiler
+    tc-is-gcc tc-is-softfloat tc-is-static-only tc-ld-disable-gold tc-ld-force-bfd tc-ld-is-gold tc-ld-is-lld
+    tc-ninja_magic_to_arch tc-stack-grows-down tc-tuple-is-softfloat
+    <!-- user -->
+    enewgroup enewuser esetcomment esetgroups esethome esetshell
+    <!-- virtualx -->
+    virtx
+    <!-- xdg -->
+    xdg_pkg_postinst xdg_pkg_postrm xdg_pkg_preinst xdg_src_prepare
+    <!-- xdg-utils -->
+    xdg_desktop_database_update xdg_environment_reset xdg_icon_cache_update xdg_mimeinfo_database_update
+  </xsl:variable>
+
   <xsl:template name="lang.highlight.ebuild.subtokenate">
     <xsl:param name="data"/>
     <xsl:param name="nokeywords"/>
@@ -110,257 +195,13 @@
         <span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 
-      <!-- Default keywords -->
-      <xsl:when test="$data = 'use' or $data = 'has_version' or $data = 'best_version' or $data = 'use_with' or $data = 'use_enable' or
-                      $data = 'check_KV' or $data = 'keepdir' or $data = 'econf' or $data = 'die' or $data = 'einstall' or $data = 'einfo' or
-                      $data = 'elog' or
-                      $data = 'ewarn' or $data = 'eerror' or $data = 'diropts' or $data = 'dobin' or $data = 'docinto' or $data = 'dodoc' or
-                      $data = 'doexe' or $data = 'dohard' or $data = 'dohtml' or $data = 'doinfo' or $data = 'doins' or $data = 'dolib' or
-                      $data = 'dolib.a' or $data = 'dolib.so' or $data = 'doman' or $data = 'dosbin' or $data = 'dosym' or $data = 'emake' or
-                      $data = 'exeinto' or $data = 'exeopts' or $data = 'fowners' or $data = 'fperms' or $data = 'insinto' or $data = 'insopts' or
-                      $data = 'into' or $data = 'libopts' or $data = 'newbin' or $data = 'newexe' or $data = 'newins' or $data = 'newman' or
-                      $data = 'newsbin' or $data = 'prepall' or $data = 'prepalldocs' or $data = 'prepallinfo' or $data = 'prepallman' or
-                      $data = 'prepallstrip' or $data = 'has' or $data = 'unpack' or $data = 'dosed' or $data = 'into' or
-                      $data = 'doinitd' or $data = 'doconfd' or $data = 'doenvd' or $data = 'dojar' or $data = 'domo' or $data = 'dodir' or
-                      $data = 'ebegin' or $data = 'eend' or $data = 'newconfd' or $data = 'newdoc' or $data = 'newenvd' or $data = 'newinitd' or
-                      $data = 'newlib.a' or $data = 'newlib.so' or $data = 'hasq' or $data = 'hasv' or $data = 'useq' or $data = 'usev'">
+      <!-- Package manager commands -->
+      <xsl:when test="str:tokenize($pkg-mgr-keywords)[$data = .]">
         <span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 
-      <!-- PMS keywords for EAPI4 -->
-      <xsl:when test="$data = 'docompress' or $data = 'nonfatal'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!-- PMS keywords for EAPI5 -->
-      <xsl:when test="$data = 'doheader' or $data = 'newheader' or $data = 'usex'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!-- PMS keywords for EAPI6 -->
-      <xsl:when test="$data = 'eapply' or $data = 'eapply_user' or $data = 'einstalldocs' or $data = 'get_libdir' or $data = 'in_iuse'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!-- PMS keywords for EAPI7 -->
-      <xsl:when test="$data = 'dostrip' or $data = 'eqawarn' or $data = 'ver_cut' or $data = 'ver_rs' or $data = 'ver_test'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!-- Sandbox -->
-      <xsl:when test="$data = 'addread' or $data = 'addwrite' or $data = 'adddeny' or $data = 'addpredict'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!-- Recognised functions -->
-      <xsl:when test="$data = 'pkg_nofetch' or $data = 'pkg_setup' or $data = 'src_unpack' or $data = 'src_compile' or $data = 'src_test' or
-                      $data = 'src_install' or $data = 'pkg_preinst' or $data = 'pkg_postinst' or $data = 'pkg_prerm' or $data = 'pkg_postrm' or
-                      $data = 'pkg_config'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!-- Default keywords phase functions -->
-      <xsl:when test="$data = 'default' or $data = 'default_pkg_nofetch' or $data = 'default_src_unpack' or
-                      $data = 'default_src_prepare' or $data = 'default_src_configure' or $data = 'default_src_compile' or
-                      $data = 'default_src_test' or $data = 'default_src_install'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!-- Inherit -->
-      <xsl:when test="$data = 'inherit'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!-- eutils -->
-      <xsl:when test="$data = 'gen_usr_ldscript' or $data = 'draw_line' or $data = 'epatch' or $data = 'have_NPTL' or $data = 'get_number_of_jobs' or
-                      $data = 'egetent' or $data = 'emktemp' or $data = 'enewuser' or $data = 'enewgroup' or $data = 'edos2unix' or
-                      $data = 'make_desktop_entry' or $data = 'unpack_pdv' or $data = 'unpack_makeself' or $data = 'check_license' or
-                      $data = 'cdrom_get_cds' or $data = 'cdrom_load_next' or $data = 'cdrom_locate_file_on_cd' or $data = 'strip-linguas' or
-                      $data = 'epause' or $data = 'ebeep' or $data = 'built_with_use' or $data = 'make_session_desktop' or $data = 'domenu' or
-                      $data = 'doicon' or $data = 'find_unpackable_file' or $data = 'unpack_pdv' or $data = 'set_arch_to_kernel' or
-                      $data = 'set_arch_to_portage' or $data = 'preserve_old_lib' or $data = 'preserve_old_lib_notify' or $data = 'built_with_use' or
-                      $data = 'epunt_cxx' or $data = 'dopamd' or $data = 'newpamd' or $data = 'make_wrapper'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!-- flag-o-matic -->
-      <xsl:when test="$data = 'setup-allowed-flags' or $data = 'filter-flags' or $data = 'filter-lfs-flags' or $data = 'append-lfs-flags' or
-                      $data = 'append-flags' or $data = 'replace-flags' or $data = 'replace-cpu-flags' or $data = 'is-flag' or $data = 'filter-mfpmath' or
-                      $data = 'strip-flags' or $data = 'test_flag' or $data = 'test_version_info' or $data = 'strip-unsupported-flags' or
-                      $data = 'get-flag' or $data = 'has_hardened' or $data = 'has_pic' or $data = 'has_pie' or $data = 'has_ssp_all' or $data = 'has_ssp' or
-                      $data = 'has_m64' or $data = 'has_m32' or $data = 'replace-sparc64-flags' or $data = 'append-ldflags' or $data = 'filter-ldflags' or
-                      $data = 'fstack-flags' or $data = 'gcc2-flags'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  gcc -->
-      <xsl:when test="$data = 'gcc-getCC' or $data = 'gcc-getCXX' or $data = 'gcc-fullversion' or $data = 'gcc-version' or
-                      $data = 'gcc-major-version' or $data = 'gcc-minor-version' or $data = 'gcc-micro-version' or
-                      $data = 'gcc-libpath' or $data = 'gcc-libstdcxx-version' or $data = 'gcc-libstdcxx-major-version' or
-                      $data = 'gcc2-flags'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  libtool -->
-      <xsl:when test="$data = 'elibtoolize' or $data = 'uclibctoolize' or $data = 'darwintoolize'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  fixheadtails -->
-      <xsl:when test="$data = 'ht_fix_file' or $data = 'ht_fix_all'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  fdo-mime -->
-      <xsl:when test="$data = 'fdo-mime_desktop_database_update' or $data = 'fdo-mime_mime_database_update'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  webapp -->
-      <xsl:when test="$data = 'webapp_checkfileexists' or $data = 'webapp_import_config' or $data = 'webapp_strip_appdir' or
-                      $data = 'webapp_strip_d' or $data = 'webapp_strip_cwd' or $data = 'webapp_configfile' or $data = 'webapp_hook_script' or
-                      $data = 'webapp_postinst_txt' or $data = 'webapp_postupgrade_txt' or $data = 'webapp_runbycgibin' or
-                      $data = 'webapp_serverowned' or $data = 'webapp_server_configfile' or $data = 'webapp_sqlscript' or
-                      $data = 'webapp_src_install' or $data = 'webapp_pkg_postinst' or $data = 'webapp_pkg_setup' or
-                      $data = 'webapp_getinstalltype' or $data = 'webapp_src_preinst' or $data = 'webapp_pkg_prerm'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!-- versionator -->
-      <xsl:when test="$data = 'get_all_version_components' or $data = 'version_is_at_least' or $data = 'get_version_components' or
-                      $data = 'get_major_version' or $data = 'get_version_component_range' or $data = 'get_after_major_version' or
-                      $data = 'replace_version_separator' or $data = 'replace_all_version_separators' or $data = 'delete_version_separator' or
-                      $data = 'delete_all_version_separators'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  cvs -->
-      <xsl:when test="$data = 'cvs_fetch' or $data = 'cvs_src_unpack'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  bash-completion -->
-      <xsl:when test="$data = 'dobashcompletion' or $data = 'bash-completion_pkg_postinst' or $data = 'complete'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  vim-plugin -->
-      <xsl:when test="$data = 'vim-plugin_src_install' or $data = 'vim-plugin_pkg_postinst' or $data = 'vim-plugin_pkg_postrm' or
-                      $data = 'update_vim_afterscripts' or $data = 'display_vim_plugin_help'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  vim-doc -->
-      <xsl:when test="update_vim_helptags">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  multilib -->
-      <xsl:when test="$data = 'has_multilib_profile' or $data = 'get_libdir' or $data = 'get_multilibdir' or $data = 'get_libdir_override' or
-                      $data = 'get_abi_var' or $data = 'get_abi_CFLAGS' or $data = 'get_abi_LDFLAGS' or
-                      $data = 'get_abi_CHOST' or $data = 'get_abi_FAKE_TARGETS' or $data = 'get_abi_CDEFINE' or
-                      $data = 'get_abi_LIBDIR' or $data = 'get_install_abis ' or $data = 'get_all_abis' or $data = 'get_all_libdirs' or
-                      $data = 'is_final_abi' or $data = 'number_abis' or $data = 'get_ml_incdir' or $data = 'prep_ml_includes' or
-                      $data = 'create_ml_includes' or $data = 'create_ml_includes-absolute' or $data = 'create_ml_includes-tidy_path' or
-                      $data = 'create_ml_includes-listdirs' or $data = 'create_ml_includes-makedestdirs' or $data = 'create_ml_includes-allfiles' or
-                      $data = 'create_ml_includes-sym_for_dir'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  toolchain-funcs -->
-      <xsl:when test="$data = 'tc-getPROG' or $data = 'tc-getAR' or $data = 'tc-getAS' or $data = 'tc-getCC' or $data = 'tc-getCXX' or $data = 'tc-getLD' or $data = 'tc-getNM' or
-                      $data = 'tc-getRANLIB' or $data = 'tc-getF77' or $data = 'tc-getGCJ' or $data = 'tc-getBUILD_CC' or
-                      $data = 'tc-export' or $data = 'ninj' or $data = 'tc-is-cross-compiler' or $data = 'tc-ninja_magic_to_arch' or
-                      $data = 'tc-arch-kernel' or $data = 'tc-arch' or $data = 'tc-endian' or $data = 'gcc-fullversion' or
-                      $data = 'gcc-version' or $data = 'gcc-major-version' or $data = 'gcc-minor-version' or $data = 'gcc-micro-version'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  cron -->
-      <xsl:when test="$data = 'docrondir' or $data = 'docron' or $data = 'docrontab' or $data = 'cron_pkg_postinst'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  games -->
-      <xsl:when test="$data = 'egamesconf' or $data = 'egamesinstall' or $data = 'gameswrapper' or $data = 'dogamesbin' or $data = 'dogamessbin' or $data = 'dogameslib' or
-                      $data = 'dogameslib.a' or $data = 'dogameslib.so' or $data = 'newgamesbin' or $data = 'newgamessbin' or
-                      $data = 'gamesowners' or $data = 'gamesperms' or $data = 'prepgamesdirs' or $data = 'gamesenv' or $data = 'games_pkg_setup' or
-                      $data = 'games_src_compile' or $data = 'games_pkg_postinst' or $data = 'games_ut_unpack' or $data = 'games_umod_unpack' or
-                      $data = 'games_make_wrapper'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  subversion -->
-      <xsl:when test="$data = 'subversion_svn_fetch' or $data = 'subversion_bootstrap' or $data = 'subversion_src_unpack'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  alternatives -->
-      <xsl:when test="$data = 'alternatives_auto_makesym' or $data = 'alternatives_makesym' or $data = 'alternatives_pkg_postinst' or
-                      $data = 'alternatives_pkg_postrm'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  rpm -->
-      <xsl:when test="$data = 'rpm_unpack' or $data = 'rpm_src_unpack'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  python -->
-      <xsl:when test="$data = 'python_version' or $data = 'python_tkinter_exists' or $data = 'python_mod_exists' or $data = 'python_mod_compile' or
-                      $data = 'python_mod_optimize' or $data = 'python_mod_cleanup' or $data = 'python_makesym' or $data = 'python_disable_pyc' or
-                      $data = 'python_enable_pyc'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  check-kernel -->
-      <xsl:when test="$data = 'check_version_h' or $data = 'get_KV_info' or $data = 'is_2_4_kernel' or $data = 'is_2_5_kernel' or $data = 'is_2_6_kernel' or
-                      $data = 'kernel_supports_modules'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  perl-module -->
-      <xsl:when test="$data = 'perl-module_src_prep' or $data = 'perl-module_src_compile' or $data = 'perl-module_src_test' or
-                      $data = 'perl-module_src_install' or $data = 'perl-module_pkg_setup' or $data = 'perl-module_pkg_preinst' or
-                      $data = 'perl-module_pkg_postinst' or $data = 'perl-module_pkg_prerm' or $data = 'perl-module_pkg_postrm' or
-                      $data = 'perlinfo' or $data = 'fixlocalpod' or $data = 'updatepod'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  depend.apache -->
-      <xsl:when test="$data = 'need_apache' or $data = 'need_apache1' or $data = 'need_apache2'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  apache-module -->
-      <xsl:when test="$data = 'apache-module_pkg_setup' or $data = 'apache-module_src_compile' or
-                      $data = 'apache-module_src_install' or $data = 'apache-module_pkg_postinst' or $data = 'acache_cd_dir' or
-                      $data = 'apache_mod_file' or $data = 'apache_doc_magic' or $data = 'apache1_src_compile' or $data = 'apache1_src_install' or
-                      $data = 'apache1_pkg_postinst' or $data = 'apache2_pkg_setup' or $data = 'apache2_src_compile' or
-                      $data = 'apache1_src_install' or $data = 'apache2_pkg_postinst'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  pam -->
-      <xsl:when test="$data = 'dopamd' or $data = 'newpamd' or $data = 'dopamsecurity' or $data = 'newpamsecurity' or $data = 'getpam_mod_dir' or
-                      $data = 'dopammod' or $data = 'newpammod' or $data = 'pamd_mimic_system'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  virtualx -->
-      <xsl:when test="$data = 'virtualmake' or $data = 'Xmake' or $data = 'Xemake' or $data = 'Xeconf'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!--  gnome2 -->
-      <xsl:when test="$data = 'gnome2_src_configure' or $data = 'gnome2_src_compile' or $data = 'gnome2_src_install' or
-                      $data = 'gnome2_gconf_install' or $data = 'gnome2_gconf_uninstal' or $data = 'gnome2_omf_fix' or
-                      $data = 'gnome2_scrollkeeper_update' or $data = 'gnome2_pkg_postinst' or $data = 'gnome2_pkg_postrm'">
-        <span class="Statement"><xsl:value-of select="$data"/></span>
-      </xsl:when>
-
-      <!-- eapi7-ver -->
-      <xsl:when test="$data = 'ver_rs' or $data = 'ver_cut' or $data = 'ver_test'">
+      <!-- Eclass commands -->
+      <xsl:when test="str:tokenize($eclass-keywords)[$data = .]">
         <span class="Statement"><xsl:value-of select="$data"/></span>
       </xsl:when>
 
