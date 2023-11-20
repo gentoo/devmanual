@@ -14,7 +14,8 @@ match files existing in the repository's <c>licenses/</c> directory.
 The value of this variable should include all licenses pertaining to the
 "corresponding source" of the files installed by the package. This includes
 all their source code, but also all scripts used to control compilation and
-installation.
+installation. If the package has a "main license" <d/> i.e. a license covering
+most of its files <d/> then this should be listed first.
 </p>
 
 <p>
