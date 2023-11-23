@@ -510,11 +510,10 @@
 </xsl:template>
 
 <xsl:template match="/">
-  <xsl:variable name="relative_path_depth"
-                select="string-length(/guide/@self) - string-length(translate(/guide/@self, '/' , ''))"/>
   <xsl:variable name="relative_path_depth_recursion">
     <xsl:call-template name="repeat-string">
-      <xsl:with-param name="count" select="$relative_path_depth"/>
+      <xsl:with-param name="count" select="string-length(/guide/@self)
+                                           - string-length(translate(/guide/@self, '/' , ''))"/>
       <xsl:with-param name="append">../</xsl:with-param>
     </xsl:call-template>
   </xsl:variable>
@@ -715,7 +714,8 @@
                 The text of this document is distributed under the
                 <xsl:choose>
                   <!-- Eclasses are GPL-2, so we need a different footer -->
-                  <xsl:when test="starts-with(/guide/@self, 'eclass-reference/') and $relative_path_depth &gt;= 2">
+                  <xsl:when test="starts-with(/guide/@self, 'eclass-reference/')
+                                  and substring-after(/guide/@self, '/') != ''">
                     <a href="https://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License, version 2</a>.
                   </xsl:when>
                   <xsl:otherwise>
