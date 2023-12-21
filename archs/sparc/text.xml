@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="archs/sparc/">
 <chapter>
-<title>Arch Specific Notes — SPARC</title>
+<title>Arch specific notes — SPARC</title>
 <body>
 
 <p>
@@ -27,7 +27,7 @@ by the code authors.
 </body>
 
 <section>
-<title>SPARC Kernel and Userland ABIs</title>
+<title>SPARC kernel and userland ABIs</title>
 <body>
 
 <p>
@@ -50,7 +50,7 @@ buses.
 </section>
 
 <section>
-<title>Additional SPARC Keywording Requirements</title>
+<title>Additional SPARC keywording requirements</title>
 <body>
 
 <note>
@@ -80,7 +80,7 @@ the <c>sparc@</c> alias.
 </section>
 
 <section>
-<title>SPARC Instruction Set and Performance Notes</title>
+<title>SPARC instruction set and performance notes</title>
 <body>
 
 <p>
@@ -124,7 +124,7 @@ are especially important on SPARC.
 </section>
 
 <section>
-<title>Contacting the SPARC Team</title>
+<title>Contacting the SPARC team</title>
 <body>
 
 <p>

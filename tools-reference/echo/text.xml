@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="tools-reference/echo/">
 <chapter>
-<title><c>echo</c> — Print Strings</title>
+<title><c>echo</c> — print strings</title>
 <body>
 
 <p>
@@ -40,7 +40,7 @@ describes the preferred way of dealing with such cases.
 </section>
 
 <section>
-<title>Here Strings</title>
+<title>Here strings</title>
 <body>
 <p>
 As of &gt;=bash-2.05b, the so-called "here strings" have been

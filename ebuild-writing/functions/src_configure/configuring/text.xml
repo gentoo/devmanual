@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/functions/src_configure/configuring/">
 <chapter>
-<title>Configuring a Package</title>
+<title>Configuring a package</title>
 
 <body>
 <p>
@@ -75,7 +75,7 @@ form can be used.
 </body>
 
 <section>
-<title><c>econf</c> Options</title>
+<title><c>econf</c> options</title>
 <body>
 
 <p>

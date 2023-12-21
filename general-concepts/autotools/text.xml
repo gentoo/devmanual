@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="general-concepts/autotools/">
 <chapter>
-<title>The Basics of Autotools</title>
+<title>The basics of Autotools</title>
 
 <body>
 <todo>
@@ -33,7 +33,7 @@ when working with ebuilds:
 </body>
 
 <section>
-<title>Major Autotools Components</title>
+<title>Major Autotools components</title>
 
 <body>
 <p>
@@ -108,7 +108,7 @@ instead.
 </section>
 
 <section>
-<title>Simple Autotools Patching Example</title>
+<title>Simple Autotools patching example</title>
 <body>
 
 <p>
@@ -146,7 +146,7 @@ src_configure() {
 </section>
 
 <section>
-<title>The <c>configure.ac</c> File</title>
+<title>The <c>configure.ac</c> file</title>
 <body>
 
 <p>
@@ -159,7 +159,7 @@ These macros can check for packages and libraries, handle <c>--enable</c> and
 </body>
 
 <subsection>
-<title>Basic Format of <c>configure.ac</c></title>
+<title>Basic format of <c>configure.ac</c></title>
 <body>
 
 <p>
@@ -289,7 +289,7 @@ These are used to make the <c>./configure</c> script generate the relevant files
 </subsection>
 
 <subsection>
-<title>Enable and Disable Checks</title>
+<title>Enable and disable checks</title>
 <body>
 
 <p>
@@ -346,7 +346,7 @@ misunderstanding of the <c>AC_ARG_ENABLE</c> arguments is to blame.
 </subsection>
 
 <subsection>
-<title>With and Without Checks</title>
+<title>With and without checks</title>
 <body>
 
 <p>
@@ -371,7 +371,7 @@ and there are standard macros which include <c>with</c> options.
 </subsection>
 
 <subsection>
-<title>Automatic Checks</title>
+<title>Automatic checks</title>
 <body>
 
 <p>
@@ -390,7 +390,7 @@ whether or not to enable a feature. If you find a package which does this, you
 </subsection>
 
 <subsection>
-<title>Quoting Rules for <c>configure.ac</c></title>
+<title>Quoting rules for <c>configure.ac</c></title>
 <body>
 
 <p>
@@ -439,7 +439,7 @@ rather than leaving things unquoted.
 </section>
 
 <section>
-<title>The <c>Makefile.am</c> Files</title>
+<title>The <c>Makefile.am</c> files</title>
 <body>
 
 <p>
@@ -490,7 +490,7 @@ This is handled via the macro <c>AC_SUBST(VARNAME)</c> in <c>configure.ac</c>.
 </body>
 
 <subsection>
-<title>Makefile Variables</title>
+<title>Makefile variables</title>
 <body>
 
 <p>
@@ -527,7 +527,7 @@ Remember to manually run <c>autoconf</c> then <c>automake</c> if you do this.
 </section>
 
 <section>
-<title>The <c>config.h.in</c> File</title>
+<title>The <c>config.h.in</c> file</title>
 <body>
 
 <p>
@@ -541,7 +541,7 @@ version.
 </section>
 
 <section>
-<title><c>aclocal</c> and <c>m4</c> Files</title>
+<title><c>aclocal</c> and <c>m4</c> files</title>
 <body>
 
 <p>
@@ -646,7 +646,7 @@ know almost nothing about... Yay!
 </section>
 
 <section>
-<title>Further Autotools Reading</title>
+<title>Further autotools reading</title>
 <body>
 
 <p>

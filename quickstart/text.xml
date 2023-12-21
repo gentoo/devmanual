@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="quickstart/">
 <chapter>
-<title>Quickstart Ebuild Guide</title>
+<title>Quickstart ebuild guide</title>
 
 <body>
 <p>
@@ -25,7 +25,7 @@ have had several parts chopped out, changed and simplified.
 </body>
 
 <section>
-<title>First Ebuild</title>
+<title>First ebuild</title>
 
 <body>
 <p>
@@ -61,7 +61,7 @@ src_install() {
 </body>
 
 <subsection>
-<title>Basic Format</title>
+<title>Basic format</title>
 
 <body>
 <p>
@@ -81,7 +81,7 @@ See <uri link="::ebuild-writing/file-format/"/>.
 </subsection>
 
 <subsection>
-<title>Information Variables</title>
+<title>Information variables</title>
 
 <body>
 <p>
@@ -132,7 +132,7 @@ See <uri link="::keywording/"/> for details.
 </subsection>
 
 <subsection>
-<title>Build Functions</title>
+<title>Build functions</title>
 
 <body>
 <p>
@@ -189,7 +189,7 @@ failed.
 </section>
 
 <section>
-<title>Ebuild with Dependencies</title>
+<title>Ebuild with dependencies</title>
 
 <body>
 <p>
@@ -255,7 +255,7 @@ for some more complex examples.
 </section>
 
 <section>
-<title>Ebuild with Patches</title>
+<title>Ebuild with patches</title>
 
 <body>
 <p>
@@ -313,7 +313,7 @@ that <c>eapply_user</c> is called.
 </section>
 
 <section>
-<title>Ebuild with USE Flags</title>
+<title>Ebuild with USE flags</title>
 
 <body>
 <p>

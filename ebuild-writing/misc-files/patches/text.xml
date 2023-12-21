@@ -54,7 +54,7 @@ up the tree too much.
 </body>
 
 <section>
-<title>Patch Descriptions</title>
+<title>Patch descriptions</title>
 <body>
 <p>
 It is possible to include a description with a patch. This is often
@@ -172,7 +172,7 @@ allows them to be applied unconditionally.
 </section>
 
 <section>
-<title>Clean Patch Howto</title>
+<title>Clean patch guide</title>
 <body>
 
 <p>
@@ -199,7 +199,7 @@ assess a patch without searching through many other files.
 </subsection>
 
 <subsection>
-<title>File Naming</title>
+<title>File naming</title>
 <body>
 
 <p>

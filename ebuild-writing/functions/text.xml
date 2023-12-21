@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/functions/">
 <chapter>
-<title>Ebuild Phase Functions</title>
+<title>Ebuild phase functions</title>
 
 <body>
 <p>

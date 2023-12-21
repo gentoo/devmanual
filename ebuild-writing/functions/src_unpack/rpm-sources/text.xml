@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/functions/src_unpack/rpm-sources/">
 <chapter>
-<title>RPM Sources</title>
+<title>RPM sources</title>
 
 <body>
 <p>
@@ -40,7 +40,7 @@ format.
 </body>
 
 <section>
-<title>Example RPM Handling</title>
+<title>Example RPM handling</title>
 <body>
 
 <p>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/functions/src_compile/build-environment/">
 <chapter>
-<title>Configuring Build Environment</title>
+<title>Configuring build environment</title>
 
 <body>
 <p>
@@ -23,7 +23,7 @@ Ebuilds must not simply ignore user CFLAGS, CXXFLAGS or LDFLAGS <d/> see
 </body>
 
 <section>
-<title>Guidelines for Flag Filtering</title>
+<title>Guidelines for flag filtering</title>
 <body>
 
 <p>
@@ -59,7 +59,7 @@ line in the correct place.
 </section>
 
 <section>
-<title>Simple Flag Stripping</title>
+<title>Simple flag stripping</title>
 <body>
 
 <p>
@@ -94,7 +94,7 @@ conservative set of flags.
 </section>
 
 <section>
-<title>Flag Replacement</title>
+<title>Flag replacement</title>
 <body>
 
 <p>
@@ -124,7 +124,7 @@ the flags to be replaced.
 </section>
 
 <section>
-<title>Adding Additional Flags</title>
+<title>Adding additional flags</title>
 <body>
 <p>
 Sometimes it is necessary to add in additional <c>CFLAGS</c>

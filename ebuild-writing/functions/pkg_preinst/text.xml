@@ -52,7 +52,7 @@ pkg_preinst() {
 </section>
 
 <section>
-<title>Common <c>pkg_preinst</c> Tasks</title>
+<title>Common <c>pkg_preinst</c> tasks</title>
 <body>
 <p>
 There are a few things that are often done in <c>pkg_preinst</c>:

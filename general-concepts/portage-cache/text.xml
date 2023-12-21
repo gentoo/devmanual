@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="general-concepts/portage-cache/">
 <chapter>
-<title>The Portage Cache</title>
+<title>The Portage cache</title>
 
 <body>
 <p>
@@ -54,7 +54,7 @@ fi
 </body>
 
 <section>
-<title>Conditional Inherits</title>
+<title>Conditional inherits</title>
 <body>
 <p>
 Because eclasses modify various cached variables, conditional inheritance is not

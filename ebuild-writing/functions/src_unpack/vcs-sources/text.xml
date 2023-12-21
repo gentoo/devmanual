@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/functions/src_unpack/vcs-sources/">
 <chapter>
-<title>Version Control System (VCS) Sources</title>
+<title>Version Control System (VCS) sources</title>
 <body>
 
 <p>
@@ -31,7 +31,7 @@ system for fetching.
 </body>
 
 <section>
-<title>Disadvantages of VCS Sources</title>
+<title>Disadvantages of VCS sources</title>
 <body>
 
 <p>
@@ -71,7 +71,7 @@ $ git archive --prefix=emacs/ HEAD | xz &gt; emacs-${PV}.tar.xz
 </section>
 
 <section>
-<title>Disadvantages of VCS Live Sources</title>
+<title>Disadvantages of VCS live sources</title>
 <body>
 
 <p>

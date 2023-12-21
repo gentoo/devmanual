@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="tools-reference/diff-and-patch/">
 <chapter>
-<title><c>diff</c> and <c>patch</c> — File Differences</title>
+<title><c>diff</c> and <c>patch</c> — file differences</title>
 <body>
 
 <p>

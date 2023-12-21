@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="general-concepts/user-environment/">
 <chapter>
-<title>User Environment</title>
+<title>User environment</title>
 <body>
 
 <p>
@@ -16,7 +16,7 @@ performed upon the environment.
 </body>
 
 <section>
-<title>Filtering Variables</title>
+<title>Filtering variables</title>
 <body>
 <p>
 Certain variables will really really upset certain build systems. A good example
@@ -42,7 +42,7 @@ pkg_setup() {
 </section>
 
 <section>
-<title>Not Filtering Variables</title>
+<title>Not filtering variables</title>
 <body>
 <p>
 On the other hand, it is extremely important that certain user preferences are

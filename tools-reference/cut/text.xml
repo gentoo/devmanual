@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="tools-reference/cut/">
 <chapter>
-<title><c>cut</c> — Column Concatenation</title>
+<title><c>cut</c> — column concatenation</title>
 <body>
 
 <p>

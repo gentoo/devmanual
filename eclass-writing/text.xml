@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="eclass-writing/">
 <chapter>
-<title>Eclass Writing Guide</title>
+<title>Eclass writing guide</title>
 <body>
 
 <p>
@@ -16,7 +16,7 @@ and <uri link="::general-concepts/portage-cache/"/> sections before continuing.
 </body>
 
 <section>
-<title>Purpose of Eclasses</title>
+<title>Purpose of eclasses</title>
 <body>
 
 <p>
@@ -45,7 +45,7 @@ Roughly speaking, there are three kinds of eclass:
 </section>
 
 <section>
-<title>Adding and Updating Eclasses</title>
+<title>Adding and updating eclasses</title>
 <body>
 
 <p>
@@ -110,7 +110,7 @@ batch push them at once where possible.
 </section>
 
 <section>
-<title>Removing Eclasses</title>
+<title>Removing eclasses</title>
 <body>
 
 <p>
@@ -147,7 +147,7 @@ least 30 days before removing the eclass.
 </section>
 
 <section>
-<title>Documenting Eclasses</title>
+<title>Documenting eclasses</title>
 <body>
 
 <p>
@@ -182,7 +182,7 @@ to properly break lines when generating eclass manpages.
 </section>
 
 <section>
-<title>Basic Eclass Format</title>
+<title>Basic eclass format</title>
 <body>
 
 <p>
@@ -303,7 +303,7 @@ summarizes the available documentation tags:
 </section>
 
 <section>
-<title>Eclass Variables</title>
+<title>Eclass variables</title>
 <body>
 
 <p>
@@ -404,7 +404,7 @@ variables are as follows:
 </section>
 
 <section>
-<title>Eclass Functions</title>
+<title>Eclass functions</title>
 <body>
 
 <p>
@@ -491,7 +491,7 @@ documentation are:
 </body>
 </section>
 <section>
-<title>Eclass Function Variables</title>
+<title>Eclass function variables</title>
 <body>
 
 <p>
@@ -568,7 +568,7 @@ using the following tags:
 </section>
 
 <section>
-<title>Simple Common Functions Eclass Example</title>
+<title>Simple common functions eclass example</title>
 <body>
 
 <p>
@@ -605,7 +605,7 @@ domacosapp() {
 </section>
 
 <section>
-<title>Export Functions</title>
+<title>Export functions</title>
 <body>
 
 <p>
@@ -764,7 +764,7 @@ esac
 </section>
 
 <section>
-<title>Simple Build System Eclass Example</title>
+<title>Simple build system eclass example</title>
 <body>
 
 <p>

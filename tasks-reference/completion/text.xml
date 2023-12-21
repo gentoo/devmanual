@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="tasks-reference/completion/">
 <chapter>
-<title>Completion Files</title>
+<title>Completion files</title>
 <body>
 
 <p>
@@ -14,7 +14,7 @@ for how to install completion files.
 </body>
 
 <section>
-<title>Completion-Related Internal Bash Variables</title>
+<title>Completion-related internal Bash variables</title>
 <body>
 
 <p>
@@ -92,7 +92,7 @@ are subsequently reset.
 </section>
 
 <section>
-<title>Completion-Related Bash Builtins</title>
+<title>Completion-related Bash builtins</title>
 <body>
 
 <p>
@@ -154,7 +154,7 @@ complete -o nospace -d cd
 </section>
 
 <section>
-<title>Anatomy of a Completion Function</title>
+<title>Anatomy of a completion function</title>
 <body>
 
 <p>
@@ -296,7 +296,7 @@ esac
 </section>
 
 <section>
-<title>Real-World Example</title>
+<title>Real-world example</title>
 <body>
 
 <p>

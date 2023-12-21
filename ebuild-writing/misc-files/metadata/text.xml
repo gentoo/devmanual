@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/misc-files/metadata/">
 <chapter>
-<title>Package and Category <c>metadata.xml</c></title>
+<title>Package and category <c>metadata.xml</c></title>
 
 <body>
 <p>
@@ -351,7 +351,7 @@ There are also some attributes that can be used with these tags:
 </body>
 </section>
 <section>
-<title>Package Metadata</title>
+<title>Package metadata</title>
 <body>
 <p>
 All packages <b>must</b> include a <c>metadata.xml</c> file which
@@ -381,7 +381,7 @@ GLEP 67</uri>.
 </body>
 
 <subsection>
-<title>Package Metadata Examples</title>
+<title>Package metadata examples</title>
 <body>
 
 <p>
@@ -393,7 +393,7 @@ these files verbatim and should be taken as hypothetical examples.
 </body>
 
 <subsubsection>
-<title>Projects as Maintainers</title>
+<title>Projects as maintainers</title>
 <body>
 
 <p>
@@ -458,7 +458,7 @@ projects listing</uri> available on the Gentoo Wiki:
 </body>
 </subsubsection>
 <subsubsection>
-<title>Local USE Flag Descriptions</title>
+<title>Local USE flag descriptions</title>
 <body>
 
 <p>
@@ -505,7 +505,7 @@ as opposed to a URL. Conversely, email addresses specified in the
 </body>
 </subsubsection>
 <subsubsection>
-<title>Split Maintainership</title>
+<title>Split maintainership</title>
 <body>
 
 <p>
@@ -574,7 +574,7 @@ is demonstrated.
 </body>
 </subsubsection>
 <subsubsection>
-<title>Slots and Subslots</title>
+<title>Slots and subslots</title>
 <body>
 
 <p>
@@ -679,7 +679,7 @@ part of the QA reports.
 </section>
 
 <section>
-<title>Category Metadata</title>
+<title>Category metadata</title>
 <body>
 <p>
 For categories, <c>metadata.xml</c> specifies a long description (in

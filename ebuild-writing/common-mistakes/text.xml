@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/common-mistakes/">
 <chapter>
-<title>Common Mistakes</title>
+<title>Common mistakes</title>
 
 <body>
 <p>
@@ -11,7 +11,7 @@ writing ebuilds.
 </body>
 
 <section>
-<title>Common Ebuild Writing Mistakes</title>
+<title>Common ebuild writing mistakes</title>
 
 <subsection>
 <title>Unguarded external calls</title>
@@ -27,7 +27,7 @@ See <uri link="::ebuild-writing/error-handling/"/>.
 </subsection>
 
 <subsection>
-<title>Invalid use of <c>static</c> use-flag</title>
+<title>Invalid use of <c>static</c> USE flag</title>
 <body>
 <p>
 The <c>static</c> use-flag should only be used to make a binary use static
@@ -217,7 +217,7 @@ the resulting Makefile.
 </subsection>
 
 <subsection>
-<title>Missing/Invalid/Broken Header</title>
+<title>Missing/invalid/broken header</title>
 <body>
 
 <p>
@@ -239,7 +239,7 @@ The first two lines <e>must</e> look like this:
 </body>
 </subsection>
 <subsection>
-<title>Redefined P, PV, PN, PF</title>
+<title>Redefined P, PV, PN, PF variables</title>
 <body>
 
 <p>
@@ -359,7 +359,7 @@ some tips on how to find the correct dependencies.
 </body>
 </subsection>
 <subsection>
-<title>LICENSE Invalid</title>
+<title>LICENSE invalid</title>
 <body>
 
 <p>
@@ -547,7 +547,7 @@ Don't then forget to add <c>virtual/pkgconfig</c> to BDEPEND!
 </section>
 
 <section>
-<title>Common Ebuild Submission Mistakes</title>
+<title>Common ebuild submission mistakes</title>
 <subsection>
 <title>Introduction</title>
 <body>
@@ -560,7 +560,7 @@ Please submit ebuilds properly by following the
 </body>
 </subsection>
 <subsection>
-<title>Tarball'ing an ebuild</title>
+<title>Tarballing an ebuild</title>
 <body>
 
 <p>
@@ -571,7 +571,7 @@ operations when reviewing.
 </body>
 </subsection>
 <subsection>
-<title>Inlining Ebuilds</title>
+<title>Inlining ebuilds</title>
 <body>
 
 <p>

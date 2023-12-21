@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/functions/src_install/docompress/">
 <chapter>
-<title>Controllable Compression</title>
+<title>Controllable compression</title>
 <body>
 
 <p>

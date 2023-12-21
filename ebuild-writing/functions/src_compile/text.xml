@@ -72,7 +72,7 @@ src_compile() {
 </section>
 
 <section>
-<title><c>src_compile</c> Processes</title>
+<title><c>src_compile</c> processes</title>
 <body>
 <p>
 The following subsections cover different topics which often occur when writing

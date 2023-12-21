@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="keywording/">
 <chapter>
-<title>Keywording and Stabilization</title>
+<title>Keywording and stabilization</title>
 <body>
 
 <note>
@@ -100,7 +100,7 @@ do not specify a <c>KEYWORDS</c> variable.
 </body>
 
 <section>
-<title>Equal Visibility Requirement</title>
+<title>Equal visibility requirement</title>
 <body>
 
 <p>
@@ -127,7 +127,7 @@ better visibility than the package in question.
 </section>
 
 <section>
-<title>Hard Masks</title>
+<title>Hard masks</title>
 <body>
 
 <p>
@@ -156,7 +156,7 @@ appear on a user system</b>.
 </section>
 
 <section>
-<title>Keywording New Packages</title>
+<title>Keywording new packages</title>
 <body>
 
 <important>
@@ -202,7 +202,7 @@ Do <b>not</b> commit straight to <c>arch</c> ("stable").
 </section>
 
 <section>
-<title>Keywording on Upgrades</title>
+<title>Keywording on upgrades</title>
 <body>
 
 <p>
@@ -497,7 +497,7 @@ bugs, but instead let <c>NATTkA</c> set it automatically based on metadata.xml.
 </section>
 
 <section>
-<title>Removing Package Versions</title>
+<title>Removing package versions</title>
 <body>
 
 <p>

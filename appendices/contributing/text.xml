@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="appendices/contributing/">
 <chapter>
-<title>Contributing to This Document</title>
+<title>Contributing to this document</title>
 
 <body>
 <p>
@@ -70,7 +70,7 @@ top-level directory, which will validate all XML files using <c>xmllint</c>.
 </section>
 
 <section>
-<title>Quick Introduction to DevBook XML</title>
+<title>Quick introduction to DevBook XML</title>
 <body>
 
 <p>
@@ -98,7 +98,7 @@ amount of depth.
     definition lists. Do <e>not</e> indent text in ordinary paragraph blocks.
   </dd>
   <dt>
-    Code Samples
+    Code samples
   </dt>
   <dd>
     You can use the normal GuideXML tag <c>&lt;pre&gt;</c> when you need
@@ -124,7 +124,7 @@ amount of depth.
 </section>
 
 <section>
-<title>Style Guidelines</title>
+<title>Style guidelines</title>
 <body>
 
 <ul>

@@ -56,7 +56,7 @@ src_unpack() {
 </section>
 
 <section>
-<title>Unpacking Tarballs</title>
+<title>Unpacking tarballs</title>
 <body>
 <p>
 The <c>unpack</c> function should be used to unpack tarballs, compressed
@@ -109,7 +109,7 @@ specify the necessary build time dependency (<c>BDEPEND</c>) for it.
 </section>
 
 <section>
-<title><c>src_unpack</c> Actions</title>
+<title><c>src_unpack</c> actions</title>
 <body>
 <p>
 The following subsections cover different topics which often occur when writing

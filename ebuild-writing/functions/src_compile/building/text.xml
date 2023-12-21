@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/functions/src_compile/building/">
 <chapter>
-<title>Building a Package</title>
+<title>Building a package</title>
 
 <body>
 <p>
@@ -28,7 +28,7 @@ some MIPS and SPARC systems.
 </body>
 
 <section>
-<title>Fixing Compiler Usage</title>
+<title>Fixing compiler usage</title>
 <body>
 
 <p>

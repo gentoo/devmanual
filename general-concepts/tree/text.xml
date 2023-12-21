@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="general-concepts/tree/">
 <chapter>
-<title>The Gentoo Repository</title>
+<title>The Gentoo repository</title>
 
 <body>
 <p>
@@ -80,7 +80,7 @@ The basic layout of the Gentoo repository is as follows:
 </body>
 
 <section>
-<title>What Belongs in the Tree?</title>
+<title>What belongs in the tree?</title>
 <body>
 
 <p>

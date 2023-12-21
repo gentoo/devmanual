@@ -54,7 +54,7 @@ pkg_postrm() {
 </section>
 
 <section>
-<title>Common <c>pkg_postrm</c> Tasks</title>
+<title>Common <c>pkg_postrm</c> tasks</title>
 <body>
 <p>
 <c>pkg_postrm</c> is is used to update symlinks, cache files and other

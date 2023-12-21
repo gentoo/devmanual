@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="appendices/devbook-guide/">
 <chapter>
-<title>Gentoo DevBook XML Guide</title>
+<title>Gentoo DevBook XML guide</title>
 
 <section>
 <title>DevBook XML design goals</title>
@@ -36,7 +36,7 @@ used in a DevBook XML document:
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;guide self="appendices/devbook-guide/"&gt;
 &lt;chapter&gt;
-&lt;title&gt;Gentoo DevBook XML Guide&lt;/title&gt;
+&lt;title&gt;Gentoo DevBook XML guide&lt;/title&gt;
 </codesample>
 
 <p>
@@ -556,7 +556,7 @@ I could have written the two examples above in more compact form:
 </section>
 
 <section>
-<title>Coding Style</title>
+<title>Coding style</title>
 <body>
 
 <p>
@@ -574,7 +574,7 @@ Both sections are described next.
 </body>
 
 <subsection>
-<title>Internal Coding Style</title>
+<title>Internal coding style</title>
 <body>
 
 <p>
@@ -674,7 +674,7 @@ fixed-width font.
 </body>
 </subsection>
 <subsection>
-<title>External Coding Style</title>
+<title>External coding style</title>
 <body>
 
 <p>

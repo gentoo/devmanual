@@ -19,7 +19,7 @@ modules which will provide authentication.
 </body>
 
 <section>
-<title>Structure of a <c>pamd</c> File</title>
+<title>Structure of a <c>pamd</c> file</title>
 <body>
 
 <p>
@@ -160,7 +160,7 @@ and takes care of executing it.
 </section>
 
 <section>
-<title>Installing <c>pamd</c> Files</title>
+<title>Installing <c>pamd</c> files</title>
 <body>
 
 <p>
@@ -215,7 +215,7 @@ which just uses <c>system-auth</c> login class.
 </section>
 
 <section>
-<title>Installing PAM Modules</title>
+<title>Installing PAM modules</title>
 <body>
 
 <p>

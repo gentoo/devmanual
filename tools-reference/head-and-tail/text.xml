@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="tools-reference/head-and-tail/">
 <chapter>
-<title><c>head</c> and <c>tail</c> — Line Extraction</title>
+<title><c>head</c> and <c>tail</c> — line extraction</title>
 <body>
 
 <p>

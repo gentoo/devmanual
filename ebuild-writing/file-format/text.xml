@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/file-format/">
 <chapter>
-<title>Ebuild File Format</title>
+<title>Ebuild file format</title>
 
 <body>
 <p>
@@ -11,7 +11,7 @@ Files should be simple text files with a <c>.ebuild</c> extension.
 </body>
 
 <section>
-<title>File Naming Rules</title>
+<title>File naming rules</title>
 <body>
 
 <p>
@@ -178,7 +178,7 @@ like CPU time or memory when being built from source.
 </section>
 
 <section>
-<title>Ebuild Header</title>
+<title>Ebuild header</title>
 <body>
 
 <p>
@@ -205,7 +205,7 @@ Council on 28 February 2017</uri> and <e>must not</e> be added any more.
 </section>
 
 <section>
-<title>Indenting and Whitespace</title>
+<title>Indenting and whitespace</title>
 <body>
 
 <p>
@@ -230,7 +230,7 @@ positions wide, and multibyte characters are just one position wide.
 </section>
 
 <section>
-<title>Character Set</title>
+<title>Character set</title>
 <body>
 <p>
 All ebuilds (and eclasses, metadata files, etc.) must use the

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="archs/ppc/">
 <chapter>
-<title>Arch Specific Notes — PPC</title>
+<title>Arch specific notes — PPC</title>
 <body>
 
 <p>
@@ -62,7 +62,7 @@ code below to define vectors is the preferred way of fixing this:
 </section>
 
 <section>
-<title>Contacting the PowerPC Team</title>
+<title>Contacting the PowerPC team</title>
 <body>
 
 <p>
@@ -88,7 +88,7 @@ The PowerPC team can be reached by:
 </section>
 
 <section>
-<title>Other Resources</title>
+<title>Other resources</title>
 <body>
 
 <ul>
@@ -96,7 +96,7 @@ The PowerPC team can be reached by:
     <uri link="https://wiki.gentoo.org/wiki/PPC/FAQ">Gentoo PPC FAQ</uri>
   </li>
   <li>
-    <uri link="https://forums.gentoo.org/viewforum-f-24.html">Gentoo PPC Forums</uri>
+    <uri link="https://forums.gentoo.org/viewforum-f-24.html">Gentoo PPC forums</uri>
   </li>
 </ul>
 

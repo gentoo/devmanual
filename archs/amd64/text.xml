@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="archs/amd64/">
 <chapter>
-<title>Arch Specific Notes — AMD64/EM64T</title>
+<title>Arch specific notes — AMD64/EM64T</title>
 
 <section>
-<title>Position Independent Code Issues</title>
+<title>Position Independent Code issues</title>
 <body>
 
 <p>
@@ -83,32 +83,33 @@ applied to shared objects.
 <body>
 
 <p>
-The current AMD64 processors are able to natively run 32bit code on a 64bit
+The current AMD64 processors are able to natively run 32-bit code on a 64-bit
 kernel. Therefore, you can run programs compiled for x86 in an amd64 environment.
-However, 32bit applications need to be linked against 32bit libraries. Mixing
-them won't work. For this reason the libraries are sorted, 32bit libraries normally
-go to <c>/lib32</c> respectively <c>/usr/lib32</c>, the 64bit ones normally to <c>/lib64</c> or
-<c>/usr/lib64</c>. In a perfect world, you wouldn't have to read on. Unfortunately,
-that's not the case, and so it's a bit more complicated.
+However, 32-bit applications need to be linked against 32-bit libraries. Mixing
+them won't work. For this reason the libraries are sorted, 32-bit libraries
+normally go to <c>/lib32</c> respectively <c>/usr/lib32</c>, the 64-bit ones
+normally to <c>/lib64</c> or <c>/usr/lib64</c>. In a perfect world, you wouldn't
+have to read on. Unfortunately, that's not the case, and so it's a bit more
+complicated.
 </p>
 </body>
 
 <subsection>
-<title>Multilib-Toolchain</title>
+<title>Multilib toolchain</title>
 
 <subsubsection>
 <title>GCC</title>
 <body>
 
 <p>
-To generate 32bit code, we need a multilib-capable GCC. On other architectures,
+To generate 32-bit code, we need a multilib-capable GCC. On other architectures,
 this functionality is enabled with the USE flag <c>multilib</c>. This is also true
 for amd64 with the <e>pre</e>-2005.0 profiles. From 2005.0 on, you have to choose
 whether you want multilib support or not by selecting the profile. Choose
 <c>2005.0/no-multilib</c> if you don't want it, all other profiles have the
 <c>multilib</c> USE flag masked, you're forced to it. With these profiles, GCC will
 produce x86-code whenever you add <c>-m32</c> to its command line. Adding <c>-m64</c>
-or omitting any bit-width option will default to producing 64bit code.
+or omitting any bit-width option will default to producing 64-bit code.
 </p>
 
 </body>
@@ -119,8 +120,8 @@ or omitting any bit-width option will default to producing 64bit code.
 <body>
 
 <p>
-If you've chosen a multilib profile, glibc will be built twice, once 64bit and
-once 32bit. This is because nearly every application links against glibc. 
+If you've chosen a multilib profile, glibc will be built twice, once 64-bit and
+once 32-bit. This is because nearly every application links against glibc.
 To understand how this is done in the ebuild, read
 <uri link="::archs/amd64/#The ABI Variable"/>.
 </p>
@@ -130,11 +131,11 @@ To understand how this is done in the ebuild, read
 </subsection>
 
 <subsection>
-<title>32bit compatibility</title>
+<title>32-bit compatibility</title>
 <body>
 
 <p>
-As you read above, 32bit applications must be linked against 32bit libraries.
+As you read above, 32-bit applications must be linked against 32-bit libraries.
 For that, we've made the most common libraries as multilib (via <c>ABI</c>
 variable and <c><uri link="::eclass-reference/multilib.eclass/"/></c>).
 </p>
@@ -209,14 +210,14 @@ the <c>ABI</c> variable.
 </subsection>
 
 <subsection>
-<title>The <c>multilib-strict</c> Feature</title>
+<title>The <c>multilib-strict</c> feature</title>
 <body>
 
 <p>
 Many Makefiles assume that their libraries should go to <c>/usr/lib</c>, or
 <c>$(prefix)/lib</c>. This assumption can cause a serious mess if <c>/usr/lib</c>
 isn't a symlink to <c>/usr/lib64</c>. To find the bad packages, we have a Portage feature
-called <b>multilib-strict</b>. It will prevent emerge from putting 64bit libraries
+called <b>multilib-strict</b>. It will prevent emerge from putting 64-bit libraries
 into anything other than <c>(/usr)/lib64</c>.
 </p>
 
@@ -247,13 +248,13 @@ modifications!
 </subsection>
 
 <subsection>
-<title>Headers and Multilib</title>
+<title>Headers and multilib</title>
 <body>
 
 <p>
 Most C/C++ programs need standard header files like <c>types.h</c>. Some of them
 depend on architecture specific facts, e.g. <c>types.h</c> on the length
-of machine words. To ensure that we can compile both 32bit and 64bit
+of machine words. To ensure that we can compile both 32-bit and 64-bit
 applications and libraries, we treat <c>/usr/include/asm</c> a bit special.
 </p>
 
@@ -285,16 +286,16 @@ section.
 </subsection>
 
 <subsection>
-<title>The ABI Variable</title>
+<title>The ABI variable</title>
 <body>
 
 <p>
 Whenever Portage builds something on amd64, it has to decide whether it should
-be 32bit or 64bit. As stated in <uri link="::archs/amd64/#Headers and Multilib"/>
+be 32-bit or 64-bit. As stated in <uri link="::archs/amd64/#Headers and Multilib"/>
 the <c>__i386__</c> or <c>__x86_64__</c> respectively, is needed in <c>CDEFINE</c>.
 Also, gcc has to know what code it should produce, therefore <c>-m32</c> or <c>-m64</c>
 must be appended to CFLAGS. This is done via <c>profile.bashrc</c>. All you need to do
-if you want to build a package 32bit is to set <c>ABI=x86</c>.
+if you want to build a package 32-bit is to set <c>ABI=x86</c>.
 </p>
 
 <p>
@@ -323,10 +324,10 @@ LIBDIR_x86="lib32"
 </section>
 
 <section>
-<title>Porting Notes</title>
+<title>Porting notes</title>
 
 <subsection>
-<title>Machine Word sizes</title>
+<title>Machine word sizes</title>
 <body>
 
 <p>
@@ -473,7 +474,7 @@ segmentation faults or strange behaviour. GCC 4.0 refuses to compile such code.
 </section>
 
 <section>
-<title>Other Resources</title>
+<title>Other resources</title>
 <body>
 
 <ul>

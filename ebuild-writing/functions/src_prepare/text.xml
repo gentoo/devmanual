@@ -83,7 +83,7 @@ src_prepare() {
 </section>
 
 <section>
-<title><c>src_prepare</c> Processes</title>
+<title><c>src_prepare</c> processes</title>
 <body>
 <p>
 The following subsections cover different topics which often occur

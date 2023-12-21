@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-maintenance/git/">
 <chapter>
-<title>Git for Gentoo Developers</title>
+<title>Git for Gentoo developers</title>
 <body>
 
 <p>
@@ -193,7 +193,7 @@ in the first commit in the series introduced by a single push.
 </subsection>
 
 <subsection>
-<title>Git Commit Message Format</title>
+<title>Git commit message format</title>
 <body>
 
 <p>

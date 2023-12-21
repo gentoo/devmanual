@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="tools-reference/bash/">
 <chapter>
-<title><c>bash</c> — Standard Shell</title>
+<title><c>bash</c> — standard shell</title>
 <body>
 
 <p>
@@ -11,10 +11,10 @@ ebuilds.
 </body>
 
 <section>
-<title>Bash Conditionals</title>
+<title>Bash conditionals</title>
 
 <subsection>
-<title>Basic Selection</title>
+<title>Basic selection</title>
 <body>
 
 <p>
@@ -31,7 +31,7 @@ fi
 </subsection>
 
 <subsection>
-<title>Multiple Selection</title>
+<title>Multiple selection</title>
 <body>
 
 <p>
@@ -82,7 +82,7 @@ fi
 </subsection>
 
 <subsection>
-<title>Selection Tests</title>
+<title>Selection tests</title>
 <body>
 
 <p>
@@ -111,7 +111,7 @@ fi
 </subsection>
 
 <subsection>
-<title>Single versus Double Brackets in <c>bash</c></title>
+<title>Single versus double brackets in <c>bash</c></title>
 <body>
 
 <important>
@@ -144,7 +144,7 @@ bash$
 </subsection>
 
 <subsection>
-<title>String Comparison in <c>bash</c></title>
+<title>String comparison in <c>bash</c></title>
 <body>
 
 <p>
@@ -183,7 +183,7 @@ following are available:
 </subsection>
 
 <subsection>
-<title>String Tests in <c>bash</c></title>
+<title>String tests in <c>bash</c></title>
 <body>
 
 <p>
@@ -210,7 +210,7 @@ available:
 </subsection>
 
 <subsection>
-<title>Integer Comparison in <c>bash</c></title>
+<title>Integer comparison in <c>bash</c></title>
 <body>
 
 <p>
@@ -253,7 +253,7 @@ following are available:
 </subsection>
 
 <subsection>
-<title>File Tests in <c>bash</c></title>
+<title>File tests in <c>bash</c></title>
 <body>
 
 <p>
@@ -356,7 +356,7 @@ available (lifted from <c>man bash</c>):
 </subsection>
 
 <subsection>
-<title>File Comparison in <c>bash</c></title>
+<title>File comparison in <c>bash</c></title>
 <body>
 
 <p>
@@ -390,7 +390,7 @@ The following are available:
 </subsection>
 
 <subsection>
-<title>Boolean Algebra in <c>bash</c></title>
+<title>Boolean algebra in <c>bash</c></title>
 <body>
 
 <p>
@@ -438,7 +438,7 @@ These should be avoided in favour of <c>[[ ]]</c> and the above operators.
 </section>
 
 <section>
-<title>Bash Iterative Structures</title>
+<title>Bash iterative structures</title>
 <body>
 
 <p>
@@ -495,7 +495,7 @@ be used over <c>cat file | while read</c>.
 </section>
 
 <section>
-<title>Bash Variable Manipulation</title>
+<title>Bash variable manipulation</title>
 <body>
 
 <p>
@@ -507,7 +507,7 @@ and friends.
 </body>
 
 <subsection>
-<title><c>bash</c> String Length</title>
+<title><c>bash</c> string length</title>
 <body>
 
 <p>
@@ -524,7 +524,7 @@ echo "${somevar} is ${#somevar} characters long"
 </subsection>
 
 <subsection>
-<title><c>bash</c> Variable Default Values</title>
+<title><c>bash</c> variable default values</title>
 <body>
 
 <p>
@@ -554,7 +554,7 @@ or a blank string otherwise. There is a <c>${var+value}</c> form.
 </subsection>
 
 <subsection>
-<title><c>bash</c> Substring Extraction</title>
+<title><c>bash</c> substring extraction</title>
 <body>
 
 <p>
@@ -587,7 +587,7 @@ than zero. Again, negative <c>offset</c> values must be given as an expression.
 </subsection>
 
 <subsection>
-<title><c>bash</c> Command Substitution</title>
+<title><c>bash</c> command substitution</title>
 <body>
 
 <p>
@@ -608,7 +608,7 @@ myconf="$(use_enable acl) $(use_enable nls) --with-tlib=ncurses"
 </subsection>
 
 <subsection>
-<title><c>bash</c> String Replacements</title>
+<title><c>bash</c> string replacements</title>
 <body>
 
 <p>
@@ -731,7 +731,7 @@ table, a <c>pattern-list</c> is a list of one or more patterns separated by
 </subsection>
 
 <subsection>
-<title><c>bash</c> Arithmetic Expansion</title>
+<title><c>bash</c> arithmetic expansion</title>
 <body>
 
 <p>

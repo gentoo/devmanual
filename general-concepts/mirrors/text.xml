@@ -4,7 +4,7 @@
 <title>Mirrors</title>
 
 <section>
-<title>Automatic Mirroring</title>
+<title>Automatic mirroring</title>
 
 <body>
 <p>
@@ -22,7 +22,7 @@ rearranged, tidied out or having files modified.
 </body>
 
 <subsection>
-<title>Restricting Automatic Mirroring</title>
+<title>Restricting automatic mirroring</title>
 <body>
 <p>
 Three <c>RESTRICT</c> keywords can be used to control the mirroring process.
@@ -50,7 +50,7 @@ This should only be used if a license requires it.
 </subsection>
 
 <subsection>
-<title>Replacing Automatically Mirrored Files</title>
+<title>Replacing automatically mirrored files</title>
 <body>
 <p>
 On rare occasions you may need to replace a file that is already mirrored.
@@ -83,7 +83,7 @@ Infrastructure project's Distfile Mirroring System page</uri>.
 
 
 <subsection>
-<title>Suitable Download Hosts</title>
+<title>Suitable download hosts</title>
 <body>
 <p>
 If you have to host a source file (patch or tarball) yourself, as long as it
@@ -127,7 +127,7 @@ Not doing so can cause all kinds of problems with strict firewalls.
 </section>
 
 <section>
-<title>Mirroring Process</title>
+<title>Mirroring process</title>
 
 <body>
 <figure short="Mirroring Process" link="diagram.png"

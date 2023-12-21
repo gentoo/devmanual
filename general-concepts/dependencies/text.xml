@@ -68,7 +68,7 @@ distinctions still apply even if it isn't, strictly speaking, cross-compiling.
 </subsection>
 
 <subsection>
-<title>Build Dependencies</title>
+<title>Build dependencies</title>
 <body>
 
 <p>
@@ -94,7 +94,7 @@ In earlier EAPIs, all build dependencies are placed in <c>DEPEND</c>.
 </subsection>
 
 <subsection>
-<title>Runtime Dependencies</title>
+<title>Runtime dependencies</title>
 <body>
 
 <p>
@@ -118,7 +118,7 @@ Items which are in <c>RDEPEND</c> but not <c>DEPEND</c> could <e>in theory</e> b
 </subsection>
 
 <subsection>
-<title>Post Dependencies</title>
+<title>Post dependencies</title>
 <body>
 
 <p>
@@ -133,10 +133,10 @@ while in general case <c>RDEPEND</c> should be used instead.
 </section>
 
 <section>
-<title>Dependency Syntax</title>
+<title>Dependency syntax</title>
 
 <subsection>
-<title>Basic Dependency Syntax</title>
+<title>Basic dependency syntax</title>
 <body>
 
 <p>
@@ -160,7 +160,7 @@ When specifying names, the category part should be treated as mandatory.
 </subsection>
 
 <subsection>
-<title>Version Dependencies</title>
+<title>Version dependencies</title>
 <body>
 
 <p>
@@ -178,7 +178,7 @@ This states that at least version 0.9.7d of <c>openssl</c> is required.
 </body>
 
 <subsubsection>
-<title>Version Specifiers</title>
+<title>Version specifiers</title>
 <body>
 
 <p>
@@ -223,7 +223,7 @@ Available version specifiers are:
 </subsubsection>
 
 <subsubsection>
-<title>Ranged Dependencies</title>
+<title>Ranged dependencies</title>
 <body>
 
 <p>
@@ -351,7 +351,7 @@ newer package that caused the issues.
 </subsection>
 
 <subsection>
-<title>SLOT Dependencies</title>
+<title>SLOT dependencies</title>
 <body>
 
 <p>
@@ -375,7 +375,7 @@ DEPEND="qt5? ( ~dev-qt/qtcore-5.15.2:5 )
 </body>
 
 <subsubsection>
-<title>Slot Operators</title>
+<title>Slot operators</title>
 <body>
 
 <p>
@@ -458,7 +458,7 @@ sub-slot changes of <c>wombat:0</c> should be ignored.
 </subsection>
 
 <subsection>
-<title>USE-Conditional Dependencies</title>
+<title>USE-conditional dependencies</title>
 <body>
 
 <p>
@@ -514,7 +514,7 @@ DEPEND="!build? (
 </subsection>
 
 <subsection>
-<title>Any of Many Dependencies</title>
+<title>Any of many dependencies</title>
 <body>
 
 <note>
@@ -541,7 +541,7 @@ DEPEND="baz? ( || ( app-misc/foo app-misc/bar ) )"
 </body>
 
 <subsubsection>
-<title>Any of Many Versus USE</title>
+<title>Any of many versus USE</title>
 <body>
 
 <p>
@@ -566,7 +566,7 @@ flag is not necessary if and only if all of the following hold:
 </subsection>
 
 <subsection>
-<title>Built with USE Dependencies</title>
+<title>Built with USE dependencies</title>
 <body>
 
 <p>
@@ -650,7 +650,7 @@ DEPEND="
 </section>
 
 <section>
-<title>Tips for Checking Dependencies</title>
+<title>Tips for checking dependencies</title>
 <body>
 
 <p>
@@ -710,7 +710,7 @@ package:
 </section>
 
 <section>
-<title>Implicit System Dependency</title>
+<title>Implicit system dependency</title>
 <body>
 
 <p>
@@ -738,7 +738,7 @@ tarball.
 </section>
 
 <section>
-<title>Test Dependencies</title>
+<title>Test dependencies</title>
 <body>
 
 <p>
@@ -776,7 +776,7 @@ DEPEND="test? ( dev-util/foo )"
 </section>
 
 <section>
-<title>Circular Dependencies</title>
+<title>Circular dependencies</title>
 <body>
 
 <p>

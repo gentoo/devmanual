@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="hosted-projects/">
 <chapter>
-<title>Hosted Projects</title>
+<title>Hosted projects</title>
 
 <body>
 <p>
@@ -11,7 +11,7 @@ prevent a repeat of the <c>genkernel</c> disaster.
 </body>
 
 <section>
-<title>Documentation Requirement</title>
+<title>Documentation requirement</title>
 <body>
 
 <p>
@@ -21,7 +21,7 @@ and not left as "something we'll do later (honest)".
 </p>
 
 <p>
-Our documentation team are happy to help out with GuideXMLification, translation
+Our documentation team is happy to help out with GuideXMLification, translation
 etc. for the user documentation, but they <e>need</e> various things to do this:
 </p>
 
@@ -108,7 +108,7 @@ In practice, this means the following:
 </section>
 
 <section>
-<title>Open / Free</title>
+<title>Open / free</title>
 <body>
 
 <p>

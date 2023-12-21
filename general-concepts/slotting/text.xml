@@ -46,7 +46,7 @@ To <c>DEPEND</c> upon a package in a specific slot, refer to
 </body>
 
 <section>
-<title>Sub-Slots</title>
+<title>Sub-slots</title>
 
 <body>
 <p>
@@ -217,7 +217,7 @@ to represent in some way ABI compatibility.
 </section>
 
 <section>
-<title>Slot Names</title>
+<title>Slot names</title>
 
 <body>
 <p>

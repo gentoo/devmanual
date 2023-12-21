@@ -4,7 +4,7 @@
 <title>Manifest</title>
 
 <section>
-<title>Generating the Manifest</title>
+<title>Generating the Manifest file</title>
 <body>
 <p>
 In the tree, every package has a <c>Manifest</c> file. This file lives
@@ -41,7 +41,7 @@ action from developers.
 </subsection>
 
 <subsection>
-<title>Updating <c>Manifest</c> files</title>
+<title>Updating Manifest files</title>
 <body>
 
 <p>

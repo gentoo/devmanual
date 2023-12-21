@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/functions/src_unpack/other-formats/">
 <chapter>
-<title>Other Archive Formats</title>
+<title>Other archive formats</title>
 
 <body>
 <p>
@@ -11,7 +11,7 @@ Instructions for some of them are detailed below:
 </body>
 
 <section>
-<title>Zip Files</title>
+<title>Zip files</title>
 <body>
 
 <p>
@@ -27,7 +27,7 @@ If a package is supplied as a .zip file, you should:
 </section>
 
 <section>
-<title>Shar Files</title>
+<title>Shar files</title>
 <body>
 <p>
 If a package is supplied as a <c>.shar</c> file, you should repackage it locally
@@ -39,7 +39,7 @@ done a release in at least ten years.
 </section>
 
 <section>
-<title>RAR Files</title>
+<title>RAR files</title>
 <body>
 
 <p>

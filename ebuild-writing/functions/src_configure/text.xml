@@ -71,7 +71,7 @@ eclass in order to use the <c>append-ldflags</c> function.
 </section>
 
 <section>
-<title><c>src_configure</c> Processes</title>
+<title><c>src_configure</c> processes</title>
 <body>
 <p>
 The following subsections cover different topics which often occur when writing

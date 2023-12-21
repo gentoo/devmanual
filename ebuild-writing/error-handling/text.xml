@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/error-handling/">
 <chapter>
-<title>Error Handling</title>
+<title>Error handling</title>
 
 <section>
-<title>Importance of Error Handling</title>
+<title>Importance of error handling</title>
 <body>
 
 <p>
@@ -32,7 +32,7 @@ Decent error handling is important because:
 </section>
 
 <section>
-<title>The <c>die</c> Function</title>
+<title>The <c>die</c> function</title>
 <body>
 
 <p>
@@ -65,7 +65,7 @@ You should use <c>die</c> on almost all external commands in ebuilds.
 </section>
 
 <section>
-<title><c>die</c> and Subshells</title>
+<title><c>die</c> and subshells</title>
 <body>
 
 <warning>
@@ -112,7 +112,7 @@ while read file ; do eapply ${file} ; done &lt; list
 </section>
 
 <section>
-<title>The <c>assert</c> Function and <c>$PIPESTATUS</c></title>
+<title>The <c>assert</c> function and <c>$PIPESTATUS</c></title>
 <body>
 
 <p>
@@ -136,7 +136,7 @@ time, <c>assert</c> is enough.
 </section>
 
 <section>
-<title>The <c>nonfatal</c> Command</title>
+<title>The <c>nonfatal</c> command</title>
 <body>
 
 <p>

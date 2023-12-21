@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-maintenance/new-ebuild/">
 <chapter>
-<title>Adding a New Ebuild</title>
+<title>Adding a new ebuild</title>
 
 <section>
 <title>What (not) to put in the Gentoo repository</title>
@@ -65,7 +65,7 @@ didn't forget something.
 </section>
 
 <section>
-<title>Initial Architecture Keywords</title>
+<title>Initial architecture keywords</title>
 <body>
 
 <p>
@@ -91,7 +91,7 @@ work on those architectures.
 </section>
 
 <section>
-<title>The files Directory</title>
+<title>The files directory</title>
 <body>
 
 <p>

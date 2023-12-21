@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="appendices/common-problems/">
 <chapter>
-<title>Common Problems</title>
+<title>Common problems</title>
 <body>
 
 <p>
@@ -11,7 +11,7 @@ and QA notices.
 </body>
 
 <section>
-<title>Handling QA Notices</title>
+<title>Handling QA notices</title>
 <body>
 
 <p>
@@ -28,7 +28,7 @@ covered here.
 </body>
 
 <subsection>
-<title>QA Notice: USE Flag foo not in IUSE</title>
+<title>QA notice: USE flag foo not in IUSE</title>
 <body>
 
 <p>
@@ -42,7 +42,7 @@ See <uri link="::ebuild-writing/variables/#IUSE"/> and
 </subsection>
 
 <subsection>
-<title>QA Notice: foo in global scope</title>
+<title>QA notice: foo in global scope</title>
 <body>
 
 <p>
@@ -86,7 +86,7 @@ in use, there are various alternatives:
 </subsection>
 
 <subsection>
-<title>QA Notice: foo is setXid, dynamically linked and using lazy bindings</title>
+<title>QA notice: foo is setXid, dynamically linked and using lazy bindings</title>
 <body>
 
 <p>
@@ -110,7 +110,7 @@ for security reasons. If this message is shown, you have a couple of options:
 </subsection>
 
 <subsection>
-<title>QA Notice: ECLASS foo inherited illegally</title>
+<title>QA notice: ECLASS foo inherited illegally</title>
 <body>
 
 <p>
@@ -150,7 +150,7 @@ you see this notice locally. If you see this notice when working with a pure
 </section>
 
 <section>
-<title>Handling Access Violations</title>
+<title>Handling access violations</title>
 <body>
 
 <p>

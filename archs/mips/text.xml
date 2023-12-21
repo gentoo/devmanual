@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="archs/mips/">
 <chapter>
-<title>Arch Specific Notes — MIPS</title>
+<title>Arch specific notes — MIPS</title>
 <body>
 
 <p>
@@ -64,7 +64,7 @@ between these, talk to the MIPS team.
 </section>
 
 <section>
-<title>Not Dropping <c>CFLAGS</c> on MIPS</title>
+<title>Not dropping <c>CFLAGS</c> on MIPS</title>
 <body>
 
 <p>
@@ -77,7 +77,7 @@ vital that packages honour this setting. See
 </section>
 
 <section>
-<title>Additional MIPS Keywording Requirements</title>
+<title>Additional MIPS keywording requirements</title>
 <body>
 
 <note>
@@ -110,7 +110,7 @@ MIPS doesn't currently use stable keywords so don't file stable requests to them
 </section>
 
 <section>
-<title>Contacting the MIPS Team</title>
+<title>Contacting the MIPS team</title>
 <body>
 
 <p>

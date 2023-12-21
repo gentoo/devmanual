@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide root="true">
 <chapter>
-<title>Master Index</title>
+<title>Master index</title>
 
 <body>
 <p>
@@ -30,7 +30,7 @@ section lists specific contributions to this manual.
 </section>
 
 <section>
-<title>Full Contents</title>
+<title>Full contents</title>
 <body>
 <contentsTree/>
 </body>

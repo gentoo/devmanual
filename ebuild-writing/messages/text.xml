@@ -28,7 +28,7 @@ occupy 4 columns with their fancy leading markers.
 </body>
 
 <section>
-<title>Information Messages</title>
+<title>Information messages</title>
 <body>
 
 <p>
@@ -70,7 +70,7 @@ src_compile() {
 </section>
 
 <section>
-<title>Warning Messages</title>
+<title>Warning messages</title>
 <body>
 
 <p>
@@ -82,7 +82,7 @@ used for warning messages rather than information.
 </section>
 
 <section>
-<title>Error Messages</title>
+<title>Error messages</title>
 <body>
 
 <p>
@@ -119,7 +119,7 @@ See <uri link="::function-reference/message-functions/"/> for a full list of fun
 </section>
 
 <section>
-<title>Good and Bad Messages</title>
+<title>Good and bad messages</title>
 <body>
 
 <p>

@@ -12,7 +12,7 @@ which are of use throughout the ebuild.
 </body>
 
 <section>
-<title>Predefined Read-Only Variables</title>
+<title>Predefined read-only variables</title>
 <body>
 
 <p>
@@ -238,7 +238,7 @@ pkg_postinst() {
 </section>
 
 <section>
-<title>Ebuild-defined Variables</title>
+<title>Ebuild-defined variables</title>
 <body>
 
 <p>
@@ -403,7 +403,7 @@ The following variables may or must be defined by every ebuild.
 <title>SRC_URI</title>
 
 <subsubsection>
-<title>Conditional Sources</title>
+<title>Conditional sources</title>
 <body>
 
 <p>
@@ -424,7 +424,7 @@ SRC_URI="https://example.com/files/${P}-core.tar.bz2
 </subsubsection>
 
 <subsubsection>
-<title>Renaming Sources</title>
+<title>Renaming sources</title>
 <body>
 
 <p>
@@ -756,7 +756,7 @@ strings (ignoring case):
 </section>
 
 <section>
-<title>Version and Name Formatting Issues</title>
+<title>Version and name formatting issues</title>
 <body>
 
 <p>
@@ -857,7 +857,7 @@ here</uri>, courtesy of Gentoo developer mgorny.
 </section>
 
 <section>
-<title>Trailing Slashes in Variables</title>
+<title>Trailing slashes in variables</title>
 <body>
 
 <p>

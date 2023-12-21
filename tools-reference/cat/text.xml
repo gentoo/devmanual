@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="tools-reference/cat/">
 <chapter>
-<title><c>cat</c> — File Concatenation</title>
+<title><c>cat</c> — file concatenation</title>
 <body>
 
 <p>
@@ -41,7 +41,7 @@ be replaced by <c>cp -f foo bar</c>.
 </section>
 
 <section>
-<title>Here Documents</title>
+<title>Here documents</title>
 <body>
 <p>
 On the other hand, <c>cat</c> is exceptionally useful for so-called

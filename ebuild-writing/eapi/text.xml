@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/eapi/">
 <chapter>
-<title>EAPI Usage and Description</title>
+<title>EAPI usage and description</title>
 <body>
 
 <p>
@@ -112,7 +112,7 @@ Manager Specification for details about them.
 <title>EAPI 5</title>
 
 <subsection>
-<title>EAPI 5 Metadata</title>
+<title>EAPI 5 metadata</title>
 <body>
 
 <dl>
@@ -205,7 +205,7 @@ RDEPEND="dev-libs/foo:2=
 </subsection>
 
 <subsection>
-<title>EAPI 5 Profiles</title>
+<title>EAPI 5 profiles</title>
 <body>
 
 <dl>
@@ -223,7 +223,7 @@ RDEPEND="dev-libs/foo:2=
 </subsection>
 
 <subsection>
-<title>EAPI 5 Helpers</title>
+<title>EAPI 5 helpers</title>
 <body>
 
 <dl>
@@ -262,7 +262,7 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 </subsection>
 
 <subsection>
-<title>EAPI 5 Phases</title>
+<title>EAPI 5 phases</title>
 <body>
 
 <dl>
@@ -277,7 +277,7 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 </subsection>
 
 <subsection>
-<title>EAPI 5 Variables</title>
+<title>EAPI 5 variables</title>
 <body>
 
 <dl>
@@ -311,7 +311,7 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 </subsection>
 
 <subsection>
-<title>EAPI 6 Ebuild Environment</title>
+<title>EAPI 6 ebuild environment</title>
 <body>
 
 <dl>
@@ -333,7 +333,7 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 </subsection>
 
 <subsection>
-<title>EAPI 6 Phases</title>
+<title>EAPI 6 phases</title>
 <body>
 
 <dl>
@@ -376,7 +376,7 @@ src_install() {
 </subsection>
 
 <subsection>
-<title>EAPI 6 Helpers</title>
+<title>EAPI 6 helpers</title>
 <body>
 
 <dl>
@@ -456,7 +456,7 @@ src_install() {
 <title>EAPI 7</title>
 
 <subsection>
-<title>EAPI 7 Terminology</title>
+<title>EAPI 7 terminology</title>
 <body>
 
 <p>
@@ -484,7 +484,7 @@ installation targets.
 </subsection>
 
 <subsection>
-<title>EAPI 7 Variables</title>
+<title>EAPI 7 variables</title>
 <body>
 
 <dl>
@@ -534,7 +534,7 @@ installation targets.
 </subsection>
 
 <subsection>
-<title>EAPI 7 Metadata</title>
+<title>EAPI 7 metadata</title>
 <body>
 
 <dl>
@@ -552,7 +552,7 @@ installation targets.
 </subsection>
 
 <subsection>
-<title>EAPI 7 Profiles</title>
+<title>EAPI 7 profiles</title>
 <body>
 
 <dl>
@@ -567,7 +567,7 @@ installation targets.
 </subsection>
 
 <subsection>
-<title>EAPI 7 Helpers</title>
+<title>EAPI 7 helpers</title>
 <body>
 
 <dl>

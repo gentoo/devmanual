@@ -58,7 +58,7 @@ pkg_postinst() {
 </section>
 
 <section>
-<title>Common <c>pkg_postinst</c> Tasks</title>
+<title>Common <c>pkg_postinst</c> tasks</title>
 <body>
 <p>
 The most common use for <c>pkg_postinst</c> is to display post-install

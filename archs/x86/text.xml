@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="archs/x86/">
 <chapter>
-<title>Arch Specific Notes — x86</title>
+<title>Arch specific notes — x86</title>
 <body>
 
 <p>
@@ -20,7 +20,7 @@ unless someone on the team can test it.
 </body>
 
 <section>
-<title>x86 Team Guidelines</title>
+<title>x86 team guidelines</title>
 <body>
 
 <p>
@@ -47,7 +47,7 @@ The following is a list of rules and expectations for members of the x86 team:
 </section>
 
 <section>
-<title>Contacting the x86 Team</title>
+<title>Contacting the x86 team</title>
 <body>
 
 <p>

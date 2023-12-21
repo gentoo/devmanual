@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="appendices/todo-list/">
 <chapter>
-<title>TODO List</title>
+<title>TODO list</title>
 <body>
 <p>
 This TODO list is automatically generated from the <c>&lt;todo&gt;</c> directives in other documents.

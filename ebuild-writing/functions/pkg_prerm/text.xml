@@ -52,7 +52,7 @@ pkg_prerm() {
 </section>
 
 <section>
-<title>Common <c>pkg_prerm</c> Tasks</title>
+<title>Common <c>pkg_prerm</c> tasks</title>
 <body>
 <p>
 <c>pkg_prerm</c> is used to clean up any files that would otherwise prevent

@@ -84,7 +84,7 @@ src_install() {
 </section>
 
 <section>
-<title>Easy Installs</title>
+<title>Easy installs</title>
 <body>
 <p>
 Often, especially with autotools-powered packages, there is a <c>Makefile</c>
@@ -129,7 +129,7 @@ applied to different parts of the application, for example.
 </section>
 
 <section>
-<title>Trivial Installs</title>
+<title>Trivial installs</title>
 <body>
 
 <p>
@@ -209,7 +209,7 @@ simple <c>Makefile</c> driven install.
 </section>
 
 <section>
-<title>Other Installs</title>
+<title>Other installs</title>
 <body>
 <p>
 Sometimes, there will be a <c>Makefile</c> that does not
@@ -221,7 +221,7 @@ upstream explaining the situation to them.
 </section>
 
 <section>
-<title><c>src_install</c> Processes</title>
+<title><c>src_install</c> processes</title>
 <body>
 
 <p>

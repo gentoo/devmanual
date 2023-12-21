@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="archs/alpha/">
 <chapter>
-<title>Arch Specific Notes — Alpha</title>
+<title>Arch specific notes — Alpha</title>
 <body>
 
 <p>
@@ -12,7 +12,7 @@ The Alpha port uses the <c>alpha</c> keyword. It focuses upon HP (formerly Compa
 </body>
 
 <section>
-<title>Alpha Kernel and Userland ABIs</title>
+<title>Alpha kernel and userland ABIs</title>
 <body>
 
 <p>
@@ -28,7 +28,7 @@ little endian.
 </section>
 
 <section>
-<title>Additional Alpha Keywording Requirements</title>
+<title>Additional Alpha keywording requirements</title>
 <body>
 
 <p>
@@ -42,7 +42,7 @@ like to know about it.
 </section>
 
 <section>
-<title>Alpha Instruction Set and Performance Notes</title>
+<title>Alpha instruction set and performance notes</title>
 <body>
 
 <p>
@@ -108,7 +108,7 @@ this results in errors during the compilation aborting emerge.
 </section>
 
 <section>
-<title>Contacting the Alpha Team</title>
+<title>Contacting the Alpha team</title>
 <body>
 
 <p>
@@ -134,7 +134,7 @@ The Alpha team can be contacted:
 </section>
 
 <section>
-<title>Other Resources</title>
+<title>Other resources</title>
 <body>
 
 <ul>
