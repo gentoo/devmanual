@@ -428,7 +428,7 @@ documentation are:
 </tr>
 <tr>
   <ti><c>@USAGE:</c></ti>
-  <ti>Yes</ti>
+  <ti>No</ti>
   <ti>List of required and optional arguments to the function</ti>
   <ti>
     List of arguments that the eclass function accepts, specified in
