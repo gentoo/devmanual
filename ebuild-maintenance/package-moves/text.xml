@@ -19,8 +19,10 @@ the following must be noted:
   </li>
   <li>
     Once an update entry is created, the old package name (or slot) cannot be
-    reused. Attempting to reuse it will cause updates to apply again,
-    to the reused name. This also means that updates cannot be undone.
+    reused for another package. Attempting to reuse it will cause updates to
+    apply again, to the reused name. This also means that while a package can
+    be moved back to its previous name, all the names historically used for
+    a package are reserved to it alone.
   </li>
   <li>
     Updates can only perform one-to-one moves. They cannot be used to merge
@@ -112,6 +114,50 @@ Make sure that you have fixed all the reverse dependencies and that
 you have updated every file in <c>profiles/</c> directory that
 happens to contain an entry which may be affected by your change.
 </p>
+
+</body>
+</section>
+
+<section>
+<title>Updating prior update entries when moving the package again</title>
+<body>
+
+<p>
+When the same package is moved again, the previous update entries should
+be updated appropriately. This is meant to make the situation more transparent
+to users reading update entries and to ensure that the process is handled
+efficiently even if the package manager does not implement updates in a robust
+way. This involves the following steps:
+</p>
+
+<ol>
+  <li>
+    The previous package moves for the package in question must be updated
+    to reference the final name. That is, rather than the chain A → B → C,
+    we want to have two update entries: A → C, and B → C.
+  </li>
+
+  <li>
+    If the package is being moved to a name that it used before, the original
+    move entry must be removed. That is, rather than the chain A → B → A,
+    we want to have the reverse entry: B → A. If the package manager did not
+    move A → B before, we don't want it to touch the package at all.
+  </li>
+
+  <li>
+    As a combination of the two aforementioned steps, a chain of A → B → C → A
+    would be replaced by two moves: B → A, and C → A.
+  </li>
+
+  <li>
+    If the package was slot-moved before, the slot moves should be updated
+    to use the final package name, and moved after the final package move.
+    That is, rather than the chain: A:S<sub>1</sub> → A:S<sub>2</sub>, A → B;
+    we prefer to have the chain: A → B, B:S<sub>1</sub> → B:S<sub>2</sub>.
+    All package and slot move entries must reside in the same file then, to
+    guarantee sequential processing.
+  </li>
+</ol>
 
 </body>
 </section>
