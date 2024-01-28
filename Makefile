@@ -87,10 +87,8 @@ install: all
 	  install -m 644 $(JS_FILES) "$(DESTDIR)$(htmldir)"/; \
 	fi
 
-# Not all versions of xmllint support --quiet, so test for it first
 validate: devbook.rng
-	@opt=--quiet; xmllint --help 2>&1 | grep -q -- --quiet || opt=; \
-	xmllint --noout $${opt} --relaxng $< $(XMLS)
+	@xmllint --noout --quiet --relaxng $< $(XMLS)
 	@echo "xmllint validation successful"
 
 %.rng: %.rnc
