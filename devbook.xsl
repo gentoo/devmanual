@@ -280,6 +280,14 @@
   <code class="docutils literal"><span class="pre"><xsl:apply-templates/></span></code>
 </xsl:template>
 
+<xsl:template match="sub">
+  <sub><xsl:apply-templates/></sub>
+</xsl:template>
+
+<xsl:template match="sup">
+  <sup><xsl:apply-templates/></sup>
+</xsl:template>
+
 <xsl:template name="convert-to-anchor">
   <xsl:param name="data"/>
   <xsl:variable name="lcletters">abcdefghijklmnopqrstuvwxyz-</xsl:variable>

@@ -2,7 +2,7 @@
 <!-- Auto-generated from devbook.rnc; do not edit! -->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <!--
-    Copyright 2022-2023 Gentoo Authors
+    Copyright 2022-2024 Gentoo Authors
     Distributed under the terms of the MIT license
     or the CC-BY-SA-4.0 license (dual-licensed)
   -->
@@ -32,6 +32,8 @@
       <ref name="b"/>
       <ref name="c"/>
       <ref name="e"/>
+      <ref name="sub"/>
+      <ref name="sup"/>
     </choice>
   </define>
   <define name="inline.class">
@@ -379,6 +381,16 @@
   </define>
   <define name="e">
     <element name="e">
+      <ref name="inline"/>
+    </element>
+  </define>
+  <define name="sub">
+    <element name="sub">
+      <ref name="inline"/>
+    </element>
+  </define>
+  <define name="sup">
+    <element name="sup">
       <ref name="inline"/>
     </element>
   </define>

@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the MIT license
 # or the CC-BY-SA-4.0 license (dual-licensed)
 
@@ -7,7 +7,7 @@
 
 block.class = p | pre | codesample | note | important | warning | todo
 | figure | table | ul | ol | dl
-attrib.class = text | b | c | e
+attrib.class = text | b | c | e | sub | sup
 inline.class = attrib.class | d | uri
 
 attrib = attrib.class*
@@ -112,6 +112,8 @@ dd = element dd { all }
 b = element b { inline }
 c = element c { inline }
 e = element e { inline }
+sub = element sub { inline }
+sup = element sup { inline }
 d = element d { empty }
 
 uri = element uri {

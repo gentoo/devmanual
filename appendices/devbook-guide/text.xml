@@ -465,7 +465,7 @@ together:
 <section>
 <title>Inline elements</title>
 <subsection>
-<title>&lt;c&gt;, &lt;b&gt;, and &lt;e&gt;</title>
+<title>&lt;c&gt;, &lt;b&gt;, &lt;e&gt;, &lt;sub&gt; and &lt;sup&gt;</title>
 <body>
 
 <p>
@@ -493,6 +493,11 @@ text.
 I <e>really</e> should use semicolons more often. As you can see, this text is
 offset from the regular paragraph type for emphasis. This helps to give your
 prose more <e>punch</e>!
+</p>
+
+<p>
+The <c>&lt;sub&gt;</c> and <c>&lt;sup&gt;</c> elements are used to specify
+<sub>subscript</sub> and <sup>superscript</sup>.
 </p>
 
 </body>
