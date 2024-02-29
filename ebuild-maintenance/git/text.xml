@@ -283,12 +283,6 @@ are optionally used in Gentoo:
     referenced, it will be closed (as fixed) automatically with reference
     to the commit.
   </li>
-  <li>  
-    <c>Package-Manager:</c> Used by repoman to indicate Portage version
-  </li>
-  <li>
-    <c>RepoMan-Options:</c> Used by repoman to indicate repoman options
-  </li>
 </ul>
 
 <p>
