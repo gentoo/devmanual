@@ -53,8 +53,6 @@
     cmake_src_prepare cmake_src_test cmake_use_find_package
     <!-- desktop -->
     doicon domenu make_desktop_entry make_session_desktop newicon newmenu
-    <!-- epatch -->
-    epatch
     <!-- flag-o-matic -->
     all-flag-vars append-atomic-flags append-cflags append-cppflags append-cxxflags append-fflags append-flags
     append-ldflags append-lfs-flags append-libs filter-flags filter-ldflags filter-lfs-flags filter-lto filter-mfpmath
