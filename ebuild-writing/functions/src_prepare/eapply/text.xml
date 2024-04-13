@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/src_prepare/epatch/">
+<guide self="ebuild-writing/functions/src_prepare/eapply/">
 <chapter>
 <title>Patching with epatch and eapply</title>
 

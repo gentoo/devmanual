@@ -301,7 +301,7 @@ Note the <c>${FILESDIR}/${P}-destdir.patch</c> <d/> this refers to
 subdirectory in the Gentoo repository. Larger patch files must go on your
 developer's space at <c>dev.gentoo.org</c> rather than in <c>files/</c> or
 mirrors <d/> see <uri link="::general-concepts/mirrors/#Gentoo Mirrors"/> and
-<uri link="::ebuild-writing/functions/src_prepare/epatch/"/>.
+<uri link="::ebuild-writing/functions/src_prepare/eapply/"/>.
 </p>
 
 <p>

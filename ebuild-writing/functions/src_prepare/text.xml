@@ -95,6 +95,6 @@ when writing <c>src_prepare</c> functions.
 </section>
 
 </chapter>
-<include href="epatch/"/>
+<include href="eapply/"/>
 <include href="autopackage/"/>
 </guide>

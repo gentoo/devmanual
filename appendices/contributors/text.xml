@@ -117,7 +117,7 @@ Misc
 <author name="Brian Evans" email="grknight@gentoo.org">
   <uri link="::ebuild-writing/eapi/"/>,
   <uri link="::ebuild-writing/variables/"/>,
-  <uri link="::ebuild-writing/functions/src_prepare/epatch/"/>
+  <uri link="::ebuild-writing/functions/src_prepare/eapply/"/>
 </author>
 <author name="Lucas Ramage" email="ramage.lucas@protonmail.com">
   Search functionality
