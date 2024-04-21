@@ -1,54 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="ebuild-writing/functions/src_prepare/eapply/">
 <chapter>
-<title>Patching with epatch and eapply</title>
-
+<title>Patching with eapply</title>
 <body>
-<p>
-The canonical way of applying patches in ebuilds is to
-use <c>epatch</c> (from <c>epatch.eclass</c>, which you must make sure
-to inherit!) inside <c>src_prepare</c>. This function automatically
-handles <c>-p</c> levels, <c>gunzip</c> and so on as necessary.
-</p>
 
 <p>
-Starting with EAPI=7, this function is banned and <c>eapply</c> must be used.
+The canonical way of applying patches in ebuilds is to use the package
+manager's <c>eapply</c> command, either by calling it explicitly, or by
+assigning the <c>PATCHES</c> variable supported by the default
+<c>src_prepare</c> implementation.
 </p>
 
+<important>
+Applying patches to the sources from the upstream tarball is <e>strongly</e>
+preferred to distributing your own modified tarball.
+</important>
+
 <p>
-Beginning with EAPI=6, a new function <c>eapply</c> was added to apply patches
-without the need for an eclass.
-This function differs from epatch in several ways:
+The <c>eapply</c> command takes one or more regular file or directory paths as
+its arguments. Optionally, these can be preceded by GNU <c>patch</c> options.
 </p>
+
+<note>
+The <c>--</c> delimiter indicates the end of options. This is useful if a
+filename begins with a hyphen.
+</note>
 
 <ul>
-<li><c>eapply</c> will not unpack patches for you.</li>
-<li>
-The default patch level is -p1.
-Other patch levels must be specified manually or the command will fail.
-</li>
-<li>
-When specifying a directory, at least one file with a name ending in .patch or .diff
-must exist or the command fails.  Other files are ignored.
-</li>
+  <li>
+    If an argument is a regular file, it will be applied it in the working
+    directory by calling GNU <c>patch</c> with patch level <c>-p1</c>.
+    Specifying an explicit <c>-p<e>N</e></c> option will override the default
+    patch level.
+  </li>
+  <li>
+    For a directory, <c>patch -p1</c> applies all patch files with names ending
+    in <c>.diff</c> or <c>.patch</c> in that directory, in POSIXbetical order
+    of their names. Any other files in the directory are ignored.
+    Again, <c>-p<e>N</e></c> can be used to override the default patch level.
+    Note that <c>eapply</c> will not recurse into subdirectories.
+  </li>
 </ul>
 
 <p>
-Note that distributing modified tarballs rather than a vanilla tarball
-and patches is <e>highly</e> discouraged.
+<c>eapply</c> was added in EAPI 6. It differs from the previously available
+<c>epatch</c> in several ways:
 </p>
+
+<ul>
+  <li>
+    <c>eapply</c> will not unpack patches for you.
+  </li>
+  <li>
+    The patch level is no longer detected automatically. Patch levels other
+    than <c>-p1</c> must be specified manually.
+  </li>
+  <li>
+    When specifying a directory, at least one file with a name ending in
+    <c>.diff</c> or <c>.patch</c> must exist or the command fails.
+  </li>
+</ul>
 </body>
 
 <section>
 <title>Basic <c>eapply</c></title>
 <body>
+
 <p>
-The default src_prepare function will look for a global PATCHES array to apply
-a list of patches for you.
+In its simplest form, <c>eapply</c> takes a single filename and applies that
+patch. It will automatically <c>die</c> if the apply fails. The following is
+taken from <c>sys-libs/gpm</c>:
 </p>
+
+<codesample lang="ebuild">
+	eapply "${FILESDIR}"/${P}-musl.patch
+</codesample>
+
+<p>
+In the following simplified example taken from <c>www-client/firefox</c>,
+a patchset is added to <c>SRC_URI</c> in order to fetch and unpack it.
+<c>eapply</c> is then called with a directory argument. It applies all patches
+found in that directory:
+</p>
+
+<codesample lang="ebuild">
+SRC_URI+="https://dev.gentoo.org/~larry/patchsets/${P}-patches-01.tar.xz"
+
+src_prepare() {
+	eapply "${WORKDIR}/firefox-patches"
+	eapply_user
+}
+</codesample>
+
+<p>
+The <uri link="::ebuild-writing/misc-files/patches/"/> chapter gives some
+guidelines about where patches should be hosted and about their formatting.
+</p>
+
+<p>
+The default <c><uri link="::ebuild-writing/functions/src_prepare"/></c>
+function will look for a global PATCHES array to apply a list of patches
+for you.
+</p>
+
 <codesample lang="ebuild">
 PATCHES=(
+	# Fix install location
 	"${FILESDIR}/${P}-destdir.patch"
+	# Respect MAKEOPTS #876543
 	"${FILESDIR}/${P}-parallel_build.patch"
 )
 </codesample>
@@ -58,6 +117,7 @@ PATCHES=(
 <section>
 <title>Advanced <c>eapply</c></title>
 <body>
+
 <p>
 This example shows how different patch levels can be applied:
 </p>
@@ -70,117 +130,6 @@ src_prepare() {
 	eapply_user
 }
 </codesample>
-</body>
-</section>
-
-<section>
-<title>Basic <c>epatch</c></title>
-<body>
-
-<p>
-In its simplest form, <c>epatch</c> takes a single filename and
-applies that patch. It will automatically <c>die</c> if the apply
-fails. The following is taken from <c>app-misc/detox</c>:
-</p>
-
-<codesample lang="ebuild">
-src_prepare() {
-	epatch "${FILESDIR}/${P}-destdir.patch"
-	epatch "${FILESDIR}/${P}-parallel_build.patch"
-}
-</codesample>
-
-<p>
-For larger patches, using
-<uri link="::general-concepts/mirrors/#Suitable Download Hosts">
-your devspace</uri> rather than
-<uri link="::ebuild-writing/variables/#Predefined Read-Only Variables">
-${FILESDIR}</uri> is more appropriate. In these situations, it is
-usually best to compress the patch in question with <c>xz</c> or
-<c>bzip2</c> (as opposed to <c>${FILESDIR}</c> patches, which must not
-be compressed). For example, from <c>app-admin/showconsole</c>:
-</p>
-
-<codesample lang="ebuild">
-src_prepare() {
-	epatch "${WORKDIR}/${P}-suse-update.patch.bz2"
-	epatch "${FILESDIR}/${PV}-no-TIOCGDEV.patch"
-}
-</codesample>
-
-<p>
-Remember to add the patch to <c>SRC_URI</c>.
-</p>
-</body>
-</section>
-
-<section>
-<title>Multiple Patches with <c>epatch</c></title>
-<body>
-
-<p>
-epatch can also apply multiple patches (which can be selectively based
-upon arch) from a single directory. This can be useful if upstream
-have releases that need more patches.
-</p>
-
-<p>
-A simple example:
-</p>
-
-<codesample lang="ebuild">
-src_prepare() {
-	EPATCH_SOURCE="${WORKDIR}/patches" EPATCH_SUFFIX="patch" \
-		EPATCH_FORCE="yes" epatch
-}
-</codesample>
-
-<p>
-Here, one of the <c>SRC_URI</c> components is a tarball containing
-many patches with file extension <c>.patch</c>.
-</p>
-
-<p>
-Variables which may be defined include:
-</p>
-
-<table>
-  <tr>
-    <th>Variable</th>
-    <th>Purpose</th>
-  </tr>
-  <tr>
-    <ti><c>EPATCH_SOURCE</c></ti>
-    <ti>Specifies the directory in which epatch looks for patches.</ti>
-  </tr>
-  <tr>
-    <ti><c>EPATCH_SUFFIX</c></ti>
-    <ti>File extension for patches.</ti>
-  </tr>
-  <tr>
-    <ti><c>EPATCH_OPTS</c></ti>
-    <ti>Default options to <c>patch</c>.</ti>
-  </tr>
-  <tr>
-    <ti><c>EPATCH_EXCLUDE</c></ti>
-    <ti>List of patches to exclude.</ti>
-  </tr>
-  <tr>
-    <ti><c>EPATCH_FORCE</c></ti>
-    <ti>
-    Force epatch to apply patches even if they do not follow the
-    canonical naming form (set to <c>yes</c>).
-    </ti>
-  </tr>
-</table>
-
-<p>
-Bulk patches should be named in the form
-<c>??_${ARCH}_foo.${EPATCH_SUFFIX}</c>. If they are
-not, <c>EPATCH_FORCE="yes"</c> must be set. To apply a patch on <c>all</c>
-archs, use all for the <c>${ARCH}</c> part.
-</p>
-
 </body>
 </section>
 </chapter>
