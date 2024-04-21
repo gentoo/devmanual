@@ -3,3 +3,7 @@
 .depend
 documents.js
 eclass-reference/
+
+# Emacs backup files and locks
+*~
+.#*
