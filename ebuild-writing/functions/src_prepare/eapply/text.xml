@@ -34,11 +34,11 @@ filename begins with a hyphen.
     patch level.
   </li>
   <li>
-    For a directory, <c>patch -p1</c> applies all patch files with names ending
+    For a directory, <c>eapply</c> applies all patch files with names ending
     in <c>.diff</c> or <c>.patch</c> in that directory, in POSIXbetical order
     of their names. Any other files in the directory are ignored.
-    Again, <c>-p<e>N</e></c> can be used to override the default patch level.
-    Note that <c>eapply</c> will not recurse into subdirectories.
+    Again, <c>-p<e>N</e></c> can be used to override the default <c>-p1</c>
+    patch level. Note that <c>eapply</c> will not recurse into subdirectories.
   </li>
 </ul>
 
