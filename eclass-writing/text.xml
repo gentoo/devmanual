@@ -276,6 +276,15 @@ summarizes the available documentation tags:
   <ti>Declares that this eclass should no longer be used</ti>
 </tr>
 <tr>
+  <ti><c>@DEAD</c></ti>
+  <ti>No</ti>
+  <ti><d/></ti>
+  <ti>
+    For an eclass that is slated for removal; prevents the eclass-manpages
+    package from documenting the eclass.
+  </ti>
+</tr>
+<tr>
   <ti><c>@DESCRIPTION:</c></ti>
   <ti>No</ti>
   <ti>Multiline freetext</ti>
