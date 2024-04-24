@@ -114,8 +114,8 @@ batch push them at once where possible.
 <body>
 
 <p>
-No longer used eclasses may be removed from the tree, but developers must
-adhere to the following process:
+Eclasses that are no longer in use may be removed from the tree, but developers
+must adhere to the following process:
 </p>
 
 <ol>
@@ -139,8 +139,8 @@ adhere to the following process:
 
 <note>
 Before considering removal, please mark the eclass as <c># @DEPRECATED:</c>
-to ensure consumers are warned if they are still using the eclass. Do this
-for a period before removing the eclass.
+to ensure consumers are warned if they are still using the eclass. Do this at
+least 30 days before removing the eclass.
 </note>
 
 </body>
