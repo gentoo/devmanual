@@ -2,8 +2,8 @@
 <guide self="eclass-writing/">
 <chapter>
 <title>Eclass Writing Guide</title>
-
 <body>
+
 <p>
 This section provides a brief introduction to eclass authoring.
 </p>
@@ -102,7 +102,6 @@ it is good etiquette to ping other developers in e.g. <c>#gentoo-dev</c>
 on IRC or informally determine if there are other similar changes (mainly
 documentation) which should be pushed at the same time in order to avoid
 unnecessary cache regeneration within a few hours or days of each other.
-
 The same applies to your own work <d/> please prepare all of your commits and
 batch push them at once where possible.
 </note>
@@ -114,8 +113,10 @@ batch push them at once where possible.
 <title>Removing Eclasses</title>
 <body>
 
-<p>No longer used eclasses may be removed from the tree, but developers must
-adhere to the following process:</p>
+<p>
+No longer used eclasses may be removed from the tree, but developers must
+adhere to the following process:
+</p>
 
 <ol>
   <li>
