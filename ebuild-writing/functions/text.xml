@@ -60,12 +60,12 @@ Downloading a package's source happens before any of these phases, so
 <c>emerge --fetchonly</c> should perform all the network access you
 need (unless you're using live ebuilds).  Network access outside of
 this would not be cached locally (e.g. in <c>${DISTDIR}</c>, see
-<uri link="::ebuild-writing/variables/#Predefined Read-Only Variables"/>),
+<uri link="::ebuild-writing/variables/#Predefined read-only variables"/>),
 which makes it hard to have reproducible builds (see
-<uri link="::ebuild-writing/functions/src_unpack/vcs-sources/#Disadvantages of VCS Sources"/>).
+<uri link="::ebuild-writing/functions/src_unpack/vcs-sources/#Disadvantages of vcs sources"/>).
 Avoid network access in any phase by using local files, extending
 <c>SRC_URI</c> (see
-<uri link="::ebuild-writing/variables/#Ebuild-defined Variables"/>), etc.
+<uri link="::ebuild-writing/variables/#Ebuild-defined variables"/>), etc.
 </p>
 </body>
 

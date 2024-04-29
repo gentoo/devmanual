@@ -68,7 +68,7 @@ be referenced.
 <body>
 <p>
 This function is only triggered for packages which have <c>RESTRICT="fetch"</c>
-(see <uri link="::general-concepts/mirrors/#Restricting Automatic Mirroring"/>)
+(see <uri link="::general-concepts/mirrors/#Restricting automatic mirroring"/>)
 set, and only if one or more components listed in <c>SRC_URI</c> are not
 already available in the <c>distfiles</c> directory.
 </p>

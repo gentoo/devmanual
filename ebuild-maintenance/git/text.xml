@@ -142,7 +142,7 @@ used. The valid uses of git include:
 Whenever <c>pkgdev</c> is not used to commit, you need to manually verify all
 packages affected by the commit using <c>pkgcheck scan --commits</c>. Also,
 when using <c>git</c> manually, you must perform a manual sign-off to the
-<uri link="::general-concepts/copyright-policy/#Certificate of origin"/> using
+<uri link="::general-concepts/copyright-policy/#Certificate of Origin"/> using
 the <c>-s </c> or <c>--signoff</c> option with your git commit commands. Make
 sure you have read and understand the actual certificate.
 </p>

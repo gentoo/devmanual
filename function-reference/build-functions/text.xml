@@ -34,7 +34,7 @@ during the unpack and compile stages.
     <ti>
       Wrapper for <c>./configure</c>. Passes on all <c>args</c>. Will abort
       (via <c>die</c>) should <c>configure</c> fail.
-      See <uri link="::ebuild-writing/functions/src_configure/configuring/#econf Options"/>
+      See <uri link="::ebuild-writing/functions/src_configure/configuring/#econf options"/>
       for details.
     </ti>
   </tr>

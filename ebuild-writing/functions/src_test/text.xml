@@ -72,7 +72,7 @@ to run it. Sometimes the package will need additional dependencies for this,
 i.e., dependencies that are only required to run the test suite. Such test-only
 dependencies should be specified in DEPEND or BDEPEND behind a USE flag;
 often, the <c>test</c> USE flag will be used for this. Please refer to the
-section on <uri link="::general-concepts/dependencies/#Test Dependencies"/>
+section on <uri link="::general-concepts/dependencies/#Test dependencies"/>
 for more information.
 </p>
 

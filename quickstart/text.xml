@@ -195,7 +195,7 @@ failed.
 <p>
 In the ctags example, we didn't tell Portage about any dependencies. As it
 happens, that's ok, because ctags only needs a basic toolchain to compile and
-run (see <uri link="::general-concepts/dependencies/#Implicit System Dependency"/>
+run (see <uri link="::general-concepts/dependencies/#Implicit system dependency"/>
 for why we don't need to depend upon those explicitly). However, life is rarely
 that simple.
 </p>
@@ -233,7 +233,7 @@ Again, you can see the ebuild header and the various informational variables. In
 <c>SRC_URI</c>, <c>${PN}</c> is used to get the package's
 name <e>without</e> the version suffix (there are more of these
 variables <d/> see
-<uri link="::ebuild-writing/variables/#Predefined Read-Only Variables"/>).
+<uri link="::ebuild-writing/variables/#Predefined read-only variables"/>).
 </p>
 
 <p>
@@ -300,7 +300,8 @@ Note the <c>${FILESDIR}/${P}-destdir.patch</c> <d/> this refers to
 <c>detox-1.1.0-destdir.patch</c>, which lives in the <c>files/</c>
 subdirectory in the Gentoo repository. Larger patch files must go on your
 developer's space at <c>dev.gentoo.org</c> rather than in <c>files/</c> or
-mirrors <d/> see <uri link="::general-concepts/mirrors/#Gentoo Mirrors"/> and
+mirrors <d/>
+see <uri link="::general-concepts/mirrors/#Suitable download hosts"/> and
 <uri link="::ebuild-writing/functions/src_prepare/eapply/"/>.
 </p>
 

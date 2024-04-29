@@ -70,7 +70,8 @@ fetch and start distributing the new version.
 
 <p>
 Updating an existing distfile is generally cause for concern and must be done
-with care, see <uri link="::general-concepts/manifest/#Updating Manifests"/>.
+with care, see
+<uri link="::general-concepts/manifest/#Updating Manifest files"/>.
 </p>
 
 <p>

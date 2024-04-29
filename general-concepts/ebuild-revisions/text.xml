@@ -7,7 +7,7 @@
 <p>
 Ebuilds may have a Gentoo revision number associated with them. This is a
 <c>-rX</c> suffix, where <c>X</c> is an integer <d/> see
-<uri link="::ebuild-writing/file-format/#File Naming Rules"/>.
+<uri link="::ebuild-writing/file-format/#File naming rules"/>.
 This component must only be used for Gentoo changes, not upstream releases.
 An ebuild with no explicit revision number has the implicit <c>-r0</c>
 revision.
@@ -40,7 +40,7 @@ of thumb could be used as a guideline:
     as such), then a new revision should be introduced and the old one
     kept. If the package has stable keywords, the new revision should
     be dropped to <c>~arch</c> (see
-    <uri link="::keywording/#Keywording on Upgrades"/>).
+    <uri link="::keywording/#Keywording on upgrades"/>).
     For any such revision bump, the new ebuild should be based
     on the previous revision to ensure that fixes aren't dropped
     accidentally.

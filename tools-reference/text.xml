@@ -12,7 +12,7 @@ ebuilds.
 
 <p>
 Please keep in mind the need for
-<uri link="::ebuild-writing/error-handling/#The die Function">error handling</uri>
+<uri link="::ebuild-writing/error-handling/#The die function">error handling</uri>
 when using these tools in ebuilds.
 </p>
 </body>

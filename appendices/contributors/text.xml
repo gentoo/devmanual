@@ -13,7 +13,7 @@ This page lists the contributions to the Gentoo Development Guide:
   Main Content
 </author>
 <author name="Grant Goodyear" email="g2boojum@gentoo.org">
-  <uri link="::tools-reference/cat/#Here Documents"/>
+  <uri link="::tools-reference/cat/#Here documents"/>
 </author>
 <author name="Aaron Walker" email="ka0ttic@gentoo.org">
   <uri link="::tasks-reference/completion/"/>
@@ -23,7 +23,7 @@ This page lists the contributions to the Gentoo Development Guide:
 </author>
 <author name="Tom Martin" email="slarti@gentoo.org">
   <uri link="::appendices/editor-configuration/emacs/"/>,
-  <uri link="::general-concepts/use-flags/#Conflicting USE Flags"/>
+  <uri link="::general-concepts/use-flags/#Conflicting USE flags"/>
 </author>
 <author name="Paul Varner" email="fuzzyray@gentoo.org">
   <uri link="::ebuild-writing/functions/src_unpack/rpm-sources/"/>
@@ -33,7 +33,7 @@ This page lists the contributions to the Gentoo Development Guide:
 </author>
 <author name="Diego Pettenò" email="flameeyes@gentoo.org">
   <uri link="::tasks-reference/pam/"/>,
-  <uri link="::general-concepts/autotools/#aclocal and m4 Files"/>
+  <uri link="::general-concepts/autotools/#aclocal and m4 files"/>
 </author>
 <author name="Fernando J. Pereda" email="ferdy@gentoo.org">
   <uri link="::archs/alpha/"/>
@@ -123,7 +123,7 @@ Misc
   Search functionality
 </author>
 <author name="Mike Frysinger" email="vapier@gentoo.org">
-  <uri link="::ebuild-writing/misc-files/patches/#Clean Patch Howto"/>
+  <uri link="::ebuild-writing/misc-files/patches/#Clean patch howto"/>
 </author>
 <author name="Sam James" email="sam@gentoo.org">
   <uri link="::eclass-writing/"/>,

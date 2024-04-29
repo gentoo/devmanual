@@ -114,7 +114,7 @@ metadata.xml:
   <ti>
     This tag contains a description for a category or a package.
     For packages, it is used to augment the
-    <uri link="::ebuild-writing/variables/#Ebuild-defined Variables">
+    <uri link="::ebuild-writing/variables/#Ebuild-defined variables">
     DESCRIPTION</uri> field in the ebuilds themselves. This tag has
     two optional subtags: <c>&lt;pkg&gt;</c> and <c>&lt;cat&gt;</c>.
   </ti>
@@ -302,7 +302,7 @@ There are also some attributes that can be used with these tags:
     When this attribute is required on the <c>&lt;flag&gt;</c> tag, it
     simply contains the name of the USE flag. For the
     <c>&lt;slot&gt;</c> tag, it specifies the
-    <uri link="::general-concepts/slotting/#Slot Names">
+    <uri link="::general-concepts/slotting/#Slot names">
     slot name</uri> to which it applies. A slot name of <c>*</c>
     allows for a single <c>&lt;slot&gt;</c> tag to match all the slots of a
     package, in which case no other slot tags may be present.

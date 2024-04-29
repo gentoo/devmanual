@@ -70,7 +70,7 @@ longer matches the computed checksum of the fetched distfile.
 
 <p>
 Special care is also required with regard to
-<uri link="::general-concepts/mirrors/#Replacing Automatically Mirrored Files">
+<uri link="::general-concepts/mirrors/#Replacing automatically mirrored files">
 mirrors</uri>.
 </p>
 </body>

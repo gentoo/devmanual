@@ -74,7 +74,7 @@ distinctions still apply even if it isn't, strictly speaking, cross-compiling.
 <p>
 Build dependencies are used to specify any dependencies that are required
 to unpack, patch, compile, test or install the package (but see
-<uri link="::general-concepts/dependencies/#Implicit System Dependency"/> for
+<uri link="::general-concepts/dependencies/#Implicit system dependency"/> for
 exemptions).
 </p>
 
@@ -382,7 +382,7 @@ DEPEND="qt5? ( ~dev-qt/qtcore-5.15.2:5 )
 In <c>EAPI=5</c> and higher, you can use slot operators appended to the package
 name to declare whether or not your package should be rebuilt after the versions
 satisfying its runtime dependencies are updated to versions with a different slot
-or <uri link="::general-concepts/slotting/#Sub-Slots">sub-slot</uri>:
+or <uri link="::general-concepts/slotting/#Sub-slots">sub-slot</uri>:
 </p>
 
 <ul>

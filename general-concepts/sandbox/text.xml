@@ -22,7 +22,7 @@ generally <b>not</b> the correct solution.
 <p>
 See <uri link="::function-reference/sandbox-functions/"/> for details on
 sandbox-related functions. See <uri
-link="::appendices/common-problems/#Handling Access Violations"/> for suggestions
+link="::appendices/common-problems/#Handling access violations"/> for suggestions
 on fixing sandbox-related build problems.
 </p>
 </body>

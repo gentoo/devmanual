@@ -10,7 +10,7 @@ This section provides a brief introduction to eclass authoring.
 
 <important>
 You should reread the
-<uri link="::general-concepts/overlay/#Overlay and Eclasses"/>
+<uri link="::general-concepts/overlay/#Overlay and eclasses"/>
 and <uri link="::general-concepts/portage-cache/"/> sections before continuing.
 </important>
 </body>

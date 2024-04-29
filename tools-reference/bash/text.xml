@@ -486,7 +486,7 @@ done &lt; some_file
 </codesample>
 
 <p>
-See <uri link="::ebuild-writing/error-handling/#die and Subshells"/>
+See <uri link="::ebuild-writing/error-handling/#die and subshells"/>
 for an explanation of why <c>while read &lt; file</c> should
 be used over <c>cat file | while read</c>.
 </p>

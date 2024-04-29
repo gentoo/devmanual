@@ -116,7 +116,7 @@ Overall, this gives us a filename like <c>libfoo-1.2.5b_pre5-r2.ebuild</c>.
 </p>
 
 <p>
-The <uri link ="::ebuild-writing/variables/#Version and Name Formatting Issues">
+The <uri link ="::ebuild-writing/variables/#Version and name formatting issues">
 EAPI 7 version commands</uri> may be used to manipulate and extract
 ebuild version components.
 </p>
@@ -146,7 +146,7 @@ for this is $(upcoming-version)_preYYYYMMDD.
 
 <p>
 The policy for so-called <e>live</e> ebuilds
-(see <uri link="::ebuild-writing/functions/src_unpack/#src_unpack Actions"/>)
+(see <uri link="::ebuild-writing/functions/src_unpack/#src_unpack actions"/>)
 is to use <c>9999</c> as the version (or as the last version component). For
 packages with more than 4 digits e.g. YYYYMMDD format, <c>99999999</c> is an
 acceptable alternative.

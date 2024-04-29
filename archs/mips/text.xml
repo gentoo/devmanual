@@ -70,7 +70,7 @@ between these, talk to the MIPS team.
 <p>
 Because <c>CFLAGS</c> are sometimes used to specify ISA and ABI information, it is
 vital that packages honour this setting. See
-<uri link="::general-concepts/user-environment/#Not Filtering Variables"/>.
+<uri link="::general-concepts/user-environment/#Not filtering variables"/>.
 </p>
 
 </body>

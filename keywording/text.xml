@@ -241,7 +241,7 @@ manually removed during the testing process, which is cumbersome.
 
 <important>
 When committing, make sure that you reference any bugs in the commit message.
-See <uri link="::ebuild-maintenance/git/#Git Commit Message Format"/> for how
+See <uri link="::ebuild-maintenance/git/#Git commit message format"/> for how
 to do this.
 </important>
 

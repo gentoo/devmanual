@@ -676,7 +676,7 @@ Finally, to state "at least one of foo, bar, or baz must be set":
 REQUIRED_USE="|| ( foo bar baz )"
 </codesample>
 <important>
-See section <uri link="::general-concepts/use-flags/#Conflicting USE Flags"/>
+See section <uri link="::general-concepts/use-flags/#Conflicting USE flags"/>
 for when (and when not) to use <c>REQUIRED_USE</c>.
 </important>
 </body>

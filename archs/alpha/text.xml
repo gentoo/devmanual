@@ -87,7 +87,7 @@ which the compiler was built.
 <p>
 The <c>-mieee</c> flag <b>should</b> always be used unless you have a deep knowledge
 of the Alpha architecture, so the comments on
-<uri link="::general-concepts/user-environment/#Not Filtering Variables"/> are
+<uri link="::general-concepts/user-environment/#Not filtering variables"/> are
 really important on Alpha.
 </p>
 

@@ -102,7 +102,7 @@ U+0021 to U+007E (see also
 <uri link="https://www.gentoo.org/glep/glep-0031.html#suitable-characters-for-file-and-directory-names">
 GLEP 31</uri>). Any characters that have a special meaning in Bash or in
 <c>SRC_URI</c> should also be avoided. If necessary, upstream files can be
-<uri link="::ebuild-writing/variables/#Renaming Sources">renamed</uri> using
+<uri link="::ebuild-writing/variables/#Renaming sources">renamed</uri> using
 <c>-&gt;</c> syntax.
 </p>
 

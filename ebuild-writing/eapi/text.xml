@@ -70,9 +70,10 @@ is the best.  Using the features of the latest EAPI is encouraged.
 
 <p>
 Gentoo policy is to support upgrades for installations at least a year old
-with no/little intervention and up to two years old with minor intervention. To
-achieve this, developers must avoid using the latest EAPI in ebuilds within
-the <c>@system</c> set (see <uri link="::general-concepts/dependencies/#implicit-system-dependency"/>)
+with no/little intervention and up to two years old with minor intervention.
+To achieve this, developers must avoid using the latest EAPI in ebuilds within
+the <c>@system</c> set
+(see <uri link="::general-concepts/dependencies/#Implicit system dependency"/>)
 or its dependencies.
 </p>
 
@@ -603,7 +604,7 @@ installation targets.
       <li><c>ver_test</c> compares two versions</li>
     </ul>
     <p>
-    See <uri link="::ebuild-writing/variables/#Version and Name Formatting Issues"/>
+    See <uri link="::ebuild-writing/variables/#Version and name formatting issues"/>
     for examples of common uses or
     <uri link="https://dev.gentoo.org/~mgorny/articles/the-ultimate-guide-to-eapi-7.html#version-manipulation-and-comparison-commands">
     an in-depth look</uri>
