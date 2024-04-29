@@ -237,7 +237,7 @@ IUSE="+bar foo"
 </section>
 
 <section>
-<title>Local and Global USE Flags</title>
+<title>Local and global USE flags</title>
 <body>
 
 <p>

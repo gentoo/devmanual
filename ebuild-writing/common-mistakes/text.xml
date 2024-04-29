@@ -442,12 +442,12 @@ HTTPS support for the site used in <c>HOMEPAGE</c>.
 </body>
 </subsection>
 <subsection>
-<title>Wrongfully used spaces instead of TABS</title>
+<title>Wrongfully used spaces instead of TABs</title>
 <body>
 
 <p>
 It is no fun reformatting lines of ebuilds because the submitter did not follow
-the guidelines to use TABS rather than spaces. So <e>please</e> use tabs!
+the guidelines to use TABs rather than spaces. So <e>please</e> use TABs!
 </p>
 
 </body>

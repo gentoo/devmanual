@@ -51,8 +51,8 @@ IFS='' read -r -d '' HEADER << 'EOF'
 </div></div></nav>
 <div class="container"><div class="row"><div class="col-md010">
 <ol class="breadcrumb">
-<li><a href="../../index.html">Master Index</a></li>
-<li><a href="../index.html">Eclass Reference</a></li>
+<li><a href="../../index.html">Master index</a></li>
+<li><a href="../index.html">Eclass reference</a></li>
 </ol>
 </div></div></div>
 </header>
@@ -171,7 +171,7 @@ cat << 'EOF' > "${OUTPUTDIR}"/text.xml || exit 1
 <?xml version="1.0" encoding="UTF-8"?>
 <guide self="eclass-reference/">
 <chapter>
-<title>Eclass Reference</title>
+<title>Eclass reference</title>
 <body>
 
 <p>

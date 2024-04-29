@@ -10,7 +10,7 @@ This page lists the contributions to the Gentoo Development Guide:
 
 <authors>
 <author name="Ciaran McCreesh" email="ciaran.mccreesh@blueyonder.co.uk">
-  Main Content
+  Main content
 </author>
 <author name="Grant Goodyear" email="g2boojum@gentoo.org">
   <uri link="::tools-reference/cat/#Here documents"/>
@@ -50,10 +50,10 @@ This page lists the contributions to the Gentoo Development Guide:
   <uri link="::archs/ppc/"/>
 </author>
 <author name="Ursula Maplehurst" email="plasm@roo.me.uk">
-  Previous maintainer (XSL Stylesheets, legacy Developer Handbook content)
+  Previous maintainer (XSL stylesheets, legacy Developer Handbook content)
 </author>
 <author name="Mark Loeser" email="halcy0n@gentoo.org">
-  XSL Stylesheets, previous maintainer
+  XSL stylesheets, previous maintainer
 </author>
 <author name="Petteri Räty" email="betelgeuse@gentoo.org">
 <uri link="::ebuild-writing/"/>,
@@ -68,7 +68,7 @@ Misc
   <uri link="::ebuild-maintenance/"/>,
   <uri link="::appendices/editor-configuration/emacs/"/>,
   <uri link="::appendices/devbook-guide/"/>,
-  DTD, XSL stylesheet, eclass conversion
+  DTD, XSL stylesheets, eclass conversion
 </author>
 <author name="Mike Pagano" email="mpagano@gentoo.org">
   <uri link="::general-concepts/news/"/>

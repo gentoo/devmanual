@@ -26,7 +26,7 @@ so you must never edit it directly.
 Having a small number of packages using identically named local <c>USE</c> flags is
 allowed. If the number starts to grow substantially, it may be worth proposing
 that the flag becomes a global <d /> see
-<uri link="::general-concepts/use-flags/#Local and Global USE Flags"/>.
+<uri link="::general-concepts/use-flags/#Local and global USE flags"/>.
 </p>
 
 <p>
