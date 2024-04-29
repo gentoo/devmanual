@@ -28,7 +28,7 @@ filename begins with a hyphen.
 
 <ul>
   <li>
-    If an argument is a regular file, it will be applied it in the working
+    If an argument is a regular file, it will be applied in the working
     directory by calling GNU <c>patch</c> with patch level <c>-p1</c>.
     Specifying an explicit <c>-p<e>N</e></c> option will override the default
     patch level.
