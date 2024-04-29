@@ -697,6 +697,12 @@ with a capital letter.
 </codesample>
 
 <p>
+Titles should use sentence case, i.e. their first word should start with a
+capital letter, and all other words (except proper nouns) should be in lower
+case.
+</p>
+
+<p>
 Try to use <c>&lt;uri&gt;</c> with the <c>link</c> attribute as much as
 possible. In other words, the
 <uri link="https://www.gentoo.org/">Gentoo website</uri> is preferred over
