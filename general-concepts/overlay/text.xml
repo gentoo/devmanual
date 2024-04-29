@@ -11,9 +11,9 @@ in one or more repos.conf files.
 </p>
 
 <p>
-The overlay should contain the same directory structure as <c>PORTDIR</c> (although
-only the necessary directories need be included). For example, a simple overlay
-might have a directory structure like:
+The overlay should contain the same directory structure as the Gentoo
+repository (although only the necessary directories need be included).
+For example, a simple overlay might have a directory structure like:
 </p>
 
 <pre>

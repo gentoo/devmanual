@@ -120,11 +120,10 @@ to be installed recursively.
 </p>
 
 <note>
-There is no need to <c>dodoc</c> <c>COPYING</c>! The license belongs
-to <c>${PORTDIR}/licenses</c>. Sometimes though, you might want to
-install <c>COPYING</c> regardless, if it explains how different
-licenses are applied to different parts of the application, for
-example.
+There is no need for <c>dodoc COPYING</c>! The license belongs in the
+repository's <c>licenses/</c> directory. Sometimes though, you might want to
+install <c>COPYING</c> regardless, if it explains how different licenses are
+applied to different parts of the application, for example.
 </note>
 </body>
 </section>

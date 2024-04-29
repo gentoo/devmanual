@@ -64,9 +64,8 @@ for these variables when writing ebuilds.
   <tr>
     <ti><c>FILESDIR</c></ti>
     <ti>
-      Path to the ebuild's <c>files/</c> directory, commonly used
-      for small patches and files. For example:
-      <c>"${PORTDIR}/${CATEGORY}/${PN}/files"</c>.
+      Path to the package's <c>files/</c> directory, commonly used for small
+      patches and other files.
     </ti>
   </tr>
   <tr>
