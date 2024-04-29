@@ -230,11 +230,11 @@ indicates <c>GPL-2+</c> license:
 <body>
 
 <p>
-If your package's license is not already in the tree, you must add the
-license before committing the package. When adding the license, use a
-plain text file (UTF-8 encoded) if at all possible. Some licenses are
-PDF files rather than plain text <d/> this should only be done if we
-are legally required to do so.
+If your package's license is not already in the tree, you must add the license
+before committing the package. When adding the license, use a plain text file
+(UTF-8 encoded), because non-text files
+<uri link="::general-concepts/tree/#What Belongs in the Tree?">do not belong
+in the repository</uri>.
 Finally you need to check if your license should be added to a license group
 as listed in the repository's <c>profiles/license_groups</c> file. For more
 information see
