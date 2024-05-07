@@ -727,7 +727,7 @@
                     <a href="https://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License, version 2</a>.
                   </xsl:when>
                   <xsl:otherwise>
-                    <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+                    <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA-4.0</a> license.
                   </xsl:otherwise>
                 </xsl:choose>
                 The <a href="https://www.gentoo.org/inside-gentoo/foundation/name-logo-guidelines.html">Gentoo Name and Logo Usage Guidelines</a> apply.
