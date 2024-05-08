@@ -55,7 +55,7 @@ When removing packages follow these steps:
     <uri link="::ebuild-writing/misc-files/metadata/">metadata.xml</uri>
     files of other packages.
   </li>
-  <li>Close open bugs as WONTFIX</li>
+  <li>Close open bugs as PKGREMOVED</li>
 </ol>
 
 <p>
