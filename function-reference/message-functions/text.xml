@@ -79,8 +79,8 @@ displaying informational messages.
       <c>eqawarn</c>
     </ti>
     <ti>
-      Used by eclass authors to notify ebuild writers that they are using deprecated functionality.
-      Before EAPI=7, the eutils eclass must be inherited.
+      Used by eclass authors to notify ebuild writers that they are using
+      deprecated functionality.
     </ti>
   </tr>
 </table>
