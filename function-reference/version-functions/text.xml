@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<guide self="function-reference/version-functions/">
+<chapter>
+<title>Version functions reference</title>
+<body>
+
+<p>
+EAPI 7 introduced three commands for common version number operations:
+</p>
+
+<ul>
+  <li><c>ver_cut</c> obtains substrings of a version string</li>
+  <li><c>ver_rs</c> replaces separators in a version string</li>
+  <li><c>ver_test</c> compares two versions</li>
+</ul>
+</body>
+
+<section>
+<title>Version strings</title>
+<body>
+
+<p>
+The functions support arbitrary version strings consisting of version
+components interspersed with (possibly empty) version separators.
+</p>
+
+<p>
+A version component can either consist purely of digits (<c>[0-9]+</c>) or
+purely of uppercase and lowercase letters (<c>[A-Za-z]+</c>). A version
+separator is either a string of any other characters (<c>[^A-Za-z0-9]+</c>),
+or it occurs at the transition between a sequence of letters and a sequence
+of digits, or vice versa. In the latter case, the version separator is an
+empty string.
+</p>
+
+<p>
+The version is processed left-to-right, and each successive component is
+assigned numbers starting with 1. The components are either split on version
+separators or on boundaries between digits and letters (in which case the
+separator between the components is empty). Version separators are assigned
+numbers starting with 1 for the separator between 1st and 2nd components.
+As a special case, if the version string starts with a separator, it is
+assigned index 0.
+</p>
+
+<p>
+Examples:
+</p>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>s</th>
+    <th>c</th>
+    <th>s</th>
+    <th>c</th>
+    <th>s</th>
+    <th>c</th>
+    <th>s</th>
+    <th>c</th>
+    <th>s</th>
+    <th>c</th>
+  </tr>
+  <tr>
+    <th>Index</th>
+    <th>0</th>
+    <th>1</th>
+    <th>1</th>
+    <th>2</th>
+    <th>2</th>
+    <th>3</th>
+    <th>3</th>
+    <th>4</th>
+    <th>4</th>
+    <th>5</th>
+  </tr>
+  <tr>
+    <ti><c>1.2.3</c></ti>
+    <ti/>
+    <ti><c>1</c></ti>
+    <ti><c>.</c></ti>
+    <ti><c>2</c></ti>
+    <ti><c>.</c></ti>
+    <ti><c>3</c></ti>
+    <ti/>
+    <ti/>
+    <ti/>
+    <ti/>
+  </tr>
+  <tr>
+    <ti><c>1.2b_alpha4</c></ti>
+    <ti/>
+    <ti><c>1</c></ti>
+    <ti><c>.</c></ti>
+    <ti><c>2</c></ti>
+    <ti/>
+    <ti><c>b</c></ti>
+    <ti><c>_</c></ti>
+    <ti><c>alpha</c></ti>
+    <ti/>
+    <ti><c>4</c></ti>
+  </tr>
+  <tr>
+    <ti><c>.11.</c></ti>
+    <ti><c>.</c></ti>
+    <ti><c>11</c></ti>
+    <ti><c>.</c></ti>
+    <ti/>
+    <ti/>
+    <ti/>
+    <ti/>
+    <ti/>
+    <ti/>
+    <ti/>
+  </tr>
+</table>
+
+</body>
+</section>
+
+<section>
+<title>Ranges</title>
+<body>
+
+<p>
+A range can be specified as <e>m</e> for the <e>m</e>th version component,
+<e>m-</e> for all components starting with <e>m</e>th, or <e>m-n</e>
+for components starting at <e>m</e>th and ending at <e>n</e>th (inclusive).
+If the range spans outside the version string, it is silently truncated.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Functions</title>
+<body>
+
+<table>
+  <tr>
+    <th>
+      Function
+    </th>
+    <th>
+      Usage
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  <tr>
+    <ti>
+      <c>ver_cut</c>
+    </ti>
+    <ti>
+      <e>range</e> [<e>version</e>]
+    </ti>
+    <ti>
+      <p>
+      Print the substring of the version string containing components defined
+      by the <e>range</e> and the version separators between them. Processes
+      <e>version</e> if specified, <c>${PV}</c> otherwise.
+      </p>
+      <p>
+      See the introductory section for the syntax of versions and ranges.
+      </p>
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>ver_rs</c>
+    </ti>
+    <ti>
+      <e>range repl</e> [<e>range repl</e>...] [<e>version</e>]
+    </ti>
+    <ti>
+      <p>
+      Print the version string after substituting the specified version
+      separators at <e>range</e> with <e>repl</e> (string).  Multiple
+      <e>range repl</e> pairs can be specified. Processes <e>version</e>
+      if specified, <c>${PV}</c> otherwise.
+      </p>
+      <p>
+      See the introductory section for the syntax of versions and ranges.
+      </p>
+    </ti>
+  </tr>
+  <tr>
+    <ti>
+      <c>ver_test</c>
+    </ti>
+    <ti>
+      [<e>v1</e>] <e>op v2</e>
+    </ti>
+    <ti>
+      <p>
+      Check if the relation <e>v1 op v2</e> is true. If <e>v1</e> is not
+      specified, default to <c>${PVR}</c>. <e>op</e> can be <c>-gt</c>,
+      <c>-ge</c>, <c>-eq</c>, <c>-ne</c>, <c>-le</c>, or <c>-lt</c>.
+      The operators have their usual meaning as in test(1), i.e. the comparison
+      is true if <e>v1</e> is greater-than, greater-than-or-equal, equal,
+      not-equal, less-than-or-equal, or less-than <e>v2</e>.
+      </p>
+      <p>
+      Both versions <e>v1</e> and <e>v2</e> must conform to the
+      <uri link="https://projects.gentoo.org/pms/8/pms.html#x1-250003.2">
+      PMS version syntax</uri> (with optional revision parts), and the
+      comparison is performed according to the
+      <uri link="https://projects.gentoo.org/pms/8/pms.html#x1-260003.3">
+      algorithm specified in the PMS</uri>.
+      </p>
+    </ti>
+  </tr>
+</table>
+
+</body>
+</section>
+</chapter>
+</guide>

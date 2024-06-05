@@ -767,14 +767,11 @@ expecting a tarball named <c>Foo-1.2-3b.tar.bz2</c>. Rather than hard coding the
 it is preferable to make <c>MY_PN</c>, <c>MY_PV</c> and <c>MY_P</c> variables and use those to define the
 upstream naming.
 EAPI=7 debuted a new set of functions, ver_cut, ver_rs and ver_test.
-These were backported into older EAPIs with the <c>eapi7-ver</c> eclass.
 The easy way of redefining the version, which should be used unless you are sure
 you know what you are doing, is to use these functions:
 </p>
 
 <codesample lang="ebuild">
-inherit eapi7-ver
-
 MY_PN="Foo"
 # Replace the second period separator in PV with -
 MY_PV=$(ver_rs 2 '-')
@@ -787,24 +784,21 @@ switches to a format like <c>Foo-1.3-4.5.tar.bz2</c> (yes, this really happens).
 </p>
 
 <p>
-It is also possible to use bash substitution to achieve the same effect (this is
-how eapi7-ver works internally), but this is complicated, error prone and hard
-to read.
+It is also possible to use bash substitution to achieve the same effect, but
+this is complicated, error-prone and hard to read.
 </p>
 
 <p>
 Some ebuilds use calls to <c>sed</c>, <c>awk</c> and / or <c>cut</c> to do this.
 This must <e>not</e> be done for any new code and should be fixed to use
-built-in version manipulation commands (for EAPI 7 or later), Bash substitution,
-or in older EAPIs before 7, <c>eapi7-ver</c>. Global scope non-Bash code is
-<e>strongly</e> discouraged.
+the built-in version manipulation commands or Bash substitution. Global scope
+non-Bash code is <e>strongly</e> discouraged.
 </p>
 
 <p>
-The ver_ functions are used extract particular components
-from a version string. See <c>man eapi7-ver.eclass</c> and the eclass source code
-for further documentation and examples. A brief summary of the functions
-follows.
+The <c>ver_</c> functions are used extract particular components from a version
+string. See <uri link="::function-reference/version-functions/"/> for further
+documentation and examples. A brief summary of the functions follows.
 </p>
 
 <table>
