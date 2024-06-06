@@ -390,7 +390,10 @@ variables are as follows:
   <ti><c>@DEPRECATED:</c></ti>
   <ti>No</ti>
   <ti>Optionally, the name of any replacement variable</ti>
-  <ti>Declares that this variable should no longer be used in ebuilds</ti>
+  <ti>
+    Declares that this variable should no longer be used in ebuilds.
+    Must appear before the <c>@ECLASS_VARIABLE:</c> tag.
+  </ti>
 </tr>
 <tr>
   <ti><c>@DESCRIPTION:</c></ti>
