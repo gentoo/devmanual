@@ -20,15 +20,15 @@
       </xsl:when>
 
       <xsl:when test="contains($data, '$(')">
-        <xsl:call-template name="lang.highlight.m4.subtokenate">
+        <xsl:call-template name="lang.highlight.make.subtokenate">
           <xsl:with-param name="data" select="substring-before($data, '$(')"/>
           <xsl:with-param name="nokeywords" select="$nokeywords"/>
         </xsl:call-template>
-        <span class="Identifier">$(<xsl:call-template name="lang.highlight.m4.subtokenate">
+        <span class="Identifier">$(<xsl:call-template name="lang.highlight.make.subtokenate">
           <xsl:with-param name="data" select="substring-before(substring-after($data, '$('), ')')"/>
           <xsl:with-param name="nokeywords" select="$nokeywords"/>
         </xsl:call-template>)</span>
-        <xsl:call-template name="lang.highlight.m4.subtokenate">
+        <xsl:call-template name="lang.highlight.make.subtokenate">
           <xsl:with-param name="data" select="substring-after(substring-after($data, '$('), ')')"/>
           <xsl:with-param name="nokeywords" select="$nokeywords"/>
         </xsl:call-template>

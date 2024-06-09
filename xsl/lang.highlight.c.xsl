@@ -53,7 +53,7 @@
       <!-- If we're inside quotes stop here -->
       <xsl:when test="$quotePos mod 2 != 0">
         <span class="Constant">
-        <xsl:call-template name="lang.highlight.ebuild.subtokenate">
+        <xsl:call-template name="lang.highlight.c.subtokenate">
           <xsl:with-param name="data"><xsl:value-of select="."/></xsl:with-param>
           <xsl:with-param name="nokeywords">True</xsl:with-param>
         </xsl:call-template>
