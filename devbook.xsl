@@ -300,8 +300,8 @@
 
 <xsl:template name="repeat-string">
   <xsl:param name="count"/>
-  <xsl:param name="append"/>
-  <xsl:value-of select="str:padding($count * string-length($append), $append)"/>
+  <xsl:param name="string"/>
+  <xsl:value-of select="str:padding($count * string-length($string), $string)"/>
 </xsl:template>
 
 <xsl:template name="relative-path">
@@ -311,7 +311,7 @@
     <xsl:when test="$path = '' or $self = '' or substring-before($path, '/') != substring-before($self, '/')">
       <xsl:call-template name="repeat-string">
         <xsl:with-param name="count" select="string-length($self) - string-length(translate($self, '/', ''))"/>
-        <xsl:with-param name="append">../</xsl:with-param>
+        <xsl:with-param name="string">../</xsl:with-param>
       </xsl:call-template>
       <xsl:value-of select="$path"/>
     </xsl:when>
@@ -435,7 +435,7 @@
       <xsl:call-template name="repeat-string">
         <xsl:with-param name="count"
                         select="string-length(/guide/@self) - string-length(translate(/guide/@self, '/' , ''))"/>
-        <xsl:with-param name="append">../</xsl:with-param>
+        <xsl:with-param name="string">../</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
   </xsl:param>
@@ -522,7 +522,7 @@
     <xsl:call-template name="repeat-string">
       <xsl:with-param name="count" select="string-length(/guide/@self)
                                            - string-length(translate(/guide/@self, '/' , ''))"/>
-      <xsl:with-param name="append">../</xsl:with-param>
+      <xsl:with-param name="string">../</xsl:with-param>
     </xsl:call-template>
   </xsl:variable>
   <html lang="en">
@@ -894,7 +894,7 @@
       <xsl:variable name="relative_path_depth_recursion">
         <xsl:call-template name="repeat-string">
           <xsl:with-param name="count" select="$depth"/>
-          <xsl:with-param name="append">../</xsl:with-param>
+          <xsl:with-param name="string">../</xsl:with-param>
         </xsl:call-template>
       </xsl:variable>
       <li>
