@@ -89,6 +89,13 @@ install: all
 
 validate: devbook.rng
 	@xmllint --noout --quiet --relaxng $< $(XMLS)
+	@# Check if /guide/@self agrees with the document path
+	@for file in $(XMLS); do \
+	  self=$$(xmllint --quiet --xpath 'string(/guide/@self)' $${file}); \
+	  if test "$${self}text.xml" != "$${file#./}"; then \
+	    echo "$${file}: bad self attribute '$${self}'"; exit 1; \
+	  fi; \
+	done
 	@echo "xmllint validation successful"
 
 %.rng: %.rnc
