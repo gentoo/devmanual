@@ -68,7 +68,7 @@ Misc
   <uri link="::ebuild-maintenance/"/>,
   <uri link="::appendices/editor-configuration/emacs/"/>,
   <uri link="::appendices/devbook-guide/"/>,
-  DTD, XSL stylesheets, eclass conversion
+  RELAX NG schema, XSL stylesheets, eclass conversion
 </author>
 <author name="Mike Pagano" email="mpagano@gentoo.org">
   <uri link="::general-concepts/news/"/>
