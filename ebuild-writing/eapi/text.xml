@@ -112,6 +112,13 @@ Manager Specification for details about them.
 <section>
 <title>EAPI 5</title>
 
+<body>
+<todo>
+EAPI 5 is deprecated and should no longer appear here. The information needs to
+be split up and moved to other sections.
+</todo>
+</body>
+
 <subsection>
 <title>EAPI 5 metadata</title>
 <body>
@@ -296,6 +303,13 @@ If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
 
 <section>
 <title>EAPI 6</title>
+
+<body>
+<todo>
+EAPI 6 is deprecated and should no longer appear here. The information needs to
+be split up and moved to other sections.
+</todo>
+</body>
 
 <subsection>
 <title>EAPI 6 Bash version</title>
