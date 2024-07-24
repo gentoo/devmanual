@@ -244,7 +244,7 @@ The first two lines <e>must</e> look like this:
 
 <p>
 You should never redefine those variables. Always use MY_P, MY_PN, MY_PV,
-P0, etc. See other ebuilds that do it in Portage for more information. Most
+etc. See other ebuilds that do it in Portage for more information. Most
 ebuilds use bash "Parameter Expansion". Please read the man page for bash to
 understand how "Parameter Expansion" works.
 </p>
