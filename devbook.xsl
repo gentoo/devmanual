@@ -559,23 +559,23 @@
                 <div class="row">
                   <div class="site-title-buttons">
                     <div class="btn-group btn-group-sm">
-                      <a href="https://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-fw fa-download"></span> <strong> Get Gentoo!</strong></a>
+                      <a href="https://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-fw fa-download"/> <strong> Get Gentoo!</strong></a>
                       <div class="btn-group btn-group-sm">
                         <a class="btn gentoo-org-sites dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
-                          <span class="fa fa-fw fa-map-o"></span> <span class="hidden-xs"> gentoo.org sites </span> <span class="caret"></span>
+                          <span class="fa fa-fw fa-map-o"/> <span class="hidden-xs"> gentoo.org sites </span> <span class="caret"/>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right">
-                          <li><a href="https://www.gentoo.org/" title="Main Gentoo website"><span class="fa fa-home fa-fw"></span> gentoo.org</a></li>
-                          <li><a href="https://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text-o fa-fw"></span> Wiki</a></li>
-                          <li><a href="https://bugs.gentoo.org/" title="Report issues and find common issues"><span class="fa fa-bug fa-fw"></span> Bugs</a></li>
-                          <li><a href="https://forums.gentoo.org/" title="Discuss with the community"><span class="fa fa-comments-o fa-fw"></span> Forums</a></li>
-                          <li><a href="https://packages.gentoo.org/" title="Find software for your Gentoo"><span class="fa fa-hdd-o fa-fw"></span> Packages</a></li>
+                          <li><a href="https://www.gentoo.org/" title="Main Gentoo website"><span class="fa fa-home fa-fw"/> gentoo.org</a></li>
+                          <li><a href="https://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text-o fa-fw"/> Wiki</a></li>
+                          <li><a href="https://bugs.gentoo.org/" title="Report issues and find common issues"><span class="fa fa-bug fa-fw"/> Bugs</a></li>
+                          <li><a href="https://forums.gentoo.org/" title="Discuss with the community"><span class="fa fa-comments-o fa-fw"/> Forums</a></li>
+                          <li><a href="https://packages.gentoo.org/" title="Find software for your Gentoo"><span class="fa fa-hdd-o fa-fw"/> Packages</a></li>
                           <li class="divider"><xsl:comment/></li>
-                          <li><a href="https://planet.gentoo.org/" title="Find out what's going on in the developer community"><span class="fa fa-rss fa-fw"></span> Planet</a></li>
-                          <li><a href="https://archives.gentoo.org/" title="Read up on past discussions"><span class="fa fa-archive fa-fw"></span> Archives</a></li>
-                          <li><a href="https://sources.gentoo.org/" title="Browse our source code"><span class="fa fa-code fa-fw"></span> Sources</a></li>
+                          <li><a href="https://planet.gentoo.org/" title="Find out what's going on in the developer community"><span class="fa fa-rss fa-fw"/> Planet</a></li>
+                          <li><a href="https://archives.gentoo.org/" title="Read up on past discussions"><span class="fa fa-archive fa-fw"/> Archives</a></li>
+                          <li><a href="https://sources.gentoo.org/" title="Browse our source code"><span class="fa fa-code fa-fw"/> Sources</a></li>
                           <li class="divider"><xsl:comment/></li>
-                          <li><a href="https://infra-status.gentoo.org/" title="Get updates on the services provided by Gentoo"><span class="fa fa-server fa-fw"></span> Infra Status</a></li>
+                          <li><a href="https://infra-status.gentoo.org/" title="Get updates on the services provided by Gentoo"><span class="fa fa-server fa-fw"/> Infra Status</a></li>
                         </ul>
                       </div>
                     </div>
@@ -598,9 +598,9 @@
                     <button type="button" class="navbar-toggle"
                             data-toggle="collapse" data-target=".navbar-main-collapse">
                       <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
+                      <span class="icon-bar"/>
+                      <span class="icon-bar"/>
+                      <span class="icon-bar"/>
                     </button>
                   </div>
                   <div class="collapse navbar-collapse navbar-main-collapse">
@@ -609,7 +609,7 @@
                         <a href="{$relative_path_depth_recursion}index.html"><span class="fa fa-home"/>&#xa0;Home</a>
                       </li>
                       <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Index&#xa0;<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Index&#xa0;<span class="caret"/></a>
                         <xsl:if test="/guide/chapter[1]/section or //contentsTree">
                           <ul class="dropdown-menu">
                             <!-- List sections of this chapter first. -->
@@ -622,7 +622,7 @@
                               <li><a class="reference" href="#{$anchor}"><xsl:value-of select="title"/></a></li>
                             </xsl:for-each>
                             <xsl:if test="//contentsTree">
-                              <li class="divider"></li>
+                              <li class="divider"><xsl:comment/></li>
                               <!-- List any sub-documents included at first level.
                                    We cannot call "contentsTree" directly, because it would
                                    insert another "ul" element. So, assign it to a variable,
@@ -707,8 +707,8 @@
             <div class="col-xs-2 col-sm-3 col-md-2">
               <xsl:if test="not($offline)">
                 <ul class="footerlinks three-icons">
-                  <li><a href="https://twitter.com/gentoo" title="@Gentoo on Twitter"><span class="fa fa-twitter fa-fw"></span></a></li>
-                  <li><a href="https://www.facebook.com/gentoo.org" title="Gentoo on Facebook"><span class="fa fa-facebook fa-fw"></span></a></li>
+                  <li><a href="https://twitter.com/gentoo" title="@Gentoo on Twitter"><span class="fa fa-twitter fa-fw"/></a></li>
+                  <li><a href="https://www.facebook.com/gentoo.org" title="Gentoo on Facebook"><span class="fa fa-facebook fa-fw"/></a></li>
                 </ul>
                 <div class="text-center">
                   <a href="https://wiki.gentoo.org/wiki/Foundation:Privacy_Policy">Privacy Policy</a>
@@ -737,11 +737,11 @@
         </div>
       </footer>
       <xsl:if test="not($offline)">
-        <script src="https://assets.gentoo.org/tyrian/jquery.min.js"></script>
-        <script src="https://assets.gentoo.org/tyrian/bootstrap.min.js"></script>
-        <script src="https://assets.gentoo.org/lunr/lunr.min.js"></script>
+        <script src="https://assets.gentoo.org/tyrian/jquery.min.js"/>
+        <script src="https://assets.gentoo.org/tyrian/bootstrap.min.js"/>
+        <script src="https://assets.gentoo.org/lunr/lunr.min.js"/>
         <script>var documentsSrc = "<xsl:value-of select="$relative_path_depth_recursion"/>documents.js"</script>
-        <script src="{$relative_path_depth_recursion}search.js"></script>
+        <script src="{$relative_path_depth_recursion}search.js"/>
       </xsl:if>
     </body>
   </html>
