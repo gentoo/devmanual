@@ -23,7 +23,7 @@ query variables and similar state.
       <c>use flagname</c>
     </ti>
     <ti>
-      Returns a true value if and only if <c>flagname</c> is enabled.
+      Returns a true value if <c>flagname</c> is enabled, false otherwise.
       The condition is inverted if prefixed with an exclamation mark,
       <c>!flagname</c>.
       It is guaranteed that <c>use</c> produces no output.
