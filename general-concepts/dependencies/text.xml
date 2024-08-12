@@ -462,7 +462,7 @@ sub-slot changes of <c>wombat:0</c> should be ignored.
 <body>
 
 <p>
-To depend upon a certain package if and only if a given <c>USE</c> flag is set:
+To depend upon a certain package only if a given <c>USE</c> flag is set:
 </p>
 
 <codesample lang="ebuild">
