@@ -74,7 +74,7 @@ At the top of the ebuild is a header block. This is present in all ebuilds.
 </p>
 
 <p>
-Ebuilds are indented using tabs, with each tab representing four places.
+Ebuilds are indented using tabs, with each tab representing four spaces.
 See <uri link="::ebuild-writing/file-format/"/>.
 </p>
 </body>

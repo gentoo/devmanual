@@ -80,15 +80,15 @@ The statement is composed of 3 or 4 tokens:
     methods.  Some documentation states that we need to specify the full path of
     the module, but this creates problems because not all the systems install the
     modules in the same place: Linux-PAM on Gentoo is generally set up to load
-    them from <c>/lib/security</c>, but for example on AMD64 this become
+    them from <c>/lib/security</c>, but for example on AMD64 this becomes
     <c>/lib64/security</c>. The
     result is that providing the full path will lead to non-working <c>pamd</c>
-    files, and the right way to handle this is just states the module name <d /> the
+    files, and the right way to handle this is to just state the module name <d /> the
     PAM implementation will take care of finding the module.
   </li>
   <li>
-    The last token, which can consist of multiple items, describe the parameters
-    passed to the module. These are module-dependent.
+    The last token, which can consist of multiple items, describes the
+    parameters passed to the module. These are module-dependent.
   </li>
 </ul>
 <ul>
@@ -124,7 +124,7 @@ source for some services, such as mail and ftp servers.
 
 <p>
 But for desktop systems, all the different services, such as mail servers, ftp
-servers, ssh and so on, just need to authenticate in the same way the users logs
+servers, ssh and so on, just need to authenticate in the same way the users log
 in to the system.
 </p>
 
@@ -175,13 +175,13 @@ for <c>pamd</c> files (<c>dopamd</c> and <c>newpamd</c>, whose usage is the same
 similar <c>do*</c> and <c>new*</c> functions) and the <c>/etc/security</c> files
 (<c>dopamsecurity</c> and <c>newpamsecurity</c>, which need the first argument to be
 the subdirectory of <c>/etc/security</c> in which the files are to be installed).
-Those groups of functions already takes care of verifying whether the <c>pam</c>
+Those groups of functions already take care of verifying whether the <c>pam</c>
 USE flag is made optional for the package <d /> if this is the case, and the flag
 is disabled, the <c>pamd</c> files are just skipped.
 </p>
 
 <p>
-Many <c>pamd</c> files just uses one or more auth types from <c>system-auth</c> login class,
+Many <c>pamd</c> files just use one or more auth types from <c>system-auth</c> login class,
 which is the base one which provides login facilities for most services on
 common desktop systems.  Instead of adding a <c>pamd</c> file in <c>${FILESDIR}</c>
 for this, one can use the <c>pamd_mimic_system</c> function. This function takes a series
@@ -230,8 +230,8 @@ correct directory to use for the current implementation/arch.
 <p>
 When the PAM module doesn't provide a way to install the package by itself, such
 as a <c>Makefile</c> or an installation script, there are also the <c>dopammod</c> and
-<c>newpammod</c> functions which takes care of install the module in the right
-directory.
+<c>newpammod</c> functions, which take care of installing the module in the
+right directory.
 </p>
 
 </body>
