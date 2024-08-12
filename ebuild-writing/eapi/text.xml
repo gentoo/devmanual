@@ -1009,7 +1009,7 @@ pkg_postrm() {
 </codesample>
 
     <p>
-    In the example provided above, the ebuild needs to be update the icon cache
+    In the example provided above, the ebuild needs to update the icon cache
     upon being installed or uninstalled. By placing the respective tool in
     <c>IDEPEND</c>, the ebuild requests it to be available at the time of
     <c>pkg_postinst</c>. When cross-compiling, the tool will be built for

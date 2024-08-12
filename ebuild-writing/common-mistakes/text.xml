@@ -263,7 +263,7 @@ bug about that ebuild.
 <p>
 You should try not to include version numbers in the SRC_URI and S. Always try
 to use ${PV} or ${P}. It makes maintaining the ebuild much easier. If a version
-number is not consistent with the tarball/source, then use MY_P. An example
+number is not consistent with the tarball/source, then use MY_P. For example
 dev-python/pyopenal fetches a tarball called PyOpenAL, so we redefine it like:
 </p>
 

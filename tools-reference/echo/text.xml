@@ -29,9 +29,9 @@ the same as the former, but they won't print the trailing newline
 
 <p>
 All usage of the form <c>echo ${somevar} | grep substring</c> just to
-check if the contents of the <c>${somevar}</c> variable
+check if the content of the <c>${somevar}</c> variable
 contains <c>substring</c>, or more often, <c>echo ${somevar} |
-command</c>, are deprecated and should be (and in most cases, can be)
+command</c>, is deprecated and should be (and in most cases, can be)
 used as less as possible: doing so involves for no reason an
 additional shell session and a pipe. The "here strings" section
 describes the preferred way of dealing with such cases.

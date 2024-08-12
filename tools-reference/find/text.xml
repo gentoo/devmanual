@@ -77,7 +77,7 @@ Useful rules include:
     <ti><c>-maxdepth 3</c></ti>
     <ti>
      Only descend 3 levels into subdirectories.
-     <c>-maxdepth 1</c> will ignore all subdiretories of the specified path.
+     <c>-maxdepth 1</c> will ignore all subdirectories of the specified path.
     </ti>
     <ti>no, GNU and BSD</ti>
   </tr>
