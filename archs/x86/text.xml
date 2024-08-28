@@ -29,12 +29,6 @@ The following is a list of rules and expectations for members of the x86 team:
 
 <ul>
   <li>
-    Assist/resolve 4 bugs a month that are assigned to the team
-  </li>
-  <li>
-    Be present in our IRC channel, <c>#gentoo-x86/irc.libera.chat</c>
-  </li>
-  <li>
     If you need one of your packages stable, file a bug to the team.  You are not
     exempt from the same rules everyone else must follow.
   </li>
