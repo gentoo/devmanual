@@ -58,7 +58,8 @@ fi
 Because eclasses modify various cached variables, conditional inheritance is not
 allowed except where the same results will always be obtained on every system.
 For example, inherits based upon <c>USE</c> flags are illegal, but inherits based
-solely upon <c>PN</c> are allowed.
+solely upon the unchanging variables (e.g. <c>PV</c>) mentioned above are
+allowed.
 </p>
 
 <p>
