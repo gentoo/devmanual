@@ -25,10 +25,8 @@ manner such as:
 
 <codesample lang="ebuild">
 src_unpack() {
-	rpm_src_unpack ${A}
-	cd "${S}"
-
-	use ssl &amp;&amp; eapply "${FILESDIR}/${PV}/${P}-ssl.patch"
+	unpack ${A}
+	rpm_unpack "${S}/rpm/intel-openclrt-${PV}-${ALT_PV}.x86_64.rpm"
 }
 </codesample>
 
