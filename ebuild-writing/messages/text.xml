@@ -148,12 +148,12 @@ It would be better written as:
 </p>
 
 <codesample lang="ebuild">
-ewarn "The 'frozbinate' function provided by eutils.eclass is deprecated"
-ewarn "in favour of frozbinate.eclass, but this package has not been"
-ewarn "updated yet. If this is a package from the main tree, please check"
-ewarn "https://bugs.gentoo.org/ and file a bug if there is not one already."
-ewarn "If this is your own package, please read the comments in the"
-ewarn "frozbinate eclass for instructions on how to convert."
+eqawarn "The 'frozbinate' function provided by eutils.eclass is deprecated"
+eqawarn "in favour of frozbinate.eclass, but this package has not been"
+eqawarn "updated yet. If this is a package from the main tree, please check"
+eqawarn "https://bugs.gentoo.org/ and file a bug if there is not one already."
+eqawarn "If this is your own package, please read the comments in the"
+eqawarn "frozbinate eclass for instructions on how to convert."
 </codesample>
 
 </body>
