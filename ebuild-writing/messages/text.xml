@@ -38,9 +38,8 @@ internal is the simplest <d/> it simply displays its parameters as a message.
 
 <p>
 The <c>elog</c> function can be used to display an informational message which is
-meant to 'stand out' and is logged by the elog functionality in Portage 2.1 and
-Paludis 0.6 or newer.  On a colour terminal, the message provided will be prefixed
-with a green asterisk.  On earlier versions, elog behaves just like einfo.
+meant to 'stand out' and is logged by Portage's elog functionality. On a colour
+terminal, the message provided will be prefixed with a green asterisk.
 </p>
 
 <codesample lang="ebuild">
