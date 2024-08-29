@@ -43,8 +43,7 @@ of dealing with such cases.
 <title>Here strings</title>
 <body>
 <p>
-As of &gt;=bash-2.05b, the so-called "here strings" have been
-introduced. Using "here strings", you can pass contents of an
+Using "here strings", you can pass contents of an
 environment variable to the standard input of an application, using
 <c>&lt;&lt;&lt;word</c> redirection: what actually happens is
 that <c>bash</c> expands <c>word</c> and passes the result to the standard
