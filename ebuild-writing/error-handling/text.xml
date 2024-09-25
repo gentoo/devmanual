@@ -112,14 +112,14 @@ while read file ; do eapply ${file} ; done &lt; list
 </section>
 
 <section>
-<title>The <c>assert</c> function and <c>$PIPESTATUS</c></title>
+<title>The <c>assert</c> function and <c>PIPESTATUS</c></title>
 <body>
 
 <p>
-When using pipes, simple conditionals and tests upon <c>$?</c> will not correctly
-detect errors occurring in anything except the final command in the chain. To get
-around this, <c>bash</c> provides the <c>$PIPESTATUS</c> variable, and Portage
-provides the <c>assert</c> function to check this variable.
+When using pipes, simple conditionals and tests upon <c>$?</c> will not
+correctly detect errors occurring in anything except the final command in
+the chain. To get around this, bash provides the <c>PIPESTATUS</c> variable,
+and Portage provides the <c>assert</c> function to check this variable.
 </p>
 
 <codesample lang="ebuild">
@@ -128,8 +128,8 @@ assert
 </codesample>
 
 <p>
-If you need the gory details of <c>$PIPESTATUS</c>, see the bash manpage. Most of the
-time, <c>assert</c> is enough.
+If you need the gory details of <c>PIPESTATUS</c>, see the bash manpage.
+Most of the time, <c>assert</c> is enough.
 </p>
 
 </body>
