@@ -123,7 +123,7 @@ provides the <c>assert</c> function to check this variable.
 </p>
 
 <codesample lang="ebuild">
-bunzip2 "${DISTDIR}/${VIM_RUNTIME_SNAP}" | tar xf
+bzip2 -dc "${DISTDIR}/${VIM_RUNTIME_SNAP}" | tar -xf -
 assert
 </codesample>
 
