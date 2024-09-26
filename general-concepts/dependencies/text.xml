@@ -821,6 +821,14 @@ There are three kinds of circular dependencies:
   </li>
 </ol>
 
+<p>
+While circular dependencies should be avoided, an exception can be made for
+test-only dependencies. Similar to the example above with the tests of
+<c>dev-python/setuptools</c>, if a package needs itself, directly or
+indirectly, in order to run its tests, it is usually fine to leave it
+as-is. You should fix it if you can but don't go to extensive lengths for it.
+</p>
+
 </body>
 </section>
 
