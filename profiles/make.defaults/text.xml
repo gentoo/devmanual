@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="profiles/make.defaults/">
+<devbook self="profiles/make.defaults/">
 <chapter>
 <title>Profiles <c>make.defaults</c> file</title>
 <body>
@@ -20,4 +20,4 @@ relevant arch team, or <c>gentoo-dev</c> for high-up <c>make.defaults</c> files.
 
 </body>
 </chapter>
-</guide>
+</devbook>

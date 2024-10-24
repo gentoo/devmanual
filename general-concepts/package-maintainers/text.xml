@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="general-concepts/package-maintainers/">
+<devbook self="general-concepts/package-maintainers/">
 <chapter>
 <title>Package maintainers</title>
 <body>
@@ -89,4 +89,4 @@ providing a list of newly-unmaintained packages.
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

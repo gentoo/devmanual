@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tools-reference/grep/">
+<devbook self="tools-reference/grep/">
 <chapter>
 <title><c>grep</c> — text filtering</title>
 <body>
@@ -60,4 +60,4 @@ GNU systems documents many non-portable additional features.
 
 </body>
 </chapter>
-</guide>
+</devbook>

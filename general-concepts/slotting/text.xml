@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="general-concepts/slotting/">
+<devbook self="general-concepts/slotting/">
 <chapter>
 <title>Slotting</title>
 
@@ -230,4 +230,4 @@ alphanumeric character or <c>_</c>, and contain alphanumerics and <c>_</c>,
 </section>
 
 </chapter>
-</guide>
+</devbook>

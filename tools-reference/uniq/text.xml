@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tools-reference/uniq/">
+<devbook self="tools-reference/uniq/">
 <chapter>
 <title>uniq — filtering duplicates</title>
 <body>
@@ -21,4 +21,4 @@ IEEE Std 1003.1-2017-uniq</uri> for details.
 
 </body>
 </chapter>
-</guide>
+</devbook>

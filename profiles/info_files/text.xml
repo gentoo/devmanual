@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="profiles/info_files/">
+<devbook self="profiles/info_files/">
 <chapter>
 <title>Profiles <c>info_</c> files</title>
 <body>
@@ -13,5 +13,5 @@ the <c>gentoo-dev</c> mailing list.
 
 </body>
 </chapter>
-</guide>
+</devbook>
 

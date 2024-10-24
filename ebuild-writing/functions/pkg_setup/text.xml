@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/pkg_setup/">
+<devbook self="ebuild-writing/functions/pkg_setup/">
 <chapter>
 <title>pkg_setup</title>
 
@@ -63,4 +63,4 @@ pkg_setup() {
 </section>
 
 </chapter>
-</guide>
+</devbook>

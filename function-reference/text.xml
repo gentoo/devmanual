@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="function-reference/">
+<devbook self="function-reference/">
 <chapter>
 <title>Function reference</title>
 
@@ -25,4 +25,4 @@ The following functions are available for use in ebuilds:
 <include href="sandbox-functions/"/>
 <include href="version-functions/"/>
 
-</guide>
+</devbook>

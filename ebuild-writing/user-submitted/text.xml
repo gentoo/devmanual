@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/user-submitted/">
+<devbook self="ebuild-writing/user-submitted/">
 <chapter>
 <title>User-submitted ebuilds</title>
 
@@ -64,4 +64,4 @@ of encouragement and support and continue to improve in their abilities.
 
 </body>
 </chapter>
-</guide>
+</devbook>

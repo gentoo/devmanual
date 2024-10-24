@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/src_prepare/">
+<devbook self="ebuild-writing/functions/src_prepare/">
 <chapter>
 <title>src_prepare</title>
 
@@ -97,4 +97,4 @@ when writing <c>src_prepare</c> functions.
 </chapter>
 <include href="eapply/"/>
 <include href="autopackage/"/>
-</guide>
+</devbook>

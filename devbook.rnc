@@ -14,9 +14,9 @@ attrib = attrib.class*
 inline = inline.class*
 all = (block.class | inline.class)*
 
-start = guide
+start = devbook
 
-guide = element guide {
+devbook = element devbook {
   (attribute root { "true" } | attribute self { text }),
   chapter,
   \include*

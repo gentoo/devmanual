@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tools-reference/find/">
+<devbook self="tools-reference/find/">
 <chapter>
 <title><c>find</c> — finding files</title>
 <body>
@@ -214,4 +214,4 @@ IEEE Std 1003.1-2017-find</uri> for further details and examples.
 
 </body>
 </chapter>
-</guide>
+</devbook>

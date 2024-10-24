@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/misc-files/patches/">
+<devbook self="ebuild-writing/misc-files/patches/">
 <chapter>
 <title>Patches</title>
 
@@ -456,4 +456,4 @@ https://bugs.gentoo.org/226035
 </subsection>
 </section>
 </chapter>
-</guide>
+</devbook>

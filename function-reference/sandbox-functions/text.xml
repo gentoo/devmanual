@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="function-reference/sandbox-functions/">
+<devbook self="function-reference/sandbox-functions/">
 <chapter>
 <title>Sandbox functions reference</title>
 <body>
@@ -69,4 +69,4 @@ for how to handle sandbox-related build problems.
 
 </body>
 </chapter>
-</guide>
+</devbook>

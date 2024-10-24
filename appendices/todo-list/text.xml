@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="appendices/todo-list/">
+<devbook self="appendices/todo-list/">
 <chapter>
 <title>TODO list</title>
 <body>
@@ -10,4 +10,4 @@ This TODO list is automatically generated from the <c>&lt;todo&gt;</c> directive
 <contentsTree root="" extraction="todo"/>
 </body>
 </chapter>
-</guide>
+</devbook>

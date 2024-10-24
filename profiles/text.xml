@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="profiles/">
+<devbook self="profiles/">
 <chapter>
 <title>Profiles</title>
 
@@ -33,4 +33,4 @@ Portage-specific behaviour must not be relied upon in the repository.
 <include href="use.desc/"/>
 <include href="use.mask/"/>
 
-</guide>
+</devbook>

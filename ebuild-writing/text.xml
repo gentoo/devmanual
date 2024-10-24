@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/">
+<devbook self="ebuild-writing/">
 <chapter>
 <title>Ebuild writing</title>
 
@@ -31,4 +31,4 @@ with some general notes and extended examples.
 <include href="misc-files/"/>
 <include href="user-submitted/"/>
 <include href="common-mistakes/"/>
-</guide>
+</devbook>

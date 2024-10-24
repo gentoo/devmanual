@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="archs/amd64/">
+<devbook self="archs/amd64/">
 <chapter>
 <title>Arch specific notes — AMD64/EM64T</title>
 
@@ -493,4 +493,4 @@ segmentation faults or strange behaviour. GCC 4.0 refuses to compile such code.
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

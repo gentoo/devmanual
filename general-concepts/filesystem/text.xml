@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="general-concepts/filesystem/">
+<devbook self="general-concepts/filesystem/">
 <chapter>
 <title>Filesystem</title>
 
@@ -81,4 +81,4 @@ much of our policy coincides with it.
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

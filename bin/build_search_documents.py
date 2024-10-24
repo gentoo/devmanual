@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU GPL version 2 or later
 import json
 import os.path
@@ -83,7 +83,7 @@ def process_node(documents: list, node: ET.Element, name: str, url: str) -> None
 
         for child in node:
             process_node(documents, child, name, url)
-    elif node.tag in ['body', 'dl', 'guide', 'ul', 'table', 'tr']:
+    elif node.tag in ['devbook', 'body', 'dl', 'ul', 'table', 'tr']:
         for child in node:
             process_node(documents, child, name, url)
     elif node.tag in ['p', 'dd', 'dt', 'important', 'li', 'note', 'warning', 'th', 'ti']:

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="function-reference/version-functions/">
+<devbook self="function-reference/version-functions/">
 <chapter>
 <title>Version functions reference</title>
 <body>
@@ -216,4 +216,4 @@ If the range spans outside the version string, it is silently truncated.
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

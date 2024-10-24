@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="appendices/further-reading/">
+<devbook self="appendices/further-reading/">
 <chapter>
 <title>Further reading</title>
 <body>
@@ -57,5 +57,5 @@ recommendations, not padding designed to make this document look important.
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>
 

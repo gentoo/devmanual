@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="appendices/editor-configuration/vim/">
+<devbook self="appendices/editor-configuration/vim/">
 <chapter>
 <title>Configuring <c>vim</c> and <c>gvim</c></title>
 <body>
@@ -22,4 +22,4 @@ of interest. The ! is required to replace spaces with tabs.
 
 </body>
 </chapter>
-</guide>
+</devbook>

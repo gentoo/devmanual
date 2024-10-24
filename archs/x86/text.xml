@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="archs/x86/">
+<devbook self="archs/x86/">
 <chapter>
 <title>Arch specific notes — x86</title>
 <body>
@@ -63,4 +63,4 @@ The x86 team can be contacted:
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

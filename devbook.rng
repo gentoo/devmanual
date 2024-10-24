@@ -62,10 +62,10 @@
     </zeroOrMore>
   </define>
   <start>
-    <ref name="guide"/>
+    <ref name="devbook"/>
   </start>
-  <define name="guide">
-    <element name="guide">
+  <define name="devbook">
+    <element name="devbook">
       <choice>
         <attribute name="root">
           <value>true</value>

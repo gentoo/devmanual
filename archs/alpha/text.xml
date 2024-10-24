@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="archs/alpha/">
+<devbook self="archs/alpha/">
 <chapter>
 <title>Arch specific notes — Alpha</title>
 <body>
@@ -155,4 +155,4 @@ The Alpha team can be contacted:
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>
