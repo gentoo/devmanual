@@ -40,7 +40,7 @@ used in a DevBook XML document:
 </codesample>
 
 <p>
-On the first lines, we see the requisite tag that identifies this as an XML
+On the first lines, we see the XML declaration that identifies this as an XML
 document. Next, there's a <c>&lt;guide&gt;</c> tag <d/> the entire document is
 enclosed within a <c>&lt;guide&gt; &lt;/guide&gt;</c> pair. Its <c>self</c>
 attribute must point to the relative path of the document from the root node;
@@ -55,7 +55,7 @@ document.
 </p>
 
 <p>
-All tags must be closed of course, so the document ends with:
+All elements must be closed of course, so the document ends with:
 </p>
 
 <codesample lang="sgml">
@@ -126,7 +126,7 @@ tag. Note that the trailing slash in the <c>href</c> value is mandatory.
 
 <p>
 A table of contents can be generated with <c>&lt;contentsTree&gt;</c>.
-Typically, this tag would be the only element in its own section body, as in
+Typically, this would be the only element in its own section body, as in
 the following example:
 </p>
 
