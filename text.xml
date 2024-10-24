@@ -25,14 +25,14 @@ section lists specific contributions to this manual.
 <section>
 <title>Contents</title>
 <body>
-<contentsTree maxdepth="1"/>
+<contents maxdepth="1"/>
 </body>
 </section>
 
 <section>
 <title>Full contents</title>
 <body>
-<contentsTree/>
+<contents/>
 </body>
 </section>
 </chapter>

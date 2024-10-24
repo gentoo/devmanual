@@ -125,7 +125,7 @@ tag. Note that the trailing slash in the <c>href</c> value is mandatory.
 </p>
 
 <p>
-A table of contents can be generated with <c>&lt;contentsTree&gt;</c>.
+A table of contents can be generated with <c>&lt;contents/&gt;</c>.
 Typically, this would be the only element in its own section body, as in
 the following example:
 </p>
@@ -134,7 +134,7 @@ the following example:
 &lt;section&gt;
 &lt;title&gt;Contents&lt;/title&gt;
 &lt;body&gt;
-&lt;contentsTree/&gt;
+&lt;contents/&gt;
 &lt;/body&gt;
 &lt;/section&gt;
 </codesample>

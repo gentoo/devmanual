@@ -136,7 +136,7 @@
       <oneOrMore>
         <choice>
           <ref name="authors"/>
-          <ref name="contentsTree"/>
+          <ref name="contents"/>
           <ref name="block.class"/>
         </choice>
       </oneOrMore>
@@ -169,8 +169,8 @@
       <attribute name="href"/>
     </element>
   </define>
-  <define name="contentsTree">
-    <element name="contentsTree">
+  <define name="contents">
+    <element name="contents">
       <optional>
         <attribute name="maxdepth">
           <data type="unsignedInt"/>
