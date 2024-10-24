@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="general-concepts/portage-cache/">
+<devbook self="general-concepts/portage-cache/">
 <chapter>
 <title>The Portage cache</title>
 
@@ -85,4 +85,4 @@ regular and live packages.
 </section>
 
 </chapter>
-</guide>
+</devbook>

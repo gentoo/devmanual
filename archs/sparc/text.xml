@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="archs/sparc/">
+<devbook self="archs/sparc/">
 <chapter>
 <title>Arch specific notes — SPARC</title>
 <body>
@@ -149,6 +149,6 @@ The SPARC team can be contacted:
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>
 
 

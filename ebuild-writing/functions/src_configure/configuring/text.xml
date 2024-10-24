@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/src_configure/configuring/">
+<devbook self="ebuild-writing/functions/src_configure/configuring/">
 <chapter>
 <title>Configuring a package</title>
 
@@ -126,4 +126,4 @@ In EAPI 7 and later, the following option is passed in addition:
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

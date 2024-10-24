@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tools-reference/cut/">
+<devbook self="tools-reference/cut/">
 <chapter>
 <title><c>cut</c> — column concatenation</title>
 <body>
@@ -63,4 +63,4 @@ IEEE Std 1003.1-2017-cut</uri> for full documentation.
 
 </body>
 </chapter>
-</guide>
+</devbook>

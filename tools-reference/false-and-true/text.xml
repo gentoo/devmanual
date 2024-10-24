@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tools-reference/false-and-true/">
+<devbook self="tools-reference/false-and-true/">
 <chapter>
 <title><c>false</c> and <c>true</c> — generating return codes</title>
 <body>
@@ -11,4 +11,4 @@ code. The <c>true</c> utility always produces a zero exit code.
 
 </body>
 </chapter>
-</guide>
+</devbook>

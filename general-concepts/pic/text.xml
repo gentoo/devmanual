@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="general-concepts/pic/">
+<devbook self="general-concepts/pic/">
 <chapter>
 <title>Position Independent Code</title>
 <body>
@@ -22,4 +22,4 @@ developer forum (like the <c>gentoo-dev</c> mailing list or the
 
 </body>
 </chapter>
-</guide>
+</devbook>

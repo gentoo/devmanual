@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="quickstart/">
+<devbook self="quickstart/">
 <chapter>
 <title>Quickstart ebuild guide</title>
 
@@ -428,4 +428,4 @@ match the <c>./configure</c> argument.
 </section>
 
 </chapter>
-</guide>
+</devbook>

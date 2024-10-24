@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/pkg_prerm/">
+<devbook self="ebuild-writing/functions/pkg_prerm/">
 <chapter>
 <title>pkg_prerm</title>
 
@@ -62,4 +62,4 @@ a clean unmerge.
 </section>
 
 </chapter>
-</guide>
+</devbook>

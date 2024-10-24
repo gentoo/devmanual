@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="general-concepts/install-destinations/">
+<devbook self="general-concepts/install-destinations/">
 <chapter>
 <title>Install destinations</title>
 
@@ -28,5 +28,5 @@ When inside <c>pkg_preinst</c>, the image to be installed can be accessed under
 
 </body>
 </chapter>
-</guide>
+</devbook>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/src_install/docompress/">
+<devbook self="ebuild-writing/functions/src_install/docompress/">
 <chapter>
 <title>Controllable compression</title>
 <body>
@@ -48,4 +48,4 @@ it will be ignored with a warning.
 
 </body>
 </chapter>
-</guide>
+</devbook>

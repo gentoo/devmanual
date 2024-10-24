@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="archs/ppc/">
+<devbook self="archs/ppc/">
 <chapter>
 <title>Arch specific notes — PPC</title>
 <body>
@@ -103,4 +103,4 @@ The PowerPC team can be reached by:
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

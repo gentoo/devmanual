@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="general-concepts/emerge-and-ebuild/">
+<devbook self="general-concepts/emerge-and-ebuild/">
 <chapter>
 <title>Emerge and ebuild relationships</title>
 
@@ -18,5 +18,5 @@ and any eclasses. The <c>${D}</c> to <c>${ROOT}</c> install is handled by <c>eme
 
 </body>
 </chapter>
-</guide>
+</devbook>
 

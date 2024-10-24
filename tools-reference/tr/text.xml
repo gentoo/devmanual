@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tools-reference/tr/">
+<devbook self="tools-reference/tr/">
 <chapter>
 <title>tr — character translation</title>
 <body>
@@ -52,5 +52,5 @@ documentation for a full list.
 
 </body>
 </chapter>
-</guide>
+</devbook>
 

@@ -169,7 +169,7 @@ find "${OUTPUTDIR}" -mindepth 1 -maxdepth 1 -mtime +1 -exec rm -R {} \;
 # build the index, rebuilding it each time
 cat << 'EOF' > "${OUTPUTDIR}"/text.xml || exit 1
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="eclass-reference/">
+<devbook self="eclass-reference/">
 <chapter>
 <title>Eclass reference</title>
 <body>
@@ -206,5 +206,5 @@ cat << 'EOF' >> "${OUTPUTDIR}"/text.xml || exit 1
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>
 EOF

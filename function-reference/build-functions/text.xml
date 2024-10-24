@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="function-reference/build-functions/">
+<devbook self="function-reference/build-functions/">
 <chapter>
 <title>Build functions reference</title>
 
@@ -50,4 +50,4 @@ during the unpack and compile stages.
 
 </body>
 </chapter>
-</guide>
+</devbook>

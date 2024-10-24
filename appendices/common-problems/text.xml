@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="appendices/common-problems/">
+<devbook self="appendices/common-problems/">
 <chapter>
 <title>Common problems</title>
 <body>
@@ -195,4 +195,4 @@ by tricking the build system into using a safer location. See
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

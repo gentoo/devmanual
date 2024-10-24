@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="general-concepts/git-to-rsync/">
+<devbook self="general-concepts/git-to-rsync/">
 <chapter>
 <title>Git to RSYNC</title>
 
@@ -38,4 +38,4 @@
 
 </body>
 </chapter>
-</guide>
+</devbook>

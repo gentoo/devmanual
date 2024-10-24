@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/pkg_pretend/">
+<devbook self="ebuild-writing/functions/pkg_pretend/">
 <chapter>
 <title>pkg_pretend</title>
 
@@ -85,4 +85,4 @@ This phase typically checks for a kernel configuration and may
 </section>
 
 </chapter>
-</guide>
+</devbook>

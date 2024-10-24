@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="general-concepts/news/">
+<devbook self="general-concepts/news/">
 <chapter>
 <title>News items</title>
 
@@ -60,4 +60,4 @@ man page.
 </section>
 
 </chapter>
-</guide>
+</devbook>

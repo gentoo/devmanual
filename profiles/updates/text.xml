@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="profiles/updates/">
+<devbook self="profiles/updates/">
 <chapter>
 <title>Profiles <c>updates/</c> directory</title>
 <body>
@@ -47,4 +47,4 @@ the actual changes to the package have to be done manually.
 
 </body>
 </chapter>
-</guide>
+</devbook>

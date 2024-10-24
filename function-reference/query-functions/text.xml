@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="function-reference/query-functions/">
+<devbook self="function-reference/query-functions/">
 <chapter>
 <title>Query functions reference</title>
 <body>
@@ -145,4 +145,4 @@ query variables and similar state.
 
 </body>
 </chapter>
-</guide>
+</devbook>

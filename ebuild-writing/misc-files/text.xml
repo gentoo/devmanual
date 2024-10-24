@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/misc-files/">
+<devbook self="ebuild-writing/misc-files/">
 <chapter>
 <title>Miscellaneous files</title>
 
@@ -12,11 +12,11 @@ This section contains some notes on various miscellaneous files.
 <section>
 <title>Contents</title>
 <body>
-<contentsTree/>
+<contents/>
 </body>
 </section>
 </chapter>
 
 <include href="metadata/"/>
 <include href="patches/"/>
-</guide>
+</devbook>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/src_install/">
+<devbook self="ebuild-writing/functions/src_install/">
 <chapter>
 <title>src_install</title>
 
@@ -229,11 +229,11 @@ The following subsections cover different topics which often occur when writing
 <c>src_install</c> functions.
 </p>
 
-<contentsTree/>
+<contents/>
 
 </body>
 </section>
 </chapter>
 
 <include href="docompress/"/>
-</guide>
+</devbook>
