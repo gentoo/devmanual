@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the MIT license
 # or the CC-BY-SA-4.0 license (dual-licensed)
 
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest # no gentoo :(
     steps:
     - name: checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: install prerequisites
       # librsvg2-bin for rsvg-convert
       # xsltproc for xsltproc
