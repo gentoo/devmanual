@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="appendices/devbook-guide/">
+<devbook self="appendices/devbook-guide/">
 <chapter>
 <title>Gentoo DevBook XML guide</title>
 
@@ -34,18 +34,18 @@ used in a DevBook XML document:
 
 <codesample lang="sgml" caption="The preamble of a DevBook XML document">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;guide self="appendices/devbook-guide/"&gt;
+&lt;devbook self="appendices/devbook-guide/"&gt;
 &lt;chapter&gt;
 &lt;title&gt;Gentoo DevBook XML guide&lt;/title&gt;
 </codesample>
 
 <p>
 On the first lines, we see the XML declaration that identifies this as an XML
-document. Next, there's a <c>&lt;guide&gt;</c> tag <d/> the entire document is
-enclosed within a <c>&lt;guide&gt; &lt;/guide&gt;</c> pair. Its <c>self</c>
+document. Next, there's a <c>&lt;devbook&gt;</c> tag <d/> the entire document is
+enclosed within a <c>&lt;devbook&gt; &lt;/devbook&gt;</c> pair. Its <c>self</c>
 attribute must point to the relative path of the document from the root node;
 in the example above the path is <c>appendices/devbook-guide/</c>. An exception
-is the root node itself, which has <c>&lt;guide root="true"&gt;</c> instead.
+is the root node itself, which has <c>&lt;devbook root="true"&gt;</c> instead.
 </p>
 
 <p>
@@ -60,7 +60,7 @@ All elements must be closed of course, so the document ends with:
 
 <codesample lang="sgml">
 &lt;/chapter&gt;
-&lt;/guide&gt;
+&lt;/devbook&gt;
 </codesample>
 
 </body>
@@ -714,4 +714,4 @@ possible. In other words, the
 </subsection>
 </section>
 </chapter>
-</guide>
+</devbook>

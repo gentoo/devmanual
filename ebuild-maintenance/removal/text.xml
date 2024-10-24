@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-maintenance/removal/">
+<devbook self="ebuild-maintenance/removal/">
 <chapter>
 <title>Removing ebuilds and packages</title>
 
@@ -127,4 +127,4 @@ In order to remove a virtual package, follow the following procedure:
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

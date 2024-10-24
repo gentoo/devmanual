@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="eclass-writing/">
+<devbook self="eclass-writing/">
 <chapter>
 <title>Eclass writing guide</title>
 <body>
@@ -842,4 +842,4 @@ EXPORT_FUNCTIONS src_configure src_compile
 </section>
 
 </chapter>
-</guide>
+</devbook>

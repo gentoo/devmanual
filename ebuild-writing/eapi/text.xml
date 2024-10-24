@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/eapi/">
+<devbook self="ebuild-writing/eapi/">
 <chapter>
 <title>EAPI usage and description</title>
 <body>
@@ -1431,4 +1431,4 @@ $(usev foo --enable-foo)
 </subsection>
 </section>
 </chapter>
-</guide>
+</devbook>

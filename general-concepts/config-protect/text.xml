@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="general-concepts/config-protect/">
+<devbook self="general-concepts/config-protect/">
 <chapter>
 <title>Configuration file protection</title>
 <body>
@@ -43,4 +43,4 @@ needing to call <c>etc-update</c> after the package is merged:
 
 </body>
 </chapter>
-</guide>
+</devbook>

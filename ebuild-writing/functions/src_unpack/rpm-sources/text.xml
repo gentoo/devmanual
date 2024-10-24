@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/src_unpack/rpm-sources/">
+<devbook self="ebuild-writing/functions/src_unpack/rpm-sources/">
 <chapter>
 <title>RPM sources</title>
 
@@ -97,4 +97,4 @@ src_prepare() {
 </section>
 
 </chapter>
-</guide>
+</devbook>

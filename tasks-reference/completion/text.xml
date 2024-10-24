@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tasks-reference/completion/">
+<devbook self="tasks-reference/completion/">
 <chapter>
 <title>Completion files</title>
 <body>
@@ -425,4 +425,4 @@ Lines 1-12 are pretty much the same as in the previous section.
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="profiles/packages/">
+<devbook self="profiles/packages/">
 <chapter>
 <title>Profiles <c>packages</c> file</title>
 <body>
@@ -22,4 +22,4 @@ outcome), then the entry in <c>packages</c> must be accompanied by a correspondi
 
 </body>
 </chapter>
-</guide>
+</devbook>

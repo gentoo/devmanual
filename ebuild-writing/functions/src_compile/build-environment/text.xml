@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/src_compile/build-environment/">
+<devbook self="ebuild-writing/functions/src_compile/build-environment/">
 <chapter>
 <title>Configuring build environment</title>
 
@@ -147,4 +147,4 @@ See <uri link="::eclass-reference/flag-o-matic.eclass/"/> for a full reference.
 </section>
 
 </chapter>
-</guide>
+</devbook>

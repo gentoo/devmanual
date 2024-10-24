@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/error-handling/">
+<devbook self="ebuild-writing/error-handling/">
 <chapter>
 <title>Error handling</title>
 
@@ -161,4 +161,4 @@ src_test() {
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

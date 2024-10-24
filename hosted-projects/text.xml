@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="hosted-projects/">
+<devbook self="hosted-projects/">
 <chapter>
 <title>Hosted projects</title>
 
@@ -163,4 +163,4 @@ Good places to look for further hints include:
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

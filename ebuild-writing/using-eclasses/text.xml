@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/using-eclasses/">
+<devbook self="ebuild-writing/using-eclasses/">
 <chapter>
 <title>Using eclasses</title>
 
@@ -98,4 +98,4 @@ to handle the bash completion file via <c>dobashcomp</c>.
 </section>
 
 </chapter>
-</guide>
+</devbook>

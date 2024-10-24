@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="profiles/package.mask/">
+<devbook self="profiles/package.mask/">
 <chapter>
 <title>Profiles <c>package.mask</c> file</title>
 <body>
@@ -45,4 +45,4 @@ This file can be used in subprofiles to mask packages only for certain setups.
 
 </body>
 </chapter>
-</guide>
+</devbook>

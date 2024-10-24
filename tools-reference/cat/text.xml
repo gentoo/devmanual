@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tools-reference/cat/">
+<devbook self="tools-reference/cat/">
 <chapter>
 <title><c>cat</c> — file concatenation</title>
 <body>
@@ -82,4 +82,4 @@ desired effect.
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

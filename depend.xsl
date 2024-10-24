@@ -19,7 +19,7 @@
     <xsl:call-template name="findPrevious"/>
     <xsl:call-template name="findNext"/>
   </xsl:variable>
-  <xsl:variable name="self" select="/guide/@self"/>
+  <xsl:variable name="self" select="/devbook/@self"/>
   <xsl:value-of select="concat($self, 'index.html:')"/>
   <xsl:for-each select="exslt:node-set($refs)//a/@href[. != '#']">
     <xsl:text> </xsl:text>

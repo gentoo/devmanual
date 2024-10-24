@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tools-reference/ekeyword/">
+<devbook self="tools-reference/ekeyword/">
 <chapter>
 <title><c>ekeyword</c> — keywording</title>
 <body>
@@ -19,4 +19,4 @@ for details.
 
 </body>
 </chapter>
-</guide>
+</devbook>

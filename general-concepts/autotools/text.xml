@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="general-concepts/autotools/">
+<devbook self="general-concepts/autotools/">
 <chapter>
 <title>The basics of Autotools</title>
 
@@ -694,4 +694,4 @@ For more details on autotools:
 </section>
 
 </chapter>
-</guide>
+</devbook>

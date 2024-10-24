@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tools-reference/">
+<devbook self="tools-reference/">
 <chapter>
 <title>Tools reference</title>
 
@@ -42,4 +42,4 @@ when using these tools in ebuilds.
 <!--
 <include href="xargs/"/>-->
 
-</guide>
+</devbook>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tools-reference/diff-and-patch/">
+<devbook self="tools-reference/diff-and-patch/">
 <chapter>
 <title><c>diff</c> and <c>patch</c> — file differences</title>
 <body>
@@ -48,4 +48,4 @@ The <c>diff(1)</c> and <c>patch(1)</c> manual pages provide more information.
 
 </body>
 </chapter>
-</guide>
+</devbook>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/src_unpack/vcs-sources/">
+<devbook self="ebuild-writing/functions/src_unpack/vcs-sources/">
 <chapter>
 <title>Version Control System (VCS) sources</title>
 <body>
@@ -97,4 +97,4 @@ date or revision are even worse candidates for tree inclusion:
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

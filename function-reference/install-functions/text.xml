@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="function-reference/install-functions/">
+<devbook self="function-reference/install-functions/">
 <chapter>
 <title>Install functions reference</title>
 <body>
@@ -443,4 +443,4 @@ The <c>*into</c> functions create the directory if it does not already exist.
 
 </body>
 </chapter>
-</guide>
+</devbook>

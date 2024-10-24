@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/">
+<devbook self="ebuild-writing/functions/">
 <chapter>
 <title>Ebuild phase functions</title>
 
@@ -129,4 +129,4 @@ during the <c>src_compile</c> phase is equivalent to a call to the
 <include href="pkg_postrm/"/>
 <include href="pkg_config/"/>
 <include href="pkg_info/"/>
-</guide>
+</devbook>

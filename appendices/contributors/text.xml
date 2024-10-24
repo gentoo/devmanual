@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="appendices/contributors/">
+<devbook self="appendices/contributors/">
 <chapter>
 <title>Contributions</title>
 <body>
@@ -133,4 +133,4 @@ This page lists the contributions to the Gentoo Development Guide:
 
 </body>
 </chapter>
-</guide>
+</devbook>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tasks-reference/pam/">
+<devbook self="tasks-reference/pam/">
 <chapter>
 <title>Working with PAM</title>
 <body>
@@ -237,4 +237,4 @@ right directory.
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

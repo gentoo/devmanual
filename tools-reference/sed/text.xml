@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tools-reference/sed/">
+<devbook self="tools-reference/sed/">
 <chapter>
 <title>sed — stream editor</title>
 <body>
@@ -905,4 +905,4 @@ symbols.
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

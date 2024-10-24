@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="general-concepts/tree/">
+<devbook self="general-concepts/tree/">
 <chapter>
 <title>The Gentoo repository</title>
 
@@ -184,4 +184,4 @@ Software-wise, in general all of the following should be met in order for a pack
 </section>
 
 </chapter>
-</guide>
+</devbook>

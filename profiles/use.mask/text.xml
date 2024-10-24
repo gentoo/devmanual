@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="profiles/use.mask/">
+<devbook self="profiles/use.mask/">
 <chapter>
 <title>Profiles <c>use.mask</c> file</title>
 <body>
@@ -43,5 +43,5 @@ See <uri link="::general-concepts/use-flags/#noblah USE flags"/> for more discus
 
 </body>
 </chapter>
-</guide>
+</devbook>
 

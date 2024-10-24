@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="general-concepts/ebuild-revisions/">
+<devbook self="general-concepts/ebuild-revisions/">
 <chapter>
 <title>Ebuild revisions</title>
 
@@ -132,5 +132,5 @@ of thumb could be used as a guideline:
 
 </body>
 </chapter>
-</guide>
+</devbook>
 

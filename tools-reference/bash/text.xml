@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tools-reference/bash/">
+<devbook self="tools-reference/bash/">
 <chapter>
 <title><c>bash</c> — standard shell</title>
 <body>
@@ -833,4 +833,4 @@ There is no <c>**=</c> assignment operator.
 </subsection>
 </section>
 </chapter>
-</guide>
+</devbook>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide root="true">
+<devbook root="true">
 <chapter>
 <title>Master index</title>
 
@@ -51,4 +51,4 @@ section lists specific contributions to this manual.
 <include href="hosted-projects/"/>
 <include href="archs/"/>
 <include href="appendices/"/>
-</guide>
+</devbook>

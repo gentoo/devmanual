@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/src_prepare/eapply/">
+<devbook self="ebuild-writing/functions/src_prepare/eapply/">
 <chapter>
 <title>Patching with eapply</title>
 <body>
@@ -133,4 +133,4 @@ src_prepare() {
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

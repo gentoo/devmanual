@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/file-format/">
+<devbook self="ebuild-writing/file-format/">
 <chapter>
 <title>Ebuild file format</title>
 
@@ -242,4 +242,4 @@ for details.
 </section>
 
 </chapter>
-</guide>
+</devbook>

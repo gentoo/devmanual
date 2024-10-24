@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/src_unpack/other-formats/">
+<devbook self="ebuild-writing/functions/src_unpack/other-formats/">
 <chapter>
 <title>Other archive formats</title>
 
@@ -50,4 +50,4 @@ done a release in at least ten years.
 </section>
 
 </chapter>
-</guide>
+</devbook>

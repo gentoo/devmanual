@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/use-conditional-code/">
+<devbook self="ebuild-writing/use-conditional-code/">
 <chapter>
 <title>USE flag conditional code</title>
 
@@ -61,4 +61,4 @@ use it in new code.
 </body>
 
 </chapter>
-</guide>
+</devbook>

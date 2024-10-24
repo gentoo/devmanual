@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/variables/">
+<devbook self="ebuild-writing/variables/">
 <chapter>
 <title>Variables</title>
 
@@ -1085,4 +1085,4 @@ rule, as it is intended to be passed to the compiler driver rather than
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

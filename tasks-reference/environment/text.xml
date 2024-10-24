@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tasks-reference/environment/">
+<devbook self="tasks-reference/environment/">
 <chapter>
 <title>Environment files</title>
 
@@ -29,4 +29,4 @@ Environment Variables section</uri>.
 
 </body>
 </chapter>
-</guide>
+</devbook>

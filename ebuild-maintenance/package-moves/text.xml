@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-maintenance/package-moves/">
+<devbook self="ebuild-maintenance/package-moves/">
 <chapter>
 <title>Package and slot moves</title>
 <body>
@@ -162,4 +162,4 @@ way. This involves the following steps:
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

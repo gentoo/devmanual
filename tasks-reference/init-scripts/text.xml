@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tasks-reference/init-scripts/">
+<devbook self="tasks-reference/init-scripts/">
 <chapter>
 <title>Init scripts</title>
 
@@ -29,4 +29,4 @@ OpenRC documentation</uri>.
 
 </body>
 </chapter>
-</guide>
+</devbook>

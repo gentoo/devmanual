@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/src_compile/building/">
+<devbook self="ebuild-writing/functions/src_compile/building/">
 <chapter>
 <title>Building a package</title>
 
@@ -101,4 +101,4 @@ machines with a MIPS CPU.)
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

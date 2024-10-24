@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="archs/">
+<devbook self="archs/">
 <chapter>
 <title>Arch specific notes</title>
 <body>
@@ -34,4 +34,4 @@ happens to work best in any situation.
 <include href="sparc/"/>
 <include href="x86/"/>
 
-</guide>
+</devbook>

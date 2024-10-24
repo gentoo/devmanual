@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tools-reference/echo/">
+<devbook self="tools-reference/echo/">
 <chapter>
 <title><c>echo</c> — print strings</title>
 <body>
@@ -91,4 +91,4 @@ command are available in the <c>bash(1)</c> man page.
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

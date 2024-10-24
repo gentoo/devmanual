@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="keywording/">
+<devbook self="keywording/">
 <chapter>
 <title>Keywording and stabilization</title>
 <body>
@@ -525,4 +525,4 @@ so that you can tidy up, file a bug.
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

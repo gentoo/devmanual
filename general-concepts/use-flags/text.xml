@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="general-concepts/use-flags/">
+<devbook self="general-concepts/use-flags/">
 <chapter>
 <title>USE flags</title>
 
@@ -387,4 +387,4 @@ are no <c>~arch</c> USE flags, so don't try <c>if use ~x86</c>.
 </section>
 
 </chapter>
-</guide>
+</devbook>

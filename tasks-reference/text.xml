@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="tasks-reference/">
+<devbook self="tasks-reference/">
 <chapter>
 <title>Tasks reference</title>
 
@@ -22,4 +22,4 @@ ebuilds.
 <include href="environment/"/>
 <include href="init-scripts/"/>
 <include href="pam/"/>
-</guide>
+</devbook>

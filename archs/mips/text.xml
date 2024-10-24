@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="archs/mips/">
+<devbook self="archs/mips/">
 <chapter>
 <title>Arch specific notes — MIPS</title>
 <body>
@@ -135,4 +135,4 @@ The MIPS team can be contacted:
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

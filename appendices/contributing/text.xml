@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="appendices/contributing/">
+<devbook self="appendices/contributing/">
 <chapter>
 <title>Contributing to this document</title>
 
@@ -144,4 +144,4 @@ amount of depth.
 </body>
 </section>
 </chapter>
-</guide>
+</devbook>

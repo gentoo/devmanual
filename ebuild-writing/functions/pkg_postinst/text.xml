@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-writing/functions/pkg_postinst/">
+<devbook self="ebuild-writing/functions/pkg_postinst/">
 <chapter>
 <title>pkg_postinst</title>
 
@@ -70,4 +70,4 @@ variable.</p>
 </section>
 
 </chapter>
-</guide>
+</devbook>

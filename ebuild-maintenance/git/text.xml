@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="ebuild-maintenance/git/">
+<devbook self="ebuild-maintenance/git/">
 <chapter>
 <title>Git for Gentoo developers</title>
 <body>
@@ -314,4 +314,4 @@ Signed-off-by: Alice Bar &lt;a.bar@example.org&gt;
 </subsection>
 </section>
 </chapter>
-</guide>
+</devbook>

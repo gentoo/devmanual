@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="profiles/categories/">
+<devbook self="profiles/categories/">
 <chapter>
 <title>Profiles <c>categories</c> file</title>
 
@@ -21,4 +21,4 @@ link="::ebuild-writing/misc-files/metadata/#Category metadata"/>.
 </body>
 
 </chapter>
-</guide>
+</devbook>

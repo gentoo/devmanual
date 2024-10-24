@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="function-reference/error-functions/">
+<devbook self="function-reference/error-functions/">
 <chapter>
 <title>Error functions reference</title>
 <body>
@@ -47,4 +47,4 @@ The following functions are provided by the package manager for error handling.
 
 </body>
 </chapter>
-</guide>
+</devbook>

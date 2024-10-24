@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guide self="function-reference/message-functions/">
+<devbook self="function-reference/message-functions/">
 <chapter>
 <title>Message functions reference</title>
 <body>
@@ -91,4 +91,4 @@ See <uri link="::ebuild-writing/messages/"/> for a detailed discussion.
 
 </body>
 </chapter>
-</guide>
+</devbook>
