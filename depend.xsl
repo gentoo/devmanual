@@ -11,7 +11,7 @@
 <xsl:template match="/">
   <xsl:variable name="refs">
     <!-- all descendants -->
-    <xsl:call-template name="contentsTree"/>
+    <xsl:call-template name="contents"/>
     <!-- all ancestors -->
     <xsl:call-template name="printParentDocs"/>
     <!-- previous and next documents -->

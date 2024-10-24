@@ -416,7 +416,7 @@
 </xsl:template>
 
 <!-- TOC Tree -->
-<xsl:template match="contentsTree" name="contentsTree">
+<xsl:template match="contents" name="contents">
   <xsl:param name="depth" select="0"/>
   <xsl:param name="maxdepth">
     <xsl:choose>
@@ -450,7 +450,7 @@
         <xsl:for-each select="document($doc_self)/devbook/include">
           <count value="{count(document(concat($path, @href, 'text.xml'))//*[name()=$extraction])}"
                  path="{concat($path, @href)}">
-            <xsl:call-template name="contentsTree">
+            <xsl:call-template name="contents">
               <xsl:with-param name="depth" select="$depth + 1"/>
               <xsl:with-param name="maxdepth" select="$maxdepth"/>
               <xsl:with-param name="path" select="concat($path, @href)"/>
@@ -466,7 +466,7 @@
         <ul>
           <xsl:for-each select="document($doc_self)/devbook/include">
             <xsl:variable name="extraction_counter_node">
-              <xsl:call-template name="contentsTree">
+              <xsl:call-template name="contents">
                 <xsl:with-param name="depth" select="$depth + 1"/>
                 <xsl:with-param name="maxdepth" select="$maxdepth"/>
                 <xsl:with-param name="path" select="concat($path, @href)"/>
@@ -500,7 +500,7 @@
                     </xsl:for-each>
                   </ul>
                 </xsl:if>
-                <xsl:call-template name="contentsTree">
+                <xsl:call-template name="contents">
                   <xsl:with-param name="depth" select="$depth + 1"/>
                   <xsl:with-param name="maxdepth" select="$maxdepth"/>
                   <xsl:with-param name="path" select="concat($path, @href)"/>
@@ -610,7 +610,7 @@
                       </li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Index&#xa0;<span class="caret"/></a>
-                        <xsl:if test="/devbook/chapter[1]/section or //contentsTree">
+                        <xsl:if test="/devbook/chapter[1]/section or //contents">
                           <ul class="dropdown-menu">
                             <!-- List sections of this chapter first. -->
                             <xsl:for-each select="/devbook/chapter[1]/section">
@@ -621,14 +621,14 @@
                               </xsl:variable>
                               <li><a class="reference" href="#{$anchor}"><xsl:value-of select="title"/></a></li>
                             </xsl:for-each>
-                            <xsl:if test="//contentsTree">
+                            <xsl:if test="//contents">
                               <li class="divider"><xsl:comment/></li>
                               <!-- List any sub-documents included at first level.
-                                   We cannot call "contentsTree" directly, because it would
+                                   We cannot call "contents" directly, because it would
                                    insert another "ul" element. So, assign it to a variable,
                                    then copy only the "li" nodes. -->
                               <xsl:variable name="contents">
-                                <xsl:call-template name="contentsTree">
+                                <xsl:call-template name="contents">
                                   <xsl:with-param name="maxdepth" select="1"/>
                                 </xsl:call-template>
                               </xsl:variable>

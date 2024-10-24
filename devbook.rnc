@@ -33,7 +33,7 @@ subsubsection = element subsubsection { title, body }
 # Title texts are used as anchors, so allow only text attributes
 title = element title { attrib }
 
-body = element body { (authors | contentsTree | block.class)+ }
+body = element body { (authors | contents | block.class)+ }
 
 authors = element authors { author+ | authorlist+ }
 
@@ -48,7 +48,7 @@ authorlist = element authorlist {
   attribute href { text }
 }
 
-contentsTree = element contentsTree {
+contents = element contents {
   attribute maxdepth { xsd:unsignedInt }?,
   attribute root { text }?,
   attribute extraction { text }?

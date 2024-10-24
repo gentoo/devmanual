@@ -19,7 +19,7 @@ Portage-specific behaviour must not be relied upon in the repository.
 <section>
 <title>Contents</title>
 <body>
-<contentsTree/>
+<contents/>
 </body>
 </section>
 </chapter>
