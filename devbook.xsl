@@ -747,7 +747,7 @@
   </html>
 </xsl:template>
 
-<xsl:template name="findNext">
+<xsl:template name="next-node">
   <xsl:param name="self" select="/guide/@self"/>
   <xsl:choose>
     <!-- To find the "next" node:
@@ -759,57 +759,29 @@
          * End at the root item if needed.
     -->
     <xsl:when test="count(/guide/include) &gt; 0">
-      <xsl:variable name="doc" select="/guide/include[1]/@href"/>
-      <a class="w-250 text-center" href="{concat($doc, 'index.html')}">
-        <span class="truncated-text d-inline-block max-w-200 mr-2">
-          <xsl:value-of select="document(concat(/guide/@self, $doc, 'text.xml'))/guide/chapter[1]/title"/>
-        </span>
-        <span class="fa fa-arrow-right"/>
-      </a>
+      <xsl:value-of select="/guide/include[1]/@href"/>
     </xsl:when>
-    <xsl:otherwise>
+    <xsl:when test="$self != ''">
       <!-- Turn the absolute path into a relative path so we can find ourselves
            in the parent -->
       <xsl:variable name="path_self" select="concat(str:tokenize($self, '/')[last()], '/')"/>
-      <xsl:variable name="index_self"
-                    select="count(document(concat($self, '../text.xml'))/guide/include[@href=$path_self]/preceding-sibling::*)+1"/>
+      <xsl:variable name="parent" select="substring($self, 1, string-length($self) - string-length($path_self))"/>
       <!-- Go down a parent, lookup the item after us... -->
-      <xsl:variable name="parentItem_lookup"
-                    select="document(concat($self, '../text.xml'))/guide/include[$index_self]/@href"/>
-      <xsl:variable name="parentItem_next"
-                    select="concat(document(concat($self, '../text.xml'))/guide/@self, $parentItem_lookup)"/>
+      <xsl:variable name="following" select="document(concat($parent, 'text.xml'))
+                                             /guide/include[@href=$path_self]/following-sibling::include[1]"/>
+      <xsl:text>../</xsl:text>
       <xsl:choose>
-        <!-- If we have an item after us, or we are at the root node
-             (termination condition) we need to not recurse any further... -->
-        <xsl:when test="$parentItem_lookup != '' or document(concat($self, '../text.xml'))/guide/@root">
-          <!-- Compute a relative path for the link. -->
-          <xsl:variable name="path_rel">
-            <xsl:call-template name="relative-path">
-              <xsl:with-param name="path" select="$parentItem_next"/>
-              <xsl:with-param name="self" select="/guide/@self"/>
-            </xsl:call-template>
-          </xsl:variable>
-          <a class="w-250 text-center" href="{concat($path_rel, 'index.html')}">
-            <span class="truncated-text d-inline-block max-w-200 mr-2">
-              <xsl:value-of select="document(concat($parentItem_next, 'text.xml'))/guide/chapter[1]/title"/>
-            </span>
-            <span class="fa fa-arrow-right"/>
-          </a>
+        <!-- If we have an item after us, we need not recurse any further... -->
+        <xsl:when test="$following">
+          <xsl:value-of select="$following/@href"/>
         </xsl:when>
         <xsl:otherwise>
-          <!-- We need to recurse downwards; so we need to strip off a directory
-               element off our absolute path to feed into the next iteration... -->
-          <xsl:variable name="relative_path_fixed">
-            <xsl:for-each select="str:tokenize($self, '/')[position() &lt; last()]">
-              <xsl:value-of select="concat(., '/')"/>
-            </xsl:for-each>
-          </xsl:variable>
-          <xsl:call-template name="findNext">
-            <xsl:with-param name="self" select="$relative_path_fixed"/>
+          <xsl:call-template name="next-node">
+            <xsl:with-param name="self" select="$parent"/>
           </xsl:call-template>
         </xsl:otherwise>
       </xsl:choose>
-    </xsl:otherwise>
+    </xsl:when>
   </xsl:choose>
 </xsl:template>
 
@@ -831,60 +803,61 @@
   </xsl:choose>
 </xsl:template>
 
-<xsl:template name="findPrevious">
-  <xsl:choose>
+<xsl:template name="previous-node">
+  <xsl:variable name="self" select="/guide/@self"/>
+  <xsl:if test="$self != ''">
     <!-- To find the "previous" node:
          * Go down to our parent
            * See if there are any nodes before us
              * If we have a valid node that is before us
              * Fully recurse up the node to get the last extremity
            * Otherwise list the parent -->
-    <xsl:when test="/guide/@root">
-      <a class="w-250 text-center" href="#">
-        <span class="fa fa-arrow-left"/>
-        <span class="truncated-text d-inline-block max-w-200 ml-2">
-          <xsl:value-of select="/guide/chapter[1]/title"/>
-        </span>
-      </a>
-    </xsl:when>
-    <xsl:otherwise>
-      <!-- Turn the absolute path we have into a relative path so we can find
-           ourselves in the parent -->
-      <xsl:variable name="path_self" select="concat(str:tokenize(/guide/@self, '/')[last()], '/')"/>
-      <xsl:variable name="index_self" select="count(document(concat(/guide/@self, '../text.xml'))/guide/include[@href=$path_self]/preceding-sibling::*)-1"/>
-      <xsl:choose>
-        <xsl:when test="$index_self &gt; 0">
-          <!-- Relative path of the parent -->
-          <xsl:variable name="parentItem_path" select="document(concat(/guide/@self, '../text.xml'))/guide/@self"/>
-          <!-- Previous item in the parent -->
-          <xsl:variable name="parentItem_next"
-                        select="document(concat(/guide/@self, '../text.xml'))/guide/include[$index_self]/@href"/>
-          <xsl:variable name="myItem_path">
-            <xsl:call-template name="getLastNode">
-              <xsl:with-param name="root" select="$parentItem_path"/>
-              <xsl:with-param name="path" select="$parentItem_next"/>
-            </xsl:call-template>
-          </xsl:variable>
-          <!-- Make a relative <a> link; we need an absolute reference
-               for the XSLT processor though... -->
-          <a class="w-250 text-center" href="{concat('../', $myItem_path, 'index.html')}">
-            <span class="fa fa-arrow-left"/>
-            <span class="truncated-text d-inline-block max-w-200 ml-2">
-              <xsl:value-of select="document(concat($parentItem_path, $myItem_path, 'text.xml'))/guide/chapter[1]/title"/>
-            </span>
-          </a>
-        </xsl:when>
-        <xsl:otherwise>
-          <a class="w-250 text-center" href="../index.html">
-            <span class="fa fa-arrow-left"/>
-            <span class="truncated-text d-inline-block max-w-200 ml-2">
-              <xsl:value-of select="document(concat(/guide/@self, '../text.xml'))/guide/chapter[1]/title"/>
-            </span>
-          </a>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:otherwise>
-  </xsl:choose>
+    <!-- Turn the absolute path we have into a relative path so we can find
+         ourselves in the parent -->
+    <xsl:variable name="path_self" select="concat(str:tokenize($self, '/')[last()], '/')"/>
+    <xsl:variable name="parent" select="substring($self, 1, string-length($self) - string-length($path_self))"/>
+    <!-- Note that index 1 refers to the immediately preceding sibling looking
+         back from the context node, not the first sibling in document order. -->
+    <xsl:variable name="preceding" select="document(concat($parent, 'text.xml'))
+                                           /guide/include[@href=$path_self]/preceding-sibling::include[1]"/>
+    <xsl:text>../</xsl:text>
+    <xsl:if test="$preceding">
+      <xsl:call-template name="getLastNode">
+        <xsl:with-param name="root" select="$parent"/>
+        <xsl:with-param name="path" select="$preceding/@href"/>
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template name="findNext">
+  <xsl:variable name="next">
+    <xsl:call-template name="next-node"/>
+  </xsl:variable>
+  <a class="w-250 text-center" href="{concat($next, 'index.html')}">
+    <span class="truncated-text d-inline-block max-w-200 mr-2">
+      <xsl:value-of select="document(concat(/guide/@self, $next, 'text.xml'))/guide/chapter[1]/title"/>
+    </span>
+    <span class="fa fa-arrow-right"/>
+  </a>
+</xsl:template>
+
+<xsl:template name="findPrevious">
+  <xsl:variable name="previous">
+    <xsl:call-template name="previous-node"/>
+  </xsl:variable>
+  <xsl:variable name="link">
+    <xsl:choose>
+      <xsl:when test="$previous = ''">#</xsl:when> <!-- root node refers to itself -->
+      <xsl:otherwise><xsl:value-of select="concat($previous, 'index.html')"/></xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <a class="w-250 text-center" href="{$link}">
+    <span class="fa fa-arrow-left"/>
+    <span class="truncated-text d-inline-block max-w-200 ml-2">
+      <xsl:value-of select="document(concat(/guide/@self, $previous, 'text.xml'))/guide/chapter[1]/title"/>
+    </span>
+  </a>
 </xsl:template>
 
 <xsl:template name="printParentDocs">
