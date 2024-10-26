@@ -125,8 +125,12 @@ dist:
 	git archive --format=tar --prefix=devmanual/ HEAD | xz > $${TARBALL}
 
 clean:
-	@rm -f $(HTMLS) $(IMAGES) documents.js .depend
+	@rm -f $(HTMLS) $(IMAGES) documents.js
 
-.PHONY: all prereq build install check validate tidy dist clean
+distclean: clean
+	@rm -f .depend
+	@rm -rf eclass-reference
+
+.PHONY: all prereq build install check validate tidy dist clean distclean
 
 -include .depend
