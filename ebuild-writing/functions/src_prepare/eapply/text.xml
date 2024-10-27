@@ -98,7 +98,7 @@ guidelines about where patches should be hosted and about their formatting.
 </p>
 
 <p>
-The default <c><uri link="::ebuild-writing/functions/src_prepare"/></c>
+The default <c><uri link="::ebuild-writing/functions/src_prepare/"/></c>
 function will look for a global PATCHES array to apply a list of patches
 for you.
 </p>
