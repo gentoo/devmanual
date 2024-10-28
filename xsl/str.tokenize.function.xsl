@@ -5,11 +5,10 @@
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:func="http://exslt.org/functions"
-                xmlns:exsl="http://exslt.org/common"
+                xmlns:exslt="http://exslt.org/common"
                 xmlns:str="http://exslt.org/strings"
-                extension-element-prefixes="str func exsl xsl"
-                exclude-result-prefixes="str func exsl xsl"
-                xmlns="http://www.w3.org/1999/xhtml">
+                extension-element-prefixes="str func exslt xsl"
+                exclude-result-prefixes="str func exslt xsl">
 
 <func:function name="str:tokenize_plasmaroo">
   <xsl:param name="string" select="''" />
@@ -18,9 +17,9 @@
     <xsl:when test="not($string)">
       <func:result select="/.." />
     </xsl:when>
-    <xsl:when test="not(function-available('exsl:node-set'))">
+    <xsl:when test="not(function-available('exslt:node-set'))">
       <xsl:message terminate="yes">
-        ERROR: EXSLT - Functions implementation of str:tokenize relies on exsl:node-set().
+        ERROR: EXSLT - Functions implementation of str:tokenize relies on exslt:node-set().
       </xsl:message>
     </xsl:when>
     <xsl:otherwise>
@@ -39,7 +38,7 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
-      <func:result select="exsl:node-set($tokens)/*" />
+      <func:result select="exslt:node-set($tokens)/*" />
     </xsl:otherwise>
   </xsl:choose>
 </func:function>

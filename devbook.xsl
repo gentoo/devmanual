@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
-  xmlns:str="http://exslt.org/strings"
-  xmlns:exslt="http://exslt.org/common"
-  extension-element-prefixes="str exslt xsl"
-  exclude-result-prefixes="str exslt xsl">
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:str="http://exslt.org/strings"
+                xmlns:exslt="http://exslt.org/common"
+                extension-element-prefixes="str exslt xsl"
+                exclude-result-prefixes="str exslt xsl">
 
 <xsl:import href="xsl/str.tokenize.function.xsl"/>
 <xsl:import href="xsl/lang.highlight.c.xsl"/>
@@ -19,8 +20,7 @@
 <xsl:param name="offline" select="0"/>
 
 <xsl:variable name="newline">
-<xsl:text>
-</xsl:text>
+  <xsl:text>&#x0a;</xsl:text>
 </xsl:variable>
 
 <xsl:template match="chapter">
@@ -128,7 +128,7 @@
     <xsl:for-each select="str:tokenize_plasmaroo(., $newline)">
       <xsl:choose>
         <xsl:when test=". = $newline">
-          <xsl:if test="position() != 1"><xsl:value-of select='$newline'/></xsl:if>
+          <xsl:if test="position() != 1"><xsl:value-of select="$newline"/></xsl:if>
           <xsl:if test="$numbering = 'lines' and position() != last()-1">
             <span style="float: left;"><xsl:number format="01"/>:<xsl:text> </xsl:text></span>
           </xsl:if>
@@ -444,7 +444,7 @@
   <xsl:param name="extraction_counting"/>
 
   <xsl:variable name="doc_self" select="concat($path, 'text.xml')"/>
-  <xsl:if test="count(document($doc_self)/guide/include) &gt; 0 and ($depth &lt; $maxdepth or $maxdepth = '0')">
+  <xsl:if test="count(document($doc_self)/guide/include) &gt; 0 and ($depth &lt; $maxdepth or $maxdepth = 0)">
     <xsl:choose>
       <xsl:when test="$extraction_counting = 1">
         <xsl:for-each select="document($doc_self)/guide/include">
@@ -740,7 +740,11 @@
         <script src="https://assets.gentoo.org/tyrian/jquery.min.js"/>
         <script src="https://assets.gentoo.org/tyrian/bootstrap.min.js"/>
         <script src="https://assets.gentoo.org/lunr/lunr.min.js"/>
-        <script>var documentsSrc = "<xsl:value-of select="$relative_path_depth_recursion"/>documents.js"</script>
+        <script>
+          <xsl:text>var documentsSrc = &quot;</xsl:text>
+          <xsl:value-of select="$relative_path_depth_recursion"/>
+          <xsl:text>documents.js&quot;</xsl:text>
+        </script>
         <script src="{$relative_path_depth_recursion}search.js"/>
       </xsl:if>
     </body>
