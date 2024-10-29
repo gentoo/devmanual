@@ -180,31 +180,36 @@ Note that most eclasses have an accompanying manual page. These man pages can be
 installed by emerging <c>app-doc/eclass-manpages</c>.
 </p>
 
-</body>
-
-<section>
-<title>Contents</title>
-<body>
 EOF
 
 if [[ -n ${NOMAN} ]]; then
 	cat <<- 'EOF' >> "${OUTPUTDIR}"/text.xml || exit 1
-	<warning>
-	This is only a placeholder. If you see this text in the output document,
-	then the eclass documentation is missing.
-	</warning>
+	<note>
+	This version of the devmanual does not include the eclass documentation.
+	</note>
+	</body>
 	EOF
 else
-	echo '<ul class="list-group">' >> "${OUTPUTDIR}"/text.xml || exit 1
+	cat <<- 'EOF' >> "${OUTPUTDIR}"/text.xml || exit 1
+	</body>
+
+	<section>
+	<title>Contents</title>
+	<body>
+
+	<ul class="list-group">
+	EOF
 	for i in $(find "${OUTPUTDIR}" -maxdepth 1 -mindepth 1 -type d | sort); do
 		echo "<li><uri link=\"$(basename $i)/index.html\">$(basename $i)</uri></li>" >> "${OUTPUTDIR}"/text.xml || exit 1
 	done
-	echo '</ul>' >> "${OUTPUTDIR}"/text.xml || exit 1
+	cat <<- 'EOF' >> "${OUTPUTDIR}"/text.xml || exit 1
+	</ul>
+	</body>
+	</section>
+	EOF
 fi
 
 cat << 'EOF' >> "${OUTPUTDIR}"/text.xml || exit 1
-</body>
-</section>
 </chapter>
 </guide>
 EOF
