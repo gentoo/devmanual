@@ -208,3 +208,8 @@ cat << 'EOF' >> "${OUTPUTDIR}"/text.xml || exit 1
 </chapter>
 </guide>
 EOF
+
+# Local Variables:
+# tab-width: 4
+# indent-tabs-mode: t
+# End:
