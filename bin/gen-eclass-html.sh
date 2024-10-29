@@ -200,7 +200,8 @@ else
 	<ul class="list-group">
 	EOF
 	for i in $(find "${OUTPUTDIR}" -maxdepth 1 -mindepth 1 -type d | sort); do
-		echo "<li><uri link=\"$(basename $i)/index.html\">$(basename $i)</uri></li>" >> "${OUTPUTDIR}"/text.xml || exit 1
+		echo "<li><uri link=\"::eclass-reference/$(basename $i)/\"/></li>" \
+			>> "${OUTPUTDIR}"/text.xml || exit 1
 	done
 	cat <<- 'EOF' >> "${OUTPUTDIR}"/text.xml || exit 1
 	</ul>
