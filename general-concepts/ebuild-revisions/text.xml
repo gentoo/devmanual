@@ -29,21 +29,26 @@ revision.
 
 <p>
 Developers are encouraged to use common sense when determining
-whether to introduce a new <c>-rX</c> revision. The following rule
+whether to introduce a new <c>-rX</c> revision. The following rules
 of thumb could be used as a guideline:
 </p>
+
 <ol>
   <li>
     If the change can cause the package to be broken to the point
-    of requiring users to revert to the previous version (in the case
-    of packages marked stable, every non-trivial change is classified
-    as such), then a new revision should be introduced and the old one
-    kept. If the package has stable keywords, the new revision should
-    be dropped to <c>~arch</c> (see
-    <uri link="::keywording/#Keywording on upgrades"/>).
+    of requiring users to revert to the previous version, then a new
+    revision should be introduced and the old one kept.
     For any such revision bump, the new ebuild should be based
     on the previous revision to ensure that fixes aren't dropped
     accidentally.
+  </li>
+
+  <li>
+    If the package has stable keywords, then a new revision should be
+    introduced for every non-trivial change, and its keywords should be dropped
+    to <c>~arch</c> (see <uri link="::keywording/#Keywording on upgrades"/>).
+    The general guideline here is conservatism and the need to minimize
+    the risk of accidental breakage for stable users.
   </li>
 
   <li>
@@ -124,11 +129,6 @@ of thumb could be used as a guideline:
     a dependency change that is a result of a package move (slot move),
   </li>
 </ul>
-
-<p>
-Note that the examples above should still be balanced against the general
-principle of conservatism and need to minimize risk for stable users.
-</p>
 
 </body>
 </chapter>
