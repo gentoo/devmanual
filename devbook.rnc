@@ -56,11 +56,15 @@ contentsTree = element contentsTree {
 
 p = element p { inline }
 
-pre = element pre { text }
+pre = element pre {
+  attribute caption { text }?,
+  text
+}
 
 codesample = element codesample {
   attribute lang { "c" | "ebuild" | "make" | "m4" | "sgml" },
   attribute numbering { "lines" }?,
+  attribute caption { text }?,
   text
 }
 
@@ -75,7 +79,11 @@ figure = element figure {
   attribute caption { text }?
 }
 
-table = element table { tr+ }
+table = element table {
+  attribute caption { text }?,
+  tr+
+}
+
 tr = element tr { (th | ti)+ }
 
 th = element th {

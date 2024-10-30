@@ -13,6 +13,10 @@ dd {
     margin-left: 2em;
 }
 
+caption, p.caption {
+    font-weight: bold;
+}
+
 div.figure, div.figure p {
     text-align: center;
     font-weight: bold;

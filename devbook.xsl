@@ -60,13 +60,21 @@
 </xsl:template>
 
 <xsl:template match="pre">
+  <xsl:if test="@caption">
+    <p class="caption"><xsl:value-of select="@caption"/></p>
+  </xsl:if>
   <pre><xsl:apply-templates/></pre>
 </xsl:template>
 
 <!-- Tables -->
 <!-- From the Gentoo GuideXML Stylesheet -->
 <xsl:template match="table">
-  <table class="table"><xsl:apply-templates/></table>
+  <table class="table">
+    <xsl:if test="@caption">
+      <caption><xsl:value-of select="@caption"/></caption>
+    </xsl:if>
+    <xsl:apply-templates/>
+  </table>
 </xsl:template>
 
 <xsl:template match="tr">
@@ -122,6 +130,9 @@
   <xsl:variable name="ctype"><xsl:if test="@lang = 'ebuild'">Constant</xsl:if></xsl:variable>
   <xsl:variable name="numbering" select="@numbering"/>
   <xsl:variable name="lang" select="@lang"/>
+  <xsl:if test="@caption">
+    <p class="caption"><xsl:value-of select="@caption"/></p>
+  </xsl:if>
   <pre><span class="{$ctype}">
     <xsl:for-each select="str:tokenize_plasmaroo(., $newline)">
       <xsl:choose>

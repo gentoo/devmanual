@@ -191,6 +191,9 @@
   </define>
   <define name="pre">
     <element name="pre">
+      <optional>
+        <attribute name="caption"/>
+      </optional>
       <text/>
     </element>
   </define>
@@ -209,6 +212,9 @@
         <attribute name="numbering">
           <value>lines</value>
         </attribute>
+      </optional>
+      <optional>
+        <attribute name="caption"/>
       </optional>
       <text/>
     </element>
@@ -246,6 +252,9 @@
   </define>
   <define name="table">
     <element name="table">
+      <optional>
+        <attribute name="caption"/>
+      </optional>
       <oneOrMore>
         <ref name="tr"/>
       </oneOrMore>
