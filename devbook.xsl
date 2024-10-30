@@ -118,13 +118,11 @@
 </xsl:template>
 <!-- End Table Jojo -->
 
-<!-- FIXME: Handle lang=... -->
 <xsl:template match="codesample">
   <xsl:variable name="ctype"><xsl:if test="@lang = 'ebuild'">Constant</xsl:if></xsl:variable>
   <xsl:variable name="numbering" select="@numbering"/>
   <xsl:variable name="lang" select="@lang"/>
   <pre><span class="{$ctype}">
-
     <xsl:for-each select="str:tokenize_plasmaroo(., $newline)">
       <xsl:choose>
         <xsl:when test=". = $newline">
