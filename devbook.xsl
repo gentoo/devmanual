@@ -128,7 +128,7 @@
         <xsl:when test=". = $newline">
           <xsl:if test="position() != 1"><xsl:value-of select="$newline"/></xsl:if>
           <xsl:if test="$numbering = 'lines' and position() != last()-1">
-            <span style="float: left;"><xsl:number format="01"/>:<xsl:text> </xsl:text></span>
+            <span style="float: left;"><xsl:number format="01"/>: </span>
           </xsl:if>
         </xsl:when>
         <xsl:otherwise>
@@ -289,7 +289,7 @@
 <xsl:template name="convert-to-anchor">
   <xsl:param name="data"/>
   <xsl:variable name="lcletters">abcdefghijklmnopqrstuvwxyz-</xsl:variable>
-  <xsl:variable name="ucletters">ABCDEFGHIJKLMNOPQRSTUVWXYZ<xsl:text> </xsl:text></xsl:variable>
+  <xsl:variable name="ucletters">ABCDEFGHIJKLMNOPQRSTUVWXYZ </xsl:variable>
   <xsl:variable name="lcdata" select="translate(normalize-space($data), $ucletters, $lcletters)"/>
   <!-- Delete anything but letters, digits, hyphen, dot, underscore -->
   <xsl:variable name="allowed">abcdefghijklmnopqrstuvwxyz0123456789-._</xsl:variable>
