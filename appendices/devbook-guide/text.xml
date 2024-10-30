@@ -32,7 +32,7 @@ Let's start learning the DevBook XML syntax. We'll start with the initial tags
 used in a DevBook XML document:
 </p>
 
-<codesample lang="sgml"><!-- The initial part of a DevBook XML document -->
+<codesample lang="sgml" caption="The preamble of a DevBook XML document">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;guide self="appendices/devbook-guide/"&gt;
 &lt;chapter&gt;
@@ -78,7 +78,7 @@ title. Here's an example section with a single subsection, consisting of a
 paragraph:
 </p>
 
-<codesample lang="sgml"><!-- Minimal DevBook example -->
+<codesample lang="sgml" caption="Minimal DevBook example">
 &lt;section&gt;
 &lt;title&gt;This is my section&lt;/title&gt;
 &lt;subsection&gt;
@@ -150,7 +150,7 @@ Now, it's time to learn how to mark up actual content.  Here's the XML code for
 an example <c>&lt;body&gt;</c> element:
 </p>
 
-<codesample lang="sgml"><!-- Example of a body element -->
+<codesample lang="sgml" caption="Example of a body element">
 &lt;p&gt;
 This is a paragraph. &lt;c&gt;/etc/passwd&lt;/c&gt; is a file.
 &lt;uri&gt;https://www.gentoo.org/&lt;/uri&gt; is my favorite website.
@@ -243,11 +243,12 @@ a bit), these are the only tags that should appear immediately inside a
 be stacked <d/> in other words, don't put a <c>&lt;note&gt;</c> element inside
 a <c>&lt;p&gt;</c> element. As you might guess, the <c>&lt;pre&gt;</c> and
 <c>&lt;codesample&gt;</c> elements preserve their whitespace exactly, making
-them well-suited for code excerpts:
+them well-suited for code excerpts. Both <c>&lt;pre&gt;</c> and
+<c>&lt;codesample&gt;</c> can have a <c>caption</c> attribute:
 </p>
 
-<codesample lang="sgml"><!-- Named &lt;pre&gt; -->
-&lt;pre&gt;
+<codesample lang="sgml" caption="Named &lt;pre&gt;">
+&lt;pre caption="Output of uptime"&gt;
 # uptime
 16:50:47 up 164 days,  2:06,  5 users,  load average: 0.23, 0.20, 0.25
 &lt;/pre&gt;
@@ -627,7 +628,7 @@ the content.
 An example for indentation is:
 </p>
 
-<codesample lang="sgml"><!-- Indentation Example -->
+<codesample lang="sgml" caption="Indentation example">
 &lt;table&gt;
 &lt;tr&gt;
   &lt;th&gt;Foo&lt;/th&gt;
@@ -659,7 +660,7 @@ attribute. Break the line before the <c>&lt;uri&gt;</c> tag instead.
 and the attribute value. As an example:
 </p>
 
-<codesample lang="sgml"><!-- Attributes -->
+<codesample lang="sgml" caption="Attributes">
 Wrong  :     &lt;uri link = "https://www.gentoo.org/"&gt;
 Correct:     &lt;uri link="https://www.gentoo.org/"&gt;
 </codesample>
@@ -689,7 +690,7 @@ Every sentence, including those inside tables and listings, should start
 with a capital letter.
 </p>
 
-<codesample lang="sgml"><!-- Periods and capital letters -->
+<codesample lang="sgml" caption="Periods and capital letters">
 &lt;ul&gt;
   &lt;li&gt;No period&lt;/li&gt;
   &lt;li&gt;With period. Multiple sentences, remember?&lt;/li&gt;
