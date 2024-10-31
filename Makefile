@@ -76,7 +76,7 @@ appendices/todo-list/index.html: $(XMLS)
 .depend: $(XMLS) eclass-reference/text.xml depend.xsl devbook.xsl
 	@xsltproc depend.xsl $(XMLS) > $@
 
-install: all
+install: build documents.js
 	set -e; \
 	for file in $(HTMLS) $(ECLASS_HTMLS) $(IMAGES); do \
 	  install -d "$(DESTDIR)$(htmldir)"/$${file%/*}; \
