@@ -60,10 +60,12 @@ documents.js: bin/build_search_documents.py $(XMLS)
 	xsltproc --param offline "$(OFFLINE)" devbook.xsl $< > $@
 
 eclass-reference/text.xml:
-	@echo "*** Warning: No eclass documentation found." >&2
-	@echo "Install app-doc/eclass-manpages and" >&2
-	@echo "run bin/gen-eclass-html.sh before calling make." >&2
-	@echo "Creating a placeholder index as fallback." >&2
+	@if [[ -z $${EBUILD_PHASE} ]]; then \
+	  echo "*** Warning: No eclass documentation found." >&2; \
+	  echo "Install app-doc/eclass-manpages and" >&2; \
+	  echo "run bin/gen-eclass-html.sh before calling make." >&2; \
+	  echo "Creating a placeholder index as fallback." >&2; \
+	fi
 	bin/gen-eclass-html.sh -n
 
 appendices/todo-list/index.html: $(XMLS)
