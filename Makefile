@@ -18,7 +18,13 @@ DESTDIR =
 # Nonzero value disables external assets for offline browsing.
 OFFLINE = 0
 
-all: prereq validate build documents.js
+ifeq ($(OFFLINE),0)
+  JS_BUILD = documents.js
+else
+  JS_BUILD =
+endif
+
+all: prereq $(HTMLS) $(IMAGES) $(JS_BUILD)
 
 prereq:
 	@type rsvg-convert >/dev/null 2>&1 || \
@@ -27,14 +33,9 @@ prereq:
 	@type xsltproc >/dev/null 2>&1 || \
 	{ echo "dev-libs/libxslt is with python required" >&2;\
 	  exit 1; }
-	@type xmllint >/dev/null 2>&1 || \
-	{ echo "dev-libs/libxml2 is required" >&2;\
-	  exit 1; }
 	@fc-list -q "Open Sans" || \
 	{ echo "media-fonts/open-sans is required" >&2;\
 	  exit 1; }
-
-build: $(HTMLS) $(IMAGES)
 
 # We need to parse all the XMLs every time, not just the ones
 # that are newer than the target. This is because each search
@@ -78,7 +79,7 @@ appendices/todo-list/index.html: $(XMLS)
 .depend: $(XMLS) eclass-reference/text.xml depend.xsl devbook.xsl
 	@xsltproc depend.xsl $(XMLS) > $@
 
-install: build documents.js
+install: all
 	set -e; \
 	for file in $(HTMLS) $(ECLASS_HTMLS) $(IMAGES); do \
 	  install -d "$(DESTDIR)$(htmldir)"/$${file%/*}; \
@@ -133,6 +134,6 @@ distclean: clean
 	@rm -f .depend
 	@rm -rf eclass-reference
 
-.PHONY: all prereq build install check validate tidy dist clean distclean
+.PHONY: all prereq install check validate tidy dist clean distclean
 
 -include .depend
