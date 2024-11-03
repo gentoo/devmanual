@@ -5,14 +5,10 @@
 <body>
 
 <p>
-First, you need to have built <c>xemacs</c> itself with <c>USE=mule</c>.  Then, the
-<c>app-xemacs/mule-ucs</c> package is needed.  To autoload Unicode support,
-you can add the following to your <c>~/.xemacs/init.el</c>:
+XEmacs has built-in Unicode support since version 21.5. It is recommended to
+start XEmacs from within a UTF-8 locale which will control the default coding
+system.
 </p>
-
-<pre>
-    (require 'un-define)
-</pre>
 
 <p>
 If automatic character set detection on files is not working properly,
