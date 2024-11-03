@@ -50,14 +50,9 @@ documents.js: bin/build_search_documents.py $(XMLS)
 %.png : %.svg
 	rsvg-convert --output=$@ $<
 
-# Secondary expansion allows us to use the automatic variable $@ in
-# the prerequisites.
-#
-# We use the pattern %.html rather than the more-sensible %index.html
-# because the latter doesn't match our top-level index.html target.
-#
-.SECONDEXPANSION:
-%.html: $$(dir $$@)text.xml devbook.xsl xsl/*.xsl
+# Use a static pattern rule, otherwise %index.html won't match the
+# top-level index.html target.
+$(HTMLS): %index.html: %text.xml devbook.xsl xsl/*.xsl
 	xsltproc --param offline "$(OFFLINE)" devbook.xsl $< > $@
 
 eclass-reference/text.xml:
