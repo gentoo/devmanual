@@ -428,105 +428,100 @@
   </xsl:choose>
 </xsl:template>
 
+<xsl:template name="extraction-count">
+  <xsl:param name="depth"/>
+  <xsl:param name="maxdepth"/>
+  <xsl:param name="path"/>
+  <xsl:param name="extraction"/>
+  <xsl:if test="$depth &lt; $maxdepth or $maxdepth = 0">
+    <xsl:for-each select="document(concat($path, 'text.xml'))/devbook/include">
+      <count value="{count(document(concat($path, @href, 'text.xml'))//*[name()=$extraction])}">
+        <xsl:call-template name="extraction-count">
+          <xsl:with-param name="depth" select="$depth + 1"/>
+          <xsl:with-param name="maxdepth" select="$maxdepth"/>
+          <xsl:with-param name="path" select="concat($path, @href)"/>
+          <xsl:with-param name="extraction" select="$extraction"/>
+        </xsl:call-template>
+      </count>
+    </xsl:for-each>
+  </xsl:if>
+</xsl:template>
+
 <!-- TOC Tree -->
 <xsl:template match="contents" name="contents">
   <xsl:param name="depth" select="0"/>
-  <xsl:param name="maxdepth">
-    <xsl:choose>
-      <xsl:when test="@maxdepth"><xsl:value-of select="@maxdepth"/></xsl:when>
-      <xsl:otherwise>0</xsl:otherwise>
-    </xsl:choose>
-  </xsl:param>
+  <xsl:param name="maxdepth" select="sum(@maxdepth)"/>
   <xsl:param name="path">
     <xsl:choose>
       <xsl:when test="@root"><xsl:value-of select="@root"/></xsl:when>
       <xsl:otherwise><xsl:value-of select="/devbook/@self"/></xsl:otherwise>
     </xsl:choose>
   </xsl:param>
-  <xsl:param name="path_rel">
-    <xsl:if test="$depth = 0 and $path = '' and /devbook/@self != ''">
-      <xsl:call-template name="repeat-string">
-        <xsl:with-param name="count"
-                        select="string-length(/devbook/@self) - string-length(translate(/devbook/@self, '/' , ''))"/>
-        <xsl:with-param name="string">../</xsl:with-param>
-      </xsl:call-template>
-    </xsl:if>
-  </xsl:param>
   <xsl:param name="orig_self" select="/devbook/@self"/>
   <xsl:param name="extraction" select="@extraction"/>
-  <xsl:param name="extraction_counting"/>
 
-  <xsl:variable name="doc_self" select="concat($path, 'text.xml')"/>
-  <xsl:if test="count(document($doc_self)/devbook/include) &gt; 0 and ($depth &lt; $maxdepth or $maxdepth = 0)">
-    <xsl:choose>
-      <xsl:when test="$extraction_counting = 1">
-        <xsl:for-each select="document($doc_self)/devbook/include">
-          <count value="{count(document(concat($path, @href, 'text.xml'))//*[name()=$extraction])}"
-                 path="{concat($path, @href)}">
-            <xsl:call-template name="contents">
-              <xsl:with-param name="depth" select="$depth + 1"/>
-              <xsl:with-param name="maxdepth" select="$maxdepth"/>
-              <xsl:with-param name="path" select="concat($path, @href)"/>
-              <xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
-              <xsl:with-param name="orig_self" select="$orig_self"/>
-              <xsl:with-param name="extraction" select="$extraction"/>
-              <xsl:with-param name="extraction_counting" select="1"/>
-            </xsl:call-template>
-          </count>
-        </xsl:for-each>
-      </xsl:when>
-      <xsl:otherwise>
-        <ul>
-          <xsl:for-each select="document($doc_self)/devbook/include">
-            <xsl:variable name="extraction_counter_node">
+  <xsl:if test="($depth &lt; $maxdepth or $maxdepth = 0)
+                and count(document(concat($path, 'text.xml'))/devbook/include) &gt; 0">
+    <xsl:variable name="extraction_counter_node">
+      <xsl:if test="$extraction">
+        <xsl:call-template name="extraction-count">
+          <xsl:with-param name="depth" select="$depth"/>
+          <xsl:with-param name="maxdepth" select="$maxdepth"/>
+          <xsl:with-param name="path" select="$path"/>
+          <xsl:with-param name="extraction" select="$extraction"/>
+        </xsl:call-template>
+      </xsl:if>
+    </xsl:variable>
+    <xsl:variable name="extraction_count" select="exslt:node-set($extraction_counter_node)"/>
+    <xsl:if test="not($extraction) or sum($extraction_count//@value) &gt; 0">
+      <xsl:variable name="path_rel">
+        <xsl:call-template name="relative-path">
+          <xsl:with-param name="path" select="$path"/>
+          <xsl:with-param name="self" select="$orig_self"/>
+        </xsl:call-template>
+      </xsl:variable>
+      <ul>
+        <xsl:for-each select="document(concat($path, 'text.xml'))/devbook/include">
+          <xsl:variable name="index" select="position()"/>
+          <!-- We emit a list item with the included document's title:
+               * always if this is a normal table of contents; or
+               * when extracting, if there is at least one "extraction"
+                 element in the document or any of its subdocuments
+          -->
+          <xsl:if test="not($extraction) or sum($extraction_count/count[$index]//@value) &gt; 0">
+            <li>
+              <a class="reference" href="{concat($path_rel, @href, 'index.html')}">
+                <xsl:value-of select="document(concat($path, @href, 'text.xml'))/devbook/chapter[1]/title"/>
+              </a>
+              <xsl:if test="$extraction and $extraction_count/count[$index]/@value &gt; 0">
+                <!-- If the extracted element from the other document contains
+                     any internal references, relative links would be based on
+                     the wrong start location. So we replace /devbook/@self by
+                     our own copy. Bug #916523. -->
+                <xsl:variable name="document_tree">
+                  <devbook self="{$orig_self}">
+                    <xsl:copy-of select="document(concat($path, @href, 'text.xml'))/devbook/*"/>
+                  </devbook>
+                </xsl:variable>
+                <ul>
+                  <xsl:for-each select="exslt:node-set($document_tree)//*[name()=$extraction]">
+                    <li><xsl:apply-templates select="."/></li>
+                  </xsl:for-each>
+                </ul>
+              </xsl:if>
+              <!-- Call ourselves recursively for the next level -->
               <xsl:call-template name="contents">
                 <xsl:with-param name="depth" select="$depth + 1"/>
                 <xsl:with-param name="maxdepth" select="$maxdepth"/>
                 <xsl:with-param name="path" select="concat($path, @href)"/>
-                <xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
                 <xsl:with-param name="orig_self" select="$orig_self"/>
                 <xsl:with-param name="extraction" select="$extraction"/>
-                <xsl:with-param name="extraction_counting" select="1"/>
               </xsl:call-template>
-            </xsl:variable>
-            <xsl:variable name="extraction_counter"
-                          select="count(exslt:node-set($extraction_counter_node)//*[@value != 0])
-                                  + count(document(concat($path, @href, 'text.xml'))//*[name()=$extraction])"/>
-            <xsl:if test="string($extraction) = '' or $extraction_counter &gt; 0">
-              <li>
-                <a class="reference" href="{concat($path_rel, @href, 'index.html')}">
-                  <xsl:value-of select="document(concat($path, @href, 'text.xml'))/devbook/chapter[1]/title"/>
-                </a>
-                <xsl:if test="$extraction != ''">
-                  <!-- If the extracted element from the other document contains
-                       any internal references, relative links would be based on
-                       the wrong start location. So we replace /devbook/@self by
-                       our own copy. Bug #916523. -->
-                  <xsl:variable name="document_tree">
-                    <devbook self="{$orig_self}">
-                      <xsl:copy-of select="document(concat($path, @href, 'text.xml'))/devbook/*"/>
-                    </devbook>
-                  </xsl:variable>
-                  <ul>
-                    <xsl:for-each select="exslt:node-set($document_tree)//*[name()=$extraction]">
-                      <li><xsl:apply-templates select="."/></li>
-                    </xsl:for-each>
-                  </ul>
-                </xsl:if>
-                <xsl:call-template name="contents">
-                  <xsl:with-param name="depth" select="$depth + 1"/>
-                  <xsl:with-param name="maxdepth" select="$maxdepth"/>
-                  <xsl:with-param name="path" select="concat($path, @href)"/>
-                  <xsl:with-param name="path_rel" select="concat($path_rel, @href)"/>
-                  <xsl:with-param name="orig_self" select="$orig_self"/>
-                  <xsl:with-param name="extraction" select="$extraction"/>
-                </xsl:call-template>
-              </li>
-            </xsl:if>
-          </xsl:for-each>
-        </ul>
-      </xsl:otherwise>
-    </xsl:choose>
+            </li>
+          </xsl:if>
+        </xsl:for-each>
+      </ul>
+    </xsl:if>
   </xsl:if>
 </xsl:template>
 
