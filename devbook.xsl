@@ -623,7 +623,7 @@
                       </li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Index&#xa0;<span class="caret"/></a>
-                        <xsl:if test="/guide/chapter[1]/section or //contentsTree">
+                        <xsl:if test="/guide/chapter[1]/section or //contentsTree[not(@extraction)]">
                           <ul class="dropdown-menu">
                             <!-- List sections of this chapter first. -->
                             <xsl:for-each select="/guide/chapter[1]/section">
@@ -634,7 +634,7 @@
                               </xsl:variable>
                               <li><a class="reference" href="#{$anchor}"><xsl:value-of select="title"/></a></li>
                             </xsl:for-each>
-                            <xsl:if test="//contentsTree">
+                            <xsl:if test="//contentsTree[not(@extraction)]">
                               <li class="divider"><xsl:comment/></li>
                               <!-- List any sub-documents included at first level.
                                    We cannot call "contentsTree" directly, because it would
