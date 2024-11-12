@@ -202,12 +202,12 @@ If the range spans outside the version string, it is silently truncated.
       not-equal, less-than-or-equal, or less-than <e>v2</e>.
       </p>
       <p>
-      Both versions <e>v1</e> and <e>v2</e> must conform to the
+      Both versions <e>v1</e> and <e>v2</e> must conform to
       <uri link="https://projects.gentoo.org/pms/8/pms.html#x1-250003.2">
-      PMS version syntax</uri> (with optional revision parts), and the
-      comparison is performed according to the
+      Gentoo package version syntax</uri> (with optional revision parts),
+      and the comparison is performed according to the
       <uri link="https://projects.gentoo.org/pms/8/pms.html#x1-260003.3">
-      algorithm specified in the PMS</uri>.
+      algorithm</uri> defined by the Package Manager Specification.
       </p>
     </ti>
   </tr>

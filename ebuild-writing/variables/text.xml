@@ -458,8 +458,7 @@ and the same set of mirrors is shared across multiple ebuilds, then you
 don't have to repeatedly list each of them in every ebuild.
 The <c>profiles/thirdpartymirrors</c> file in the <c>::gentoo</c> repository
 contains named groups of mirrors, in the format specified by the
-Package Manager Specification (PMS), accessible through the
-<c>mirror://</c>
+Package Manager Specification, accessible through the <c>mirror://</c>
 pseudo-protocol.
 </p>
 
@@ -710,10 +709,10 @@ While Portage may recognise several different <c>RESTRICT</c> tokens, it is
 important that you do not rely on them existing. That is, you should ensure
 your ebuild does not fail if those tokens are not exposed or given a different
 name by another package manager. You can make use of Portage-provided
-<c>RESTRICT</c> tokens, but do not fail hard without them. See
-<uri link="https://projects.gentoo.org/pms/7/pms.html#x1-810008.2.8">
-PMS</uri> for the list of standardised <c>RESTRICT</c> tokens, or the above
-table.
+<c>RESTRICT</c> tokens, but do not fail hard without them. See the
+<uri link="https://projects.gentoo.org/pms/8/pms.html#x1-680007.3.6">
+Package Manager Specification</uri> for the list of standardised
+<c>RESTRICT</c> tokens, or the above table.
 </p>
 
 </body>

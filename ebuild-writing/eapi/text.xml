@@ -5,9 +5,9 @@
 <body>
 
 <p>
-The <uri link="https://wiki.gentoo.org/wiki/Project:PMS">Package Manager
-Specification (PMS)</uri> is a standardization effort to ensure that the
-ebuild file format, the ebuild repository format (of which the Gentoo
+The <uri link="https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification">
+Package Manager Specification</uri> is a standardization effort to ensure that
+the ebuild file format, the ebuild repository format (of which the Gentoo
 repository is Gentoo's main incarnation) as well as behaviour of the package
 managers interacting with these ebuilds is properly written down and agreed
 upon.
@@ -16,8 +16,8 @@ upon.
 <p>
 EAPI is a version defined in ebuilds and other package manager related files
 which informs the package manager about the file syntax and content. It is,
-in effect, the version of the package manager specification (PMS) that the
-file adheres to.
+in effect, the version of the Package Manager Specification that the file
+adheres to.
 </p>
 
 <p>
@@ -49,8 +49,8 @@ EAPI=7
 </codesample>
 
 <note>
-Most developers prefer to set the EAPI version without quotes. However, the PMS
-allows single and double quotes as well.
+Most developers prefer to set the EAPI version without quotes. However,
+enclosing it in single or double quotes is also allowed.
 </note>
 
 <important>

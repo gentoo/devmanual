@@ -122,11 +122,11 @@ ebuild version components.
 </p>
 
 <p>
-The formal specification of version
+The formal definition of the
 <uri link="https://projects.gentoo.org/pms/8/pms.html#x1-250003.2">
-format</uri> and the comparison
+version format</uri> and the
 <uri link="https://projects.gentoo.org/pms/8/pms.html#x1-260003.3">
-algorithm</uri> can be found in PMS.
+comparison algorithm</uri> can be found in the Package Manager Specification.
 </p>
 
 </body>

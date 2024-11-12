@@ -313,10 +313,10 @@ The <c>*into</c> functions create the directory if it does not already exist.
     <ti>
       Install a directory that will be empty when the package is
       merged. This is like <c>dodir</c>, but for empty directories
-      instead. <uri
-      link="https://projects.gentoo.org/pms/7/pms.html#x1-14200013.2.2">The
-      handling of empty directories is undefined by the package
-      manager specification</uri>, and the <c>keepdir</c> function
+      instead.
+      <uri link="https://projects.gentoo.org/pms/8/pms.html#x1-14200013.2.2">
+      The handling of empty directories is undefined by the Package
+      Manager Specification</uri>, and the <c>keepdir</c> function
       exists to ensure that the (otherwise empty) directory is
       tracked. This is accomplished by installing a hidden file
       prefixed with <c>.keep</c> to the directory in question.
