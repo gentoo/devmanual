@@ -226,7 +226,7 @@ appropriately:
   </li>
   <li><c>${CATEGORY}:</c> Package Category</li>
   <li><c>profiles:</c> Profile Directory</li>
-  <li><c>${ECLASS}.eclass:</c> Eclass Directotry</li>
+  <li><c>${ECLASS}.eclass:</c> Eclass Directory</li>
   <li><c>licenses:</c> Licenses Directory</li>
   <li><c>metadata:</c> Metadata Directory</li>
 </ul>
