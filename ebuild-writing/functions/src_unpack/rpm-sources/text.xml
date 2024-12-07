@@ -13,9 +13,9 @@ inherit rpm
 </codesample>
 
 <p>
-If you don't need to do anything in the unpack phase, then you are
-finished as the <c>rpm.eclass</c> exports a default <c>src_unpack</c>
-that will unpack the RPM files.
+If you don't need to do anything in the unpack phase, then you are finished
+as the <c><uri link="::eclass-reference/rpm.eclass/"/></c> exports a default
+<c>src_unpack</c> that will unpack the RPM files.
 </p>
 
 <p>

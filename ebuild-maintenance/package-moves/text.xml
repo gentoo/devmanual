@@ -65,8 +65,9 @@ and update them. These include:
 <ul>
   <li>
     <uri link="::general-concepts/dependencies/">dependencies</uri>,
-    <c>optfeature.eclass</c> uses, <c>has_version</c> and <c>best_version</c>
-    uses in other ebuilds and eclasses
+    <c><uri link="::eclass-reference/optfeature.eclass/"/></c> uses,
+    <c>has_version</c> and <c>best_version</c> uses in other ebuilds and
+    eclasses
   </li>
   <li>
     all <c>profiles/</c> tree entries (e.g. <c>profiles/package.mask</c>)
