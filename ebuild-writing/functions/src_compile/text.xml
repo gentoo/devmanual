@@ -62,8 +62,8 @@ src_compile() {
 </codesample>
     <note>
     You also need to inherit the
-    <uri link="::eclass-reference/flag-o-matic.eclass/">flag-o-matic</uri>
-    eclass in order to use the <c>append-ldflags</c> function.
+    <c><uri link="::eclass-reference/flag-o-matic.eclass/"/></c> in order to
+    use the <c>append-ldflags</c> function.
     </note>
   </li>
 </ul>

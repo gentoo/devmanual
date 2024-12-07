@@ -7,9 +7,10 @@
 <p>
 Creating users and groups is governed by
 <uri link="https://gentoo.org/glep/glep-0081.html">GLEP 81</uri>. It is
-implemented via <c>acct-user</c> and <c>acct-group</c> eclasses. New users
-and groups are created as packages respectively in <c>acct-user</c> and
-<c>acct-group</c> categories.
+implemented via <c><uri link="::eclass-reference/acct-user.eclass/"/></c> and
+<c><uri link="::eclass-reference/acct-group.eclass/"/></c>. New users and
+groups are created as packages in the <c>acct-user</c> and <c>acct-group</c>
+categories, respectively.
 </p>
 
 <p>
@@ -32,8 +33,8 @@ Afterwards, you can push the new ebuilds.
 </p>
 
 <p>
-The historical way of using <c>user.eclass</c> directly is now deprecated
-and must not be used for new packages.
+The historical way of using <c><uri link="::eclass-reference/user.eclass/"/></c>
+directly is now deprecated and must not be used for new packages.
 </p>
 </body>
 

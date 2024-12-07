@@ -1422,7 +1422,8 @@ $(usev foo --enable-foo)
 
     <p>
     Packages using these format for distfiles must now unpack them manually.
-    Using <c>unpacker.eclass</c> is recommended for this.
+    Using <c><uri link="::eclass-reference/unpacker.eclass/"/></c> is
+    recommended for this.
     </p>
   </dd>
 </dl>

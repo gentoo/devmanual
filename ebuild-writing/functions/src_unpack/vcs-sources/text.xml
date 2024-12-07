@@ -13,11 +13,11 @@ variables.
 </p>
 
 <ul>
-  <li><uri link="::eclass-reference/cvs.eclass/"/></li>
-  <li><uri link="::eclass-reference/darcs.eclass/"/></li>
-  <li><uri link="::eclass-reference/git-r3.eclass/"/></li>
-  <li><uri link="::eclass-reference/mercurial.eclass/"/></li>
-  <li><uri link="::eclass-reference/subversion.eclass/"/></li>
+  <li><c><uri link="::eclass-reference/cvs.eclass/"/></c></li>
+  <li><c><uri link="::eclass-reference/darcs.eclass/"/></c></li>
+  <li><c><uri link="::eclass-reference/git-r3.eclass/"/></c></li>
+  <li><c><uri link="::eclass-reference/mercurial.eclass/"/></c></li>
+  <li><c><uri link="::eclass-reference/subversion.eclass/"/></c></li>
 </ul>
 
 <note>

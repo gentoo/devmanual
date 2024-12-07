@@ -88,13 +88,12 @@ Note the <c>inherit</c> immediately after the header.
 </p>
 
 <p>
-The <c>autotools</c> eclass
-(see <uri link="::eclass-reference/autotools.eclass/"/>) is needed to get the
-<c>eautoreconf</c> function. The <c>flag-o-matic</c> eclass
-(see <uri link="::eclass-reference/flag-o-matic.eclass/"/>) is needed for
-<c>replace-flags</c>, and the <c>bash-completion-r1</c> eclass
-(<uri link="::eclass-reference/bash-completion-r1.eclass/"/>) is used to handle
-the bash completion file via <c>dobashcomp</c>.
+The <c><uri link="::eclass-reference/autotools.eclass/"/></c> is needed to get
+the <c>eautoreconf</c> function,
+the <c><uri link="::eclass-reference/flag-o-matic.eclass/"/></c> is needed for
+<c>replace-flags</c>, and the
+<c><uri link="::eclass-reference/bash-completion-r1.eclass/"/></c> is used to
+handle the bash completion file via <c>dobashcomp</c>.
 </p>
 
 </body>

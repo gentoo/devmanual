@@ -87,11 +87,12 @@ the <c>configure</c> script to exist.
 
 <p>
 The <c>autoreconf</c> tool supposedly runs <c>autoconf</c> (and <c>automake</c>,
-<c>autoheader</c>, <c>aclocal</c>, <c>autopoint</c> and <c>libtoolize</c>) as necessary.
-Sometimes it works. Some packages ship a shell script named <c>autogen.sh</c> which
-does the same thing (this is <e>not</e> related to <c>autogen</c>).
-The autotools.eclass contains helper functions for the stand-alone tools with their
-corresponding names e.g. <c>eautoconf</c> and <c>eautomake</c>.
+<c>autoheader</c>, <c>aclocal</c>, <c>autopoint</c> and <c>libtoolize</c>)
+as necessary. Sometimes it works. Some packages ship a shell script named
+<c>autogen.sh</c> which does the same thing (this is <e>not</e> related to
+<c>autogen</c>). The <c><uri link="::eclass-reference/autotools.eclass/"/></c>
+contains helper functions for the stand-alone tools with their corresponding
+names e.g. <c>eautoconf</c> and <c>eautomake</c>.
 </p>
 
 <warning>

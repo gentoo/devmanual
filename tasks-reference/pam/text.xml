@@ -164,9 +164,10 @@ and takes care of executing it.
 <body>
 
 <p>
-The right place for <c>pamd</c> files is <c>/etc/pam.d</c>, but installing them by
-hand checking for <c>pam</c> USE flag is tricky and doesn't follow the same path as
-initd and confd files, so the solution is to use the <c>pam</c> eclass.
+The right place for <c>pamd</c> files is <c>/etc/pam.d</c>, but installing them
+by hand checking for <c>pam</c> USE flag is tricky and doesn't follow the same
+path as initd and confd files, so the solution is to use the
+<c><uri link="::eclass-reference/pam.eclass/"/></c>.
 </p>
 
 <p>

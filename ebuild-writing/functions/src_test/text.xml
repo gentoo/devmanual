@@ -256,11 +256,11 @@ src_test() {
 </codesample>
 
 <p>
-If the package actually requires a running X11 server to run
-the complete test suite, you can use the <c>virtualx</c> eclass to
-provide an isolated Xvfb environment for the tests to use. It provides
-a virtual X11 display that is not connected to any physical device
-and that programs can use reliably.
+If the package actually requires a running X11 server to run the complete test
+suite, you can use the <c><uri link="::eclass-reference/virtualx.eclass/"/></c>
+to provide an isolated Xvfb environment for the tests to use. It provides
+a virtual X11 display that is not connected to any physical device and that
+programs can use reliably.
 </p>
 
 <codesample lang="ebuild">

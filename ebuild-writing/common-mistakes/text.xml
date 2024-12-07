@@ -98,7 +98,8 @@ There are several ways to fix non-verbose build logs depending on the build syst
 <ul>
   <li>
     For <c>cmake</c>-based build systems, it should be sufficient that the
-    ebuild calls cmake_src_compile which picks up the cmake.eclass variable
+    ebuild calls cmake_src_compile which picks up the
+    <c><uri link="::eclass-reference/cmake.eclass/"/></c> variable
     <c>CMAKE_VERBOSE=1</c> by default. If you call emake directly for whatever
     reason, you can do <c>emake VERBOSE=1</c> (note that 'cmake_src_compile'
     takes arguments as well which are passed to make).
@@ -183,10 +184,11 @@ To fix the affected build system you should try the following methods:
     upstream)
   </li>
   <li>
-    use <e>append-flags -Wno-error</e> (needs flag-o-matic.eclass); for this
-    to work the environment flags have to be respected and placed after build
-    system flags; this method is not preferred as it will disable all
-    "-Werror=specific-warning" flags as well, see next section
+    use <e>append-flags -Wno-error</e>
+    (needs <c><uri link="::eclass-reference/flag-o-matic.eclass/"/></c>);
+    for this to work the environment flags have to be respected and placed
+    after build system flags; this method is not preferred as it will disable
+    all "-Werror=specific-warning" flags as well, see next section
   </li>
 </ul>
 <p>
@@ -531,7 +533,7 @@ the ebuild's quality and ease review.
 You should not call <c>pkg-config</c> directly in ebuilds because this is
 problematic for e.g. cross-compiling. The correct helper respects
 <c>${PKG_CONFIG}</c>. Instead, use <c>tc-getPKG_CONFIG</c> from
-<c>toolchain-funcs.eclass</c>, e.g.
+<c><uri link="::eclass-reference/toolchain-funcs.eclass/"/></c>, for example.
 </p>
 
 <codesample lang="ebuild">
