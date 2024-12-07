@@ -75,8 +75,8 @@ with care, see
 </p>
 
 <p>
-More general information about the internals of mirroring can be found on <uri
-link="https://wiki.gentoo.org/wiki/Project:Infrastructure/Mirrors/Distfile_Mirroring_System">
+More general information about the internals of mirroring can be found on
+<uri link="https://wiki.gentoo.org/wiki/Project:Infrastructure/Mirrors/Distfile_Mirroring_System">
 Infrastructure project's Distfile Mirroring System page</uri>.
 </p>
 </body>

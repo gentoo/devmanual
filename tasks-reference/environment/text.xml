@@ -22,8 +22,8 @@ should be a series of lines in the form <c>VARIABLE="the value"</c>.
 </p>
 
 <p>
-There is further discussion in the <uri
-link="https://wiki.gentoo.org/wiki/Handbook:X86/Working/EnvVar">
+There is further discussion in the
+<uri link="https://wiki.gentoo.org/wiki/Handbook:X86/Working/EnvVar">
 Environment Variables section</uri>.
 </p>
 

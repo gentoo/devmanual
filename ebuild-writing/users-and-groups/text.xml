@@ -5,11 +5,11 @@
 
 <body>
 <p>
-Creating users and groups is governed by <uri
-link="https://gentoo.org/glep/glep-0081.html">GLEP 81</uri>. It is implemented
-via <c>acct-user</c> and <c>acct-group</c> eclasses. New users and groups
-are created as packages respectively in <c>acct-user</c> and <c>acct-group</c>
-categories.
+Creating users and groups is governed by
+<uri link="https://gentoo.org/glep/glep-0081.html">GLEP 81</uri>. It is
+implemented via <c>acct-user</c> and <c>acct-group</c> eclasses. New users
+and groups are created as packages respectively in <c>acct-user</c> and
+<c>acct-group</c> categories.
 </p>
 
 <p>

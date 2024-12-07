@@ -8,8 +8,8 @@
 Package maintainers are responsible for ebuild maintenance tasks <d/>
 bumping ebuilds to new upstream releases, updating them as necessary
 with regards to policies, replying to bugs, etc. The maintainers
-of a package are listed in the package's <uri
-link="::ebuild-writing/misc-files/metadata/">metadata.xml</uri> file.
+of a package are listed in the package's
+<uri link="::ebuild-writing/misc-files/metadata/">metadata.xml</uri> file.
 When assigning bugs, the first maintainer listed becomes the bug's
 assignee and the remaining maintainers are added to CC, unless stated
 otherwise in the metadata.

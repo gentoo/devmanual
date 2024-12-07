@@ -130,8 +130,8 @@ inheritance occurring. Most commonly:
     did not record inheritance.
   </li>
   <li>
-    When working with eclasses in an overlay with a stale cache. See <uri
-    link="::general-concepts/overlay/#Overlay and eclasses"/>.
+    When working with eclasses in an overlay with a stale cache.
+    See <uri link="::general-concepts/overlay/#Overlay and eclasses"/>.
   </li>
   <li>
     When working with a stale Portage cache.
