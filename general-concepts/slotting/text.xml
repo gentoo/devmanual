@@ -46,9 +46,125 @@ To <c>DEPEND</c> upon a package in a specific slot, refer to
 </body>
 
 <section>
+<title>Considerations for slotting</title>
+<body>
+
+<p>
+Slotting is a powerful tool and as such, is easily abused. It's critical
+that when slotting, package maintainers carefully reflect on implications
+for <e>reverse dependencies</e>.
+</p>
+
+<p>
+Do not be fooled by the ease in adapting the package itself to slotting:
+slotting the package itself may well be the easiest part.
+</p>
+
+<p>
+Before proceeding at all, consider the wider implications beyond Gentoo.
+Especially examine other distributions and their handling of the problem in
+question. Unilaterally moving software can have devastating consequences for
+both users and other developers.
+</p>
+
+<p>
+Suppose every possible consumer of a slotted package can be adapted in
+Gentoo: there is still more work to be done. Keep in mind that users may
+develop or test software on Gentoo systems which may be deployed elsewhere.
+They both want to be able to build that software without having to adapt to
+Gentooisms, and they also don't want to unintentionally write their software
+such that it relies on Gentooisms.
+</p>
+
+<p>
+For example, slotting software by inventing a Gentoo-specific pkgconfig
+file and then patching all packages in the Gentoo repository is usually
+the wrong decision, because users won't be able to build software manually
+without patching it, and they may ship software that then fails to build
+on other distributions.
+</p>
+
+<p>
+Even systems that lend themselves to slotting, such as Guile or Lua, cannot
+be naively slotted by just adapting the package itself. Other packages
+must be primed to handle a slotted landscape: an eclass mechanism usually
+needs to exist for packages to declare which versions they support, as well
+as force building against the version currently depended upon to avoid
+automagic dependencies.
+</p>
+
+<p>
+For example, for slotted Guile, it may be trivial to make <c>dev-scheme/guile</c>
+itself install itself as <c>guile-3.0</c> (and other <c>-3.0</c> suffixes
+on its binaries), but packages depending on Guile will need an eclass to
+control <e>which</e> Guile the installed files are compatible with.
+</p>
+
+<p>
+All reverse dependencies of a package should be tested and examined when
+considering any slotting approach, in particular asking the following:
+</p>
+
+<ul>
+  <li>how does this software use the to-be-slotted package;</li>
+  <li>how the build system should locate the (right) version of this package;</li>
+  <li>
+      how the package (and the right version of it) should be located at runtime,
+      if required.
+  </li>
+</ul>
+
+</body>
+
+<subsection>
+<title>Libraries</title>
+<body>
+
+<p>
+As a rule of thumb, libraries should not be slotted unless upstream
+explicitly intend (major) versions to be installable in parallel. The
+presumption should be that a library cannot be slotted until proven otherwise.
+</p>
+
+<p>
+If a library is to be slotted, please consult with upstream wherever possible:
+ask them to begin installing pkgconfig files to aid porting build systems
+to detecting the library portably.
+</p>
+
+<p>
+ABI should also be considered with slotted libraries: if a consumer of the
+library (in)directly links against another version of the library, loading
+two ABI-incompatible versions of the library in the same process, unpredictable
+runtime behaviour may occur (including crashes, or worse).
+</p>
+</body>
+</subsection>
+
+<subsection>
+<title>Executables</title>
+<body>
+
+<p>
+For utilities / executables, slotting may be acceptable as long as an
+unversioned, generic symlink or wrapper is made available for the benefit
+of user scripts or tools, and build systems which expect the generic name
+to be available.
+</p>
+
+<p>
+An <c>eselect</c> module is often made available for these cases, though
+ebuilds normally shouldn't depend on its use.
+</p>
+</body>
+</subsection>
+</section>
+
+<section>
 <title>Sub-slots</title>
 
 <body>
+
 <p>
 Sometimes a package installs a library that changes interfaces between versions,
 but it's undesirable or inconvenient to allow some of these versions to be installed
