@@ -17,6 +17,13 @@ in the ebuilds. This is purely a convention; the package manager does not treat
 <c>0</c> any different from other slot values.
 </p>
 
+<p>
+"Fake slotting" where multiple SLOTs exist for the same package but they
+are mutually exclusive (i.e. block each other) is strongly discouraged, given
+that the existence of multiple SLOTs implies to users that parallel installation
+is possible.
+</p>
+
 <note>
 <c>SLOT</c> is a mandatory variable and must not be empty.
 </note>
