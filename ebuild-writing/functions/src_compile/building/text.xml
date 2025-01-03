@@ -19,8 +19,8 @@ cleanly, it should be patched.
 </p>
 
 <p>
-If patching <e>really</e> isn't an option, <c>emake -j1</c> should be
-used. However, when doing this, please remember that you are seriously
+If patching <e>really</e> isn't an option, <c>emake -j1 --shuffle=none</c> should
+be used. However, when doing this, please remember that you are seriously
 hurting build times for many non-x86 users in particular. Forcing
 <c>-j1</c> can increase build times from a few minutes to an hour on
 some MIPS and SPARC systems.
