@@ -724,7 +724,7 @@
               </xsl:if>
             </div>
             <div class="col-xs-10 col-sm-9 col-md-10">
-              <strong>Copyright (C) 2001-2024 Gentoo Authors</strong><br />
+              <strong>Copyright (C) 2001-2025 Gentoo Authors</strong><br />
               <small>
                 Gentoo is a trademark of the Gentoo Foundation, Inc. and of Förderverein Gentoo e.V.
                 The text of this document is distributed under the

@@ -80,7 +80,7 @@ IFS='' read -r -d '' FOOTER << 'EOF'
 </div>
 </div>
 <div class="col-xs-10 col-sm-9 col-md-10">
-<strong>Copyright (C) 2001-2024 Gentoo Authors</strong><br><small>
+<strong>Copyright (C) 2001-2025 Gentoo Authors</strong><br><small>
                 Gentoo is a trademark of the Gentoo Foundation, Inc.
                 The text of this document is distributed under the
                 <a href="https://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License, version 2</a>.
