@@ -266,8 +266,9 @@ summarizes the available documentation tags:
   <ti>Yes</ti>
   <ti>Single line freetext</ti>
   <ti>
-    Contains a short description for the eclass. Must be on the same
-    line with the tag.
+    Contains a short description for the eclass. Must be on the same line
+    as the tag. All words, including the first, must be in lowercase, except
+    for proper nouns. The description must <e>not</e> end with a full stop.
   </ti>
 </tr>
 <tr>
@@ -578,13 +579,13 @@ a single function, <c>domacosapp</c>.
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: macosapp.eclass
 # @MAINTAINER:
 # Ciaran McCreesh &lt;ciaranm@gentoo.org&gt;
-# @BLURB: install macos .app files to the relevant location.
+# @BLURB: install macos .app files to the relevant location
 
 # @FUNCTION: domacosapp
 # @USAGE: &lt;app-file&gt; [new-file]
@@ -746,14 +747,14 @@ for an eclass to invoke die from the global scope.  For example:
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: eapi-die.eclass
 # @MAINTAINER:
 # Gentoo Devmanual Project &lt;devmanual@gentoo.org&gt;
 # @SUPPORTED_EAPIS: 7 8
-# @BLURB: Calls die when used with an invalid EAPI.
+# @BLURB: call die when used with an invalid EAPI
 
 case ${EAPI} in
 	7|8) ;;
@@ -775,7 +776,7 @@ functions.
 </p>
 
 <codesample lang="ebuild">
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: jmake.eclass
@@ -783,7 +784,7 @@ functions.
 # Gentoo Devmanual Project &lt;devmanual@gentoo.org&gt;
 # @AUTHOR:
 # Ciaran McCreesh &lt;ciaranm@gentoo.org&gt;
-# @BLURB: Demonstrate a simple build system eclass.
+# @BLURB: demonstrate a simple build system eclass
 # @DESCRIPTION:
 # Demonstrates EXPORT_FUNCTIONS and defines simple wrappers for the
 # (hypothetical) jmake build system along with default src_configure and
