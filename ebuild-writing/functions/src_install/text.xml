@@ -98,7 +98,7 @@ install to a non-root location. If possible, this should be used:
 
 <note>
 <c>emake</c> should be used to parallelise here. Some installs are
-not designed to be parallelised, use <c>emake -j1</c> or <c>make</c>
+not designed to be parallelised, use <c>emake -j1 --shuffle=none</c>
 if you hit an error.
 </note>
 
