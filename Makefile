@@ -56,7 +56,9 @@ $(HTMLS): %index.html: %text.xml devbook.xsl xsl/*.xsl
 	xsltproc --param offline "$(OFFLINE)" devbook.xsl $< > $@
 
 eclass-reference/text.xml:
-	@if [[ -z $${EBUILD_PHASE} ]]; then \
+	@# Are we called from an ebuild? The test only controls the
+	@# output of a warning, so no big issue if the heuristic fails
+	@if ! type -p emake >/dev/null; then \
 	  echo "*** Warning: No eclass documentation found." >&2; \
 	  echo "Install app-doc/eclass-manpages and" >&2; \
 	  echo "run bin/gen-eclass-html.sh before calling make." >&2; \
