@@ -428,7 +428,8 @@ SLOT="0"
 
 <p>
 Make sure the <c>DESCRIPTION</c> is not overly long. Good descriptions will
-describe the main function of the package in a sentence.
+describe the main function of the package in a sentence. Don't repeat the
+package name within <c>DESCRIPTION</c> pointlessly.
 </p>
 
 <p>
