@@ -59,7 +59,7 @@ When removing packages follow these steps:
 </ol>
 
 <p>
-Here is a list of commands that will delete <c>dev-util/pmk</c>
+Here is a list of commands that will delete <c>dev-qt/qtphonon</c>
 from the tree:
 </p>
 
