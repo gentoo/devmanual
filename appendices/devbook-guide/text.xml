@@ -288,7 +288,7 @@ Sample <c>&lt;codesample lang="c"&gt;</c> block:
 <codesample lang="c">
 #include &lt;stdio.h&gt;
 
-main()
+int main()
 {
 	/* This is a comment */
 	printf("Hello, world!\n");
