@@ -743,8 +743,10 @@ tarball.
 
 <p>
 Packages often have optional dependencies that are needed only when running
-tests. These should be specified in DEPEND behind a USE flag. Often, the
-'test' USE flag is used for this purpose.
+tests. These should be specified in <c>BDEPEND</c> or <c>DEPEND</c> behind a
+USE flag
+(see also <uri link="::general-concepts/dependencies/#Build dependencies"/>).
+Often, the <c>test</c> USE flag is used for this purpose.
 </p>
 
 <p>
