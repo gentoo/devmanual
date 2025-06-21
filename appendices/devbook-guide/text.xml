@@ -552,6 +552,12 @@ I could have written the two examples above in more compact form:
 <uri link="::quickstart/#First ebuild"/>, respectively.
 </p>
 
+<important>
+The component after the octothorpe must be the <e>literal</e> section title.
+Don't copy the fragment identifier from HTML output! So, in the above example,
+it is not <c>#first-ebuild</c> but <c>#First ebuild</c>.
+</important>
+
 </body>
 </subsection>
 </section>
