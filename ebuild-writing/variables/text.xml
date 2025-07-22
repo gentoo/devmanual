@@ -133,23 +133,27 @@ for these variables when writing ebuilds.
     </ti>
   </tr>
   <tr>
+    <ti><c>BROOT</c></ti>
+    <ti>
+      (EAPI=7) The absolute path to the prefixed root directory
+      containing build dependencies satisfied by <c>BDEPEND</c>, which
+      are typically executable build tools. Usually blank. Not
+      necessarily the same as <c>EPREFIX</c>.
+    </ti>
+  </tr>
+  <tr>
     <ti><c>SYSROOT</c></ti>
     <ti>
-      (EAPI=7) The absolute path to the root directory containing build dependencies
-		satisfied by <c>DEPEND</c>
+      (EAPI=7) The absolute path to the root directory containing build
+      dependencies satisfied by <c>DEPEND</c>.
     </ti>
   </tr>
   <tr>
     <ti><c>ESYSROOT</c></ti>
     <ti>
-      (EAPI=7) Shorthand for <c>${SYSROOT%/}${EPREFIX}/</c>.
-    </ti>
-  </tr>
-  <tr>
-    <ti><c>BROOT</c></ti>
-    <ti>
-      (EAPI=7) The absolute path to the root directory containing build dependencies
-		satisfied by <c>BDEPEND</c>, typically executable build tools.
+      (EAPI=7) The same as either <c>EROOT</c> or <c>BROOT</c> depending
+      on the value of <c>SYSROOT</c>. Commonly used to reference the
+      location of headers and libraries at build time.
     </ti>
   </tr>
   <tr>
