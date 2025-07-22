@@ -863,6 +863,11 @@ and add an explicit <c>/</c> when joining paths. For example:
 <c>${D%/}/</c>, <c>${ED%/}/</c>, <c>${ROOT%/}/</c>,
 <c>${EROOT%/}/</c>.
 </p>
+<p>
+Other path variables set by the package manager never end in a trailing
+slash. This includes variables like <c>BROOT</c>, which is set to the
+empty string when it conceptually refers to <c>/</c>.
+</p>
 
 </body>
 </section>
