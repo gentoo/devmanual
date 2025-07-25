@@ -29,7 +29,7 @@ A sample <c>KEYWORDS</c> entry might look like:
 </p>
 
 <codesample lang="ebuild">
-KEYWORDS="-ia64 ~mips ~ppc sparc x86 ~ppc-macos"
+KEYWORDS="-hppa ~mips ~ppc sparc x86 ~ppc-macos"
 </codesample>
 
 <p>
@@ -187,11 +187,11 @@ consider <d/> a package working on your <c>o32</c> box may not work on
 </p>
 
 <p>
-It's important to note that alternative arches (like <c>alpha</c>, <c>ia64</c>,
-<c>s390</c>, <c>sparc</c>, <c>hppa</c>, <c>ppc*</c>) are mainly understaffed
-arches, some of them are slow, they have more basic problems and have a small
-userbase. Just file bugs for these architectures when a package is going to be
-a dependency of a package already keyworded.
+It's important to note that alternative arches (like <c>alpha</c>, <c>s390</c>,
+<c>sparc</c>, <c>hppa</c>, <c>ppc*</c>) are mainly understaffed arches, some of
+them are slow, they have more basic problems and have a small userbase. Just
+file bugs for these architectures when a package is going to be a dependency of
+a package already keyworded.
 </p>
 
 <p>
@@ -421,9 +421,9 @@ dependency for your package).
 </p>
 
 <p>
-Some architectures (<c>alpha</c>, <c>ia64</c>, <c>mips</c>, <c>riscv</c>,
-<c>s390</c>) do not maintain a stable keyword, so packages are not to be marked
-stable for one of these architectures.
+Some architectures (<c>alpha</c>, <c>mips</c>, <c>riscv</c>, <c>s390</c>) do not
+maintain a stable keyword, so packages are not to be marked stable for one of
+these architectures.
 </p>
 
 </body>
