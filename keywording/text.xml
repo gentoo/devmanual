@@ -430,6 +430,54 @@ stable for one of these architectures.
 </subsection>
 
 <subsection>
+<title>Stabilization groups</title>
+<body>
+
+<p>
+Stabilization groups are sets of packages defined to help organize and automate
+stabilization requests. These groups are stored under
+<c>metadata/stabilization-groups/</c>, and all files within this directory
+(including subdirectories) are included recursively.
+</p>
+
+<p>
+The main purpose of stabilization groups is to ensure that all packages in the
+same group are handled together in a single stabilization bug. This allows
+them to be stabilized in an "atomic" way: either all packages in the group are
+moved to stable together, or none are. This is especially useful for tightly
+related packages that must be kept in sync.
+</p>
+
+<p>
+Each group is named after to its path, with the ".group" filename suffix
+dropped. For example, a file <c>gnome/vte.group</c> defines the group
+<c>@gnome/vte</c>. This naming convention helps avoid collisions and makes
+referencing groups straightforward. The files use a simple format: one
+<c>cat/pkg</c> per line, with lines starting with <c>#</c> treated as comments.
+Whitespace before and after entries is ignored.
+</p>
+
+<p>
+When invoking tools like <c>pkgdev bugs</c>, passing a set (anything starting
+with <c>@</c>) will expand it to all packages listed in that set. For example,
+<c>@gnome/vala</c> would expand to <c>dev-libs/vala-common</c> and
+<c>dev-lang/vala</c>.
+</p>
+
+<p>
+During bug creation, packages whose latest matching version is already
+stabilized are dropped from the list. The tool then builds the full dependency
+graph as usual, adding any additional required packages. For each defined set,
+all packages included in both the graph and the set are merged into a single
+bug. For example, if <c>@gnome/vala</c> contains <c>dev-libs/vala-common</c> and
+<c>dev-lang/vala</c>, and both are required, they will be grouped into one bug.
+Packages in the set that are not required or requested are not included.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
 <title>Keeping track of pending stabilizations</title>
 <body>
 
