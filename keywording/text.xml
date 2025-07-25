@@ -502,6 +502,11 @@ There are several tools available that can help with this:
     Use <c>pkgcheck</c>'s <c>StableRequest</c> check, e.g.
       <c>grep -ri "larry@" */*/metadata.xml -l | cut -d'/' -f1-2 | xargs pkgcheck scan -k StableRequest</c>
   </li>
+  <li>
+    Use <c>pkgdev bugs</c> for finding and filing stabilization bugs, e.g.
+    <c>pkgdev bugs --edit-graph --filter-stablereqs
+    --auto-cc-arches larry@gentoo.org --find-by-maintainer larry@gentoo.org</c>
+  </li>
 </ul>
 
 </body>
