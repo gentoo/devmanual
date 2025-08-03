@@ -123,37 +123,37 @@ for these variables when writing ebuilds.
   <tr>
     <ti><c>ED</c></ti>
     <ti>
-      Shorthand for <c>${D%/}${EPREFIX}/</c>.
+      Shorthand for <c>${D}${EPREFIX}</c>.
     </ti>
   </tr>
   <tr>
     <ti><c>EROOT</c></ti>
     <ti>
-      Shorthand for <c>${ROOT%/}${EPREFIX}/</c>.
+      Shorthand for <c>${ROOT}${EPREFIX}</c>.
     </ti>
   </tr>
   <tr>
     <ti><c>BROOT</c></ti>
     <ti>
-      (EAPI=7) The absolute path to the prefixed root directory
-      containing build dependencies satisfied by <c>BDEPEND</c>, which
-      are typically executable build tools. Usually blank. Not
-      necessarily the same as <c>EPREFIX</c>.
+      The absolute path to the prefixed root directory containing build
+      dependencies satisfied by <c>BDEPEND</c>, which are typically
+      executable build tools. Usually blank. Not necessarily the same as
+      <c>EPREFIX</c>.
     </ti>
   </tr>
   <tr>
     <ti><c>SYSROOT</c></ti>
     <ti>
-      (EAPI=7) The absolute path to the root directory containing build
+      The absolute path to the root directory containing build
       dependencies satisfied by <c>DEPEND</c>.
     </ti>
   </tr>
   <tr>
     <ti><c>ESYSROOT</c></ti>
     <ti>
-      (EAPI=7) The same as either <c>EROOT</c> or <c>BROOT</c> depending
-      on the value of <c>SYSROOT</c>. Commonly used to reference the
-      location of headers and libraries at build time.
+      The same as either <c>EROOT</c> or <c>BROOT</c> depending on the
+      value of <c>SYSROOT</c>. Commonly used to reference the location
+      of headers and libraries at build time.
     </ti>
   </tr>
   <tr>
@@ -344,15 +344,14 @@ The following variables may or must be defined by every ebuild.
   <tr>
     <ti><c>DEPEND</c></ti>
     <ti>
-    A list of the package's build dependencies.
+    A list of the package's CHOST build dependencies.
     See <uri link="::general-concepts/dependencies/"/>.
-    Starting with EAPI-7, applies to CHOST only.
     </ti>
   </tr>
   <tr>
     <ti><c>BDEPEND</c></ti>
     <ti>
-    (EAPI=7) A list of the package's CBUILD build dependencies.
+    A list of the package's CBUILD build dependencies.
     See <uri link="::general-concepts/dependencies/"/>.
     </ti>
   </tr>
@@ -395,8 +394,7 @@ The following variables may or must be defined by every ebuild.
     <ti>
     An array or space-delimited list of documentation files or
     directories for the <c>einstalldocs</c> function to install
-    recursively. (Requires
-    <uri link="::ebuild-writing/eapi/#EAPI 6">EAPI&gt;=6</uri>.)
+    recursively.
     </ti>
   </tr>
 </table>
@@ -673,35 +671,22 @@ While an XOR could be formed from usual DEPEND syntax,
 a specific ^^ operator has been added for this case.
 </p>
 <p>
-Finally, to state "at least one of foo, bar, or baz must be set":
+To state "at least one of foo, bar, or baz must be set":
 </p>
 <codesample lang="ebuild">
 REQUIRED_USE="|| ( foo bar baz )"
 </codesample>
-<important>
-See section <uri link="::general-concepts/use-flags/#Conflicting USE flags"/>
-for when (and when not) to use <c>REQUIRED_USE</c>.
-</important>
-</body>
-
-<subsubsection>
-<title>EAPI 5</title>
-<body>
-<p>
-EAPI 5 added an additional case to simplify conflicting USE flags.
-</p>
 <p>
 To state "zero or one of foo, bar, or baz must be set, but not several":
 </p>
 <codesample lang="ebuild">
 REQUIRED_USE="?? ( foo bar baz )"
 </codesample>
-<p>In the previous EAPI, this would be the same as:</p>
-<codesample lang="ebuild">
-REQUIRED_USE="foo? ( !bar !baz ) bar? ( !foo !baz ) baz? ( !foo !bar )"
-</codesample>
+<important>
+See section <uri link="::general-concepts/use-flags/#Conflicting USE flags"/>
+for when (and when not) to use <c>REQUIRED_USE</c>.
+</important>
 </body>
-</subsubsection>
 </subsection>
 
 <subsection>
@@ -768,10 +753,7 @@ conventions. Using capital letters in names or differences in how underscores an
 are used in versions are particularly common. For example, what Gentoo calls <c>foo-1.2.3b</c> may be
 expecting a tarball named <c>Foo-1.2-3b.tar.bz2</c>. Rather than hard coding the package string,
 it is preferable to make <c>MY_PN</c>, <c>MY_PV</c> and <c>MY_P</c> variables and use those to define the
-upstream naming.
-EAPI=7 debuted a new set of functions, ver_cut, ver_rs and ver_test.
-The easy way of redefining the version, which should be used unless you are sure
-you know what you are doing, is to use these functions:
+upstream naming. The <c>ver_</c> functions should be used to redefine the version.
 </p>
 
 <codesample lang="ebuild">
@@ -858,19 +840,9 @@ here</uri>, courtesy of Gentoo developer mgorny.
 <body>
 
 <p>
-The following variables never end with a trailing slash in EAPI 7:
-<c>D</c>, <c>ED</c>, <c>ROOT</c>, <c>EROOT</c>. Conversely, in EAPIs
-preceeding EAPI 7, these variables are guaranteed to end with a
-trailing slash. When working with EAPIs prior to EAPI 7, developers
-are encouraged to use the bash suffix removal for the trailing slash
-and add an explicit <c>/</c> when joining paths. For example:
-<c>${D%/}/</c>, <c>${ED%/}/</c>, <c>${ROOT%/}/</c>,
-<c>${EROOT%/}/</c>.
-</p>
-<p>
-Other path variables set by the package manager never end in a trailing
-slash. This includes variables like <c>BROOT</c>, which is set to the
-empty string when it conceptually refers to <c>/</c>.
+Path variables set by the package manager never end in a trailing slash.
+This includes variables like <c>BROOT</c>, which is set to the empty
+string when it conceptually refers to <c>/</c>.
 </p>
 
 </body>
