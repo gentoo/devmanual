@@ -151,9 +151,9 @@ for these variables when writing ebuilds.
   <tr>
     <ti><c>ESYSROOT</c></ti>
     <ti>
-      The same as either <c>EROOT</c> or <c>BROOT</c> depending on the
-      value of <c>SYSROOT</c>. Commonly used to reference the location
-      of headers and libraries at build time.
+      The same as either <c>EROOT</c>, <c>BROOT</c> or <c>SYSROOT</c>
+      depending on the value of <c>SYSROOT</c>. Commonly used to
+      reference the location of headers and libraries at build time.
     </ti>
   </tr>
   <tr>
