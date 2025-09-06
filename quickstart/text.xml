@@ -126,7 +126,7 @@ If you've not seen slots before, either just use <c>"0"</c> or read
 The <c>KEYWORDS</c> variable is set to archs upon which this ebuild has been
 tested. We use <c>~</c> keywords for newly written ebuilds <d/> packages are not
 committed straight to stable, even if they seem to work.
-See <uri link="::keywording/"/> for details.
+See <uri link="::keywording/concepts/"/> for details.
 </p>
 </body>
 </subsection>
