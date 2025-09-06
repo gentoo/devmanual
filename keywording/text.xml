@@ -18,4 +18,5 @@ Refer to the subpages for details on policy, procedures, and maintenance.
 
 <include href="concepts/"/>
 <include href="workflow/"/>
+<include href="maintenance/"/>
 </devbook>
