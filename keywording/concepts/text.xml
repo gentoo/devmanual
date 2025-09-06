@@ -107,7 +107,7 @@ do not specify a <c>KEYWORDS</c> variable.
 An ebuild <b>must not</b> depend upon any package that is of a lower keyword
 level than itself. For example, if <c>foo-1.2</c> depends upon <c>bar-1.2</c>,
 and <c>bar-1.2</c> is <c>~x86</c>, then <c>foo-1.2</c> must <b>not</b> be marked
-stable on <c>x86</c> unless <c>bar-1.2</c> is also stabilised.
+stable on <c>x86</c> unless <c>bar-1.2</c> is also stabilized.
 </p>
 
 <p>
