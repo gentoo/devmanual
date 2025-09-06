@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<devbook self="keywording/concepts/">
+<chapter>
+<title>Keywording concepts and policy</title>
+<body>
+
+<note>
+<e>Terminology</e>: The term 'package' refers to an entire directory, for
+example <c>app-editors/vim</c> <d /> it does <e>not</e> refer to a specific
+version. The terms 'ebuild' or 'package version' are used when this meaning is
+intended. This distinction is important.
+</note>
+
+<p>
+Most ebuilds specify a <c>KEYWORDS</c> variable. This variable is used to
+indicate the suitability and stability of both the package and the ebuild on
+each given arch (<c>sparc</c>, <c>ppc</c>, <c>x64-macos</c>, ...).
+</p>
+
+<note>
+The term 'arch' is used in this sense for historical reasons. As a result
+of <uri link="https://www.gentoo.org/glep/glep-0022.html">GLEP 22</uri>
+and the various non-Linux ports, this is no longer a particularly
+accurate term.
+</note>
+
+<p>
+A sample <c>KEYWORDS</c> entry might look like:
+</p>
+
+<codesample lang="ebuild">
+KEYWORDS="-hppa ~mips ~ppc sparc x86 ~ppc-macos"
+</codesample>
+
+<p>
+The different levels of keyword are:
+</p>
+
+<dl>
+  <dt>
+    <c>arch</c> (<c>x86</c>, <c>ppc-macos</c>) ("stable")
+  </dt>
+  <dd>
+    Both the package version <e>and</e> the ebuild are widely tested, known to
+    work and not have any serious issues on the indicated platform.
+  </dd>
+  <dt>
+    <c>~arch</c> (<c>~x86</c>, <c>~ppc-macos</c>) ("testing")
+  </dt>
+  <dd>
+    The package version and the ebuild are believed to work and do not have any
+    known serious bugs, but more testing is required before the package version
+    is considered suitable for <c>arch</c>.
+  </dd>
+  <dt>
+    No keyword ("unkeyworded")
+  </dt>
+  <dd>
+    If a package has no keyword for a given arch, it means it is not known
+    whether the package will work, or that insufficient testing has occurred for
+    <c>~arch</c>.
+  </dd>
+  <dt>
+    <c>-arch</c> (<c>-x86</c>, <c>-ppc-macos</c>)
+  </dt>
+  <dd>
+    The package version will not work on the arch. This could be caused by badly
+    written code (for example, non-64-bit or endian clean code), relying upon
+    particular hardware (for example, a BIOS querying tool would not work on
+    non-BIOS architectures) or binary only packages.
+  </dd>
+</dl>
+
+<p>
+The <c>-*</c> keyword is special. It is used to indicate package versions which
+are not worth trying to test on unlisted arches. For example, a binary-only
+package which is only supported upstream on <c>ppc</c> and <c>x86</c> might
+use:
+</p>
+
+<codesample lang="ebuild">
+KEYWORDS="-* ppc x86"
+</codesample>
+
+<p>
+This is different in implication from <c>"ppc x86"</c> <d/> the former implies
+that it will not work on other arches, whereas the latter implies that it has
+not been tested.
+</p>
+
+<p>
+Do <b>not</b> use the <c>*</c> or <c>~*</c> special keywords in ebuilds.
+</p>
+
+<note>
+Usually, "live" ebuilds
+(see <uri link="::ebuild-writing/functions/src_unpack/vcs-sources/"/>)
+do not specify a <c>KEYWORDS</c> variable.
+</note>
+</body>
+
+<section>
+<title>Equal visibility requirement</title>
+<body>
+
+<p>
+An ebuild <b>must not</b> depend upon any package that is of a lower keyword
+level than itself. For example, if <c>foo-1.2</c> depends upon <c>bar-1.2</c>,
+and <c>bar-1.2</c> is <c>~x86</c>, then <c>foo-1.2</c> must <b>not</b> be marked
+stable on <c>x86</c> unless <c>bar-1.2</c> is also stabilised.
+</p>
+
+<p>
+You may assume that if a user accepts <c>~arch</c> for a given arch then they
+also accept <c>arch</c>.
+</p>
+
+<p>
+For optional dependencies, all <e>possible</e> dependencies must satisfy the
+above. Note that certain <c>USE</c> flags can be forcibly disabled on a
+per-profile basis <d /> talk to the arch teams if you require this. For
+either-or dependencies, <e>at least one</e> of the options must be of equal or
+better visibility than the package in question.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Hard masks</title>
+<body>
+
+<p>
+The <c>package.mask</c> file can be used to 'hard mask' individual or groups of
+ebuilds. This should be used for testing ebuilds or beta releases of software,
+and may also be used if a package has serious compatibility problems. Packages
+which are not hard masked must <b>not</b> have a dependency upon hard masked
+packages.
+</p>
+
+<p>
+It is good practice to file a bug for ebuilds listed in <c>package.mask</c> to
+allow feedback to be gathered in one location and to reduce the chance of
+forgetting about it. Mention the bug number in the mask message.
+</p>
+
+<p>
+The only time it is acceptable for a user to see the <c>Possibly a DEPEND
+problem</c> error message is if they have manually changed visibility levels for
+a package (for example, through <c>/etc/portage/</c>) and have missed a
+dependency. <b>You should never commit a change which could cause this error to
+appear on a user system</b>.
+</p>
+
+</body>
+</section>
+</chapter>
+</devbook>

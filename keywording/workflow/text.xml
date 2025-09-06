@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<devbook self="keywording/workflow/">
+<chapter>
+<title>Keywording workflow and procedures</title>
+<body>
+
+<note>
+<e>Terminology</e>: The term 'package' refers to an entire directory, for
+example <c>app-editors/vim</c> <d /> it does <e>not</e> refer to a specific
+version. The terms 'ebuild' or 'package version' are used when this meaning is
+intended. This distinction is important.
+</note>
+</body>
+
+<section>
+<title>Keywording new packages</title>
+<body>
+
+<important>
+New packages should be marked as <c>~arch</c> ("testing") only upon
+architectures for which the committing developer has tested. If proxying
+commits for a non-developer, please ensure they have some relationship
+with the relevant arch teams, or <d/> better yet <d/> ask them to file
+a keywording bug instead for non-<c>amd64</c>/<c>x86</c>.
+</important>
+
+<p>
+Do <b>not</b> assume that your package works on all architectures. Do <b>not</b>
+assume that user submitted ebuilds will have correct <c>KEYWORDS</c> <d />
+chances are they just copied from somewhere else. Do <b>not</b> assume that
+upstream's 'supported architectures' list is correct. Do <b>not</b> assume that
+because your code is written in Perl / Python / Java / whatever that it will run
+on other arches (there is at least one case of a <c>vim</c> script which only
+worked on <c>x86</c>).
+</p>
+
+<p>
+Note that most (non-<c>amd64</c>/<c>x86</c>) arches expect you to be on the
+arch team and bugzilla alias if you are committing packages with keywords for
+that arch, and may have additional requirements of which you should be aware
+(on <c>mips</c>, for example, there are multiple ABIs and byte orders to
+consider <d/> a package working on your <c>o32</c> box may not work on
+<c>o64</c> or <c>n32</c>). Contact the individual arch teams for details.
+</p>
+
+<p>
+It's important to note that alternative arches (like <c>alpha</c>, <c>s390</c>,
+<c>sparc</c>, <c>hppa</c>, <c>ppc*</c>) are mainly understaffed arches, some of
+them are slow, they have more basic problems and have a small userbase. Just
+file bugs for these architectures when a package is going to be a dependency of
+a package already keyworded.
+</p>
+
+<p>
+Do <b>not</b> commit straight to <c>arch</c> ("stable").
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Keywording on upgrades</title>
+<body>
+
+<p>
+When upgrading, drop all existing keywords from <c>arch</c> to <c>~arch</c>
+("testing"), and leave any existing <c>~arch</c> keywords intact. It's easiest
+and safest to use <c>ekeyword ~all my-new-version.ebuild</c> from the <c>
+app-portage/gentoolkit</c> package. This must be done even if you <e>think</e>
+you're just making a trivial fix <d /> there have been several examples of the
+stable tree getting broken this way.
+</p>
+
+<p>
+This also applies to revision bumps, not just to upstream version changes.
+</p>
+
+<p>
+If a new version introduces new dependencies which are not available on some
+architectures, then you should file a bug or ask on IRC before you upgrade the
+ebuild. If you really need to get the ebuild added in a hurry, for example,
+for a security fix, then you should drop any <c>KEYWORDS</c> which are causing
+problems and CC the relevant architectures on the bug <d/> you <b>must</b> file
+a <uri link="https://projects.gentoo.org/qa/policy-guide/keywords.html#pg0401">
+new bug</uri> to the architecture in question regarding this if no bug is
+already available.
+</p>
+
+<p>
+Note that it is preferred to drop keywords on the package and request
+rekeywording of it together with its new dependencies within the same bug to
+allow the new code path(s) in your package to be tested. This won't happen if
+the new dependency is requested for keywording by itself and
+<c>package.use.mask</c> is used to mask the relevant new USE flag: only the
+new package dependency will be tested by arch testers. Also, the mask has to be
+manually removed during the testing process, which is cumbersome.
+</p>
+
+<important>
+When committing, make sure that you reference any bugs in the commit message.
+See <uri link="::ebuild-maintenance/git/#Git commit message format"/> for how
+to do this.
+</important>
+
+</body>
+</section>
+
+<section>
+<title>Moving from <c>~arch</c> to <c>arch</c></title>
+<body>
+
+<p>
+If a package has stable keywords, maintainers should regularly (subject to the
+rules below) file stabilization bugs for their packages, ideally approximately
+every 30 days after a new version is added. If a bug report for stabilization
+is filed by somebody else, the maintainer should respond with an
+acknowledgement ("ACK") if the ebuild is ready, and a negative
+acknowledgement ("NAK") if not.
+</p>
+
+<p>
+Previous stable keywords should not be dropped without good cause and it is
+courteous to ping members of the relevant arch team first. Maintainers must not
+drop stable keywords simply because they don't have access to a platform: this
+is what Gentoo's arch teams are here for.
+</p>
+
+<p>
+By convention, these bugs are assigned to package maintainers, but the only
+action expected from maintainers is to acknowledge or reject the
+stabilization rather than carry out additional testing on each required
+architecture themselves.
+</p>
+
+<p>
+Stabilization, i.e., moving an ebuild from <c>~arch</c> ("testing") to
+<c>arch</c> ("stable"), is done by the relevant architecture teams. If you have
+access to exotic hardware but are not on the arch teams, you may wish to make
+individual arrangements <d/> the arch teams are happy for help, so long as they
+know what is going on.
+</p>
+
+<p>
+In order to request stabilization of an ebuild, file a bug to the package's
+maintainer (which may be yourself) in the Stabilization component, and list
+all secondary maintainers in the bug's CC. When the maintainers consider the
+ebuild to be ready for stabilization, they will add the relevant architecture
+teams to the CC list. They can fill the package
+list field, add the <c>CC-ARCHES</c> keyword, and let
+<uri link="https://dev.gentoo.org/~mgorny/doc/nattka/">NATTkA</uri>
+automatically add arch teams to CC (preferred), or do this manually.
+That way, teams can remove themselves from the list when they are done, giving
+a clear indication of which teams still remain to stabilize a package.
+</p>
+
+<p>
+It is <e>strongly</e>
+<uri link="https://archives.gentoo.org/gentoo-dev/message/cd62f6be924f6a0f76b68a07d33b256a">
+recommended</uri> that <c>NATTkA</c> be used to file keywording or
+stabilization bugs to ensure that arches are not accidentally forgot about;
+the automation removes an often error-prone step in the arch-testing process.
+Ask in #gentoo-dev or on the gentoo-dev mailing list if you need help.
+</p>
+
+<p>
+<c>NATTkA</c> will set the <c>sanity-check</c> field on Bugzilla to either
+<c>-</c> or <c>+</c> depending on whether the package list results in a
+consistent dependency graph. You may need to add more packages or adjust the
+arches listed for each package based on the output the bot posts as a comment
+on the bug. Please note that arch teams may not process or notice bugs with a
+blank or <c>-</c> sanity-check, so please fix this if it occurs <d/> or ask for
+help to do so.
+</p>
+
+<note>
+In addition, if you are changing the package list of a bug after it has been
+processed, <d/> i.e. after NATTkA has CCed arches <d/> you should un-CC all
+arches so that NATTkA CCs the new correct set of arches.
+</note>
+
+<note>
+Note that sometimes NATTkA may do <e>nothing</e> if it has concluded the package
+list is complete. You may wish to run <c>nattka sanity-check BUG</c> where
+<c>BUG</c> is the bug number you're having an issue with in order to debug the
+issue to receive verbose output.
+</note>
+
+<p>
+You may wish to read NATTkA's
+<uri link="https://github.com/mgorny/nattka#filing-keywordingstabilization-bugs">
+documentation</uri> for help on package list syntax or other information about
+the tool. The documentation details syntax which can be used, such as <c>*</c>
+to represent "all previously stable arches", or <c>^</c> to copy the arches
+from the line(s) above.
+</p>
+
+<p>
+For an ebuild to move to stable, the following guidelines must be met
+(see <uri link="https://www.gentoo.org/glep/glep-0040.html">GLEP 40</uri>
+for further details):
+</p>
+
+<ul>
+  <li>
+    The ebuild has spent a reasonable amount of time in <c>~arch</c> first.
+    Thirty days is the usual figure, although this is clearly only a guideline.
+    For critical packages, a much longer duration is expected. For small
+    packages that have only minor changes between versions, a shorter period is
+    sometimes appropriate.
+  </li>
+  <li>
+    The ebuild must not have any non-<c>arch</c> dependencies.
+  </li>
+  <li>
+    The package version (and the ebuild) must not have any severe outstanding
+    bugs or issues.
+  </li>
+  <li>
+    The package version must be widely tested.
+  </li>
+  <li>
+    If the package is a library, it should be known not to break any package
+    which depends upon it.
+  </li>
+</ul>
+
+<p>
+For security fixes, the "reasonable amount of time" guideline may be relaxed.
+See the <uri link="https://www.gentoo.org/support/security/vulnerability-treatment-policy.html">
+Vulnerability Treatment Policy</uri>.
+</p>
+
+</body>
+
+<subsection>
+<title>Stabilization rules</title>
+<body>
+
+<p>
+These are rules for stabilizing packages <e>by yourself</e> on a particular
+architecture, <e>not</e> for filing bugs to request arch teams to handle it.
+</p>
+
+<ul>
+  <li>
+     <c>amd64</c>, <c>x86</c>: If you are the maintainer of a package and own
+     the respective <c>amd64</c> or <c>x86</c> hardware, you can do your own
+     testing (stabilization and keywording) of your packages; as long as it is
+     not a core system set dependency. Note that it is acceptable to test
+     <c>x86</c> using a
+     <uri link="https://wiki.gentoo.org/wiki/Project:AMD64/32-bit_Chroot_Guide">
+     specialized environment</uri> on <c>amd64</c>.
+  </li>
+
+  <li>
+    <c>arm</c>, <c>arm64</c>: These teams have a strict policy on passing
+    testsuites. You <b>must</b> run test suites for packages with e.g.
+    <c>FEATURES=test</c> for Portage. Keywording or stabilizing packages which
+    fail these tests is avoided but acceptable if the test suite is fragile or
+    failures are known and reported. It is preferred to have to keyword or
+    stabilize more packages on these arches if needed for e.g. test dependencies
+    rather than masking or disabling tests here.
+  </li>
+
+  <li>
+    <c>sparc</c>: You must have prior permission from the arch lead. Usually we
+    expect you to be on the sparc alias for QA reasons, although other
+    arrangements can be made if you will only be working with a small group of
+    packages.
+  </li>
+</ul>
+
+<p>
+Exotic architectures (like <c>hppa</c>, <c>ppc*</c>, <c>sparc</c>)
+are short on help, so it's best if you avoid opening bugs for stabilization
+of new packages for them, unless it is absolutely necessary (e.g., a reverse
+dependency for your package).
+</p>
+
+<p>
+Some architectures (<c>alpha</c>, <c>mips</c>, <c>riscv</c>, <c>s390</c>) do not
+maintain a stable keyword, so packages are not to be marked stable for one of
+these architectures.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Stabilization groups</title>
+<body>
+
+<p>
+Stabilization groups are sets of packages defined to help organize and automate
+stabilization requests. These groups are stored under
+<c>metadata/stabilization-groups/</c>, and all files within this directory
+(including subdirectories) are included recursively.
+</p>
+
+<p>
+The main purpose of stabilization groups is to ensure that all packages in the
+same group are handled together in a single stabilization bug. This allows
+them to be stabilized in an "atomic" way: either all packages in the group are
+moved to stable together, or none are. This is especially useful for tightly
+related packages that must be kept in sync.
+</p>
+
+<p>
+Each group is named after to its path, with the ".group" filename suffix
+dropped. For example, a file <c>gnome/vte.group</c> defines the group
+<c>@gnome/vte</c>. This naming convention helps avoid collisions and makes
+referencing groups straightforward. The files use a simple format: one
+<c>cat/pkg</c> per line, with lines starting with <c>#</c> treated as comments.
+Whitespace before and after entries is ignored.
+</p>
+
+<p>
+When invoking tools like <c>pkgdev bugs</c>, passing a set (anything starting
+with <c>@</c>) will expand it to all packages listed in that set. For example,
+<c>@gnome/vala</c> would expand to <c>dev-libs/vala-common</c> and
+<c>dev-lang/vala</c>.
+</p>
+
+<p>
+During bug creation, packages whose latest matching version is already
+stabilized are dropped from the list. The tool then builds the full dependency
+graph as usual, adding any additional required packages. For each defined set,
+all packages included in both the graph and the set are merged into a single
+bug. For example, if <c>@gnome/vala</c> contains <c>dev-libs/vala-common</c> and
+<c>dev-lang/vala</c>, and both are required, they will be grouped into one bug.
+Packages in the set that are not required or requested are not included.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Keeping track of pending stabilizations</title>
+<body>
+
+<p>
+Maintainers need some method or system to organize and start pending
+stabilizations once they become due.
+</p>
+
+<p>
+There are several tools available that can help with this:
+</p>
+
+<ul>
+  <li>
+    Use <c>imlate</c> from app-portage/gentoolkit
+  </li>
+  <li>
+    Use packages.gentoo.org's maintainer pages (which have a Stabilization
+    tab)
+  </li>
+  <li>
+    Use <c>pkgcheck</c>'s <c>StableRequest</c> check, e.g.
+      <c>grep -ri "larry@" */*/metadata.xml -l | cut -d'/' -f1-2 | xargs pkgcheck scan -k StableRequest</c>
+  </li>
+  <li>
+    Use <c>pkgdev bugs</c> for finding and filing stabilization bugs, e.g.
+    <c>pkgdev bugs --edit-graph --filter-stablereqs
+    --auto-cc-arches larry@gentoo.org --find-by-maintainer larry@gentoo.org</c>
+  </li>
+</ul>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Simultaneous stabilization on all architectures</title>
+<body>
+
+<p>
+If you maintain an architecture-independent package (data files, icons, pure
+Python, ...), then you may request that your package be stabilized on all arches
+at once. To do this <d/> when you are filing the stabilization bug <d/> please
+add the keyword <c>ALLARCHES</c> and CC the arches that you would like to
+stabilize.
+</p>
+
+<p>
+If your package is architecture-independent, you should add the
+<c>&lt;stabilize-allarches/&gt;</c> tag to metadata.xml. This allows consistency
+in future stabilizations and saves arch teams considerable work.
+</p>
+
+<p>
+The arch teams, when encountering the <c>ALLARCHES</c> keyword, should perform
+their usual set of tests on a single convenient architecture. Then, if
+everything works, stabilize not only the arch that was used during testing,
+but also all of the other arches in CC on the bug. Afterwards, the CC field can
+be cleared and the bug closed if appropriate.
+</p>
+
+<p>
+Note that first-time <c>ALLARCHES</c> stabilizations are done "as normal" <d/>
+i.e. all arch teams test individually as if it was not set. This nuance in the
+procedure is part of why developers should not manually set <c>ALLARCHES</c> in
+bugs, but instead let <c>NATTkA</c> set it automatically based on metadata.xml.
+</p>
+
+</body>
+</subsection>
+</section>
+
+<section>
+<title>Removing package versions</title>
+<body>
+
+<p>
+When removing ebuild, ensure that you do not remove the most recent version at
+any given keyword level on any profile. The aim here is:
+</p>
+
+<ul>
+  <li>
+    Never to force a downgrade. (Exception: occasionally you really do want to
+    force a downgrade, for example if the newly committed <c>foo-1.3</c> turns
+    out to be badly broken and that making everyone downgrade to <c>foo-1.2</c>
+    is the better option. This is rare.)
+  </li>
+  <li>
+    Do not break any existing dependencies.
+  </li>
+</ul>
+
+<p>
+If you would like a particular package version moved to stable on certain arches
+so that you can tidy up, file a bug.
+</p>
+
+</body>
+</section>
+</chapter>
+</devbook>
