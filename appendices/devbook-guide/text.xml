@@ -634,7 +634,7 @@ the content.
 An example for indentation is:
 </p>
 
-<codesample lang="sgml" caption="Indentation example">
+<codesample lang="sgml">
 &lt;table&gt;
 &lt;tr&gt;
   &lt;th&gt;Foo&lt;/th&gt;
@@ -666,7 +666,7 @@ attribute. Break the line before the <c>&lt;uri&gt;</c> tag instead.
 and the attribute value. As an example:
 </p>
 
-<codesample lang="sgml" caption="Attributes">
+<codesample lang="sgml">
 Wrong  :     &lt;uri link = "https://www.gentoo.org/"&gt;
 Correct:     &lt;uri link="https://www.gentoo.org/"&gt;
 </codesample>
