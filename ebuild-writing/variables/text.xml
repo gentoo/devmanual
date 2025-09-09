@@ -619,15 +619,15 @@ See <uri link="::keywording/concepts/"/> for how to handle this variable.
 <body>
 
 <p>
-Note that the <c>IUSE</c> variable is cumulative, so there is no need to specify
-USE flags used only within inherited eclasses within the ebuild's IUSE.
+<c>IUSE</c> is cumulative: if a flag is declared in an inherited eclass,
+do not list it in the ebuild's IUSE.
 </p>
 <note>
-You need not assign the IUSE variable in your ebuild if it is empty.
+You should omit the IUSE variable if it is empty.
 </note>
 
 <p>
-Arch USE flags (<c>sparc</c>, <c>mips</c>, <c>x64-macos</c> and so on) should
+Arch USE flags (<c>sparc</c>, <c>mips</c>, <c>x64-macos</c>, etc.) must
 not be listed.
 </p>
 
