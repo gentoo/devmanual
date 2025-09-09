@@ -307,7 +307,7 @@ The following variables may or must be defined by every ebuild.
     <ti><c>KEYWORDS</c></ti>
     <ti>
     See <uri link="::ebuild-writing/variables/#KEYWORDS"/> and
-    <uri link="::keywording/"/>.
+    <uri link="::keywording/concepts/"/>.
     </ti>
   </tr>
   <tr>
@@ -608,7 +608,7 @@ The only valid construct involving a <c>*</c> inside <c>KEYWORDS</c> is a <c>-*<
 </p>
 
 <p>
-See <uri link="::keywording/"/> for how to handle this variable.
+See <uri link="::keywording/concepts/"/> for how to handle this variable.
 </p>
 
 </body>

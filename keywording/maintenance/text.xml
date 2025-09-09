@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<devbook self="keywording/maintenance/">
+<chapter>
+<title>Arch and profile maintenance</title>
+
+<section>
+<title>Moving an arch from arch to ~arch</title>
+<body>
+
+<p>
+When demoting an entire architecture from stable (<c>arch</c>) to testing
+(<c>~arch</c>), perform the following:
+</p>
+
+<ol>
+  <li>
+    Prepare and publish a Gentoo news item announcing the architecture
+    destabilization, following the process described in
+    <uri link="::general-concepts/news/"/> (per
+        <uri link="https://www.gentoo.org/glep/glep-0042.html">GLEP 42</uri>).
+  </li>
+  <li>
+    Update the profile to accept both stable and testing keywords by setting
+    <c>ACCEPT_KEYWORDS="${ARCH} ~${ARCH}"</c> in the appropriate
+    <c>profiles/arch/${ARCH}/...</c> file(s).
+  </li>
+  <li>
+    Remove the architecture from all open stabilization bugs using the script
+    at
+    <uri>https://gitweb.gentoo.org/proj/pkgcore/pkgcore.git/tree/examples/destable_arch_bugs.py</uri>.
+  </li>
+  <li>
+    Convert all ebuild keywords for the architecture to testing:
+    <c>qkeyword --all "${ARCH}" | cut -f1 -d" " | xargs -n 250 qatom
+    -F "%{CATEGORY}/%{PN}/%{PF}.ebuild" | xargs ekeyword "~${ARCH}"</c>
+    (<c>qkeyword</c> and <c>qatom</c> are tools from
+    <c>app-portage/portage-utils</c>, while <c>ekeyword</c> is provided by
+    <c>app-portage/gentoolkit</c>).
+  </li>
+  <li>
+    Update any eclasses that define shared <c>KEYWORDS</c> variables. Currently,
+    this includes <c>acct-group.eclass</c> and <c>acct-user.eclass</c>.
+  </li>
+  <li>
+    Update the architecture status in the template files within the
+    <uri link="https://gitweb.gentoo.org/fork/bugzilla.git/">bugzilla</uri>
+    repository as needed.
+  </li>
+</ol>
+
+</body>
+</section>
+</chapter>
+</devbook>

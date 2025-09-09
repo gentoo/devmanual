@@ -46,7 +46,7 @@ of thumb could be used as a guideline:
   <li>
     If the package has stable keywords, then a new revision should be
     introduced for every non-trivial change, and its keywords should be dropped
-    to <c>~arch</c> (see <uri link="::keywording/#Keywording on upgrades"/>).
+    to <c>~arch</c> (see <uri link="::keywording/workflow/#Keywording on upgrades"/>).
     The general guideline here is conservatism and the need to minimize
     the risk of accidental breakage for stable users.
   </li>
