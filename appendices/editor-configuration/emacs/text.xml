@@ -64,13 +64,13 @@ activated by <c>(setq x-select-enable-clipboard t)</c>.
 
 <p>
 For easy editing of ebuilds an Emacs mode has been created, which is
-found in the package <c>app-emacs/ebuild-mode</c>.
+found in the package <pkg>app-emacs/ebuild-mode</pkg>.
 It supports ebuilds and eclasses, highlights keywords and also
 provides a hook for your own customisation.
 </p>
 
 <p>
-Package <c>app-emacs/nxml-gentoo-schemas</c> improves editing of
+Package <pkg>app-emacs/nxml-gentoo-schemas</pkg> improves editing of
 Gentoo specific XML files (e.g., <c>metadata.xml</c>). It provides
 auto-completion and on-the-fly validation, using a RELAX NG schema
 for each document type.

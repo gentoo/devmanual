@@ -364,7 +364,7 @@ For developers' convenience, a skeleton file is provided in the
 Gentoo tree with the name
 <uri link="https://gitweb.gentoo.org/repo/gentoo.git/tree/skel.metadata.xml">
 skel.metadata.xml</uri>. The metadata file can also be created
-using the <c>app-portage/metagen</c> tool.
+using the <pkg>app-portage/metagen</pkg> tool.
 </p>
 
 <p>
