@@ -501,6 +501,12 @@ The <c>&lt;sub&gt;</c> and <c>&lt;sup&gt;</c> elements are used to specify
 <sub>subscript</sub> and <sup>superscript</sup>.
 </p>
 
+<p>
+Use the <c>&lt;pkg&gt;</c> element to reference Gentoo packages, such as
+<c>&lt;pkg&gt;app-doc/pms&lt;/pkg&gt;</c>, which renders as <pkg>app-doc/pms</pkg>.
+This tag automatically creates a link to the package information page.
+</p>
+
 </body>
 </subsection>
 <subsection>
