@@ -1,15 +1,15 @@
 certificate version 0.1
-pusher Sam James <sam@gentoo.org> 1758376111 +0100
+pusher Sam James <sam@gentoo.org> 1758377556 +0100
 pushee git+ssh://git.gentoo.org/proj/devmanual.git
-nonce 1758376111-429b0a6efa4b671af94c55b5c913aff21ff06137
+nonce 1758377556-ddaad7d29fd3612ad4a03e0bce55bb25cc8ef337
 
-e4f5d4ed397a21497d8ed12a39c3d4ca41f2f560 e0a6b4ad7503e9e6b5e0ff4b00805e70673a0076 refs/heads/master
+e0a6b4ad7503e9e6b5e0ff4b00805e70673a0076 40944aae2d5e32d4a48b767bcf6d2a6d2851cc29 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iOUEABYKAI0WIQQlpruI3Zt2TGtVQcJzhAn1IN+RkAUCaM6wr18UgAAAAAAuAChp
+iOUEABYKAI0WIQQlpruI3Zt2TGtVQcJzhAn1IN+RkAUCaM62VF8UgAAAAAAuAChp
 c3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0MjVB
 NkJCODhERDlCNzY0QzZCNTU0MUMyNzM4NDA5RjUyMERGOTE5MA8cc2FtQGdlbnRv
-by5vcmcACgkQc4QJ9SDfkZDhuAD+KYZNANsROTnaCf2QEn9uNvXE/ehHedaqjMTg
-aXxSmyEA/19Jwt/fuaCV3yNhoHLLJqfFpSTO/GjMM5gbS7WTYRsJ
-=Ew8y
+by5vcmcACgkQc4QJ9SDfkZDEOwEAwvgMLOwlSa3qABkr+S3TlCyH5PRv3mO5lKlU
+KRH0tLMBAMiIr1xATdKCdZ7pkPTAo7NrOer6j0W/8SRYDloqUCQC
+=K953
 -----END PGP SIGNATURE-----
