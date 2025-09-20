@@ -54,6 +54,49 @@ up the tree too much.
 </body>
 
 <section>
+<title>Methods</title>
+<body>
+<p>
+There are two ways to apply patches within an ebuild:
+</p>
+
+<ul>
+  <li>
+    <c>eapply</c> (function call)
+  </li>
+  <li>
+    <c>PATCHES</c> (array, usually global-scope): accepts both files as well as
+    directories of patches
+  </li>
+</ul>
+
+<p>
+<c>PATCHES</c> in global-scope is the primary style unless there's some
+complexity involved, like applying patches from a Debian 'series' file.
+</p>
+
+<codesample lang="ebuild" caption="An example of eapply">
+src_prepare() {
+	# Requires defining the src_prepare phase
+	default
+	eapply "${FILESDIR}"/foo-1.2.3-build-system.patch
+}
+</codesample>
+
+<codesample lang="ebuild" caption="An example of PATCHES">
+DEPEND="..."
+
+PATCHES=(
+	"${FILESDIR}"/foo-1.2.3-build-system.patch
+)
+
+# src_prepare automatically applies PATCHES in its default implementation
+</codesample>
+
+</body>
+</section>
+
+<section>
 <title>Patch descriptions</title>
 <body>
 <p>
