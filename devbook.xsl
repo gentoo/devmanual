@@ -337,6 +337,11 @@
   </xsl:choose>
 </xsl:template>
 
+<xsl:template match="pkg">
+  <a href="https://packages.gentoo.org/packages/{.}"><xsl:value-of select="."/></a>
+  <span class="fa fa-hdd-o fa-fw pkg-icon"/>
+</xsl:template>
+
 <xsl:template match="uri">
   <xsl:choose>
     <!-- Intra-document reference -->

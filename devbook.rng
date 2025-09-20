@@ -2,7 +2,7 @@
 <!-- Auto-generated from devbook.rnc; do not edit! -->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <!--
-    Copyright 2022-2024 Gentoo Authors
+    Copyright 2022-2025 Gentoo Authors
     Distributed under the terms of the MIT license
     or the CC-BY-SA-4.0 license (dual-licensed)
   -->
@@ -406,6 +406,11 @@
   <define name="d">
     <element name="d">
       <empty/>
+    </element>
+  </define>
+  <define name="pkg">
+    <element name="pkg">
+      <text/>
     </element>
   </define>
   <define name="uri">
