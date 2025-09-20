@@ -270,7 +270,7 @@ this case would be <c>libfoo.so.1</c>.
 </p>
 
 <p>
-The SONAME being incremented implies that the library's ABI has been broken.
+The SONAME being changed implies that the library's ABI has been broken.
 </p>
 
 <p>
@@ -330,8 +330,8 @@ SLOT="0/56.58.58"
 <p>
 In such cases, make the subslot a composite of the major SONAMEs of each of
 the installed libraries. This emphasises a point made above <d/> subslots do
-not need to be equal to the exact SONAME of installed libraries, they only need
-to represent in some way ABI compatibility.
+not need to be equal to the SONAME-derived version of installed libraries,
+they only need to represent in some way ABI compatibility.
 </p>
 
 </body>
