@@ -21,6 +21,7 @@ writing ebuilds or working with the Gentoo repository.
 
 <!-- Keep in alphabetical order -->
 <include href="autotools/"/>
+<include href="bundled-deps/"/>
 <include href="config-protect/"/>
 <include href="copyright-policy/"/>
 <include href="dependencies/"/>
