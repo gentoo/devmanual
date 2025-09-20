@@ -11,6 +11,34 @@ recommendations, not padding designed to make this document look important.
 </body>
 
 <section>
+<title>Gentoo documents</title>
+<body>
+
+<dl>
+  <dt>
+     QA Policy Guide
+  </dt>
+  <dd>
+    Gentoo's QA team maintains a
+    <uri link="https://projects.gentoo.org/qa/policy-guide/index.html">
+    Policy Guide</uri>.
+  </dd>
+  <dt>
+    Package Manager Specification
+  </dt>
+  <dd>
+    Ebuilds are written to follow the
+    <uri link="https://projects.gentoo.org/pms/latest/">
+    Package Manager Specification</uri>. Familiarity with its scope
+    and contents is recommended. The document is also available as package
+    <c>app-doc/pms</c> in the main tree.
+  </dd>
+</dl>
+
+</body>
+</section>
+
+<section>
 <title>Books</title>
 <body>
 
