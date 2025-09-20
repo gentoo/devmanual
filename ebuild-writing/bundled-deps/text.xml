@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<devbook self="ebuild-writing/bundled-deps/">
+<chapter>
+<title>Bundled dependencies</title>
+<body>
+
+<p>
+The intent of this page is to collect information on dependency bundling
+and static linking as a reference to refer upstream developers, instead of
+explaining the same thing repeatedly by e-mail.
+</p>
+</body>
+
+<section>
+<title>When is code bundled?</title>
+<body>
+
+<p>
+Say you develop and distribute a piece of software: a game, a library, anything.
+Now, the code is considered bundled if any of the following conditions occur:
+</p>
+
+<ul>
+  <li>
+    Statically linking against a system library
+  </li>
+  <li>
+    Shipping and using your own copy of a library
+  </li>
+  <li>
+    Including and (unconditionally) using snippets of code copied from
+    a library
+  </li>
+</ul>
+
+<p>
+In other words, code bundling occurs whenever a program or library ends
+up containing code that does not belong to it.
+</p>
+
+</body>
+</section>
+
+<section>
+<title>Temptations</title>
+<body>
+
+<p>
+There are reasons why bundling dependencies and using static linking occurs;
+there are certain benefits to it. So why is it tempting to do such a thing?
+</p>
+
+</body>
+
+<subsection>
+<title>Comforting non-Linux users</title>
+<body>
+
+<p>
+Especially in Windows, shipping dependencies <e>can</e> be a favour to users
+to save end users having to manually install dependencies or additional
+libraries. Without a package manager, there is no real solution to that on
+Windows anyway.
+</p>
+
+<p>
+It is tempting when using bundled code on Windows to bundle on GNU/Linux too.
+It feels consistent and fits together nicely in the mind of the software
+author.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Easing up adoption despite odd dependencies</title>
+<body>
+
+<p>
+If a software package <e>P</e> has some dependency <e>D</e> that is not yet
+packaged for major distributions, <e>D</e> makes it harder for <e>P</e> to
+get in as packaging <e>P</e> forces the new maintainer to package <e>D</e>
+him/herself or to wait for someone else to package it for him/her.
+</p>
+
+<p>
+Bundling <e>D</e> hides the dependency on <e>D</e> in a way: if the packager
+is not paying close attention <e>P</e> may even get in despite and with the
+bundled dependency. (It is, however, only a matter of time until someone
+notices the bundling.)
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Private forks</title>
+<body>
+
+<p>
+If <e>P</e> uses a library <e>D</e>, the developers of <e>P</e> may wish
+to make some changes to <e>D</e>, for example to add a new feature, modify
+the API, or change the default behavior. If the developers of <e>D</e>
+for whatever reason are opposed to these changes, the developers of
+<e>P</e> may want to fork <e>D</e>.
+</p>
+
+<p>
+But publishing and properly maintaining a fork takes time and effort, so
+the developers of <e>P</e> could be tempted to take the easy road, bundle
+their patched version of <e>D</e> with <e>P</e>, and maybe occasionally
+update it for upstream <e>D</e> changes.
+</p>
+</body>
+</subsection>
+</section>
+
+<section>
+<title>Problems</title>
+<body>
+
+<p>
+So why is bundling dependencies and static linking bad after all?
+</p>
+</body>
+
+<subsection>
+<title>Security implications</title>
+<body>
+
+<p>
+Let's consider you're a developer of <e>foo</e> and your <e>foo</e> uses
+<e>libbar</e>.
+</p>
+
+<p>
+Now, a critical important security flaw has been found in <e>libbar</e>
+(say, remote privilege escalation). The problem is large enough that devs
+of <e>libbar</e> release a fixed version right away, and distributions package
+it quickly to decrease the possibility of break-in to users' systems to a
+minimum.
+</p>
+
+<p>
+If a particular distribution has an efficient security upgrade system, the
+patched library can get there in less than 24 hours. But that would be of
+no use to <e>foo</e> users which will still use the earlier vulnerable library.
+</p>
+
+<p>
+Now, depending on how bad things are:
+</p>
+
+<ul>
+  <li>
+    If <e>foo</e> statically linked against <e>libbar</e>, then the users would
+    either have to rebuild <e>foo</e> themselves to make it use the fixed library
+    or distribution developers would have to make a new package for <e>foo</e> and
+    make sure it gets to user systems along with <e>libbar</e> (assuming they
+    are aware that the package is statically linked)
+  </li>
+  <li>
+    If <e>foo</e> bundled a local copy of <e>libbar</e>, then they would have to wait
+    till you discover the vulnerability, update <e>libbar</e> sources, release
+    the new version and distributions package the new version
+  </li>
+</ul>
+
+<p>
+In the meantime, users probably even won't know they are running a vulnerable
+application just because they won't know there's a vulnerable library
+statically linked into the executables.
+</p>
+
+<p>
+Examples:
+</p>
+
+<ul>
+  <li>
+    <uri link="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-3074">
+    CVE-2016-3074</uri> has to be
+    <uri link="https://bugs.php.net/bug.php?id=71912">fixed in PHP</uri>
+    (where it is bundled) after it is
+    <uri link="https://github.com/libgd/libgd/commit/2bb97f407c1145c850416a3bfbcc8cf124e68a19">
+    fixed in libgd</uri> (upstream)
+  </li>
+</ul>
+</body>
+</subsection>
+
+<subsection>
+<title>Waste of hardware resources</title>
+<body>
+
+<p>
+Say a media player is bundling library libvorbis. If libvorbis is also
+installed system-wide this means that two copies of libvorbis:
+</p>
+
+<ol>
+  <li>
+    occupy twice as much space on disk
+  </li>
+  <li>
+    occupy (up to) twice as much RAM (of the page cache)
+  </li>
+</ol>
+</body>
+</subsection>
+
+<subsection>
+<title>Waste of development time downstream</title>
+<body>
+
+<p>
+Due to the
+<uri link="::ebuild-writing/bundled-deps/#Downstream consequences">
+consequences</uri> of bundled dependencies, many hours of downstream developer
+time are wasted that could have been put to more useful work.
+</p>
+</body>
+</subsection>
+
+<subsection>
+<title>Potential for symbol collisions</title>
+<body>
+
+<p>
+If a program <e>P</e> uses a system-installed library <e>A</e> and also uses
+another library <e>B</e> which bundles library <e>A</e>, there is a potential
+for symbol collisions.
+</p>
+
+<p>
+This means that <e>P</e> might use an interface, such as <e>my_function()</e>
+and that the <e>my_function()</e> symbol would be present in both <e>A</e>
+and the version of <e>A</e> bundled inside of library <e>B</e>.
+</p>
+
+<p>
+If the system-installed copy of <e>A</e> and the copy of <e>A</e> compiled
+into library <e>B</e> are from different releases of library <e>A</e>, then
+the operation of the interface <e>my_function()</e> might behave differently
+in each copy of <e>A</e>.
+</p>
+
+<p>
+Since the program <e>P</e> was compiled against the system-installed copy of
+<e>A</e> and for various other reasons, if <e>P</e> ends up using the
+<e>my_function()</e> interface from the version of <e>A</e> bundled in
+library <e>B</e> instead of the interface in the system-installed copy.
+</p>
+
+<p>
+This can potentially result in crashes or strange unpredictable behavior.
+</p>
+
+<p>
+This sort of problem can be prevented if library <e>B</e> uses symbol
+visibility tricks when it links against library <e>A</e>, which would cause
+library <e>B</e> not to export library <e>A</e>'s interfaces.
+</p>
+
+<p>
+Examples:
+</p>
+
+<ul>
+  <li>
+    libmagic bundled with PHP (<uri link="https://bugs.gentoo.org/471682">Gentoo
+    bug 471682</uri>, <uri link="https://bugs.php.net/bug.php?id=66095">
+    PHP bug 66095</uri>)
+  </li>
+</ul>
+</body>
+</subsection>
+</section>
+
+<section>
+<title>Downstream consequences</title>
+<body>
+
+<p>
+When a bundled dependency is discovered downstream this has a number of
+bad consequences.
+</p>
+
+</body>
+
+<subsection>
+<title>Analysis</title>
+<body>
+
+<p>
+So there is a copy of libvorbis bundled with that media player. Which
+version is it? Has it been modified?
+</p>
+</body>
+
+<subsubsection>
+<title>Separating forks from copies</title>
+<body>
+
+<p>
+Before the bundled dependency can be replaced by the system-widely installed
+one, we need to know if it has been modified: we have to know if it's a fork.
+</p>
+
+<p>
+If it is a fork it may or may not be replaced without breaking something.
+</p>
+
+<p>
+That's something to find out: more time wasted. If the code says which
+version it is we at least know what to run <c>diff</c> against, but that
+is not always the case.
+</p>
+</body>
+</subsubsection>
+
+<subsubsection>
+<title>Determining versions</title>
+<body>
+
+<p>
+If a bundled dependency doesn't tell its version we may have to find out
+ourselves. Mailing upstream could work, comparing against a number of
+tarball contents may work too. Lots of opportunities to waste time.
+</p>
+</body>
+</subsubsection>
+</subsection>
+
+<subsection>
+<title>Patching</title>
+<body>
+
+<p>
+Once it is clear that a bundled dependency can be ripped out, a patch is
+written, applied and tested (more waste of time). If upstream is willing to
+co-operate the patch may be dropped later. If not the patch will need
+porting to each new version downstream.
+</p>
+</body>
+</subsection>
+
+<subsection>
+<title>What to do upstream</title>
+<body>
+
+<ul>
+  <li>
+    <p>
+    Remove bundled dependency:
+    </p>
+    <p>
+    At best, remove the bundle dependency and allow compilation against
+    dependency <e>D</e> from either a system-wide installation of it or a
+    local one at any user-defined location.
+    </p>
+    <p>
+    That gives flexibility to users on systems without <e>D</e> packaged and makes
+    it easy to compile against the system copy downstream: cool!
+    </p>
+  </li>
+  <li>
+    <p>
+    Keep bundled dependency: make usage <e>completely optional</e>:
+    </p>
+    <p>
+    With a build time option to disable use of the bundled dependency it is
+    possible to bypass it downstream without patching: nice!
+    </p>
+    <p>
+    When keeping dependency <e>D</e> bundled make sure to follow the upstream of
+    <e>D</e> closely and update your copy to a recent version of <e>D</e> on every
+    minor (and major) release to at least reduce the damage done to people
+    using your bundled version a little.
+    </p>
+    <p>
+    Also: Clearly document if a bundled dependency is a fork or an unmodified
+    copy and which version of the bundled software we are dealing with.
+    </p>
+  </li>
+</ul>
+</body>
+</subsection>
+
+</section>
+</chapter>
+</devbook>
