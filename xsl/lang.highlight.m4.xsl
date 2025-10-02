@@ -3,8 +3,8 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:str="http://exslt.org/strings"
                 xmlns:exslt="http://exslt.org/common"
-                extension-element-prefixes="str exslt xsl"
-                exclude-result-prefixes="str exslt xsl">
+                extension-element-prefixes="str exslt"
+                exclude-result-prefixes="str exslt">
 
   <xsl:template name="lang.highlight.m4.subtokenate">
     <xsl:param name="data"/>
