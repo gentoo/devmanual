@@ -88,7 +88,9 @@ IFS='' read -r -d '' FOOTER << 'EOF'
               </small>
 </div>
 </div>
-</div></footer><script src="https://assets.gentoo.org/tyrian/jquery.min.js"></script><script src="https://assets.gentoo.org/tyrian/bootstrap.min.js"></script>
+</div></footer>
+<script type="text/javascript" src="https://assets.gentoo.org/tyrian/jquery.min.js"></script>
+<script type="text/javascript" src="https://assets.gentoo.org/tyrian/bootstrap.min.js"></script>
 </body>
 </html>
 EOF
