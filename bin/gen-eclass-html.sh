@@ -131,8 +131,8 @@ MANPAGES=()
 [[ -n ${NOMAN} ]] || MANPAGES=(
 	$(/usr/bin/qlist -e eclass-manpages)
 	# We also need a couple of Portage man pages
-	/usr/share/man/man5/ebuild.5*
-	/usr/share/man/man5/make.conf.5*
+	$(man --path 5 ebuild)*
+	$(man --path 5 make.conf)*
 ) || exit 1
 
 [[ -d ${OUTPUTDIR} ]] || mkdir -p "${OUTPUTDIR}" || exit 1
