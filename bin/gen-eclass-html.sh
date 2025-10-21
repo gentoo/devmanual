@@ -157,6 +157,7 @@ for i in "${MANPAGES[@]}"; do
 		-e 's:<A HREF="[^"]*//localhost/[^"]*">\([^<>]*\)</A>:\1:g' \
 		-e 's:<A HREF="[^"]*\${[^"]*">\([^<>]*\)</A>:\1:g' \
 		-e 's,<A HREF="mailto:[^"]*">\([^<>]*\)</A>,\1,g' \
+		-e 's:\[ti\]:~:g' \
 		-e 's:<TT>\([^<>]*\)</TT>:\1:g' \
 		-e 's:<DL COMPACT>:<DL>:g' \
 		-e 's:<TR VALIGN=top>:<TR>:g' \
