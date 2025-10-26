@@ -302,6 +302,19 @@ can then request to be automatically rebuilt when the installed version of
 <c>foo:2</c> or <c>foo:1</c> changes sub-slots <d/> for example, when the user
 upgrades from <c>foo-2.0</c> to <c>foo-2.1</c>.
 </p>
+
+<p>
+In some libraries, there is no expectation of ABI stability between versions
+and upstream does not provide a useful SONAME. For example, some programming
+languages, like OCaml and Haskell, do not provide stable ABIs and any update to
+a library would typically require consumers to be rebuilt. In these cases, an
+appropriate subslot can use <c>${PV}</c>:
+</p>
+
+<codesample lang="ebuild">
+SLOT="0/${PV}"
+</codesample>
+
 </body>
 </subsubsection>
 
