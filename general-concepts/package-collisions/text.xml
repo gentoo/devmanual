@@ -44,6 +44,11 @@ files (which should still be fixed, but aren't critical as Portage
 won't overwrite them).
 </p>
 
+<note>
+The <c>collision-protect</c> feature has been deprecated and is no longer enforced in the main tree. For example, <c>app-alternatives/*</c> are expected to overwrite files that are not owned by any package.
+The <c>FEATURES=protect-owned</c> setting is required.
+</note>
+
 </body>
 </chapter>
 </devbook>
