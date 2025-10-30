@@ -7,7 +7,7 @@
 <p>
 When you encounter a package that is trying to install files that are
 already provided by another package (detectable with
-<c>FEATURES=collision-protect</c> for example) you have to fix this
+<c>FEATURES=protect-owned</c> for example) you have to fix this
 situation before you can commit the ebuild or, if you encounter this
 with an existing package, file a bug about that package (see below for
 a few exceptions). The reason file conflicts are critical is because
