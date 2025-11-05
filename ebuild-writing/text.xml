@@ -31,4 +31,5 @@ with some general notes and extended examples.
 <include href="misc-files/"/>
 <include href="user-submitted/"/>
 <include href="common-mistakes/"/>
+<include href="bundled-deps/"/>
 </devbook>
