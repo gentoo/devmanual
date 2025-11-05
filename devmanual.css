@@ -66,6 +66,12 @@ h4:hover > a.permalink {
     max-width: 200px;
 }
 
+.pkg-icon {
+    color: grey;
+    margin-left: 0.1em;
+    font-size: 70%;
+}
+
 /* compatible to Bootstrap 4 for future migration */
 .d-inline-block {
     display: inline-block;

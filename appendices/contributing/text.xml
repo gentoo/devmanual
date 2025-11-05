@@ -55,10 +55,10 @@ for those who prefer to submit patches using pull requests.
 
 <p>
 To build the devmanual, simply run <c>make</c> in the top directory of
-the repository. You need <c>xsltproc</c> (from <c>dev-libs/libxslt</c>)
-for the XML to HTML conversion, <c>xmllint</c> (from <c>dev-libs/libxml2</c>)
-for validation, and <c>rsvg-convert</c> (from <c>gnome-base/librsvg</c>) for
-the SVG to PNG conversion used in some of the figures throughout the document.
+the repository. You need <c>xsltproc</c> (from <pkg>dev-libs/libxslt</pkg>)
+for the XML to HTML conversion, <c>xmllint</c> (from <pkg>dev-libs/libxml2</pkg>)
+for validation, and <pkg>rsvg-convert</pkg> (from <pkg>gnome-base/librsvg</pkg>)
+for the SVG to PNG conversion used in some of the figures throughout the document.
 </p>
 
 <p>
