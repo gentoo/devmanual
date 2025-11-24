@@ -389,7 +389,7 @@ RDEPEND="=x11-libs/gtk+-2*
 	app-misc/mime-types
 	x11-misc/shared-mime-info"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-util/pkgconfig
+BDEPEND="virtual/pkgconfig
 	nls? ( &gt;=sys-devel/gettext-0.12.1 )"
 
 PATCHES=(
