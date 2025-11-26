@@ -280,7 +280,7 @@ explanation of the format. Remember to keep these files sorted. The file
 <c>use.local.desc</c> is automatically generated from entries in the
 package's <c>metadata.xml</c> and may be used by tools that parse the tree.
 Since <c>use.local.desc</c> is automatically generated it must never be
-manually editted in the tree.
+manually edited in the tree.
 See <uri link="https://www.gentoo.org/glep/glep-0068.html">GLEP 68</uri>
 for more info.
 </p>
