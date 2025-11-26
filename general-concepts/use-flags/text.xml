@@ -281,7 +281,7 @@ explanation of the format. Remember to keep these files sorted. The file
 package's <c>metadata.xml</c> and may be used by tools that parse the tree.
 Since <c>use.local.desc</c> is automatically generated it must never be
 manually editted in the tree.
-See <uri link="https://www.gentoo.org/glep/glep-0056.html">GLEP 56</uri>
+See <uri link="https://www.gentoo.org/glep/glep-0068.html">GLEP 68</uri>
 for more info.
 </p>
 <p>
@@ -373,7 +373,7 @@ gentoo-dev list, and it must not be modified in any subprofile.
 The current architecture (e.g. <c>x86</c>, <c>sparc</c>, <c>ppc-macos</c>)
 will automatically be set as a USE flag as well. See
 <c>profiles/arch.list</c> for a full list of valid architecture keywords,
-and <uri link="https://www.gentoo.org/glep/glep-0022.html">GLEP 22</uri>
+and <uri link="https://www.gentoo.org/glep/glep-0053.html">GLEP 53</uri>
 for an explanation of the format.
 </p>
 
