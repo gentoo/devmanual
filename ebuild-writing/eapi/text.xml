@@ -1009,10 +1009,10 @@ pkg_postrm() {
 </codesample>
 
     <p>
-    In the example provided above, the ebuild needs to update the icon cache
-    upon being installed or uninstalled. By placing the respective tool in
-    <c>IDEPEND</c>, the ebuild requests it to be available at the time of
-    <c>pkg_postinst</c>. When cross-compiling, the tool will be built for
+    In the example provided above, the ebuild needs to update the desktop
+    database upon being installed or uninstalled. By placing the respective
+    tool in <c>IDEPEND</c>, the ebuild requests it to be available at the time
+    of <c>pkg_postinst</c>. When cross-compiling, the tool will be built for
     <c>CBUILD</c> and therefore directly executable by the ebuild.
     </p>
 
@@ -1400,7 +1400,7 @@ $(usev foo --enable-foo)
 
     <p>
     Obviously, adding a second argument to <c>hasv</c> was not possible, so its
-    behaviour would have become inconsistent with <c>usev</c> in EAPI 8. Since 
+    behaviour would have become inconsistent with <c>usev</c> in EAPI 8. Since
     <c>hasv</c> was not used in the Gentoo repository, it has been removed,
     along with <c>hasq</c> and <c>useq</c> which were considered deprecated
     since 2011.
