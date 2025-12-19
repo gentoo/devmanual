@@ -1431,5 +1431,297 @@ $(usev foo --enable-foo)
 </body>
 </subsection>
 </section>
+
+<section>
+<title>EAPI 9</title>
+<body>
+
+<note>
+This section is based on the
+<uri link="https://https://projects.gentoo.org/pms/9/eapi-cheatsheet.pdf">
+EAPI Cheat Sheet</uri>.
+</note>
+</body>
+
+<subsection>
+<title>EAPI 9 profiles</title>
+<body>
+
+<dl>
+  <dt>Default EAPI for profiles</dt>
+  <dd>
+    Profile directories that don't contain an own <c>eapi</c> file no longer
+    default to EAPI 0, but to the EAPI specified in the top-level
+    <c>profiles</c> directory.
+  </dd>
+
+  <dt><c>use.stable</c> and <c>package.use.stable</c></dt>
+  <dd>
+    Profile dirs may contain two new files <c>use.stable</c> and
+    <c>package.use.stable</c>. They can be used to override the USE flags
+    specified by <c>make.defaults</c>, but act only on packages that would be
+    merged due to a stable keyword.
+
+    The format of the <c>use.stable</c> file is simple: Each line contains a
+    USE flag to enable; a minus sign before the flag indicates that the flag
+    should be disabled instead.
+
+    The <c>package.use.stable</c> file has the same format as <c>package.use</c>
+    (see <uri link="::eclass-reference/make.conf/">make.conf(5)</uri>).
+
+    <c>USE_EXPAND</c> values may be enabled or disabled by using
+    <c>expand_name_value</c>.
+
+    Flags listed in <c>package.use.stable</c> take precedence over these listed
+    in <c>package.use</c>, which in turn take precedence over <c>use.stable</c>.
+  </dd>
+</dl>
+
+</body>
+</subsection>
+
+<subsection>
+<title>EAPI 9 ebuild format</title>
+<body>
+
+<dl>
+  <dt>Bash version is now 5.3</dt>
+  <dd>
+    <p>
+    Ebuilds can use Bash version 5.3 (was 5.0 before).
+    Some notable new features are:
+    </p>
+
+    <ul>
+      <li>
+        <p>
+        <c>declare</c> and <c>local</c> now have a <c>-I</c> option that
+        inherits the attributes and value from of any existing variable with
+        the same name at a surrounding scope. For example, an ebuild could do
+        </p>
+<codesample lang="ebuild">
+local -Ix ROOT
+</codesample>
+        <p>
+        to export the <c>ROOT</c> variable to the environment, from where an
+        external could get its value.
+        </p>
+      </li>
+      
+      <li>
+        <p>
+        There is a new form of command substitution: <c>${ command; }</c> or
+        <c>${|command;}</c> to capture the output of <c>command</c> without
+        forking a child process and using pipes.
+        </p>
+        <p>
+        <c>${ command; }</c> executes <c>command</c> in the current execution
+        environment and captures its output. Any side effects of <c>command</c>
+        take effect immediately in the current execution environment and
+        persist after the command completes. This type of command substitution
+        superficially resembles executing an unnamed shell function: local
+        variables are created as when a shell function is executing, and the
+        <c>return</c> builtin forces <c>command</c> to complete; however, the
+        rest of the execution environment is shared with the caller.
+        </p>
+        <p>
+        The <c>${|command;}</c> construct expands to the value of the
+        <c>REPLY</c> shell variable after <c>command</c> executes, without
+        removing any trailing newlines, and the standard output of
+        <c>command</c> remains the same as in the calling shell. Bash creates
+        <c>REPLY</c> as an initially-unset local variable when <c>command</c> 
+        executes, and restores <c>REPLY</c> to its old value after
+        <c>command</c> completes, as with any local variable.
+        </p>
+        <p>
+        For example, this construct expands to <c>12345</c>, and leaves the
+        shell variable <c>X</c> unchanged in the current execution environment:
+        </p>
+<codesample lang="ebuild">
+${ local X=12345; echo $X; }
+</codesample>
+        <p>
+        while the following construct does not require any output to expand to
+        <c>12345</c> and restores <c>REPLY</c> to the value it had before the
+        command substitution:
+        </p>
+<codesample lang="ebuild">
+${| REPLY=12345; }
+</codesample>
+      </li>
+    </ul>
+  </dd>
+</dl>
+
+</body>
+</subsection>
+
+<subsection>
+<title>EAPI 9 variables</title>
+<body>
+
+<dl>
+  <dt>Variables are no longer exported</dt>
+  <dd>
+    <p>
+    The package manager no longer exports its defined shell variables to the
+    environment but keeps them as unexported shell variables, namely:
+    </p>
+    <ul>
+      <li>
+        <c>CATEGORY</c>, <c>P</c>, <c>PF</c>, <c>PN</c>, <c>PV</c>, <c>PR</c>,
+        <c>PVR</c>
+      </li>
+      <li><c>A</c></li>
+      <li>
+        <c>FILESDIR</c>, <c>DISTDIR</c>, <c>WORKDIR</c>, <c>S</c>, <c>ROOT</c>,
+        <c>EROOT</c>, <c>SYSROOT</c>, <c>ESYSROOT</c>, <c>BROOT</c>, <c>T</c>,
+        <c>EPREFIX</c>, <c>D</c>, <c>ED</c>
+      </li>
+      <li><c>USE</c></li>
+      <li><c>EBUILD_PHASE</c>, <c>EBUILD_PHASE_FUNC</c></li>
+      <li><c>MERGE_TYPE</c></li>
+      <li><c>REPLACING_VERSIONS</c>, <c>REPLACED_BY_VERSION</c></li>
+      <li><c>ECLASS</c>, <c>INHERITED</c>, <c>DEFINED_PHASES</c></li>
+    </ul>
+    <important>
+    Exceptions are <c>TMPDIR</c> and <c>HOME</c> which are always exported.
+    </important>
+    <p>
+    The same applies to variables set in <c>make.defaults</c> that have
+    specific meanings or special handling. These are no longer exported to the
+    environment of an EAPI 9 ebuild:
+    </p>
+    <ul>
+      <li><c>ARCH</c></li>
+      <li><c>CONFIG_PROTECT</c>, <c>CONFIG_PROTECT_MASK</c></li>
+      <li>
+        <c>USE</c>, <c>USE_EXPAND</c>, <c>USE_EXPAND_UNPREFIXED</c>,
+        <c>USE_EXPAND_HIDDEN</c>, <c>USE_EXPAND_IMPLICIT</c>,
+        <c>IUSE_IMPLICIT</c>
+      </li>
+      <li><c>ENV_UNSET</c></li>
+      <li>
+        All variables named in <c>USE_EXPAND</c> and
+        <c>USE_EXPAND_UNPREFIXED</c>
+      </li>
+      <li>
+        All <c>USE_EXPAND_VALUES_${v}</c> variables, where <c>${v}</c> is a
+        value in <c>USE_EXPAND_IMPLICIT</c>
+      </li>
+    </ul>
+    <p>
+    All other variables set in <c>make.defaults</c> will still be exported to
+    the environment.
+    </p>
+    <p>
+    As a consequence, external commands can no longer rely on the value of the
+    <c>ROOT</c> variable in the environment. For example, <c>eselect</c> must
+    be called with the <c>--root</c> option in EAPI 9:
+    </p>
+<codesample lang="ebuild">
+pkg_postinst() {
+	eselect --root="${ROOT}" emacs update ifunset
+}
+</codesample>
+  </dd>
+</dl>
+
+</body>
+</subsection>
+
+<subsection>
+<title>EAPI 9 commands</title>
+<body>
+
+<dl>
+  <dt><c>assert</c> has been banned</dt>
+  <dd>
+    Our definition of <c>assert</c> deviated from the semantics of the command
+    in mainstream programming languages and was a source of confusion.
+    Therefore, use of the <c>assert</c> command in ebuilds is no longer
+    allowed. <c>pipestatus</c> (see below) should be used as replacement.
+  </dd>
+
+  <dt><c>domo</c> has been banned</dt>
+  <dd>
+    The operation of the <c>domo</c> command was unintuitive. It also hardcoded
+    <c>${PN}</c> as the gettext domain, which is often not what is wanted.
+    Therefore, the <c>domo</c> command has been banned. <c>insinto</c> plus
+    <c>newins</c> should be used as replacement.
+  </dd>
+
+  <dt><c>pipestatus</c></dt>
+  <dd>
+    Checks if all commands in the last executed pipeline have returned an exit
+    status of zero. When the <c>-v</c> option is specified, also prints the
+    shell's pipe status array.
+<codesample lang="ebuild">
+foo | bar | baz    
+pipestatus || die
+</codesample>
+  </dd>
+
+  <dt><c>ver_replacing</c> <e>op v2</e></dt>
+  <dd>
+    <p>
+    Checks if the relation <e>v1 op v2</e> is true for at least one element
+    <e>v1</e> of <c>REPLACING_VERSIONS</c>. <e>op</e> can be any operator that
+    is accepted by <c>ver_test</c>. Returns shell true (0) if the specified
+    relation holds for at least one element, shell false (1) otherwise.
+    In particular, shell false is returned when <c>REPLACING_VERSIONS</c>
+    is empty.
+    </p>
+    <p>
+    Obviously, <c>ver_replacing</c> is only meaningful in phases where
+    <c>REPLACING_VERSIONS</c> is defined, i.e. in <c>pkg_preinst</c> and
+    <c>pkg_postinst</c>.
+    </p>
+<codesample lang="ebuild">
+pkg_postinst() {
+	if ver_replacing -lt 3; then
+		elog "This is a major upgrade and may break your existing setup!"
+    fi
+}
+</codesample>
+  </dd>
+
+  <dt><c>edo</c></dt>
+  <dd>
+    Outputs its entire argument list as an informational message, then executes
+    it as a simple shell command, with standard failure behaviour.
+  </dd>
+</dl>
+
+</body>
+</subsection>
+
+<subsection>
+<title>EAPI 9 merging and unmerging</title>
+<body>
+
+<dl>
+  <dt>Merging of symlinks</dt>
+  <dd>
+    <p>
+    When merging <c>D</c> to <c>ROOT</c>, absolute symlinks are now merged
+    as-is. The package manager will no longer strip a leading <c>D</c> from
+    their link targets.
+    </p>
+    <p>
+    In previous EAPIs, any absolute symlink whose link target started with
+    <c>${D}</c> was rewritten with the leading <c>${D}</c> removed.
+    That behaviour was ill-defined because <c>D</c> is not guaranteed to have
+    the same value that it had in the <c>src_*</c> phases. For example, when
+    a binary package was merged on a target host with <c>PORTAGE_TMPDIR</c>
+    different from the build host's <c>PORTAGE_TMPDIR</c>, symlink rewriting
+    would have failed.
+    </p>
+  </dd>
+</dl>
+
+</body>
+</subsection>
+</section>
 </chapter>
 </devbook>
