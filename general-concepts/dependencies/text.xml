@@ -850,5 +850,312 @@ USE flags. This would then break building your ebuild.
 
 </body>
 </section>
+
+<section>
+<title>Common pitfalls</title>
+<body>
+
+<p>
+The following pitfalls occur frequently when dealing with slots, slot
+operators, any-of dependencies, and blockers. They are easy to miss and can lead
+to subtle resolver behaviour or rebuild issues. The guidance below is a brief
+summary; see the linked references for deeper background.
+</p>
+
+</body>
+
+<subsection>
+<title>Separate dependency specifications are not combined into one slot</title>
+<body>
+
+<p>
+Multiple independent dependency specifications are not guaranteed to be
+satisfied by the same slot of a slotted package. For example, a common version
+range like the following can be satisfied by two different slots:
+</p>
+
+<codesample lang="ebuild">
+# Bad (if sys-libs/db is slotted):
+DEPEND="&gt;=sys-libs/db-2
+	&lt;sys-libs/db-5"
+</codesample>
+
+<p>
+If <c>sys-libs/db</c> is slotted and two installed slots each satisfy one
+side of the range, the resolver can legally use them separately.
+</p>
+
+<p>
+Likewise, independent USE requirements may be met by different slots with
+different USE configurations. For packages that are not truly multi-slotted
+(i.e. slots represent mutually incompatible ABIs), the safe fix is to state the
+intended slot explicitly or to express the intent via any-of groups limited per
+slot.
+</p>
+
+<codesample lang="ebuild" caption="Example of a bad USE dependency on a slotted package">
+# Bad:
+RDEPEND="sys-libs/db[foo]
+	bar? ( sys-libs/db[baz] )"
+</codesample>
+
+<codesample lang="ebuild" caption="Example of a good version range across slots">
+DEPEND="
+	|| (
+		=sys-libs/db-5*:5
+		=sys-libs/db-4*:4
+	)
+"
+</codesample>
+
+<codesample lang="ebuild" caption="Example of a good USE dependency on a slotted package">
+RDEPEND="
+	|| (
+		( sys-libs/db:5 tools? ( sys-libs/db:5[cxx] ) )
+		( sys-libs/db:4 tools? ( sys-libs/db:4[cxx] ) )
+	)
+"
+</codesample>
+
+</body>
+</subsection>
+
+<subsection>
+<title>The <c>:=</c> slot operator with multiple slots</title>
+<body>
+
+<p>
+The <c>:=</c> operator records the slot/sub-slot of the best matching
+installed version for the given
+<uri link="::general-concepts/dependencies/#Dependency syntax">
+dependency specification</uri>. If that
+dependency specification can match slots newer than the versions you explicitly
+allowed elsewhere, it may bind to the wrong slot (and even pull it in during
+build).
+</p>
+
+<p>
+To prevent this, ensure the dependency specification carrying <c>:=</c> cannot
+match slots newer than intended. One simple pattern is to cap it with an upper
+
+bound that excludes unwanted major versions while keeping <c>:=</c> on the same
+package:
+</p>
+
+<codesample lang="ebuild" caption="Example of good use of := with version range">
+DEPEND="
+	|| (
+		=sys-libs/db-5*
+		=sys-libs/db-4*
+	)
+	&lt;sys-libs/db-6:=
+"
+</codesample>
+
+<p>
+This forces the slot-operator binding to a version in the requested range at
+build time. Be cautious when combining multiple conditional USE sets with a
+slot operator; keeping the <c>:=</c> dependency specification simple and
+separately constrained is usually clearer.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Understanding any-of dependencies</title>
+<body>
+
+<p>
+An any-of group (<c>|| ( ... )</c>) guarantees only that at least one
+immediate child element is satisfied for the relevant dependency class. It
+does not guarantee which element will be chosen, nor does it bind the choice
+made at build time to the choice used later at runtime. Order can be used as
+an implementation hint but is not a contract.
+</p>
+
+<codesample lang="ebuild" caption="Example of an any-of dependency">
+DEPEND="
+	|| (
+		dev-libs/A
+		dev-libs/B
+		dev-libs/C
+	)
+"
+</codesample>
+
+<p>
+If more than one alternative is installed, it is undefined which one is actually
+going to be used. In fact, the package may even provide the user with explicit
+run time choice of the dependency used, or use multiple of them. Replacing one
+alternative with another later still satisfies the dependency and should not be
+assumed to force rebuilds unless you have expressly tied the dependency via
+slots/sub-slots (outside of any-of) or via other mechanisms.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Do not use <c>:=</c> inside any-of groups</title>
+<body>
+
+<warning>
+Do not place <c>:=</c> dependency specifications inside <c>|| ( ... )</c>
+groups. The semantics of the slot operator (binding to the slot/sub-slot of the
+installed match) conflicts with the semantics of any-of (only one child needs to
+match and may change later). As a result, the requirements cannot be satisfied
+reliably and behaviour is undefined. pkgcheck will warn about this situation
+with <uri link="https://pkgcore.github.io/pkgcheck/man/pkgcheck.html#baddependency">
+BadDependency</uri> results.
+</warning>
+
+<p>
+Instead, keep the any-of block free of slot operators and add a separate,
+well-constrained dependency specification carrying <c>:=</c> if you need rebuild
+tracking.
+</p>
+
+<codesample lang="ebuild" caption="Example of incorrect use of := inside any-of">
+# Bad:
+RDEPEND="
+	|| (
+		dev-libs/A:=
+		dev-libs/B:=
+	)
+"
+</codesample>
+
+<codesample lang="ebuild" caption="Example of correct use of := outside any-of">
+IUSE="a b"
+REQUIRED_USE="^^ (a b)"
+RDEPEND="
+	a? ( dev-libs/A:= )
+	b? ( dev-libs/B:= )
+"
+</codesample>
+
+<note>
+The above is only an illustration of structure. Choose the package for the
+slot-operator binding that truly determines ABI compatibility for your
+package, and constrain its version range appropriately.
+</note>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Any-of and <c>:*</c> across classes</title>
+<body>
+
+<p>
+Any-of groups (<c>|| ( ... )</c>) and the <c>:*</c> slot operator are valid in
+all dependency classes. However, there is no binding between occurrences in
+different classes. An any-of in <c>DEPEND</c> guarantees only that at least one
+alternative is installed before the build; an any-of in <c>RDEPEND</c> or
+<c>PDEPEND</c> guarantees only that at least one is installed for runtime.
+You should not assume the same alternative or slot will be used for both.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>The <c>:=</c> slot operator across classes</title>
+<body>
+
+<p>
+The <c>:=</c> operator is technically valid in all classes but is useful only
+when the matching package is installed at the time metadata is recorded
+(install from source or binary package creation). Practically, the dependency
+specification using <c>:=</c> should be present in <c>RDEPEND</c> to express the
+rebuild relationship, and <c>DEPEND</c> must guarantee that a matching package
+is installed at the relevant time.
+</p>
+
+<codesample lang="ebuild"
+caption="Example of typical pattern: tie rebuilds to sub-slot changes">
+DEPEND="dev-libs/foo:="
+RDEPEND="${DEPEND}"
+</codesample>
+
+<note>
+The dependency specifications need not be textually identical as long as
+<c>DEPEND</c> guarantees that some package matching the <c>RDEPEND</c> <c>:=</c>
+dependency specification is installed when metadata are recorded.
+</note>
+
+<codesample lang="ebuild">
+# Also valid:
+RDEPEND="dev-libs/foo:="
+DEPEND="dev-libs/foo"
+</codesample>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Blockers across dependency classes</title>
+<body>
+
+<p>
+Blockers are valid in all classes but their usefulness differs:
+</p>
+
+<ul>
+  <li>
+    Weak blockers (<c>!</c>) are primarily meaningful in <c>RDEPEND</c>, where
+    the uninstall of the blocked package may be delayed until after the new
+    package starts installing, allowing file collisions to be replaced.
+    Technically they are allowed in <c>DEPEND</c>, but they do not influence
+    the build environment and are not useful there on their own.
+  </li>
+  <li>
+    Strong blockers (<c>!!</c>) must be resolved before the dependency is
+    considered satisfied. They therefore make sense in both <c>DEPEND</c>
+    (before building) and <c>RDEPEND</c> (before installation).
+  </li>
+  <li>
+    In <c>PDEPEND</c>, weak blockers act effectively like those in
+    <c>RDEPEND</c>, while strong blockers behave more like weak ones because
+    satisfaction may be delayed post-install.
+  </li>
+  <li>
+    Remember the general caveat from above: weak blockers should be included
+    in <c>RDEPEND</c> rather than used purely in <c>DEPEND</c>.
+  </li>
+</ul>
+
+<codesample lang="ebuild">
+# Weak blocker: meaningful in RDEPEND
+RDEPEND="!app-misc/foo"
+
+# Strong blocker: enforced pre-build or pre-install
+DEPEND="!!sys-libs/bar"
+</codesample>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Further reading</title>
+<body>
+
+<p>
+For extended discussion with examples, see the
+<uri link="https://blogs.gentoo.org/mgorny/2016/06/21/dependency-pitfalls-regarding-slots-slot-ops-and-any-of-deps/">
+blog post</uri> and its
+<uri link="https://blogs.gentoo.org/mgorny/2016/06/22/dependency-classes-and-allowed-dependency-types/">
+follow-up</uri>, and the relevant sections of the Package Manager Specification
+on
+<uri link="https://pms.gentoo.org/9/pms.html#anyof-dependency-specifications">
+any-of dependency specifications</uri> and
+<uri link="https://pms.gentoo.org/9/pms.html#slot-dependencies">
+slot dependencies</uri>.
+</p>
+
+</body>
+</subsection>
+</section>
 </chapter>
 </devbook>
