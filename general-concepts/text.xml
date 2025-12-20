@@ -41,6 +41,7 @@ writing ebuilds or working with the Gentoo repository.
 <include href="portage-cache/"/>
 <include href="projects/"/>
 <include href="sandbox/"/>
+<include href="security/"/>
 <include href="slotting/"/>
 <include href="tree/"/>
 <include href="use-flags/"/>

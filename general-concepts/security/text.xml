@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<devbook self="general-concepts/security/">
+<chapter>
+<title>Security</title>
+
+<section>
+<title>Maintainer expectations</title>
+
+<subsection>
+<title>Bug reports</title>
+<body>
+
+<p>
+Maintainers are expected to a file a bug on Bugzilla under the Gentoo Security
+product's Vulnerabilities component if a security vulnerability (even without
+a CVE assigned) affects their package.
+</p>
+
+<p>
+While the Gentoo Security project makes an effort to monitor CVE feeds, that
+is not a substitute for project-specific communications about vulnerabilities
+in release notes or other channels. Information often (though not always)
+eventually appears in CVE feeds, but usually with a significant delay.
+</p>
+
+<p>
+Triage of the bug and filling out of the Bugzilla
+<uri link="https://wiki.gentoo.org/wiki/Project:Security/GLSA_Coordinator_Guide#Status_whiteboard_rules"/>
+whiteboard</uri> is appreciated but not required for the package maintainer.
+</p>
+
+<p>
+For such bug reports, the bug summary should reflect the first fixed
+version in the Gentoo repository, not the first fixed version released
+by upstream. This means unpackaged versions should not be in the title.
+</p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Fixed versions of packages</title>
+<body>
+
+<p>
+Upstream releases fixing security issues in a package should be packaged
+as soon as possible.
+</p>
+
+<p>
+Similarly, releases fixing (ideally exclusively) security problems should
+be stabilised on an expedited basis. The maintainer is expected to indicate
+how long is needed to wait for stabilisation or file the stabilisation bug
+themselves, making it block the security bug.
+</p>
+
+<p>
+For critical bugs, stabilisation is usually requested within 24 hours. For
+less serious bugs, consider the default timeline to be 7-14 days.
+</p>
+
+<p>
+Be aware that upstreams are often under pressure to release fixes quickly,
+occasionally resulting in regressions: hurried stabilisation should be
+balanced against the severity of the reported vulnerabilities and the damage
+that could be done from a resulting regression.
+</p>
+
+<p>
+For example, a mild security vulnerability in a networked authentication
+daemon, requiring special configuration to trigger a Denial of Service, might
+warrant waiting a couple of days if the fix touches generic code, meaning
+regressions could harm users outside of a fringe configuration.
+</p>
+
+<p>
+Upstream regressions from security fixes mean that old versions shouldn't
+be cleaned up aggressively. Security fixes have been known to break user
+workflows even when upstream don't view the change as a regression or a bug.
+</p>
+
+</body>
+</subsection>
+</section>
+</chapter>
+</devbook>
