@@ -18,11 +18,11 @@
 
   <xsl:variable name="pkg-mgr-keywords">
     <!-- Package manager commands in EAPI 0 (excluding commands banned in later EAPIs) -->
-    assert best_version debug-print debug-print-function debug-print-section die diropts dobin docinto doconfd dodir
-    dodoc doenvd doexe doinfo doinitd doins dolib.a dolib.so doman domo dosbin dosym ebegin econf eend eerror einfo
-    einfon elog emake ewarn exeinto exeopts EXPORT_FUNCTIONS fowners fperms has has_version inherit insinto insopts into
-    keepdir newbin newconfd newdoc newenvd newexe newinitd newins newlib.a newlib.so newman newsbin unpack use usev
-    use_enable use_with
+    best_version debug-print debug-print-function debug-print-section die diropts dobin docinto doconfd dodir dodoc
+    doenvd doexe doinfo doinitd doins dolib.a dolib.so doman dosbin dosym ebegin econf eend eerror einfo einfon elog
+    emake ewarn exeinto exeopts EXPORT_FUNCTIONS fowners fperms has has_version inherit insinto insopts into keepdir
+    newbin newconfd newdoc newenvd newexe newinitd newins newlib.a newlib.so newman newsbin unpack use usev use_enable
+    use_with
     <!-- EAPI 4 -->
     docompress nonfatal
     <!-- EAPI 5 -->
@@ -32,6 +32,8 @@
     <!-- EAPI 7 -->
     dostrip eqawarn ver_cut ver_rs ver_test
     <!-- EAPI 8: no new commands -->
+    <!-- EAPI 9 -->
+    edo pipestatus ver_replacing
     <!-- Sandbox -->
     adddeny addpredict addread addwrite
     <!-- Phase functions -->
@@ -113,11 +115,29 @@
         </xsl:call-template>
         <xsl:variable name="data-slack" select="substring-after($data, $lang.highlight.ebuild.variable-start)"/>
         <xsl:variable name="variable-name" select="substring-before($data-slack, $lang.highlight.ebuild.variable-end)"/>
-        <span class="Identifier">${<xsl:value-of select="$variable-name"/>}</span>
-        <xsl:call-template name="lang.highlight.ebuild.subtokenate">
-          <xsl:with-param name="data" select="substring-after($data, $lang.highlight.ebuild.variable-end)"/>
-          <xsl:with-param name="nokeywords" select="$nokeywords"/>
-        </xsl:call-template>
+        <xsl:choose>
+          <!-- Bash 5.3 ${ command; } or ${| command; } -->
+          <xsl:when test="$data-slack = '' or $data-slack = '|'">
+            <span class="PreProc">${<xsl:value-of select="$data-slack"/></span>
+          </xsl:when>
+          <!-- ${variable} -->
+          <xsl:when test="contains($data-slack, '}')">
+            <span class="Identifier">${<xsl:value-of select="$variable-name"/>}</span>
+            <xsl:call-template name="lang.highlight.ebuild.subtokenate">
+              <xsl:with-param name="data" select="substring-after($data-slack, $lang.highlight.ebuild.variable-end)"/>
+              <xsl:with-param name="nokeywords" select="$nokeywords"/>
+            </xsl:call-template>
+          </xsl:when>
+          <!-- No closing brace found, something is wrong -->
+          <xsl:otherwise>
+            <xsl:message>Warning: No closing brace in <xsl:value-of select="$data"/></xsl:message>
+            <span class="PreProc">${</span>
+            <xsl:call-template name="lang.highlight.ebuild.subtokenate">
+              <xsl:with-param name="data" select="$data-slack"/>
+              <xsl:with-param name="nokeywords" select="$nokeywords"/>
+            </xsl:call-template>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:when>
 
       <xsl:when test="contains($data, '$(')">
