@@ -1549,6 +1549,30 @@ ${ local X=12345; echo $X; }
 ${| REPLY=12345; }
 </codesample>
       </li>
+
+      <li>
+        <p>
+        Pattern substitution now duplicates a common <c>sed</c> idiom:
+        If the <c>patsub_replacement</c> shell option is enabled (which it is
+        by default), any unquoted <c>&amp;</c> in the replacement string is
+        replaced with the portion of the string that matched the pattern.
+        </p>
+        <p>
+        For instance:
+        </p>
+<codesample lang="ebuild">
+var="foobar"
+echo "${var/foo/&amp;123}"
+</codesample>
+        <p>
+        will print <c>foo123bar</c>, i.e. the <c>&amp;</c> in the replacement
+        string is replaced with the string <c>foo</c> that matched the pattern.
+        </p>
+        <p>
+        A backslash can be used to escape the <c>&amp;</c> and insert a literal
+        <c>&amp;</c> in the replacement string.
+        </p>
+      </li>
     </ul>
   </dd>
 </dl>
