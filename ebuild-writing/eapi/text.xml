@@ -1438,7 +1438,7 @@ $(usev foo --enable-foo)
 
 <note>
 This section is based on the
-<uri link="https://https://projects.gentoo.org/pms/9/eapi-cheatsheet.pdf">
+<uri link="https://projects.gentoo.org/pms/9/eapi-cheatsheet.pdf">
 EAPI Cheat Sheet</uri>.
 </note>
 </body>
