@@ -55,6 +55,13 @@ themselves, making it block the security bug.
 </p>
 
 <p>
+When committing a new ebuild to resolve a security issue, please refrain
+from making unnecessary changes to the ebuild or functionality: instead
+add a new ebuild revision later with unrelated changes if a new,
+non-security release is not anticipated any time soon.
+</p>
+
+<p>
 For critical bugs, stabilisation is usually requested within 24 hours. For
 less serious bugs, consider the default timeline to be 7-14 days.
 </p>
