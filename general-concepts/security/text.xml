@@ -25,7 +25,7 @@ eventually appears in CVE feeds, but usually with a significant delay.
 
 <p>
 Triage of the bug and filling out of the Bugzilla
-<uri link="https://wiki.gentoo.org/wiki/Project:Security/GLSA_Coordinator_Guide#Status_whiteboard_rules"/>
+<uri link="https://wiki.gentoo.org/wiki/Project:Security/GLSA_Coordinator_Guide#Status_whiteboard_rules">
 whiteboard</uri> is appreciated but not required for the package maintainer.
 </p>
 
