@@ -514,7 +514,7 @@ list does not outweigh the burden of maintaining it.
 In EAPI 8, individual items in <c>SRC_URI</c> can be exempted from automatic
 mirroring and fetching restrictions (imposed by <c>RESTRICT="mirror"</c> and
 <c>RESTRICT="fetch"</c>) by prefixing the addresses with <c>mirror+</c> or
-<c>fetch+</c>.  For example, in the following ebuild,
+<c>fetch+</c>. For example, in the following ebuild,
 </p>
 
 <codesample lang="ebuild">
@@ -854,7 +854,7 @@ string when it conceptually refers to <c>/</c>.
 
 <p>
 Variables have significant value in ebuilds, making it possible to avoid
-unnecessary repetitions and make maintenance easier.  However,
+unnecessary repetitions and make maintenance easier. However,
 references to constant-value variables should be used with care as their
 excessive use can harm readability and increase maintenance burden (e.g.
 when renaming a package). In particular, using variables whose values
