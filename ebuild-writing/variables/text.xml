@@ -1064,5 +1064,163 @@ rule, as it is intended to be passed to the compiler driver rather than
 
 </body>
 </section>
+
+<section>
+<title>QA control variables</title>
+<body>
+
+<p>
+Several QA variables are provided which allow an ebuild to manipulate some of
+the QA checks performed by portage. Use of these variables in ebuilds should
+be kept to an absolute minimum otherwise they defeat the purpose of the QA
+checks, and their use is subject to agreement of the QA team. They are
+primarily intended for use by ebuilds that install closed-source binary
+objects that cannot be altered.
+</p>
+
+<note>
+Objects that violate these rules may fail on some architectures.
+</note>
+
+<table>
+  <tr>
+    <th>Variable</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <ti><c>QA_AM_MAINTAINER_MODE</c></ti>
+    <ti>
+      A list of lines containing automake missing <c>--run</c> commands. The
+      lines may contain regular expressions with escape-quoted special
+      characters.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>QA_CONFIG_IMPL_DECL_SKIP</c></ti>
+    <ti>
+      A list of function names to ignore when checking for
+      <c>-Wimplicit-function-declaration</c> in configure logs. This should only
+      be used for false positives.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>QA_CONFIGURE_OPTIONS</c></ti>
+    <ti>
+      A list of configure options which trigger warnings about unrecognized
+      options. The options may contain regular expressions with escape-quoted
+      special characters.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>QA_DESKTOP_FILE</c></ti>
+    <ti>
+      A list of file paths, relative to the image directory, of desktop files
+      which should not be validated. The paths may contain regular expressions
+      with escape-quoted special characters.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>QA_MULTILIB_PATHS</c></ti>
+    <ti>
+      A list of file paths, relative to the image directory, of files that
+      should be ignored for the multilib-strict checks. The paths may contain
+      regular expressions with escape-quoted special characters.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>QA_PKGCONFIG_VERSION</c></ti>
+    <ti>
+      If set, then portage verifies that all pkg-config .pc files have a
+      <c>Version</c> field with the value of <c>QA_PKGCONFIG_VERSION</c>. For
+      example, set <c>QA_PKGCONFIG_VERSION=${PV}</c> if your package is expected
+      to install all pkg-config .pc files with a <c>Version</c> field containing
+      <c>${PV}</c> .
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>QA_PREBUILT</c></ti>
+    <ti>
+      A list of file paths, relative to the image directory, of files that are
+      pre-built binaries. Paths listed here will be appended to each of the
+      <c>QA_*</c> variables listed below. The paths may contain fnmatch-like
+      patterns which will be internally translated to regular expressions for
+      the <c>QA_*</c> variables that support regular expressions instead of
+      fnmatch patterns. The translation mechanism simply replaces <c>*</c> with
+      <c>.*</c>.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>QA_DT_NEEDED</c></ti>
+    <ti>
+      A list of file paths, relative to the image directory, of shared libraries
+      that lack NEEDED entries. The paths may contain regular expressions with
+      escape-quoted special characters.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>QA_EXECSTACK</c></ti>
+    <ti>
+      A list of file paths, relative to the image directory, of objects that
+      require executable stack in order to run. The paths may contain fnmatch
+      patterns. This variable is intended to be used on objects that truly need
+      executable stack (i.e. not those marked to need it which in fact do not).
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>QA_FLAGS_IGNORED</c></ti>
+    <ti>
+      A list of file paths, relative to the image directory,
+      of files that do not contain <c>.GCC.command.line</c> sections or contain
+      <c>.hash</c> sections. This variable is intended to be used on files of
+      binary packages which ignore <c>CFLAGS</c>, <c>CXXFLAGS</c>,
+      <c>FFLAGS</c>, <c>FCFLAGS</c>, and <c>LDFLAGS</c> variables.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>QA_PRESTRIPPED</c></ti>
+    <ti>
+      A list of file paths, relative to the image directory, of files that
+      contain pre-stripped binaries. The paths may contain regular expressions
+      with escape-quoted special characters.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>QA_SONAME</c></ti>
+    <ti>
+      A list of file paths, relative to the image directory, of shared libraries
+      that lack <c>SONAME</c>s. The paths may contain regular expressions with
+      escape-quoted special characters.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>QA_SONAME_NO_SYMLINK</c></ti>
+    <ti>
+      A list of file paths, relative to the image directory, of shared libraries
+      that have <c>SONAME</c>s but should not have a corresponding <c>SONAME</c>
+      symlink in the same directory. The paths may contain regular expressions
+      with escape-quoted special characters.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>QA_TEXTRELS</c></ti>
+    <ti>
+      This variable can be set to a list of file paths, relative to the image
+      directory, of files that contain text relocations that cannot be
+      eliminated. The paths may contain fnmatch patterns. This variable is
+      intended to be used on closed-source binary objects that cannot be
+      altered.
+    </ti>
+  </tr>
+  <tr>
+    <ti><c>QA_WX_LOAD</c></ti>
+    <ti>
+      A list of file paths, relative to the image directory, of files that
+      contain writable and executable segments. These are rare. The paths may
+      contain fnmatch patterns.
+    </ti>
+  </tr>
+</table>
+</body>
+</section>
 </chapter>
 </devbook>
