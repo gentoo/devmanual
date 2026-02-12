@@ -104,8 +104,8 @@ metadata.xml:
 <tr>
   <ti><c>&lt;description&gt;</c></ti>
   <ti>
-    The description tag contains a description of the maintainership, or for 
-    example a remark that someone interested can take over the maintainership. 
+    The description tag contains a description of the maintainership, or for
+    example a remark that someone interested can take over the maintainership.
     It is optional.
   </ti>
 </tr>
@@ -330,7 +330,7 @@ There are also some attributes that can be used with these tags:
   <ti>
     A string identifying the type of upstream source. A list of valid strings are kept in
     <uri link="https://www.gentoo.org/dtd/metadata.dtd">metadata.dtd</uri>.
-    Developers should email the gentoo-dev mailing list before using a new type value. 
+    Developers should email the gentoo-dev mailing list before using a new type value.
   </ti>
 </tr>
 <tr>
@@ -364,7 +364,7 @@ For developers' convenience, a skeleton file is provided in the
 Gentoo tree with the name
 <uri link="https://gitweb.gentoo.org/repo/gentoo.git/tree/skel.metadata.xml">
 skel.metadata.xml</uri>. The metadata file can also be created
-using the <c>app-portage/metagen</c> tool.
+using the <pkg>app-portage/metagen</pkg> tool.
 </p>
 
 <p>

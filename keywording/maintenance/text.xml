@@ -34,8 +34,8 @@ When demoting an entire architecture from stable (<c>arch</c>) to testing
     <c>qkeyword --all "${ARCH}" | cut -f1 -d" " | xargs -n 250 qatom
     -F "%{CATEGORY}/%{PN}/%{PF}.ebuild" | xargs ekeyword "~${ARCH}"</c>
     (<c>qkeyword</c> and <c>qatom</c> are tools from
-    <c>app-portage/portage-utils</c>, while <c>ekeyword</c> is provided by
-    <c>app-portage/gentoolkit</c>).
+    <pkg>app-portage/portage-utils</pkg>, while <c>ekeyword</c> is provided by
+    <pkg>app-portage/gentoolkit</pkg>).
   </li>
   <li>
     Update any eclasses that define shared <c>KEYWORDS</c> variables. Currently,
