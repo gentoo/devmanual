@@ -30,9 +30,12 @@ whiteboard</uri> is appreciated but not required for the package maintainer.
 </p>
 
 <p>
-For such bug reports, the bug summary should reflect the first fixed
-version in the Gentoo repository, not the first fixed version released
-by upstream. This means unpackaged versions should not be in the title.
+In other contexts the affected package name and version would be included
+in the summary of a bug, but please be aware that these security bugs do
+not follow that convention. For security bugs: if a fixed version is
+already available in the Gentoo repository, include that fixed version
+number in the bug summary; otherwise, do not include any version numbers
+at all.
 </p>
 
 </body>
