@@ -60,7 +60,7 @@ following reasons:
 
 <p>
 It is safer (and better for the user) to make a snapshot instead. For example,
-<c>app-editors/emacs</c> snapshots are made using:
+<pkg>app-editors/emacs</pkg> snapshots are made using:
 </p>
 
 <pre>

@@ -7,7 +7,7 @@
 <p>
 For full whitespace, character set, syntax highlighting and indent settings for
 all of Gentoo's file-types in <c>vim</c> and <c>gvim</c>, emerge the
-<c>app-vim/gentoo-syntax</c> package.
+<pkg>app-vim/gentoo-syntax</pkg> package.
 </p>
 
 <p>

@@ -94,8 +94,8 @@ would break its syntax.
 <p>
 Portage performs a QA check which verifies if LDFLAGS are respected. This QA check
 is enabled only when <c>LDFLAGS</c> variable contains <c>-Wl,--hash-style=gnu</c>.
-(This flag can be used only on systems which use <c>sys-libs/glibc</c> except for
-machines with a MIPS CPU.)
+(This flag can be used only on systems which use <pkg>sys-libs/glibc</pkg> except
+for machines with a MIPS CPU.)
 </p>
 
 </body>

@@ -34,7 +34,7 @@ This section provides usage and descriptions of the different EAPIs.
 An overview about the important features of each EAPI is provided in the
 appendix of the Package Manager Specification.  The two-page leaflet
 can be printed out, consulted for reference and is available
-as <c>app-doc/pms</c> in the main tree.
+as <pkg>app-doc/pms</pkg> in the main tree.
 </important>
 
 <p>

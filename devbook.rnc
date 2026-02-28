@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the MIT license
 # or the CC-BY-SA-4.0 license (dual-licensed)
 
@@ -123,6 +123,7 @@ e = element e { inline }
 sub = element sub { inline }
 sup = element sup { inline }
 d = element d { empty }
+pkg = element pkg { text }
 
 uri = element uri {
   # uri can have either a URI in the body text or a link attribute
