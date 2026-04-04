@@ -188,6 +188,13 @@ Examples:
     fixed in libgd</uri> (upstream)
   </li>
 </ul>
+
+<p>
+Note further that in general, nobody investigates whether vulnerabilities
+impact old versions of packages, which means a stale bundled copy in a
+project may be vulnerable without any attention being paid to it. Further,
+MITRE does not issue CVEs for bundled dependencies.
+</p>
 </body>
 </subsection>
 
