@@ -284,6 +284,28 @@ Examples:
 </ul>
 </body>
 </subsection>
+
+<subsection>
+<title>Possibly broken at runtime</title>
+<body>
+
+<p>
+It is uncommon for bundled dependencies to be wired up in the build
+system such that their testsuite is built and executed as part of the parent
+package.
+</p>
+
+<p>
+Missing testsuites mean that real incompatibilities with newer toolchains,
+dependencies, or changes in the consuming application can go unnoticed.
+</p>
+
+<p>
+Meson subprojects mitigate this by running the testsuite of any bundled
+dependencies ('subprojects') by default.
+</p>
+</body>
+</subsection>
 </section>
 
 <section>
@@ -391,6 +413,10 @@ porting to each new version downstream.
     <p>
     Clearly document if a bundled dependency is a fork or an unmodified
     copy and which version of the bundled software we are dealing with.
+    </p>
+    <p>
+    Use a Meson subproject which allows clean fallback from a system
+    copy to a local bundled one.
     </p>
   </li>
 </ul>
