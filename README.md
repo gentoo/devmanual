@@ -3,7 +3,7 @@ devmanual.gentoo.org
 
 Gentoo devmanual source
 
-You can find the compiled version here: https://devmanual.gentoo.org
+You can find the compiled version here: https://devmanual.gentoo.org/
 
 This document is licensed under [CC-BY-SA-4.0](LICENSE)
 
