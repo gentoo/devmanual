@@ -356,8 +356,17 @@ There are several tools available that can help with this:
     tab)
   </li>
   <li>
-    Use <c>pkgcheck</c>'s <c>StableRequest</c> check, e.g.
-      <c>grep -ri "larry@" */*/metadata.xml -l | cut -d'/' -f1-2 | xargs pkgcheck scan -k StableRequest</c>
+    Use <c>pkgcheck</c>'s <c>StableRequest</c> check, for example via
+    <ul>
+      <li>
+        <c>grep -ri "larry@" */*/metadata.xml -l | cut -d'/' -f1-2 | xargs pkgcheck scan -k StableRequest</c>
+        (using <c>grep</c> and <c>pkgcheck</c>)
+      </li>
+      <li>
+        <c>pquery --no-version --maintainer larry@gentoo.org | xargs pkgcheck scan -k StableRequest</c>
+        (using <c>pquery</c> from <c>pkgcore</c> and <c>pkgcheck</c>)
+      </li>
+    </ul>
   </li>
   <li>
     Use <c>pkgdev bugs</c> for finding and filing stabilization bugs, e.g.
