@@ -1450,7 +1450,7 @@ EAPI Cheat Sheet</uri>.
 <dl>
   <dt>Default EAPI for profiles</dt>
   <dd>
-    Profile directories that don't contain an own <c>eapi</c> file no longer
+    Profile directories that don't contain their own <c>eapi</c> file no longer
     default to EAPI 0, but to the EAPI specified in the top-level
     <c>profiles</c> directory.
   </dd>
