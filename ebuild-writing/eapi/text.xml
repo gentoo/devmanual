@@ -1472,7 +1472,7 @@ EAPI Cheat Sheet</uri>.
     <c>USE_EXPAND</c> values may be enabled or disabled by using
     <c>expand_name_value</c>.
 
-    Flags listed in <c>package.use.stable</c> take precedence over these listed
+    Flags listed in <c>package.use.stable</c> take precedence over those listed
     in <c>package.use</c>, which in turn take precedence over <c>use.stable</c>.
   </dd>
 </dl>
@@ -1496,7 +1496,7 @@ EAPI Cheat Sheet</uri>.
       <li>
         <p>
         <c>declare</c> and <c>local</c> now have a <c>-I</c> option that
-        inherits the attributes and value from of any existing variable with
+        inherits the attributes and value of any existing variable with
         the same name at a surrounding scope. For example, an ebuild could do
         </p>
 <codesample lang="ebuild">
@@ -1504,7 +1504,7 @@ local -Ix ROOT
 </codesample>
         <p>
         to export the <c>ROOT</c> variable to the environment, from where an
-        external could get its value.
+        external command could get its value.
         </p>
       </li>
       
