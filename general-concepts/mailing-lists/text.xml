@@ -27,25 +27,22 @@ by the Infrastructure team at the request of a developer.
 <body>
 
 <p>
-There are five primary lists intended for Gentoo developers
+There are four primary lists intended for Gentoo developers
 (and contributors):
 </p>
 
 <ul>
   <li>gentoo-core — internal non-public Gentoo developer list</li>
-  <li>gentoo-dev — public technical discussion list</li>
+  <li>gentoo-dev — public discussion list</li>
   <li>gentoo-dev-announce — developer announcement list</li>
   <li>gentoo-nfp — Gentoo Foundation discussion list</li>
-  <li>gentoo-project — public non-technical discussion list</li>
 </ul>
 
 <p>
-Most of the discussions take place on the gentoo-dev and gentoo-project
-mailing lists.  Strictly technical topics (e.g. ebuild development,
-system behavior) go into gentoo-dev, while non-technical topics
-(e.g. organizational matters) go into gentoo-project.  Both lists are
-public and open to everyone.  Developers are strongly encouraged
-to follow these lists.
+Most of the discussions take place on the gentoo-dev mailing list.
+Both technical (e.g. ebuild development, system behaviour) and non-technical
+topics (e.g. organizational matters) go into gentoo-dev. The list is public
+and open to everyone. Developers are strongly encouraged to follow this list.
 </p>
 
 <p>
