@@ -32,10 +32,10 @@ There are four primary lists intended for Gentoo developers
 </p>
 
 <ul>
-  <li>gentoo-core — internal non-public Gentoo developer list</li>
-  <li>gentoo-dev — public discussion list</li>
-  <li>gentoo-dev-announce — developer announcement list</li>
-  <li>gentoo-nfp — Gentoo Foundation discussion list</li>
+  <li>gentoo-core <d/> internal non-public Gentoo developer list</li>
+  <li>gentoo-dev <d/> public discussion list</li>
+  <li>gentoo-dev-announce <d/> developer announcement list</li>
+  <li>gentoo-nfp <d/> Gentoo Foundation discussion list</li>
 </ul>
 
 <p>
