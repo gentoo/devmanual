@@ -1599,8 +1599,7 @@ echo "${var/foo/&amp;123}"
       <li><c>A</c></li>
       <li>
         <c>FILESDIR</c>, <c>DISTDIR</c>, <c>WORKDIR</c>, <c>S</c>, <c>ROOT</c>,
-        <c>EROOT</c>, <c>SYSROOT</c>, <c>ESYSROOT</c>, <c>BROOT</c>, <c>T</c>,
-        <c>EPREFIX</c>, <c>D</c>, <c>ED</c>
+        <c>EROOT</c>, <c>T</c>, <c>EPREFIX</c>, <c>D</c>, <c>ED</c>
       </li>
       <li><c>USE</c></li>
       <li><c>EBUILD_PHASE</c>, <c>EBUILD_PHASE_FUNC</c></li>
@@ -1609,7 +1608,8 @@ echo "${var/foo/&amp;123}"
       <li><c>ECLASS</c>, <c>INHERITED</c>, <c>DEFINED_PHASES</c></li>
     </ul>
     <important>
-    Exceptions are <c>TMPDIR</c> and <c>HOME</c> which are always exported.
+    Exceptions are <c>SYSROOT</c>, <c>ESYSROOT</c>, <c>BROOT</c>, <c>TMPDIR</c>
+    and <c>HOME</c>, which are always exported.
     </important>
     <p>
     The same applies to variables set in <c>make.defaults</c> that have
