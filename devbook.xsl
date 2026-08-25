@@ -556,8 +556,8 @@
           <xsl:when test="$offline">
             <nav class="offline">
               <ul>
-                <li><xsl:call-template name="findPrevious"/></li>
-                <li><xsl:call-template name="findNext"/></li>
+                <li><xsl:call-template name="anchor-previous"/></li>
+                <li><xsl:call-template name="anchor-next"/></li>
               </ul>
             </nav>
           </xsl:when>
@@ -645,8 +645,8 @@
                           </ul>
                         </xsl:if>
                       </li>
-                      <li><xsl:call-template name="findPrevious"/></li>
-                      <li><xsl:call-template name="findNext"/></li>
+                      <li><xsl:call-template name="anchor-previous"/></li>
+                      <li><xsl:call-template name="anchor-next"/></li>
                     </ul>
                   </div>
                 </div>
@@ -688,7 +688,7 @@
           <div class="row">
             <div class="col-md010">
               <ol class="breadcrumb">
-                <xsl:call-template name="printParentDocs"/>
+                <xsl:call-template name="list-ancestors"/>
               </ol>
             </div>
           </div>
@@ -797,14 +797,14 @@
   </xsl:choose>
 </xsl:template>
 
-<xsl:template name="getLastNode">
+<xsl:template name="last-node">
   <!-- This function recurses forward down nodes stopping at the very last include... -->
   <xsl:param name="root"/>
   <xsl:param name="path"/>
   <xsl:variable name="include" select="document(concat($root, $path, 'text.xml'))/devbook/include[last()]/@href"/>
   <xsl:choose>
     <xsl:when test="$include">
-      <xsl:call-template name="getLastNode">
+      <xsl:call-template name="last-node">
         <xsl:with-param name="root" select="$root"/>
         <xsl:with-param name="path" select="concat($path, $include)"/>
       </xsl:call-template>
@@ -834,7 +834,7 @@
                                            /devbook/include[@href=$path_self]/preceding-sibling::include[1]"/>
     <xsl:text>../</xsl:text>
     <xsl:if test="$preceding">
-      <xsl:call-template name="getLastNode">
+      <xsl:call-template name="last-node">
         <xsl:with-param name="root" select="$parent"/>
         <xsl:with-param name="path" select="$preceding/@href"/>
       </xsl:call-template>
@@ -842,7 +842,7 @@
   </xsl:if>
 </xsl:template>
 
-<xsl:template name="findNext">
+<xsl:template name="anchor-next">
   <xsl:variable name="next">
     <xsl:call-template name="next-node"/>
   </xsl:variable>
@@ -854,7 +854,7 @@
   </a>
 </xsl:template>
 
-<xsl:template name="findPrevious">
+<xsl:template name="anchor-previous">
   <xsl:variable name="previous">
     <xsl:call-template name="previous-node"/>
   </xsl:variable>
@@ -872,7 +872,7 @@
   </a>
 </xsl:template>
 
-<xsl:template name="printParentDocs">
+<xsl:template name="list-ancestors">
   <xsl:param name="depth" select="string-length(/devbook/@self) - string-length(translate(/devbook/@self, '/', ''))"/>
   <xsl:choose>
     <xsl:when test="$depth &gt; 0">
@@ -888,7 +888,7 @@
                                 /devbook/chapter[1]/title"/>
         </a>
       </li>
-      <xsl:call-template name="printParentDocs">
+      <xsl:call-template name="list-ancestors">
         <xsl:with-param name="depth" select="$depth - 1"/>
       </xsl:call-template>
     </xsl:when>

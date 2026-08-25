@@ -14,10 +14,10 @@
     <!-- all descendants -->
     <xsl:call-template name="contents"/>
     <!-- all ancestors -->
-    <xsl:call-template name="printParentDocs"/>
+    <xsl:call-template name="list-ancestors"/>
     <!-- previous and next documents -->
-    <xsl:call-template name="findPrevious"/>
-    <xsl:call-template name="findNext"/>
+    <xsl:call-template name="anchor-previous"/>
+    <xsl:call-template name="anchor-next"/>
   </xsl:variable>
   <xsl:variable name="self" select="/devbook/@self"/>
   <xsl:value-of select="concat($self, 'index.html:')"/>
