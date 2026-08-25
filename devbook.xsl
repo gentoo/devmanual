@@ -23,6 +23,8 @@
   <xsl:text>&#x0a;</xsl:text>
 </xsl:variable>
 
+<!-- ====================  Chapters and sections  ===================== -->
+
 <xsl:template match="chapter">
   <h1 class="first-header">
     <xsl:apply-templates select="title"/>
@@ -56,6 +58,8 @@
 <xsl:template match="body">
   <xsl:apply-templates/>
 </xsl:template>
+
+<!-- ====================  Block-level elements  ====================== -->
 
 <xsl:template match="p">
   <p>
@@ -249,6 +253,30 @@
   <dd><xsl:apply-templates/></dd>
 </xsl:template>
 
+<xsl:template match="authors">
+  <dl>
+    <xsl:apply-templates/>
+  </dl>
+</xsl:template>
+
+<xsl:template match="author">
+  <dt>
+    <xsl:value-of select="@name"/>
+    <xsl:if test="@email != ''"> &lt;<a href="mailto:{@email}"><xsl:value-of select="@email"/></a>&gt;</xsl:if>
+  </dt>
+  <dd><xsl:apply-templates/></dd>
+</xsl:template>
+
+<xsl:template match="authorlist">
+  <dt><xsl:value-of select="@title"/></dt>
+  <dd>
+    <xsl:for-each select="document(concat(@href, 'text.xml'))//author">
+      <xsl:value-of select="@name"/>
+      <xsl:if test="position() != last()">, </xsl:if>
+    </xsl:for-each>
+  </dd>
+</xsl:template>
+
 <xsl:template match="note">
   <div class="alert alert-info" role="alert">
     <strong>Note:</strong><xsl:text> </xsl:text>
@@ -276,6 +304,8 @@
     <xsl:apply-templates/>
   </div>
 </xsl:template>
+
+<!-- ====================  Inline elements  =========================== -->
 
 <xsl:template match="b">
   <b><xsl:apply-templates/></b>
@@ -428,6 +458,8 @@
   </xsl:choose>
 </xsl:template>
 
+<!-- ====================  Table of contents  ========================= -->
+
 <xsl:template name="extraction-count">
   <xsl:param name="depth"/>
   <xsl:param name="maxdepth"/>
@@ -524,6 +556,8 @@
     </xsl:if>
   </xsl:if>
 </xsl:template>
+
+<!-- ====================  Top level  ================================= -->
 
 <xsl:template match="/">
   <xsl:variable name="relative_path_depth_recursion">
@@ -893,30 +927,6 @@
       </xsl:call-template>
     </xsl:when>
   </xsl:choose>
-</xsl:template>
-
-<xsl:template match="author">
-  <dt>
-    <xsl:value-of select="@name"/>
-    <xsl:if test="@email != ''"> &lt;<a href="mailto:{@email}"><xsl:value-of select="@email"/></a>&gt;</xsl:if>
-  </dt>
-  <dd><xsl:apply-templates/></dd>
-</xsl:template>
-
-<xsl:template match="authorlist">
-  <dt><xsl:value-of select="@title"/></dt>
-  <dd>
-    <xsl:for-each select="document(concat(@href, 'text.xml'))//author">
-      <xsl:value-of select="@name"/>
-      <xsl:if test="position() != last()">, </xsl:if>
-    </xsl:for-each>
-  </dd>
-</xsl:template>
-
-<xsl:template match="authors">
-  <dl>
-    <xsl:apply-templates/>
-  </dl>
 </xsl:template>
 
 </xsl:stylesheet>
