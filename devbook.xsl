@@ -319,7 +319,7 @@
   <i><xsl:apply-templates/></i>
 </xsl:template>
 
-<xsl:template match="c">
+<xsl:template match="c" name="c">
   <code class="docutils literal"><span class="pre"><xsl:apply-templates/></span></code>
 </xsl:template>
 
@@ -329,6 +329,14 @@
 
 <xsl:template match="sup">
   <sup><xsl:apply-templates/></sup>
+</xsl:template>
+
+<xsl:template match="pkg">
+  <a href="https://packages.gentoo.org/packages/{.}"><xsl:call-template name="c"/></a>
+</xsl:template>
+
+<xsl:template match="cat">
+  <a href="https://packages.gentoo.org/categories/{.}"><xsl:call-template name="c"/></a>
 </xsl:template>
 
 <xsl:template name="convert-to-anchor">

@@ -466,7 +466,10 @@ together:
 <section>
 <title>Inline elements</title>
 <subsection>
-<title>&lt;c&gt;, &lt;b&gt;, &lt;e&gt;, &lt;sub&gt; and &lt;sup&gt;</title>
+<title>
+&lt;c&gt;, &lt;b&gt;, &lt;e&gt;, &lt;sub&gt;, &lt;sup&gt;, &lt;pkg&gt;
+and &lt;cat&gt;
+</title>
 <body>
 
 <p>
@@ -499,6 +502,14 @@ prose more <e>punch</e>!
 <p>
 The <c>&lt;sub&gt;</c> and <c>&lt;sup&gt;</c> elements are used to specify
 <sub>subscript</sub> and <sup>superscript</sup>.
+</p>
+
+<p>
+<c>&lt;pkg&gt;</c> and <c>&lt;cat&gt;</c> can be used to reference Gentoo
+packages and categories, such as <c>&lt;pkg&gt;app-doc/pms&lt;/pkg&gt;</c> and
+<c>&lt;cat&gt;app-doc&lt;/cat&gt;</c>. These render as <pkg>app-doc/pms</pkg>
+and <cat>app-doc</cat>, respectively. Both tags automatically create a link
+to the package information page.
 </p>
 
 </body>
