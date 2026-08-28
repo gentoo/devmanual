@@ -679,8 +679,11 @@
                           </ul>
                         </xsl:if>
                       </li>
-                      <li><xsl:call-template name="anchor-previous"/></li>
-                      <li><xsl:call-template name="anchor-next"/></li>
+                      <xsl:if test="not(starts-with(/devbook/@self, 'eclass-reference/')
+                                    and substring-after(/devbook/@self, '/') != '')">
+                        <li><xsl:call-template name="anchor-previous"/></li>
+                        <li><xsl:call-template name="anchor-next"/></li>
+                      </xsl:if>
                     </ul>
                   </div>
                 </div>
