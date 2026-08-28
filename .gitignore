@@ -2,7 +2,7 @@
 *.png
 .depend
 documents.js
-eclass-reference/
+eclass-reference/**/*.xml
 
 # Emacs backup files and locks
 *~

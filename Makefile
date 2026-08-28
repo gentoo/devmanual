@@ -16,7 +16,7 @@ htmldir = $(docdir)
 DESTDIR =
 
 # Nonzero value disables external assets for offline browsing.
-OFFLINE = 0
+export OFFLINE = 0
 
 ifeq ($(OFFLINE),0)
   JS_BUILD = documents.js
@@ -55,16 +55,19 @@ documents.js: bin/build_search_documents.py $(XMLS)
 $(HTMLS): %index.html: %text.xml devbook.xsl xsl/*.xsl
 	xsltproc --param offline "$(OFFLINE)" devbook.xsl $< > $@
 
+eclassdoc:
+	$(MAKE) -C eclass-reference all
+
 eclass-reference/text.xml:
 	@# Are we called from an ebuild? The test only controls the
 	@# output of a warning, so no big issue if the heuristic fails
 	@if ! type -p emake >/dev/null; then \
 	  echo "*** Warning: No eclass documentation found." >&2; \
 	  echo "Install app-doc/eclass-manpages and" >&2; \
-	  echo "run bin/gen-eclass-html.sh before calling make." >&2; \
+	  echo "run \"make eclassdoc\" before \"make all\"." >&2; \
 	  echo "Creating a placeholder index as fallback." >&2; \
 	fi
-	bin/gen-eclass-html.sh -n
+	$(MAKE) -C eclass-reference text.xml
 
 appendices/todo-list/index.html: $(XMLS)
 
@@ -129,8 +132,9 @@ clean:
 
 distclean: clean
 	@rm -f .depend
-	@rm -rf eclass-reference
+	@$(MAKE) -C eclass-reference $@
 
-.PHONY: all prereq install check validate tidy dist clean distclean
+.PHONY: all prereq eclassdoc install check validate tidy dist clean distclean
+.DELETE_ON_ERROR:
 
 -include .depend
