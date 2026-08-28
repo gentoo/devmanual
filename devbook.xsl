@@ -916,10 +916,14 @@
           <xsl:with-param name="string">../</xsl:with-param>
         </xsl:call-template>
       </xsl:variable>
+      <xsl:variable name="ancestor">
+        <xsl:for-each select="str:tokenize(/devbook/@self, '/')[position() &lt;= last() - $depth]">
+          <xsl:value-of select="concat(., '/')"/>
+        </xsl:for-each>
+      </xsl:variable>
       <li>
         <a href="{$relative_path_depth_recursion}index.html">
-          <xsl:value-of select="document(concat(/devbook/@self, $relative_path_depth_recursion, 'text.xml'))
-                                /devbook/chapter[1]/title"/>
+          <xsl:value-of select="document(concat($ancestor, 'text.xml'))/devbook/chapter[1]/title"/>
         </a>
       </li>
       <xsl:call-template name="list-ancestors">
