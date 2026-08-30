@@ -18,6 +18,13 @@
     <!-- previous and next documents -->
     <xsl:call-template name="anchor-previous"/>
     <xsl:call-template name="anchor-next"/>
+    <!-- extraction (currently only in todo-list) -->
+    <xsl:if test="//contents/@extraction">
+      <xsl:call-template name="contents">
+        <xsl:with-param name="path" select="//contents/@root"/>
+        <xsl:with-param name="extraction" select="//contents/@extraction"/>
+      </xsl:call-template>
+    </xsl:if>
   </xsl:variable>
   <xsl:variable name="self" select="/devbook/@self"/>
   <xsl:value-of select="concat($self, 'index.html:')"/>
