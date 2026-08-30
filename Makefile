@@ -4,7 +4,8 @@ ALL_FILES := $(shell find . -name .git -prune -o -type f -print)
 XMLS := $(filter %/text.xml,$(ALL_FILES))
 SVGS := $(filter %.svg,$(ALL_FILES))
 HTMLS := $(subst text.xml,index.html,$(XMLS))
-ECLASS_HTMLS := $(filter ./eclass-reference/%/index.html,$(ALL_FILES))
+MAN_HTMLS := $(filter-out $(HTMLS), \
+	$(filter ./eclass-reference/%/index.html,$(ALL_FILES)))
 IMAGES := $(patsubst %.svg,%.png,$(SVGS))
 
 CSS_FILES = devmanual.css offline.css
@@ -63,8 +64,7 @@ eclass-reference/text.xml:
 	@# output of a warning, so no big issue if the heuristic fails
 	@if ! type -p emake >/dev/null; then \
 	  echo "*** Warning: No eclass documentation found." >&2; \
-	  echo "Install app-doc/eclass-manpages and" >&2; \
-	  echo "run \"make eclassdoc\" before \"make all\"." >&2; \
+	  echo "Run \"make eclassdoc\" before \"make all\"." >&2; \
 	  echo "Creating a placeholder index as fallback." >&2; \
 	fi
 	$(MAKE) -C eclass-reference text.xml
@@ -81,7 +81,7 @@ appendices/todo-list/index.html: $(XMLS)
 
 install: all
 	set -e; \
-	for file in $(HTMLS) $(ECLASS_HTMLS) $(IMAGES); do \
+	for file in $(HTMLS) $(MAN_HTMLS) $(IMAGES); do \
 	  install -d "$(DESTDIR)$(htmldir)"/$${file%/*}; \
 	  install -m 644 $${file} "$(DESTDIR)$(htmldir)"/$${file}; \
 	done
@@ -108,7 +108,7 @@ validate: devbook.rng
 # Run app-text/htmltidy on the output to detect mistakes.
 # We have to loop through them because otherwise tidy won't
 # tell you which file contains a mistake.
-tidy: $(HTMLS) $(ECLASS_HTMLS)
+tidy: $(HTMLS) $(MAN_HTMLS)
 	@status=0; \
 	for f in $^; do \
 	  output=$$(sed 's/href=""/href="index.html"/' $${f} \

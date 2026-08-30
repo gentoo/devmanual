@@ -1,18 +1,24 @@
+ECLASSDIR = /var/db/repos/gentoo/eclass
 MAN5DIR = /usr/share/man/man5
 
-ECLASS_MANPAGES := $(foreach f,$(shell /usr/bin/qlist -e eclass-manpages) \
-	,$(and $(findstring /man5/,$(f)),$(f)))
-EXTRA_MANPAGES := $(wildcard $(MAN5DIR)/ebuild.5* $(MAN5DIR)/make.conf.5*)
-MANPAGES := $(sort $(ECLASS_MANPAGES) $(EXTRA_MANPAGES))
+ECLASSES := $(wildcard $(ECLASSDIR)/*.eclass)
+ECLASS_BASENAMES := $(notdir $(ECLASSES))
+ECLASS_XMLS := $(addsuffix /text.xml,$(ECLASS_BASENAMES))
 
+MANPAGES := $(wildcard $(MAN5DIR)/ebuild.5* $(MAN5DIR)/make.conf.5*)
 # Remove one suffix first (which may be .5 for an uncompressed page,
 # or a compression suffix), then remove any remaining .5 suffix
-BASENAMES := $(patsubst %.5,%,$(basename $(notdir $(MANPAGES))))
-MAN_HTMLS := $(addsuffix /index.html,$(BASENAMES))
+MAN_BASENAMES := $(patsubst %.5,%,$(basename $(notdir $(MANPAGES))))
+MAN_HTMLS := $(addsuffix /index.html,$(MAN_BASENAMES))
+
+BASENAMES := $(sort $(ECLASS_BASENAMES) $(MAN_BASENAMES))
 
 export OFFLINE ?= 0
 
-all: clean .WAIT $(MAN_HTMLS) toc
+all: clean .WAIT $(ECLASS_XMLS) $(MAN_HTMLS) toc
+
+$(ECLASS_XMLS) &: $(ECLASSES)
+	pmaint eclass -f devbook -o "{eclass}.eclass/text.xml" $^
 
 $(MAN_HTMLS) &: $(MANPAGES) toc
 	./man-to-html.sh $(MANPAGES)
@@ -30,7 +36,7 @@ text.xml: dummy.xml.in
 	cp $< $@
 
 clean:
-	@find -mindepth 2 -type f -name "*.html" -delete
+	@find -mindepth 2 -type f \( -name "*.xml" -o -name "*.html" \) -delete
 	@find -type d -empty -delete
 
 distclean: clean
