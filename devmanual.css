@@ -91,13 +91,18 @@ h4:hover > a.permalink {
     margin-top: 3px;
 }
 
+.list-group {
+    column-width: 32ch;
+    column-gap: 2em;
+}
+
 /*
  * .fix-links can be used to fix listgroups in text browsers
  * see https://bugs.gentoo.org/show_bug.cgi?id=711286
  */
 
 .fix-links > li {
-    padding: 0px;
+    padding: 0px 5px;
 }
 
 .fix-links > li > a {
