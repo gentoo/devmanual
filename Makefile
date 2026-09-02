@@ -135,4 +135,6 @@ distclean: clean
 .PHONY: all prereq eclassdoc install check validate tidy dist clean distclean
 .DELETE_ON_ERROR:
 
+ifeq (,$(filter distclean,$(MAKECMDGOALS)))
 -include .depend
+endif
