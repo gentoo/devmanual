@@ -32,7 +32,10 @@ prereq:
 	{ echo "gnome-base/librsvg required" >&2;\
 	  exit 1; }
 	@type xsltproc >/dev/null 2>&1 || \
-	{ echo "dev-libs/libxslt is with python required" >&2;\
+	{ echo "dev-libs/libxslt is required" >&2;\
+	  exit 1; }
+	@type python3 >/dev/null 2>&1 || \
+	{ echo "dev-lang/python is required" >&2;\
 	  exit 1; }
 	@fc-list -q "Open Sans" || \
 	{ echo "media-fonts/open-sans is required" >&2;\
