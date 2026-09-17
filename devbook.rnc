@@ -136,6 +136,6 @@ cat = element cat {
 
 uri = element uri {
   # uri can have either a URI in the body text or a link attribute
-  xsd:anyURI
+  xsd:anyURI { pattern = "(https?|ftp)://.*" }
   | (attribute link { text }, inline)
 }

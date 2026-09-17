@@ -428,7 +428,9 @@
     <element name="uri">
       <choice>
         <!-- uri can have either a URI in the body text or a link attribute -->
-        <data type="anyURI"/>
+        <data type="anyURI">
+          <param name="pattern">(https?|ftp)://.*</param>
+        </data>
         <group>
           <attribute name="link"/>
           <ref name="inline"/>
