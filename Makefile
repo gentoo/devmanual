@@ -102,7 +102,7 @@ validate: devbook.rng
 	done
 	@echo "xmllint validation successful"
 
-%.rng %.xsd: %.rnc
+devbook.rng devbook.xsd: devbook.rnc
 	trang $< $@
 	sed -i -e '2s/^/<!-- Auto-generated from $<; do not edit! -->\n/' $@
 
