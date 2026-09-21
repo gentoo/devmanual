@@ -1685,11 +1685,23 @@ pkg_postinst() {
   <dt><c>pipestatus</c></dt>
   <dd>
     Checks if all commands in the last executed pipeline have returned an exit
-    status of zero. When the <c>-v</c> option is specified, also prints the
-    shell's pipe status array.
+    status of zero.
 <codesample lang="ebuild">
 foo | bar | baz    
 pipestatus || die
+</codesample>
+  </dd>
+  <dd>
+  When passed the <c>-v</c> option, it also prints the pipeline's exit status
+  values, i.e. Bash's <c>PIPESTATUS</c> array. This makes it easier to identify
+  which stage of the pipeline failed. Note that declaring and assigning in a
+  single statement like <c>local status=$(pipestatus -v)</c> masks the exit
+  status of <c>pipestatus</c> and must be avoided when combined with
+  <c>|| die</c>.
+<codesample lang="ebuild">
+local status
+foo | bar | baz | qux
+status=$(pipestatus -v) || die "qux pipe failed (pipestatus: ${status})"
 </codesample>
   </dd>
 
