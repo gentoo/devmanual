@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<devbook self="ebuild-writing/ebuild-environment/">
+<chapter>
+<title>Ebuild environment</title>
+<body>
+
+<p>
+Ebuilds are sourced and executed by bash, in an environment that the package
+manager controls. This section describes the properties of that environment
+which ebuilds may rely on.
+</p>
+
+</body>
+
+<section>
+<title>Bash version</title>
+<body>
+
+<p>
+Ebuilds and eclasses may use the features of the bash version that their EAPI
+guarantees:
+</p>
+
+<table>
+  <tr>
+    <th>EAPI</th>
+    <th>Bash version</th>
+  </tr>
+  <tr>
+    <ti>7</ti>
+    <ti>4.2</ti>
+  </tr>
+  <tr>
+    <ti>8</ti>
+    <ti>5.0</ti>
+  </tr>
+  <tr>
+    <ti>9</ti>
+    <ti>5.3</ti>
+  </tr>
+</table>
+
+<important>
+Do not use features of a newer bash version than the EAPI allows, even if the
+bash installed on your system supports them. Doing so will break on systems
+with an older bash. Note also that the package manager sets bash's
+compatibility level to the version listed above, so behaviour that has changed
+between bash versions will follow the older version.
+</important>
+
+</body>
+</section>
+
+<section>
+<title>Locale settings</title>
+<body>
+
+<p>
+For characters in the ASCII range, case modification and collation order
+(<c>LC_CTYPE</c> and <c>LC_COLLATE</c>) are guaranteed to behave as in the C
+locale. Ebuilds can therefore rely on bash constructs like <c>${var^^}</c> or
+on the sorting order of glob expansion, without having to set these variables
+themselves.
+</p>
+
+<note>
+This guarantee covers the ebuild environment only. External commands that
+generate output which the ebuild parses may still be affected by the user's
+locale.
+</note>
+
+</body>
+</section>
+
+<section>
+<title>Failed glob expansion</title>
+<body>
+
+<p>
+The <c>failglob</c> option of bash is set in the global scope of ebuilds. As a
+consequence, a pattern that matches no file results in an error when the ebuild
+is being sourced, instead of being silently left as a literal string.
+</p>
+
+<p>
+This mostly affects arrays that are populated from <c>${FILESDIR}</c> in global
+scope:
+</p>
+
+<codesample lang="ebuild">
+PATCHES=( "${FILESDIR}"/${P}-*.patch )
+</codesample>
+
+<p>
+If no patch matches the pattern, sourcing the ebuild fails, which will break
+even simple operations like dependency resolution. Reference the files
+explicitly to avoid this:
+</p>
+
+<codesample lang="ebuild">
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-build.patch
+	"${FILESDIR}"/${P}-musl.patch
+)
+</codesample>
+
+<note>
+<c>failglob</c> is only set while the ebuild is being sourced, i.e. in global
+scope. It does not apply inside phase functions.
+</note>
+
+</body>
+</section>
+
+</chapter>
+</devbook>
