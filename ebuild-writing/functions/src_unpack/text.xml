@@ -97,8 +97,25 @@ The <c>unpack</c> function recognizes the following file formats:
 </ul>
 
 <p>
-In EAPI 6 and later, filename extensions are matched case-insensitively.
+Filename extensions are matched case-insensitively.
 </p>
+
+<p>
+An argument that contains no slash names a file in <c>${DISTDIR}</c>. Any other
+argument is treated as a path, which may be absolute or relative to the current
+working directory, and needs no leading <c>./</c>:
+</p>
+
+<codesample lang="ebuild">
+unpack sub/dir/${P}-docs.tar.gz
+</codesample>
+
+<note>
+Do not spell out <c>${DISTDIR}</c> for files that are listed in
+<c>SRC_URI</c> <d/> write <c>unpack ${P}.tar.gz</c> rather than
+<c>unpack "${DISTDIR}"/${P}.tar.gz</c>. The latter is redundant and the package
+manager may warn about it.
+</note>
 
 <important>
 Unless the utility needed for unpacking is in the system set, the ebuild must
