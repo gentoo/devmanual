@@ -73,6 +73,32 @@ locale.
 </section>
 
 <section>
+<title>Filtering the environment</title>
+<body>
+
+<p>
+The <c>ENV_UNSET</c> variable holds a whitespace delimited list of variables
+that the package manager removes from the environment before sourcing an
+ebuild. It is set in profiles and in <c>make.conf</c>, not in ebuilds.
+</p>
+
+<p>
+Its purpose is to keep variables from the calling user's environment from
+leaking into builds and changing their outcome. The profiles use it for
+variables such as the <c>XDG_*</c> directory settings, which are meaningless
+for a build and regularly break one when they are inherited from a running
+desktop session.
+</p>
+
+<note>
+Ebuilds must not rely on <c>ENV_UNSET</c> to protect them. If a build is
+sensitive to some variable, unset or override it in the ebuild itself.
+</note>
+
+</body>
+</section>
+
+<section>
 <title>Failed glob expansion</title>
 <body>
 
