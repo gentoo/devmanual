@@ -158,6 +158,25 @@ src_test() {
 }
 </codesample>
 
+<p>
+<c>die</c> also accepts the <c>-n</c> option. When called with it under
+<c>nonfatal</c>, it will not abort the build but return with an error status
+instead. This is mostly useful in eclass functions that want to let their
+caller decide how a failure is handled:
+</p>
+
+<codesample lang="ebuild">
+my_helper() {
+	some_command || die -n "some_command failed" || return
+	einfo "some_command succeeded"
+}
+</codesample>
+
+<p>
+Outside of <c>nonfatal</c>, the <c>-n</c> option has no effect and <c>die</c>
+aborts the build as usual.
+</p>
+
 </body>
 </section>
 </chapter>
