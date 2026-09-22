@@ -50,6 +50,13 @@ in addition to their literal value (e.g. $CHOST).
     The system on which the package is going to be executed.  When
     cross-compiling, dependencies applying to CHOST can not be executed.
   </dd>
+
+  <dt>CTARGET</dt>
+  <dd>
+    The system for which a cross-toolchain generates code.  This is only
+    meaningful for toolchain packages such as compilers and binutils, and is
+    empty for everything else.
+  </dd>
 </dl>
 
 <p>
@@ -996,6 +1003,41 @@ alternative with another later still satisfies the dependency and should not be
 assumed to force rebuilds unless you have expressly tied the dependency via
 slots/sub-slots (outside of any-of) or via other mechanisms.
 </p>
+
+</body>
+</subsection>
+
+<subsection>
+<title>Empty dependency groups</title>
+<body>
+
+<p>
+An any-of (<c>|| ( ... )</c>) or exactly-one-of (<c>^^ ( ... )</c>) group that
+ends up with no children is <e>not</e> satisfied. This most commonly happens
+when every child is behind a USE conditional and none of them apply:
+</p>
+
+<codesample lang="ebuild">
+REQUIRED_USE="
+	|| (
+		foo? ( bar )
+		baz? ( zoinks )
+	)
+"
+</codesample>
+
+<p>
+With <c>USE="-foo -baz"</c> the group is empty, and the requirement can no
+longer be met. The same applies to dependency specifications, where an empty
+group makes the dependency unsatisfiable. Write the conditions so that at least
+one child always remains, or move the conditional outside of the group.
+</p>
+
+<note>
+An empty at-most-one-of (<c>?? ( ... )</c>) or all-of (<c>( ... )</c>) group
+behaves in the opposite way and is always satisfied. Only any-of and
+exactly-one-of groups are left unsatisfied when they are empty.
+</note>
 
 </body>
 </subsection>
