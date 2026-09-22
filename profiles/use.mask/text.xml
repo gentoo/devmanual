@@ -42,6 +42,37 @@ See <uri link="::general-concepts/use-flags/#noblah USE flags"/> for more discus
 </p>
 
 </body>
+
+<section>
+<title>Stable USE masking and forcing</title>
+<body>
+
+<p>
+In addition to <c>use.mask</c>, <c>use.force</c>, <c>package.use.mask</c> and
+<c>package.use.force</c>, profiles support a stable variant of each of these
+files: <c>use.stable.mask</c>, <c>use.stable.force</c>,
+<c>package.use.stable.mask</c> and <c>package.use.stable.force</c>. They behave
+exactly like their counterparts, except that they only apply to packages which
+are being merged because of a stable keyword. Packages pulled in by a
+<c>~arch</c> keyword are unaffected.
+</p>
+
+<p>
+The typical use case is a USE flag whose dependency has not been stabilized
+yet. Listing the flag in <c>package.use.stable.mask</c> keeps it available to
+<c>~arch</c> users, while preventing stable users from enabling something that
+cannot be satisfied on a stable system. This avoids having to mask the flag
+outright for everybody, or to rush the stabilization of the dependency.
+</p>
+
+<p>
+As with the non-stable files, updates should be handled via the relevant arch
+team.
+</p>
+
+</body>
+</section>
+
 </chapter>
 </devbook>
 
