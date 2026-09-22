@@ -68,13 +68,10 @@ You should use <c>die</c> on almost all external commands in ebuilds.
 <title><c>die</c> and subshells</title>
 <body>
 
-<warning>
-<c>die</c> <b>will not work in a subshell unless you are using EAPI=7 and onwards</b>.
-</warning>
-
 <p>
-The following code will not work as expected, since the <c>die</c> is inside a
-subshell:
+<c>die</c> may be called from a subshell. It aborts the build as if it had
+been called from the main process, so constructs like the following behave as
+expected:
 </p>
 
 <codesample lang="ebuild">
@@ -82,31 +79,10 @@ subshell:
 </codesample>
 
 <p>
-The correct way to rewrite this is to use an <c>if</c> block:
+Note that this only covers the exit status that <c>die</c> itself acts upon.
+A command that fails anywhere but at the end of a pipeline is still not
+detected, as described in the next section.
 </p>
-
-<codesample lang="ebuild">
-if [[ -f foorc ]] ; then
-	update_foorc || die "Couldn't update foorc!"
-fi
-</codesample>
-
-<p>
-When using pipes, a subshell is introduced, so the following is unsafe:
-</p>
-
-<codesample lang="ebuild">
-cat list | while read file ; do eapply ${file} ; done
-</codesample>
-
-<p>
-Using input redirection (see <uri link="::tools-reference/cat/#Abuse of cat"/>)
-avoids this problem:
-</p>
-
-<codesample lang="ebuild">
-while read file ; do eapply ${file} ; done &lt; list
-</codesample>
 
 </body>
 </section>
@@ -157,6 +133,13 @@ src_test() {
 	fi
 }
 </codesample>
+
+<p>
+<c>nonfatal</c> is available both as a shell function and as an external
+command. The former allows it to be used with other shell functions, such as
+those provided by eclasses, and the latter allows it to be used from commands
+like <c>find</c> and <c>xargs</c>.
+</p>
 
 <p>
 <c>die</c> also accepts the <c>-n</c> option. When called with it under
