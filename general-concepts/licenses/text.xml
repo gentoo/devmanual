@@ -233,7 +233,7 @@ indicates <c>GPL-2+</c> license:
 If your package's license is not already in the tree, you must add the license
 before committing the package. When adding the license, use a plain text file
 (UTF-8 encoded), because non-text files
-<uri link="::general-concepts/tree/#What Belongs in the Tree?">do not belong
+<uri link="::general-concepts/tree/#What belongs in the tree?">do not belong
 in the repository</uri>.
 Finally you need to check if your license should be added to a license group
 as listed in the repository's <c>profiles/license_groups</c> file. For more

@@ -201,7 +201,7 @@ ebuilds normally shouldn't depend on its use.
 
 <p>
 If a prospective newly-added slot would have a
-<uri link="::general-concepts/dependencies/#blockers">blocker</uri>
+<uri link="::general-concepts/dependencies/#Blockers">blocker</uri>
 (possibly because of file collisions) on another slot, using the same slot
 or creating a new package may be more suitable instead. Users generally
 expect slots to imply each can be installed in parallel.
