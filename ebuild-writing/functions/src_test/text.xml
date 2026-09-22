@@ -31,7 +31,9 @@
 <section>
 <title>Default <c>src_test</c></title>
 <body>
-<p>The default test phase in EAPI 6 is equivalent to the following:</p>
+
+<p>The default test phase is equivalent to the following:</p>
+
 <codesample lang="ebuild">
 src_test() {
 	if nonfatal emake check -n &amp;&gt; /dev/null; then
@@ -41,6 +43,13 @@ src_test() {
 	fi
 }
 </codesample>
+
+<p>
+Note that the default implementation does not pass <c>-j1</c> to <c>emake</c>,
+i.e. tests are run in parallel according to <c>MAKEOPTS</c>. If the test suite
+cannot cope with that, call <c>emake -j1</c> explicitly rather than relying on
+the default phase.
+</p>
 </body>
 </section>
 
