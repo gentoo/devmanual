@@ -49,6 +49,13 @@ location, and Portage records digests of the files installed.
 </p>
 
 <p>
+The <c>pkg_*</c> phases are started in a dedicated empty directory, which
+keeps tools from interacting with whatever files happen to be in the current
+working directory. In EAPI 7, no particular directory is guaranteed for these
+phases, so an ebuild must not rely on one.
+</p>
+
+<p>
 When testing or debugging, you can instruct Portage to execute a
 specific phase function of an ebuild by using the <c>ebuild</c>
 command, see the <c>ebuild(1)</c> manual
