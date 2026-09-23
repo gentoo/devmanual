@@ -33,35 +33,44 @@
 <body>
 
 <p>
-Before EAPI 6, the default implementation did nothing:
+The default implementation applies the patches listed in the <c>PATCHES</c>
+variable, followed by any user patches:
 </p>
 
 <codesample lang="ebuild">
 src_prepare() {
-	true
-}
-</codesample>
-
-<p>
-Beginning with EAPI 6, the src_prepare function gained a new default
-implementation:
-</p>
-
-<codesample lang="ebuild">
-src_prepare() {
-	if [[ $(declare -p PATCHES 2&gt;/dev/null) == "declare -a"* ]]; then
-		[[ -n ${PATCHES[@]} ]] &amp;&amp; eapply "${PATCHES[@]}"
+	if [[ ${PATCHES@a} == *a* ]]; then
+		[[ -n ${PATCHES[@]} ]] &amp;&amp; eapply -- "${PATCHES[@]}"
 	else
-		[[ -n ${PATCHES} ]] &amp;&amp; eapply ${PATCHES}
+		[[ -n ${PATCHES} ]] &amp;&amp; eapply -- ${PATCHES}
 	fi
 	eapply_user
 }
 </codesample>
 
 <note>
-With EAPI 6, you must call <c>eapply_user</c> or <c>default</c> if you define
+You must call <c>eapply_user</c> or <c>default</c> if you define
 <c>src_prepare</c>!
 </note>
+
+<p>
+Because of the <c>--</c> separator, every item of <c>PATCHES</c> is treated as
+a path name, so options for <c>patch</c> cannot be passed through this
+variable. Call <c>eapply</c> explicitly if you need them, or rebase the patch
+to the usual patch level:
+</p>
+
+<codesample lang="ebuild">
+src_prepare() {
+	eapply -p0 "${FILESDIR}"/${P}-foo.patch
+	eapply_user
+}
+</codesample>
+
+<p>
+In EAPI 7, the <c>--</c> separator is not used, and items of <c>PATCHES</c>
+that begin with a hyphen are passed to <c>patch</c> as options instead.
+</p>
 
 </body>
 </section>
