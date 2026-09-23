@@ -125,6 +125,50 @@ Items which are in <c>RDEPEND</c> but not <c>DEPEND</c> could <e>in theory</e> b
 </subsection>
 
 <subsection>
+<title>Install-time dependencies</title>
+<body>
+
+<p>
+The <c>IDEPEND</c> variable, which requires EAPI 8 or later, specifies
+programs that are executed during the <c>pkg_preinst</c>, <c>pkg_postinst</c>,
+<c>pkg_prerm</c> and <c>pkg_postrm</c> phases, and that are not needed
+afterwards. A typical example is a tool that updates a cache or database when
+the package is merged or unmerged.
+</p>
+
+<p>
+<c>IDEPEND</c> is to <c>RDEPEND</c> what <c>BDEPEND</c> is to <c>DEPEND</c>:
+the packages apply to CBUILD, i.e. they are installed in <c>BROOT</c> and
+can be executed even when cross-compiling. Unlike <c>RDEPEND</c>, they may be
+unmerged once the installation has finished.
+</p>
+
+<codesample lang="ebuild">
+EAPI=8
+
+inherit xdg-utils
+
+IDEPEND="dev-util/desktop-file-utils"
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+}
+</codesample>
+
+<note>
+In EAPI 7, <c>IDEPEND</c> does not exist and such tools have to be listed in
+<c>RDEPEND</c> instead, which means that they cannot be unmerged for as long
+as the package is installed.
+</note>
+
+</body>
+</subsection>
+
+<subsection>
 <title>Post dependencies</title>
 <body>
 
