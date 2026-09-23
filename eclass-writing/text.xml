@@ -314,6 +314,22 @@ eclass.
 </p>
 
 <p>
+Some metadata variables are accumulated across all inherited eclasses and the
+ebuild, i.e. an assignment does not overwrite the values set by an eclass that
+was inherited earlier. These are <c>IUSE</c>, <c>REQUIRED_USE</c>, the
+<c>*DEPEND</c> variables, <c>PROPERTIES</c> and <c>RESTRICT</c>. All other
+variables, e.g. <c>HOMEPAGE</c>, <c>SRC_URI</c> and <c>LICENSE</c>, are
+ordinary bash variables, so an eclass can only provide a default value that
+the ebuild may override.
+</p>
+
+<note>
+<c>PROPERTIES</c> and <c>RESTRICT</c> are only accumulated in EAPI 8 and
+later. In EAPI 7, an eclass has to append to them explicitly, using
+<c>+=</c>.
+</note>
+
+<p>
 You should document the meaning, usage, and default value of every
 variable in your eclass. The tags available for documenting eclass
 variables are as follows:
