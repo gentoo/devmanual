@@ -15,6 +15,13 @@ Package Manager Specification</uri>.
 <p>
 Portage-specific behaviour must not be relied upon in the repository.
 </p>
+
+<p>
+Profiles must not contain a <c>package.provided</c> file. It was used to
+pretend that a package was installed without an ebuild being merged for it,
+which could not express slots or USE flags correctly. Use a virtual package
+instead, see <uri link="::general-concepts/virtuals/"/>.
+</p>
 </body>
 
 <section>
