@@ -88,24 +88,34 @@ detected, as described in the next section.
 </section>
 
 <section>
-<title>The <c>assert</c> function and <c>PIPESTATUS</c></title>
+<title>Checking the exit status of a pipeline</title>
 <body>
 
 <p>
 When using pipes, simple conditionals and tests upon <c>$?</c> will not
 correctly detect errors occurring in anything except the final command in
 the chain. To get around this, bash provides the <c>PIPESTATUS</c> variable,
-and Portage provides the <c>assert</c> function to check this variable.
+and the <c>pipestatus</c> command checks it for you:
 </p>
 
 <codesample lang="ebuild">
 bzip2 -dc "${DISTDIR}/${VIM_RUNTIME_SNAP}" | tar -xf -
-assert
+pipestatus || die "unpacking ${VIM_RUNTIME_SNAP} failed"
 </codesample>
 
 <p>
+The <c>pipestatus</c> command is only provided by the package manager in
+EAPI 9 and later. In earlier EAPIs, inherit
+<c><uri link="::eclass-reference/eapi9-pipestatus.eclass/"/></c> to get it.
+</p>
+
+<note>
+Older ebuilds call the <c>assert</c> function for this purpose. It has been
+banned in EAPI 9 and should not be used in new code.
+</note>
+
+<p>
 If you need the gory details of <c>PIPESTATUS</c>, see the bash manpage.
-Most of the time, <c>assert</c> is enough.
 </p>
 
 </body>
