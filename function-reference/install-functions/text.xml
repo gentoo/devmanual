@@ -85,6 +85,8 @@ The <c>*into</c> functions create the directory if it does not already exist.
     </ti>
     <ti>
       Specify arguments passed to <c>install</c> (eg <c>-s</c>, <c>-m644</c>)
+      for <c>doins</c> and <c>newins</c>. In EAPI 7, it also affects
+      <c>doconfd</c>, <c>doenvd</c>, <c>doheader</c> and <c>doinitd</c>.
     </ti>
   </tr>
   <tr>
@@ -100,7 +102,9 @@ The <c>*into</c> functions create the directory if it does not already exist.
       <c>exeopts</c>
     </ti>
     <ti>
-      Specify arguments passed to <c>install</c> for executables
+      Specify arguments passed to <c>install</c> for executables installed by
+      <c>doexe</c> and <c>newexe</c>. In EAPI 7, it also affects
+      <c>doinitd</c>.
     </ti>
   </tr>
   <tr>

@@ -35,6 +35,7 @@ query variables and similar state.
     </ti>
     <ti>
       Deprecated synonym for <c>use</c>.
+      Banned in EAPI 8.
     </ti>
   </tr>
   <tr>
@@ -62,7 +63,8 @@ query variables and similar state.
       <c>use_enable flag str val</c> 
     </ti>
     <ti>
-      Echoes either <c>--enable-str=val</c> or <c>--disable-str</c> depending upon <c>useq flag</c>.
+      Echoes either <c>--enable-str=val</c> or <c>--disable-str</c> depending
+      upon <c>use flag</c>.
       If <c>str</c> is not specified, uses <c>flag</c> instead. If <c>val</c> is not specified, omits
       the assignment part.
     </ti>
@@ -100,6 +102,7 @@ query variables and similar state.
     </ti>
     <ti>
       Deprecated synonym for <c>has</c>.
+      Banned in EAPI 8.
     </ti>
   </tr>
   <tr>
@@ -108,6 +111,7 @@ query variables and similar state.
     </ti>
     <ti>
       As <c>has</c>, echoes <c>word</c> on success.
+      Banned in EAPI 8.
     </ti>
   </tr>
   <tr>
