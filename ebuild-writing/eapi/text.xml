@@ -45,7 +45,7 @@ You must set the EAPI variable by specifying it at the top of the ebuild:
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 </codesample>
 
 <note>
@@ -60,7 +60,10 @@ EAPI-conditional code)
 
 <p>
 When writing new ebuilds developers can choose whatever EAPI they think
-is the best.  Using the features of the latest EAPI is encouraged.
+is the best.  Using the features of the latest EAPI is encouraged. EAPI 7 is
+deprecated and should no longer be used for new ebuilds; where its behaviour
+differs from later EAPIs, this is pointed out in the relevant sections of this
+guide.
 </p>
 </body>
 
