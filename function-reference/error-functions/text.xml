@@ -28,11 +28,29 @@ The following functions are provided by the package manager for error handling.
     </ti>
   </tr>
   <tr>
+    <ti><c>pipestatus</c></ti>
+    <ti>
+      <p>
+      Checks if all commands in the last executed pipeline have returned an
+      exit status of zero, and is normally combined with <c>|| die</c>. When
+      passed the <c>-v</c> option, it also prints the pipeline's exit status
+      values, which makes it easier to identify the stage that failed.
+      </p>
+      <p>
+      This command is provided by the package manager in EAPI 9 and later.
+      In earlier EAPIs, inherit
+      <c><uri link="::eclass-reference/eapi9-pipestatus.eclass/"/></c>
+      to get it.
+      </p>
+    </ti>
+  </tr>
+  <tr>
     <ti><c>assert</c></ti>
     <ti>
       Checks the value of the <c>PIPESTATUS</c> array, and calls <c>die</c>
-      if any of its component is non-zero (which indicates failure of the
+      if any component is non-zero (which indicates failure of the
       preceding command pipeline).
+      Banned in EAPI 9, use <c>pipestatus</c> instead.
     </ti>
   </tr>
   <tr>
