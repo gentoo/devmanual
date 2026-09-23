@@ -123,6 +123,15 @@ In EAPI 7 and later, the following option is passed in addition:
   <li><c>--with-sysroot="${ESYSROOT:-/}"</c></li>
 </ul>
 
+<p>
+In EAPI 8 and later, the following options are passed in addition:
+</p>
+
+<ul>
+  <li><c>--datarootdir="${EPREFIX}"/usr/share</c></li>
+  <li><c>--disable-static</c></li>
+</ul>
+
 </body>
 </section>
 </chapter>
