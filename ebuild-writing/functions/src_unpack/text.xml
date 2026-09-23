@@ -101,6 +101,13 @@ Filename extensions are matched case-insensitively.
 </p>
 
 <p>
+Support for the 7-Zip (<c>*.7z</c>), LHA (<c>*.lha</c>, <c>*.lzh</c>) and
+RAR (<c>*.rar</c>) formats was removed in EAPI 8. Packages distributing such
+archives have to unpack them by other means, for which
+<c><uri link="::eclass-reference/unpacker.eclass/"/></c> is recommended.
+</p>
+
+<p>
 An argument that contains no slash names a file in <c>${DISTDIR}</c>. Any other
 argument is treated as a path, which may be absolute or relative to the current
 working directory, and needs no leading <c>./</c>:
