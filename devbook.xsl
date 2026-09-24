@@ -438,8 +438,8 @@
                 <xsl:value-of select="."/>
               </xsl:when>
               <xsl:when test="starts-with($path, 'eclass-reference/') and substring-after($path, '/') != ''">
-                <!-- Eclass reference pages are generated with man2html,
-                     so there isn't any text.xml that could be loaded.
+                <!-- Generation of eclass reference pages is optional,
+                     so there may not be any text.xml that could be loaded.
                      Use the name of the eclass as link text. #442194 -->
                 <xsl:value-of select="substring-before(substring-after($path, '/'), '/')"/>
               </xsl:when>
