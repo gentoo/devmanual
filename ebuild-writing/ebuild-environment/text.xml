@@ -52,6 +52,86 @@ between bash versions will follow the older version.
 </section>
 
 <section>
+<title>Global scope</title>
+<body>
+
+<p>
+The global scope of an ebuild (and of any eclasses it inherits) is executed
+every time the ebuild is sourced. This includes metadata generation, which may
+happen on a different machine and without any of the ebuild's dependencies
+installed. See <uri link="::general-concepts/portage-cache/"/> for the
+resulting requirement of metadata invariance.
+</p>
+
+<p>
+When being sourced, an ebuild must not do any of the following:
+</p>
+
+<ul>
+  <li>Call external programs, including via command substitution</li>
+  <li>Write anything to standard output or standard error</li>
+  <li>Modify the state of the system in any way</li>
+</ul>
+
+<p>
+Bash builtins and the package manager functions that are documented as
+callable in global scope, like <c>has</c> or <c>ver_cut</c>, are fine:
+</p>
+
+<codesample lang="ebuild">
+# DO NOT DO THIS!
+MY_PV=$(echo ${PV} | tr . _)
+
+# Do this instead
+MY_PV=$(ver_rs 1- _)
+</codesample>
+
+</body>
+
+<subsection>
+<title>Declaring variables</title>
+<body>
+
+<p>
+Whether variables defined at the top level of an ebuild or eclass are
+evaluated in global scope or as if within a function body is unspecified,
+and ebuilds must not rely on either behaviour. Therefore, at the top level:
+</p>
+
+<ul>
+  <li>The <c>local</c> builtin must not be used</li>
+  <li>
+    The <c>declare</c> builtin must only be used with the <c>-g</c> option
+    when defining variables
+  </li>
+</ul>
+
+<codesample lang="ebuild">
+# DO NOT DO THIS!
+declare -A MY_MODULES=( [foo]=1.0 [bar]=2.1 )
+
+# Do this instead
+declare -gA MY_MODULES=( [foo]=1.0 [bar]=2.1 )
+</codesample>
+
+<p>
+Name reference variables (<c>declare -n</c>, available since bash 4.3) must
+only be used in local scope, i.e. declared with <c>local -n</c> inside a
+function:
+</p>
+
+<codesample lang="ebuild">
+append_flag() {
+	local -n arr=${1}
+	arr+=( "${2}" )
+}
+</codesample>
+
+</body>
+</subsection>
+</section>
+
+<section>
 <title>Locale settings</title>
 <body>
 
