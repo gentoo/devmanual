@@ -77,6 +77,65 @@ Avoid network access in any phase by using local files, extending
 </body>
 
 <section>
+<title>Phase order on upgrade</title>
+<body>
+
+<p>
+When a package is upgraded, downgraded or reinstalled, the phases of the new
+version and the uninstall phases of the version being replaced are
+interleaved:
+</p>
+
+<ol>
+  <li>
+    <c>pkg_pretend</c>, <c>pkg_setup</c> and the <c>src_*</c> phases of the
+    new version, as for a new install
+  </li>
+  <li><c>pkg_preinst</c> of the new version</li>
+  <li>The new version's files are merged to the live filesystem</li>
+  <li><c>pkg_prerm</c> of the old version</li>
+  <li>
+    The old version's files are removed, except for those that have been
+    overwritten by the new version
+  </li>
+  <li><c>pkg_postrm</c> of the old version</li>
+  <li><c>pkg_postinst</c> of the new version</li>
+</ol>
+
+<p>
+Consequently:
+</p>
+
+<ul>
+  <li>
+    The old version's <c>pkg_prerm</c> and <c>pkg_postrm</c> run after the
+    new version's files are already in place. They must not remove or
+    modify files that the new version may also install.
+  </li>
+  <li>
+    The new version's <c>pkg_postinst</c> runs last, so it sees the final
+    state of the filesystem. Tasks like updating caches or printing upgrade
+    notes belong there.
+  </li>
+</ul>
+
+<p>
+To tell whether a phase is running during an upgrade, use
+<c>REPLACING_VERSIONS</c> in <c>pkg_preinst</c> and <c>pkg_postinst</c>, and
+<c>REPLACED_BY_VERSION</c> in <c>pkg_prerm</c> and <c>pkg_postrm</c>. See
+<uri link="::ebuild-writing/variables/#Predefined read-only variables"/>.
+</p>
+
+<p>
+When a binary package is built without being installed
+(<c>MERGE_TYPE=buildonly</c>), <c>pkg_preinst</c> and <c>pkg_postinst</c> are
+not called.
+</p>
+
+</body>
+</section>
+
+<section>
 <title>Default phase functions</title>
 <body>
 
