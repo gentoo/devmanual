@@ -239,6 +239,50 @@ and developers should not rely on it being enabled.
 </section>
 
 <section>
+<title>Tests that require network or root privileges</title>
+<body>
+
+<p>
+Some test suites cannot be run without Internet access or without superuser
+privileges, and cannot reasonably be fixed. Such tests must be restricted
+with <c>RESTRICT="test"</c>, but users who explicitly want to run them can be
+allowed to do so via the following <c>PROPERTIES</c> tokens:
+</p>
+
+<dl>
+  <dt><c>test_network</c></dt>
+  <dd>
+    The package manager may run tests that require an Internet connection,
+    even if the ebuild has <c>RESTRICT="test"</c>.
+  </dd>
+  <dt><c>test_privileged</c></dt>
+  <dd>
+    The package manager may run tests that require superuser privileges, even
+    if the ebuild has <c>RESTRICT="test"</c>.
+  </dd>
+</dl>
+
+<codesample lang="ebuild">
+# tests need to download test data from upstream
+PROPERTIES="test_network"
+RESTRICT="test"
+</codesample>
+
+<p>
+In Portage, users enable such tests through the <c>ALLOW_TEST</c> variable in
+<c>make.conf</c>, e.g. <c>ALLOW_TEST="network"</c> or
+<c>ALLOW_TEST="privileged"</c>.
+</p>
+
+<p>
+If only a part of the test suite has such requirements, prefer to skip just
+those tests, so that the remaining ones are still run by default.
+</p>
+
+</body>
+</section>
+
+<section>
 <title>Tests that require X11</title>
 <body>
 <p>
