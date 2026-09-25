@@ -65,6 +65,10 @@ non-installed packages. Ebuild writers should note that dependencies may not be
 available.
 </p>
 
+<p>
+<c>pkg_info</c> must not write to the filesystem.
+</p>
+
 </body>
 </section>
 </chapter>

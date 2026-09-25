@@ -73,6 +73,13 @@ and before installing them).
 This phase typically checks for a kernel configuration and may
 <c>eerror</c> and <c>die</c> when needed.
 </p>
+
+<p>
+<c>pkg_pretend</c> must not write to the filesystem. Also, there is no guarantee
+that the state of the system will not change substantially before the next
+phase is executed, so it must not be used to prepare anything for later
+phases.
+</p>
 <important>
 	There is no guarantee that the ebuild's dependencies are installed
 	when this phase is called.
