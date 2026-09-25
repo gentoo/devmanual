@@ -197,6 +197,25 @@ To get a flag added to <c>use.mask</c>, ask the relevant arch team.
 </section>
 
 <section>
+<title>USE flag names</title>
+<body>
+
+<p>
+A USE flag name may contain letters, digits, and the <c>+</c>, <c>_</c> and
+<c>-</c> characters. It must begin with a letter or a digit.
+</p>
+
+<p>
+Underscores are reserved for <c>USE_EXPAND</c> flags, where they separate the
+variable name from its value (e.g. <c>video_cards_amdgpu</c>, see
+<uri link="::general-concepts/use-flags/#USE_EXPAND and ARCH USE flags"/>).
+Do not use them in regular USE flag names.
+</p>
+
+</body>
+</section>
+
+<section>
 <title>IUSE defaults</title>
 <body>
 

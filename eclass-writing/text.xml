@@ -189,7 +189,9 @@ to properly break lines when generating eclass manpages.
 An eclass is a <c>bash</c> script which is sourced within the ebuild environment.
 Files should be a simple text file with a <c>.eclass</c> extension. Allowed
 characters in the filename are lowercase letters, the digits 0-9, hyphens,
-underscores and dots. Eclasses are not intrinsically versioned.
+underscores and dots. The name must begin with a letter or an underscore, and
+an eclass cannot be named <c>default</c>. Eclasses are not intrinsically
+versioned.
 </p>
 
 <p>

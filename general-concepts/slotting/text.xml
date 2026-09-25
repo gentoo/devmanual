@@ -413,9 +413,9 @@ they only need to represent in some way ABI compatibility.
 
 <body>
 <p>
-Current versions of Portage accept slot and sub-slot names that begin with an
-alphanumeric character or <c>_</c>, and contain alphanumerics and <c>_</c>,
-<c>-</c>, <c>.</c>, and <c>+</c> characters.
+Slot and sub-slot names may contain alphanumerics and the <c>_</c>, <c>-</c>,
+<c>.</c> and <c>+</c> characters. They must not begin with a hyphen, a dot or
+a plus sign.
 </p>
 
 </body>
