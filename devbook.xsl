@@ -793,12 +793,8 @@
         <script type="text/javascript" src="https://assets.gentoo.org/tyrian/jquery.min.js"/>
         <script type="text/javascript" src="https://assets.gentoo.org/tyrian/bootstrap.min.js"/>
         <script type="text/javascript" src="https://assets.gentoo.org/lunr/lunr.min.js"/>
-        <script type="text/javascript">
-          <xsl:text>var documentsSrc = &quot;</xsl:text>
-          <xsl:value-of select="$relative_path_depth_recursion"/>
-          <xsl:text>documents.js&quot;</xsl:text>
-        </script>
-        <script type="text/javascript" src="{$relative_path_depth_recursion}search.js"/>
+        <script type="text/javascript" src="{$relative_path_depth_recursion}search.js"
+                data-documents-src="{$relative_path_depth_recursion}documents.js"/>
       </xsl:if>
     </body>
   </html>

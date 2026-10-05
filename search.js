@@ -1,11 +1,12 @@
 /*
- * Copyright 2019 Gentoo Authors
+ * Copyright 2019-2026 Gentoo Authors
  * Distributed under the terms of the GNU GPL version 2 or later
  */
 "use strict";
 
 var search_index = null;
 var search_input = document.getElementById("searchInput");
+var documentsSrc = document.currentScript.getAttribute("data-documents-src");
 
 search_input.addEventListener("keyup", function(event) {
   if(event.keyCode === 13) {
