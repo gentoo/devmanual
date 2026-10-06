@@ -18,7 +18,7 @@ export OFFLINE ?= 0
 all: clean .WAIT $(ECLASS_XMLS) $(MAN_HTMLS) toc
 
 $(ECLASS_XMLS) &: $(ECLASSES)
-	pmaint eclass -f devbook -o "{eclass}.eclass/text.xml" $^
+	pmaint --config=no eclass -f devbook -o "{eclass}.eclass/text.xml" $^
 
 $(MAN_HTMLS) &: $(MANPAGES) toc
 	./man-to-html.sh $(MANPAGES)
