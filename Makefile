@@ -45,8 +45,8 @@ prereq:
 # that are newer than the target. This is because each search
 # document in devmanual gets a unique ID, which is used to
 # quickly tie search matches to the corresponding documents.
-documents.js: bin/build_search_documents.py $(XMLS)
-	@python3 bin/build_search_documents.py $(XMLS) > $@ && echo "$@ built"
+documents.js: build_search_docs.py $(XMLS)
+	@python3 build_search_docs.py $(XMLS) > $@ && echo "$@ built"
 
 %.svg : %.dot
 	dot -T svg -o $@ $<
