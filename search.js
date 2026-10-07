@@ -6,14 +6,18 @@
 
 var search_index = null;
 var search_input = document.getElementById("searchInput");
+var search_button = document.getElementById("mw-searchButton");
 var documentsSrc = document.currentScript.getAttribute("data-documents-src");
 
 search_input.addEventListener("keyup", function(event) {
   if(event.keyCode === 13) {
     event.preventDefault();
-    document.getElementById("mw-searchButton").click();
+    search_button.click();
   }
 });
+
+search_input.addEventListener("click", fetchDocuments, { once: true });
+search_button.addEventListener("click", search);
 
 function buildIndex() {
   search_index = lunr(function () {
@@ -28,7 +32,6 @@ function buildIndex() {
 }
 
 function fetchDocuments() {
-  document.getElementsByName("search")[0].onclick = null;
   if (search_index == null) {
     const script = document.createElement('script')
     script.src = documentsSrc;

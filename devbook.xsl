@@ -702,10 +702,10 @@
                 <div class="row">
                   <div class="input-group">
                     <input type="search" name="search" placeholder="Search" title="Search Gentoo Developer Manual [f]"
-                           accesskey="f" id="searchInput" class="form-control" onclick="fetchDocuments()"/>
+                           accesskey="f" id="searchInput" class="form-control"/>
                     <div class="input-group-btn">
                       <input type="submit" name="fulltext" value="Search" title="Search the pages for this text"
-                             id="mw-searchButton" class="searchButton btn btn-default" onclick="search()"/>
+                             id="mw-searchButton" class="searchButton btn btn-default"/>
                     </div>
                   </div>
                 </div>
