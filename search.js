@@ -66,11 +66,17 @@ function escapeHTML(str) {
 };
 
 function search() {
-  var term = document.getElementById("searchInput").value;
-  if (term !== "") {
+  var term = search_input.value;
+  var body = $("#searchResults .modal-body").empty();
+  if (term === "") {
+    body.append("<p>No search term defined.</p>");
+  } else if (search_index == null) {
+    body.append("<p>Search index is still loading. Try again later.</p>");
+  } else {
     var results = search_index.search(term);
-    if (results.length > 0) {
-      $("#searchResults .modal-body").empty();
+    if (results.length === 0) {
+      body.append("<p>No results found.</p>");
+    } else {
       $.each(results, function(index, result) {
         var uid = result.ref;
         var contents = getContents(documents, uid);
@@ -98,16 +104,10 @@ function search() {
         }
         text += escapeHTML(contents.text.substring(pos));
 
-        $("#searchResults .modal-body").append(`<article><h5><a href="${contents.url}">
-                                                ${contents.name}</a></h5><p>${text}</p></article>`);
+        body.append(`<article><h5><a href="${contents.url}">
+                     ${contents.name}</a></h5><p>${text}</p></article>`);
       });
-    } else {
-      $("#searchResults .modal-body").empty();
-      $("#searchResults .modal-body").append("<p>No results found.</p>");
     }
-  } else {
-      $("#searchResults .modal-body").empty();
-      $("#searchResults .modal-body").append("<p>No search term defined.</p>");
   }
   $("#searchResults").modal();
 }
