@@ -48,17 +48,17 @@ matching the group name. The following ebuild for <c>acct-group/suricata</c>
 can be used as a template for writing group ebuilds:
 </p>
 
-<pre>
-# Copyright 2019-2021 Gentoo Authors
+<codesample lang="ebuild">
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=9
 
 inherit acct-group
 
 DESCRIPTION="Group for Suricata IDS"
 ACCT_GROUP_ID=477
-</pre>
+</codesample>
 
 <p>
 <c>ACCT_GROUP_ID</c> must be set to the requested GID.
@@ -77,11 +77,11 @@ matching the user name. The following ebuild for <c>acct-user/suricata</c>
 can be used as a template for writing user ebuilds:
 </p>
 
-<pre>
-# Copyright 2019-2021 Gentoo Authors
+<codesample lang="ebuild">
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=9
 
 inherit acct-user
 
@@ -90,7 +90,7 @@ ACCT_USER_ID=477
 ACCT_USER_GROUPS=( ${PN} )
 
 acct-user_add_deps
-</pre>
+</codesample>
 
 <p>
 <c>ACCT_USER_ID</c> must be set to the requested GID.  <c>ACCT_USER_GROUPS</c>
