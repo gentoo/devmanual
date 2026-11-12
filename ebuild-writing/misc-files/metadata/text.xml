@@ -124,7 +124,15 @@ metadata.xml:
   <ti>
     Indicates an architecture-independent package. An ebuild can be marked
     stable for all relevant architectures, when it has been tested on only one
-    architecture. This tag must have empty content.
+    architecture. This tag must be empty.
+  </ti>
+</tr>
+<tr>
+  <ti><c>&lt;straight-to-stable&gt;</c></ti>
+  <ti>
+    Indicates that stable keywords should be retained on version bumps. This
+    indication may be overridden by developers if stabilization is deemed
+    inappropriate. This tag must be empty.
   </ti>
 </tr>
 <tr>
