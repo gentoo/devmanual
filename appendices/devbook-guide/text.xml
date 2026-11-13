@@ -10,9 +10,9 @@
 <p>
 The DevBook XML syntax is lightweight yet expressive, so that it is easy to
 learn yet also provides all the features we need for the creation of web
-documentation.  The number of tags is kept to a minimum <d/> just those we need.
-This makes it easy to transform DevBook XML into other formats, such as DocBook
-XML/SGML or web-ready HTML.
+documentation. The number of elements is kept to a minimum <d/> just those we
+need. This makes it easy to transform DevBook XML into other formats, such as
+DocBook XML/SGML or web-ready HTML.
 </p>
 
 <p>
@@ -63,6 +63,11 @@ All elements must be closed of course, so the document ends with:
 &lt;/devbook&gt;
 </codesample>
 
+<note>
+XML documents contain <e>elements</e>, which are delimited by <e>start tags</e>
+and <e>end tags</e>, or (for empty elements) by an <e>empty-element tag</e>.
+</note>
+
 </body>
 
 <subsection>
@@ -102,14 +107,14 @@ a <c>&lt;subsection&gt;</c> element. If you look inside the
 <d/> a <c>&lt;title&gt;</c> and a <c>&lt;body&gt;</c>. While the
 <c>&lt;title&gt;</c> is nothing new, the <c>&lt;body&gt;</c> is <d/>
 it contains the actual text content of this particular subsection. We'll look
-at the tags that are allowed inside a <c>&lt;body&gt;</c> element in a bit.
+at the elements that are allowed inside the <c>&lt;body&gt;</c> in a bit.
 </p>
 
 <note>
 The <c>&lt;chapter&gt;</c>, <c>&lt;section&gt;</c>, <c>&lt;subsection&gt;</c>
 and <c>&lt;subsubsection&gt;</c> elements contain a <c>&lt;body&gt;</c> and/or
 any number of section elements of the next lower level. Skipping of levels is
-not allowed, e.g., a subsection cannot be directly below a chapter.
+not allowed, e.g. a subsection cannot be directly below a chapter.
 </note>
 
 </body>
@@ -231,15 +236,15 @@ Text inside a <c>todo</c> element will appear in the
 <body>
 
 <p>
-We introduced a lot of new tags in the previous section <d/> here's what you
-need to know. The <c>&lt;p&gt;</c> (paragraph), <c>&lt;pre&gt;</c>
+We introduced a lot of new elements in the previous section <d/> here's what
+you need to know. The <c>&lt;p&gt;</c> (paragraph), <c>&lt;pre&gt;</c>
 (preformatted block), <c>&lt;codesample&gt;</c> (code block),
 <c>&lt;note&gt;</c>, <c>&lt;important&gt;</c>, <c>&lt;warning&gt;</c> and
-<c>&lt;todo&gt;</c> tags all can contain one or more lines of text.
+<c>&lt;todo&gt;</c> elements all can contain one or more lines of text.
 Besides the <c>&lt;figure&gt;</c>, <c>&lt;table&gt;</c>, <c>&lt;ul&gt;</c>,
 <c>&lt;ol&gt;</c> and <c>&lt;dl&gt;</c> elements (which we'll cover in just
-a bit), these are the only tags that should appear immediately inside a
-<c>&lt;body&gt;</c> element. Another thing <d/> these tags <e>should not</e>
+a bit), these are the only elements that should appear immediately inside a
+<c>&lt;body&gt;</c>. Another thing <d/> these elements <e>should not</e>
 be stacked <d/> in other words, don't put a <c>&lt;note&gt;</c> element inside
 a <c>&lt;p&gt;</c> element. As you might guess, the <c>&lt;pre&gt;</c> and
 <c>&lt;codesample&gt;</c> elements preserve their whitespace exactly, making
@@ -261,11 +266,11 @@ them well-suited for code excerpts. Both <c>&lt;pre&gt;</c> and
 <body>
 
 <p>
-The <c>&lt;pre&gt;</c> tag does not support any syntax highlighting. When you
-need syntax highlighting, use the <c>&lt;codesample&gt;</c> tag along with a
-<c>lang</c> attribute <d/> usually you want this to be set to <c>"ebuild"</c>
-to syntax highlight ebuild code snippets. Currently, the following languages
-are supported:
+The <c>&lt;pre&gt;</c> element does not support any syntax highlighting.
+When you need syntax highlighting, use the <c>&lt;codesample&gt;</c> element
+along with a <c>lang</c> attribute <d/> usually you want this to be set to
+<c>"ebuild"</c> to syntax highlight ebuild code snippets. Currently, the
+following languages are supported:
 </p>
 
 <ul>
@@ -338,8 +343,8 @@ link="mygfx.png" short="my picture" caption="my favorite picture of all
 time"/&gt;</c>.  The <c>link</c> attribute points to the actual graphic image,
 the <c>short</c> attribute specifies a short description (currently used for
 the image's HTML <c>alt</c> attribute), and a caption.  Not too difficult
-:)  We also support the standard HTML-style &lt;img src="foo.gif"/&gt; tag
-for adding images without captions, borders, etc.
+:)  We also support the standard HTML-style <c>&lt;img src="foo.gif"/&gt;</c>
+tag for adding images without captions, borders, etc.
 </p>
 
 </body>
@@ -352,8 +357,8 @@ for adding images without captions, borders, etc.
 DevBook XML supports a simplified table syntax similar to that of HTML. To start
 a table, use a <c>&lt;table&gt;</c> tag. Start a row with a <c>&lt;tr&gt;</c>
 tag. However, for inserting actual table data, we <e>don't</e> support the HTML
-&lt;td&gt; tag; instead, use the <c>&lt;th&gt;</c> if you are inserting a
-header, and <c>&lt;ti&gt;</c> if you are inserting a normal informational
+<c>&lt;td&gt;</c> element; instead, use <c>&lt;th&gt;</c> if you are inserting
+a header, and <c>&lt;ti&gt;</c> if you are inserting a normal informational
 block. You can use a <c>&lt;th&gt;</c> anywhere you can use a <c>&lt;ti&gt;</c>
 <d/> there's no requirement that <c>&lt;th&gt;</c> elements appear only in the
 first row.
@@ -407,25 +412,27 @@ right-aligned, left-aligned or centered with the <c>align</c> attribute.
 
 <p>
 To create ordered or unordered lists, simply use the XHTML-style
-<c>&lt;ol&gt;</c>, <c>&lt;ul&gt;</c> and <c>&lt;li&gt;</c> tags. Lists may only
-appear inside the <c>&lt;body&gt;</c> and <c>&lt;li&gt;</c> tags which means
-that you can have lists inside lists. Don't forget that you are writing XML and
-that you must close all tags including list items unlike in HTML.
+<c>&lt;ol&gt;</c>, <c>&lt;ul&gt;</c> and <c>&lt;li&gt;</c> elements. Lists may
+only appear inside the <c>&lt;body&gt;</c>, <c>&lt;li&gt;</c> and
+<c>&lt;dd&gt;</c> elements, which means that you can have lists inside lists.
+Don't forget that you are writing XML and that you must close all elements
+including list items, unlike in HTML.
 </p>
 
 <p>
 Definition lists (<c>&lt;dl&gt;</c>) are also supported. Please note that
-the definition term tag (<c>&lt;dt&gt;</c>) does not accept any other block
-level tag such as paragraphs or admonitions. A definition list comprises:
+the definition term element (<c>&lt;dt&gt;</c>) does not accept any other
+block-level element such as paragraphs or admonitions. A definition list
+comprises:
 </p>
 
 <dl>
   <dt><c>&lt;dl&gt;</c></dt>
-  <dd>A <b>D</b>efinition <b>L</b>ist Tag containing</dd>
+  <dd>A <b>D</b>efinition <b>L</b>ist element containing</dd>
   <dt><c>&lt;dt&gt;</c></dt>
-  <dd><b>D</b>efinition <b>T</b>erm Tags</dd>
+  <dd><b>D</b>efinition <b>T</b>erm elements</dd>
   <dt><c>&lt;dd&gt;</c></dt>
-  <dd>and <b>D</b>efinition <b>D</b>ata Tags.</dd>
+  <dd>and <b>D</b>efinition <b>D</b>ata elements.</dd>
 </dl>
 
 <p>
@@ -472,16 +479,15 @@ together:
 <p>
 The <c>&lt;c&gt;</c> element is used to mark up a <e>command</e> or <e>user
 input</e>. Think of <c>&lt;c&gt;</c> as a way to alert the reader to something
-that they can type in that will perform some kind of action. For example,
-all the XML tags displayed in this document are enclosed in a <c>&lt;c&gt;</c>
-element because they represent something that the user could type in that is
-not a path. By using <c>&lt;c&gt;</c> elements, you'll help your readers
-quickly identify commands that they need to type in. Also, because
-<c>&lt;c&gt;</c> elements are already offset from regular text, <e>it is rarely
-necessary to surround user input with double-quotes</e>. For example, don't
-refer to a "<c>&lt;c&gt;</c>" element like I did in this sentence. Avoiding
-the use of unnecessary double-quotes makes a document more readable <d/> and
-adorable!
+they can type to perform some kind of action. For example, all the XML tags
+displayed in this document are enclosed in their own <c>&lt;c&gt;</c> element
+because they represent something the user could type that is not a path.
+By using <c>&lt;c&gt;</c> elements, you'll help your readers quickly identify
+commands they need to type. Also, because <c>&lt;c&gt;</c> elements are
+already offset from regular text, <e>it is rarely necessary to surround user
+input with double quotes</e>. For example, don't refer to a "<c>&lt;c&gt;</c>"
+element as I did in this sentence. Avoiding the use of unnecessary
+double quotes makes a document more readable <d/> and adorable!
 </p>
 
 <p>
@@ -511,7 +517,7 @@ The <c>&lt;sub&gt;</c> and <c>&lt;sup&gt;</c> elements are used to specify
 <c>&lt;pkg&gt;</c> and <c>&lt;cat&gt;</c> can be used to reference Gentoo
 packages and categories, such as <c>&lt;pkg&gt;app-doc/pms&lt;/pkg&gt;</c> and
 <c>&lt;cat&gt;app-doc&lt;/cat&gt;</c>. These render as <pkg>app-doc/pms</pkg>
-and <cat>app-doc</cat>, respectively. Both tags automatically create a link
+and <cat>app-doc</cat>, respectively. Both elements automatically create a link
 to the package information page.
 </p>
 
@@ -522,9 +528,9 @@ to the package information page.
 <body>
 
 <p>
-The <c>&lt;uri&gt;</c> tag is used to point to files/locations on the Internet.
-It has two forms <d/> the first can be used when you want to have the actual
-URI displayed in the body text, such as this link to
+The <c>&lt;uri&gt;</c> element is used to point to files/locations on the
+Internet. It has two forms <d/> the first can be used when you want to have
+the actual URI displayed in the body text, such as this link to
 <uri>https://www.gentoo.org/</uri>. To create this link, I typed
 <c>&lt;uri&gt;https://www.gentoo.org/&lt;/uri&gt;</c>. The alternate form is
 when you want to associate a URI with some other text <d/> for example,
@@ -584,7 +590,7 @@ it is not <c>#first-ebuild</c> but <c>#First ebuild</c>.
 Since all Gentoo Documentation is a joint effort and several people will
 most likely change existing documentation, a coding style is needed.
 A coding style contains two sections. The first one is regarding
-internal coding <d/> how the XML-tags are placed. The second one is
+internal coding <d/> how the XML tags are placed. The second one is
 regarding the content <d/> how not to confuse the reader.
 </p>
 
@@ -630,17 +636,17 @@ to help console users.
 </p>
 
 <p>
-<b>Indentation</b> may not be used, except with the XML-constructs of which the
-parent XML-tags are <c>&lt;tr&gt;</c> (from <c>&lt;table&gt;</c>),
-<c>&lt;ul&gt;</c>, <c>&lt;ol&gt;</c> and <c>&lt;dl&gt;</c>. If indentation
-is used, it <e>must</e> be two spaces for each indentation. That means
-<e>no tabs</e> and <e>not</e> more spaces. Besides, tabs are not allowed in
-DevBook XML documents (again, except for &lt;pre&gt; and &lt;codesample&gt;).
+<b>Indentation</b> may not be used, except for those XML elements whose parent
+is <c>&lt;tr&gt;</c> (in a <c>&lt;table&gt;</c>), <c>&lt;ul&gt;</c>,
+<c>&lt;ol&gt;</c> or <c>&lt;dl&gt;</c>. If indentation is used, it <e>must</e>
+be two spaces for each level of indentation. That means <e>no tabs</e> and
+<e>no</e> extra spaces. Besides, tabs are not allowed in DevBook XML documents
+(again, except for <c>&lt;pre&gt;</c> and <c>&lt;codesample&gt;</c>).
 </p>
 
 <p>
 In case word-wrapping happens in <c>&lt;ti&gt;</c>, <c>&lt;th&gt;</c>,
-<c>&lt;li&gt;</c> or <c>&lt;dd&gt;</c> constructs, indentation must be used for
+<c>&lt;li&gt;</c> or <c>&lt;dd&gt;</c> elements, indentation must be used for
 the content.
 </p>
 
@@ -658,7 +664,7 @@ An example for indentation is:
   &lt;ti&gt;This is an example for indentation&lt;/ti&gt;
   &lt;ti&gt;
     In case text cannot be shown within an 80-character wide line, you
-    must use indentation if the parent tag allows it
+    must use indentation if the parent element allows it
   &lt;/ti&gt;
 &lt;/tr&gt;
 &lt;/table&gt;
