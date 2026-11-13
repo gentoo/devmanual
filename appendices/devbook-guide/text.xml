@@ -124,7 +124,7 @@ not allowed, e.g. a subsection cannot be directly below a chapter.
 <body>
 
 <p>
-The manual is organized as a tree. Each directory contains one document, which
+The manual is organised as a tree. Each directory contains one document, which
 can include multiple sub-documents using the <c>&lt;include href="foo/"/&gt;</c>
 tag. Note that the trailing slash in the <c>href</c> value is mandatory.
 </p>
@@ -158,7 +158,7 @@ an example <c>&lt;body&gt;</c> element:
 <codesample lang="sgml" caption="Example of a body element">
 &lt;p&gt;
 This is a paragraph. &lt;c&gt;/etc/passwd&lt;/c&gt; is a file.
-&lt;uri&gt;https://www.gentoo.org/&lt;/uri&gt; is my favorite website.
+&lt;uri&gt;https://www.gentoo.org/&lt;/uri&gt; is my favourite website.
 Type &lt;c&gt;ls&lt;/c&gt; if you feel like it. I &lt;e&gt;really&lt;/e&gt; want to go to sleep now.
 &lt;/p&gt;
 
@@ -196,7 +196,7 @@ Now, here's how the <c>&lt;body&gt;</c> element above is rendered:
 
 <p>
 This is a paragraph. <c>/etc/passwd</c> is a file.
-<uri>https://www.gentoo.org/</uri> is my favorite web site.
+<uri>https://www.gentoo.org/</uri> is my favourite website.
 Type <c>ls</c> if you feel like it. I <e>really</e> want to go to sleep now.
 </p>
 
@@ -339,7 +339,7 @@ src_install() {
 
 <p>
 Here's how to insert a figure into a document <d/> <c>&lt;figure
-link="mygfx.png" short="my picture" caption="my favorite picture of all
+link="mygfx.png" short="my picture" caption="my favourite picture of all
 time"/&gt;</c>.  The <c>link</c> attribute points to the actual graphic image,
 the <c>short</c> attribute specifies a short description (currently used for
 the image's HTML <c>alt</c> attribute), and a caption.  Not too difficult
@@ -706,9 +706,9 @@ fixed-width font.
 
 <p>
 Inside tables (<c>&lt;table&gt;</c>) and listings (<c>&lt;ul&gt;</c>,
-<c>&lt;ol&gt;</c> and <c>&lt;dl&gt;</c>), periods (".") should not be used
-unless multiple sentences are used. In that case, every sentence should end
-with a period (or other reading marks).
+<c>&lt;ol&gt;</c> and <c>&lt;dl&gt;</c>), full stops (".") should not be used
+unless there are multiple sentences. In that case, every sentence should end
+with a full stop (or other punctuation mark).
 </p>
 
 <p>
@@ -716,10 +716,10 @@ Every sentence, including those inside tables and listings, should start
 with a capital letter.
 </p>
 
-<codesample lang="sgml" caption="Periods and capital letters">
+<codesample lang="sgml" caption="Full stops and capital letters">
 &lt;ul&gt;
-  &lt;li&gt;No period&lt;/li&gt;
-  &lt;li&gt;With period. Multiple sentences, remember?&lt;/li&gt;
+  &lt;li&gt;No full stop&lt;/li&gt;
+  &lt;li&gt;With full stop. Multiple sentences, remember?&lt;/li&gt;
 &lt;/ul&gt;
 </codesample>
 
