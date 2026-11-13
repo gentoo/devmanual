@@ -644,6 +644,11 @@ be two spaces for each level of indentation. That means <e>no tabs</e> and
 (again, except for <c>&lt;pre&gt;</c> and <c>&lt;codesample&gt;</c>).
 </p>
 
+<note>
+For correct indentation in Emacs, you can use <c>devbook-mode</c>, which is
+provided by <pkg>app-emacs/ebuild-mode</pkg>.
+</note>
+
 <p>
 In case word-wrapping happens in <c>&lt;ti&gt;</c>, <c>&lt;th&gt;</c>,
 <c>&lt;li&gt;</c> or <c>&lt;dd&gt;</c> elements, indentation must be used for
