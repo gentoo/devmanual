@@ -694,6 +694,15 @@ To state "zero or one of foo, bar, or baz must be set, but not several":
 <codesample lang="ebuild">
 REQUIRED_USE="?? ( foo bar baz )"
 </codesample>
+
+<note>
+A group that ends up with no children counts as unmatched for any-of
+(<c>|| ( )</c>) and exactly-one-of (<c>^^ ( )</c>) groups, whereas it counts
+as matched for all-of (<c>( )</c>) and at-most-one-of (<c>?? ( )</c>) groups.
+See <uri link="::general-concepts/dependencies/#Empty dependency groups"/>
+for the analogous behaviour of dependency groups.
+</note>
+
 <important>
 See section <uri link="::general-concepts/use-flags/#Conflicting USE flags"/>
 for when (and when not) to use <c>REQUIRED_USE</c>.

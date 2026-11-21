@@ -1056,31 +1056,30 @@ slots/sub-slots (outside of any-of) or via other mechanisms.
 <body>
 
 <p>
-An any-of (<c>|| ( ... )</c>) or exactly-one-of (<c>^^ ( ... )</c>) group that
-ends up with no children is <e>not</e> satisfied. This most commonly happens
-when every child is behind a USE conditional and none of them apply:
+An any-of group (<c>|| ( ... )</c>) that ends up with no children is <e>not</e>
+satisfied. This most commonly happens when every child is behind a USE
+conditional and none of them apply:
 </p>
 
 <codesample lang="ebuild">
-REQUIRED_USE="
+RDEPEND="
 	|| (
-		foo? ( bar )
-		baz? ( zoinks )
+		foo? ( dev-libs/A )
+		baz? ( dev-libs/B )
 	)
 "
 </codesample>
 
 <p>
-With <c>USE="-foo -baz"</c> the group is empty, and the requirement can no
-longer be met. The same applies to dependency specifications, where an empty
-group makes the dependency unsatisfiable. Write the conditions so that at least
-one child always remains, or move the conditional outside of the group.
+With <c>USE="-foo -baz"</c> the group is empty, and the dependency can no longer
+be satisfied. Write the conditions so that at least one child always remains, or
+move the conditional outside of the group.
 </p>
 
 <note>
-An empty at-most-one-of (<c>?? ( ... )</c>) or all-of (<c>( ... )</c>) group
-behaves in the opposite way and is always satisfied. Only any-of and
-exactly-one-of groups are left unsatisfied when they are empty.
+An empty all-of (<c>( ... )</c>) group behaves in the opposite way and is always
+satisfied. Of the two group types available in dependency specifications, only
+any-of groups are left unsatisfied when they are empty.
 </note>
 
 </body>
