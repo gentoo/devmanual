@@ -371,7 +371,7 @@ span their content across rows, columns or both.
 </p>
 
 <p>
-Furthermore, table cells (<c>&lt;ti&gt;</c> &amp; <c>&lt;th&gt;</c>) can be
+Furthermore, table cells (<c>&lt;ti&gt;</c> and <c>&lt;th&gt;</c>) can be
 right-aligned, left-aligned or centered with the <c>align</c> attribute.
 </p>
 
