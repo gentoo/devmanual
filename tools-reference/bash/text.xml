@@ -409,8 +409,7 @@ These are used <e>outside</e> of the <c>[[ ]]</c> blocks. For operator precedenc
   <ti>first <e>or</e> second (short circuit)</ti>
 </tr>
 <tr>
-  <ti><c>
-first &amp;&amp; second</c></ti>
+  <ti><c>first &amp;&amp; second</c></ti>
   <ti>first <e>and</e> second (short circuit)</ti>
 </tr>
 <tr>
